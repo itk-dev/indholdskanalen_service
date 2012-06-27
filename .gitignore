@@ -1,0 +1,29 @@
+# Assorted IDE & editor files
+# --------------------------------
+*.esproj
+*.kpf
+*.tmproj
+.cache
+.project
+.settings
+*/_notes
+nbproject
+.DS_Store
+._*
+drushrc.php
+
+# Unused version control info,
+# Patches, crud
+# -------------------------------
+CVS
+*.patch
+*~
+
+# Settings, files
+# ------------------------------
+settings.php
+files
+private
+
+*/.sass-cache
+/modules/contrib/coder/
