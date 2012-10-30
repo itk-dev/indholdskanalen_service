@@ -1,0 +1,17 @@
+<?php
+
+/**
+ * @file
+ *
+ */
+
+function ik_filter_field_schema($field) {
+  $columns = array(
+
+  );
+
+  return array(
+    'columns' => $columns,
+    'indexes' => array(),
+  );
+}
