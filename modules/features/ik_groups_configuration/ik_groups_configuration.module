@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the IK groups configuration feature.
+ */
+
+include_once 'ik_groups_configuration.features.inc';
