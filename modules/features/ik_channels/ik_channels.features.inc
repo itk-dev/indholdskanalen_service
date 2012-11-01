@@ -22,7 +22,7 @@ function ik_channels_node_info() {
     'channel' => array(
       'name' => t('Channel'),
       'base' => 'node_content',
-      'description' => '',
+      'description' => t('A channel is used to present selected slides.'),
       'has_title' => '1',
       'title_label' => t('Title'),
       'help' => '',
