@@ -171,7 +171,7 @@ function ik_groups_configuration_field_default_fields() {
   $fields['node-department-og_group_ref'] = array(
     'field_config' => array(
       'active' => '1',
-      'cardinality' => '-1',
+      'cardinality' => '1',
       'deleted' => '0',
       'entity_types' => array(),
       'field_name' => 'og_group_ref',
@@ -197,10 +197,16 @@ function ik_groups_configuration_field_default_fields() {
             'og_behavior' => array(
               'status' => TRUE,
             ),
+            'views-select-list' => array(
+              'status' => 0,
+            ),
           ),
           'membership_type' => 'og_membership_type_default',
+          'sort' => array(
+            'type' => 'none',
+          ),
           'target_bundles' => array(
-            0 => 'organisation',
+            'department' => 'department',
           ),
         ),
         'handler_submit' => 'Change handler',
