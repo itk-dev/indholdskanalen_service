@@ -10,6 +10,77 @@
 function ik_slides_field_default_fields() {
   $fields = array();
 
+  // Exported field: 'node-slide-field_ik_slide_category'.
+  $fields['node-slide-field_ik_slide_category'] = array(
+    'field_config' => array(
+      'active' => '1',
+      'cardinality' => '1',
+      'deleted' => '0',
+      'entity_types' => array(),
+      'field_name' => 'field_ik_slide_category',
+      'foreign keys' => array(
+        'tid' => array(
+          'columns' => array(
+            'tid' => 'tid',
+          ),
+          'table' => 'taxonomy_term_data',
+        ),
+      ),
+      'indexes' => array(
+        'tid' => array(
+          0 => 'tid',
+        ),
+      ),
+      'locked' => '0',
+      'module' => 'taxonomy',
+      'settings' => array(
+        'allowed_values' => array(
+          0 => array(
+            'vocabulary' => 'subject',
+            'parent' => '0',
+          ),
+        ),
+      ),
+      'translatable' => '0',
+      'type' => 'taxonomy_term_reference',
+    ),
+    'field_instance' => array(
+      'bundle' => 'slide',
+      'default_value' => NULL,
+      'deleted' => '0',
+      'description' => 'Choose a main category for the slide',
+      'display' => array(
+        'default' => array(
+          'label' => 'above',
+          'module' => 'taxonomy',
+          'settings' => array(),
+          'type' => 'taxonomy_term_reference_link',
+          'weight' => 8,
+        ),
+        'teaser' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+      ),
+      'entity_type' => 'node',
+      'field_name' => 'field_ik_slide_category',
+      'label' => 'Category',
+      'required' => 0,
+      'settings' => array(
+        'user_register_form' => FALSE,
+      ),
+      'widget' => array(
+        'active' => 1,
+        'module' => 'options',
+        'settings' => array(),
+        'type' => 'options_select',
+        'weight' => '7',
+      ),
+    ),
+  );
+
   // Exported field: 'node-slide-field_ik_slide_color'.
   $fields['node-slide-field_ik_slide_color'] = array(
     'field_config' => array(
@@ -63,6 +134,85 @@ function ik_slides_field_default_fields() {
         'settings' => array(),
         'type' => 'jquery_colorpicker',
         'weight' => '7',
+      ),
+    ),
+  );
+
+  // Exported field: 'node-slide-field_ik_slide_exposure'.
+  $fields['node-slide-field_ik_slide_exposure'] = array(
+    'field_config' => array(
+      'active' => '1',
+      'cardinality' => '1',
+      'deleted' => '0',
+      'entity_types' => array(),
+      'field_name' => 'field_ik_slide_exposure',
+      'foreign keys' => array(),
+      'indexes' => array(
+        'value' => array(
+          0 => 'value',
+        ),
+      ),
+      'locked' => '0',
+      'module' => 'list',
+      'settings' => array(
+        'allowed_values' => array(
+          5 => '5 seconds',
+          10 => '10 seconds',
+          15 => '15 seconds',
+          20 => '20 seconds',
+          25 => '25 seconds',
+          30 => '30 seconds',
+          35 => '35 seconds',
+          40 => '40 seconds',
+          45 => '45 seconds',
+          50 => '50 seconds',
+          55 => '55 seconds',
+          60 => '60 seconds',
+          90 => '90 seconds',
+          120 => '120 seconds',
+        ),
+        'allowed_values_function' => '',
+      ),
+      'translatable' => '0',
+      'type' => 'list_integer',
+    ),
+    'field_instance' => array(
+      'bundle' => 'slide',
+      'default_value' => array(
+        0 => array(
+          'value' => '30',
+        ),
+      ),
+      'deleted' => '0',
+      'description' => '',
+      'display' => array(
+        'default' => array(
+          'label' => 'above',
+          'module' => 'list',
+          'settings' => array(),
+          'type' => 'list_default',
+          'weight' => 10,
+        ),
+        'teaser' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+      ),
+      'entity_type' => 'node',
+      'field_name' => 'field_ik_slide_exposure',
+      'label' => 'Exposure',
+      'required' => 0,
+      'settings' => array(
+        'user_register_form' => FALSE,
+      ),
+      'widget' => array(
+        'active' => 1,
+        'module' => 'options',
+        'settings' => array(),
+        'type' => 'options_select',
+        'weight' => '10',
       ),
     ),
   );
@@ -323,6 +473,80 @@ function ik_slides_field_default_fields() {
     ),
   );
 
+  // Exported field: 'node-slide-field_ik_slide_tags'.
+  $fields['node-slide-field_ik_slide_tags'] = array(
+    'field_config' => array(
+      'active' => '1',
+      'cardinality' => '-1',
+      'deleted' => '0',
+      'entity_types' => array(),
+      'field_name' => 'field_ik_slide_tags',
+      'foreign keys' => array(
+        'tid' => array(
+          'columns' => array(
+            'tid' => 'tid',
+          ),
+          'table' => 'taxonomy_term_data',
+        ),
+      ),
+      'indexes' => array(
+        'tid' => array(
+          0 => 'tid',
+        ),
+      ),
+      'locked' => '0',
+      'module' => 'taxonomy',
+      'settings' => array(
+        'allowed_values' => array(
+          0 => array(
+            'vocabulary' => 'tags',
+            'parent' => '0',
+          ),
+        ),
+      ),
+      'translatable' => '0',
+      'type' => 'taxonomy_term_reference',
+    ),
+    'field_instance' => array(
+      'bundle' => 'slide',
+      'default_value' => NULL,
+      'deleted' => '0',
+      'description' => 'Add one more more tags that describe the slide.',
+      'display' => array(
+        'default' => array(
+          'label' => 'above',
+          'module' => 'taxonomy',
+          'settings' => array(),
+          'type' => 'taxonomy_term_reference_link',
+          'weight' => 9,
+        ),
+        'teaser' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+      ),
+      'entity_type' => 'node',
+      'field_name' => 'field_ik_slide_tags',
+      'label' => 'Tags',
+      'required' => 0,
+      'settings' => array(
+        'user_register_form' => FALSE,
+      ),
+      'widget' => array(
+        'active' => 1,
+        'module' => 'autocomplete_deluxe',
+        'settings' => array(
+          'autocomplete_deluxe_path' => 'autocomplete_deluxe/taxonomy',
+          'size' => '60',
+        ),
+        'type' => 'autocomplete_deluxe_taxonomy',
+        'weight' => '8',
+      ),
+    ),
+  );
+
   // Exported field: 'node-slide-field_ik_slide_text'.
   $fields['node-slide-field_ik_slide_text'] = array(
     'field_config' => array(
@@ -447,6 +671,84 @@ function ik_slides_field_default_fields() {
     ),
   );
 
+  // Exported field: 'node-slide-field_layout'.
+  $fields['node-slide-field_layout'] = array(
+    'field_config' => array(
+      'active' => '1',
+      'cardinality' => '1',
+      'deleted' => '0',
+      'entity_types' => array(),
+      'field_name' => 'field_layout',
+      'foreign keys' => array(),
+      'indexes' => array(
+        'value' => array(
+          0 => 'value',
+        ),
+      ),
+      'locked' => '0',
+      'module' => 'list',
+      'settings' => array(
+        'allowed_values' => array(
+          'layout_1' => 'Layout 1',
+          'layout_2' => 'Layout 2',
+          'layout_3' => 'Layout 3',
+          'layout_4' => 'Layout 4',
+          'layout_5' => 'Layout 5',
+          'layout_6' => 'Layout 6',
+          'layout_7' => 'Layout 7',
+          'layout_8' => 'Layout 8',
+          'layout_9' => 'Layout 9',
+          'layout_10' => 'Layout 10',
+          'layout_11' => 'Layout 11',
+          'layout_12' => 'Layout 12',
+          'layout_13' => 'Layout 13',
+        ),
+        'allowed_values_function' => '',
+      ),
+      'translatable' => '0',
+      'type' => 'list_text',
+    ),
+    'field_instance' => array(
+      'bundle' => 'slide',
+      'default_value' => array(
+        0 => array(
+          'value' => 'layout_1',
+        ),
+      ),
+      'deleted' => '0',
+      'description' => 'Choose the layout you wish the slide to use.',
+      'display' => array(
+        'default' => array(
+          'label' => 'above',
+          'module' => 'list',
+          'settings' => array(),
+          'type' => 'list_default',
+          'weight' => 11,
+        ),
+        'teaser' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+      ),
+      'entity_type' => 'node',
+      'field_name' => 'field_layout',
+      'label' => 'Layout',
+      'required' => 1,
+      'settings' => array(
+        'user_register_form' => FALSE,
+      ),
+      'widget' => array(
+        'active' => 1,
+        'module' => 'options',
+        'settings' => array(),
+        'type' => 'options_buttons',
+        'weight' => '11',
+      ),
+    ),
+  );
+
   // Exported field: 'node-slide-og_group_ref'.
   $fields['node-slide-og_group_ref'] = array(
     'field_config' => array(
@@ -551,7 +853,7 @@ function ik_slides_field_default_fields() {
         'module' => 'og',
         'settings' => array(),
         'type' => 'og_complex',
-        'weight' => '3',
+        'weight' => '5',
       ),
     ),
   );
@@ -559,12 +861,19 @@ function ik_slides_field_default_fields() {
   // Translatables
   // Included for use with string extractors like potx.
   t('Add media to your slide.');
+  t('Add one more more tags that describe the slide.');
+  t('Category');
+  t('Choose a main category for the slide');
   t('Choose the color to use as background on the textbox.');
+  t('Choose the layout you wish the slide to use.');
   t('Department');
+  t('Exposure');
+  t('Layout');
   t('Logo');
   t('Media');
   t('Select the color for the text displayed on the slide.');
   t('Subheading');
+  t('Tags');
   t('Text');
   t('Text color');
   t('Textbox color');
