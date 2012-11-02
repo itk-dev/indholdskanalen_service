@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the IK slides feature.
+ */
+
+include_once 'ik_slides.features.inc';
