@@ -8,7 +8,6 @@
 /**
  * Implements hook_field_info().
  *
- * Search field.
  */
 function ik_channel_filter_field_info() {
   return array(
@@ -21,6 +20,21 @@ function ik_channel_filter_field_info() {
   );
 }
 
+/**
+ * Implements hook_field_validate().
+ *
+ */
+function ik_channel_filter_field_validate($entity_type, $entity, $field, $instance, $langcode, $items, &$errors) {
+
+}
+
+/**
+ * Implements hook_field_is_empty().
+ *
+ */
+function ik_channel_filter_field_is_empty($item, $field) {
+
+}
 
 /**
  * Implements hook_field_widget_info().
@@ -37,6 +51,22 @@ function ik_channel_filter_field_widget_info() {
   );
 }
 
+
+function ik_channel_filter_field_widget_settings_form($field, $instance) {
+  $settings = $instance['widget']['settings'];
+  $form = array();
+
+  $form['search_text'] = array(
+    '#type' => 'textfield',
+    '#title' => t('Text to display in the search field'),
+    '#default_value' => $settings['search_text'],
+//    '#element_validate' => array('element_validate_integer_positive'),
+    '#required' => TRUE,
+  );
+
+  return $form;
+}
+
 /**
  * Implements hook_field_widget_form().
  *
@@ -49,30 +79,36 @@ function ik_channel_filter_field_widget_form(&$form, &$form_state, $field, $inst
   );
 
   // Get element values.
-  $settings = $instance['settings'];
+  $settings = $instance['widget']['settings'];
   $is_required = $element['#required'];
   $item = &$items[$delta];
 
-  $element['organization'] = array(
-    '#title' => t('Add organization'),
-    '#type' => 'textfield',
-  );
-}
+  switch ($instance['widget']['type']) {
+    case 'ik_filter_search_autocomplete':
 
-/**
- * Implements hook_field_is_empty().
- *
- */
-function ik_channel_filter_field_is_empty($item, $field) {
+      $element['search']['field'] = array(
+        '#type' => 'textfield',
+        '#attributes' => array(
+          'placeholder' => isset($settings['search_text']) ? $settings['search_text'] : 'Search',
+        )
+      );
 
-}
+      $element['search']['button'] = array(
+        '#markup' => l(t('Add'), '#', array(
+          'attributes' => array(
+            'class' => array(
+              'button',
+              'add-button',
+            ),
+          )
+        )),
+      );
 
-/**
- * Implements hook_field_validate().
- *
- */
-function ik_channel_filter_field_validate($entity_type, $entity, $field, $instance, $langcode, $items, &$errors) {
+      break;
+  }
 
+
+   return $element;
 }
 
 /**
@@ -89,9 +125,9 @@ function ik_channel_filter_field_widget_error($element, $error, $form, &$form_st
  */
 function ik_channel_filter_field_formatter_info() {
   return array(
-    'ik_filter_search_formatter' => array(
+    'ik_channel_filter_search_formatter' => array(
       'label' => t(''),
-      'field types' => array('ik_filter_search'),
+      'field types' => array('ik_channel_filter_search'),
     ),
   );
 }
