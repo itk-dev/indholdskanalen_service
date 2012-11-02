@@ -1,0 +1,106 @@
+<?php
+
+/**
+ * @file
+ *
+ */
+
+/**
+ * Implements hook_field_info().
+ *
+ * Search field.
+ */
+function ik_channel_filter_field_info() {
+  return array(
+    'ik_channel_filter_search' => array(
+      'label' => t('Channel filter'),
+      'description' => t('Filter channel content base on user data'),
+      'default_widget' => 'ik_filter_search_widget',
+      'default_formatter' => 'ik_filter_search_formatter',
+    ),
+  );
+}
+
+
+/**
+ * Implements hook_field_widget_info().
+ *
+ * Tell Drupal about the search autocomplete widget, that should be used to
+ * select the slids.
+ */
+function ik_channel_filter_field_widget_info() {
+  return array(
+    'ik_filter_search_autocomplete' => array(
+      'label' => t('Default (autocomplete)'),
+      'field types' => array('ik_channel_filter_search'),
+    ),
+  );
+}
+
+/**
+ * Implements hook_field_widget_form().
+ *
+ * The form that is used to display the widget defined above in the widget info
+ * hook.
+ */
+function ik_channel_filter_field_widget_form(&$form, &$form_state, $field, $instance, $langcode, $items, $delta, $element) {
+  $element += array(
+    '#type' => 'fieldset',
+  );
+
+  // Get element values.
+  $settings = $instance['settings'];
+  $is_required = $element['#required'];
+  $item = &$items[$delta];
+
+  $element['organization'] = array(
+    '#title' => t('Add organization'),
+    '#type' => 'textfield',
+  );
+}
+
+/**
+ * Implements hook_field_is_empty().
+ *
+ */
+function ik_channel_filter_field_is_empty($item, $field) {
+
+}
+
+/**
+ * Implements hook_field_validate().
+ *
+ */
+function ik_channel_filter_field_validate($entity_type, $entity, $field, $instance, $langcode, $items, &$errors) {
+
+}
+
+/**
+ * Implements hook_field_widget_error().
+ *
+ */
+function ik_channel_filter_field_widget_error($element, $error, $form, &$form_state) {
+
+}
+
+/**
+ * Implements hook_field_formatter_info().
+ *
+ */
+function ik_channel_filter_field_formatter_info() {
+  return array(
+    'ik_filter_search_formatter' => array(
+      'label' => t(''),
+      'field types' => array('ik_filter_search'),
+    ),
+  );
+}
+
+/**
+ * Implements hook_field_formatter_view().
+ *
+ */
+function ik_channel_filter_field_formatter_view($entity_type, $entity, $field, $instance, $langcode, $items, $display) {
+
+}
+

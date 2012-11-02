@@ -5,9 +5,9 @@
  *
  */
 
-function ik_filter_field_schema($field) {
+function ik_channel_filter_field_schema($field) {
   $columns = array(
-
+    
   );
 
   return array(
