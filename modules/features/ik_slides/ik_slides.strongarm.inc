@@ -71,10 +71,10 @@ function ik_slides_strongarm() {
           'weight' => '1',
         ),
         'path' => array(
-          'weight' => '5',
+          'weight' => '7',
         ),
         'redirect' => array(
-          'weight' => '4',
+          'weight' => '6',
         ),
       ),
       'display' => array(),
