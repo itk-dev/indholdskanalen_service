@@ -23,8 +23,8 @@ function ik_slides_field_group_info() {
     'label' => 'Basic information',
     'weight' => '0',
     'children' => array(
-      0 => 'body',
-      1 => 'field_ik_slide_subheading',
+      0 => 'field_ik_slide_subheading',
+      1 => 'field_ik_slide_text',
       2 => 'title',
     ),
     'format_type' => 'fieldset',
@@ -50,9 +50,11 @@ function ik_slides_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Design',
-    'weight' => '4',
+    'weight' => '1',
     'children' => array(
       0 => 'field_ik_slide_color',
+      1 => 'field_ik_slide_text_color',
+      2 => 'field_ik_slide_logo',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
