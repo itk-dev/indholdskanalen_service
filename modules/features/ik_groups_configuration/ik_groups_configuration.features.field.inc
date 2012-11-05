@@ -206,7 +206,7 @@ function ik_groups_configuration_field_default_fields() {
             'type' => 'none',
           ),
           'target_bundles' => array(
-            'department' => 'department',
+            'organisation' => 'organisation',
           ),
         ),
         'handler_submit' => 'Change handler',
@@ -239,7 +239,7 @@ function ik_groups_configuration_field_default_fields() {
       'entity_type' => 'node',
       'field_name' => 'og_group_ref',
       'label' => 'Groups audience',
-      'required' => FALSE,
+      'required' => 0,
       'settings' => array(
         'behaviors' => array(
           'og_widget' => array(
@@ -267,6 +267,7 @@ function ik_groups_configuration_field_default_fields() {
         ),
       ),
       'widget' => array(
+        'active' => 0,
         'module' => 'og',
         'settings' => array(),
         'type' => 'og_complex',
