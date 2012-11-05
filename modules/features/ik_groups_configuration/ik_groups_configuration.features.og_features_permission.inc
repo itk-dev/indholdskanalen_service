@@ -124,11 +124,6 @@ function ik_groups_configuration_og_features_default_permissions() {
     ),
   );
 
-  // Exported og permission: 'node:department:update og_group_ref field'
-  $permissions['node:department:update og_group_ref field'] = array(
-    'roles' => array(),
-  );
-
   // Exported og permission: 'node:department:update og_user_node field'
   $permissions['node:department:update og_user_node field'] = array(
     'roles' => array(
@@ -171,11 +166,6 @@ function ik_groups_configuration_og_features_default_permissions() {
       'member' => 'member',
       'administrator member' => 'administrator member',
     ),
-  );
-
-  // Exported og permission: 'node:department:view og_group_ref field'
-  $permissions['node:department:view og_group_ref field'] = array(
-    'roles' => array(),
   );
 
   // Exported og permission: 'node:department:view og_user_node field'
@@ -295,11 +285,6 @@ function ik_groups_configuration_og_features_default_permissions() {
     ),
   );
 
-  // Exported og permission: 'node:organisation:update og_group_ref field'
-  $permissions['node:organisation:update og_group_ref field'] = array(
-    'roles' => array(),
-  );
-
   // Exported og permission: 'node:organisation:update og_user_node field'
   $permissions['node:organisation:update og_user_node field'] = array(
     'roles' => array(),
@@ -332,11 +317,6 @@ function ik_groups_configuration_og_features_default_permissions() {
       'administrator member' => 'administrator member',
       'member' => 'member',
     ),
-  );
-
-  // Exported og permission: 'node:organisation:view og_group_ref field'
-  $permissions['node:organisation:view og_group_ref field'] = array(
-    'roles' => array(),
   );
 
   // Exported og permission: 'node:organisation:view og_user_node field'

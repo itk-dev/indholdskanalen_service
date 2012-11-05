@@ -78,19 +78,19 @@ function ik_channels_field_default_fields() {
           'summary_rows' => 5,
         ),
         'type' => 'text_textarea_with_summary',
-        'weight' => 31,
+        'weight' => '31',
       ),
     ),
   );
 
-  // Exported field: 'node-channel-og_group_ref'.
-  $fields['node-channel-og_group_ref'] = array(
+  // Exported field: 'node-channel-field_ik_og_department_ref'.
+  $fields['node-channel-field_ik_og_department_ref'] = array(
     'field_config' => array(
       'active' => '1',
       'cardinality' => '1',
       'deleted' => '0',
       'entity_types' => array(),
-      'field_name' => 'og_group_ref',
+      'field_name' => 'field_ik_og_department_ref',
       'foreign keys' => array(
         'node' => array(
           'columns' => array(
@@ -125,10 +125,8 @@ function ik_channels_field_default_fields() {
             'department' => 'department',
           ),
         ),
-        'handler_submit' => 'Change handler',
         'target_type' => 'node',
       ),
-      'target_type' => 'node',
       'translatable' => '0',
       'type' => 'entityreference',
     ),
@@ -136,13 +134,15 @@ function ik_channels_field_default_fields() {
       'bundle' => 'channel',
       'default_value' => NULL,
       'deleted' => '0',
-      'description' => 'Choose the department for which the channel belong',
+      'description' => '',
       'display' => array(
         'default' => array(
           'label' => 'above',
-          'module' => 'og_ui',
-          'settings' => array(),
-          'type' => 'og_list_default',
+          'module' => 'entityreference',
+          'settings' => array(
+            'link' => FALSE,
+          ),
+          'type' => 'entityreference_label',
           'weight' => 1,
         ),
         'teaser' => array(
@@ -153,14 +153,14 @@ function ik_channels_field_default_fields() {
         ),
       ),
       'entity_type' => 'node',
-      'field_name' => 'og_group_ref',
+      'field_name' => 'field_ik_og_department_ref',
       'label' => 'Department',
       'required' => 1,
       'settings' => array(
         'behaviors' => array(
           'og_widget' => array(
             'admin' => array(
-              'widget_type' => 'options_select',
+              'widget_type' => 'entityreference_autocomplete',
             ),
             'default' => array(
               'widget_type' => 'options_select',
@@ -170,24 +170,12 @@ function ik_channels_field_default_fields() {
         ),
         'user_register_form' => FALSE,
       ),
-      'view modes' => array(
-        'full' => array(
-          'custom settings' => FALSE,
-          'label' => 'Full',
-          'type' => 'og_list_default',
-        ),
-        'teaser' => array(
-          'custom settings' => FALSE,
-          'label' => 'Teaser',
-          'type' => 'og_list_default',
-        ),
-      ),
       'widget' => array(
         'active' => 0,
         'module' => 'og',
         'settings' => array(),
         'type' => 'og_complex',
-        'weight' => 32,
+        'weight' => '32',
       ),
     ),
   );
@@ -195,7 +183,6 @@ function ik_channels_field_default_fields() {
   // Translatables
   // Included for use with string extractors like potx.
   t('Body');
-  t('Choose the department for which the channel belong');
   t('Department');
 
   return $fields;
