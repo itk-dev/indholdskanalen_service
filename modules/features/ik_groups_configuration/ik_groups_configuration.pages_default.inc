@@ -63,28 +63,14 @@ function ik_groups_configuration_default_page_manager_handlers() {
     $pane = new stdClass();
     $pane->pid = 'new-1';
     $pane->panel = 'bottom';
-    $pane->type = 'views';
-    $pane->subtype = 'og_nodes';
+    $pane->type = 'views_panes';
+    $pane->subtype = 'ik_groups_content-panel_pane_4';
     $pane->shown = TRUE;
     $pane->access = array();
     $pane->configuration = array(
-      'override_pager_settings' => 0,
-      'use_pager' => 1,
-      'nodes_per_page' => '0',
-      'pager_id' => '0',
-      'offset' => '0',
-      'more_link' => 0,
-      'feed_icons' => 0,
-      'panel_args' => 0,
-      'link_to_view' => 0,
-      'args' => '',
-      'url' => '',
-      'display' => 'default',
       'context' => array(
-        0 => 'argument_entity_id:node_1.nid',
+        0 => 'argument_entity_id:node_1',
       ),
-      'override_title' => 1,
-      'override_title_text' => 'Departments',
     );
     $pane->cache = array();
     $pane->style = array(
@@ -214,7 +200,7 @@ function ik_groups_configuration_default_page_manager_handlers() {
     $pane->pid = 'new-4';
     $pane->panel = 'bottom';
     $pane->type = 'views_panes';
-    $pane->subtype = 'og_nodes-panel_pane_2';
+    $pane->subtype = 'ik_groups_content-panel_pane_3';
     $pane->shown = TRUE;
     $pane->access = array();
     $pane->configuration = array(
@@ -236,7 +222,7 @@ function ik_groups_configuration_default_page_manager_handlers() {
     $pane->pid = 'new-5';
     $pane->panel = 'bottom';
     $pane->type = 'views_panes';
-    $pane->subtype = 'og_nodes-panel_pane_3';
+    $pane->subtype = 'ik_groups_content-panel_pane_2';
     $pane->shown = TRUE;
     $pane->access = array();
     $pane->configuration = array(

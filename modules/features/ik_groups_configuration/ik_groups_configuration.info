@@ -115,3 +115,4 @@ features[variable][] = node_preview_organisation
 features[variable][] = node_submitted_department
 features[variable][] = node_submitted_organisation
 features[variable][] = og_node_access_strict
+features[views_view][] = ik_groups_content
