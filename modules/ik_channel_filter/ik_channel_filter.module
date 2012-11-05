@@ -5,12 +5,16 @@
  *
  */
 
-
+/**
+ * Implements hook_menu().
+ *
+ * Defines auto complete callbacks for the different field types.
+ */
 function ik_channel_filter_menu() {
   $items = array();
   $items['ik/autocomplete/vocabulary'] = array(
-    'title' => 'Autocomplete taxonomy',
-    'page callback' => '_ik_channel_filter_taxonomy_autocomplete',
+    'title' => 'Autocomplete vocabulary',
+    'page callback' => '_ik_channel_filter_vocabulary_autocomplete',
     'access arguments' => array('access content'),
     'type' => MENU_CALLBACK,
   );
@@ -18,7 +22,11 @@ function ik_channel_filter_menu() {
   return $items;
 }
 
-function _ik_channel_filter_taxonomy_autocomplete($field_name, $string = '') {
+/**
+ * Auto complate callback for vocabulary searches. This is a modified version of
+ * the auto complete from the core taxonomy module.
+ */
+function _ik_channel_filter_vocabulary_autocomplete($field_name, $string = '') {
   // Make sure the field exists and is a taxonomy field.
   if (!($field = field_info_field($field_name)) || $field['type'] !== 'ik_channel_filter_search') {
     print t('Channel filter field @field_name not found.', array('@field_name' => $field_name));
@@ -55,7 +63,7 @@ function _ik_channel_filter_taxonomy_autocomplete($field_name, $string = '') {
       if (strpos($name, ',') !== FALSE || strpos($name, '"') !== FALSE) {
         $n = '"' . str_replace('"', '""', $name) . '"';
       }
-      $term_matches[$prefix . $n] = check_plain($name);
+      $term_matches[$n] = check_plain($name);
     }
   }
   drupal_json_output($term_matches);
@@ -109,7 +117,7 @@ function ik_channel_filter_field_widget_info() {
 
 
 function ik_channel_filter_field_settings_form($field, $instance, $has_data) {
-  $settings = isset($field['settings']['settings']['ik_search']) ? $field['settings']['settings']['ik_search'] : array();
+  $settings = isset($field['settings']['ik_search']) ? $field['settings']['ik_search'] : array();
   $form = array();
 
   $form['ik_search'] = array(
