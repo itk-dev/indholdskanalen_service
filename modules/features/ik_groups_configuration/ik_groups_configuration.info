@@ -84,6 +84,7 @@ features[og_features_permission][] = node:organisation:view og_group_ref field
 features[og_features_permission][] = node:organisation:view og_user_node field
 features[og_features_role][] = node:organisation:editor
 features[page_manager_handlers][] = node_view_panel_context
+features[page_manager_handlers][] = node_view_panel_context_2
 features[variable][] = comment_anonymous_department
 features[variable][] = comment_anonymous_organisation
 features[variable][] = comment_default_mode_department
