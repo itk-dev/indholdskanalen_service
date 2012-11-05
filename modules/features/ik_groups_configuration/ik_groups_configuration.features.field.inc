@@ -78,7 +78,104 @@ function ik_groups_configuration_field_default_fields() {
           'summary_rows' => 5,
         ),
         'type' => 'text_textarea_with_summary',
-        'weight' => '31',
+        'weight' => '6',
+      ),
+    ),
+  );
+
+  // Exported field: 'node-department-field_ik_og_organisation_ref'.
+  $fields['node-department-field_ik_og_organisation_ref'] = array(
+    'field_config' => array(
+      'active' => '1',
+      'cardinality' => '1',
+      'deleted' => '0',
+      'entity_types' => array(),
+      'field_name' => 'field_ik_og_organisation_ref',
+      'foreign keys' => array(
+        'node' => array(
+          'columns' => array(
+            'target_id' => 'nid',
+          ),
+          'table' => 'node',
+        ),
+      ),
+      'indexes' => array(
+        'target_id' => array(
+          0 => 'target_id',
+        ),
+      ),
+      'locked' => '0',
+      'module' => 'entityreference',
+      'settings' => array(
+        'handler' => 'og',
+        'handler_settings' => array(
+          'behaviors' => array(
+            'og_behavior' => array(
+              'status' => TRUE,
+            ),
+            'views-select-list' => array(
+              'status' => 0,
+            ),
+          ),
+          'membership_type' => 'og_membership_type_default',
+          'sort' => array(
+            'type' => 'none',
+          ),
+          'target_bundles' => array(
+            'organisation' => 'organisation',
+          ),
+        ),
+        'target_type' => 'node',
+      ),
+      'translatable' => '0',
+      'type' => 'entityreference',
+    ),
+    'field_instance' => array(
+      'bundle' => 'department',
+      'default_value' => NULL,
+      'deleted' => '0',
+      'description' => '',
+      'display' => array(
+        'default' => array(
+          'label' => 'above',
+          'module' => 'entityreference',
+          'settings' => array(
+            'link' => FALSE,
+          ),
+          'type' => 'entityreference_label',
+          'weight' => 3,
+        ),
+        'teaser' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+      ),
+      'entity_type' => 'node',
+      'field_name' => 'field_ik_og_organisation_ref',
+      'label' => 'Organisation',
+      'required' => 1,
+      'settings' => array(
+        'behaviors' => array(
+          'og_widget' => array(
+            'admin' => array(
+              'widget_type' => 'entityreference_autocomplete',
+            ),
+            'default' => array(
+              'widget_type' => 'options_select',
+            ),
+            'status' => TRUE,
+          ),
+        ),
+        'user_register_form' => FALSE,
+      ),
+      'widget' => array(
+        'active' => 0,
+        'module' => 'og',
+        'settings' => array(),
+        'type' => 'og_complex',
+        'weight' => '3',
       ),
     ),
   );
@@ -162,115 +259,6 @@ function ik_groups_configuration_field_default_fields() {
           'og_hide' => TRUE,
         ),
         'type' => 'options_onoff',
-        'weight' => '0',
-      ),
-    ),
-  );
-
-  // Exported field: 'node-department-og_group_ref'.
-  $fields['node-department-og_group_ref'] = array(
-    'field_config' => array(
-      'active' => '1',
-      'cardinality' => '1',
-      'deleted' => '0',
-      'entity_types' => array(),
-      'field_name' => 'og_group_ref',
-      'foreign keys' => array(
-        'node' => array(
-          'columns' => array(
-            'target_id' => 'nid',
-          ),
-          'table' => 'node',
-        ),
-      ),
-      'indexes' => array(
-        'target_id' => array(
-          0 => 'target_id',
-        ),
-      ),
-      'locked' => '0',
-      'module' => 'entityreference',
-      'settings' => array(
-        'handler' => 'og',
-        'handler_settings' => array(
-          'behaviors' => array(
-            'og_behavior' => array(
-              'status' => TRUE,
-            ),
-            'views-select-list' => array(
-              'status' => 0,
-            ),
-          ),
-          'membership_type' => 'og_membership_type_default',
-          'sort' => array(
-            'type' => 'none',
-          ),
-          'target_bundles' => array(
-            'organisation' => 'organisation',
-          ),
-        ),
-        'handler_submit' => 'Change handler',
-        'target_type' => 'node',
-      ),
-      'target_type' => 'node',
-      'translatable' => '0',
-      'type' => 'entityreference',
-    ),
-    'field_instance' => array(
-      'bundle' => 'department',
-      'default_value' => NULL,
-      'deleted' => '0',
-      'description' => '',
-      'display' => array(
-        'default' => array(
-          'label' => 'above',
-          'module' => 'og_ui',
-          'settings' => array(),
-          'type' => 'og_list_default',
-          'weight' => 1,
-        ),
-        'teaser' => array(
-          'label' => 'above',
-          'settings' => array(),
-          'type' => 'hidden',
-          'weight' => '0',
-        ),
-      ),
-      'entity_type' => 'node',
-      'field_name' => 'og_group_ref',
-      'label' => 'Groups audience',
-      'required' => 0,
-      'settings' => array(
-        'behaviors' => array(
-          'og_widget' => array(
-            'admin' => array(
-              'widget_type' => 'entityreference_autocomplete',
-            ),
-            'default' => array(
-              'widget_type' => 'options_select',
-            ),
-            'status' => TRUE,
-          ),
-        ),
-        'user_register_form' => FALSE,
-      ),
-      'view modes' => array(
-        'full' => array(
-          'custom settings' => FALSE,
-          'label' => 'Full',
-          'type' => 'og_list_default',
-        ),
-        'teaser' => array(
-          'custom settings' => FALSE,
-          'label' => 'Teaser',
-          'type' => 'og_list_default',
-        ),
-      ),
-      'widget' => array(
-        'active' => 0,
-        'module' => 'og',
-        'settings' => array(),
-        'type' => 'og_complex',
         'weight' => '1',
       ),
     ),
@@ -517,9 +505,9 @@ function ik_groups_configuration_field_default_fields() {
   t('Description');
   t('Determine if this is an OG group.');
   t('Group');
-  t('Groups audience');
   t('Here you can add the organisations logo, it will be displayed on the organisation page.');
   t('Logo');
+  t('Organisation');
   t('Please provide a short description about the department.');
 
   return $fields;
