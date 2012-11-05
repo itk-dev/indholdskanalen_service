@@ -5,6 +5,62 @@
  *
  */
 
+
+function ik_channel_filter_menu() {
+  $items = array();
+  $items['ik/autocomplete/vocabulary'] = array(
+    'title' => 'Autocomplete taxonomy',
+    'page callback' => '_ik_channel_filter_taxonomy_autocomplete',
+    'access arguments' => array('access content'),
+    'type' => MENU_CALLBACK,
+  );
+
+  return $items;
+}
+
+function _ik_channel_filter_taxonomy_autocomplete($field_name, $string = '') {
+  // Make sure the field exists and is a taxonomy field.
+  if (!($field = field_info_field($field_name)) || $field['type'] !== 'ik_channel_filter_search') {
+    print t('Channel filter field @field_name not found.', array('@field_name' => $field_name));
+    exit;
+  }
+
+  $term_matches = array();
+  if ($string != '') {
+
+    // Part of the criteria for the query come from the field's own settings.
+    $vids = array();
+    $vocabularies = taxonomy_vocabulary_get_names();
+    foreach ($field['settings']['ik_search']['vocabulary'] as $vocabulary) {
+      $vids[] = $vocabularies[$vocabulary]->vid;
+    }
+
+    $query = db_select('taxonomy_term_data', 't');
+    $query->addTag('translatable');
+    $query->addTag('term_access');
+
+    // Select rows that match by term name.
+    $tags_return = $query
+      ->fields('t', array('tid', 'name'))
+      ->condition('t.vid', $vids)
+      ->condition('t.name', '%' . db_like($string) . '%', 'LIKE')
+      ->range(0, 10)
+      ->execute()
+      ->fetchAllKeyed();
+
+    $term_matches = array();
+    foreach ($tags_return as $tid => $name) {
+      $n = $name;
+      // Term names containing commas or quotes must be wrapped in quotes.
+      if (strpos($name, ',') !== FALSE || strpos($name, '"') !== FALSE) {
+        $n = '"' . str_replace('"', '""', $name) . '"';
+      }
+      $term_matches[$prefix . $n] = check_plain($name);
+    }
+  }
+  drupal_json_output($term_matches);
+}
+
 /**
  * Implements hook_field_info().
  *
@@ -52,17 +108,69 @@ function ik_channel_filter_field_widget_info() {
 }
 
 
-function ik_channel_filter_field_widget_settings_form($field, $instance) {
-  $settings = $instance['widget']['settings'];
+function ik_channel_filter_field_settings_form($field, $instance, $has_data) {
+  $settings = isset($field['settings']['settings']['ik_search']) ? $field['settings']['settings']['ik_search'] : array();
   $form = array();
 
-  $form['search_text'] = array(
-    '#type' => 'textfield',
-    '#title' => t('Text to display in the search field'),
-    '#default_value' => $settings['search_text'],
-//    '#element_validate' => array('element_validate_integer_positive'),
+  $form['ik_search'] = array(
+    '#type' => 'fieldset',
+    '#title' => t('Field search settings'),
+  );
+
+  $options = array(
+    'vocabulary' => 'Vocabularies',
+    'og' => 'Organic groups',
+    'types' => 'Content types',
+  );
+
+  $form['ik_search']['type'] = array(
+    '#type' => 'radios',
+    '#title' => t('Search type'),
+    '#options' => $options,
+    '#default_value' => isset($settings['type']) ? $settings['type'] : '',
     '#required' => TRUE,
   );
+
+
+  // Find options to display for each type defined above, when they are selected.
+  $values = array(
+    'vocabulary' => array(),
+    'og' => array(),
+    'types' => array(),
+  );
+
+  $vocabularies = taxonomy_get_vocabularies();
+  foreach ($vocabularies as $vid => $vocabulary) {
+    $values['vocabulary'][$vocabulary->machine_name] = $vocabulary->name;
+  }
+
+  $types = node_type_get_types();
+  foreach ($types as $key => $type) {
+    $values['types'][$key] = $type->name;
+  }
+
+  $ogs = og_get_all_group_bundle();
+  foreach ($ogs['node'] as $key => $name) {
+    $values['og'][$key] = $name;
+  }
+
+  // Display settings for each of the above types and display them base on the
+  // one selected.
+  foreach ($options as $type => $name) {
+    $form['ik_search'][$type] = array(
+      '#type' => 'checkboxes',
+      '#title' => t($name),
+      '#options' => $values[$type],
+      '#default_value' => isset($settings[$type]) ? $settings[$type] : array(),
+      '#states' => array(
+        'visible' => array(
+          ':input[name="field[settings][ik_search][type]"]' => array(
+            array('value' => $type),
+          ),
+        ),
+      ),
+    );
+  }
 
   return $form;
 }
@@ -79,7 +187,7 @@ function ik_channel_filter_field_widget_form(&$form, &$form_state, $field, $inst
   );
 
   // Get element values.
-  $settings = $instance['widget']['settings'];
+  $settings = isset($field['settings']['ik_search']) ? $field['settings']['ik_search'] : array();
   $is_required = $element['#required'];
   $item = &$items[$delta];
 
@@ -89,8 +197,10 @@ function ik_channel_filter_field_widget_form(&$form, &$form_state, $field, $inst
       $element['search']['field'] = array(
         '#type' => 'textfield',
         '#attributes' => array(
-          'placeholder' => isset($settings['search_text']) ? $settings['search_text'] : 'Search',
-        )
+          'placeholder' => isset($instance['default_value'][$delta]['search']['field']) ? $instance['default_value'][$delta]['search']['field'] : 'Search',
+        ),
+        '#autocomplete_path' => 'ik/autocomplete/' . (isset($settings['type']) ? $settings['type'] : '') . '/' . $field['field_name'],
+        '#required' => $is_required,
       );
 
       $element['search']['button'] = array(
@@ -107,8 +217,7 @@ function ik_channel_filter_field_widget_form(&$form, &$form_state, $field, $inst
       break;
   }
 
-
-   return $element;
+  return $element;
 }
 
 /**
