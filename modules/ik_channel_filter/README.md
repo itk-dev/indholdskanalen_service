@@ -8,4 +8,4 @@ architecture. It also utilises auto completion and multi valued fields.
 # Menu callbacks
 It uses the following paths for auto completion callbacks.
 
-  /ajax/ik/autocomplete/<type>
+  /ik/autocomplete/<type>/<field_name>

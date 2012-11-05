@@ -197,15 +197,50 @@ function ik_channel_filter_field_widget_form(&$form, &$form_state, $field, $inst
   // Get element values.
   $settings = isset($field['settings']['ik_search']) ? $field['settings']['ik_search'] : array();
   $is_required = $element['#required'];
-  $item = &$items[$delta];
 
   switch ($instance['widget']['type']) {
     case 'ik_filter_search_autocomplete':
+
+      $element['data'] = array(
+        '#type' => 'hidden',
+        '#default_value' => $items[$delta]['data'],
+        '#attributes' => array(
+          'class' => array(
+            'ik-channel-filter-values',
+          ),
+        ),
+      );
+
+      /**
+       * @todo: create them funtion for this
+       *
+       * theme('ik_channel_filter_results', $items[$delta]['results']);
+       *
+       */
+      $output = '';
+      $data = explode(',', $items[$delta]['data']);
+      foreach ($data as $d) {
+        $output .= '<li><span class="value">' . $d . '</span><a class="button ik-channel-filter-remove">' . t('Remove') . '</a></li>';
+      }
+
+      $element['search']['results'] = array(
+        '#prefix' => '<ul class="ik-channel-filter-results">',
+        '#markup' => $output,
+        '#suffix' => '</ul>',
+      );
 
       $element['search']['field'] = array(
         '#type' => 'textfield',
         '#attributes' => array(
           'placeholder' => isset($instance['default_value'][$delta]['search']['field']) ? $instance['default_value'][$delta]['search']['field'] : 'Search',
+        ),
+        '#attached' => array(
+          'js' => array(
+            drupal_get_path('module', 'ik_channel_filter') . '/js/ik_channel_filter.js',
+          ),
+          'css' => array(
+            drupal_get_path('module', 'ik_channel_filter') . '/css/ik_channel_filter.css',
+          ),
         ),
         '#autocomplete_path' => 'ik/autocomplete/' . (isset($settings['type']) ? $settings['type'] : '') . '/' . $field['field_name'],
         '#required' => $is_required,
@@ -216,9 +251,9 @@ function ik_channel_filter_field_widget_form(&$form, &$form_state, $field, $inst
           'attributes' => array(
             'class' => array(
               'button',
-              'add-button',
+              'ik-channel-filter-add-button',
             ),
-          )
+          ),
         )),
       );
 
