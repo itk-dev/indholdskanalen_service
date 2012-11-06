@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the IK roles and permissions feature.
+ */
+
+include_once 'ik_roles_and_permissions.features.inc';

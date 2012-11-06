@@ -86,11 +86,11 @@ function ik_groups_configuration_default_page_manager_handlers() {
     $pane->pid = 'new-2';
     $pane->panel = 'left';
     $pane->type = 'entity_field';
-    $pane->subtype = 'node:field_ik_department_description';
+    $pane->subtype = 'node:field_ik_org_descp';
     $pane->shown = TRUE;
     $pane->access = array();
     $pane->configuration = array(
-      'label' => 'hidden',
+      'label' => 'title',
       'formatter' => 'text_default',
       'delta_limit' => 0,
       'delta_offset' => '0',
@@ -114,18 +114,17 @@ function ik_groups_configuration_default_page_manager_handlers() {
     $pane->pid = 'new-3';
     $pane->panel = 'right';
     $pane->type = 'entity_field';
-    $pane->subtype = 'node:field_ik_department_logo';
+    $pane->subtype = 'node:field_ik_org_logo';
     $pane->shown = TRUE;
     $pane->access = array();
     $pane->configuration = array(
-      'label' => 'hidden',
-      'formatter' => 'image',
+      'label' => 'title',
+      'formatter' => 'file_rendered',
       'delta_limit' => 0,
       'delta_offset' => '0',
       'delta_reversed' => FALSE,
       'formatter_settings' => array(
-        'image_style' => 'medium',
-        'image_link' => '',
+        'file_view_mode' => 'default',
       ),
       'context' => 'argument_entity_id:node_1',
       'override_title' => 0,
@@ -142,7 +141,7 @@ function ik_groups_configuration_default_page_manager_handlers() {
     $display->content['new-3'] = $pane;
     $display->panels['right'][0] = 'new-3';
   $display->hide_title = PANELS_TITLE_FIXED;
-  $display->title_pane = 'new-3';
+  $display->title_pane = '0';
   $handler->conf['display'] = $display;
   $export['node_view_panel_context'] = $handler;
 
