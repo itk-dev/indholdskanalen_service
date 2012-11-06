@@ -264,14 +264,14 @@ function ik_groups_configuration_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-organisation-field_ik_department_description'.
-  $fields['node-organisation-field_ik_department_description'] = array(
+  // Exported field: 'node-organisation-field_ik_org_descp'.
+  $fields['node-organisation-field_ik_org_descp'] = array(
     'field_config' => array(
       'active' => '1',
       'cardinality' => '1',
       'deleted' => '0',
       'entity_types' => array(),
-      'field_name' => 'field_ik_department_description',
+      'field_name' => 'field_ik_org_descp',
       'foreign keys' => array(
         'format' => array(
           'columns' => array(
@@ -302,7 +302,7 @@ function ik_groups_configuration_field_default_fields() {
           'module' => 'text',
           'settings' => array(),
           'type' => 'text_default',
-          'weight' => 1,
+          'weight' => 3,
         ),
         'teaser' => array(
           'label' => 'above',
@@ -312,22 +312,22 @@ function ik_groups_configuration_field_default_fields() {
         ),
       ),
       'entity_type' => 'node',
-      'field_name' => 'field_ik_department_description',
+      'field_name' => 'field_ik_org_descp',
       'label' => 'Description',
-      'required' => 1,
+      'required' => 0,
       'settings' => array(
         'linkit' => array(
           'enable' => 0,
           'insert_plugin' => '',
         ),
-        'text_processing' => '1',
+        'text_processing' => '0',
         'user_register_form' => FALSE,
       ),
       'widget' => array(
         'active' => 1,
         'module' => 'text',
         'settings' => array(
-          'rows' => '8',
+          'rows' => '5',
         ),
         'type' => 'text_textarea',
         'weight' => '1',
@@ -335,14 +335,14 @@ function ik_groups_configuration_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-organisation-field_ik_department_logo'.
-  $fields['node-organisation-field_ik_department_logo'] = array(
+  // Exported field: 'node-organisation-field_ik_org_logo'.
+  $fields['node-organisation-field_ik_org_logo'] = array(
     'field_config' => array(
       'active' => '1',
       'cardinality' => '1',
       'deleted' => '0',
       'entity_types' => array(),
-      'field_name' => 'field_ik_department_logo',
+      'field_name' => 'field_ik_org_logo',
       'foreign keys' => array(
         'fid' => array(
           'columns' => array(
@@ -378,7 +378,7 @@ function ik_groups_configuration_field_default_fields() {
             'image_style' => '',
           ),
           'type' => 'image',
-          'weight' => 2,
+          'weight' => 4,
         ),
         'teaser' => array(
           'label' => 'above',
@@ -388,7 +388,7 @@ function ik_groups_configuration_field_default_fields() {
         ),
       ),
       'entity_type' => 'node',
-      'field_name' => 'field_ik_department_logo',
+      'field_name' => 'field_ik_org_logo',
       'label' => 'Logo',
       'required' => 0,
       'settings' => array(
@@ -494,7 +494,7 @@ function ik_groups_configuration_field_default_fields() {
           'og_hide' => TRUE,
         ),
         'type' => 'options_onoff',
-        'weight' => '3',
+        'weight' => '4',
       ),
     ),
   );
