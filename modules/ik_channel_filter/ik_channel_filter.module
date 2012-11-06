@@ -24,6 +24,15 @@ function ik_channel_filter_menu() {
   return $items;
 }
 
+/**
+ * Autocomplete callback for the field. It searches the database for the value
+ * parsed in the string variable based on the field settings.
+ *
+ * @param type $field_name
+ *  Name of the field that makes the request for auto completion.
+ * @param type $string
+ *  The value/string to search for.
+ */
 function _ik_channel_filter_autocomplete($field_name, $string = '') {
   // Make sure the field exists and is a channel filter field.
   if (!($field = field_info_field($field_name)) || $field['type'] !== 'ik_channel_filter_search') {
@@ -146,7 +155,10 @@ function ik_channel_filter_field_widget_info() {
   );
 }
 
-
+/**
+ * Implements hook_field_settings_form().
+ *
+ */
 function ik_channel_filter_field_settings_form($field, $instance, $has_data) {
   $settings = isset($field['settings']['ik_search']) ? $field['settings']['ik_search'] : array();
   $form = array();
