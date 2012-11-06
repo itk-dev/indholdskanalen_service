@@ -34,5 +34,13 @@ function ik_roles_and_permissions_og_features_default_roles() {
     'name' => 'contributor',
   );
 
+  // Exported OG Role: 'node:organisation:editor'.
+  $roles['node:organisation:editor'] = array(
+    'gid' => 0,
+    'group_type' => 'node',
+    'group_bundle' => 'organisation',
+    'name' => 'editor',
+  );
+
   return $roles;
 }
