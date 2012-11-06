@@ -12,6 +12,7 @@
  */
 function ik_channel_filter_menu() {
   $items = array();
+
   $items['ik/autocomplete/vocabulary'] = array(
     'title' => 'Autocomplete vocabulary',
     'page callback' => '_ik_channel_filter_vocabulary_autocomplete',
@@ -19,7 +20,100 @@ function ik_channel_filter_menu() {
     'type' => MENU_CALLBACK,
   );
 
+  $items['ik/autocomplete/og'] = array(
+    'title' => 'Autocomplete Organic Groups',
+    'page callback' => '_ik_channel_filter_og_autocomplete',
+    'access arguments' => array('access content'),
+    'type' => MENU_CALLBACK,
+  );
+
+  $items['ik/autocomplete/types'] = array(
+    'title' => 'Autocomplete Organic Groups',
+    'page callback' => '_ik_channel_filter_types_autocomplete',
+    'access arguments' => array('access content'),
+    'type' => MENU_CALLBACK,
+  );
+
+
   return $items;
+}
+
+function _ik_channel_filter_types_autocomplete($field_name, $string = '') {
+  // Make sure the field exists and is a channel filter field.
+  if (!($field = field_info_field($field_name)) || $field['type'] !== 'ik_channel_filter_search') {
+    print t('Channel filter field @field_name not found.', array('@field_name' => $field_name));
+    exit;
+  }
+
+  $matches = array();
+  if ($string != '') {
+    // Find the node types to look up.
+    $types = array_filter($field['settings']['ik_search']['types']);
+
+    $query = db_select('node', 'n');
+    $query->addTag('translatable');
+    $query->addTag('content_access');
+
+    // Select rows that match by node title.
+    $results = $query
+      ->fields('n', array('nid', 'title'))
+      ->condition('n.type', $types)
+      ->condition('n.title', '%' . db_like($string) . '%', 'LIKE')
+      ->range(0, 10)
+      ->execute()
+      ->fetchAllKeyed();
+
+    $matches = array();
+    foreach ($results as $nid => $title) {
+      $n = $title;
+      // Term names containing commas or quotes must be wrapped in quotes.
+      if (strpos($title, ',') !== FALSE || strpos($title, '"') !== FALSE) {
+        $n = '"' . str_replace('"', '""', $title) . '"';
+      }
+      $matches[$n] = check_plain($title);
+    }
+  }
+
+  drupal_json_output($matches);
+}
+
+function _ik_channel_filter_og_autocomplete($field_name, $string = '') {
+  // Make sure the field exists and is a channel filter field.
+  if (!($field = field_info_field($field_name)) || $field['type'] !== 'ik_channel_filter_search') {
+    print t('Channel filter field @field_name not found.', array('@field_name' => $field_name));
+    exit;
+  }
+
+  $matches = array();
+  if ($string != '') {
+    // Find the node types to look up.
+    $types = array_filter($field['settings']['ik_search']['og']);
+
+    $query = db_select('node', 'n');
+    $query->addTag('translatable');
+    $query->addTag('content_access');
+
+    // Select rows that match by node title.
+    $results = $query
+      ->fields('n', array('nid', 'title'))
+      ->condition('n.type', $types)
+      ->condition('n.title', '%' . db_like($string) . '%', 'LIKE')
+      ->range(0, 10)
+      ->execute()
+      ->fetchAllKeyed();
+
+    $matches = array();
+    foreach ($results as $nid => $title) {
+      $n = $title;
+      // Term names containing commas or quotes must be wrapped in quotes.
+      if (strpos($title, ',') !== FALSE || strpos($title, '"') !== FALSE) {
+        $n = '"' . str_replace('"', '""', $title) . '"';
+      }
+      $matches[$n] = check_plain($title);
+    }
+  }
+
+  drupal_json_output($matches);
 }
 
 /**
@@ -27,7 +121,7 @@ function ik_channel_filter_menu() {
  * the auto complete from the core taxonomy module.
  */
 function _ik_channel_filter_vocabulary_autocomplete($field_name, $string = '') {
-  // Make sure the field exists and is a taxonomy field.
+  // Make sure the field exists and is a channel filter field.
   if (!($field = field_info_field($field_name)) || $field['type'] !== 'ik_channel_filter_search') {
     print t('Channel filter field @field_name not found.', array('@field_name' => $field_name));
     exit;
@@ -148,7 +242,7 @@ function ik_channel_filter_field_settings_form($field, $instance, $has_data) {
   );
 
   $vocabularies = taxonomy_get_vocabularies();
-  foreach ($vocabularies as $vid => $vocabulary) {
+  foreach ($vocabularies as $vocabulary) {
     $values['vocabulary'][$vocabulary->machine_name] = $vocabulary->name;
   }
 
@@ -201,9 +295,11 @@ function ik_channel_filter_field_widget_form(&$form, &$form_state, $field, $inst
   switch ($instance['widget']['type']) {
     case 'ik_filter_search_autocomplete':
 
+
+      $field_content = isset($items[$delta]['data']) ? $items[$delta]['data'] : '';
       $element['data'] = array(
         '#type' => 'hidden',
-        '#default_value' => $items[$delta]['data'],
+        '#default_value' => $field_content,
         '#attributes' => array(
           'class' => array(
             'ik-channel-filter-values',
@@ -218,9 +314,11 @@ function ik_channel_filter_field_widget_form(&$form, &$form_state, $field, $inst
        *
        */
       $output = '';
-      $data = explode(',', $items[$delta]['data']);
-      foreach ($data as $d) {
-        $output .= '<li><span class="value">' . $d . '</span><a class="button ik-channel-filter-remove">' . t('Remove') . '</a></li>';
+      if (!empty($field_content)) {
+        $field_items = explode(',', $field_content);
+        foreach ($field_items as $item) {
+          $output .= '<li><span class="value">' . $item . '</span><a class="button ik-channel-filter-remove">' . t('Remove') . '</a></li>';
+        }
       }
 
       $element['search']['results'] = array(
@@ -276,12 +374,12 @@ function ik_channel_filter_field_widget_error($element, $error, $form, &$form_st
  *
  */
 function ik_channel_filter_field_formatter_info() {
-  return array(
-    'ik_channel_filter_search_formatter' => array(
-      'label' => t(''),
-      'field types' => array('ik_channel_filter_search'),
-    ),
-  );
+//  return array(
+//    'ik_channel_filter_search_formatter' => array(
+//      'label' => t(''),
+//      'field types' => array('ik_channel_filter_search'),
+//    ),
+//  );
 }
 
 /**
