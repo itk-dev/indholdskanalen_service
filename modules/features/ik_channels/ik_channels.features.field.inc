@@ -10,16 +10,230 @@
 function ik_channels_field_default_fields() {
   $fields = array();
 
-  // Exported field: 'node-channel-body'.
-  $fields['node-channel-body'] = array(
+  // Exported field: 'node-channel-field_channel_categories_tags'.
+  $fields['node-channel-field_channel_categories_tags'] = array(
     'field_config' => array(
       'active' => '1',
       'cardinality' => '1',
       'deleted' => '0',
-      'entity_types' => array(
-        0 => 'node',
+      'entity_types' => array(),
+      'field_name' => 'field_channel_categories_tags',
+      'foreign keys' => array(),
+      'indexes' => array(),
+      'locked' => '0',
+      'module' => 'ik_channel_filter',
+      'settings' => array(
+        'ik_search' => array(
+          'og' => array(
+            'department' => 0,
+            'organisation' => 0,
+          ),
+          'type' => 'vocabulary',
+          'types' => array(
+            'channel' => 0,
+            'department' => 0,
+            'organisation' => 0,
+            'slide' => 0,
+            'static_page' => 0,
+          ),
+          'vocabulary' => array(
+            'subject' => 'subject',
+            'tags' => 'tags',
+          ),
+        ),
       ),
-      'field_name' => 'body',
+      'translatable' => '0',
+      'type' => 'ik_channel_filter_search',
+    ),
+    'field_instance' => array(
+      'bundle' => 'channel',
+      'default_value' => NULL,
+      'deleted' => '0',
+      'description' => '',
+      'display' => array(
+        'default' => array(
+          'label' => 'above',
+          'module' => NULL,
+          'settings' => array(),
+          'type' => 'ik_filter_search_formatter',
+          'weight' => 5,
+        ),
+        'teaser' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+      ),
+      'entity_type' => 'node',
+      'field_name' => 'field_channel_categories_tags',
+      'label' => 'Filter on categories and tags',
+      'required' => 0,
+      'settings' => array(
+        'user_register_form' => FALSE,
+      ),
+      'widget' => array(
+        'active' => 0,
+        'module' => 'ik_channel_filter',
+        'settings' => array(),
+        'type' => 'ik_filter_search_autocomplete',
+        'weight' => '7',
+      ),
+    ),
+  );
+
+  // Exported field: 'node-channel-field_channel_channels'.
+  $fields['node-channel-field_channel_channels'] = array(
+    'field_config' => array(
+      'active' => '1',
+      'cardinality' => '1',
+      'deleted' => '0',
+      'entity_types' => array(),
+      'field_name' => 'field_channel_channels',
+      'foreign keys' => array(),
+      'indexes' => array(),
+      'locked' => '0',
+      'module' => 'ik_channel_filter',
+      'settings' => array(
+        'ik_search' => array(
+          'og' => array(
+            'department' => 0,
+            'organisation' => 0,
+          ),
+          'type' => 'types',
+          'types' => array(
+            'channel' => 'channel',
+            'department' => 0,
+            'organisation' => 0,
+            'slide' => 0,
+            'static_page' => 0,
+          ),
+          'vocabulary' => array(
+            'subject' => 0,
+            'tags' => 0,
+          ),
+        ),
+      ),
+      'translatable' => '0',
+      'type' => 'ik_channel_filter_search',
+    ),
+    'field_instance' => array(
+      'bundle' => 'channel',
+      'default_value' => NULL,
+      'deleted' => '0',
+      'description' => '',
+      'display' => array(
+        'default' => array(
+          'label' => 'above',
+          'module' => NULL,
+          'settings' => array(),
+          'type' => 'ik_filter_search_formatter',
+          'weight' => 6,
+        ),
+        'teaser' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+      ),
+      'entity_type' => 'node',
+      'field_name' => 'field_channel_channels',
+      'label' => 'Other channels',
+      'required' => 0,
+      'settings' => array(
+        'user_register_form' => FALSE,
+      ),
+      'widget' => array(
+        'active' => 0,
+        'module' => 'ik_channel_filter',
+        'settings' => array(),
+        'type' => 'ik_filter_search_autocomplete',
+        'weight' => '8',
+      ),
+    ),
+  );
+
+  // Exported field: 'node-channel-field_channel_department'.
+  $fields['node-channel-field_channel_department'] = array(
+    'field_config' => array(
+      'active' => '1',
+      'cardinality' => '1',
+      'deleted' => '0',
+      'entity_types' => array(),
+      'field_name' => 'field_channel_department',
+      'foreign keys' => array(),
+      'indexes' => array(),
+      'locked' => '0',
+      'module' => 'ik_channel_filter',
+      'settings' => array(
+        'ik_search' => array(
+          'og' => array(
+            'department' => 'department',
+            'organisation' => 0,
+          ),
+          'type' => 'og',
+          'types' => array(
+            'channel' => 0,
+            'department' => 0,
+            'organisation' => 0,
+            'slide' => 0,
+            'static_page' => 0,
+          ),
+          'vocabulary' => array(
+            'subject' => 0,
+            'tags' => 0,
+          ),
+        ),
+      ),
+      'translatable' => '0',
+      'type' => 'ik_channel_filter_search',
+    ),
+    'field_instance' => array(
+      'bundle' => 'channel',
+      'default_value' => NULL,
+      'deleted' => '0',
+      'description' => '',
+      'display' => array(
+        'default' => array(
+          'label' => 'above',
+          'module' => NULL,
+          'settings' => array(),
+          'type' => 'ik_filter_search_formatter',
+          'weight' => 4,
+        ),
+        'teaser' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+      ),
+      'entity_type' => 'node',
+      'field_name' => 'field_channel_department',
+      'label' => 'Filter on department',
+      'required' => 0,
+      'settings' => array(
+        'user_register_form' => FALSE,
+      ),
+      'widget' => array(
+        'active' => 0,
+        'module' => 'ik_channel_filter',
+        'settings' => array(),
+        'type' => 'ik_filter_search_autocomplete',
+        'weight' => '6',
+      ),
+    ),
+  );
+
+  // Exported field: 'node-channel-field_channel_description'.
+  $fields['node-channel-field_channel_description'] = array(
+    'field_config' => array(
+      'active' => '1',
+      'cardinality' => '1',
+      'deleted' => '0',
+      'entity_types' => array(),
+      'field_name' => 'field_channel_description',
       'foreign keys' => array(
         'format' => array(
           'columns' => array(
@@ -37,7 +251,7 @@ function ik_channels_field_default_fields() {
       'module' => 'text',
       'settings' => array(),
       'translatable' => '0',
-      'type' => 'text_with_summary',
+      'type' => 'text_long',
     ),
     'field_instance' => array(
       'bundle' => 'channel',
@@ -46,39 +260,183 @@ function ik_channels_field_default_fields() {
       'description' => '',
       'display' => array(
         'default' => array(
-          'label' => 'hidden',
+          'label' => 'above',
           'module' => 'text',
           'settings' => array(),
           'type' => 'text_default',
-          'weight' => 0,
+          'weight' => 2,
         ),
         'teaser' => array(
-          'label' => 'hidden',
-          'module' => 'text',
-          'settings' => array(
-            'trim_length' => 600,
-          ),
-          'type' => 'text_summary_or_trimmed',
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
           'weight' => 0,
         ),
       ),
       'entity_type' => 'node',
-      'field_name' => 'body',
-      'label' => 'Body',
-      'required' => FALSE,
+      'field_name' => 'field_channel_description',
+      'label' => 'Description',
+      'required' => 1,
       'settings' => array(
-        'display_summary' => TRUE,
-        'text_processing' => 1,
+        'linkit' => array(
+          'enable' => 0,
+          'insert_plugin' => '',
+        ),
+        'text_processing' => '1',
         'user_register_form' => FALSE,
       ),
       'widget' => array(
+        'active' => 1,
         'module' => 'text',
         'settings' => array(
-          'rows' => 20,
-          'summary_rows' => 5,
+          'rows' => '5',
         ),
-        'type' => 'text_textarea_with_summary',
-        'weight' => 31,
+        'type' => 'text_textarea',
+        'weight' => '2',
+      ),
+    ),
+  );
+
+  // Exported field: 'node-channel-field_channel_orgnization'.
+  $fields['node-channel-field_channel_orgnization'] = array(
+    'field_config' => array(
+      'active' => '1',
+      'cardinality' => '1',
+      'deleted' => '0',
+      'entity_types' => array(),
+      'field_name' => 'field_channel_orgnization',
+      'foreign keys' => array(),
+      'indexes' => array(),
+      'locked' => '0',
+      'module' => 'ik_channel_filter',
+      'settings' => array(
+        'ik_search' => array(
+          'og' => array(
+            'department' => 0,
+            'organisation' => 'organisation',
+          ),
+          'type' => 'og',
+          'types' => array(
+            'channel' => 0,
+            'department' => 0,
+            'organisation' => 0,
+            'slide' => 0,
+            'static_page' => 0,
+          ),
+          'vocabulary' => array(
+            'subject' => 0,
+            'tags' => 0,
+          ),
+        ),
+      ),
+      'translatable' => '0',
+      'type' => 'ik_channel_filter_search',
+    ),
+    'field_instance' => array(
+      'bundle' => 'channel',
+      'default_value' => NULL,
+      'deleted' => '0',
+      'description' => '',
+      'display' => array(
+        'default' => array(
+          'label' => 'above',
+          'module' => NULL,
+          'settings' => array(),
+          'type' => 'ik_filter_search_formatter',
+          'weight' => 3,
+        ),
+        'teaser' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+      ),
+      'entity_type' => 'node',
+      'field_name' => 'field_channel_orgnization',
+      'label' => 'Filter on orgnization',
+      'required' => 0,
+      'settings' => array(
+        'user_register_form' => FALSE,
+      ),
+      'widget' => array(
+        'active' => 0,
+        'module' => 'ik_channel_filter',
+        'settings' => array(),
+        'type' => 'ik_filter_search_autocomplete',
+        'weight' => '5',
+      ),
+    ),
+  );
+
+  // Exported field: 'node-channel-field_channel_slides'.
+  $fields['node-channel-field_channel_slides'] = array(
+    'field_config' => array(
+      'active' => '1',
+      'cardinality' => '1',
+      'deleted' => '0',
+      'entity_types' => array(),
+      'field_name' => 'field_channel_slides',
+      'foreign keys' => array(),
+      'indexes' => array(),
+      'locked' => '0',
+      'module' => 'ik_channel_filter',
+      'settings' => array(
+        'ik_search' => array(
+          'og' => array(
+            'department' => 0,
+            'organisation' => 0,
+          ),
+          'type' => 'types',
+          'types' => array(
+            'channel' => 0,
+            'department' => 0,
+            'organisation' => 0,
+            'slide' => 'slide',
+            'static_page' => 0,
+          ),
+          'vocabulary' => array(
+            'subject' => 0,
+            'tags' => 0,
+          ),
+        ),
+      ),
+      'translatable' => '0',
+      'type' => 'ik_channel_filter_search',
+    ),
+    'field_instance' => array(
+      'bundle' => 'channel',
+      'default_value' => NULL,
+      'deleted' => '0',
+      'description' => '',
+      'display' => array(
+        'default' => array(
+          'label' => 'above',
+          'module' => NULL,
+          'settings' => array(),
+          'type' => 'ik_filter_search_formatter',
+          'weight' => 7,
+        ),
+        'teaser' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+      ),
+      'entity_type' => 'node',
+      'field_name' => 'field_channel_slides',
+      'label' => 'Slides',
+      'required' => 0,
+      'settings' => array(
+        'user_register_form' => FALSE,
+      ),
+      'widget' => array(
+        'active' => 0,
+        'module' => 'ik_channel_filter',
+        'settings' => array(),
+        'type' => 'ik_filter_search_autocomplete',
+        'weight' => '9',
       ),
     ),
   );
@@ -175,15 +533,20 @@ function ik_channels_field_default_fields() {
         'module' => 'og',
         'settings' => array(),
         'type' => 'og_complex',
-        'weight' => '32',
+        'weight' => '4',
       ),
     ),
   );
 
   // Translatables
   // Included for use with string extractors like potx.
-  t('Body');
   t('Department');
+  t('Description');
+  t('Filter on categories and tags');
+  t('Filter on department');
+  t('Filter on orgnization');
+  t('Other channels');
+  t('Slides');
 
   return $fields;
 }
