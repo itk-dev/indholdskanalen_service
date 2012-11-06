@@ -78,7 +78,7 @@ function ik_channels_field_default_fields() {
           'summary_rows' => 5,
         ),
         'type' => 'text_textarea_with_summary',
-        'weight' => '31',
+        'weight' => 31,
       ),
     ),
   );
