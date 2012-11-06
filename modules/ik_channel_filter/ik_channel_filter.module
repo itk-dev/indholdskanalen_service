@@ -20,7 +20,6 @@ function ik_channel_filter_menu() {
     'type' => MENU_CALLBACK,
   );
 
-
   return $items;
 }
 
@@ -210,7 +209,7 @@ function ik_channel_filter_field_settings_form($field, $instance, $has_data) {
   foreach ($options as $type => $name) {
     $form['ik_search'][$type] = array(
       '#type' => 'checkboxes',
-      '#title' => t($name),
+      '#title' => check_plain($name),
       '#options' => $values[$type],
       '#default_value' => isset($settings[$type]) ? $settings[$type] : array(),
       '#states' => array(
