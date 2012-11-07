@@ -10,16 +10,14 @@
 function ik_groups_configuration_field_default_fields() {
   $fields = array();
 
-  // Exported field: 'node-department-body'.
-  $fields['node-department-body'] = array(
+  // Exported field: 'node-department-field_ik_department_description'.
+  $fields['node-department-field_ik_department_description'] = array(
     'field_config' => array(
       'active' => '1',
       'cardinality' => '1',
       'deleted' => '0',
-      'entity_types' => array(
-        0 => 'node',
-      ),
-      'field_name' => 'body',
+      'entity_types' => array(),
+      'field_name' => 'field_ik_department_description',
       'foreign keys' => array(
         'format' => array(
           'columns' => array(
@@ -37,48 +35,48 @@ function ik_groups_configuration_field_default_fields() {
       'module' => 'text',
       'settings' => array(),
       'translatable' => '0',
-      'type' => 'text_with_summary',
+      'type' => 'text_long',
     ),
     'field_instance' => array(
       'bundle' => 'department',
       'default_value' => NULL,
       'deleted' => '0',
-      'description' => '',
+      'description' => 'Provide a description about the department.',
       'display' => array(
         'default' => array(
-          'label' => 'hidden',
+          'label' => 'above',
           'module' => 'text',
           'settings' => array(),
           'type' => 'text_default',
-          'weight' => 2,
+          'weight' => 4,
         ),
         'teaser' => array(
-          'label' => 'hidden',
-          'module' => 'text',
-          'settings' => array(
-            'trim_length' => '200',
-          ),
-          'type' => 'text_summary_or_trimmed',
-          'weight' => '1',
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
         ),
       ),
       'entity_type' => 'node',
-      'field_name' => 'body',
-      'label' => 'Body',
-      'required' => FALSE,
+      'field_name' => 'field_ik_department_description',
+      'label' => 'Description',
+      'required' => 0,
       'settings' => array(
-        'display_summary' => TRUE,
-        'text_processing' => 1,
+        'linkit' => array(
+          'enable' => 0,
+          'insert_plugin' => '',
+        ),
+        'text_processing' => '0',
         'user_register_form' => FALSE,
       ),
       'widget' => array(
+        'active' => 1,
         'module' => 'text',
         'settings' => array(
-          'rows' => 20,
-          'summary_rows' => 5,
+          'rows' => '8',
         ),
-        'type' => 'text_textarea_with_summary',
-        'weight' => '6',
+        'type' => 'text_textarea',
+        'weight' => '1',
       ),
     ),
   );
@@ -259,7 +257,7 @@ function ik_groups_configuration_field_default_fields() {
           'og_hide' => TRUE,
         ),
         'type' => 'options_onoff',
-        'weight' => '1',
+        'weight' => '2',
       ),
     ),
   );
@@ -298,11 +296,11 @@ function ik_groups_configuration_field_default_fields() {
       'description' => 'Please provide a short description about the department.',
       'display' => array(
         'default' => array(
-          'label' => 'above',
+          'label' => 'hidden',
           'module' => 'text',
           'settings' => array(),
           'type' => 'text_default',
-          'weight' => 3,
+          'weight' => '3',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -371,14 +369,14 @@ function ik_groups_configuration_field_default_fields() {
       'description' => 'Here you can add the organisations logo, it will be displayed on the organisation page.',
       'display' => array(
         'default' => array(
-          'label' => 'above',
+          'label' => 'hidden',
           'module' => 'image',
           'settings' => array(
             'image_link' => '',
-            'image_style' => '',
+            'image_style' => 'medium',
           ),
           'type' => 'image',
-          'weight' => 4,
+          'weight' => '4',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -458,7 +456,7 @@ function ik_groups_configuration_field_default_fields() {
             'field_name' => FALSE,
           ),
           'type' => 'og_group_subscribe',
-          'weight' => 0,
+          'weight' => '0',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -501,7 +499,6 @@ function ik_groups_configuration_field_default_fields() {
 
   // Translatables
   // Included for use with string extractors like potx.
-  t('Body');
   t('Description');
   t('Determine if this is an OG group.');
   t('Group');
@@ -509,6 +506,7 @@ function ik_groups_configuration_field_default_fields() {
   t('Logo');
   t('Organisation');
   t('Please provide a short description about the department.');
+  t('Provide a description about the department.');
 
   return $fields;
 }

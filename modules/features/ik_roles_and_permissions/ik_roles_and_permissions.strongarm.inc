@@ -15,7 +15,7 @@ function ik_roles_and_permissions_strongarm() {
   $strongarm->api_version = 1;
   $strongarm->name = 'og_group_manager_default_rids_node_department';
   $strongarm->value = array(
-    7 => '7',
+    9 => '9',
   );
   $export['og_group_manager_default_rids_node_department'] = $strongarm;
 
@@ -24,7 +24,7 @@ function ik_roles_and_permissions_strongarm() {
   $strongarm->api_version = 1;
   $strongarm->name = 'og_group_manager_default_rids_node_organisation';
   $strongarm->value = array(
-    3 => '3',
+    6 => '6',
   );
   $export['og_group_manager_default_rids_node_organisation'] = $strongarm;
 

@@ -41,6 +41,14 @@ function ik_groups_configuration_views_default_views() {
   $handler->display->display_options['relationships']['og_membership_rel']['id'] = 'og_membership_rel';
   $handler->display->display_options['relationships']['og_membership_rel']['table'] = 'node';
   $handler->display->display_options['relationships']['og_membership_rel']['field'] = 'og_membership_rel';
+  /* Field: Content: Media */
+  $handler->display->display_options['fields']['field_ik_slide_media']['id'] = 'field_ik_slide_media';
+  $handler->display->display_options['fields']['field_ik_slide_media']['table'] = 'field_data_field_ik_slide_media';
+  $handler->display->display_options['fields']['field_ik_slide_media']['field'] = 'field_ik_slide_media';
+  /* Field: Content: Title */
+  $handler->display->display_options['fields']['title']['id'] = 'title';
+  $handler->display->display_options['fields']['title']['table'] = 'node';
+  $handler->display->display_options['fields']['title']['field'] = 'title';
   /* Sort criterion: Content: Post date */
   $handler->display->display_options['sorts']['created']['id'] = 'created';
   $handler->display->display_options['sorts']['created']['table'] = 'node';
@@ -93,6 +101,32 @@ function ik_groups_configuration_views_default_views() {
   $handler->display->display_options['title'] = 'Slides';
   $handler->display->display_options['display_description'] = 'Display a list of slides in specified OG';
   $handler->display->display_options['defaults']['hide_admin_links'] = FALSE;
+  $handler->display->display_options['defaults']['style_plugin'] = FALSE;
+  $handler->display->display_options['style_plugin'] = 'grid';
+  $handler->display->display_options['defaults']['style_options'] = FALSE;
+  $handler->display->display_options['defaults']['row_plugin'] = FALSE;
+  $handler->display->display_options['row_plugin'] = 'fields';
+  $handler->display->display_options['defaults']['row_options'] = FALSE;
+  $handler->display->display_options['defaults']['fields'] = FALSE;
+  /* Field: Content: Media */
+  $handler->display->display_options['fields']['field_ik_slide_media']['id'] = 'field_ik_slide_media';
+  $handler->display->display_options['fields']['field_ik_slide_media']['table'] = 'field_data_field_ik_slide_media';
+  $handler->display->display_options['fields']['field_ik_slide_media']['field'] = 'field_ik_slide_media';
+  $handler->display->display_options['fields']['field_ik_slide_media']['label'] = '';
+  $handler->display->display_options['fields']['field_ik_slide_media']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_ik_slide_media']['click_sort_column'] = 'fid';
+  $handler->display->display_options['fields']['field_ik_slide_media']['type'] = 'media';
+  $handler->display->display_options['fields']['field_ik_slide_media']['settings'] = array(
+    'file_view_mode' => 'media_small',
+  );
+  $handler->display->display_options['fields']['field_ik_slide_media']['delta_limit'] = '1';
+  $handler->display->display_options['fields']['field_ik_slide_media']['delta_offset'] = '0';
+  /* Field: Content: Title */
+  $handler->display->display_options['fields']['title']['id'] = 'title';
+  $handler->display->display_options['fields']['title']['table'] = 'node';
+  $handler->display->display_options['fields']['title']['field'] = 'title';
+  $handler->display->display_options['fields']['title']['label'] = '';
+  $handler->display->display_options['fields']['title']['element_label_colon'] = FALSE;
   $handler->display->display_options['defaults']['filter_groups'] = FALSE;
   $handler->display->display_options['defaults']['filters'] = FALSE;
   /* Filter criterion: Content: Published */
@@ -171,6 +205,45 @@ function ik_groups_configuration_views_default_views() {
   $handler->display->display_options['title'] = 'Departments';
   $handler->display->display_options['display_description'] = 'List showing all departments in selected OG';
   $handler->display->display_options['defaults']['hide_admin_links'] = FALSE;
+  $handler->display->display_options['defaults']['pager'] = FALSE;
+  $handler->display->display_options['pager']['type'] = 'full';
+  $handler->display->display_options['pager']['options']['items_per_page'] = '12';
+  $handler->display->display_options['pager']['options']['offset'] = '0';
+  $handler->display->display_options['pager']['options']['id'] = '0';
+  $handler->display->display_options['pager']['options']['quantity'] = '9';
+  $handler->display->display_options['defaults']['style_plugin'] = FALSE;
+  $handler->display->display_options['style_plugin'] = 'grid';
+  $handler->display->display_options['defaults']['style_options'] = FALSE;
+  $handler->display->display_options['defaults']['row_plugin'] = FALSE;
+  $handler->display->display_options['row_plugin'] = 'fields';
+  $handler->display->display_options['defaults']['row_options'] = FALSE;
+  $handler->display->display_options['defaults']['fields'] = FALSE;
+  /* Field: Content: Title */
+  $handler->display->display_options['fields']['title']['id'] = 'title';
+  $handler->display->display_options['fields']['title']['table'] = 'node';
+  $handler->display->display_options['fields']['title']['field'] = 'title';
+  $handler->display->display_options['fields']['title']['label'] = '';
+  $handler->display->display_options['fields']['title']['element_label_colon'] = FALSE;
+  /* Field: Content: Description */
+  $handler->display->display_options['fields']['field_ik_department_description']['id'] = 'field_ik_department_description';
+  $handler->display->display_options['fields']['field_ik_department_description']['table'] = 'field_data_field_ik_department_description';
+  $handler->display->display_options['fields']['field_ik_department_description']['field'] = 'field_ik_department_description';
+  $handler->display->display_options['fields']['field_ik_department_description']['label'] = '';
+  $handler->display->display_options['fields']['field_ik_department_description']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_ik_department_description']['type'] = 'text_trimmed';
+  $handler->display->display_options['fields']['field_ik_department_description']['settings'] = array(
+    'trim_length' => '250',
+  );
+  $handler->display->display_options['defaults']['sorts'] = FALSE;
+  /* Sort criterion: Content: Title */
+  $handler->display->display_options['sorts']['title']['id'] = 'title';
+  $handler->display->display_options['sorts']['title']['table'] = 'node';
+  $handler->display->display_options['sorts']['title']['field'] = 'title';
+  /* Sort criterion: Content: Post date */
+  $handler->display->display_options['sorts']['created']['id'] = 'created';
+  $handler->display->display_options['sorts']['created']['table'] = 'node';
+  $handler->display->display_options['sorts']['created']['field'] = 'created';
+  $handler->display->display_options['sorts']['created']['order'] = 'DESC';
   $handler->display->display_options['defaults']['filter_groups'] = FALSE;
   $handler->display->display_options['defaults']['filters'] = FALSE;
   /* Filter criterion: Content: Published */
@@ -278,6 +351,8 @@ function ik_groups_configuration_views_default_views() {
     t('last »'),
     t('There is no content in this group.'),
     t('OG membership from node'),
+    t('Media'),
+    t('Title'),
     t('All'),
     t('OG content'),
     t('Default list showing all OG content'),
