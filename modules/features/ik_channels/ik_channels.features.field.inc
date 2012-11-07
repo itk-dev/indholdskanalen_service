@@ -369,6 +369,69 @@ function ik_channels_field_default_fields() {
     ),
   );
 
+  // Exported field: 'node-channel-field_channel_preview'.
+  $fields['node-channel-field_channel_preview'] = array(
+    'field_config' => array(
+      'active' => '1',
+      'cardinality' => '1',
+      'deleted' => '0',
+      'entity_types' => array(),
+      'field_name' => 'field_channel_preview',
+      'foreign keys' => array(),
+      'indexes' => array(),
+      'locked' => '0',
+      'module' => 'ik_channel_filter',
+      'settings' => array(
+        'ik_search' => array(
+          'types' => array(
+            'field_channel_categories_tags' => 'field_channel_categories_tags',
+            'field_channel_channels' => 'field_channel_channels',
+            'field_channel_department' => 'field_channel_department',
+            'field_channel_orgnization' => 'field_channel_orgnization',
+            'field_channel_slides' => 'field_channel_slides',
+          ),
+        ),
+      ),
+      'translatable' => '0',
+      'type' => 'ik_channel_filter_preview',
+    ),
+    'field_instance' => array(
+      'bundle' => 'channel',
+      'default_value' => NULL,
+      'deleted' => '0',
+      'description' => '',
+      'display' => array(
+        'default' => array(
+          'label' => 'above',
+          'module' => NULL,
+          'settings' => array(),
+          'type' => 'ik_filter_search_preview_formatter',
+          'weight' => 8,
+        ),
+        'teaser' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+      ),
+      'entity_type' => 'node',
+      'field_name' => 'field_channel_preview',
+      'label' => 'Preview',
+      'required' => 0,
+      'settings' => array(
+        'user_register_form' => FALSE,
+      ),
+      'widget' => array(
+        'active' => 0,
+        'module' => 'ik_channel_filter',
+        'settings' => array(),
+        'type' => 'ik_filter_search_preview',
+        'weight' => '10',
+      ),
+    ),
+  );
+
   // Exported field: 'node-channel-field_channel_slides'.
   $fields['node-channel-field_channel_slides'] = array(
     'field_config' => array(
@@ -546,6 +609,7 @@ function ik_channels_field_default_fields() {
   t('Filter on department');
   t('Filter on orgnization');
   t('Other channels');
+  t('Preview');
   t('Slides');
 
   return $fields;

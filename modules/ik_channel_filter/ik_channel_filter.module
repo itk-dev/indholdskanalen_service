@@ -179,7 +179,7 @@ function ik_channel_filter_field_settings_form($field, $instance, $has_data) {
   switch ($field['type']) {
     case 'ik_channel_filter_preview':
       // Get infomation about fields on current content type.
-      $info = field_info_instances('node');
+      $info = field_info_instances('node'); /* @todo: get entity type from instance */
       $info = $info[$instance['bundle']];
 
       // Find all channel filter fields on the current content type.
@@ -281,14 +281,22 @@ function ik_channel_filter_field_widget_form(&$form, &$form_state, $field, $inst
 
   switch ($instance['widget']['type']) {
     case 'ik_filter_search_preview':
-      $element['error'] = array(
-        '#markup' => '<strong>Thumbnail preview formatter have not yet been implemented.</strong>'
-      );
+
+      if (isset($element['#entity']->nid)) {
+        $entity = $element['#entity'];
+        $field_names = isset($field['settings']['ik_search']['types']) ? $field['settings']['ik_search']['types'] : array();
+        
+      }
+      else {
+        $element['message'] = array(
+          '#markup' => '<strong>No slides found matching filter.</strong>',
+        );
+      }
       break;
 
     case 'ik_filter_search_preview_thumbnail':
       $element['error'] = array(
-        '#markup' => '<strong>Thumbnail preview formatter have not yet been implemented.</strong>'
+        '#markup' => '<strong>Thumbnail preview formatter have not yet been implemented.</strong>',
       );
       break;
 
