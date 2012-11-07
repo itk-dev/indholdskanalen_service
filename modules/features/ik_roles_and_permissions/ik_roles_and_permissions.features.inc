@@ -13,3 +13,23 @@ function ik_roles_and_permissions_ctools_plugin_api() {
     return array("version" => "1");
   }
 }
+
+/**
+ * Implements hook_default_og_membership_type().
+ */
+function ik_roles_and_permissions_default_og_membership_type() {
+  $items = array();
+  $items['contributor'] = entity_import('og_membership_type', '{
+    "name" : "contributor",
+    "description" : "Contributor",
+    "language" : "",
+    "rdf_mapping" : []
+  }');
+  $items['editor'] = entity_import('og_membership_type', '{
+    "name" : "editor",
+    "description" : "Editor",
+    "language" : "",
+    "rdf_mapping" : []
+  }');
+  return $items;
+}
