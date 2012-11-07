@@ -30,7 +30,7 @@ function ik_groups_configuration_views_default_views() {
   $handler->display->display_options['query']['options']['query_comment'] = FALSE;
   $handler->display->display_options['exposed_form']['type'] = 'basic';
   $handler->display->display_options['pager']['type'] = 'full';
-  $handler->display->display_options['style_plugin'] = 'default';
+  $handler->display->display_options['style_plugin'] = 'grid';
   $handler->display->display_options['row_plugin'] = 'node';
   /* No results behavior: Global: Text area */
   $handler->display->display_options['empty']['area']['id'] = 'area';
@@ -203,6 +203,63 @@ function ik_groups_configuration_views_default_views() {
       'label' => 'OG membership: Group ID',
     ),
   );
+
+  /* Display: OG organisations */
+  $handler = $view->new_display('panel_pane', 'OG organisations', 'panel_pane_5');
+  $handler->display->display_options['defaults']['title'] = FALSE;
+  $handler->display->display_options['title'] = 'Organisations';
+  $handler->display->display_options['display_description'] = 'List showing all OG organisations';
+  $handler->display->display_options['defaults']['hide_admin_links'] = FALSE;
+  $handler->display->display_options['defaults']['style_plugin'] = FALSE;
+  $handler->display->display_options['style_plugin'] = 'grid';
+  $handler->display->display_options['defaults']['style_options'] = FALSE;
+  $handler->display->display_options['defaults']['row_plugin'] = FALSE;
+  $handler->display->display_options['row_plugin'] = 'fields';
+  $handler->display->display_options['defaults']['row_options'] = FALSE;
+  $handler->display->display_options['defaults']['relationships'] = FALSE;
+  $handler->display->display_options['defaults']['fields'] = FALSE;
+  /* Field: Content: Logo */
+  $handler->display->display_options['fields']['field_ik_org_logo']['id'] = 'field_ik_org_logo';
+  $handler->display->display_options['fields']['field_ik_org_logo']['table'] = 'field_data_field_ik_org_logo';
+  $handler->display->display_options['fields']['field_ik_org_logo']['field'] = 'field_ik_org_logo';
+  $handler->display->display_options['fields']['field_ik_org_logo']['label'] = '';
+  $handler->display->display_options['fields']['field_ik_org_logo']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_ik_org_logo']['click_sort_column'] = 'fid';
+  $handler->display->display_options['fields']['field_ik_org_logo']['settings'] = array(
+    'image_style' => 'thumbnail',
+    'image_link' => 'content',
+  );
+  /* Field: Content: Title */
+  $handler->display->display_options['fields']['title']['id'] = 'title';
+  $handler->display->display_options['fields']['title']['table'] = 'node';
+  $handler->display->display_options['fields']['title']['field'] = 'title';
+  $handler->display->display_options['fields']['title']['label'] = '';
+  $handler->display->display_options['fields']['title']['element_label_colon'] = FALSE;
+  $handler->display->display_options['defaults']['arguments'] = FALSE;
+  $handler->display->display_options['defaults']['filter_groups'] = FALSE;
+  $handler->display->display_options['defaults']['filters'] = FALSE;
+  /* Filter criterion: Content: Published */
+  $handler->display->display_options['filters']['status']['id'] = 'status';
+  $handler->display->display_options['filters']['status']['table'] = 'node';
+  $handler->display->display_options['filters']['status']['field'] = 'status';
+  $handler->display->display_options['filters']['status']['value'] = '1';
+  /* Filter criterion: Content: Type */
+  $handler->display->display_options['filters']['type']['id'] = 'type';
+  $handler->display->display_options['filters']['type']['table'] = 'node';
+  $handler->display->display_options['filters']['type']['field'] = 'type';
+  $handler->display->display_options['filters']['type']['value'] = array(
+    'organisation' => 'organisation',
+  );
+  $handler->display->display_options['argument_input'] = array(
+    'gid' => array(
+      'type' => 'context',
+      'context' => 'entity:node.nid',
+      'context_optional' => 0,
+      'panel' => '0',
+      'fixed' => '',
+      'label' => 'OG membership: Group ID',
+    ),
+  );
   $translatables['ik_groups_content'] = array(
     t('Defaults'),
     t('Group content'),
@@ -234,6 +291,9 @@ function ik_groups_configuration_views_default_views() {
     t('OG departments'),
     t('Departments'),
     t('List showing all departments in selected OG'),
+    t('OG organisations'),
+    t('Organisations'),
+    t('List showing all OG organisations'),
   );
   $export['ik_groups_content'] = $view;
 

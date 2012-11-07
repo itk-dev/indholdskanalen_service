@@ -35,7 +35,7 @@ function ik_groups_configuration_node_info() {
       'base' => 'node_content',
       'description' => t('A department belong to an organisation and is where users are organized. Slides and Channels are posted in a department.'),
       'has_title' => '1',
-      'title_label' => t('Title'),
+      'title_label' => t('Titel'),
       'help' => '',
     ),
     'organisation' => array(
@@ -43,7 +43,7 @@ function ik_groups_configuration_node_info() {
       'base' => 'node_content',
       'description' => t('An organisation is a group container for departments.'),
       'has_title' => '1',
-      'title_label' => t('Title'),
+      'title_label' => t('Titel'),
       'help' => '',
     ),
   );
