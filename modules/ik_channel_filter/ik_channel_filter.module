@@ -120,6 +120,12 @@ function ik_channel_filter_field_info() {
       'default_widget' => 'ik_filter_search_widget',
       'default_formatter' => 'ik_filter_search_formatter',
     ),
+    'ik_channel_filter_preview' => array(
+      'label' => t('Channel preview'),
+      'description' => t('Previw channel filter results'),
+      'default_widget' => 'ik_filter_search_preview',
+      'default_formatter' => 'ik_filter_search_preview_formatter'
+    ),
   );
 }
 
@@ -148,8 +154,16 @@ function ik_channel_filter_field_is_empty($item, $field) {
 function ik_channel_filter_field_widget_info() {
   return array(
     'ik_filter_search_autocomplete' => array(
-      'label' => t('Default (autocomplete)'),
+      'label' => t('Default'),
       'field types' => array('ik_channel_filter_search'),
+    ),
+    'ik_filter_search_preview' => array(
+      'label' => t('Default'),
+      'field types' => array('ik_channel_filter_preview'),
+    ),
+    'ik_filter_search_preview_thumbnail' => array(
+      'label' => t('Thumbnail'),
+      'field types' => array('ik_channel_filter_preview'),
     ),
   );
 }
@@ -162,64 +176,93 @@ function ik_channel_filter_field_settings_form($field, $instance, $has_data) {
   $settings = isset($field['settings']['ik_search']) ? $field['settings']['ik_search'] : array();
   $form = array();
 
-  $form['ik_search'] = array(
-    '#type' => 'fieldset',
-    '#title' => t('Field search settings'),
-  );
+  switch ($field['type']) {
+    case 'ik_channel_filter_preview':
+      // Get infomation about fields on current content type.
+      $info = field_info_instances('node');
+      $info = $info[$instance['bundle']];
 
-  $options = array(
-    'vocabulary' => 'Vocabularies',
-    'og' => 'Organic groups',
-    'types' => 'Content types',
-  );
+      // Find all channel filter fields on the current content type.
+      $fields = array();
+      foreach ($info as $field_name => $field_instance) {
+        if ($field_instance['widget']['type'] == 'ik_filter_search_autocomplete') {
+          $fields[$field_name] = filter_xss_admin($field_instance['label']);
+        }
+      }
 
-  $form['ik_search']['type'] = array(
-    '#type' => 'radios',
-    '#title' => t('Search type'),
-    '#options' => $options,
-    '#default_value' => isset($settings['type']) ? $settings['type'] : '',
-    '#required' => TRUE,
-  );
+      $form['ik_search']['types'] = array(
+        '#type' => 'checkboxes',
+        '#title' => t('Channel filter fields'),
+        '#description' => t('Select the Channel filter fields that should be used to select the slides displayed.'),
+        '#options' => $fields,
+        '#default_value' => isset($settings['types']) ? $settings['types'] : array(),
+      );
+      break;
+
+    case 'ik_channel_filter_search':
+      $form['ik_search'] = array(
+        '#type' => 'fieldset',
+        '#title' => t('Field search settings'),
+      );
+
+      $options = array(
+        'vocabulary' => 'Vocabularies',
+        'og' => 'Organic groups',
+        'types' => 'Content types',
+      );
+
+      $form['ik_search']['type'] = array(
+        '#type' => 'radios',
+        '#title' => t('Search type'),
+        '#options' => $options,
+        '#default_value' => isset($settings['type']) ? $settings['type'] : '',
+        '#required' => TRUE,
+      );
 
 
-  // Find options to display for each type defined above, when they are selected.
-  $values = array(
-    'vocabulary' => array(),
-    'og' => array(),
-    'types' => array(),
-  );
+      // Find options to display for each type defined above, when they are selected.
+      $values = array(
+        'vocabulary' => array(),
+        'og' => array(),
+        'types' => array(),
+      );
 
-  $vocabularies = taxonomy_get_vocabularies();
-  foreach ($vocabularies as $vocabulary) {
-    $values['vocabulary'][$vocabulary->machine_name] = $vocabulary->name;
-  }
+      // Get all vocabulary names.
+      $vocabularies = taxonomy_get_vocabularies();
+      foreach ($vocabularies as $vocabulary) {
+        $values['vocabulary'][$vocabulary->machine_name] = $vocabulary->name;
+      }
 
-  $types = node_type_get_types();
-  foreach ($types as $key => $type) {
-    $values['types'][$key] = $type->name;
-  }
+      // Get all content type names.
+      $types = node_type_get_types();
+      foreach ($types as $key => $type) {
+        $values['types'][$key] = $type->name;
+      }
 
-  $ogs = og_get_all_group_bundle();
-  foreach ($ogs['node'] as $key => $name) {
-    $values['og'][$key] = $name;
-  }
+      // Get all content types that are organic groups.
+      $ogs = og_get_all_group_bundle();
+      foreach ($ogs['node'] as $key => $name) {
+        $values['og'][$key] = $name;
+      }
 
-  // Display settings for each of the above types and display them base on the
-  // one selected.
-  foreach ($options as $type => $name) {
-    $form['ik_search'][$type] = array(
-      '#type' => 'checkboxes',
-      '#title' => check_plain($name),
-      '#options' => $values[$type],
-      '#default_value' => isset($settings[$type]) ? $settings[$type] : array(),
-      '#states' => array(
-        'visible' => array(
-          ':input[name="field[settings][ik_search][type]"]' => array(
-            array('value' => $type),
+      // Display settings for each of the above types and display them base on the
+      // one selected.
+      foreach ($options as $type => $name) {
+        $form['ik_search'][$type] = array(
+          '#type' => 'checkboxes',
+          '#title' => check_plain($name),
+          '#options' => $values[$type],
+          '#default_value' => isset($settings[$type]) ? $settings[$type] : array(),
+          '#states' => array(
+            'visible' => array(
+              ':input[name="field[settings][ik_search][type]"]' => array(
+                array('value' => $type),
+              ),
+            ),
           ),
-        ),
-      ),
-    );
+        );
+      }
+      break;
   }
 
   return $form;
@@ -237,6 +280,19 @@ function ik_channel_filter_field_widget_form(&$form, &$form_state, $field, $inst
   );
 
   switch ($instance['widget']['type']) {
+    case 'ik_filter_search_preview':
+      $element['error'] = array(
+        '#markup' => '<strong>Thumbnail preview formatter have not yet been implemented.</strong>'
+      );
+      break;
+
+    case 'ik_filter_search_preview_thumbnail':
+      $element['error'] = array(
+        '#markup' => '<strong>Thumbnail preview formatter have not yet been implemented.</strong>'
+      );
+      break;
+
+
     case 'ik_filter_search_autocomplete':
       $field_content = isset($items[$delta]['data']) ? $items[$delta]['data'] : '';
       $element['data'] = array(
