@@ -90,7 +90,7 @@ function ik_groups_configuration_default_page_manager_handlers() {
     $pane->shown = TRUE;
     $pane->access = array();
     $pane->configuration = array(
-      'label' => 'title',
+      'label' => 'hidden',
       'formatter' => 'text_default',
       'delta_limit' => 0,
       'delta_offset' => '0',
@@ -118,13 +118,15 @@ function ik_groups_configuration_default_page_manager_handlers() {
     $pane->shown = TRUE;
     $pane->access = array();
     $pane->configuration = array(
-      'label' => 'title',
-      'formatter' => 'file_rendered',
+      'label' => 'hidden',
+      'formatter' => 'image',
       'delta_limit' => 0,
       'delta_offset' => '0',
       'delta_reversed' => FALSE,
       'formatter_settings' => array(
         'file_view_mode' => 'default',
+        'image_style' => 'medium',
+        'image_link' => '',
       ),
       'context' => 'argument_entity_id:node_1',
       'override_title' => 0,
@@ -162,7 +164,16 @@ function ik_groups_configuration_default_page_manager_handlers() {
     'css_id' => 'department-page',
     'css' => '',
     'contexts' => array(),
-    'relationships' => array(),
+    'relationships' => array(
+      0 => array(
+        'identifier' => 'Node from Node (on Node: Organisation [field_ik_og_organisation_ref])',
+        'keyword' => 'node_2',
+        'name' => 'entity_from_field:field_ik_og_organisation_ref-node-node',
+        'delta' => 0,
+        'context' => 'argument_entity_id:node_1',
+        'id' => 1,
+      ),
+    ),
     'access' => array(
       'plugins' => array(
         0 => array(
@@ -242,13 +253,19 @@ function ik_groups_configuration_default_page_manager_handlers() {
     $pane = new stdClass();
     $pane->pid = 'new-6';
     $pane->panel = 'left';
-    $pane->type = 'node_body';
-    $pane->subtype = 'node_body';
+    $pane->type = 'entity_field';
+    $pane->subtype = 'node:field_ik_department_description';
     $pane->shown = TRUE;
     $pane->access = array();
     $pane->configuration = array(
+      'label' => 'hidden',
+      'formatter' => 'text_default',
+      'delta_limit' => 0,
+      'delta_offset' => '0',
+      'delta_reversed' => FALSE,
+      'formatter_settings' => array(),
       'context' => 'argument_entity_id:node_1',
-      'override_title' => 1,
+      'override_title' => 0,
       'override_title_text' => '',
     );
     $pane->cache = array();
@@ -264,16 +281,23 @@ function ik_groups_configuration_default_page_manager_handlers() {
     $pane = new stdClass();
     $pane->pid = 'new-7';
     $pane->panel = 'right';
-    $pane->type = 'views_panes';
-    $pane->subtype = 'og_members-panel_pane_1';
+    $pane->type = 'entity_field';
+    $pane->subtype = 'node:field_ik_org_logo';
     $pane->shown = TRUE;
     $pane->access = array();
     $pane->configuration = array(
-      'context' => array(
-        0 => 'argument_entity_id:node_1',
+      'label' => 'hidden',
+      'formatter' => 'image',
+      'delta_limit' => 0,
+      'delta_offset' => '0',
+      'delta_reversed' => FALSE,
+      'formatter_settings' => array(
+        'image_style' => 'thumbnail',
+        'image_link' => 'content',
       ),
+      'context' => 'relationship_entity_from_field:field_ik_og_organisation_ref-node-node_1',
       'override_title' => 0,
-      'override_title_text' => '',
+      'override_title_text' => 'A department under',
     );
     $pane->cache = array();
     $pane->style = array(
@@ -285,6 +309,31 @@ function ik_groups_configuration_default_page_manager_handlers() {
     $pane->locks = array();
     $display->content['new-7'] = $pane;
     $display->panels['right'][0] = 'new-7';
+    $pane = new stdClass();
+    $pane->pid = 'new-8';
+    $pane->panel = 'right';
+    $pane->type = 'views_panes';
+    $pane->subtype = 'og_members-panel_pane_1';
+    $pane->shown = TRUE;
+    $pane->access = array();
+    $pane->configuration = array(
+      'context' => array(
+        0 => 'argument_entity_id:node_1',
+      ),
+      'override_title' => 1,
+      'override_title_text' => 'Members',
+    );
+    $pane->cache = array();
+    $pane->style = array(
+      'settings' => NULL,
+      'style' => 'default',
+    );
+    $pane->css = array();
+    $pane->extras = array();
+    $pane->position = 1;
+    $pane->locks = array();
+    $display->content['new-8'] = $pane;
+    $display->panels['right'][1] = 'new-8';
   $display->hide_title = PANELS_TITLE_FIXED;
   $display->title_pane = '0';
   $handler->conf['display'] = $display;

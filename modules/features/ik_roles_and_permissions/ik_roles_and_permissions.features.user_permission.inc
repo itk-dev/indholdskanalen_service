@@ -10,6 +10,16 @@
 function ik_roles_and_permissions_user_default_permissions() {
   $permissions = array();
 
+  // Exported permission: access user profiles.
+  $permissions['access user profiles'] = array(
+    'name' => 'access user profiles',
+    'roles' => array(
+      0 => 'administrator',
+      1 => 'authenticated user',
+    ),
+    'module' => 'user',
+  );
+
   // Exported permission: create channel content.
   $permissions['create channel content'] = array(
     'name' => 'create channel content',
