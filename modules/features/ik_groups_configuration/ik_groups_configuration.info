@@ -10,7 +10,6 @@ dependencies[] = features
 dependencies[] = image
 dependencies[] = list
 dependencies[] = og
-dependencies[] = og_field_access
 dependencies[] = og_ui
 dependencies[] = options
 dependencies[] = page_manager
