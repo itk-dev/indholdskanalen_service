@@ -152,7 +152,7 @@ function ik_slides_field_default_fields() {
           'module' => 'taxonomy',
           'settings' => array(),
           'type' => 'taxonomy_term_reference_link',
-          'weight' => 8,
+          'weight' => '8',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -209,7 +209,7 @@ function ik_slides_field_default_fields() {
           'module' => 'jquery_colorpicker',
           'settings' => array(),
           'type' => 'jquery_colorpicker_color_display',
-          'weight' => 3,
+          'weight' => '3',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -288,7 +288,7 @@ function ik_slides_field_default_fields() {
           'module' => 'list',
           'settings' => array(),
           'type' => 'list_default',
-          'weight' => 10,
+          'weight' => '10',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -539,7 +539,7 @@ function ik_slides_field_default_fields() {
           'module' => 'text',
           'settings' => array(),
           'type' => 'text_default',
-          'weight' => 2,
+          'weight' => '2',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -617,7 +617,7 @@ function ik_slides_field_default_fields() {
           'module' => 'taxonomy',
           'settings' => array(),
           'type' => 'taxonomy_term_reference_link',
-          'weight' => 9,
+          'weight' => '9',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -684,7 +684,7 @@ function ik_slides_field_default_fields() {
           'module' => 'text',
           'settings' => array(),
           'type' => 'text_default',
-          'weight' => 7,
+          'weight' => '7',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -744,7 +744,7 @@ function ik_slides_field_default_fields() {
           'module' => 'jquery_colorpicker',
           'settings' => array(),
           'type' => 'jquery_colorpicker_color_display',
-          'weight' => 4,
+          'weight' => '4',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -822,7 +822,7 @@ function ik_slides_field_default_fields() {
           'module' => 'list',
           'settings' => array(),
           'type' => 'list_default',
-          'weight' => 11,
+          'weight' => '11',
         ),
         'teaser' => array(
           'label' => 'above',
