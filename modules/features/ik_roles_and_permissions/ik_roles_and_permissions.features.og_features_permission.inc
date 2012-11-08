@@ -167,8 +167,8 @@ function ik_roles_and_permissions_og_features_default_permissions() {
   // Exported og permission: 'node:department:update own slide content'
   $permissions['node:department:update own slide content'] = array(
     'roles' => array(
-      'contributor' => 'contributor',
       'editor' => 'editor',
+      'contributor' => 'contributor',
     ),
   );
 

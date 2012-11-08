@@ -20,6 +20,17 @@ function ik_roles_and_permissions_user_default_permissions() {
     'module' => 'user',
   );
 
+  // Exported permission: add media from remote sources.
+  $permissions['add media from remote sources'] = array(
+    'name' => 'add media from remote sources',
+    'roles' => array(
+      0 => 'administrator',
+      1 => 'contributor',
+      2 => 'editor',
+    ),
+    'module' => 'media_internet',
+  );
+
   // Exported permission: create channel content.
   $permissions['create channel content'] = array(
     'name' => 'create channel content',
@@ -207,6 +218,17 @@ function ik_roles_and_permissions_user_default_permissions() {
       2 => 'editor',
     ),
     'module' => 'node',
+  );
+
+  // Exported permission: import media.
+  $permissions['import media'] = array(
+    'name' => 'import media',
+    'roles' => array(
+      0 => 'administrator',
+      1 => 'contributor',
+      2 => 'editor',
+    ),
+    'module' => 'media',
   );
 
   // Exported permission: use text format editor_html.
