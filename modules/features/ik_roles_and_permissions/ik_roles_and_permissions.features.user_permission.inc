@@ -20,6 +20,46 @@ function ik_roles_and_permissions_user_default_permissions() {
     'module' => 'user',
   );
 
+  // Exported permission: add media from remote sources.
+  $permissions['add media from remote sources'] = array(
+    'name' => 'add media from remote sources',
+    'roles' => array(
+      0 => 'administrator',
+      1 => 'contributor',
+      2 => 'editor',
+    ),
+    'module' => 'media_internet',
+  );
+
+  // Exported permission: administer files.
+  $permissions['administer files'] = array(
+    'name' => 'administer files',
+    'roles' => array(
+      0 => 'administrator',
+      1 => 'contributor',
+      2 => 'editor',
+    ),
+    'module' => 'file_entity',
+  );
+
+  // Exported permission: administer taxonomy.
+  $permissions['administer taxonomy'] = array(
+    'name' => 'administer taxonomy',
+    'roles' => array(
+      0 => 'administrator',
+    ),
+    'module' => 'taxonomy',
+  );
+
+  // Exported permission: administer users.
+  $permissions['administer users'] = array(
+    'name' => 'administer users',
+    'roles' => array(
+      0 => 'administrator',
+    ),
+    'module' => 'user',
+  );
+
   // Exported permission: create channel content.
   $permissions['create channel content'] = array(
     'name' => 'create channel content',
@@ -59,6 +99,13 @@ function ik_roles_and_permissions_user_default_permissions() {
     'module' => 'node',
   );
 
+  // Exported permission: create static_page content.
+  $permissions['create static_page content'] = array(
+    'name' => 'create static_page content',
+    'roles' => array(),
+    'module' => 'node',
+  );
+
   // Exported permission: delete any channel content.
   $permissions['delete any channel content'] = array(
     'name' => 'delete any channel content',
@@ -92,6 +139,13 @@ function ik_roles_and_permissions_user_default_permissions() {
     'roles' => array(
       0 => 'administrator',
     ),
+    'module' => 'node',
+  );
+
+  // Exported permission: delete any static_page content.
+  $permissions['delete any static_page content'] = array(
+    'name' => 'delete any static_page content',
+    'roles' => array(),
     'module' => 'node',
   );
 
@@ -134,6 +188,31 @@ function ik_roles_and_permissions_user_default_permissions() {
     'module' => 'node',
   );
 
+  // Exported permission: delete own static_page content.
+  $permissions['delete own static_page content'] = array(
+    'name' => 'delete own static_page content',
+    'roles' => array(),
+    'module' => 'node',
+  );
+
+  // Exported permission: delete terms in 1.
+  $permissions['delete terms in 1'] = array(
+    'name' => 'delete terms in 1',
+    'roles' => array(
+      0 => 'administrator',
+    ),
+    'module' => 'taxonomy',
+  );
+
+  // Exported permission: delete terms in 2.
+  $permissions['delete terms in 2'] = array(
+    'name' => 'delete terms in 2',
+    'roles' => array(
+      0 => 'administrator',
+    ),
+    'module' => 'taxonomy',
+  );
+
   // Exported permission: edit any channel content.
   $permissions['edit any channel content'] = array(
     'name' => 'edit any channel content',
@@ -168,6 +247,22 @@ function ik_roles_and_permissions_user_default_permissions() {
       0 => 'administrator',
     ),
     'module' => 'node',
+  );
+
+  // Exported permission: edit any static_page content.
+  $permissions['edit any static_page content'] = array(
+    'name' => 'edit any static_page content',
+    'roles' => array(),
+    'module' => 'node',
+  );
+
+  // Exported permission: edit file.
+  $permissions['edit file'] = array(
+    'name' => 'edit file',
+    'roles' => array(
+      0 => 'administrator',
+    ),
+    'module' => 'file_entity',
   );
 
   // Exported permission: edit own channel content.
@@ -207,6 +302,86 @@ function ik_roles_and_permissions_user_default_permissions() {
       2 => 'editor',
     ),
     'module' => 'node',
+  );
+
+  // Exported permission: edit own static_page content.
+  $permissions['edit own static_page content'] = array(
+    'name' => 'edit own static_page content',
+    'roles' => array(),
+    'module' => 'node',
+  );
+
+  // Exported permission: edit terms in 1.
+  $permissions['edit terms in 1'] = array(
+    'name' => 'edit terms in 1',
+    'roles' => array(
+      0 => 'administrator',
+    ),
+    'module' => 'taxonomy',
+  );
+
+  // Exported permission: edit terms in 2.
+  $permissions['edit terms in 2'] = array(
+    'name' => 'edit terms in 2',
+    'roles' => array(
+      0 => 'administrator',
+    ),
+    'module' => 'taxonomy',
+  );
+
+  // Exported permission: import media.
+  $permissions['import media'] = array(
+    'name' => 'import media',
+    'roles' => array(
+      0 => 'administrator',
+      1 => 'contributor',
+      2 => 'editor',
+    ),
+    'module' => 'media',
+  );
+
+  // Exported permission: use text format editor_html.
+  $permissions['use text format editor_html'] = array(
+    'name' => 'use text format editor_html',
+    'roles' => array(
+      0 => 'administrator',
+      1 => 'contributor',
+      2 => 'editor',
+    ),
+    'module' => 'filter',
+  );
+
+  // Exported permission: use text format filtered_html.
+  $permissions['use text format filtered_html'] = array(
+    'name' => 'use text format filtered_html',
+    'roles' => array(
+      0 => 'administrator',
+      1 => 'anonymous user',
+      2 => 'authenticated user',
+      3 => 'contributor',
+      4 => 'editor',
+    ),
+    'module' => 'filter',
+  );
+
+  // Exported permission: use text format full_html.
+  $permissions['use text format full_html'] = array(
+    'name' => 'use text format full_html',
+    'roles' => array(
+      0 => 'administrator',
+    ),
+    'module' => 'filter',
+  );
+
+  // Exported permission: view file.
+  $permissions['view file'] = array(
+    'name' => 'view file',
+    'roles' => array(
+      0 => 'administrator',
+      1 => 'anonymous user',
+      2 => 'authenticated user',
+    ),
+    'module' => 'file_entity',
   );
 
   return $permissions;
