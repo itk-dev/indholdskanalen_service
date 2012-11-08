@@ -262,6 +262,14 @@ function ik_channel_filter_field_settings_form($field, $instance, $has_data) {
           ),
         );
       }
+
+      $form['ik_search']['operation'] = array(
+        '#type' => 'radios',
+        '#title' => t('Field operations'),
+        '#description' => t('The function to used between this field and other channel filter fields on this content type.'),
+        '#options' => array(0 => 'AND', 1 => 'OR'),
+        '#default_value' => 0,
+      );
       break;
   }
 
@@ -285,18 +293,72 @@ function ik_channel_filter_field_widget_form(&$form, &$form_state, $field, $inst
       if (isset($element['#entity']->nid)) {
         $entity = $element['#entity'];
         $field_names = isset($field['settings']['ik_search']['types']) ? $field['settings']['ik_search']['types'] : array();
-        
+
+        // Start query...
+
+        // Loop over fields and get configuration
+        foreach ($field_names as $name) {
+          // Check that the current field as any values
+          $values = $entity->$name;
+          if (empty($values)) {
+            continue;
+          }
+          $values = explode(',', $values[$langcode][$delta]['data']);
+
+          $field_info = field_info_field($name);
+
+          switch ($field_info['settings']['ik_search']['type']) {
+            case 'types':
+              // Get select content types.
+              $types = array_filter($field_info['settings']['ik_search']['types']);
+
+              // Check special case where the content type is the same as the on
+              // we are creating. We have to assume that is has slides.
+              if (count($types) == 1 AND $entity->type == key($types)) {
+                
+              }
+              else {
+                // Simple search nodes for content with the title(s) given.
+              }
+              break;
+
+            case 'og':
+
+//                -- Get nodes based on connection from organization -> department -> slides
+//                SELECT ogm.etid, n.nid, n.title
+//                FROM og_membership ogm
+//                INNER JOIN (
+//                  SELECT etid
+//                  FROM node n
+//                  INNER JOIN og_membership ogm ON n.nid = ogm.gid
+//                  WHERE n.title IN ('Aarhus biblioteker') -- $values
+//                  AND ogm.entity_type = 'node') inner_ogm
+//                ON ogm.gid = inner_ogm.etid
+//                INNER JOIN node n ON ogm.etid = n.nid
+//                WHERE ogm.entity_type = 'node'
+
+              break;
+
+            case 'vocabulary':
+
+              break;
+          }
+
+//        final select from temp table
+        }
+
+        $i =1;
       }
       else {
         $element['message'] = array(
-          '#markup' => '<strong>No slides found matching filter.</strong>',
+          '#markup' => t('No slides found matching filter.'),
         );
       }
       break;
 
     case 'ik_filter_search_preview_thumbnail':
       $element['error'] = array(
-        '#markup' => '<strong>Thumbnail preview formatter have not yet been implemented.</strong>',
+        '#markup' => t('Thumbnail preview formatter have not yet been implemented'),
       );
       break;
 
