@@ -32,7 +32,7 @@ function ik_slides_node_info() {
       'base' => 'node_content',
       'description' => t('A slide is used to create the individual elements for presenting information.'),
       'has_title' => '1',
-      'title_label' => t('Heading'),
+      'title_label' => t('Overskrift'),
       'help' => '',
     ),
   );
