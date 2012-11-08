@@ -263,12 +263,37 @@ function ik_channel_filter_field_settings_form($field, $instance, $has_data) {
         );
       }
 
+      // Get all avaliable fields linked to taxonomy.
+      $options = array();
+      $fields = field_info_fields();
+      foreach ($fields as $f) {
+        if ($f['module'] == 'taxonomy') {
+          $options[$f['field_name']] = $f['field_name'] . ' (' . implode(',', $f['bundles']['node']) . ')';
+        }
+      }
+
+      // Display found fields, if vocabulary is selected.
+      $form['ik_search']['fields'] = array(
+        '#type' => 'checkboxes',
+        '#title' => t('Taxonomy fields to search'),
+        '#description' => t('To speed up preformance you need to select the fields that should be searched and linked to these terms.'),
+        '#options' => $options,
+        '#default_value' => isset($settings['fields']) ? $settings['fields'] : array(),
+        '#states' => array(
+          'visible' => array(
+            ':input[name="field[settings][ik_search][type]"]' => array(
+              array('value' => 'vocabulary'),
+            ),
+          ),
+        ),
+      );
+
       $form['ik_search']['operation'] = array(
         '#type' => 'radios',
         '#title' => t('Field operations'),
         '#description' => t('The function to used between this field and other channel filter fields on this content type.'),
         '#options' => array(0 => 'AND', 1 => 'OR'),
-        '#default_value' => 0,
+        '#default_value' => isset($settings['operation']) ? $settings['operation'] : 0,
       );
       break;
   }
@@ -315,31 +340,46 @@ function ik_channel_filter_field_widget_form(&$form, &$form_state, $field, $inst
               // Check special case where the content type is the same as the on
               // we are creating. We have to assume that is has slides.
               if (count($types) == 1 AND $entity->type == key($types)) {
-                
+                // @TODO: implement this if needed.
               }
               else {
-                // Simple search nodes for content with the title(s) given.
+//              SELECT n.nid, n.title
+//              FROM node n
+//              WHERE n.title IN ('Mollis Parturient') -- $values
               }
               break;
 
             case 'og':
 
-//                -- Get nodes based on connection from organization -> department -> slides
-//                SELECT ogm.etid, n.nid, n.title
-//                FROM og_membership ogm
-//                INNER JOIN (
-//                  SELECT etid
-//                  FROM node n
-//                  INNER JOIN og_membership ogm ON n.nid = ogm.gid
-//                  WHERE n.title IN ('Aarhus biblioteker') -- $values
-//                  AND ogm.entity_type = 'node') inner_ogm
-//                ON ogm.gid = inner_ogm.etid
-//                INNER JOIN node n ON ogm.etid = n.nid
-//                WHERE ogm.entity_type = 'node'
+//              SELECT ogm.etid, n.nid, n.title
+//              FROM og_membership ogm
+//              INNER JOIN (
+//                SELECT etid
+//                FROM node n
+//                INNER JOIN og_membership ogm ON n.nid = ogm.gid
+//                WHERE n.title IN ('Aarhus biblioteker') -- $values
+//                AND ogm.entity_type = 'node') inner_ogm
+//              ON ogm.gid = inner_ogm.etid
+//              INNER JOIN node n ON ogm.etid = n.nid
+//              WHERE ogm.entity_type = 'node'
 
               break;
 
             case 'vocabulary':
+              $vocabularies = array_filter($field_info['settings']['ik_search']['vocabulary']);
+              $term_fields = array_filter($field_info['settings']['ik_search']['fields']);
+
+//              SELECT DISTINCT n.nid, n.title
+//              FROM node n
+//              INNER JOIN (
+//                SELECT t1.entity_id AS etid
+//                FROM taxonomy_vocabulary tv
+//                INNER JOIN taxonomy_term_data ttd ON tv.vid = ttd.vid
+//                INNER JOIN field_data_field_ik_slide_tags t1 ON t1.field_ik_slide_tags_tid = ttd.tid -- Dynamic join field tables.
+//                WHERE machine_name IN ('tags') -- Vocabularies
+//                  AND ttd.name IN ('Fly') -- Tag names
+//              ) inner_n
+//              ON n.nid = inner_n.etid
 
               break;
           }
