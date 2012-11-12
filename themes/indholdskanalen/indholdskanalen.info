@@ -1,0 +1,16 @@
+;----------// Theme Information
+  name        = Indholdskanalen
+  description = Et tema til indholdskanalen
+  core        = 7.x
+  release     = 7.x-1.x
+  base theme  = seven
+
+;----------// Regions
+  regions[content] = Content
+  regions[help] = Help
+  regions[page_top] = Page top
+  regions[page_bottom] = Page bottom
+  regions[sidebar_first] = First sidebar
+
+;----------// Stylesheets
+  stylesheets[all][] = css/ik.styles.css

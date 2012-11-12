@@ -1,0 +1,14 @@
+#page {
+  overflow: hidden;
+}
+
+#sidebar-first {
+  float: left;
+  width: 15%;
+}
+
+#pageinner {
+  float: left;
+  width: 85%;
+}
+
