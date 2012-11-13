@@ -1,3 +1,14 @@
+html {
+  height: 100%;
+}
+body {
+  position: relative;
+  height: 100%;
+  -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
+  -moz-box-sizing: border-box;    /* Firefox, other Gecko */
+  box-sizing: border-box;         /* Opera/IE 8+ */
+}
+
 #page {
   overflow: hidden;
 }
@@ -29,3 +40,15 @@
     margin-right: 0;
   }
 }
+
+#footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  background-color: #000;
+  color: white;
+  overflow: hidden;;
+}
+  #footerinner {
+    padding: 20px 20px 40px 20px;  
+  }

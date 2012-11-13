@@ -7,10 +7,9 @@
 
 ;----------// Regions
   regions[content] = Content
+  regions[sidebar_first] = Sidebar
+  regions[footer] = Footer
   regions[help] = Help
-  regions[page_top] = Page top
-  regions[page_bottom] = Page bottom
-  regions[sidebar_first] = First sidebar
 
 ;----------// Stylesheets
   stylesheets[all][] = css/ik.styles.css

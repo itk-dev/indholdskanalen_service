@@ -42,8 +42,11 @@
       </div>
     <?php endif; ?>
 
-    <div id="footer clearfix">
+  </div>
+
+  <div id="footer" class="clearfix">
+    <div id="footerinner">
+      <?php print render($page['footer']); ?>
       <?php print $feed_icons; ?>
     </div>
-
   </div>
