@@ -9,11 +9,6 @@
   </div>
 
   <div id="page">
-    <?php if ($page['sidebar_first']): ?>
-      <div id="sidebar-first" class="sidebar">
-        <?php print render($page['sidebar_first']); ?>
-      </div>
-    <?php endif; ?>
 
     <?php if ($page['sidebar_first']): ?>
       <div id="pageinner">
@@ -37,12 +32,18 @@
       <?php print render($page['content']); ?>
     </div>
 
-    <div id="footer">
-      <?php print $feed_icons; ?>
-    </div>
-
     <?php if ($page['sidebar_first']): ?>
       </div>
     <?php endif; ?>
+
+    <?php if ($page['sidebar_first']): ?>
+      <div id="sidebar-first" class="sidebar">
+        <?php print render($page['sidebar_first']); ?>
+      </div>
+    <?php endif; ?>
+
+    <div id="footer clearfix">
+      <?php print $feed_icons; ?>
+    </div>
 
   </div>

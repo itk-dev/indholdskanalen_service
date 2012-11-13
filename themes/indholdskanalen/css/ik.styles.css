@@ -3,12 +3,29 @@
 }
 
 #sidebar-first {
-  float: left;
-  width: 15%;
+  float: right;
+  width: 20%;
 }
 
 #pageinner {
   float: left;
-  width: 85%;
+  width: 80%;
 }
 
+#pageinner #content {
+  margin-right: 2em;
+}
+
+@media only screen and (max-width: 800px) {
+  #sidebar-first {
+    float: none;
+    width: 100%;
+  }
+  #pageinner {
+    float: none;
+    width: 100%;
+  }
+  #pageinner #content {
+    margin-right: 0;
+  }
+}
