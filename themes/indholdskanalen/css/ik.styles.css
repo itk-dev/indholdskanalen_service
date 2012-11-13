@@ -1,9 +1,7 @@
-html {
-  height: 100%;
-}
+html, body, #container { height: 100%; margin: 0; padding: 0; }
+body > #container { height: auto; min-height: 100%; }
+
 body {
-  position: relative;
-  height: 100%;
   -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
   -moz-box-sizing: border-box;    /* Firefox, other Gecko */
   box-sizing: border-box;         /* Opera/IE 8+ */
@@ -42,13 +40,21 @@ body {
 }
 
 #footer {
-  position: absolute;
-  bottom: 0;
+  clear: both;
+  position: relative;
+  z-index: 10;
+  height: 6em;
+  margin-top: -6em;
   width: 100%;
-  background-color: #000;
+  background-color: #666666;
   color: white;
-  overflow: hidden;;
+  -moz-box-shadow: 0 3px 20px #000;
+  -webkit-box-shadow: 0 3px 20px black;
+  box-shadow: 0 3px 20px black;
+  filter: progid:DXImageTransform.Microsoft.Shadow(color=#000000, direction='180', strength='10');
+  -ms-filter: "progid:DXImageTransform.Microsoft.Shadow(color=#000000, direction='180', strength='10')";
+  -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
+  -moz-box-sizing: border-box;    /* Firefox, other Gecko */
+  box-sizing: border-box;         /* Opera/IE 8+ */
+  padding: 20px 20px 40px 20px;
 }
-  #footerinner {
-    padding: 20px 20px 40px 20px;  
-  }

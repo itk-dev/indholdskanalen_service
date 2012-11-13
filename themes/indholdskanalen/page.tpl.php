@@ -1,3 +1,4 @@
+<div id="container">
   <div id="branding" class="clearfix">
     <?php print $breadcrumb; ?>
     <?php print render($title_prefix); ?>
@@ -43,10 +44,9 @@
     <?php endif; ?>
 
   </div>
+</div>
 
-  <div id="footer" class="clearfix">
-    <div id="footerinner">
-      <?php print render($page['footer']); ?>
-      <?php print $feed_icons; ?>
-    </div>
-  </div>
+<div id="footer" class="clearfix">
+  <?php print render($page['footer']); ?>
+  <?php print $feed_icons; ?>
+</div>
