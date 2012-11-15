@@ -60,6 +60,28 @@ function ik_roles_and_permissions_user_default_permissions() {
     'module' => 'user',
   );
 
+  // Exported permission: clone node.
+  $permissions['clone node'] = array(
+    'name' => 'clone node',
+    'roles' => array(
+      0 => 'administrator',
+      1 => 'contributor',
+      2 => 'editor',
+    ),
+    'module' => 'clone',
+  );
+
+  // Exported permission: clone own nodes.
+  $permissions['clone own nodes'] = array(
+    'name' => 'clone own nodes',
+    'roles' => array(
+      0 => 'administrator',
+      1 => 'contributor',
+      2 => 'editor',
+    ),
+    'module' => 'clone',
+  );
+
   // Exported permission: create channel content.
   $permissions['create channel content'] = array(
     'name' => 'create channel content',
