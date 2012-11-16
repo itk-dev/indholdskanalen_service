@@ -89,7 +89,7 @@ function ik_dashboard_default_page_manager_pages() {
     $pane->pid = 'new-1';
     $pane->panel = 'left';
     $pane->type = 'views_panes';
-    $pane->subtype = 'ik_groups_content-panel_pane_5';
+    $pane->subtype = 'ik_dashboard-panel_pane_4';
     $pane->shown = TRUE;
     $pane->access = array();
     $pane->configuration = array();
