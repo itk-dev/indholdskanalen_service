@@ -321,6 +321,15 @@ function ik_channel_filter_field_widget_form(&$form, &$form_state, $field, $inst
 
         // Start query...
 
+        /***
+         *
+         * @todo: This have to be move into its own function, so the code can be
+         *        re-used as an menu callback. There may be a need to introduce
+         *        a static and or cache with litte life time.
+         *
+         */
+
+
         // Loop over fields and get configuration
         foreach ($field_names as $name) {
           // Check that the current field as any values
