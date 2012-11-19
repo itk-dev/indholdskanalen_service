@@ -334,7 +334,6 @@ function ik_channels_field_default_fields() {
         'ik_search' => array(
           'types' => array(
             'field_channel_categories_tags' => 'field_channel_categories_tags',
-            'field_channel_channels' => 'field_channel_channels',
             'field_channel_department' => 'field_channel_department',
             'field_channel_orgnization' => 'field_channel_orgnization',
             'field_channel_slides' => 'field_channel_slides',

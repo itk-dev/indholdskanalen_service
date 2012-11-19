@@ -386,35 +386,42 @@ function ik_channel_filter_field_widget_form(&$form, &$form_state, $field, $inst
               $vocabularies = array_filter($field_info['settings']['ik_search']['vocabulary']);
               $term_fields = array_filter($field_info['settings']['ik_search']['fields']);
 
+              // This have to be done foreach vocabulary and join to gether.
+
 //              SELECT DISTINCT n.nid, n.title
 //              FROM node n
 //              INNER JOIN (
-//                SELECT t1.entity_id AS etid
-//                FROM taxonomy_vocabulary tv
-//                INNER JOIN taxonomy_term_data ttd ON tv.vid = ttd.vid
-//                INNER JOIN field_data_field_ik_slide_tags t1 ON t1.field_ik_slide_tags_tid = ttd.tid -- Dynamic join field tables.
-//                WHERE machine_name IN ('tags') -- Vocabularies
-//                  AND ttd.name IN ('Fly') -- Tag names
-//              ) inner_n
-//              ON n.nid = inner_n.etid
+//                SELECT entity_id AS nid
+//                  FROM field_data_field_ik_slide_tags
+//                WHERE field_ik_slide_tags_tid IN (
+//                  SELECT ttd.tid
+//                  FROM taxonomy_term_data ttd
+//                  INNER JOIN taxonomy_vocabulary tv ON tv.vid = ttd.vid
+//                  WHERE machine_name = 'tags'
+//                  AND ttd.name IN ('Fly', 'Pinball') -- terms to find
+//                )
+//                GROUP BY entity_id
+//                HAVING count(1) = 2 -- number of terms
+//              ) AS inner_nid ON inner_nid.nid = n.nid
 
               break;
           }
 
           // Join up the temporary tables to find the nodes.
-          $base = array_shift($tables);
-          $query = db_select($base, 'base')
-            ->fields('base', array('nid', 'title'));
-          foreach ($tables as $table) {
-            $query->join($table, $table, 'base.nid = ' . $table . '.nid');
+          if (!empty($tables)) {
+            $base = array_shift($tables);
+            $query = db_select($base, 'base')
+              ->fields('base', array('nid', 'title'));
+            foreach ($tables as $table) {
+              $query->join($table, $table, 'base.nid = ' . $table . '.nid');
+            }
+            $results = $query->execute()->fetchAll();
+
+            // Return information about the slides.
+            $element['message'] = array(
+              '#markup' => t('@count slides found', array('@count' => count($results))),
+            );
           }
-          $results = $query->execute()->fetchAll();
-
-          // Return information about the slides.
-          $element['message'] = array(
-            '#markup' => t('@count slides found', array('@count' => count($results))),
-          );
-
         }
 
         $i =1;
