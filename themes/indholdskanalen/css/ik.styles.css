@@ -89,17 +89,47 @@ body {
       content: "- ";
     }
 
-/* Default sidebar block styling */
-.sidebar .block {
+/* Default sidebar block's and panel pane's styling */
+.sidebar .block,
+.panel-pane {
   border: solid 1px #666;
-  margin-bottom: 15px;
+  margin-bottom: 2em;
+  -moz-box-shadow: 0 3px 10px #666;
+  -webkit-box-shadow: 0 3px 10px #666;
+  box-shadow: 0 3px 10px #666;
+  filter: progid:DXImageTransform.Microsoft.Shadow(color=#666666, direction='180', strength='5');
+  -ms-filter: "progid:DXImageTransform.Microsoft.Shadow(color=#666666, direction='180', strength='5')";
+  -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
+  -moz-box-sizing: border-box;    /* Firefox, other Gecko */
+  box-sizing: border-box;         /* Opera/IE 8+ */
 }
-  .sidebar .block .content{
-    padding: 5px;
+  .sidebar .block .content,
+  .panel-pane .pane-content{
+    padding: 10px;
   }
-  .sidebar .block h2 {
+  .sidebar .block h2,
+  .panel-pane h2.pane-title {
     margin: 0;
     background-color: #666;
     color: white;
     padding: 3px;
   }
+
+  .sidebar .block-menu {
+    border-color: #000;
+  }
+  .sidebar .block-menu h2 {
+    background-color: #000;
+  }
+
+/* Panels tweaks */
+.panel-col-last .inside {
+  margin-left: 1em!important;
+}
+.panel-col-first .inside {
+  margin-right: 1em!important;
+}
+.panel-col .inside {
+  margin-left: 1em!important;
+  margin-right: 1em!important;
+}
