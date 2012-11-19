@@ -62,3 +62,44 @@ body {
 #page {
   padding-bottom: 7em;
 }
+
+/* Sidebar menu styling */
+.sidebar ul.menu,
+.sidebar ul.links {
+  margin: 0;
+}
+  .sidebar .menu li,
+  .sidebar .menu li.expanded,
+  .sidebar .menu li.collapsed {
+    margin: 0;
+    list-style: none;
+  }
+  .sidebar .menu li a {
+    display: block;
+  }
+    .sidebar .menu li a.active {
+      background-color: #E0E0D8;
+      padding-left: 2px;
+    }
+
+    .sidebar .menu .menu li a {
+      padding-left: 5px;
+    }
+    .sidebar .menu .menu li a:before {
+      content: "- ";
+    }
+
+/* Default sidebar block styling */
+.sidebar .block {
+  border: solid 1px #666;
+  margin-bottom: 15px;
+}
+  .sidebar .block .content{
+    padding: 5px;
+  }
+  .sidebar .block h2 {
+    margin: 0;
+    background-color: #666;
+    color: white;
+    padding: 3px;
+  }
