@@ -328,10 +328,13 @@ function ik_channel_filter_field_widget_form(&$form, &$form_state, $field, $inst
           if (empty($values)) {
             continue;
           }
-          $values = explode(',', $values[$langcode][$delta]['data']);
+          $values = $values[$langcode][$delta]['data'];
 
+          // Get information about the fields configuration.
           $field_info = field_info_field($name);
 
+          // User an array to store temporary tables.
+          $tables = array();
           switch ($field_info['settings']['ik_search']['type']) {
             case 'types':
               // Get select content types.
@@ -339,29 +342,34 @@ function ik_channel_filter_field_widget_form(&$form, &$form_state, $field, $inst
 
               // Check special case where the content type is the same as the on
               // we are creating. We have to assume that is has slides.
-              if (count($types) == 1 AND $entity->type == key($types)) {
+              if (count($types) == 1 && $entity->type == key($types)) {
                 // @TODO: implement this if needed.
               }
               else {
-//              SELECT n.nid, n.title
-//              FROM node n
-//              WHERE n.title IN ('Mollis Parturient') -- $values
+                // Select the nodes into a temporary table.
+                $query = 'SELECT n.nid, n.title
+                            FROM node n
+                           WHERE n.title IN (:titles)';
+                $tables[] = db_query_temporary($query, array(':titles' => $values));
               }
               break;
 
             case 'og':
-
-//              SELECT ogm.etid, n.nid, n.title
-//              FROM og_membership ogm
-//              INNER JOIN (
-//                SELECT etid
-//                FROM node n
-//                INNER JOIN og_membership ogm ON n.nid = ogm.gid
-//                WHERE n.title IN ('Aarhus biblioteker') -- $values
-//                AND ogm.entity_type = 'node') inner_ogm
-//              ON ogm.gid = inner_ogm.etid
-//              INNER JOIN node n ON ogm.etid = n.nid
-//              WHERE ogm.entity_type = 'node'
+              $query = "SELECT n.nid, n.title
+                        FROM og_membership ogm
+                        INNER JOIN (
+                          SELECT etid
+                          FROM node n
+                          INNER JOIN og_membership ogm ON n.nid = ogm.gid
+                          WHERE n.title IN (:groups)
+                          AND ogm.entity_type = 'node') inner_ogm
+                        ON ogm.gid = inner_ogm.etid
+                        INNER JOIN node n ON ogm.etid = n.nid
+                        WHERE ogm.entity_type = 'node'";
+              $tables[] = db_query_temporary($query, array(':groups' => $values));
+              /**
+               * INDEX TABLES with opreation type (AND || OR)
+               */
 
               break;
 
@@ -384,7 +392,20 @@ function ik_channel_filter_field_widget_form(&$form, &$form_state, $field, $inst
               break;
           }
 
-//        final select from temp table
+          // Join up the temporary tables to find the nodes.
+          $base = array_shift($tables);
+          $query = db_select($base, 'base')
+            ->fields('base', array('nid', 'title'));
+          foreach ($tables as $table) {
+            $query->join($table, $table, 'base.nid = ' . $table . '.nid');
+          }
+          $results = $query->execute()->fetchAll();
+
+          // Return information about the slides.
+          $element['message'] = array(
+            '#markup' => t('@count slides found', array('@count' => count($results))),
+          );
+
         }
 
         $i =1;
