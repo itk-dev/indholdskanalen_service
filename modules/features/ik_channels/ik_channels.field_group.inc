@@ -52,11 +52,11 @@ function ik_channels_field_group_info() {
     'label' => 'Filter',
     'weight' => '1',
     'children' => array(
-      0 => 'field_channel_orgnization',
-      1 => 'field_channel_department',
-      2 => 'field_channel_categories_tags',
-      3 => 'field_channel_channels',
-      4 => 'field_channel_slides',
+      0 => 'field_channel_department',
+      1 => 'field_channel_orgnization',
+      2 => 'field_channel_slides',
+      3 => 'field_channel_tags',
+      4 => 'field_channel_categories',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
