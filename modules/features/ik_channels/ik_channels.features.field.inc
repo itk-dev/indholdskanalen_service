@@ -24,12 +24,7 @@ function ik_channels_field_default_fields() {
       'module' => 'ik_channel_filter',
       'settings' => array(
         'ik_search' => array(
-          'fields' => array(
-            'field_ik_slide_category' => 'field_ik_slide_category',
-            'field_ik_slide_tags' => 0,
-            'field_subject' => 0,
-            'field_tags' => 0,
-          ),
+          'fields' => 'field_ik_slide_category',
           'og' => array(
             'department' => 0,
             'organisation' => 0,
@@ -43,10 +38,7 @@ function ik_channels_field_default_fields() {
             'slide' => 0,
             'static_page' => 0,
           ),
-          'vocabulary' => array(
-            'subject' => 0,
-            'tags' => 0,
-          ),
+          'vocabulary' => 'subject',
         ),
       ),
       'translatable' => '0',
@@ -474,12 +466,7 @@ function ik_channels_field_default_fields() {
       'module' => 'ik_channel_filter',
       'settings' => array(
         'ik_search' => array(
-          'fields' => array(
-            'field_ik_slide_category' => 0,
-            'field_ik_slide_tags' => 'field_ik_slide_tags',
-            'field_subject' => 0,
-            'field_tags' => 0,
-          ),
+          'fields' => 'field_ik_slide_tags',
           'og' => array(
             'department' => 0,
             'organisation' => 0,
@@ -493,10 +480,7 @@ function ik_channels_field_default_fields() {
             'slide' => 0,
             'static_page' => 0,
           ),
-          'vocabulary' => array(
-            'subject' => 0,
-            'tags' => 'tags',
-          ),
+          'vocabulary' => 'tags',
         ),
       ),
       'translatable' => '0',
