@@ -66,9 +66,7 @@ function _ik_channel_filter_autocomplete($field_name, $string = '') {
         // Find vocabularies that we should search for the term.
         $vids = array();
         $vocabularies = taxonomy_vocabulary_get_names();
-        foreach ($field['settings']['ik_search']['vocabulary'] as $vocabulary) {
-          $vids[] = $vocabularies[$vocabulary]->vid;
-        }
+        $vids[] = $vocabularies[$field['settings']['ik_search']['vocabulary']]->vid;
 
         $query = db_select('taxonomy_term_data', 't');
         $query->addTag('translatable');
@@ -314,7 +312,6 @@ function ik_channel_filter_field_widget_form(&$form, &$form_state, $field, $inst
 
   switch ($instance['widget']['type']) {
     case 'ik_filter_search_preview':
-
       if (isset($element['#entity']->nid)) {
         $field_names = isset($field['settings']['ik_search']['types']) ? $field['settings']['ik_search']['types'] : array();
 
@@ -358,7 +355,6 @@ function ik_channel_filter_field_widget_form(&$form, &$form_state, $field, $inst
         '#markup' => t('Thumbnail preview formatter have not yet been implemented'),
       );
       break;
-
 
     case 'ik_filter_search_autocomplete':
       $field_content = isset($items[$delta]['data']) ? $items[$delta]['data'] : '';
