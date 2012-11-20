@@ -156,7 +156,7 @@ function ik_channels_default_page_manager_handlers() {
     $pane->pid = 'new-5';
     $pane->panel = 'left';
     $pane->type = 'entity_form_field';
-    $pane->subtype = 'node:field_channel_categories_tags';
+    $pane->subtype = 'node:field_channel_tags';
     $pane->shown = TRUE;
     $pane->access = array();
     $pane->configuration = array(
@@ -180,7 +180,7 @@ function ik_channels_default_page_manager_handlers() {
     $pane->pid = 'new-6';
     $pane->panel = 'left';
     $pane->type = 'entity_form_field';
-    $pane->subtype = 'node:field_channel_channels';
+    $pane->subtype = 'node:field_channel_categories';
     $pane->shown = TRUE;
     $pane->access = array();
     $pane->configuration = array(

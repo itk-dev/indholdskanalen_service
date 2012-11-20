@@ -249,7 +249,7 @@ function ik_channel_filter_field_settings_form($field, $instance, $has_data) {
       // one selected.
       foreach ($options as $type => $name) {
         $form['ik_search'][$type] = array(
-          '#type' => 'checkboxes',
+          '#type' => $type == 'vocabulary' ? 'radios' : 'checkboxes',
           '#title' => check_plain($name),
           '#options' => $values[$type],
           '#default_value' => isset($settings[$type]) ? $settings[$type] : array(),
@@ -274,7 +274,7 @@ function ik_channel_filter_field_settings_form($field, $instance, $has_data) {
 
       // Display found fields, if vocabulary is selected.
       $form['ik_search']['fields'] = array(
-        '#type' => 'checkboxes',
+        '#type' => 'radios',
         '#title' => t('Taxonomy fields to search'),
         '#description' => t('To speed up preformance you need to select the fields that should be searched and linked to these terms.'),
         '#options' => $options,
@@ -329,6 +329,9 @@ function ik_channel_filter_field_widget_form(&$form, &$form_state, $field, $inst
          *
          */
 
+        // User an array to store temporary tables.
+        $tables_and = array();
+        $tables_or = array();
 
         // Loop over fields and get configuration
         foreach ($field_names as $name) {
@@ -337,13 +340,19 @@ function ik_channel_filter_field_widget_form(&$form, &$form_state, $field, $inst
           if (empty($values)) {
             continue;
           }
-          $values = $values[$langcode][$delta]['data'];
+
+          // Get values and covert them into sql frendly string. Another
+          // solution would be to use the query build...
+          $values = check_plain($values[$langcode][$delta]['data']);
+          $values = explode(',', $values);
+          $values_str = "'" . implode("', '", $values) . "'";
 
           // Get information about the fields configuration.
           $field_info = field_info_field($name);
 
-          // User an array to store temporary tables.
-          $tables = array();
+          // Get operation type between this field and other fields.
+          $operation = $field_info['settings']['ik_search']['operation'];
+
           switch ($field_info['settings']['ik_search']['type']) {
             case 'types':
               // Get select content types.
@@ -356,75 +365,94 @@ function ik_channel_filter_field_widget_form(&$form, &$form_state, $field, $inst
               }
               else {
                 // Select the nodes into a temporary table.
-                $query = 'SELECT n.nid, n.title
+                $query = "SELECT n.nid, n.title
                             FROM node n
-                           WHERE n.title IN (:titles)';
-                $tables[] = db_query_temporary($query, array(':titles' => $values));
+                           WHERE n.title IN (" . $values_str . ")";
               }
               break;
 
             case 'og':
               $query = "SELECT n.nid, n.title
-                        FROM og_membership ogm
+                        FROM {og_membership} ogm
                         INNER JOIN (
                           SELECT etid
-                          FROM node n
-                          INNER JOIN og_membership ogm ON n.nid = ogm.gid
-                          WHERE n.title IN (:groups)
+                          FROM {node} n
+                          INNER JOIN {og_membership} ogm ON n.nid = ogm.gid
+                          WHERE n.title IN (" . $values_str . ")
                           AND ogm.entity_type = 'node') inner_ogm
                         ON ogm.gid = inner_ogm.etid
-                        INNER JOIN node n ON ogm.etid = n.nid
+                        INNER JOIN {node} n ON ogm.etid = n.nid
                         WHERE ogm.entity_type = 'node'";
-              $tables[] = db_query_temporary($query, array(':groups' => $values));
-              /**
-               * INDEX TABLES with opreation type (AND || OR)
-               */
-
               break;
 
             case 'vocabulary':
-              $vocabularies = array_filter($field_info['settings']['ik_search']['vocabulary']);
-              $term_fields = array_filter($field_info['settings']['ik_search']['fields']);
+              $vocabulary = $field_info['settings']['ik_search']['vocabulary'];
+              $term_field = $field_info['settings']['ik_search']['fields'];
 
               // This have to be done foreach vocabulary and join to gether.
-
-//              SELECT DISTINCT n.nid, n.title
-//              FROM node n
-//              INNER JOIN (
-//                SELECT entity_id AS nid
-//                  FROM field_data_field_ik_slide_tags
-//                WHERE field_ik_slide_tags_tid IN (
-//                  SELECT ttd.tid
-//                  FROM taxonomy_term_data ttd
-//                  INNER JOIN taxonomy_vocabulary tv ON tv.vid = ttd.vid
-//                  WHERE machine_name = 'tags'
-//                  AND ttd.name IN ('Fly', 'Pinball') -- terms to find
-//                )
-//                GROUP BY entity_id
-//                HAVING count(1) = 2 -- number of terms
-//              ) AS inner_nid ON inner_nid.nid = n.nid
-
+              $query = "SELECT DISTINCT n.nid, n.title
+                        FROM node n
+                        INNER JOIN (
+                        SELECT entity_id AS nid
+                          FROM field_data_" . $term_field . "
+                          WHERE " . $term_field . "_tid IN (
+                            SELECT ttd.tid
+                            FROM taxonomy_term_data ttd
+                            INNER JOIN taxonomy_vocabulary tv ON tv.vid = ttd.vid
+                            WHERE machine_name = '" . $vocabulary . "'
+                            AND ttd.name IN (" . $values_str . ")
+                          )
+                          GROUP BY entity_id
+                          HAVING count(1) = " . count($values) . "
+                        ) AS inner_nid ON inner_nid.nid = n.nid";
               break;
           }
 
-          // Join up the temporary tables to find the nodes.
-          if (!empty($tables)) {
-            $base = array_shift($tables);
-            $query = db_select($base, 'base')
-              ->fields('base', array('nid', 'title'));
-            foreach ($tables as $table) {
-              $query->join($table, $table, 'base.nid = ' . $table . '.nid');
-            }
-            $results = $query->execute()->fetchAll();
-
-            // Return information about the slides.
-            $element['message'] = array(
-              '#markup' => t('@count slides found', array('@count' => count($results))),
-            );
+          // Excute query into temporary table and store it base on its
+          // operation in relation to other fields.
+          if ($operation) {
+            $tables_or[] = db_query_temporary($query);
+          }
+          else {
+            $tables_and[] = db_query_temporary($query);
           }
         }
 
-        $i =1;
+        // Union temporary tables that are and'ed.
+        $query = FALSE;
+        if (!empty($tables_and)) {
+          $base = array_shift($tables_and);
+          $query = db_select($base, 'base')->fields('base', array('nid', 'title'));
+          foreach ($tables_and as $table) {
+            $query->join($table, $table, 'base.nid = ' . $table . '.nid');
+          }
+        }
+
+        // Union temporary tables that are or'ed.
+        $or_query = FALSE;
+        if (!empty($tables_or)) {
+          $base = array_shift($tables_or);
+          $or_query = db_select($base, 'base')->fields('base', array('nid', 'title'));
+          foreach ($tables_or as $table) {
+            $or_query->union($table, 'DISTINCT');
+          }
+        }
+
+        // Base on the querys created above (union the query and or querys).
+        if ($query && $or_query) {
+          $query->union($or_query, 'DISTINCT');
+        }
+        elseif (!$query && $or_query) {
+          $query = $or_query;
+        }
+
+        // Get the final result.
+        $results = $query->execute()->fetchAll();
+
+        // Return information about the slides.
+        $element['message'] = array(
+          '#markup' => t('@count slides found', array('@count' => count($results))),
+        );
       }
       else {
         $element['message'] = array(
