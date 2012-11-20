@@ -20,6 +20,18 @@ function ik_channel_filter_menu() {
     'type' => MENU_CALLBACK,
   );
 
+  /**
+   * @todo: This path may need to be change, when we start on the front-end.
+   *        Remember to update the JS in the preview code.
+   */
+  $items['ik/preview/update'] = array(
+    'title' => 'Update slides preview',
+    'page callback' => '_ik_channel_preview_update',
+    'access arguments' => array('access content'),
+    'type' => MENU_CALLBACK,
+    'file' => 'ik_channel_filter.queries.inc',
+  );
+
   return $items;
 }
 
@@ -326,7 +338,7 @@ function ik_channel_filter_field_widget_form(&$form, &$form_state, $field, $inst
 
         // Get slides.
         module_load_include('inc', 'ik_channel_filter', 'ik_channel_filter.queries');
-        $slides = ik_channel_filter_get_slides($field_names, $values);
+        $slides = ik_channel_filter_get_slides($values);
 
         // Theme the slides as a list for now.
         $items = array();

@@ -11,9 +11,6 @@
  * @param Entity $entity
  *  The node/entity holding the channel filter fields that should be used on the
  *  search/filtering.
- * @param array $field_names
- *  Array of fieldnames that indicates which fields on the entity that should be
- *  used.
  * @param array $values
  *  If values is parsed they are used in the filter. If no the values are loaded
  *  from the entity. This is utilized when make AJAX callback to get new filter
@@ -21,20 +18,21 @@
  * @return array
  *  Database result with the found nid's and there titles.
  */
-function ik_channel_filter_get_slides($field_names, $raw_values) {
+function ik_channel_filter_get_slides($raw_values) {
+  if (empty($raw_values)) {
+    // It may happen when creating a new node or make AJAX callbacks.
+    return $raw_values;
+  }
+
   // User an array to store temporary tables.
   $tables_and = array();
   $tables_or = array();
 
   // Loop over fields and get configuration
-  foreach ($field_names as $fieldname) {
-    if (!isset($raw_values[$fieldname])) {
-      continue;
-    }
+  foreach ($raw_values as $fieldname => $values) {
     // Get values and covert them into sql frendly string. Another
     // solution would be to use the query build...
-    $values = check_plain($raw_values[$fieldname]);
-    $values = explode(',', $values);
+    $values = explode(',', check_plain($values));
     $values_str = "'" . implode("', '", $values) . "'";
 
     // Get information about the fields configuration.
@@ -129,4 +127,22 @@ function ik_channel_filter_get_slides($field_names, $raw_values) {
 
   // Get the final result.
   return $query->execute()->fetchAll();
+}
+
+function _ik_channel_preview_update() {
+  $raw_values = array();
+  if (isset($_POST['ik_preview_values'])) {
+    foreach ($_POST['ik_preview_values'] as $fieldname => $values) {
+      if (!empty($values)) {
+        $raw_values[check_plain($fieldname)] = check_plain($values);
+      }
+    }
+  }
+
+  /**
+   * @todo call theme function on the data.
+   */
+
+  $slides = ik_channel_filter_get_slides($raw_values);
+  drupal_json_output($slides);
 }

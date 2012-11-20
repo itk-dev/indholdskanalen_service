@@ -18,7 +18,7 @@
 
       // Remove the item and update the hidden field.
       item.remove();
-      value.val(current);
+      value.val(current).change();
     });
 
     // Handle add button.
@@ -33,10 +33,10 @@
       // Update the hidden field and handle that it may be empty.
       var current = parent.find('input[type="hidden"]').val();
       if (current === '') {
-        parent.find('input[type="hidden"]').val(data);
+        parent.find('input[type="hidden"]').val(data).change();
       }
       else {
-        parent.find('input[type="hidden"]').val(current + ',' + data);
+        parent.find('input[type="hidden"]').val(current + ',' + data).change();
       }
 
       // Update the UI by adding the element.
