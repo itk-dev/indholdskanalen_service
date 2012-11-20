@@ -81,8 +81,8 @@ function ik_slides_field_group_info() {
     'weight' => '1',
     'children' => array(
       0 => 'field_ik_slide_color',
-      1 => 'field_ik_slide_text_color',
-      2 => 'field_ik_slide_logo',
+      1 => 'field_ik_slide_logo',
+      2 => 'field_ik_slide_text_color',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
@@ -99,6 +99,34 @@ function ik_slides_field_group_info() {
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
+  $field_group->identifier = 'group_ik_slide_layout|node|slide|form';
+  $field_group->group_name = 'group_ik_slide_layout';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'slide';
+  $field_group->mode = 'form';
+  $field_group->parent_name = 'group_ik_slide_template';
+  $field_group->data = array(
+    'label' => 'Layout',
+    'weight' => '11',
+    'children' => array(
+      0 => 'field_layout',
+    ),
+    'format_type' => 'fieldset',
+    'format_settings' => array(
+      'label' => 'Layout',
+      'instance_settings' => array(
+        'required_fields' => 1,
+        'classes' => '',
+        'description' => '',
+      ),
+      'formatter' => 'collapsed',
+    ),
+  );
+  $export['group_ik_slide_layout|node|slide|form'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
   $field_group->identifier = 'group_ik_slide_template|node|slide|form';
   $field_group->group_name = 'group_ik_slide_template';
   $field_group->entity_type = 'node';
@@ -110,7 +138,7 @@ function ik_slides_field_group_info() {
     'weight' => '4',
     'children' => array(
       0 => 'field_ik_slide_exposure',
-      1 => 'field_layout',
+      1 => 'group_ik_slide_layout',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(

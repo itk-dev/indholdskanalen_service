@@ -37,6 +37,7 @@ features[field][] = node-slide-field_layout
 features[field_group][] = group_ik_basic_information|node|slide|form
 features[field_group][] = group_ik_slide_categories|node|slide|form
 features[field_group][] = group_ik_slide_design|node|slide|form
+features[field_group][] = group_ik_slide_layout|node|slide|form
 features[field_group][] = group_ik_slide_template|node|slide|form
 features[file_display][] = application__default__file_field_file_default
 features[file_display][] = application__default__file_field_file_rendered

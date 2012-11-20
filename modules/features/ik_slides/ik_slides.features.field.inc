@@ -843,7 +843,7 @@ function ik_slides_field_default_fields() {
         'module' => 'options',
         'settings' => array(),
         'type' => 'options_buttons',
-        'weight' => '11',
+        'weight' => '12',
       ),
     ),
   );
