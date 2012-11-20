@@ -46,6 +46,5 @@
       // Empty the input field.
       parent.find('input[type="text"]').val('');
     });
-
   });
 })(jQuery);

@@ -1,0 +1,132 @@
+<?php
+/**
+ * @file
+ *
+ */
+
+/**
+ *
+ * @todo: build cache into this.
+ *
+ * @param Entity $entity
+ *  The node/entity holding the channel filter fields that should be used on the
+ *  search/filtering.
+ * @param array $field_names
+ *  Array of fieldnames that indicates which fields on the entity that should be
+ *  used.
+ * @param array $values
+ *  If values is parsed they are used in the filter. If no the values are loaded
+ *  from the entity. This is utilized when make AJAX callback to get new filter
+ *  result before the node is stored.
+ * @return array
+ *  Database result with the found nid's and there titles.
+ */
+function ik_channel_filter_get_slides($field_names, $raw_values) {
+  // User an array to store temporary tables.
+  $tables_and = array();
+  $tables_or = array();
+
+  // Loop over fields and get configuration
+  foreach ($field_names as $fieldname) {
+    if (!isset($raw_values[$fieldname])) {
+      continue;
+    }
+    // Get values and covert them into sql frendly string. Another
+    // solution would be to use the query build...
+    $values = check_plain($raw_values[$fieldname]);
+    $values = explode(',', $values);
+    $values_str = "'" . implode("', '", $values) . "'";
+
+    // Get information about the fields configuration.
+    $field_info = field_info_field($fieldname);
+
+    // Get operation type between this field and other fields.
+    $operation = $field_info['settings']['ik_search']['operation'];
+
+    switch ($field_info['settings']['ik_search']['type']) {
+      case 'types':
+        // Get select content types.
+        $types = array_filter($field_info['settings']['ik_search']['types']);
+        $query = "SELECT n.nid, n.title
+                    FROM node n
+                  WHERE n.title IN (" . $values_str . ")";
+        break;
+
+      case 'og':
+        $query = "SELECT n.nid, n.title
+                  FROM {og_membership} ogm
+                  INNER JOIN (
+                    SELECT etid
+                    FROM {node} n
+                    INNER JOIN {og_membership} ogm ON n.nid = ogm.gid
+                    WHERE n.title IN (" . $values_str . ")
+                    AND ogm.entity_type = 'node') inner_ogm
+                  ON ogm.gid = inner_ogm.etid
+                  INNER JOIN {node} n ON ogm.etid = n.nid
+                  WHERE ogm.entity_type = 'node'";
+        break;
+
+      case 'vocabulary':
+        $vocabulary = $field_info['settings']['ik_search']['vocabulary'];
+        $term_field = $field_info['settings']['ik_search']['fields'];
+
+        // This have to be done foreach vocabulary and join to gether.
+        $query = "SELECT DISTINCT n.nid, n.title
+                  FROM node n
+                  INNER JOIN (
+                  SELECT entity_id AS nid
+                    FROM field_data_" . $term_field . "
+                    WHERE " . $term_field . "_tid IN (
+                      SELECT ttd.tid
+                      FROM taxonomy_term_data ttd
+                      INNER JOIN taxonomy_vocabulary tv ON tv.vid = ttd.vid
+                      WHERE machine_name = '" . $vocabulary . "'
+                      AND ttd.name IN (" . $values_str . ")
+                    )
+                    GROUP BY entity_id
+                    HAVING count(1) = " . count($values) . "
+                  ) AS inner_nid ON inner_nid.nid = n.nid";
+        break;
+    }
+
+    // Excute query into temporary table and store it base on its
+    // operation in relation to other fields.
+    if ($operation) {
+      $tables_or[] = db_query_temporary($query);
+    }
+    else {
+      $tables_and[] = db_query_temporary($query);
+    }
+  }
+
+  // Union temporary tables that are and'ed.
+  $query = FALSE;
+  if (!empty($tables_and)) {
+    $base = array_shift($tables_and);
+    $query = db_select($base, 'base')->fields('base', array('nid', 'title'));
+    foreach ($tables_and as $table) {
+      $query->join($table, $table, 'base.nid = ' . $table . '.nid');
+    }
+  }
+
+  // Union temporary tables that are or'ed.
+  $or_query = FALSE;
+  if (!empty($tables_or)) {
+    $base = array_shift($tables_or);
+    $or_query = db_select($base, 'base')->fields('base', array('nid', 'title'));
+    foreach ($tables_or as $table) {
+      $or_query->union($table, 'DISTINCT');
+    }
+  }
+
+  // Base on the querys created above (union the query and or querys).
+  if ($query && $or_query) {
+    $query->union($or_query, 'DISTINCT');
+  }
+  elseif (!$query && $or_query) {
+    $query = $or_query;
+  }
+
+  // Get the final result.
+  return $query->execute()->fetchAll();
+}
