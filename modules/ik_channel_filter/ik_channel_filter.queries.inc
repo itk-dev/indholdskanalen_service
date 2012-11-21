@@ -51,17 +51,39 @@ function ik_channel_filter_get_slides($raw_values) {
         break;
 
       case 'og':
-        $query = "SELECT n.nid, n.title
-                  FROM {og_membership} ogm
-                  INNER JOIN (
-                    SELECT etid
-                    FROM {node} n
-                    INNER JOIN {og_membership} ogm ON n.nid = ogm.gid
-                    WHERE n.title IN (" . $values_str . ")
-                    AND ogm.entity_type = 'node') inner_ogm
-                  ON ogm.gid = inner_ogm.etid
-                  INNER JOIN {node} n ON ogm.etid = n.nid
-                  WHERE ogm.entity_type = 'node'";
+        // We are searching on two levels and this is fixed in some what a
+        // hacked way. But it works for now :-|
+        //  * department -> slide and
+        //  * orgranistaion -> department -> slide
+        $og_type = array_filter($field_info['settings']['ik_search']['og']);
+        if (!isset($og_type['organisation'])) {
+          // One level OG search.
+          $query = "SELECT n.nid, n.title FROM node n
+                    INNER JOIN (
+                      SELECT etid FROM og_membership WHERE gid IN (
+                        SELECT n.nid
+                        FROM node n
+                        WHERE type = '" . array_shift($og_type) . "'
+                        AND n.title IN (" . $values_str . ")
+                      )
+                      AND entity_type = 'node'
+                    ) inner_og ON n.nid = inner_og.etid
+                    AND n.type = 'slide'";
+        }
+        else {
+          // Two level OG search.
+          $query = "SELECT n.nid, n.title
+                    FROM {og_membership} ogm
+                    INNER JOIN (
+                      SELECT etid
+                      FROM {node} n
+                      INNER JOIN {og_membership} ogm ON n.nid = ogm.gid
+                      WHERE n.title IN (" . $values_str . ")
+                      AND ogm.entity_type = 'node') inner_ogm
+                    ON ogm.gid = inner_ogm.etid
+                    INNER JOIN {node} n ON ogm.etid = n.nid
+                    WHERE ogm.entity_type = 'node'";
+        }
         break;
 
       case 'vocabulary':
