@@ -52,10 +52,9 @@ function ik_channels_field_default_fields() {
       'display' => array(
         'default' => array(
           'label' => 'above',
-          'module' => NULL,
           'settings' => array(),
-          'type' => 'ik_filter_search_formatter',
-          'weight' => 10,
+          'type' => 'hidden',
+          'weight' => '10',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -131,10 +130,9 @@ function ik_channels_field_default_fields() {
       'display' => array(
         'default' => array(
           'label' => 'above',
-          'module' => NULL,
           'settings' => array(),
-          'type' => 'ik_filter_search_formatter',
-          'weight' => 4,
+          'type' => 'hidden',
+          'weight' => '4',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -198,7 +196,7 @@ function ik_channels_field_default_fields() {
           'module' => 'text',
           'settings' => array(),
           'type' => 'text_default',
-          'weight' => 2,
+          'weight' => '2',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -281,10 +279,9 @@ function ik_channels_field_default_fields() {
       'display' => array(
         'default' => array(
           'label' => 'above',
-          'module' => NULL,
           'settings' => array(),
-          'type' => 'ik_filter_search_formatter',
-          'weight' => 3,
+          'type' => 'hidden',
+          'weight' => '3',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -344,10 +341,10 @@ function ik_channels_field_default_fields() {
       'display' => array(
         'default' => array(
           'label' => 'above',
-          'module' => NULL,
+          'module' => 'ik_channel_filter',
           'settings' => array(),
-          'type' => 'ik_filter_search_preview_formatter',
-          'weight' => 8,
+          'type' => 'ik_channel_filter_preview_formatter',
+          'weight' => '8',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -423,10 +420,9 @@ function ik_channels_field_default_fields() {
       'display' => array(
         'default' => array(
           'label' => 'above',
-          'module' => NULL,
           'settings' => array(),
-          'type' => 'ik_filter_search_formatter',
-          'weight' => 7,
+          'type' => 'hidden',
+          'weight' => '7',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -494,10 +490,9 @@ function ik_channels_field_default_fields() {
       'display' => array(
         'default' => array(
           'label' => 'above',
-          'module' => NULL,
           'settings' => array(),
-          'type' => 'ik_filter_search_formatter',
-          'weight' => 9,
+          'type' => 'hidden',
+          'weight' => '9',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -583,7 +578,7 @@ function ik_channels_field_default_fields() {
             'link' => FALSE,
           ),
           'type' => 'entityreference_label',
-          'weight' => 1,
+          'weight' => '1',
         ),
         'teaser' => array(
           'label' => 'above',
