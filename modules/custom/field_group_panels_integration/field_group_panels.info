@@ -1,0 +1,8 @@
+name = Field-Group panels integration
+description = Makes field groups available as renderable content_type in panels
+core = 7.x
+package = Fields
+
+dependencies[] = entity
+dependencies[] = panels
+dependencies[] = field_group
