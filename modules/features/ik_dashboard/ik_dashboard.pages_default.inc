@@ -407,20 +407,7 @@ function ik_dashboard_default_page_manager_pages() {
     $pane->subtype = 'ik_dashboard-panel_pane_2';
     $pane->shown = TRUE;
     $pane->access = array(
-      'plugins' => array(
-        0 => array(
-          'name' => 'role',
-          'settings' => array(
-            'rids' => array(
-              0 => 3,
-              1 => 4,
-              2 => 5,
-            ),
-          ),
-          'context' => 'logged-in-user',
-          'not' => FALSE,
-        ),
-      ),
+      'plugins' => array(),
     );
     $pane->configuration = array();
     $pane->cache = array();
@@ -440,19 +427,7 @@ function ik_dashboard_default_page_manager_pages() {
     $pane->subtype = 'ik_dashboard-panel_pane_3';
     $pane->shown = TRUE;
     $pane->access = array(
-      'plugins' => array(
-        0 => array(
-          'name' => 'role',
-          'settings' => array(
-            'rids' => array(
-              0 => 3,
-              1 => 5,
-            ),
-          ),
-          'context' => 'logged-in-user',
-          'not' => FALSE,
-        ),
-      ),
+      'plugins' => array(),
     );
     $pane->configuration = array();
     $pane->cache = array();
