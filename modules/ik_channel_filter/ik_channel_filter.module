@@ -447,3 +447,50 @@ function ik_channel_filter_field_widget_form(&$form, &$form_state, $field, $inst
 function ik_channel_filter_field_widget_error($element, $error, $form, &$form_state) {
 
 }
+
+function ik_channel_filter_field_formatter_info() {
+  return array(
+    'ik_channel_filter_preview_formatter' => array(
+      'label' => t('Default'),
+      'field types' => array('ik_channel_filter_preview'),
+    ),
+  );
+}
+
+function ik_channel_filter_field_formatter_view($entity_type, $entity, $field, $instance, $langcode, $items, $display) {
+  $element = array();
+  $settings = $display['settings'];
+
+  switch ($display['type']) {
+    case 'ik_channel_filter_preview_formatter':
+
+      $field_names = isset($field['settings']['ik_search']['types']) ? $field['settings']['ik_search']['types'] : array();
+
+      // Get values that shold be used to find slids.
+      $values = array();
+      foreach ($field_names as $fieldname) {
+        $data = $entity->$fieldname;
+        if (!empty($data[$langcode][0]['data'])) {
+          $values[$fieldname] = check_plain($data[$langcode][0]['data']);
+        }
+      }
+
+      module_load_include('inc', 'ik_channel_filter', 'ik_channel_filter.queries');
+      $slides = ik_channel_filter_get_slides($values);
+
+      // Theme the slides as a list for now.
+      $items = array();
+      foreach ($slides as $slide) {
+        $items[] = $slide->title;
+      }
+
+      $element['preview'] = array(
+        '#prefix' => '<div class="ik-filter-preview-wrapper">',
+        '#markup' => t('@count slides found', array('@count' => count($slides))) . theme('item_list', array('items' => $items)),
+        '#suffix' => '</div>',
+      );
+      break;
+  }
+
+  return $element;
+}
