@@ -20,6 +20,18 @@ function ik_channel_filter_menu() {
     'type' => MENU_CALLBACK,
   );
 
+  /**
+   * @todo: This path may need to be change, when we start on the front-end.
+   *        Remember to update the JS in the preview code.
+   */
+  $items['ik/preview/update'] = array(
+    'title' => 'Update slides preview',
+    'page callback' => '_ik_channel_preview_update',
+    'access arguments' => array('access content'),
+    'type' => MENU_CALLBACK,
+    'file' => 'ik_channel_filter.queries.inc',
+  );
+
   return $items;
 }
 
@@ -66,9 +78,7 @@ function _ik_channel_filter_autocomplete($field_name, $string = '') {
         // Find vocabularies that we should search for the term.
         $vids = array();
         $vocabularies = taxonomy_vocabulary_get_names();
-        foreach ($field['settings']['ik_search']['vocabulary'] as $vocabulary) {
-          $vids[] = $vocabularies[$vocabulary]->vid;
-        }
+        $vids[] = $vocabularies[$field['settings']['ik_search']['vocabulary']]->vid;
 
         $query = db_select('taxonomy_term_data', 't');
         $query->addTag('translatable');
@@ -314,144 +324,35 @@ function ik_channel_filter_field_widget_form(&$form, &$form_state, $field, $inst
 
   switch ($instance['widget']['type']) {
     case 'ik_filter_search_preview':
-
       if (isset($element['#entity']->nid)) {
-        $entity = $element['#entity'];
         $field_names = isset($field['settings']['ik_search']['types']) ? $field['settings']['ik_search']['types'] : array();
 
-        // Start query...
-
-        /***
-         *
-         * @todo: This have to be move into its own function, so the code can be
-         *        re-used as an menu callback. There may be a need to introduce
-         *        a static and or cache with litte life time.
-         *
-         */
-
-        // User an array to store temporary tables.
-        $tables_and = array();
-        $tables_or = array();
-
-        // Loop over fields and get configuration
-        foreach ($field_names as $name) {
-          // Check that the current field as any values
-          $values = $entity->$name;
-          if (empty($values)) {
-            continue;
-          }
-
-          // Get values and covert them into sql frendly string. Another
-          // solution would be to use the query build...
-          $values = check_plain($values[$langcode][$delta]['data']);
-          $values = explode(',', $values);
-          $values_str = "'" . implode("', '", $values) . "'";
-
-          // Get information about the fields configuration.
-          $field_info = field_info_field($name);
-
-          // Get operation type between this field and other fields.
-          $operation = $field_info['settings']['ik_search']['operation'];
-
-          switch ($field_info['settings']['ik_search']['type']) {
-            case 'types':
-              // Get select content types.
-              $types = array_filter($field_info['settings']['ik_search']['types']);
-
-              // Check special case where the content type is the same as the on
-              // we are creating. We have to assume that is has slides.
-              if (count($types) == 1 && $entity->type == key($types)) {
-                // @TODO: implement this if needed.
-              }
-              else {
-                // Select the nodes into a temporary table.
-                $query = "SELECT n.nid, n.title
-                            FROM node n
-                           WHERE n.title IN (" . $values_str . ")";
-              }
-              break;
-
-            case 'og':
-              $query = "SELECT n.nid, n.title
-                        FROM {og_membership} ogm
-                        INNER JOIN (
-                          SELECT etid
-                          FROM {node} n
-                          INNER JOIN {og_membership} ogm ON n.nid = ogm.gid
-                          WHERE n.title IN (" . $values_str . ")
-                          AND ogm.entity_type = 'node') inner_ogm
-                        ON ogm.gid = inner_ogm.etid
-                        INNER JOIN {node} n ON ogm.etid = n.nid
-                        WHERE ogm.entity_type = 'node'";
-              break;
-
-            case 'vocabulary':
-              $vocabulary = $field_info['settings']['ik_search']['vocabulary'];
-              $term_field = $field_info['settings']['ik_search']['fields'];
-
-              // This have to be done foreach vocabulary and join to gether.
-              $query = "SELECT DISTINCT n.nid, n.title
-                        FROM node n
-                        INNER JOIN (
-                        SELECT entity_id AS nid
-                          FROM field_data_" . $term_field . "
-                          WHERE " . $term_field . "_tid IN (
-                            SELECT ttd.tid
-                            FROM taxonomy_term_data ttd
-                            INNER JOIN taxonomy_vocabulary tv ON tv.vid = ttd.vid
-                            WHERE machine_name = '" . $vocabulary . "'
-                            AND ttd.name IN (" . $values_str . ")
-                          )
-                          GROUP BY entity_id
-                          HAVING count(1) = " . count($values) . "
-                        ) AS inner_nid ON inner_nid.nid = n.nid";
-              break;
-          }
-
-          // Excute query into temporary table and store it base on its
-          // operation in relation to other fields.
-          if ($operation) {
-            $tables_or[] = db_query_temporary($query);
-          }
-          else {
-            $tables_and[] = db_query_temporary($query);
+        // Get values that shold be used to find slids.
+        $values = array();
+        foreach ($field_names as $fieldname) {
+          $data = $element['#entity']->$fieldname;
+          if (!empty($data[$langcode][$delta]['data'])) {
+            $values[$fieldname] = check_plain($data[$langcode][$delta]['data']);
           }
         }
 
-        // Union temporary tables that are and'ed.
-        $query = FALSE;
-        if (!empty($tables_and)) {
-          $base = array_shift($tables_and);
-          $query = db_select($base, 'base')->fields('base', array('nid', 'title'));
-          foreach ($tables_and as $table) {
-            $query->join($table, $table, 'base.nid = ' . $table . '.nid');
-          }
+        // Get slides.
+        module_load_include('inc', 'ik_channel_filter', 'ik_channel_filter.queries');
+        $slides = ik_channel_filter_get_slides($values);
+
+        // Theme the slides as a list for now.
+        $items = array();
+        foreach ($slides as $slide) {
+          $items[] = $slide->title;
         }
 
-        // Union temporary tables that are or'ed.
-        $or_query = FALSE;
-        if (!empty($tables_or)) {
-          $base = array_shift($tables_or);
-          $or_query = db_select($base, 'base')->fields('base', array('nid', 'title'));
-          foreach ($tables_or as $table) {
-            $or_query->union($table, 'DISTINCT');
-          }
-        }
-
-        // Base on the querys created above (union the query and or querys).
-        if ($query && $or_query) {
-          $query->union($or_query, 'DISTINCT');
-        }
-        elseif (!$query && $or_query) {
-          $query = $or_query;
-        }
-
-        // Get the final result.
-        $results = $query->execute()->fetchAll();
+        // Add javascript to handle live update of filter results.
+        drupal_add_js(array('ik_channel_preview' => array('field_names' => $field_names)), 'setting');
+        drupal_add_js(drupal_get_path('module', 'ik_channel_filter') . '/js/ik_channel_preview.js');
 
         // Return information about the slides.
         $element['message'] = array(
-          '#markup' => t('@count slides found', array('@count' => count($results))),
+          '#markup' => t('@count slides found', array('@count' => count($slides))) . theme('item_list', array('items' => $items)),
         );
       }
       else {
@@ -466,7 +367,6 @@ function ik_channel_filter_field_widget_form(&$form, &$form_state, $field, $inst
         '#markup' => t('Thumbnail preview formatter have not yet been implemented'),
       );
       break;
-
 
     case 'ik_filter_search_autocomplete':
       $field_content = isset($items[$delta]['data']) ? $items[$delta]['data'] : '';
