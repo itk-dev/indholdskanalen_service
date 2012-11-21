@@ -352,19 +352,25 @@ function ik_channel_filter_field_widget_form(&$form, &$form_state, $field, $inst
 
         // Return information about the slides.
         $element['message'] = array(
+          '#prefix' => '<div class="ik-filter-preview-wrapper">',
           '#markup' => t('@count slides found', array('@count' => count($slides))) . theme('item_list', array('items' => $items)),
+          '#suffix' => '</div>',
         );
       }
       else {
         $element['message'] = array(
+          '#prefix' => '<div class="ik-filter-preview-wrapper">',
           '#markup' => t('No slides found matching filter.'),
+          '#suffix' => '</div>',
         );
       }
       break;
 
     case 'ik_filter_search_preview_thumbnail':
       $element['error'] = array(
+        '#prefix' => '<div class="ik-filter-preview-wrapper">',
         '#markup' => t('Thumbnail preview formatter have not yet been implemented'),
+        '#suffix' => '</div>',
       );
       break;
 

@@ -139,10 +139,16 @@ function _ik_channel_preview_update() {
     }
   }
 
-  /**
-   * @todo call theme function on the data.
-   */
-
   $slides = ik_channel_filter_get_slides($raw_values);
-  drupal_json_output($slides);
+
+  // Theme the slides as a list for now.
+  $items = array();
+  foreach ($slides as $slide) {
+    $items[] = $slide->title;
+  }
+
+  drupal_json_output(array(
+    'slides' => $slides,
+    'markup' => t('@count slides found', array('@count' => count($slides))) . theme('item_list', array('items' => $items)),
+  ));
 }

@@ -18,7 +18,9 @@
         type: 'POST',
         url: '/ik/preview/update',
         data: { 'ik_preview_values' : values },
-        success: function(data) {console.log(data)},
+        success: function(data) {
+          $('.ik-filter-preview-wrapper').html(data.markup);
+        },
         dataType: 'json'
       });
     });
