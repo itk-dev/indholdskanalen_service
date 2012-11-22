@@ -44,3 +44,4 @@ features[variable][] = menu_parent_channel
 features[variable][] = node_options_channel
 features[variable][] = node_preview_channel
 features[variable][] = node_submitted_channel
+features[variable][] = pathauto_node_channel_pattern

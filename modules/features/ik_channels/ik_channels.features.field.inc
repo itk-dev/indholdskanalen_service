@@ -196,7 +196,7 @@ function ik_channels_field_default_fields() {
           'module' => 'text',
           'settings' => array(),
           'type' => 'text_default',
-          'weight' => '2',
+          'weight' => 2,
         ),
         'teaser' => array(
           'label' => 'above',
@@ -578,7 +578,7 @@ function ik_channels_field_default_fields() {
             'link' => FALSE,
           ),
           'type' => 'entityreference_label',
-          'weight' => '1',
+          'weight' => 1,
         ),
         'teaser' => array(
           'label' => 'above',

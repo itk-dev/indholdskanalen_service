@@ -494,3 +494,58 @@ function ik_channel_filter_field_formatter_view($entity_type, $entity, $field, $
 
   return $element;
 }
+
+/**
+ * Implements hook_token_info().
+ */
+function ik_channel_filter_token_info() {
+  return array(
+    'types' => array(
+      'ik_channel' => array(
+        'name' => t('IK Channels'),
+        'description' => t('Tokens used to generate ID\'s for channels')
+      ),
+    ),
+    'tokens' => array(
+      'ik_channel' => array(
+        'hash' => array(
+          'name' => t('Channel hash'),
+          'description' => t('Hash value the identifies a channel'),
+        ),
+      ),
+    ),
+  );
+}
+
+/**
+ * Implements hook_tokens().
+ */
+function ik_channel_filter_tokens($type, $tokens, array $data = array(), array $options = array()) {
+  global $user;
+
+  $replacements = array();
+
+  if ($type == 'ik_channel') {
+    foreach ($tokens as $name => $original) {
+      switch ($name) {
+        case 'hash':
+          if (isset($data['node'])) {
+            $replacements[$original] = ik_channel_filter_token($data['node']->nid);
+          }
+        break;
+      }
+    }
+  }
+
+  return $replacements;
+}
+
+/**
+ * Creates a token to use as the identifier for a given channel.
+ *
+ * @param type $nid
+ * @return type
+ */
+function ik_channel_filter_token($nid) {
+  return md5($nid + drupal_get_hash_salt());
+}
