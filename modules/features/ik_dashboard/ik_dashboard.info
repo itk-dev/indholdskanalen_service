@@ -21,3 +21,4 @@ features[page_manager_pages][] = ik_dashboard
 features[variable][] = site_frontpage
 features[variable][] = theme_default
 features[views_view][] = ik_dashboard
+features[views_view][] = ik_taxonomy_term
