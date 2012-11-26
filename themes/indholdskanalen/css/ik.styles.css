@@ -93,6 +93,11 @@ body {
 .sidebar .block,
 .panel-pane {
   margin-bottom: 2em;
+  clear: both;
+}
+
+.sidebar .content {
+  overflow: hidden;
 }
 
 .sidebar .block h2,
@@ -127,3 +132,41 @@ li.views-fluid-grid-item {
   border: none;
   margin-bottom: 2em;
 }
+
+/* Action links menu */
+.action-link-item {
+  position: relative;
+  clear: both;
+  padding-top: 1em;
+}
+
+  .action-container {
+    display: none;
+  }
+    .action-link-item:hover > .action-container{
+      display: block;
+      position: absolute;
+      top: 0.5em;
+      right: 0;
+      z-index: 10;
+    }
+    
+    .action-links {
+      background-color: #eaeaea;
+      padding: 5px;
+    }
+      .action-links ul {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+      }
+
+  .action-link-item img {
+    float: left;
+    margin-right: 5px;
+    width: 30%;
+    height: auto;
+  }    
+  
+
+
