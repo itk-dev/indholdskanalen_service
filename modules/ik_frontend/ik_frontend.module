@@ -1,0 +1,40 @@
+<?php
+/**
+ * @file
+ *
+ */
+
+function ik_frontend_menu() {
+  $items = array();
+
+  $items['channels/%/run'] = array(
+
+  );
+
+  $items['channels/%/update'] = array(
+
+  );
+
+  return $items;
+}
+
+function ik_frontend_theme() {
+  return array(
+    'ik_frontend_buttons' => array(
+      'variables' => array('title' => NULL, 'buttons' => NULL),
+      'template' => 'ik-frontend-buttons'
+    ),
+  );
+}
+
+/**
+ * Implements hook_ctools_plugin_directory().
+ *
+ * It simply tells panels where to find the .inc files that define various
+ * args, contexts, content_types.
+ */
+function ik_frontend_ctools_plugin_directory($module, $plugin) {
+  if ($module == 'ctools' && !empty($plugin)) {
+    return "plugins/$plugin";
+  }
+}

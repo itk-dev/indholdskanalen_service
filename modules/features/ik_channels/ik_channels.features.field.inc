@@ -52,9 +52,10 @@ function ik_channels_field_default_fields() {
       'display' => array(
         'default' => array(
           'label' => 'above',
+          'module' => NULL,
           'settings' => array(),
-          'type' => 'hidden',
-          'weight' => '10',
+          'type' => 'ik_filter_search_formatter',
+          'weight' => 10,
         ),
         'teaser' => array(
           'label' => 'above',
@@ -130,9 +131,10 @@ function ik_channels_field_default_fields() {
       'display' => array(
         'default' => array(
           'label' => 'above',
+          'module' => NULL,
           'settings' => array(),
-          'type' => 'hidden',
-          'weight' => '4',
+          'type' => 'ik_filter_search_formatter',
+          'weight' => 4,
         ),
         'teaser' => array(
           'label' => 'above',
@@ -279,9 +281,10 @@ function ik_channels_field_default_fields() {
       'display' => array(
         'default' => array(
           'label' => 'above',
+          'module' => NULL,
           'settings' => array(),
-          'type' => 'hidden',
-          'weight' => '3',
+          'type' => 'ik_filter_search_formatter',
+          'weight' => 3,
         ),
         'teaser' => array(
           'label' => 'above',
@@ -420,9 +423,10 @@ function ik_channels_field_default_fields() {
       'display' => array(
         'default' => array(
           'label' => 'above',
+          'module' => NULL,
           'settings' => array(),
-          'type' => 'hidden',
-          'weight' => '7',
+          'type' => 'ik_filter_search_formatter',
+          'weight' => 7,
         ),
         'teaser' => array(
           'label' => 'above',
@@ -490,9 +494,10 @@ function ik_channels_field_default_fields() {
       'display' => array(
         'default' => array(
           'label' => 'above',
+          'module' => NULL,
           'settings' => array(),
-          'type' => 'hidden',
-          'weight' => '9',
+          'type' => 'ik_filter_search_formatter',
+          'weight' => 9,
         ),
         'teaser' => array(
           'label' => 'above',

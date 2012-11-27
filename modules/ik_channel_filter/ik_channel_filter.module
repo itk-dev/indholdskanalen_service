@@ -521,8 +521,6 @@ function ik_channel_filter_token_info() {
  * Implements hook_tokens().
  */
 function ik_channel_filter_tokens($type, $tokens, array $data = array(), array $options = array()) {
-  global $user;
-
   $replacements = array();
 
   if ($type == 'ik_channel') {

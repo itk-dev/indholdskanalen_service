@@ -9,6 +9,7 @@ dependencies[] = ctools
 dependencies[] = features
 dependencies[] = field_group
 dependencies[] = ik_channel_filter
+dependencies[] = ik_frontend
 dependencies[] = og
 dependencies[] = og_ui
 dependencies[] = page_manager
