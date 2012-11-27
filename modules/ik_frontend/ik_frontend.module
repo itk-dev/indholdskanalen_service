@@ -4,20 +4,44 @@
  *
  */
 
+/**
+ * Implements hook_menu().
+ *
+ */
 function ik_frontend_menu() {
   $items = array();
 
   $items['channels/%/run'] = array(
-
+    'title' => 'Start slideshow channel',
+    'page callback' => 'ik_frontend_run',
+    'page arguments' => array(1),
+    'access arguments' => array('access content'),
+    'type' => MENU_CALLBACK,
   );
 
   $items['channels/%/update'] = array(
+    'title' => 'Request updated slide information',
+    'page callback' => 'ik_frontend_update',
+    'page arguments' => array(1),
+    'access arguments' => array('access content'),
+    'type' => MENU_CALLBACK,
+  );
 
+  $items['channels/%/slide/%'] = array(
+    'title' => 'Request slide information',
+    'page callback' => 'ik_frontend_fetch_slide',
+    'page arguments' => array(1, 3),
+    'access arguments' => array('access content'),
+    'type' => MENU_CALLBACK,
   );
 
   return $items;
 }
 
+/**
+ * Implements hook_theme().
+ *
+ */
 function ik_frontend_theme() {
   return array(
     'ik_frontend_buttons' => array(
@@ -30,11 +54,69 @@ function ik_frontend_theme() {
 /**
  * Implements hook_ctools_plugin_directory().
  *
- * It simply tells panels where to find the .inc files that define various
- * args, contexts, content_types.
  */
 function ik_frontend_ctools_plugin_directory($module, $plugin) {
   if ($module == 'ctools' && !empty($plugin)) {
     return "plugins/$plugin";
   }
+}
+
+/**
+ * Implements hook_node_insert().
+ *
+ * It's a funny place to have the node hook, but we need this mapping in the
+ * front end to fast fetch channels.
+ */
+function ik_frontend_node_insert($node) {
+  $token = ik_channel_filter_token($node->nid);
+  $record = array('nid' => $node->nid, 'token' => $token);
+  drupal_write_record('ik_channel_mapping', $record);
+}
+
+/**
+ * Implements hook_node_delete().
+ *
+ * Make sure that we remove old channel tokens.
+ */
+function ik_frontend_node_delete($node) {
+  db_delete('ik_channel_mapping')->condition('nid', $node->nid)->execute();
+}
+
+function ik_frontend_run($channel_id) {
+
+  // Add javascript.
+
+  // Return skeleton for slide show (complet HTML page <header><content><footer> etc.).
+
+  // Map channel hash to channel nid ??? (cache mapping).
+
+  echo 'Requested content for channel: ' . $channel_id;
+}
+
+
+function ik_frontend_update($channel_id) {
+
+  // Map channel hash to channel nid ??? (cache mapping).
+
+  // Find filter values, by loading channel node (cache the result).
+
+//  module_load_include('inc', 'ik_channel_filter', 'ik_channel_filter.queries');
+//  $slides = ik_channel_filter_get_slides($values);
+
+
+  // Json encode.
+
+  echo 'Requested content update for channel: ' . $channel_id;
+}
+
+
+function ik_frontend_fetch_slide($channel_id, $sid) {
+
+  // Map channel hash to channel nid ??? (cache mapping).
+
+  // Load slide node content entity_load().
+
+  // Json encode.
+
+  echo 'Requested slide for channel (' . $channel_id . ') with id: ' . $sid;
 }

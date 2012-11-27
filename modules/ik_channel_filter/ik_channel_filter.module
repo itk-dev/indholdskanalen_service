@@ -545,5 +545,7 @@ function ik_channel_filter_tokens($type, $tokens, array $data = array(), array $
  * @return type
  */
 function ik_channel_filter_token($nid) {
-  return md5($nid + drupal_get_hash_salt());
+  // Generate the token.
+  $token = md5($nid + drupal_get_hash_salt());
+  return $token;
 }
