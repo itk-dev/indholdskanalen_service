@@ -1,0 +1,39 @@
+/*
+* Layout 1
+*
+* ---------------------------
+* |                         |
+* |-------------------------|
+* |        text box         |
+* |-------------------------|
+* |                         |
+* |          image          |
+* |                         |
+* ---------------------------
+*
+*/
+
+.layout-1 {
+  #text-container {
+    top:10%;
+
+    #heading-container {
+      width: 50%;
+      float: left;
+      padding-right:2rem;
+    }
+
+    .slide-heading {
+      margin-bottom: 1rem;
+    }
+
+    .slide-text {
+      width:50%;
+      float: left;
+    }
+
+    .divider {
+      //display:none;
+    }
+  }
+}
