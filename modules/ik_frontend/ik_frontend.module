@@ -82,7 +82,52 @@ function ik_frontend_node_delete($node) {
   db_delete('ik_channel_mapping')->condition('nid', $node->nid)->execute();
 }
 
-function ik_frontend_run($channel_id) {
+/**
+ * Get channel nid based on channel token mapping.
+ *
+ * @param string $token
+ *  Token representing a given channel.
+ * @return int
+ *  Channel node id.
+ */
+function ik_frontend_find_channel_nid($token) {
+  $nid = db_select('ik_channel_mapping', 'ikcm')
+    ->fields('ikcm', array('nid'))
+    ->condition('token', $token)
+    ->execute()
+    ->fetchCol();
+  return $nid[0];
+}
+
+
+function ik_frontend_get_slides($entity) {
+  $field = field_info_field('field_channel_preview');
+  $field_names = isset($field['settings']['ik_search']['types']) ? $field['settings']['ik_search']['types'] : array();
+  $values = array();
+  foreach ($field_names as $fieldname) {
+    $field = $entity->$fieldname;
+    if (!empty($field)) {
+      foreach ($field as $lang => $data) {
+        $values[$fieldname] = check_plain($data[0]['data']);
+      }
+    }
+  }
+
+  // Get basic slide information based on the filter.
+  module_load_include('inc', 'ik_channel_filter', 'ik_channel_filter.queries');
+  $slides = ik_channel_filter_get_slides($values);
+
+  return $slides;
+}
+
+
+function ik_frontend_enrich_slides(&$slides) {
+
+
+}
+
+
+function ik_frontend_run($token) {
 
   // Add javascript.
 
@@ -90,27 +135,30 @@ function ik_frontend_run($channel_id) {
 
   // Map channel hash to channel nid ??? (cache mapping).
 
-  echo 'Requested content for channel: ' . $channel_id;
+  echo 'Requested content for channel: ' . $token;
 }
 
 
-function ik_frontend_update($channel_id) {
+function ik_frontend_update($token) {
 
-  // Map channel hash to channel nid ??? (cache mapping).
 
   // Find filter values, by loading channel node (cache the result).
+  $nid = ik_frontend_find_channel_nid($token);
+  $entity = entity_load('node', array($nid));
+  $entity = $entity[$nid];
 
-//  module_load_include('inc', 'ik_channel_filter', 'ik_channel_filter.queries');
-//  $slides = ik_channel_filter_get_slides($values);
+  // Get values that shold be used to find slids.
+  $slides = ik_frontend_get_slides($entity);
 
+  // We need to get slides layout and duration as well.
+  ik_frontend_enrich_slides($slides);
 
-  // Json encode.
-
-  echo 'Requested content update for channel: ' . $channel_id;
+  // JSON encode.
+  echo drupal_json_output($slides);
 }
 
 
-function ik_frontend_fetch_slide($channel_id, $sid) {
+function ik_frontend_fetch_slide($token, $sid) {
 
   // Map channel hash to channel nid ??? (cache mapping).
 
@@ -118,5 +166,5 @@ function ik_frontend_fetch_slide($channel_id, $sid) {
 
   // Json encode.
 
-  echo 'Requested slide for channel (' . $channel_id . ') with id: ' . $sid;
+  echo 'Requested slide for channel (' . $token . ') with id: ' . $sid;
 }

@@ -27,7 +27,7 @@ function ik_frontend_buttons_content_type_render($subtype, $conf, $panel_args, $
     ),
     'startpage' => array(
       'title' => t('Start page'),
-      'link' => token_replace('channels/[ik_channel:hash]/autorun', array('node' => $context[0]->data)),
+      'link' => token_replace('channels/[ik_channel:hash]', array('node' => $context[0]->data)),
     ),
   );
 
