@@ -21,17 +21,20 @@ function ik_frontend_buttons_content_type_render($subtype, $conf, $panel_args, $
       'title' => t('Start'),
       'link' => token_replace('channels/[ik_channel:hash]/run', array('node' => $context[0]->data)),
     ),
-    'bookmark' => array(
-      'title' => t('Bookmark'),
+    'preview' => array(
+      'title' => t('Preview'),
       'link' => token_replace('channels/[ik_channel:hash]', array('node' => $context[0]->data)),
     ),
-    'startpage' => array(
-      'title' => t('Start page'),
+    'bookmark' => array(
+      'title' => t('Bookmark'),
       'link' => token_replace('channels/[ik_channel:hash]', array('node' => $context[0]->data)),
     ),
   );
 
   $block->content = theme('ik_frontend_buttons', array('title' => t('Channel actions'), 'buttons' => $buttons));
+
+  // Add javascript to handle buttons.
+  drupal_add_js(drupal_get_path('module', 'ik_frontend') . '/js/ik.admin.js');
 
   return $block;
 }
