@@ -14,6 +14,9 @@
         this.title = document.title;
         return true;
       }
+
+      e.preventDefault();
+      return false;
     });
   });
 
