@@ -46,7 +46,13 @@ function ik_frontend_theme() {
   return array(
     'ik_frontend_buttons' => array(
       'variables' => array('title' => NULL, 'buttons' => NULL),
-      'template' => 'ik-frontend-buttons'
+      'template' => 'templates/ik-frontend-buttons',
+      'file' => 'ik_frontend.theme.inc',
+    ),
+    'ik_frontend' => array(
+      'varibles' => array('token' => NULL),
+      'template' => 'templates/ik-frontend',
+      'file' => 'ik_frontend.theme.inc',
     ),
   );
 }
@@ -164,13 +170,16 @@ function ik_frontend_get_slides($token, $entity) {
   return $slides;
 }
 
+/**
+ * Menu callback that returns the basic slide show page. The starting point of
+ * the frontend JS.
+ *
+ * @param string $token
+ *  Channel token.
+ */
 function ik_frontend_run($token) {
-
-  // Add javascript.
-
   // Return skeleton for slide show (complet HTML page <header><content><footer> etc.).
-
-  echo 'Requested content for channel: ' . $token;
+  echo theme('ik_frontend', array('token' => $token));
 }
 
 /**
