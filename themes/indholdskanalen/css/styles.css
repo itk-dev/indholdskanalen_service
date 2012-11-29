@@ -106,7 +106,8 @@ body {
   font-family: "OswaldLight", "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 16px;
   font-size: 1rem;
-  color: white; }
+  color: white;
+  overflow: hidden; }
 
 /*
 * Layouts default styling
@@ -133,22 +134,22 @@ body {
     box-sizing: border-box;
     position: absolute;
     width: 100%;
-    background-color: #ff9900;
-    padding: 20px; }
-    /* line 30, ../sass/_layouts.scss */
+    background-color: #ff9900; }
+    /* line 29, ../sass/_layouts.scss */
     #slide-container .slide .text-container .heading-container {
       -webkit-box-sizing: border-box;
       -moz-box-sizing: border-box;
-      box-sizing: border-box; }
+      box-sizing: border-box;
+      padding: 20px; }
     /* line 34, ../sass/_layouts.scss */
     #slide-container .slide .text-container .slide-heading {
       font-size: 64px;
       font-size: 4rem;
-      text-transform: uppercase;
       line-height: 77px;
       line-height: 4.8rem;
       margin-bottom: 20px;
-      margin-bottom: 1.25rem; }
+      margin-bottom: 1.25rem;
+      text-transform: uppercase; }
     /* line 41, ../sass/_layouts.scss */
     #slide-container .slide .text-container .divider {
       width: 10%;
@@ -164,18 +165,22 @@ body {
       margin-bottom: 10px; }
     /* line 54, ../sass/_layouts.scss */
     #slide-container .slide .text-container .slide-text {
-      font-family: "OswaldBook", "Helvetica Neue", Helvetica, Arial, sans-serif;
+      -webkit-box-sizing: border-box;
+      -moz-box-sizing: border-box;
+      box-sizing: border-box;
       font-size: 19px;
       font-size: 1.2rem;
-      line-height: 19px;
-      line-height: 1.2rem;
+      line-height: 22px;
+      line-height: 1.4rem;
       letter-spacing: 2px;
-      letter-spacing: 0.1rem; }
-      /* line 60, ../sass/_layouts.scss */
+      letter-spacing: 0.1rem;
+      font-family: "OswaldBook", "Helvetica Neue", Helvetica, Arial, sans-serif;
+      padding: 20px; }
+      /* line 62, ../sass/_layouts.scss */
       #slide-container .slide .text-container .slide-text p {
         margin-bottom: 10px;
         margin-bottom: 0.625rem; }
-  /* line 66, ../sass/_layouts.scss */
+  /* line 68, ../sass/_layouts.scss */
   #slide-container .slide .logo-container {
     position: absolute; }
 
@@ -193,26 +198,25 @@ body {
 * ---------------------------
 *
 */
-/* line 94, ../sass/_layouts.scss */
+/* line 96, ../sass/_layouts.scss */
 .layout-1 .slide .image-container, .layout-2 .slide .image-container, .layout-3 .slide .image-container, .layout-4 .slide .image-container, .layout-5 .slide .image-container {
   background-image: url("../mockups/images/slide_1.jpeg"); }
-/* line 98, ../sass/_layouts.scss */
+/* line 100, ../sass/_layouts.scss */
 .layout-1 .slide .text-container, .layout-2 .slide .text-container, .layout-3 .slide .text-container, .layout-4 .slide .text-container, .layout-5 .slide .text-container {
   top: 10%; }
-  /* line 101, ../sass/_layouts.scss */
+  /* line 103, ../sass/_layouts.scss */
   .layout-1 .slide .text-container .heading-container, .layout-2 .slide .text-container .heading-container, .layout-3 .slide .text-container .heading-container, .layout-4 .slide .text-container .heading-container, .layout-5 .slide .text-container .heading-container {
-    width: 50%;
-    float: left;
-    padding-right: 20px; }
-  /* line 107, ../sass/_layouts.scss */
+    width: 49.5%;
+    float: left; }
+  /* line 108, ../sass/_layouts.scss */
   .layout-1 .slide .text-container .slide-heading, .layout-2 .slide .text-container .slide-heading, .layout-3 .slide .text-container .slide-heading, .layout-4 .slide .text-container .slide-heading, .layout-5 .slide .text-container .slide-heading {
     margin-bottom: 10px;
     margin-bottom: 0.625rem; }
-  /* line 111, ../sass/_layouts.scss */
+  /* line 112, ../sass/_layouts.scss */
   .layout-1 .slide .text-container .slide-text, .layout-2 .slide .text-container .slide-text, .layout-3 .slide .text-container .slide-text, .layout-4 .slide .text-container .slide-text, .layout-5 .slide .text-container .slide-text {
-    width: 50%;
+    width: 49.5%;
     float: left; }
-  /* line 116, ../sass/_layouts.scss */
+  /* line 117, ../sass/_layouts.scss */
   .layout-1 .slide .text-container .divider, .layout-2 .slide .text-container .divider, .layout-3 .slide .text-container .divider, .layout-4 .slide .text-container .divider, .layout-5 .slide .text-container .divider {
     display: none; }
 
@@ -230,10 +234,10 @@ body {
 * ---------------------------
 *
 */
-/* line 143, ../sass/_layouts.scss */
+/* line 144, ../sass/_layouts.scss */
 .layout-2 .slide .image-container {
   background-image: url("../mockups/images/slide_2.jpeg"); }
-/* line 147, ../sass/_layouts.scss */
+/* line 148, ../sass/_layouts.scss */
 .layout-2 .slide .text-container {
   top: auto;
   bottom: 10%; }
@@ -252,13 +256,13 @@ body {
 * ---------------------------
 *
 */
-/* line 174, ../sass/_layouts.scss */
+/* line 175, ../sass/_layouts.scss */
 .layout-3 .slide .image-container {
   background-image: url("../mockups/images/slide_3.jpeg"); }
-/* line 178, ../sass/_layouts.scss */
+/* line 179, ../sass/_layouts.scss */
 .layout-3 .slide .text-container {
   top: 50%;
-  margin-top: -130px;
+  margin-top: -134px;
   /* Must be replaced with javascript */ }
 
 /*
@@ -275,10 +279,10 @@ body {
 * ---------------------------
 *
 */
-/* line 205, ../sass/_layouts.scss */
+/* line 206, ../sass/_layouts.scss */
 .layout-4 .slide .image-container {
   background-image: url("../mockups/images/slide_4.jpeg"); }
-/* line 209, ../sass/_layouts.scss */
+/* line 210, ../sass/_layouts.scss */
 .layout-4 .slide .text-container {
   top: auto;
   bottom: 0; }
@@ -297,9 +301,9 @@ body {
 * ---------------------------
 *
 */
-/* line 235, ../sass/_layouts.scss */
+/* line 236, ../sass/_layouts.scss */
 .layout-5 .slide .image-container {
   background-image: url("../mockups/images/slide_5.jpeg"); }
-/* line 239, ../sass/_layouts.scss */
+/* line 240, ../sass/_layouts.scss */
 .layout-5 .slide .text-container {
   top: 0; }

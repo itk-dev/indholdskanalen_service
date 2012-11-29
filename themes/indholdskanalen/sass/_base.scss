@@ -29,4 +29,5 @@ body {
   font-family: $font-family-light;
   @include rem('font-size', $base-font-size);
   color: $font-color;
+  overflow: hidden;
 }

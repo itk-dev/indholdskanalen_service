@@ -25,17 +25,17 @@
       position: absolute;
       width: 100%;
       background-color: $textbox-color;
-      padding: $textbox-padding;
 
       .heading-container {
         @include box-sizing(border-box);
+        padding: $textbox-padding;
       }
 
       .slide-heading {
         @include rem('font-size', $heading-font-size);
-        text-transform: uppercase;
         @include rem('line-height', $heading-font-size * 1.2);
         @include rem('margin-bottom', $default-spacing);
+        text-transform: uppercase;
       }
 
       .divider {
@@ -52,10 +52,12 @@
       }
 
       .slide-text {
-        font-family: $font-family-regular;
+        @include box-sizing(border-box);
         @include rem('font-size', $textbox-font-size);
-        @include rem('line-height', $base-font-size * 1.2);
+        @include rem('line-height', $base-font-size * 1.4);
         @include rem('letter-spacing', $base-font-size * 0.1);
+        font-family: $font-family-regular;
+        padding: $textbox-padding;
 
         p {
           @include rem('margin-bottom', $default-spacing / 2);
@@ -99,9 +101,8 @@
       top:10%;
 
       .heading-container {
-        width: 50%;
+        width: 49.5%;
         float: left;
-        padding-right: $default-spacing;
       }
 
       .slide-heading {
@@ -109,7 +110,7 @@
       }
 
       .slide-text {
-        width:50%;
+        width: 49.5%;
         float: left;
       }
 
@@ -177,7 +178,7 @@
 
     .text-container {
       top: 50%;
-      margin-top: -130px; /* Must be replaced with javascript */
+      margin-top: -134px; /* Must be replaced with javascript */
     }
   }
 }
