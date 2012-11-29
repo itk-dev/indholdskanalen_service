@@ -4,14 +4,19 @@
 
 @import "compass/css3";
 
-$default-spacing: 2rem;
+$default-spacing: 20px;
 
 $font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-$base-font-size:  1em;
-$heading-font-size: 4rem;
-$subheading-font-size: 1.7rem;
+$font-family-regular: "OswaldBook", $font-family;
+$font-family-bold: "OswaldBold", $font-family;
+$font-family-light: "OswaldLight", $font-family;
+
+$base-font-size:  16px;
+$heading-font-size: $base-font-size * 4;
+$subheading-font-size: $base-font-size * 1.7;
+$textbox-font-size: $base-font-size * 1.2;
 
 $font-color: #ffffff;
 $textbox-color: #ff9900;
-$textbox-padding: 2rem;
+$textbox-padding: 20px;
 

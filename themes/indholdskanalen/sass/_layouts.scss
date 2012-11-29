@@ -1,60 +1,68 @@
 /*
-* Layouts styling
+* Layouts default styling
 */
 
 #slide-container {
-  @include box-sizing(border-box);
-
   position: relative;
   width: 100%;
   height: 100%;
+  margin: 0;
+  padding: 0;
 }
 
 #image-container {
   position: absolute;
   top: 0;
   left: 0;
-
-  img.slide-image {
-    width: 100%;
-    height: 100%;
-  }
+  height: 100%;
+  width: 100%;
+  background-image: url('../mockups/images/slide_1.jpeg');
+  background-size: cover;
 }
 
-#text-container {
-  @include box-sizing(border-box);
-
-  position: absolute;
-  width: 100%;
-  background-color: $textbox-color;
-  padding: $textbox-padding;
-
-  #heading-container {
+#text-container-wrap {
+  #text-container {
     @include box-sizing(border-box);
-  }
 
-  .slide-heading {
-    font-size: $heading-font-size;
-    text-transform: uppercase;
-    line-height: $heading-font-size * 1.2;
-    margin-bottom: $default-spacing;
-  }
+    position: absolute;
+    width: 100%;
+    background-color: $textbox-color;
+    padding: $textbox-padding;
 
-  .divider {
-    width:10%;
-    border-bottom: 0.2rem solid $font-color;
-    margin-bottom: $default-spacing / 2;
-  }
+    #heading-container {
+      @include box-sizing(border-box);
+    }
 
-  .slide-subheading {
-    font-size: $subheading-font-size;
-    font-style: italic;
-    line-height: $subheading-font-size * 1.2;
-    margin-bottom: $default-spacing / 2;
-  }
+    .slide-heading {
+      @include rem('font-size', $heading-font-size);
+      text-transform: uppercase;
+      @include rem('line-height', $heading-font-size * 1.2);
+      @include rem('margin-bottom', $default-spacing);
+    }
 
-  .slide-text {
-    line-height: $base-font-size * 1.3;
+    .divider {
+      width:10%;
+      border-bottom: 0.2em solid $font-color;
+      @include rem('margin-bottom', $default-spacing / 2);
+    }
+
+    .slide-subheading {
+      @include rem('font-size', $subheading-font-size);
+      font-style: italic;
+      line-height: $subheading-font-size * 1.2;
+      margin-bottom: $default-spacing / 2;
+    }
+
+    .slide-text {
+      font-family: $font-family-regular;
+      @include rem('font-size', $textbox-font-size);
+      @include rem('line-height', $base-font-size * 1.2);
+      @include rem('letter-spacing', $base-font-size * 0.1);
+
+      p {
+        @include rem('margin-bottom', $default-spacing / 2);
+      }
+    }
   }
 }
 
@@ -62,5 +70,182 @@
   position:absolute;
 }
 
-// Import all layouts
-@import "_layout_1.scss";
+/*
+* Layout 1
+*
+* ---------------------------
+* |                         |
+* |-------------------------|
+* |        text box         |
+* |-------------------------|
+* |                         |
+* |                         |
+* |                         |
+* ---------------------------
+*
+*/
+
+.layout-1 {
+
+  #image-container {
+    background-image: url('../mockups/images/slide_1.jpeg');
+  }
+
+  #text-container-wrap {
+    #text-container {
+      top:10%;
+
+      #heading-container {
+        width: 50%;
+        float: left;
+        padding-right: $default-spacing;
+      }
+
+      .slide-heading {
+        @include rem('margin-bottom', $default-spacing / 2);
+      }
+
+      .slide-text {
+        width:50%;
+        float: left;
+      }
+
+      .divider {
+        display:none;
+      }
+    }
+  }
+}
+
+/*
+* Layout 2
+*
+* ---------------------------
+* |                         |
+* |                         |
+* |                         |
+* |-------------------------|
+* |        text box         |
+* |-------------------------|
+* |                         |
+* ---------------------------
+*
+*/
+
+.layout-2 {
+  @extend .layout-1;
+
+  #image-container {
+    background-image: url('../mockups/images/slide_2.jpeg');
+  }
+
+  #text-container-wrap {
+    #text-container {
+      top: auto;
+      bottom: 10%;
+    }
+  }
+}
+
+/*
+* Layout 3
+*
+* ---------------------------
+* |                         |
+* |                         |
+* |-------------------------|
+* |        text box         |
+* |-------------------------|
+* |                         |
+* |                         |
+* ---------------------------
+*
+*/
+
+.layout-3 {
+  @extend .layout-1;
+
+  #slide-container {
+    display: table;
+  }
+
+  #image-container {
+    background-image: url('../mockups/images/slide_3.jpeg');
+  }
+
+  #text-container-wrap {
+    display: table-cell;
+    vertical-align: middle;
+
+    #text-container {
+      top: auto;
+      position: relative;
+      overflow: hidden;
+    }
+  }
+
+}
+
+/*
+* Layout 4
+*
+* ---------------------------
+* |                         |
+* |                         |
+* |                         |
+* |                         |
+* |-------------------------|
+* |        text box         |
+* |-------------------------|
+* ---------------------------
+*
+*/
+
+.layout-4 {
+  @extend .layout-1;
+
+  #image-container {
+    background-image: url('../mockups/images/slide_4.jpeg');
+  }
+
+  #text-container-wrap {
+
+    #text-container {
+      top: auto;
+      bottom: 0;
+    }
+  }
+
+}
+
+/*
+* Layout 5
+*
+* ---------------------------
+* |-------------------------|
+* |        text box         |
+* |-------------------------|
+* |                         |
+* |                         |
+* |                         |
+* |                         |
+* ---------------------------
+*
+*/
+
+.layout-5 {
+  @extend .layout-1;
+
+  #image-container {
+    background-image: url('../mockups/images/slide_5.jpeg');
+  }
+
+  #text-container-wrap {
+
+    #text-container {
+      top: 0;
+    }
+  }
+
+}
+

@@ -2,8 +2,24 @@
  * Base stylesheet collecting all files
  */
 
+@include font-face("OswaldLight", font-files("oswald/Oswald-Light-webfont.woff",
+   "oswald/Oswald-Light-webfont.ttf", "oswald/Oswald-Light-webfont.svg#OswaldLight"),
+   "oswald/Oswald-Light-webfont.eot", 'normal', 'normal');
+
+@include font-face("OswaldBook", font-files("oswald/Oswald-Regular-webfont.woff",
+   "oswald/Oswald-Regular-webfont.ttf", "oswald/Oswald-Regular-webfont.svg#OswaldBook"),
+   "oswald/Oswald-Regular-webfont.eot", 'normal', 'normal');
+
+@include font-face("OswaldBold", font-files("oswald/Oswald-Bold-webfont.woff",
+   "oswald/Oswald-Bold-webfont.ttf", "oswald/Oswald-Bold-webfont.svg#OswaldBold"),
+   "oswald/Oswald-Bold-webfont.eot", 'normal', 'normal');
+
+@include font-face("OswaldStencilRegular", font-files("oswald/Oswald-Stencil-webfont.woff",
+   "oswald/Oswald-Stencil-webfont.ttf", "oswald/Oswald-Stencil-webfont.svg#OswaldStencilRegular"),
+   "oswald/Oswald-Stencil-webfont.eot", 'normal', 'normal');
+
 body {
-  font-family: $font-family;
-  font-size: $base-font-size;
+  font-family: $font-family-light;
+  @include rem('font-size', $base-font-size);
   color: $font-color;
 }

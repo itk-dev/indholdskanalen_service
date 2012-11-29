@@ -60,73 +60,119 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
 /*
 * Variables for use in stylesheets
 */
+/*
+* Neat mixins
+*/
 /* 
  * Base stylesheet collecting all files
  */
-/* line 5, ../sass/_base.scss */
+@font-face {
+  font-family: "OswaldLight";
+  src: url('/sites/service.indholdskanalen.dk/themes/indholdskanalen/css/fonts/oswald/Oswald-Light-webfont.eot');
+  src: url('/sites/service.indholdskanalen.dk/themes/indholdskanalen/css/fonts/oswald/Oswald-Light-webfont.eot?#iefix') format('eot'), url('/sites/service.indholdskanalen.dk/themes/indholdskanalen/css/fonts/oswald/Oswald-Light-webfont.woff') format('woff'), url('/sites/service.indholdskanalen.dk/themes/indholdskanalen/css/fonts/oswald/Oswald-Light-webfont.ttf') format('truetype'), url('/sites/service.indholdskanalen.dk/themes/indholdskanalen/css/fonts/oswald/Oswald-Light-webfont.svg#OswaldLight') format('svg');
+  font-weight: "normal";
+  font-style: "normal"; }
+
+@font-face {
+  font-family: "OswaldBook";
+  src: url('/sites/service.indholdskanalen.dk/themes/indholdskanalen/css/fonts/oswald/Oswald-Regular-webfont.eot');
+  src: url('/sites/service.indholdskanalen.dk/themes/indholdskanalen/css/fonts/oswald/Oswald-Regular-webfont.eot?#iefix') format('eot'), url('/sites/service.indholdskanalen.dk/themes/indholdskanalen/css/fonts/oswald/Oswald-Regular-webfont.woff') format('woff'), url('/sites/service.indholdskanalen.dk/themes/indholdskanalen/css/fonts/oswald/Oswald-Regular-webfont.ttf') format('truetype'), url('/sites/service.indholdskanalen.dk/themes/indholdskanalen/css/fonts/oswald/Oswald-Regular-webfont.svg#OswaldBook') format('svg');
+  font-weight: "normal";
+  font-style: "normal"; }
+
+@font-face {
+  font-family: "OswaldBold";
+  src: url('/sites/service.indholdskanalen.dk/themes/indholdskanalen/css/fonts/oswald/Oswald-Bold-webfont.eot');
+  src: url('/sites/service.indholdskanalen.dk/themes/indholdskanalen/css/fonts/oswald/Oswald-Bold-webfont.eot?#iefix') format('eot'), url('/sites/service.indholdskanalen.dk/themes/indholdskanalen/css/fonts/oswald/Oswald-Bold-webfont.woff') format('woff'), url('/sites/service.indholdskanalen.dk/themes/indholdskanalen/css/fonts/oswald/Oswald-Bold-webfont.ttf') format('truetype'), url('/sites/service.indholdskanalen.dk/themes/indholdskanalen/css/fonts/oswald/Oswald-Bold-webfont.svg#OswaldBold') format('svg');
+  font-weight: "normal";
+  font-style: "normal"; }
+
+@font-face {
+  font-family: "OswaldStencilRegular";
+  src: url('/sites/service.indholdskanalen.dk/themes/indholdskanalen/css/fonts/oswald/Oswald-Stencil-webfont.eot');
+  src: url('/sites/service.indholdskanalen.dk/themes/indholdskanalen/css/fonts/oswald/Oswald-Stencil-webfont.eot?#iefix') format('eot'), url('/sites/service.indholdskanalen.dk/themes/indholdskanalen/css/fonts/oswald/Oswald-Stencil-webfont.woff') format('woff'), url('/sites/service.indholdskanalen.dk/themes/indholdskanalen/css/fonts/oswald/Oswald-Stencil-webfont.ttf') format('truetype'), url('/sites/service.indholdskanalen.dk/themes/indholdskanalen/css/fonts/oswald/Oswald-Stencil-webfont.svg#OswaldStencilRegular') format('svg');
+  font-weight: "normal";
+  font-style: "normal"; }
+
+/* line 21, ../sass/_base.scss */
 body {
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-  font-size: 1em;
+  font-family: "OswaldLight", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 16px;
+  font-size: 1rem;
   color: white; }
 
 /*
-* Layouts styling
+* Layouts default styling
 */
 /* line 5, ../sass/_layouts.scss */
 #slide-container {
-  -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  box-sizing: border-box;
   position: relative;
   width: 100%;
-  height: 100%; }
+  height: 100%;
+  margin: 0;
+  padding: 0; }
 
 /* line 13, ../sass/_layouts.scss */
 #image-container {
   position: absolute;
   top: 0;
-  left: 0; }
-  /* line 18, ../sass/_layouts.scss */
-  #image-container img.slide-image {
-    width: 100%;
-    height: 100%; }
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background-image: url("../mockups/images/slide_1.jpeg");
+  background-size: cover; }
 
 /* line 24, ../sass/_layouts.scss */
-#text-container {
+#text-container-wrap #text-container {
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
   position: absolute;
   width: 100%;
   background-color: #ff9900;
-  padding: 2rem; }
+  padding: 20px; }
   /* line 32, ../sass/_layouts.scss */
-  #text-container #heading-container {
+  #text-container-wrap #text-container #heading-container {
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
     box-sizing: border-box; }
   /* line 36, ../sass/_layouts.scss */
-  #text-container .slide-heading {
+  #text-container-wrap #text-container .slide-heading {
+    font-size: 64px;
     font-size: 4rem;
     text-transform: uppercase;
+    line-height: 77px;
     line-height: 4.8rem;
-    margin-bottom: 2rem; }
+    margin-bottom: 20px;
+    margin-bottom: 1.25rem; }
   /* line 43, ../sass/_layouts.scss */
-  #text-container .divider {
+  #text-container-wrap #text-container .divider {
     width: 10%;
-    border-bottom: 0.2rem solid white;
-    margin-bottom: 1rem; }
+    border-bottom: 0.2em solid white;
+    margin-bottom: 10px;
+    margin-bottom: 0.625rem; }
   /* line 49, ../sass/_layouts.scss */
-  #text-container .slide-subheading {
+  #text-container-wrap #text-container .slide-subheading {
+    font-size: 27px;
     font-size: 1.7rem;
     font-style: italic;
-    line-height: 2.04rem;
-    margin-bottom: 1rem; }
+    line-height: 32.64px;
+    margin-bottom: 10px; }
   /* line 56, ../sass/_layouts.scss */
-  #text-container .slide-text {
-    line-height: 1.3em; }
+  #text-container-wrap #text-container .slide-text {
+    font-family: "OswaldBook", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 19px;
+    font-size: 1.2rem;
+    line-height: 19px;
+    line-height: 1.2rem;
+    letter-spacing: 2px;
+    letter-spacing: 0.1rem; }
+    /* line 62, ../sass/_layouts.scss */
+    #text-container-wrap #text-container .slide-text p {
+      margin-bottom: 10px;
+      margin-bottom: 0.625rem; }
 
-/* line 61, ../sass/_layouts.scss */
+/* line 69, ../sass/_layouts.scss */
 #logo-container {
   position: absolute; }
 
@@ -139,23 +185,125 @@ body {
 * |        text box         |
 * |-------------------------|
 * |                         |
-* |          image          |
+* |                         |
 * |                         |
 * ---------------------------
 *
 */
-/* line 17, ../sass/_layout_1.scss */
-.layout-1 #text-container {
+/* line 90, ../sass/_layouts.scss */
+.layout-1 #image-container, .layout-2 #image-container, .layout-3 #image-container, .layout-4 #image-container, .layout-5 #image-container {
+  background-image: url("../mockups/images/slide_1.jpeg"); }
+/* line 95, ../sass/_layouts.scss */
+.layout-1 #text-container-wrap #text-container, .layout-2 #text-container-wrap #text-container, .layout-3 #text-container-wrap #text-container, .layout-4 #text-container-wrap #text-container, .layout-5 #text-container-wrap #text-container {
   top: 10%; }
-  /* line 20, ../sass/_layout_1.scss */
-  .layout-1 #text-container #heading-container {
+  /* line 98, ../sass/_layouts.scss */
+  .layout-1 #text-container-wrap #text-container #heading-container, .layout-2 #text-container-wrap #text-container #heading-container, .layout-3 #text-container-wrap #text-container #heading-container, .layout-4 #text-container-wrap #text-container #heading-container, .layout-5 #text-container-wrap #text-container #heading-container {
     width: 50%;
     float: left;
-    padding-right: 2rem; }
-  /* line 26, ../sass/_layout_1.scss */
-  .layout-1 #text-container .slide-heading {
-    margin-bottom: 1rem; }
-  /* line 30, ../sass/_layout_1.scss */
-  .layout-1 #text-container .slide-text {
+    padding-right: 20px; }
+  /* line 104, ../sass/_layouts.scss */
+  .layout-1 #text-container-wrap #text-container .slide-heading, .layout-2 #text-container-wrap #text-container .slide-heading, .layout-3 #text-container-wrap #text-container .slide-heading, .layout-4 #text-container-wrap #text-container .slide-heading, .layout-5 #text-container-wrap #text-container .slide-heading {
+    margin-bottom: 10px;
+    margin-bottom: 0.625rem; }
+  /* line 108, ../sass/_layouts.scss */
+  .layout-1 #text-container-wrap #text-container .slide-text, .layout-2 #text-container-wrap #text-container .slide-text, .layout-3 #text-container-wrap #text-container .slide-text, .layout-4 #text-container-wrap #text-container .slide-text, .layout-5 #text-container-wrap #text-container .slide-text {
     width: 50%;
     float: left; }
+  /* line 113, ../sass/_layouts.scss */
+  .layout-1 #text-container-wrap #text-container .divider, .layout-2 #text-container-wrap #text-container .divider, .layout-3 #text-container-wrap #text-container .divider, .layout-4 #text-container-wrap #text-container .divider, .layout-5 #text-container-wrap #text-container .divider {
+    display: none; }
+
+/*
+* Layout 2
+*
+* ---------------------------
+* |                         |
+* |                         |
+* |                         |
+* |-------------------------|
+* |        text box         |
+* |-------------------------|
+* |                         |
+* ---------------------------
+*
+*/
+/* line 138, ../sass/_layouts.scss */
+.layout-2 #image-container {
+  background-image: url("../mockups/images/slide_2.jpeg"); }
+/* line 143, ../sass/_layouts.scss */
+.layout-2 #text-container-wrap #text-container {
+  top: auto;
+  bottom: 10%; }
+
+/*
+* Layout 3
+*
+* ---------------------------
+* |                         |
+* |                         |
+* |-------------------------|
+* |        text box         |
+* |-------------------------|
+* |                         |
+* |                         |
+* ---------------------------
+*
+*/
+/* line 168, ../sass/_layouts.scss */
+.layout-3 #slide-container {
+  display: table; }
+/* line 172, ../sass/_layouts.scss */
+.layout-3 #image-container {
+  background-image: url("../mockups/images/slide_3.jpeg"); }
+/* line 176, ../sass/_layouts.scss */
+.layout-3 #text-container-wrap {
+  display: table-cell;
+  vertical-align: middle; }
+  /* line 180, ../sass/_layouts.scss */
+  .layout-3 #text-container-wrap #text-container {
+    top: auto;
+    position: relative;
+    overflow: hidden; }
+
+/*
+* Layout 4
+*
+* ---------------------------
+* |                         |
+* |                         |
+* |                         |
+* |                         |
+* |-------------------------|
+* |        text box         |
+* |-------------------------|
+* ---------------------------
+*
+*/
+/* line 207, ../sass/_layouts.scss */
+.layout-4 #image-container {
+  background-image: url("../mockups/images/slide_4.jpeg"); }
+/* line 213, ../sass/_layouts.scss */
+.layout-4 #text-container-wrap #text-container {
+  top: auto;
+  bottom: 0; }
+
+/*
+* Layout 5
+*
+* ---------------------------
+* |-------------------------|
+* |        text box         |
+* |-------------------------|
+* |                         |
+* |                         |
+* |                         |
+* |                         |
+* ---------------------------
+*
+*/
+/* line 239, ../sass/_layouts.scss */
+.layout-5 #image-container {
+  background-image: url("../mockups/images/slide_5.jpeg"); }
+/* line 245, ../sass/_layouts.scss */
+.layout-5 #text-container-wrap #text-container {
+  top: 0; }
