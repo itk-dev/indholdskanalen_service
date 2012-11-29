@@ -23,7 +23,6 @@
       @include box-sizing(border-box);
 
       position: absolute;
-      width: 100%;
       background-color: $textbox-color;
 
       .heading-container {
@@ -94,10 +93,11 @@
   .slide {
 
     .image-container {
-      background-image: url('../mockups/images/slide_1.jpeg');
+      background-image: url('../mockups/images/slide_1.jpg');
     }
 
     .text-container {
+      width: 100%;
       top:10%;
 
       .heading-container {
@@ -142,7 +142,7 @@
   .slide {
 
     .image-container {
-      background-image: url('../mockups/images/slide_2.jpeg');
+      background-image: url('../mockups/images/slide_2.jpg');
     }
 
     .text-container {
@@ -173,7 +173,7 @@
   .slide {
 
     .image-container {
-      background-image: url('../mockups/images/slide_3.jpeg');
+      background-image: url('../mockups/images/slide_3.jpg');
     }
 
     .text-container {
@@ -204,7 +204,7 @@
   .slide {
 
     .image-container {
-      background-image: url('../mockups/images/slide_4.jpeg');
+      background-image: url('../mockups/images/slide_4.jpg');
     }
 
     .text-container {
@@ -234,12 +234,250 @@
 
   .slide {
     .image-container {
-      background-image: url('../mockups/images/slide_5.jpeg');
+      background-image: url('../mockups/images/slide_5.jpg');
     }
 
-   .text-container {
+    .text-container {
       top: 0;
     }
   }
 }
 
+/*
+* Layout 6
+*
+* ---------------------------
+* |            |            |
+* |      T     |            |
+* |      E     |            |
+* |      X     |            |
+* |      T     |            |
+* |            |            |
+* |            |            |
+* ---------------------------
+*
+*/
+
+.layout-6 {
+
+  .slide {
+    .image-container {
+      background-image: url('../mockups/images/slide_6.jpg');
+    }
+
+    .text-container {
+      top: 0;
+      left: 0;
+      width: 50%;
+      height: 100%;
+    }
+  }
+}
+
+/*
+* Layout 7
+*
+* ---------------------------
+* |            |            |
+* |            |      T     |
+* |            |      E     |
+* |            |      X     |
+* |            |      T     |
+* |            |            |
+* |            |            |
+* ---------------------------
+*
+*/
+
+.layout-7 {
+  @extend .layout-6;
+
+  .slide {
+    .image-container {
+      background-image: url('../mockups/images/slide_7.jpg');
+    }
+
+    .text-container {
+      left: auto;
+      right: 0;
+    }
+  }
+}
+
+/*
+* Layout 8
+*
+* ---------------------------
+* |        |                |
+* |        |        T       |
+* |        |        E       |
+* |        |        X       |
+* |        |        T       |
+* |        |                |
+* |        |                |
+* ---------------------------
+*
+*/
+
+.layout-8 {
+  @extend .layout-6;
+
+  .slide {
+    .image-container {
+      background-image: url('../mockups/images/slide_8.jpg');
+    }
+
+    .text-container {
+      width: 75%;
+      right: 0;
+      left: auto;
+    }
+  }
+}
+
+/*
+* Layout 9
+*
+* ---------------------------
+* |                |        |
+* |        T       |        |
+* |        E       |        |
+* |        X       |        |
+* |        T       |        |
+* |                |        |
+* |                |        |
+* ---------------------------
+*
+*/
+
+.layout-9 {
+  @extend .layout-6;
+
+  .slide {
+    .image-container {
+      background-image: url('../mockups/images/slide_9.jpg');
+    }
+
+    .text-container {
+      width: 75%;
+    }
+  }
+}
+
+/*
+* Layout 10
+*
+* ---------------------------
+* |        |                |
+* |    T   |                |
+* |    E   |                |
+* |    X   |                |
+* |    T   |                |
+* |        |                |
+* |        |                |
+* ---------------------------
+*
+*/
+
+.layout-10 {
+  @extend .layout-6;
+
+  .slide {
+    .image-container {
+      background-image: url('../mockups/images/slide_10.jpg');
+    }
+
+    .text-container {
+      width: 25%;
+    }
+  }
+}
+
+/*
+* Layout 11
+*
+* ---------------------------
+* |                |        |
+* |                |    T   |
+* |                |    E   |
+* |                |    X   |
+* |                |    T   |
+* |                |        |
+* |                |        |
+* ---------------------------
+*
+*/
+
+.layout-11 {
+  @extend .layout-6;
+
+  .slide {
+    .image-container {
+      background-image: url('../mockups/images/slide_11.jpg');
+    }
+
+    .text-container {
+      width: 25%;
+      right: 0;
+      left: auto;
+    }
+  }
+}
+
+/*
+* Layout 12
+*
+* ---------------------------
+* |                         |
+* |                         |
+* |                         |
+* |                         |
+* |                         |
+* |                         |
+* |                         |
+* ---------------------------
+*
+*/
+
+.layout-12 {
+
+  .slide {
+    .image-container {
+      background-image: url('../mockups/images/slide_12.jpg');
+    }
+
+    .text-container {
+      display: none;
+    }
+  }
+}
+
+/*
+* Layout 13
+*
+* ---------------------------
+* |                         |
+* |                         |
+* |                         |
+* |        Textbox          |
+* |                         |
+* |                         |
+* |                         |
+* ---------------------------
+*
+*/
+
+.layout-13 {
+
+  .slide {
+    .image-container {
+      background-image: none;
+      display: none;
+    }
+
+    .text-container {
+      width: 100%;
+      height: 100%;
+    }
+  }
+}

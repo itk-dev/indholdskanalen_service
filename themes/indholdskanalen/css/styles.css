@@ -133,15 +133,14 @@ body {
     -moz-box-sizing: border-box;
     box-sizing: border-box;
     position: absolute;
-    width: 100%;
     background-color: #ff9900; }
-    /* line 29, ../sass/_layouts.scss */
+    /* line 28, ../sass/_layouts.scss */
     #slide-container .slide .text-container .heading-container {
       -webkit-box-sizing: border-box;
       -moz-box-sizing: border-box;
       box-sizing: border-box;
       padding: 20px; }
-    /* line 34, ../sass/_layouts.scss */
+    /* line 33, ../sass/_layouts.scss */
     #slide-container .slide .text-container .slide-heading {
       font-size: 64px;
       font-size: 4rem;
@@ -150,20 +149,20 @@ body {
       margin-bottom: 20px;
       margin-bottom: 1.25rem;
       text-transform: uppercase; }
-    /* line 41, ../sass/_layouts.scss */
+    /* line 40, ../sass/_layouts.scss */
     #slide-container .slide .text-container .divider {
       width: 10%;
       border-bottom: 0.2em solid white;
       margin-bottom: 10px;
       margin-bottom: 0.625rem; }
-    /* line 47, ../sass/_layouts.scss */
+    /* line 46, ../sass/_layouts.scss */
     #slide-container .slide .text-container .slide-subheading {
       font-size: 27px;
       font-size: 1.7rem;
       font-style: italic;
       line-height: 32.64px;
       margin-bottom: 10px; }
-    /* line 54, ../sass/_layouts.scss */
+    /* line 53, ../sass/_layouts.scss */
     #slide-container .slide .text-container .slide-text {
       -webkit-box-sizing: border-box;
       -moz-box-sizing: border-box;
@@ -176,11 +175,11 @@ body {
       letter-spacing: 0.1rem;
       font-family: "OswaldBook", "Helvetica Neue", Helvetica, Arial, sans-serif;
       padding: 20px; }
-      /* line 62, ../sass/_layouts.scss */
+      /* line 61, ../sass/_layouts.scss */
       #slide-container .slide .text-container .slide-text p {
         margin-bottom: 10px;
         margin-bottom: 0.625rem; }
-  /* line 68, ../sass/_layouts.scss */
+  /* line 67, ../sass/_layouts.scss */
   #slide-container .slide .logo-container {
     position: absolute; }
 
@@ -198,11 +197,12 @@ body {
 * ---------------------------
 *
 */
-/* line 96, ../sass/_layouts.scss */
+/* line 95, ../sass/_layouts.scss */
 .layout-1 .slide .image-container, .layout-2 .slide .image-container, .layout-3 .slide .image-container, .layout-4 .slide .image-container, .layout-5 .slide .image-container {
-  background-image: url("../mockups/images/slide_1.jpeg"); }
-/* line 100, ../sass/_layouts.scss */
+  background-image: url("../mockups/images/slide_1.jpg"); }
+/* line 99, ../sass/_layouts.scss */
 .layout-1 .slide .text-container, .layout-2 .slide .text-container, .layout-3 .slide .text-container, .layout-4 .slide .text-container, .layout-5 .slide .text-container {
+  width: 100%;
   top: 10%; }
   /* line 103, ../sass/_layouts.scss */
   .layout-1 .slide .text-container .heading-container, .layout-2 .slide .text-container .heading-container, .layout-3 .slide .text-container .heading-container, .layout-4 .slide .text-container .heading-container, .layout-5 .slide .text-container .heading-container {
@@ -236,7 +236,7 @@ body {
 */
 /* line 144, ../sass/_layouts.scss */
 .layout-2 .slide .image-container {
-  background-image: url("../mockups/images/slide_2.jpeg"); }
+  background-image: url("../mockups/images/slide_2.jpg"); }
 /* line 148, ../sass/_layouts.scss */
 .layout-2 .slide .text-container {
   top: auto;
@@ -258,7 +258,7 @@ body {
 */
 /* line 175, ../sass/_layouts.scss */
 .layout-3 .slide .image-container {
-  background-image: url("../mockups/images/slide_3.jpeg"); }
+  background-image: url("../mockups/images/slide_3.jpg"); }
 /* line 179, ../sass/_layouts.scss */
 .layout-3 .slide .text-container {
   top: 50%;
@@ -281,7 +281,7 @@ body {
 */
 /* line 206, ../sass/_layouts.scss */
 .layout-4 .slide .image-container {
-  background-image: url("../mockups/images/slide_4.jpeg"); }
+  background-image: url("../mockups/images/slide_4.jpg"); }
 /* line 210, ../sass/_layouts.scss */
 .layout-4 .slide .text-container {
   top: auto;
@@ -303,7 +303,185 @@ body {
 */
 /* line 236, ../sass/_layouts.scss */
 .layout-5 .slide .image-container {
-  background-image: url("../mockups/images/slide_5.jpeg"); }
+  background-image: url("../mockups/images/slide_5.jpg"); }
 /* line 240, ../sass/_layouts.scss */
 .layout-5 .slide .text-container {
   top: 0; }
+
+/*
+* Layout 6
+*
+* ---------------------------
+* |            |            |
+* |      T     |            |
+* |      E     |            |
+* |      X     |            |
+* |      T     |            |
+* |            |            |
+* |            |            |
+* ---------------------------
+*
+*/
+/* line 264, ../sass/_layouts.scss */
+.layout-6 .slide .image-container, .layout-7 .slide .image-container, .layout-8 .slide .image-container, .layout-9 .slide .image-container, .layout-10 .slide .image-container, .layout-11 .slide .image-container {
+  background-image: url("../mockups/images/slide_6.jpg"); }
+/* line 268, ../sass/_layouts.scss */
+.layout-6 .slide .text-container, .layout-7 .slide .text-container, .layout-8 .slide .text-container, .layout-9 .slide .text-container, .layout-10 .slide .text-container, .layout-11 .slide .text-container {
+  top: 0;
+  left: 0;
+  width: 50%;
+  height: 100%; }
+
+/*
+* Layout 7
+*
+* ---------------------------
+* |            |            |
+* |            |      T     |
+* |            |      E     |
+* |            |      X     |
+* |            |      T     |
+* |            |            |
+* |            |            |
+* ---------------------------
+*
+*/
+/* line 296, ../sass/_layouts.scss */
+.layout-7 .slide .image-container {
+  background-image: url("../mockups/images/slide_7.jpg"); }
+/* line 300, ../sass/_layouts.scss */
+.layout-7 .slide .text-container {
+  left: auto;
+  right: 0; }
+
+/*
+* Layout 8
+*
+* ---------------------------
+* |        |                |
+* |        |        T       |
+* |        |        E       |
+* |        |        X       |
+* |        |        T       |
+* |        |                |
+* |        |                |
+* ---------------------------
+*
+*/
+/* line 326, ../sass/_layouts.scss */
+.layout-8 .slide .image-container {
+  background-image: url("../mockups/images/slide_8.jpg"); }
+/* line 330, ../sass/_layouts.scss */
+.layout-8 .slide .text-container {
+  width: 75%;
+  right: 0;
+  left: auto; }
+
+/*
+* Layout 9
+*
+* ---------------------------
+* |                |        |
+* |        T       |        |
+* |        E       |        |
+* |        X       |        |
+* |        T       |        |
+* |                |        |
+* |                |        |
+* ---------------------------
+*
+*/
+/* line 357, ../sass/_layouts.scss */
+.layout-9 .slide .image-container {
+  background-image: url("../mockups/images/slide_9.jpg"); }
+/* line 361, ../sass/_layouts.scss */
+.layout-9 .slide .text-container {
+  width: 75%; }
+
+/*
+* Layout 10
+*
+* ---------------------------
+* |        |                |
+* |    T   |                |
+* |    E   |                |
+* |    X   |                |
+* |    T   |                |
+* |        |                |
+* |        |                |
+* ---------------------------
+*
+*/
+/* line 386, ../sass/_layouts.scss */
+.layout-10 .slide .image-container {
+  background-image: url("../mockups/images/slide_10.jpg"); }
+/* line 390, ../sass/_layouts.scss */
+.layout-10 .slide .text-container {
+  width: 25%; }
+
+/*
+* Layout 11
+*
+* ---------------------------
+* |                |        |
+* |                |    T   |
+* |                |    E   |
+* |                |    X   |
+* |                |    T   |
+* |                |        |
+* |                |        |
+* ---------------------------
+*
+*/
+/* line 415, ../sass/_layouts.scss */
+.layout-11 .slide .image-container {
+  background-image: url("../mockups/images/slide_11.jpg"); }
+/* line 419, ../sass/_layouts.scss */
+.layout-11 .slide .text-container {
+  width: 25%;
+  right: 0;
+  left: auto; }
+
+/*
+* Layout 12
+*
+* ---------------------------
+* |                         |
+* |                         |
+* |                         |
+* |                         |
+* |                         |
+* |                         |
+* |                         |
+* ---------------------------
+*
+*/
+/* line 445, ../sass/_layouts.scss */
+.layout-12 .slide .image-container {
+  background-image: url("../mockups/images/slide_12.jpg"); }
+/* line 449, ../sass/_layouts.scss */
+.layout-12 .slide .text-container {
+  display: none; }
+
+/*
+* Layout 13
+*
+* ---------------------------
+* |                         |
+* |                         |
+* |                         |
+* |        Textbox          |
+* |                         |
+* |                         |
+* |                         |
+* ---------------------------
+*
+*/
+/* line 473, ../sass/_layouts.scss */
+.layout-13 .slide .image-container {
+  background-image: none;
+  display: none; }
+/* line 478, ../sass/_layouts.scss */
+.layout-13 .slide .text-container {
+  width: 100%;
+  height: 100%; }
