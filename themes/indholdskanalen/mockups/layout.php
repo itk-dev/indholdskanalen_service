@@ -3,13 +3,13 @@
   <title>Slide layout <?php print (isset($_GET["layout"])) ? $_GET["layout"] : "- select layout"; ?></title>
   <link href="../css/styles.css" rel="stylesheet" type="text/css" media="all">
 </head>
-<body class="layout-<?php print (isset($_GET["layout"])) ? $_GET["layout"] : "1"; ?>">
+<body>
 <?php if (isset($_GET["layout"])) : ?>
-  <div id="slide-container">
-    <div id="image-container"></div>
-    <div id="text-container-wrap">
-      <div id="text-container">
-        <div id="heading-container">
+  <div id="slide-container" class="layout-<?php print (isset($_GET["layout"])) ? $_GET["layout"] : "1"; ?>">
+    <div class="slide">
+      <div class="image-container"></div>
+      <div class="text-container">
+        <div class="heading-container">
           <div class="slide-heading">This is a Heading</div>
           <div class="divider"></div>
           <div class="slide-subheading">Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh.</div>
@@ -20,7 +20,7 @@
           <p>Nullam id dolor id nibh ultricies vehicula ut id elit. Vestibulum id ligula porta felis euismod semper. <em>Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit.</em> Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum.</p>
         </div>
       </div>
-      <div id="logo-container"></div>
+      <div class="logo-container"></div>
     </div>
   </div>
 <?php else: ?>

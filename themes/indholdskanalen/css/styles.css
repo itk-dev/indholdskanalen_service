@@ -94,7 +94,14 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
   font-weight: "normal";
   font-style: "normal"; }
 
-/* line 21, ../sass/_base.scss */
+/* line 22, ../sass/_base.scss */
+html,
+body {
+  width: 100%;
+  height: 100%;
+  margin: 0 auto; }
+
+/* line 28, ../sass/_base.scss */
 body {
   font-family: "OswaldLight", "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 16px;
@@ -104,77 +111,73 @@ body {
 /*
 * Layouts default styling
 */
-/* line 5, ../sass/_layouts.scss */
-#slide-container {
+/* line 6, ../sass/_layouts.scss */
+#slide-container .slide {
   position: relative;
   width: 100%;
   height: 100%;
   margin: 0;
   padding: 0; }
-
-/* line 13, ../sass/_layouts.scss */
-#image-container {
-  position: absolute;
-  top: 0;
-  left: 0;
-  height: 100%;
-  width: 100%;
-  background-image: url("../mockups/images/slide_1.jpeg");
-  background-size: cover; }
-
-/* line 24, ../sass/_layouts.scss */
-#text-container-wrap #text-container {
-  -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  box-sizing: border-box;
-  position: absolute;
-  width: 100%;
-  background-color: #ff9900;
-  padding: 20px; }
-  /* line 32, ../sass/_layouts.scss */
-  #text-container-wrap #text-container #heading-container {
+  /* line 13, ../sass/_layouts.scss */
+  #slide-container .slide .image-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background-size: cover; }
+  /* line 22, ../sass/_layouts.scss */
+  #slide-container .slide .text-container {
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
-    box-sizing: border-box; }
-  /* line 36, ../sass/_layouts.scss */
-  #text-container-wrap #text-container .slide-heading {
-    font-size: 64px;
-    font-size: 4rem;
-    text-transform: uppercase;
-    line-height: 77px;
-    line-height: 4.8rem;
-    margin-bottom: 20px;
-    margin-bottom: 1.25rem; }
-  /* line 43, ../sass/_layouts.scss */
-  #text-container-wrap #text-container .divider {
-    width: 10%;
-    border-bottom: 0.2em solid white;
-    margin-bottom: 10px;
-    margin-bottom: 0.625rem; }
-  /* line 49, ../sass/_layouts.scss */
-  #text-container-wrap #text-container .slide-subheading {
-    font-size: 27px;
-    font-size: 1.7rem;
-    font-style: italic;
-    line-height: 32.64px;
-    margin-bottom: 10px; }
-  /* line 56, ../sass/_layouts.scss */
-  #text-container-wrap #text-container .slide-text {
-    font-family: "OswaldBook", "Helvetica Neue", Helvetica, Arial, sans-serif;
-    font-size: 19px;
-    font-size: 1.2rem;
-    line-height: 19px;
-    line-height: 1.2rem;
-    letter-spacing: 2px;
-    letter-spacing: 0.1rem; }
-    /* line 62, ../sass/_layouts.scss */
-    #text-container-wrap #text-container .slide-text p {
+    box-sizing: border-box;
+    position: absolute;
+    width: 100%;
+    background-color: #ff9900;
+    padding: 20px; }
+    /* line 30, ../sass/_layouts.scss */
+    #slide-container .slide .text-container .heading-container {
+      -webkit-box-sizing: border-box;
+      -moz-box-sizing: border-box;
+      box-sizing: border-box; }
+    /* line 34, ../sass/_layouts.scss */
+    #slide-container .slide .text-container .slide-heading {
+      font-size: 64px;
+      font-size: 4rem;
+      text-transform: uppercase;
+      line-height: 77px;
+      line-height: 4.8rem;
+      margin-bottom: 20px;
+      margin-bottom: 1.25rem; }
+    /* line 41, ../sass/_layouts.scss */
+    #slide-container .slide .text-container .divider {
+      width: 10%;
+      border-bottom: 0.2em solid white;
       margin-bottom: 10px;
       margin-bottom: 0.625rem; }
-
-/* line 69, ../sass/_layouts.scss */
-#logo-container {
-  position: absolute; }
+    /* line 47, ../sass/_layouts.scss */
+    #slide-container .slide .text-container .slide-subheading {
+      font-size: 27px;
+      font-size: 1.7rem;
+      font-style: italic;
+      line-height: 32.64px;
+      margin-bottom: 10px; }
+    /* line 54, ../sass/_layouts.scss */
+    #slide-container .slide .text-container .slide-text {
+      font-family: "OswaldBook", "Helvetica Neue", Helvetica, Arial, sans-serif;
+      font-size: 19px;
+      font-size: 1.2rem;
+      line-height: 19px;
+      line-height: 1.2rem;
+      letter-spacing: 2px;
+      letter-spacing: 0.1rem; }
+      /* line 60, ../sass/_layouts.scss */
+      #slide-container .slide .text-container .slide-text p {
+        margin-bottom: 10px;
+        margin-bottom: 0.625rem; }
+  /* line 66, ../sass/_layouts.scss */
+  #slide-container .slide .logo-container {
+    position: absolute; }
 
 /*
 * Layout 1
@@ -190,27 +193,27 @@ body {
 * ---------------------------
 *
 */
-/* line 90, ../sass/_layouts.scss */
-.layout-1 #image-container, .layout-2 #image-container, .layout-3 #image-container, .layout-4 #image-container, .layout-5 #image-container {
+/* line 94, ../sass/_layouts.scss */
+.layout-1 .slide .image-container, .layout-2 .slide .image-container, .layout-3 .slide .image-container, .layout-4 .slide .image-container, .layout-5 .slide .image-container {
   background-image: url("../mockups/images/slide_1.jpeg"); }
-/* line 95, ../sass/_layouts.scss */
-.layout-1 #text-container-wrap #text-container, .layout-2 #text-container-wrap #text-container, .layout-3 #text-container-wrap #text-container, .layout-4 #text-container-wrap #text-container, .layout-5 #text-container-wrap #text-container {
+/* line 98, ../sass/_layouts.scss */
+.layout-1 .slide .text-container, .layout-2 .slide .text-container, .layout-3 .slide .text-container, .layout-4 .slide .text-container, .layout-5 .slide .text-container {
   top: 10%; }
-  /* line 98, ../sass/_layouts.scss */
-  .layout-1 #text-container-wrap #text-container #heading-container, .layout-2 #text-container-wrap #text-container #heading-container, .layout-3 #text-container-wrap #text-container #heading-container, .layout-4 #text-container-wrap #text-container #heading-container, .layout-5 #text-container-wrap #text-container #heading-container {
+  /* line 101, ../sass/_layouts.scss */
+  .layout-1 .slide .text-container .heading-container, .layout-2 .slide .text-container .heading-container, .layout-3 .slide .text-container .heading-container, .layout-4 .slide .text-container .heading-container, .layout-5 .slide .text-container .heading-container {
     width: 50%;
     float: left;
     padding-right: 20px; }
-  /* line 104, ../sass/_layouts.scss */
-  .layout-1 #text-container-wrap #text-container .slide-heading, .layout-2 #text-container-wrap #text-container .slide-heading, .layout-3 #text-container-wrap #text-container .slide-heading, .layout-4 #text-container-wrap #text-container .slide-heading, .layout-5 #text-container-wrap #text-container .slide-heading {
+  /* line 107, ../sass/_layouts.scss */
+  .layout-1 .slide .text-container .slide-heading, .layout-2 .slide .text-container .slide-heading, .layout-3 .slide .text-container .slide-heading, .layout-4 .slide .text-container .slide-heading, .layout-5 .slide .text-container .slide-heading {
     margin-bottom: 10px;
     margin-bottom: 0.625rem; }
-  /* line 108, ../sass/_layouts.scss */
-  .layout-1 #text-container-wrap #text-container .slide-text, .layout-2 #text-container-wrap #text-container .slide-text, .layout-3 #text-container-wrap #text-container .slide-text, .layout-4 #text-container-wrap #text-container .slide-text, .layout-5 #text-container-wrap #text-container .slide-text {
+  /* line 111, ../sass/_layouts.scss */
+  .layout-1 .slide .text-container .slide-text, .layout-2 .slide .text-container .slide-text, .layout-3 .slide .text-container .slide-text, .layout-4 .slide .text-container .slide-text, .layout-5 .slide .text-container .slide-text {
     width: 50%;
     float: left; }
-  /* line 113, ../sass/_layouts.scss */
-  .layout-1 #text-container-wrap #text-container .divider, .layout-2 #text-container-wrap #text-container .divider, .layout-3 #text-container-wrap #text-container .divider, .layout-4 #text-container-wrap #text-container .divider, .layout-5 #text-container-wrap #text-container .divider {
+  /* line 116, ../sass/_layouts.scss */
+  .layout-1 .slide .text-container .divider, .layout-2 .slide .text-container .divider, .layout-3 .slide .text-container .divider, .layout-4 .slide .text-container .divider, .layout-5 .slide .text-container .divider {
     display: none; }
 
 /*
@@ -227,11 +230,11 @@ body {
 * ---------------------------
 *
 */
-/* line 138, ../sass/_layouts.scss */
-.layout-2 #image-container {
-  background-image: url("../mockups/images/slide_2.jpeg"); }
 /* line 143, ../sass/_layouts.scss */
-.layout-2 #text-container-wrap #text-container {
+.layout-2 .slide .image-container {
+  background-image: url("../mockups/images/slide_2.jpeg"); }
+/* line 147, ../sass/_layouts.scss */
+.layout-2 .slide .text-container {
   top: auto;
   bottom: 10%; }
 
@@ -249,21 +252,14 @@ body {
 * ---------------------------
 *
 */
-/* line 168, ../sass/_layouts.scss */
-.layout-3 #slide-container {
-  display: table; }
-/* line 172, ../sass/_layouts.scss */
-.layout-3 #image-container {
+/* line 174, ../sass/_layouts.scss */
+.layout-3 .slide .image-container {
   background-image: url("../mockups/images/slide_3.jpeg"); }
-/* line 176, ../sass/_layouts.scss */
-.layout-3 #text-container-wrap {
-  display: table-cell;
-  vertical-align: middle; }
-  /* line 180, ../sass/_layouts.scss */
-  .layout-3 #text-container-wrap #text-container {
-    top: auto;
-    position: relative;
-    overflow: hidden; }
+/* line 178, ../sass/_layouts.scss */
+.layout-3 .slide .text-container {
+  top: 50%;
+  margin-top: -130px;
+  /* Must be replaced with javascript */ }
 
 /*
 * Layout 4
@@ -279,11 +275,11 @@ body {
 * ---------------------------
 *
 */
-/* line 207, ../sass/_layouts.scss */
-.layout-4 #image-container {
+/* line 205, ../sass/_layouts.scss */
+.layout-4 .slide .image-container {
   background-image: url("../mockups/images/slide_4.jpeg"); }
-/* line 213, ../sass/_layouts.scss */
-.layout-4 #text-container-wrap #text-container {
+/* line 209, ../sass/_layouts.scss */
+.layout-4 .slide .text-container {
   top: auto;
   bottom: 0; }
 
@@ -301,9 +297,9 @@ body {
 * ---------------------------
 *
 */
-/* line 239, ../sass/_layouts.scss */
-.layout-5 #image-container {
+/* line 235, ../sass/_layouts.scss */
+.layout-5 .slide .image-container {
   background-image: url("../mockups/images/slide_5.jpeg"); }
-/* line 245, ../sass/_layouts.scss */
-.layout-5 #text-container-wrap #text-container {
+/* line 239, ../sass/_layouts.scss */
+.layout-5 .slide .text-container {
   top: 0; }

@@ -18,6 +18,13 @@
    "oswald/Oswald-Stencil-webfont.ttf", "oswald/Oswald-Stencil-webfont.svg#OswaldStencilRegular"),
    "oswald/Oswald-Stencil-webfont.eot", 'normal', 'normal');
 
+html,
+body {
+  width: 100%;
+  height: 100%;
+  margin: 0 auto;
+}
+
 body {
   font-family: $font-family-light;
   @include rem('font-size', $base-font-size);
