@@ -31,3 +31,46 @@ body {
   color: $font-color;
   overflow: hidden;
 }
+
+/*
+* Default typography
+*/
+
+p {
+  @include rem('margin-bottom', $default-spacing / 2);
+}
+
+strong,
+b {
+  font-family: "OswaldBold";
+}
+
+em,
+i {
+  font-family: $font-family-regular;
+  font-style: italic;
+}
+
+h1 {
+  font-size: $heading-font-size;
+}
+
+h2 {
+  font-size: $subheading-font-size;
+}
+
+h3 {
+  font-size: $textbox-font-size * 1.1;
+}
+
+h4 {
+  font-size: $textbox-font-size * 1.2;
+}
+
+h5 {
+  font-size: $textbox-font-size * 1.3;
+}
+
+h6 {
+  font-size: $textbox-font-size * 1.4;
+}
