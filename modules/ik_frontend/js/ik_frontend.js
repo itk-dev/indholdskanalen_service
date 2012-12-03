@@ -2,7 +2,7 @@
 
 // Define configuration object to get settings data from backend to frontend.
 // Before calls are made to the backend.
-var IKFrontend = IKFrontend || { 'settings': {} };
+var IKFrontend = IKFrontend || {'settings': {}};
 
 // Create closed namespace with revealing module pattern.
 var IK = (function() {
@@ -12,6 +12,7 @@ var IK = (function() {
   var settings = {
     debug : false
   };
+  var channel = undefined;
 
   /****************
    * Slide object implementation.
@@ -60,20 +61,36 @@ var IK = (function() {
     this.propreties = data;
   };
 
+  /**
+   * Helper function to get slide property.
+   */
+  Slide.prototype.get = function (property) {
+    if (this.propreties[property] != undefined) {
+      return this.propreties[property]
+    }
+    else {
+      log('Slide failed to get property: ' + property);
+    }
+    return undefined;
+  }
 
 
   /**
    * Render the slide using the PURE template.
    */
   Slide.prototype.render = function() {
-
+    log('Slide render: ' + this.get('title'));
   };
 
   /****************
    * Channel object implementation.
    */
   function Channel(token) {
+    // Object properties.
     this.token = undefined;
+    this.slides = [];
+    this.currentSlide = 0;
+    this.timeout = undefined;
 
     /**
      * Constructor that is called on object creation and ensure that the channel
@@ -106,22 +123,69 @@ var IK = (function() {
      */
     this.processChannel = function (data) {
       log('Channel with token ' + this.token + ' fetched.');
-      var slides = new Slide(this.token, '11');
+
+      // Load all slides in the channel.
+      var self = this;
+      $.each(data, function(i, item) {
+        var slide = new Slide(self.token, item.nid);
+        self.slides.push(slide);
+      });
+
+      // Capture event when all ajax request have completed.
+      $("body").ajaxStop(function() {
+        log('All slides for the channel (' + self.token + ') fechted');
+        self.start();
+      });
     };
 
     /**
      * Goto the next slide.
      */
     this.nextSlide = function () {
+      var self = this;
+      var slide = self.slides[self.currentSlide];
 
+      // Render current slide.
+      slide.render();
+
+      // Set timeout to change to next slide.
+      this.timeout = setTimeout(function() {
+        // Update the current slide pointer.
+        self.currentSlide++;
+        if (self.currentSlide == self.slides.length) {
+          self.currentSlide = 0;
+          log('Restarting the channel to first slide');
+          // Should we do someting about update of the channel here or outside
+          // all this.
+        }
+
+        // Goto the next slide.
+        self.nextSlide();
+      }, parseInt(slide.get('exposure')));
     };
 
     /**
-     * Goto previous slide.
+     *
      */
-    this.prevSlide = function () {
+    this.start = function () {
+      log('Starting the show');
+      this.nextSlide();
+    }
 
-    };
+    /**
+     *
+     */
+    this.stop = function () {
+      log('Stopping the show');
+      clearTimeout(this.timeout);
+    }
+
+    /**
+     *
+     */
+    this.destory = function() {
+
+    }
 
     // Call the constructor.
     this.__construct(token);
@@ -136,21 +200,26 @@ var IK = (function() {
    * on the token given as argument.
    */
   function start(token) {
-    var channel = new Channel(token);
+    if (channel === undefined) {
+      channel = new Channel(token);
+    }
+    else {
+      channel.start();
+    }
   }
 
   /**
    * Stops the slide show ?
    */
   function stop() {
-
+    channel.stop();
   }
 
   /**
    * Destroy the channel object and its slide objects.
    */
   function destory() {
-
+    channel.destory();
   }
 
   /**
@@ -174,8 +243,8 @@ var IK = (function() {
   return {
     start: start,
     stop: stop,
-    debug: debug,
-    destory: destory
+    destory: destory,
+    debug: debug
   };
 })();
 

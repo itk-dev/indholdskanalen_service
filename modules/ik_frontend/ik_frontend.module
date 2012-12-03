@@ -256,12 +256,13 @@ function ik_frontend_fetch_slide($token, $sid) {
       $slide->text_color = $data[0]['jquery_colorpicker'];
     }
 
-    $slide->exposure = 30;
+    // Convert exposure to mill sec.
+    $slide->exposure = 30000;
     if ($data = field_get_items('node', $entity, 'field_ik_slide_exposure')) {
-      $slide->exposure = $data[0]['value'];
+      $slide->exposure = $data[0]['value'] * 1000;
     }
 
-    $slide->layout = 30;
+    $slide->layout = 'layout_1';
     if ($data = field_get_items('node', $entity, 'field_layout')) {
       $slide->layout = $data[0]['value'];
     }
