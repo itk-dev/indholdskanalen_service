@@ -68,29 +68,29 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
  */
 @font-face {
   font-family: "OswaldLight";
-  src: url('/sites/service.indholdskanalen.dk/themes/indholdskanalen/css/fonts/oswald/Oswald-Light-webfont.eot');
-  src: url('/sites/service.indholdskanalen.dk/themes/indholdskanalen/css/fonts/oswald/Oswald-Light-webfont.eot?#iefix') format('eot'), url('/sites/service.indholdskanalen.dk/themes/indholdskanalen/css/fonts/oswald/Oswald-Light-webfont.woff') format('woff'), url('/sites/service.indholdskanalen.dk/themes/indholdskanalen/css/fonts/oswald/Oswald-Light-webfont.ttf') format('truetype'), url('/sites/service.indholdskanalen.dk/themes/indholdskanalen/css/fonts/oswald/Oswald-Light-webfont.svg#OswaldLight') format('svg');
+  src: url('/sites/service.indholdskanalen.dk/modules/ik_frontend/css/fonts/oswald/Oswald-Light-webfont.eot');
+  src: url('/sites/service.indholdskanalen.dk/modules/ik_frontend/css/fonts/oswald/Oswald-Light-webfont.eot?#iefix') format('eot'), url('/sites/service.indholdskanalen.dk/modules/ik_frontend/css/fonts/oswald/Oswald-Light-webfont.woff') format('woff'), url('/sites/service.indholdskanalen.dk/modules/ik_frontend/css/fonts/oswald/Oswald-Light-webfont.ttf') format('truetype'), url('/sites/service.indholdskanalen.dk/modules/ik_frontend/css/fonts/oswald/Oswald-Light-webfont.svg#OswaldLight') format('svg');
   font-weight: "normal";
   font-style: "normal"; }
 
 @font-face {
   font-family: "OswaldBook";
-  src: url('/sites/service.indholdskanalen.dk/themes/indholdskanalen/css/fonts/oswald/Oswald-Regular-webfont.eot');
-  src: url('/sites/service.indholdskanalen.dk/themes/indholdskanalen/css/fonts/oswald/Oswald-Regular-webfont.eot?#iefix') format('eot'), url('/sites/service.indholdskanalen.dk/themes/indholdskanalen/css/fonts/oswald/Oswald-Regular-webfont.woff') format('woff'), url('/sites/service.indholdskanalen.dk/themes/indholdskanalen/css/fonts/oswald/Oswald-Regular-webfont.ttf') format('truetype'), url('/sites/service.indholdskanalen.dk/themes/indholdskanalen/css/fonts/oswald/Oswald-Regular-webfont.svg#OswaldBook') format('svg');
+  src: url('/sites/service.indholdskanalen.dk/modules/ik_frontend/css/fonts/oswald/Oswald-Regular-webfont.eot');
+  src: url('/sites/service.indholdskanalen.dk/modules/ik_frontend/css/fonts/oswald/Oswald-Regular-webfont.eot?#iefix') format('eot'), url('/sites/service.indholdskanalen.dk/modules/ik_frontend/css/fonts/oswald/Oswald-Regular-webfont.woff') format('woff'), url('/sites/service.indholdskanalen.dk/modules/ik_frontend/css/fonts/oswald/Oswald-Regular-webfont.ttf') format('truetype'), url('/sites/service.indholdskanalen.dk/modules/ik_frontend/css/fonts/oswald/Oswald-Regular-webfont.svg#OswaldBook') format('svg');
   font-weight: "normal";
   font-style: "normal"; }
 
 @font-face {
   font-family: "OswaldBold";
-  src: url('/sites/service.indholdskanalen.dk/themes/indholdskanalen/css/fonts/oswald/Oswald-Bold-webfont.eot');
-  src: url('/sites/service.indholdskanalen.dk/themes/indholdskanalen/css/fonts/oswald/Oswald-Bold-webfont.eot?#iefix') format('eot'), url('/sites/service.indholdskanalen.dk/themes/indholdskanalen/css/fonts/oswald/Oswald-Bold-webfont.woff') format('woff'), url('/sites/service.indholdskanalen.dk/themes/indholdskanalen/css/fonts/oswald/Oswald-Bold-webfont.ttf') format('truetype'), url('/sites/service.indholdskanalen.dk/themes/indholdskanalen/css/fonts/oswald/Oswald-Bold-webfont.svg#OswaldBold') format('svg');
+  src: url('/sites/service.indholdskanalen.dk/modules/ik_frontend/css/fonts/oswald/Oswald-Bold-webfont.eot');
+  src: url('/sites/service.indholdskanalen.dk/modules/ik_frontend/css/fonts/oswald/Oswald-Bold-webfont.eot?#iefix') format('eot'), url('/sites/service.indholdskanalen.dk/modules/ik_frontend/css/fonts/oswald/Oswald-Bold-webfont.woff') format('woff'), url('/sites/service.indholdskanalen.dk/modules/ik_frontend/css/fonts/oswald/Oswald-Bold-webfont.ttf') format('truetype'), url('/sites/service.indholdskanalen.dk/modules/ik_frontend/css/fonts/oswald/Oswald-Bold-webfont.svg#OswaldBold') format('svg');
   font-weight: "normal";
   font-style: "normal"; }
 
 @font-face {
   font-family: "OswaldStencilRegular";
-  src: url('/sites/service.indholdskanalen.dk/themes/indholdskanalen/css/fonts/oswald/Oswald-Stencil-webfont.eot');
-  src: url('/sites/service.indholdskanalen.dk/themes/indholdskanalen/css/fonts/oswald/Oswald-Stencil-webfont.eot?#iefix') format('eot'), url('/sites/service.indholdskanalen.dk/themes/indholdskanalen/css/fonts/oswald/Oswald-Stencil-webfont.woff') format('woff'), url('/sites/service.indholdskanalen.dk/themes/indholdskanalen/css/fonts/oswald/Oswald-Stencil-webfont.ttf') format('truetype'), url('/sites/service.indholdskanalen.dk/themes/indholdskanalen/css/fonts/oswald/Oswald-Stencil-webfont.svg#OswaldStencilRegular') format('svg');
+  src: url('/sites/service.indholdskanalen.dk/modules/ik_frontend/css/fonts/oswald/Oswald-Stencil-webfont.eot');
+  src: url('/sites/service.indholdskanalen.dk/modules/ik_frontend/css/fonts/oswald/Oswald-Stencil-webfont.eot?#iefix') format('eot'), url('/sites/service.indholdskanalen.dk/modules/ik_frontend/css/fonts/oswald/Oswald-Stencil-webfont.woff') format('woff'), url('/sites/service.indholdskanalen.dk/modules/ik_frontend/css/fonts/oswald/Oswald-Stencil-webfont.ttf') format('truetype'), url('/sites/service.indholdskanalen.dk/modules/ik_frontend/css/fonts/oswald/Oswald-Stencil-webfont.svg#OswaldStencilRegular') format('svg');
   font-weight: "normal";
   font-style: "normal"; }
 
@@ -155,72 +155,78 @@ h6 {
 /*
 * Layouts default styling
 */
-/* line 6, ../sass/_layouts.scss */
-#slide-container .slide {
-  position: relative;
+/* line 5, ../sass/_layouts.scss */
+#slide-container {
   width: 100%;
-  height: 100%;
-  margin: 0;
-  padding: 0; }
-  /* line 13, ../sass/_layouts.scss */
-  #slide-container .slide .image-container {
-    position: absolute;
-    top: 0;
-    left: 0;
-    height: 100%;
+  height: 100%; }
+  /* line 9, ../sass/_layouts.scss */
+  #slide-container .slide {
+    position: relative;
     width: 100%;
-    background-size: cover; }
-  /* line 22, ../sass/_layouts.scss */
-  #slide-container .slide .text-container {
-    -webkit-box-sizing: border-box;
-    -moz-box-sizing: border-box;
-    box-sizing: border-box;
-    position: absolute;
-    background-color: #ff9900; }
-    /* line 28, ../sass/_layouts.scss */
-    #slide-container .slide .text-container .heading-container {
+    height: 100%;
+    margin: 0;
+    padding: 0; }
+    /* line 16, ../sass/_layouts.scss */
+    #slide-container .slide .image-container {
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 100%;
+      background-size: cover; }
+    /* line 25, ../sass/_layouts.scss */
+    #slide-container .slide .text-container {
       -webkit-box-sizing: border-box;
       -moz-box-sizing: border-box;
       box-sizing: border-box;
-      padding: 20px; }
-    /* line 33, ../sass/_layouts.scss */
-    #slide-container .slide .text-container .slide-heading {
-      font-size: 64px;
-      font-size: 4rem;
-      line-height: 77px;
-      line-height: 4.8rem;
-      margin-bottom: 20px;
-      margin-bottom: 1.25rem;
-      text-transform: uppercase; }
-    /* line 40, ../sass/_layouts.scss */
-    #slide-container .slide .text-container .divider {
-      width: 10%;
-      border-bottom: 0.2em solid white;
-      margin-bottom: 10px;
-      margin-bottom: 0.625rem; }
-    /* line 46, ../sass/_layouts.scss */
-    #slide-container .slide .text-container .slide-subheading {
-      font-size: 27px;
-      font-size: 1.7rem;
-      font-style: italic;
-      line-height: 32.64px;
-      margin-bottom: 10px; }
-    /* line 53, ../sass/_layouts.scss */
-    #slide-container .slide .text-container .slide-text {
-      -webkit-box-sizing: border-box;
-      -moz-box-sizing: border-box;
-      box-sizing: border-box;
-      font-size: 19px;
-      font-size: 1.2rem;
-      line-height: 22px;
-      line-height: 1.4rem;
-      letter-spacing: 2px;
-      letter-spacing: 0.1rem;
-      font-family: "OswaldBook", "Helvetica Neue", Helvetica, Arial, sans-serif;
-      padding: 20px; }
-  /* line 63, ../sass/_layouts.scss */
-  #slide-container .slide .logo-container {
-    position: absolute; }
+      z-index: 20000;
+      position: absolute;
+      background-color: #ff9900; }
+      /* line 32, ../sass/_layouts.scss */
+      #slide-container .slide .text-container .heading-container {
+        -webkit-box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        box-sizing: border-box;
+        padding: 20px; }
+      /* line 37, ../sass/_layouts.scss */
+      #slide-container .slide .text-container .slide-heading {
+        font-size: 64px;
+        font-size: 4rem;
+        line-height: 77px;
+        line-height: 4.8rem;
+        margin-bottom: 20px;
+        margin-bottom: 1.25rem;
+        text-transform: uppercase; }
+      /* line 44, ../sass/_layouts.scss */
+      #slide-container .slide .text-container .divider {
+        width: 10%;
+        border-bottom: 0.2em solid white;
+        margin-bottom: 10px;
+        margin-bottom: 0.625rem; }
+      /* line 50, ../sass/_layouts.scss */
+      #slide-container .slide .text-container .slide-subheading {
+        font-size: 27px;
+        font-size: 1.7rem;
+        font-style: italic;
+        line-height: 32.64px;
+        margin-bottom: 10px; }
+      /* line 57, ../sass/_layouts.scss */
+      #slide-container .slide .text-container .slide-text {
+        -webkit-box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        box-sizing: border-box;
+        font-size: 19px;
+        font-size: 1.2rem;
+        line-height: 22px;
+        line-height: 1.4rem;
+        letter-spacing: 2px;
+        letter-spacing: 0.1rem;
+        font-family: "OswaldBook", "Helvetica Neue", Helvetica, Arial, sans-serif;
+        padding: 20px; }
+    /* line 67, ../sass/_layouts.scss */
+    #slide-container .slide .logo-container {
+      z-index: 21000;
+      position: absolute; }
 
 /*
 * Layout 1
@@ -236,9 +242,6 @@ h6 {
 * ---------------------------
 *
 */
-/* line 91, ../sass/_layouts.scss */
-.layout-1 .slide .image-container, .layout-2 .slide .image-container, .layout-3 .slide .image-container, .layout-4 .slide .image-container, .layout-5 .slide .image-container {
-  background-image: url("../mockups/images/slide_1.jpg"); }
 /* line 95, ../sass/_layouts.scss */
 .layout-1 .slide .text-container, .layout-2 .slide .text-container, .layout-3 .slide .text-container, .layout-4 .slide .text-container, .layout-5 .slide .text-container {
   width: 100%;
@@ -273,10 +276,7 @@ h6 {
 * ---------------------------
 *
 */
-/* line 140, ../sass/_layouts.scss */
-.layout-2 .slide .image-container {
-  background-image: url("../mockups/images/slide_2.jpg"); }
-/* line 144, ../sass/_layouts.scss */
+/* line 139, ../sass/_layouts.scss */
 .layout-2 .slide .text-container {
   top: auto;
   bottom: 10%; }
@@ -295,10 +295,7 @@ h6 {
 * ---------------------------
 *
 */
-/* line 171, ../sass/_layouts.scss */
-.layout-3 .slide .image-container {
-  background-image: url("../mockups/images/slide_3.jpg"); }
-/* line 175, ../sass/_layouts.scss */
+/* line 165, ../sass/_layouts.scss */
 .layout-3 .slide .text-container {
   top: 50%;
   margin-top: -134px;
@@ -318,10 +315,7 @@ h6 {
 * ---------------------------
 *
 */
-/* line 202, ../sass/_layouts.scss */
-.layout-4 .slide .image-container {
-  background-image: url("../mockups/images/slide_4.jpg"); }
-/* line 206, ../sass/_layouts.scss */
+/* line 191, ../sass/_layouts.scss */
 .layout-4 .slide .text-container {
   top: auto;
   bottom: 0; }
@@ -340,10 +334,7 @@ h6 {
 * ---------------------------
 *
 */
-/* line 232, ../sass/_layouts.scss */
-.layout-5 .slide .image-container {
-  background-image: url("../mockups/images/slide_5.jpg"); }
-/* line 236, ../sass/_layouts.scss */
+/* line 217, ../sass/_layouts.scss */
 .layout-5 .slide .text-container {
   top: 0; }
 
@@ -361,10 +352,7 @@ h6 {
 * ---------------------------
 *
 */
-/* line 260, ../sass/_layouts.scss */
-.layout-6 .slide .image-container, .layout-7 .slide .image-container, .layout-8 .slide .image-container, .layout-9 .slide .image-container, .layout-10 .slide .image-container, .layout-11 .slide .image-container {
-  background-image: url("../mockups/images/slide_6.jpg"); }
-/* line 264, ../sass/_layouts.scss */
+/* line 241, ../sass/_layouts.scss */
 .layout-6 .slide .text-container, .layout-7 .slide .text-container, .layout-8 .slide .text-container, .layout-9 .slide .text-container, .layout-10 .slide .text-container, .layout-11 .slide .text-container {
   top: 0;
   left: 0;
@@ -385,10 +373,7 @@ h6 {
 * ---------------------------
 *
 */
-/* line 292, ../sass/_layouts.scss */
-.layout-7 .slide .image-container {
-  background-image: url("../mockups/images/slide_7.jpg"); }
-/* line 296, ../sass/_layouts.scss */
+/* line 269, ../sass/_layouts.scss */
 .layout-7 .slide .text-container {
   left: auto;
   right: 0; }
@@ -407,10 +392,7 @@ h6 {
 * ---------------------------
 *
 */
-/* line 322, ../sass/_layouts.scss */
-.layout-8 .slide .image-container {
-  background-image: url("../mockups/images/slide_8.jpg"); }
-/* line 326, ../sass/_layouts.scss */
+/* line 295, ../sass/_layouts.scss */
 .layout-8 .slide .text-container {
   width: 75%;
   right: 0;
@@ -430,10 +412,7 @@ h6 {
 * ---------------------------
 *
 */
-/* line 353, ../sass/_layouts.scss */
-.layout-9 .slide .image-container {
-  background-image: url("../mockups/images/slide_9.jpg"); }
-/* line 357, ../sass/_layouts.scss */
+/* line 322, ../sass/_layouts.scss */
 .layout-9 .slide .text-container {
   width: 75%; }
 
@@ -451,10 +430,7 @@ h6 {
 * ---------------------------
 *
 */
-/* line 382, ../sass/_layouts.scss */
-.layout-10 .slide .image-container {
-  background-image: url("../mockups/images/slide_10.jpg"); }
-/* line 386, ../sass/_layouts.scss */
+/* line 347, ../sass/_layouts.scss */
 .layout-10 .slide .text-container {
   width: 25%; }
 
@@ -472,10 +448,7 @@ h6 {
 * ---------------------------
 *
 */
-/* line 411, ../sass/_layouts.scss */
-.layout-11 .slide .image-container {
-  background-image: url("../mockups/images/slide_11.jpg"); }
-/* line 415, ../sass/_layouts.scss */
+/* line 372, ../sass/_layouts.scss */
 .layout-11 .slide .text-container {
   width: 25%;
   right: 0;
@@ -495,10 +468,7 @@ h6 {
 * ---------------------------
 *
 */
-/* line 441, ../sass/_layouts.scss */
-.layout-12 .slide .image-container {
-  background-image: url("../mockups/images/slide_12.jpg"); }
-/* line 445, ../sass/_layouts.scss */
+/* line 398, ../sass/_layouts.scss */
 .layout-12 .slide .text-container {
   display: none; }
 
@@ -516,11 +486,10 @@ h6 {
 * ---------------------------
 *
 */
-/* line 469, ../sass/_layouts.scss */
+/* line 422, ../sass/_layouts.scss */
 .layout-13 .slide .image-container {
-  background-image: none;
   display: none; }
-/* line 474, ../sass/_layouts.scss */
+/* line 426, ../sass/_layouts.scss */
 .layout-13 .slide .text-container {
   width: 100%;
   height: 100%; }
