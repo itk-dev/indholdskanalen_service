@@ -5,7 +5,7 @@ http_path = "/sites/service.indholdskanalen.dk/themes/indholdskanalen/"
 css_dir = "css"
 sass_dir = "sass"
 images_dir = "images"
-javascripts_dir = "scripts"
+javascripts_dir = "js"
 fonts_dir = "css/fonts"
 
 output_style = :nested
