@@ -1,13 +1,84 @@
+<?php
+$skitter_effects = array(
+  'cube',
+  'cubeRandom',
+  'block',
+  'cubeStop',
+  'cubeHide',
+  'cubeSize',
+  'horizontal',
+  'showBars',
+  'showBarsRandom',
+  'tube',
+  'fade',
+  'fadeFour',
+  'paralell',
+  'blind',
+  'blindHeight',
+  'blindWidth',
+  'directionTop',
+  'directionBottom',
+  'directionRight',
+  'directionLeft',
+  'cubeStopRandom',
+  'cubeSpread'
+);
+?>
+<!DOCTYPE html>
 <html>
 <head>
+  <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
   <title>Slide layout <?php print (isset($_GET["layout"])) ? $_GET["layout"] : "- select layout"; ?></title>
   <link href="../css/styles.css" rel="stylesheet" type="text/css" media="all">
+  <link href="../js/skitterslideshow/css/skitter.styles.css" type="text/css" media="all" rel="stylesheet" />
+
+  <script src="../js/jquery-1.8.3.min.js"></script>
+  <script src="../js/skitterslideshow/js/jquery.easing.1.3.js"></script>
+  <script src="../js/skitterslideshow/js/jquery.animate-colors-min.js"></script>
+  <script src="../js/skitterslideshow/js/jquery.skitter.min.js"></script>
+
+  <script>
+  $(document).ready(function() {
+    
+    // Skitter image slideshow
+    $('.image-container').skitter({
+      fullscreen: false,
+      numbers: false,
+      navigation: false,
+      label: false,
+      stop_over: false,
+      interval: 2500,
+      structure: '<div class="container_skitter">'
+                  + '<div class="image">'
+                    + '<a href=""><img class="image_main" /></a>'
+                  + '</div>'
+                + '</div>'
+    });
+
+    $(window).bind('resize', function() {
+      location.reload();
+    });
+    
+  });
+  </script>
+
 </head>
 <body>
 <?php if (isset($_GET["layout"])) : ?>
   <div id="slide-container" class="layout-<?php print (isset($_GET["layout"])) ? $_GET["layout"] : "1"; ?>">
     <div class="slide">
-      <div class="image-container"></div>
+      <div class="image-container box_skitter">
+        <ul>
+          <?php
+          $files = scandir('images/');
+          foreach ($files as $file) {
+            $effect = array_rand ($skitter_effects);
+            $image = stristr ($file, 'jpg') ? 'images/' . $file : '';
+            print ($image) ? '<li><a href="#' . $skitter_effects[$effect] . '"><img src="' . $image . '" class="' . $skitter_effects[$effect] . '" /></a></li>' : '';
+          }
+          ?>   
+        </ul>
+      </div>
       <div class="text-container">
         <div class="heading-container">
           <div class="slide-heading">This is a Heading</div>
