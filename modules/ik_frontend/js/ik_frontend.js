@@ -1,6 +1,8 @@
+/*jshint devel:true */
+
 // Define configuration object to get settings data from backend to frontend.
 // Before calls are made to the backend.
-var IKFrontend = IKFrontend || {'settings': {}};
+var IKFrontend = IKFrontend || { 'settings': {} };
 
 // Create closed namespace with revealing module pattern.
 var IK = (function() {
@@ -32,7 +34,7 @@ var IK = (function() {
     this.sid = sid;
 
     this.fetchSlide();
-  }
+  };
 
   /**
    * Fetch slide from the backend.
@@ -48,7 +50,7 @@ var IK = (function() {
         this.processSlide(data);
       }
     });
-  }
+  };
 
   /**
    * Process the fetched slide when the AJAX call succeeds.
@@ -56,7 +58,7 @@ var IK = (function() {
   Slide.prototype.processSlide = function (data) {
     log('Slide ' + this.sid + ' fetched.');
     this.propreties = data;
-  }
+  };
 
 
 
@@ -65,7 +67,7 @@ var IK = (function() {
    */
   Slide.prototype.render = function() {
 
-  }
+  };
 
   /****************
    * Channel object implementation.
@@ -81,7 +83,7 @@ var IK = (function() {
     this.__construct = function (token) {
       this.token = token;
       this.fetchChannel();
-    }
+    };
 
     /**
      * Gets information about the channel from the backend.
@@ -97,7 +99,7 @@ var IK = (function() {
           this.processChannel(data);
         }
       });
-    }
+    };
 
     /**
      * Callback when data is returned form the backend.
@@ -105,21 +107,21 @@ var IK = (function() {
     this.processChannel = function (data) {
       log('Channel with token ' + this.token + ' fetched.');
       var slides = new Slide(this.token, '11');
-    }
+    };
 
     /**
      * Goto the next slide.
      */
     this.nextSlide = function () {
 
-    }
+    };
 
     /**
      * Goto previous slide.
      */
     this.prevSlide = function () {
 
-    }
+    };
 
     // Call the constructor.
     this.__construct(token);
@@ -183,4 +185,4 @@ var IK = (function() {
     IK.debug();
     IK.start(IKFrontend.settings.token);
   });
-})(jQuery)
+})(jQuery);
