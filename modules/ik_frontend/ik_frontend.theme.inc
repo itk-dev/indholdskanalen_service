@@ -10,7 +10,7 @@
  */
 function template_preprocess_ik_frontend(&$vars) {
   // Add style sheets.
-  $vars['css'] = '/' . drupal_get_path('theme', 'indholdskanalen') . '/css/styles.css';
+  $vars['css'] = '/' . drupal_get_path('module', 'ik_frontend') . '/css/styles.css';
 
   // Build settings.
   $settings = array(
