@@ -47,7 +47,7 @@ $skitter_effects = array(
       navigation: false,
       label: false,
       stop_over: false,
-      interval: 2500,
+      interval: 2500, //MUST BE CALCULATED BASED ON THE AMOUNT OF IMAGES AND TIME (seconds) SLIDE IS SET TO DISPLAY.
       structure: '<div class="container_skitter">'
                   + '<div class="image">'
                     + '<a href=""><img class="image_main" /></a>'
@@ -91,7 +91,7 @@ $skitter_effects = array(
           <p>Nullam id dolor id nibh ultricies vehicula ut id elit. Vestibulum id ligula porta felis euismod semper. <em>Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit.</em> Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum.</p>
         </div>
       </div>
-      <div class="logo-container"></div>
+      <div class="logo-container"><img src="images/aak_logo.png" /></div>
     </div>
   </div>
 <?php else: ?>
