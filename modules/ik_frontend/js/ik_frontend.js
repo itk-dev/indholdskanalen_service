@@ -43,6 +43,10 @@ var IK = (function() {
           'img@src' : 'medium'
         }
       },
+      '.text-container@style' : function (arg) {
+        // Set text and background color.
+        return 'color:#' + arg.context.text_color + ';background-color:#' + arg.context.color;
+      },
       '.slide-heading' : 'title',
       '.slide-subheading' : 'subheading',
       '.slide-text' : 'text',
