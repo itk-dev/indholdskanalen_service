@@ -32,10 +32,10 @@
 
   .bgheight img {
     width: 100%;
-    height: auto;
+    min-height: 100%;
   }
   .bgwidth img {
-    width: auto;
+    min-width: 100%;
     height: 100%;
   }
 

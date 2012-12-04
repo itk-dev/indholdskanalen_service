@@ -335,12 +335,12 @@ var IK = (function() {
     var theWindow   = $(window),
         $imageitem  = $(".image-container")
     function resizeImage() {
-      if ( theWindow.width() < theWindow.height() ) {
-          $imageitem
-            .addClass('bgheight');
-      } else {
+      if ( theWindow.width() > theWindow.height() ) {
           $imageitem
             .addClass('bgwidth');
+      } else {
+          $imageitem
+            .addClass('bgheight');
       }   
     }
     resizeImage();
