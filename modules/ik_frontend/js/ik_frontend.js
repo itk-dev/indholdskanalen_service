@@ -134,10 +134,7 @@ var IK = (function() {
       return;
     }
 
-    // Ensure that the fade is not enterupted by skitter and the last image is
-    // the one shown during the fade.
-//    $('li:not(:last-child)', from).remove();
-//    $('.box_skitter ul', from).show();
+    // Ensure that images is show while skitter loads.
     $('.box_skitter ul', to).show();
 
     // Insert the new slide behind the current one and fade the current out.
@@ -351,18 +348,22 @@ var IK = (function() {
     IK.debug();
     IK.start(IKFrontend.settings.token);
 
-    var theWindow   = $(window),
-        $imageitem  = $(".image-container")
+
+    // This is only excuted on the first slide and what do it do ?
+    // Should it target '#pure-template .image.container' ?
+    var theWindow   = $(window);
+    var imageitem  = $(".image-container");
+
     function resizeImage() {
-      if ( theWindow.width() < theWindow.height() ) {
-          $imageitem
-            .addClass('bgheight');
-      } else {
-          $imageitem
-            .addClass('bgwidth');
-      }   
+      if (theWindow.width() < theWindow.height()) {
+        imageitem.addClass('bgheight');
+      }
+      else {
+        imageitem.addClass('bgwidth');
+      }
     }
     resizeImage();
+
 
     // Ensure that the channel is reload on resize.
     $(window).bind('resize', function() {
