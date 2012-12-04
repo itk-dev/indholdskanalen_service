@@ -184,7 +184,11 @@ h6 {
     height: 100%;
     width: 100%;
     background-size: cover; }
-  /* line 34, ../sass/_layouts.scss */
+    /* line 33, ../sass/_layouts.scss */
+    .slide .image-container img {
+      min-width: 100%;
+      min-height: 100%; }
+  /* line 39, ../sass/_layouts.scss */
   .slide .text-container {
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
@@ -192,13 +196,13 @@ h6 {
     z-index: 20000;
     position: absolute;
     background-color: #ff9900; }
-    /* line 41, ../sass/_layouts.scss */
+    /* line 46, ../sass/_layouts.scss */
     .slide .text-container .heading-container {
       -webkit-box-sizing: border-box;
       -moz-box-sizing: border-box;
       box-sizing: border-box;
       padding: 20px; }
-    /* line 46, ../sass/_layouts.scss */
+    /* line 51, ../sass/_layouts.scss */
     .slide .text-container .slide-heading {
       font-size: 64px;
       font-size: 4rem;
@@ -207,20 +211,20 @@ h6 {
       margin-bottom: 20px;
       margin-bottom: 1.25rem;
       text-transform: uppercase; }
-    /* line 53, ../sass/_layouts.scss */
+    /* line 58, ../sass/_layouts.scss */
     .slide .text-container .divider {
       width: 10%;
       border-bottom: 0.2em solid white;
       margin-bottom: 10px;
       margin-bottom: 0.625rem; }
-    /* line 59, ../sass/_layouts.scss */
+    /* line 64, ../sass/_layouts.scss */
     .slide .text-container .slide-subheading {
       font-size: 27px;
       font-size: 1.7rem;
       font-style: italic;
       line-height: 32.64px;
       margin-bottom: 10px; }
-    /* line 66, ../sass/_layouts.scss */
+    /* line 71, ../sass/_layouts.scss */
     .slide .text-container .slide-text {
       -webkit-box-sizing: border-box;
       -moz-box-sizing: border-box;
@@ -233,7 +237,7 @@ h6 {
       letter-spacing: 0.1rem;
       font-family: "OswaldBook", "Helvetica Neue", Helvetica, Arial, sans-serif;
       padding: 20px; }
-  /* line 76, ../sass/_layouts.scss */
+  /* line 81, ../sass/_layouts.scss */
   .slide .logo-container {
     z-index: 21000;
     position: absolute;
@@ -254,26 +258,26 @@ h6 {
 * ---------------------------
 *
 */
-/* line 103, ../sass/_layouts.scss */
+/* line 108, ../sass/_layouts.scss */
 .layout-1 .text-container, .layout-2 .text-container, .layout-3 .text-container, .layout-4 .text-container, .layout-5 .text-container {
   width: 100%;
   top: 10%; }
-  /* line 107, ../sass/_layouts.scss */
+  /* line 112, ../sass/_layouts.scss */
   .layout-1 .text-container .heading-container, .layout-2 .text-container .heading-container, .layout-3 .text-container .heading-container, .layout-4 .text-container .heading-container, .layout-5 .text-container .heading-container {
     width: 49.5%;
     float: left; }
-  /* line 112, ../sass/_layouts.scss */
+  /* line 117, ../sass/_layouts.scss */
   .layout-1 .text-container .slide-heading, .layout-2 .text-container .slide-heading, .layout-3 .text-container .slide-heading, .layout-4 .text-container .slide-heading, .layout-5 .text-container .slide-heading {
     margin-bottom: 10px;
     margin-bottom: 0.625rem; }
-  /* line 116, ../sass/_layouts.scss */
+  /* line 121, ../sass/_layouts.scss */
   .layout-1 .text-container .slide-text, .layout-2 .text-container .slide-text, .layout-3 .text-container .slide-text, .layout-4 .text-container .slide-text, .layout-5 .text-container .slide-text {
     width: 49.5%;
     float: left; }
-  /* line 121, ../sass/_layouts.scss */
+  /* line 126, ../sass/_layouts.scss */
   .layout-1 .text-container .divider, .layout-2 .text-container .divider, .layout-3 .text-container .divider, .layout-4 .text-container .divider, .layout-5 .text-container .divider {
     display: none; }
-/* line 126, ../sass/_layouts.scss */
+/* line 131, ../sass/_layouts.scss */
 .layout-1 .logo-container, .layout-2 .logo-container, .layout-3 .logo-container, .layout-4 .logo-container, .layout-5 .logo-container {
   top: auto;
   bottom: 20px; }
@@ -292,11 +296,11 @@ h6 {
 * ---------------------------
 *
 */
-/* line 149, ../sass/_layouts.scss */
+/* line 154, ../sass/_layouts.scss */
 .layout-2 .text-container {
   top: auto;
   bottom: 10%; }
-/* line 154, ../sass/_layouts.scss */
+/* line 159, ../sass/_layouts.scss */
 .layout-2 .logo-container {
   top: 20px;
   bottom: auto; }
@@ -315,12 +319,12 @@ h6 {
 * ---------------------------
 *
 */
-/* line 177, ../sass/_layouts.scss */
+/* line 182, ../sass/_layouts.scss */
 .layout-3 .text-container {
   top: 50%;
   margin-top: -134px;
   /* Must be replaced with javascript */ }
-/* line 182, ../sass/_layouts.scss */
+/* line 187, ../sass/_layouts.scss */
 .layout-3 .logo-container {
   top: 20px;
   bottom: auto; }
@@ -339,11 +343,11 @@ h6 {
 * ---------------------------
 *
 */
-/* line 205, ../sass/_layouts.scss */
+/* line 210, ../sass/_layouts.scss */
 .layout-4 .text-container {
   top: auto;
   bottom: 0; }
-/* line 209, ../sass/_layouts.scss */
+/* line 214, ../sass/_layouts.scss */
 .layout-4 .logo-container {
   top: 20px;
   bottom: auto; }
@@ -362,10 +366,10 @@ h6 {
 * ---------------------------
 *
 */
-/* line 232, ../sass/_layouts.scss */
+/* line 237, ../sass/_layouts.scss */
 .layout-5 .text-container {
   top: 0; }
-/* line 235, ../sass/_layouts.scss */
+/* line 240, ../sass/_layouts.scss */
 .layout-5 .logo-container {
   top: auto;
   bottom: 20px; }
@@ -384,7 +388,7 @@ h6 {
 * ---------------------------
 *
 */
-/* line 257, ../sass/_layouts.scss */
+/* line 262, ../sass/_layouts.scss */
 .layout-6 .text-container, .layout-7 .text-container, .layout-8 .text-container, .layout-9 .text-container, .layout-10 .text-container, .layout-11 .text-container {
   top: 0;
   left: 0;
@@ -405,11 +409,11 @@ h6 {
 * ---------------------------
 *
 */
-/* line 282, ../sass/_layouts.scss */
+/* line 287, ../sass/_layouts.scss */
 .layout-7 .text-container {
   left: auto;
   right: 0; }
-/* line 286, ../sass/_layouts.scss */
+/* line 291, ../sass/_layouts.scss */
 .layout-7 .logo-container {
   right: auto;
   left: 20px; }
@@ -428,12 +432,12 @@ h6 {
 * ---------------------------
 *
 */
-/* line 309, ../sass/_layouts.scss */
+/* line 314, ../sass/_layouts.scss */
 .layout-8 .text-container {
   width: 75%;
   right: 0;
   left: auto; }
-/* line 314, ../sass/_layouts.scss */
+/* line 319, ../sass/_layouts.scss */
 .layout-8 .logo-container {
   right: auto;
   left: 20px; }
@@ -452,7 +456,7 @@ h6 {
 * ---------------------------
 *
 */
-/* line 337, ../sass/_layouts.scss */
+/* line 342, ../sass/_layouts.scss */
 .layout-9 .text-container {
   width: 75%; }
 
@@ -470,7 +474,7 @@ h6 {
 * ---------------------------
 *
 */
-/* line 359, ../sass/_layouts.scss */
+/* line 364, ../sass/_layouts.scss */
 .layout-10 .text-container {
   width: 25%; }
 
@@ -488,12 +492,12 @@ h6 {
 * ---------------------------
 *
 */
-/* line 381, ../sass/_layouts.scss */
+/* line 386, ../sass/_layouts.scss */
 .layout-11 .text-container {
   width: 25%;
   right: 0;
   left: auto; }
-/* line 386, ../sass/_layouts.scss */
+/* line 391, ../sass/_layouts.scss */
 .layout-11 .logo-container {
   right: auto;
   left: 20px; }
@@ -512,7 +516,7 @@ h6 {
 * ---------------------------
 *
 */
-/* line 408, ../sass/_layouts.scss */
+/* line 413, ../sass/_layouts.scss */
 .layout-12 .text-container {
   display: none; }
 
@@ -530,10 +534,10 @@ h6 {
 * ---------------------------
 *
 */
-/* line 429, ../sass/_layouts.scss */
+/* line 434, ../sass/_layouts.scss */
 .layout-13 .image-container {
   display: none; }
-/* line 433, ../sass/_layouts.scss */
+/* line 438, ../sass/_layouts.scss */
 .layout-13 .text-container {
   width: 100%;
   height: 100%; }
