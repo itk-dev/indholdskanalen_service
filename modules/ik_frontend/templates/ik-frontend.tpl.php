@@ -29,7 +29,9 @@
       <div class="slide-text">
       </div>
     </div>
-    <div class="logo-container"></div>
+    <div class="logo-container">
+      <img src="" />
+    </div>
   </div>
   <!-- end template -->
 

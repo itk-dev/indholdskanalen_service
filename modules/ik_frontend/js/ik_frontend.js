@@ -43,7 +43,8 @@ var IK = (function() {
       },
       '.slide-heading' : 'title',
       '.slide-subheading' : 'subheading',
-      '.slide-text' : 'text'
+      '.slide-text' : 'text',
+      '.logo-container img@src' : 'logo'
     };
 
     // Compile template with the directive.
