@@ -28,12 +28,15 @@
     left: 0;
     height: 100%;
     width: 100%;
-    background-size: cover;
-    
-    img {
-      min-width: 100%;
-      min-height: 100%;
-    }
+  }
+
+  .bgheight img {
+    width: 100%;
+    height: auto;
+  }
+  .bgwidth img {
+    width: auto;
+    height: 100%;
   }
 
   .text-container {

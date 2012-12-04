@@ -328,6 +328,19 @@ var IK = (function() {
     IK.debug();
     IK.start(IKFrontend.settings.token);
 
+    var theWindow   = $(window),
+        $imageitem  = $(".image-container")
+    function resizeImage() {
+      if ( theWindow.width() < theWindow.height() ) {
+          $imageitem
+            .addClass('bgheight');
+      } else {
+          $imageitem
+            .addClass('bgwidth');
+      }   
+    }
+    resizeImage();
+
     // Ensure that the channel is reload on resize.
     $(window).bind('resize', function() {
       location.reload();
