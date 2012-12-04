@@ -1,10 +1,16 @@
 /*
 * Layouts default styling
 */
-
+#pure-template{
+  display: none;
+}
 #slide-container {
   width: 100%;
   height: 100%;
+
+  #pure-template {
+    display: block;
+  }
 }
 
 .slide {

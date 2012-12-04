@@ -155,12 +155,19 @@ h6 {
 /*
 * Layouts default styling
 */
-/* line 5, ../sass/_layouts.scss */
+/* line 4, ../sass/_layouts.scss */
+#pure-template {
+  display: none; }
+
+/* line 7, ../sass/_layouts.scss */
 #slide-container {
   width: 100%;
   height: 100%; }
+  /* line 11, ../sass/_layouts.scss */
+  #slide-container #pure-template {
+    display: block; }
 
-/* line 10, ../sass/_layouts.scss */
+/* line 16, ../sass/_layouts.scss */
 .slide {
   position: absolute;
   top: 0;
@@ -169,7 +176,7 @@ h6 {
   height: 100%;
   margin: 0;
   padding: 0; }
-  /* line 19, ../sass/_layouts.scss */
+  /* line 25, ../sass/_layouts.scss */
   .slide .image-container {
     position: absolute;
     top: 0;
@@ -177,7 +184,7 @@ h6 {
     height: 100%;
     width: 100%;
     background-size: cover; }
-  /* line 28, ../sass/_layouts.scss */
+  /* line 34, ../sass/_layouts.scss */
   .slide .text-container {
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
@@ -185,13 +192,13 @@ h6 {
     z-index: 20000;
     position: absolute;
     background-color: #ff9900; }
-    /* line 35, ../sass/_layouts.scss */
+    /* line 41, ../sass/_layouts.scss */
     .slide .text-container .heading-container {
       -webkit-box-sizing: border-box;
       -moz-box-sizing: border-box;
       box-sizing: border-box;
       padding: 20px; }
-    /* line 40, ../sass/_layouts.scss */
+    /* line 46, ../sass/_layouts.scss */
     .slide .text-container .slide-heading {
       font-size: 64px;
       font-size: 4rem;
@@ -200,20 +207,20 @@ h6 {
       margin-bottom: 20px;
       margin-bottom: 1.25rem;
       text-transform: uppercase; }
-    /* line 47, ../sass/_layouts.scss */
+    /* line 53, ../sass/_layouts.scss */
     .slide .text-container .divider {
       width: 10%;
       border-bottom: 0.2em solid white;
       margin-bottom: 10px;
       margin-bottom: 0.625rem; }
-    /* line 53, ../sass/_layouts.scss */
+    /* line 59, ../sass/_layouts.scss */
     .slide .text-container .slide-subheading {
       font-size: 27px;
       font-size: 1.7rem;
       font-style: italic;
       line-height: 32.64px;
       margin-bottom: 10px; }
-    /* line 60, ../sass/_layouts.scss */
+    /* line 66, ../sass/_layouts.scss */
     .slide .text-container .slide-text {
       -webkit-box-sizing: border-box;
       -moz-box-sizing: border-box;
@@ -226,7 +233,7 @@ h6 {
       letter-spacing: 0.1rem;
       font-family: "OswaldBook", "Helvetica Neue", Helvetica, Arial, sans-serif;
       padding: 20px; }
-  /* line 70, ../sass/_layouts.scss */
+  /* line 76, ../sass/_layouts.scss */
   .slide .logo-container {
     z-index: 21000;
     position: absolute;
@@ -247,26 +254,26 @@ h6 {
 * ---------------------------
 *
 */
-/* line 97, ../sass/_layouts.scss */
+/* line 103, ../sass/_layouts.scss */
 .layout-1 .text-container, .layout-2 .text-container, .layout-3 .text-container, .layout-4 .text-container, .layout-5 .text-container {
   width: 100%;
   top: 10%; }
-  /* line 101, ../sass/_layouts.scss */
+  /* line 107, ../sass/_layouts.scss */
   .layout-1 .text-container .heading-container, .layout-2 .text-container .heading-container, .layout-3 .text-container .heading-container, .layout-4 .text-container .heading-container, .layout-5 .text-container .heading-container {
     width: 49.5%;
     float: left; }
-  /* line 106, ../sass/_layouts.scss */
+  /* line 112, ../sass/_layouts.scss */
   .layout-1 .text-container .slide-heading, .layout-2 .text-container .slide-heading, .layout-3 .text-container .slide-heading, .layout-4 .text-container .slide-heading, .layout-5 .text-container .slide-heading {
     margin-bottom: 10px;
     margin-bottom: 0.625rem; }
-  /* line 110, ../sass/_layouts.scss */
+  /* line 116, ../sass/_layouts.scss */
   .layout-1 .text-container .slide-text, .layout-2 .text-container .slide-text, .layout-3 .text-container .slide-text, .layout-4 .text-container .slide-text, .layout-5 .text-container .slide-text {
     width: 49.5%;
     float: left; }
-  /* line 115, ../sass/_layouts.scss */
+  /* line 121, ../sass/_layouts.scss */
   .layout-1 .text-container .divider, .layout-2 .text-container .divider, .layout-3 .text-container .divider, .layout-4 .text-container .divider, .layout-5 .text-container .divider {
     display: none; }
-/* line 120, ../sass/_layouts.scss */
+/* line 126, ../sass/_layouts.scss */
 .layout-1 .logo-container, .layout-2 .logo-container, .layout-3 .logo-container, .layout-4 .logo-container, .layout-5 .logo-container {
   top: auto;
   bottom: 20px; }
@@ -285,11 +292,11 @@ h6 {
 * ---------------------------
 *
 */
-/* line 143, ../sass/_layouts.scss */
+/* line 149, ../sass/_layouts.scss */
 .layout-2 .text-container {
   top: auto;
   bottom: 10%; }
-/* line 148, ../sass/_layouts.scss */
+/* line 154, ../sass/_layouts.scss */
 .layout-2 .logo-container {
   top: 20px;
   bottom: auto; }
@@ -308,12 +315,12 @@ h6 {
 * ---------------------------
 *
 */
-/* line 171, ../sass/_layouts.scss */
+/* line 177, ../sass/_layouts.scss */
 .layout-3 .text-container {
   top: 50%;
   margin-top: -134px;
   /* Must be replaced with javascript */ }
-/* line 176, ../sass/_layouts.scss */
+/* line 182, ../sass/_layouts.scss */
 .layout-3 .logo-container {
   top: 20px;
   bottom: auto; }
@@ -332,11 +339,11 @@ h6 {
 * ---------------------------
 *
 */
-/* line 199, ../sass/_layouts.scss */
+/* line 205, ../sass/_layouts.scss */
 .layout-4 .text-container {
   top: auto;
   bottom: 0; }
-/* line 203, ../sass/_layouts.scss */
+/* line 209, ../sass/_layouts.scss */
 .layout-4 .logo-container {
   top: 20px;
   bottom: auto; }
@@ -355,10 +362,10 @@ h6 {
 * ---------------------------
 *
 */
-/* line 226, ../sass/_layouts.scss */
+/* line 232, ../sass/_layouts.scss */
 .layout-5 .text-container {
   top: 0; }
-/* line 229, ../sass/_layouts.scss */
+/* line 235, ../sass/_layouts.scss */
 .layout-5 .logo-container {
   top: auto;
   bottom: 20px; }
@@ -377,7 +384,7 @@ h6 {
 * ---------------------------
 *
 */
-/* line 251, ../sass/_layouts.scss */
+/* line 257, ../sass/_layouts.scss */
 .layout-6 .text-container, .layout-7 .text-container, .layout-8 .text-container, .layout-9 .text-container, .layout-10 .text-container, .layout-11 .text-container {
   top: 0;
   left: 0;
@@ -398,11 +405,11 @@ h6 {
 * ---------------------------
 *
 */
-/* line 276, ../sass/_layouts.scss */
+/* line 282, ../sass/_layouts.scss */
 .layout-7 .text-container {
   left: auto;
   right: 0; }
-/* line 280, ../sass/_layouts.scss */
+/* line 286, ../sass/_layouts.scss */
 .layout-7 .logo-container {
   right: auto;
   left: 20px; }
@@ -421,12 +428,12 @@ h6 {
 * ---------------------------
 *
 */
-/* line 303, ../sass/_layouts.scss */
+/* line 309, ../sass/_layouts.scss */
 .layout-8 .text-container {
   width: 75%;
   right: 0;
   left: auto; }
-/* line 308, ../sass/_layouts.scss */
+/* line 314, ../sass/_layouts.scss */
 .layout-8 .logo-container {
   right: auto;
   left: 20px; }
@@ -445,7 +452,7 @@ h6 {
 * ---------------------------
 *
 */
-/* line 331, ../sass/_layouts.scss */
+/* line 337, ../sass/_layouts.scss */
 .layout-9 .text-container {
   width: 75%; }
 
@@ -463,7 +470,7 @@ h6 {
 * ---------------------------
 *
 */
-/* line 353, ../sass/_layouts.scss */
+/* line 359, ../sass/_layouts.scss */
 .layout-10 .text-container {
   width: 25%; }
 
@@ -481,12 +488,12 @@ h6 {
 * ---------------------------
 *
 */
-/* line 375, ../sass/_layouts.scss */
+/* line 381, ../sass/_layouts.scss */
 .layout-11 .text-container {
   width: 25%;
   right: 0;
   left: auto; }
-/* line 380, ../sass/_layouts.scss */
+/* line 386, ../sass/_layouts.scss */
 .layout-11 .logo-container {
   right: auto;
   left: 20px; }
@@ -505,7 +512,7 @@ h6 {
 * ---------------------------
 *
 */
-/* line 402, ../sass/_layouts.scss */
+/* line 408, ../sass/_layouts.scss */
 .layout-12 .text-container {
   display: none; }
 
@@ -523,10 +530,10 @@ h6 {
 * ---------------------------
 *
 */
-/* line 423, ../sass/_layouts.scss */
+/* line 429, ../sass/_layouts.scss */
 .layout-13 .image-container {
   display: none; }
-/* line 427, ../sass/_layouts.scss */
+/* line 433, ../sass/_layouts.scss */
 .layout-13 .text-container {
   width: 100%;
   height: 100%; }

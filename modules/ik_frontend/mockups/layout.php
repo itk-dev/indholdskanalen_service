@@ -65,8 +65,32 @@ $skitter_effects = array(
 </head>
 <body>
 <?php if (isset($_GET["layout"])) : ?>
+  <!-- template -->
+  <div id="pure-template" class="slide">
+    <div class="image-container box_skitter">
+      <ul>
+        <li>
+          <a href="#cubeSize">
+            <img class="cubeSize" src="" />
+          </a>
+        </li>
+      </ul>
+    </div>
+    <div class="text-container">
+      <div class="heading-container">
+        <div class="slide-heading"></div>
+        <div class="divider"></div>
+        <div class="slide-subheading"></div>
+      </div>
+      <div class="slide-text">
+      </div>
+    </div>
+    <div class="logo-container"></div>
+  </div>
+  <!-- end template -->
+
   <div id="slide-container">
-    <div class="slide layout-<?php print (isset($_GET["layout"])) ? $_GET["layout"] : "1"; ?>">
+    <div id="pure-template" class="slide layout-<?php print (isset($_GET["layout"])) ? $_GET["layout"] : "1"; ?>">
       <div class="image-container box_skitter">
         <ul>
           <?php
