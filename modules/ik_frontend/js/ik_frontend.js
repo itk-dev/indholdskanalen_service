@@ -97,11 +97,14 @@ var IK = (function() {
    */
   Slide.prototype.render = function() {
     // Apply the template to the current slide data.
-    var slide = this.template(this.propreties);
+    var slide = $(this.template(this.propreties));
+
+    // Apply layout class and set id.
+    slide.attr('id', 'slide-' + this.get('sid'));
+    slide.addClass(this.get('layout'));
 
     // Insert the result.
     $('#slide-container').html(slide);
-
 
     // Skitter image slideshow
     $('#slide-container .image-container').skitter({

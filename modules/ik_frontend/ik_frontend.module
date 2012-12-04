@@ -220,7 +220,7 @@ function ik_frontend_fetch_slide($token, $sid) {
 
     // Build slide with information found on the node.
     $slide = new stdClass();
-    $silde->sid = $sid;
+    $slide->sid = $sid;
     $slide->title = check_plain($entity->title);
 
     $slide->color = '#fff';
@@ -262,9 +262,9 @@ function ik_frontend_fetch_slide($token, $sid) {
       $slide->exposure = $data[0]['value'] * 1000;
     }
 
-    $slide->layout = 'layout_1';
+    $slide->layout = 'layout-1';
     if ($data = field_get_items('node', $entity, 'field_layout')) {
-      $slide->layout = $data[0]['value'];
+      $slide->layout = str_replace('_', '-', $data[0]['value']);
     }
 
     // Save the content in the cache (updated on node save).
