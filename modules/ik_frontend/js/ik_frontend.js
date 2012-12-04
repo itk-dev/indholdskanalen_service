@@ -92,6 +92,10 @@ var IK = (function() {
   };
 
 
+  Slide.prototype.fadeSlides = function (from, to) {
+
+  }
+
   /**
    * Render the slide using the PURE template. See the constructor for
    * information about the directive and template.
@@ -209,7 +213,7 @@ var IK = (function() {
     };
 
     /**
-     *
+     * Starts the slide show for the current channel.
      */
     this.start = function () {
       log('Starting the show');
@@ -217,7 +221,7 @@ var IK = (function() {
     };
 
     /**
-     *
+     * Stops the slide show be clearing the tiemout the changes the slides.
      */
     this.stop = function () {
       log('Stopping the show');
@@ -225,7 +229,7 @@ var IK = (function() {
     };
 
     /**
-     *
+     * Free all memory used (Remove channel, slides and timeout).
      */
     this.destory = function() {
 
@@ -253,14 +257,14 @@ var IK = (function() {
   }
 
   /**
-   * Stops the slide show ?
+   * Stops the show.
    */
   function stop() {
     channel.stop();
   }
 
   /**
-   * Destroy the channel object and its slide objects.
+   * Destroy the channel object and its objects.
    */
   function destory() {
     channel.destory();
@@ -271,7 +275,7 @@ var IK = (function() {
    */
   function debug() {
     settings.debug = !settings.debug;
-    console.log('Debug: ' + settings.debug);
+    log('Debug: ' + settings.debug);
   }
 
   /**
