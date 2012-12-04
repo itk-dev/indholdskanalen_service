@@ -98,15 +98,47 @@ var IK = (function() {
   };
 
   /**
+  * Applies skitter to the current slide and should be called after a slide have
+  * been shown.
+  */
+  Slide.prototype.startSkitter = function () {
+    var self = this;
+
+    // Skitter image slideshow
+    $('#slide-container .image-container').skitter({
+      animation: 'cubeSize',
+      fullscreen: false,
+      numbers: false,
+      navigation: false,
+      label: false,
+      stop_over: false,
+      interval: ((self.get('exposure') / self.get('media').length) - 600),
+      structure: '<div class="container_skitter">'
+                  + '<div class="image">'
+                    + '<a href=""><img class="image_main" /></a>'
+                  + '</div>'
+                + '</div>'
+    });
+  };
+
+  /**
    * Animate the change between to slides (currently simple fade).
    */
   Slide.prototype.animateChange = function (from, to) {
+    var self = this;
     // If this is the first slide, there may not be any to fe
     if (from.length === 0) {
       // Simply insert the slide and return.
       $('#slide-container').html(to);
+      this.startSkitter();
       return;
     }
+
+    // Ensure that the fade is not enterupted by skitter and the last image is
+    // the one shown during the fade.
+//    $('li:not(:last-child)', from).remove();
+//    $('.box_skitter ul', from).show();
+    $('.box_skitter ul', to).show();
 
     // Insert the new slide behind the current one and fade the current out.
     from.css('z-index', 2);
@@ -115,6 +147,7 @@ var IK = (function() {
     from.fadeOut(1500, function () {
       // Remove the old slide.
       from.remove();
+      self.startSkitter();
     });
   };
 
@@ -139,22 +172,8 @@ var IK = (function() {
     else {
       // Simple insert the slide.
       $('#slide-container').html(slide);
+      this.startSkitter();
     }
-
-    // Skitter image slideshow
-    $('#slide-container .image-container').skitter({
-      fullscreen: false,
-      numbers: false,
-      navigation: false,
-      label: false,
-      stop_over: false,
-      interval: Math.floor(this.get('exposure') / this.get('media').length),
-      structure: '<div class="container_skitter">'
-                  + '<div class="image">'
-                    + '<a href=""><img class="image_main" /></a>'
-                  + '</div>'
-                + '</div>'
-    });
 
     // Send log message.
     log('Slide render: ' + this.get('title'));

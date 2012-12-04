@@ -14,8 +14,8 @@
     <div class="image-container box_skitter">
       <ul>
         <li>
-          <a href="#cubeSize">
-            <img class="cubeSize" src="" />
+          <a href="">
+            <img src="" />
           </a>
         </li>
       </ul>
