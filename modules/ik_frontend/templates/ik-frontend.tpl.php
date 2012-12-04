@@ -2,7 +2,7 @@
 <html>
 <head>
   <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
-  <title>Slide layout <?php print (isset($_GET["layout"])) ? $_GET["layout"] : "- select layout"; ?></title>
+  <title><?php echo t('Channel') . ": " . $token; ?></title>
   <?php echo $css; ?>
   <?php echo $scripts; ?>
   <?php echo $settings; ?>
