@@ -12,7 +12,7 @@ var IK = (function() {
   var settings = {
     debug : false
   };
-  var channel = undefined;
+  var channel;
 
   /****************
    * Slide object implementation.
@@ -65,14 +65,14 @@ var IK = (function() {
    * Helper function to get slide property.
    */
   Slide.prototype.get = function (property) {
-    if (this.propreties[property] != undefined) {
-      return this.propreties[property]
+    if (this.propreties[property] !== undefined) {
+      return this.propreties[property];
     }
     else {
       log('Slide failed to get property: ' + property);
     }
     return undefined;
-  }
+  };
 
 
   /**
@@ -152,7 +152,7 @@ var IK = (function() {
       this.timeout = setTimeout(function() {
         // Update the current slide pointer.
         self.currentSlide++;
-        if (self.currentSlide == self.slides.length) {
+        if (self.currentSlide === self.slides.length) {
           self.currentSlide = 0;
           log('Restarting the channel to first slide');
           // Should we do someting about update of the channel here or outside
@@ -161,7 +161,7 @@ var IK = (function() {
 
         // Goto the next slide.
         self.nextSlide();
-      }, parseInt(slide.get('exposure')));
+      }, parseInt(slide.get('exposure'), 10));
     };
 
     /**
@@ -170,7 +170,7 @@ var IK = (function() {
     this.start = function () {
       log('Starting the show');
       this.nextSlide();
-    }
+    };
 
     /**
      *
@@ -178,14 +178,14 @@ var IK = (function() {
     this.stop = function () {
       log('Stopping the show');
       clearTimeout(this.timeout);
-    }
+    };
 
     /**
      *
      */
     this.destory = function() {
 
-    }
+    };
 
     // Call the constructor.
     this.__construct(token);
