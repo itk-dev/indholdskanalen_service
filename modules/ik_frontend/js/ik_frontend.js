@@ -349,20 +349,22 @@ var IK = (function() {
     IK.start(IKFrontend.settings.token);
 
 
+    // IT KILLED SKITTER.
+
     // This is only excuted on the first slide and what do it do ?
     // Should it target '#pure-template .image.container' ?
-    var theWindow   = $(window);
-    var imageitem  = $(".image-container");
-
-    function resizeImage() {
-      if (theWindow.width() < theWindow.height()) {
-        imageitem.addClass('bgheight');
-      }
-      else {
-        imageitem.addClass('bgwidth');
-      }
-    }
-    resizeImage();
+//    var theWindow   = $(window);
+//    var imageitem  = $(".image-container");
+//
+//    function resizeImage() {
+//      if (theWindow.width() < theWindow.height()) {
+//        imageitem.addClass('bgheight');
+//      }
+//      else {
+//        imageitem.addClass('bgwidth');
+//      }
+//    }
+//    resizeImage();
 
 
     // Ensure that the channel is reload on resize.
