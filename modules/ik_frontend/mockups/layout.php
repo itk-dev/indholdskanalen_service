@@ -39,7 +39,7 @@ $skitter_effects = array(
 
   <script>
   $(document).ready(function() {
-    
+
     // Skitter image slideshow
     $('.image-container').skitter({
       fullscreen: false,
@@ -58,15 +58,15 @@ $skitter_effects = array(
     $(window).bind('resize', function() {
       location.reload();
     });
-    
+
   });
   </script>
 
 </head>
 <body>
 <?php if (isset($_GET["layout"])) : ?>
-  <div id="slide-container" class="layout-<?php print (isset($_GET["layout"])) ? $_GET["layout"] : "1"; ?>">
-    <div class="slide">
+  <div id="slide-container">
+    <div class="slide layout-<?php print (isset($_GET["layout"])) ? $_GET["layout"] : "1"; ?>">
       <div class="image-container box_skitter">
         <ul>
           <?php
@@ -76,7 +76,7 @@ $skitter_effects = array(
             $image = stristr ($file, 'jpg') ? 'images/' . $file : '';
             print ($image) ? '<li><a href="#' . $skitter_effects[$effect] . '"><img src="' . $image . '" class="' . $skitter_effects[$effect] . '" /></a></li>' : '';
           }
-          ?>   
+          ?>
         </ul>
       </div>
       <div class="text-container">
