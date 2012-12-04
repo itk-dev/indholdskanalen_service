@@ -41,7 +41,7 @@
 
 /* =Loading
 -------------------------------------------------------------- */
-.loading {position:absolute; top:50%; right:50%; z-index:10000; margin:-16px -16px;color:#fff;text-indent:-9999em;overflow:hidden;background:url(../images/ajax-loader.gif) no-repeat left top;width:32px;height:32px;}
+/*.loading {position:absolute; top:50%; right:50%; z-index:10000; margin:-16px -16px;color:#fff;text-indent:-9999em;overflow:hidden;background:url(../images/ajax-loader.gif) no-repeat left top;width:32px;height:32px;}*/
 
 /* =Label
 -------------------------------------------------------------- */
