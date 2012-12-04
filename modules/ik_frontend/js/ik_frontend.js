@@ -1,4 +1,5 @@
 /*jshint devel:true */
+/*jshint laxbreak:true*/
 
 // Define configuration object to get settings data from backend to frontend.
 // Before calls are made to the backend.
@@ -10,7 +11,8 @@ var IK = (function() {
 
   // Vataibles available inside the IK scope.
   var settings = {
-    debug : false
+    debug : false,
+    animateChange : true
   };
   var channel;
 
@@ -91,6 +93,26 @@ var IK = (function() {
     return undefined;
   };
 
+  /**
+   * Animate the change between to slides (currently simple fade).
+   */
+  Slide.prototype.animateChange = function (from, to) {
+    // If this is the first slide, there may not be any to fe
+    if (from.length === 0) {
+      // Simply insert the slide and return.
+      $('#slide-container').html(to);
+      return;
+    }
+
+    // Insert the new slide behind the current one and fade the current out.
+    from.css('z-index', 2);
+    to.css('z-index', 1);
+    $('#slide-container').append(to);
+    from.fadeOut(1500, function () {
+      // Remove the old slide.
+      from.remove();
+    });
+  };
 
   /**
    * Render the slide using the PURE template. See the constructor for
@@ -100,12 +122,20 @@ var IK = (function() {
     // Apply the template to the current slide data.
     var slide = $(this.template(this.propreties));
 
-    // Apply layout class and set id.
+    // Apply layout class and set id. It is not done in pure as this is on the
+    // outer element, which can't be accessed in pure.
     slide.attr('id', 'slide-' + this.get('sid'));
     slide.addClass(this.get('layout'));
 
-    // Insert the result.
-    $('#slide-container').html(slide);
+    // Either insert the slide or animate from one to the other.
+    if (settings.animateChange === true) {
+      // Using the slide container to ensure that we don't gets the template.
+      this.animateChange($('#slide-container .slide'), slide);
+    }
+    else {
+      // Simple insert the slide.
+      $('#slide-container').html(slide);
+    }
 
     // Skitter image slideshow
     $('#slide-container .image-container').skitter({
@@ -122,7 +152,7 @@ var IK = (function() {
                 + '</div>'
     });
 
-
+    // Send log message.
     log('Slide render: ' + this.get('title'));
   };
 
@@ -209,7 +239,7 @@ var IK = (function() {
     };
 
     /**
-     *
+     * Starts the slide show for the current channel.
      */
     this.start = function () {
       log('Starting the show');
@@ -217,7 +247,7 @@ var IK = (function() {
     };
 
     /**
-     *
+     * Stops the slide show be clearing the tiemout the changes the slides.
      */
     this.stop = function () {
       log('Stopping the show');
@@ -225,7 +255,7 @@ var IK = (function() {
     };
 
     /**
-     *
+     * Free all memory used (Remove channel, slides and timeout).
      */
     this.destory = function() {
 
@@ -253,14 +283,14 @@ var IK = (function() {
   }
 
   /**
-   * Stops the slide show ?
+   * Stops the show.
    */
   function stop() {
     channel.stop();
   }
 
   /**
-   * Destroy the channel object and its slide objects.
+   * Destroy the channel object and its objects.
    */
   function destory() {
     channel.destory();
@@ -271,7 +301,7 @@ var IK = (function() {
    */
   function debug() {
     settings.debug = !settings.debug;
-    console.log('Debug: ' + settings.debug);
+    log('Debug: ' + settings.debug);
   }
 
   /**
