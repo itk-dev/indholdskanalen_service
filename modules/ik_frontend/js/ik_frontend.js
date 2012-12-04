@@ -105,7 +105,7 @@ var IK = (function() {
 
     // Skitter image slideshow
     $('#slide-container .image-container').skitter({
-      fullscreen: true,
+      fullscreen: false,
       numbers: false,
       navigation: false,
       label: false,
