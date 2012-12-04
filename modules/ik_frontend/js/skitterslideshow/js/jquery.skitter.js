@@ -334,8 +334,6 @@
 				}
 			}
 
-			this.box_skitter.find('ul').hide();
-
 			if (this.settings.show_randomly)
 			this.settings.images_links.sort(function(a,b) {return Math.random() - 0.5;});
 
@@ -517,6 +515,8 @@
 			img_link = self.box_skitter.find('.image a');
 			img_link = self.resizeImage(img_link);
 			img_link.find('img').show();
+
+      this.box_skitter.find('ul').hide();
 
 			self.setValueBoxText();
 			self.showBoxText();
