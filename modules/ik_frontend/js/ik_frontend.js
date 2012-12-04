@@ -110,7 +110,7 @@ var IK = (function() {
       navigation: false,
       label: false,
       stop_over: false,
-      interval: 2500, //MUST BE CALCULATED BASED ON THE AMOUNT OF IMAGES AND TIME (seconds) SLIDE IS SET TO DISPLAY.
+      interval: Math.floor(this.get('exposure') / this.get('media').length),
       structure: '<div class="container_skitter">'
                   + '<div class="image">'
                     + '<a href=""><img class="image_main" /></a>'
