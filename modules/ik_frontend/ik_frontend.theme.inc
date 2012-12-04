@@ -10,7 +10,15 @@
  */
 function template_preprocess_ik_frontend(&$vars) {
   // Add style sheets.
-  $vars['css'] = '/' . drupal_get_path('module', 'ik_frontend') . '/css/styles.css';
+  $vars['css'] = '';
+  $csses = array(
+    '/css/styles.css',
+    '/js/skitterslideshow/css/skitter.styles.css',
+  );
+  $path = drupal_get_path('module', 'ik_frontend');
+  foreach ($csses as $css) {
+    $vars['css'] .= ' <link href="/' . $path . $css . '" type="text/css" media="all" rel="stylesheet" />';
+  }
 
   // Build settings.
   $settings = array(

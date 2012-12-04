@@ -3,7 +3,7 @@
 <head>
   <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
   <title>Slide layout <?php print (isset($_GET["layout"])) ? $_GET["layout"] : "- select layout"; ?></title>
-  <link href="<?php echo $css; ?>" rel="stylesheet" type="text/css" media="all">
+  <?php echo $css; ?>
   <?php echo $scripts; ?>
   <?php echo $settings; ?>
 </head>
