@@ -21,8 +21,16 @@
 <body>
 
   <!-- template -->
-  <div class="slide">
-    <div class="image-container"></div>
+  <div id="pure-template" class="slide">
+    <div class="image-container box_skitter">
+      <ul>
+        <li>
+          <a href="#cubeSize">
+            <img class="cubeSize" src="" />
+          </a>
+        </li>
+      </ul>
+    </div>
     <div class="text-container">
       <div class="heading-container">
         <div class="slide-heading"></div>

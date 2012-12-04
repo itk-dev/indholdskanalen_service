@@ -34,6 +34,22 @@ var IK = (function() {
     this.token = token;
     this.sid = sid;
 
+    // Build directive for PURE
+    this.directive = {
+      '.image-container li' : {
+        'medium<-media' : {
+          'img@src' : 'medium'
+        }
+      },
+      '.slide-heading' : 'title',
+      '.slide-subheading' : 'subheading',
+      '.slide-text' : 'text'
+    };
+
+    // Compile template with the directive.
+    this.template = $('#pure-template').compile(this.directive);
+
+    // Fetch all slides for the channel
     this.fetchSlide();
   };
 
@@ -76,9 +92,33 @@ var IK = (function() {
 
 
   /**
-   * Render the slide using the PURE template.
+   * Render the slide using the PURE template. See the constructor for
+   * information about the directive and template.
    */
   Slide.prototype.render = function() {
+    // Apply the template to the current slide data.
+    var slide = this.template(this.propreties);
+
+    // Insert the result.
+    $('#slide-container').html(slide);
+
+
+    // Skitter image slideshow
+    $('.image-container').skitter({
+      fullscreen: true,
+      numbers: false,
+      navigation: false,
+      label: false,
+      stop_over: false,
+      interval: 2500, //MUST BE CALCULATED BASED ON THE AMOUNT OF IMAGES AND TIME (seconds) SLIDE IS SET TO DISPLAY.
+      structure: '<div class="container_skitter">'
+                  + '<div class="image">'
+                    + '<a href=""><img class="image_main" /></a>'
+                  + '</div>'
+                + '</div>'
+    });
+
+
     log('Slide render: ' + this.get('title'));
   };
 
@@ -253,5 +293,10 @@ var IK = (function() {
   $(document).ready(function() {
     IK.debug();
     IK.start(IKFrontend.settings.token);
+
+    // Ensure that the channel is reload on resize.
+    $(window).bind('resize', function() {
+      location.reload();
+    });
   });
 })(jQuery);
