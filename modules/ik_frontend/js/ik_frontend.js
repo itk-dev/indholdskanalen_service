@@ -49,6 +49,10 @@ var IK = (function() {
         // Set text and background color.
         return 'color:#' + arg.context.text_color + ';background-color:#' + arg.context.color;
       },
+      '.divider@style' : function (arg) {
+        // Set divider color.
+        return 'border-color:#' + arg.context.text_color;
+      },
       '.slide-heading' : 'title',
       '.slide-subheading' : 'subheading',
       '.slide-text' : 'text',
