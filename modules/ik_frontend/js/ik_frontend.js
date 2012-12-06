@@ -365,10 +365,5 @@ var IK = (function() {
   $(document).ready(function() {
     IK.debug();
     IK.start(IKFrontend.settings.token);
-
-    // Ensure that the channel is reload on resize.
-    /*$(window).bind('resize', function() {
-      location.reload();
-    });*/
   });
 })(jQuery);

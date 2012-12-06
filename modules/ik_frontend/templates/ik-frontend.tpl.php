@@ -7,7 +7,7 @@
   <?php echo $scripts; ?>
   <?php echo $settings; ?>
 </head>
-<body>
+<body onResize="window.location=window.location;">
 
   <!-- template -->
   <div id="pure-template" class="slide">
