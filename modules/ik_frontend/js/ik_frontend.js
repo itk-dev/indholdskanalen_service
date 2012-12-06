@@ -175,8 +175,6 @@ var IK = (function() {
    * information about the directive and template.
    */
   Slide.prototype.render = function() {
-    log('rendering da bitch!');
-
     // Apply the template to the current slide data.
     var slide = $(this.template(this.propreties));
 
@@ -216,6 +214,7 @@ var IK = (function() {
     this.slides = [];
     this.currentSlide = 0;
     this.timeout = undefined;
+    this.fetched = false;
 
     /**
      * Constructor that is called on object creation and ensure that the channel
@@ -257,9 +256,27 @@ var IK = (function() {
       });
 
       // Capture event when all ajax request have completed.
-      $("body").ajaxStop(function() {
-        log('All slides for the channel (' + self.token + ') fechted');
-        self.start();
+      $('body').ajaxStop(function() {
+
+        if (!this.fetched) {
+          // Channel and slide have been fetched for a new channel. We set the
+          // fected variable, so the slide show will not be restarted on channel
+          // updates.
+          this.fetched = true;
+          log('All slides for the channel (' + self.token + ') fechted');
+          self.start();
+        }
+        else {
+          // This most be a channel update
+          log('All slides updated for the channel: ' + self.token);
+
+          // Goto the next slide.
+          self.nextSlide();
+        }
+
+        // Ensures that process channel can be called more than once. If we do
+        // not unbind the ajaxStop event will be call more than once.
+        $('body').unbind();
       });
     };
 
@@ -280,12 +297,16 @@ var IK = (function() {
         if (self.currentSlide === self.slides.length) {
           self.currentSlide = 0;
           log('Restarting the channel to first slide');
-          // Should we do someting about update of the channel here or outside
-          // all this.
+          // Try to update the channel by pulling the server (this could be
+          // implemented using a websocket and send push messages).
+          self.slides = [];
+          self.fetchChannel();
         }
-
-        // Goto the next slide.
-        self.nextSlide();
+        else {
+          // Goto the next slide. The channel update above will call the next
+          // slide when they have been loaded.
+          self.nextSlide();
+        }
       }, parseInt(slide.get('exposure'), 10));
     };
 
@@ -307,9 +328,14 @@ var IK = (function() {
 
     /**
      * Free all memory used (Remove channel, slides and timeout).
+     *
+     * @todo Loop over the slides an call destory on each slide.
      */
     this.destory = function() {
-
+      this.stop();
+      this.slides = [];
+      this.fetched = false;
+      log('Channel have been destroyed.');
     };
 
     // Call the constructor.
