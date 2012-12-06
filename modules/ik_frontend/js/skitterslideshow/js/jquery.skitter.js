@@ -25,6 +25,7 @@
 	};
 
 	var defaults = {
+		orgImgAspect: [1980, 1080],
 		velocity: 				1,
 		interval: 				2500,
 		animation: 				'',
@@ -2457,8 +2458,19 @@
 		// Redimensiona imagem
 		resizeImage: function(img_clone)
 		{
+			// If running fullscreen we must adjust image size to fit.
+			// We use aspect ratio to calculate if image must be inserted based on height or width.
 			if (this.settings.fullscreen) {
-				img_clone.find('img').height(this.settings.height_skitter);
+				var aspectRatio = this.settings.orgImgAspect[0] / this.settings.orgImgAspect[1];
+				var windowWidth = $(window).width();
+      	var windowHeight = $(window).height();
+	      if ( (windowWidth / windowHeight) < aspectRatio ) {
+	        //Height
+	        img_clone.find('img').height(this.settings.height_skitter);
+	      } else {
+	        //Width
+	        img_clone.find('img').width(this.settings.width_skitter);
+	      }
 			}
 			return img_clone;
 		},

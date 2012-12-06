@@ -30,15 +30,6 @@
     width: 100%;
   }
 
-  .bgheight img {
-    width: 100%;
-    min-height: 100%;
-  }
-  .bgwidth img {
-    min-width: 100%;
-    height: 100%;
-  }
-
   .text-container {
     @include box-sizing(border-box);
 

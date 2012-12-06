@@ -34,7 +34,7 @@ function template_preprocess_ik_frontend(&$vars) {
     'ik_frontend.js',
     'skitterslideshow/js/jquery.easing.1.3.js',
     'skitterslideshow/js/jquery.animate-colors-min.js',
-    'skitterslideshow/js/jquery.skitter.min.js',
+    'skitterslideshow/js/jquery.skitter.js',
   );
   $path = drupal_get_path('module', 'ik_frontend') . '/js/';
   foreach ($scripts as $script) {

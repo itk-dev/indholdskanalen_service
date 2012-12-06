@@ -12,7 +12,9 @@ var IK = (function() {
   // Vataibles available inside the IK scope.
   var settings = {
     debug : false,
-    animateChange : true
+    animateChange : true,
+    fullscreen : true,
+    orgImgAspect : [1920, 1080]
   };
   var channel;
 
@@ -107,7 +109,8 @@ var IK = (function() {
     // Skitter image slideshow
     $('#slide-container .image-container').skitter({
       animation: 'cubeSize',
-      fullscreen: true,
+      orgImgAspect: settings.orgImgAspect,
+      fullscreen: settings.fullscreen,
       numbers: false,
       navigation: false,
       label: false,
@@ -132,6 +135,21 @@ var IK = (function() {
       $('#slide-container').html(to);
       this.startSkitter();
       return;
+    }
+
+    // If fullscreen mode for skitter is true we must make sure that images in UL get same height or width setting as skitter use.
+    // This is to make sure the image is correct size when fading between slides.
+    if (settings.fullscreen === true) {
+      var aspectRatio = settings.orgImgAspect[0] / settings.orgImgAspect[1];
+      var windowWidth = $(window).width();
+      var windowHeight = $(window).height();
+      if ( (windowWidth / windowHeight) < aspectRatio ) {
+        // Height.
+        $('.box_skitter ul', to).find('img').height(windowHeight);
+      } else {
+        // Width.
+        $('.box_skitter ul', to).find('img').width(windowWidth);
+      }
     }
 
     // Ensure that images is show while skitter loads.
@@ -349,8 +367,8 @@ var IK = (function() {
     IK.start(IKFrontend.settings.token);
 
     // Ensure that the channel is reload on resize.
-    $(window).bind('resize', function() {
+    /*$(window).bind('resize', function() {
       location.reload();
-    });
+    });*/
   });
 })(jQuery);
