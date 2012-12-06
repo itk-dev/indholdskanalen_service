@@ -175,6 +175,8 @@ var IK = (function() {
    * information about the directive and template.
    */
   Slide.prototype.render = function() {
+    log('rendering da bitch!');
+
     // Apply the template to the current slide data.
     var slide = $(this.template(this.propreties));
 
@@ -192,6 +194,13 @@ var IK = (function() {
       // Simple insert the slide.
       $('#slide-container').html(slide);
       this.startSkitter();
+    }
+
+    // For layout 3 the margin-top on text-container must be set according to the containers height.
+    // This because it is a layout where the text-container is vertical aligned middle.
+    if (this.get('layout') === 'layout-3') {
+      var textContainerHeight = $('#slide-container .text-container').height();
+      $('#slide-container .text-container').css('margin-top', '-' + textContainerHeight / 2 + 'px');
     }
 
     // Send log message.
