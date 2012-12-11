@@ -4,4 +4,27 @@
  * Code for the IK slides feature.
  */
 
+/**
+ * Hook_form_alter()
+ * Change the labels on select layout radio buttons.
+ */
+function ik_slides_form_slide_node_form_alter(&$form, &$form_state, $form_id) {
+  $path = drupal_get_path('module', 'ik_slides');
+  $form["field_layout"]["und"]["#options"] = array(
+    'layout_1' => theme('image', array('path' => $path . '/layout-images/layout_1.png', 'alt' => t('Layout 1'), 'title' => t('Layout 1'))),
+    'layout_2' => theme('image', array('path' => $path . '/layout-images/layout_2.png', 'alt' => t('Layout 2'), 'title' => t('Layout 2'))),
+    'layout_3' => theme('image', array('path' => $path . '/layout-images/layout_3.png', 'alt' => t('Layout 3'), 'title' => t('Layout 3'))),
+    'layout_4' => theme('image', array('path' => $path . '/layout-images/layout_4.png', 'alt' => t('Layout 4'), 'title' => t('Layout 4'))),
+    'layout_5' => theme('image', array('path' => $path . '/layout-images/layout_5.png', 'alt' => t('Layout 5'), 'title' => t('Layout 5'))),
+    'layout_6' => theme('image', array('path' => $path . '/layout-images/layout_6.png', 'alt' => t('Layout 6'), 'title' => t('Layout 6'))),
+    'layout_7' => theme('image', array('path' => $path . '/layout-images/layout_7.png', 'alt' => t('Layout 7'), 'title' => t('Layout 7'))),
+    'layout_8' => theme('image', array('path' => $path . '/layout-images/layout_8.png', 'alt' => t('Layout 8'), 'title' => t('Layout 8'))),
+    'layout_9' => theme('image', array('path' => $path . '/layout-images/layout_9.png', 'alt' => t('Layout 9'), 'title' => t('Layout 9'))),
+    'layout_10' => theme('image', array('path' => $path . '/layout-images/layout_10.png', 'alt' => t('Layout 10'), 'title' => t('Layout 10'))),
+    'layout_11' => theme('image', array('path' => $path . '/layout-images/layout_11.png', 'alt' => t('Layout 11'), 'title' => t('Layout 11'))),
+    'layout_12' => theme('image', array('path' => $path . '/layout-images/layout_12.png', 'alt' => t('Layout 12'), 'title' => t('Layout 12'))),
+    'layout_13' => theme('image', array('path' => $path . '/layout-images/layout_13.png', 'alt' => t('Layout 13'), 'title' => t('Layout 13')))
+  );
+}
+
 include_once 'ik_slides.features.inc';

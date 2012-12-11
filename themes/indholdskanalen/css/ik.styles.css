@@ -168,5 +168,16 @@ li.views-fluid-grid-item {
     height: auto;
   }    
   
+/* Slide node form */
 
+#slide-node-form .form-type-radio {
+  float: left;
+  margin-right: 10px;
+}
+#slide-node-form .description {
+  clear: both;
+}
+#slide-node-form .field-name-field-ik-slide-logo .media-item {
+  background-color: #999;
+}
 
