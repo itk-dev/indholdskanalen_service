@@ -102,7 +102,7 @@ function ik_slides_field_default_fields() {
         'module' => 'og',
         'settings' => array(),
         'type' => 'og_complex',
-        'weight' => '6',
+        'weight' => '7',
       ),
     ),
   );
@@ -309,7 +309,7 @@ function ik_slides_field_default_fields() {
         'module' => 'options',
         'settings' => array(),
         'type' => 'options_select',
-        'weight' => '10',
+        'weight' => '14',
       ),
     ),
   );
@@ -494,7 +494,7 @@ function ik_slides_field_default_fields() {
           'progress_indicator' => 'throbber',
         ),
         'type' => 'media_generic',
-        'weight' => '2',
+        'weight' => '4',
       ),
     ),
   );
@@ -770,6 +770,93 @@ function ik_slides_field_default_fields() {
     ),
   );
 
+  // Exported field: 'node-slide-field_ik_slide_transition_effect'.
+  $fields['node-slide-field_ik_slide_transition_effect'] = array(
+    'field_config' => array(
+      'active' => '1',
+      'cardinality' => '1',
+      'deleted' => '0',
+      'entity_types' => array(),
+      'field_name' => 'field_ik_slide_transition_effect',
+      'foreign keys' => array(),
+      'indexes' => array(
+        'value' => array(
+          0 => 'value',
+        ),
+      ),
+      'locked' => '0',
+      'module' => 'list',
+      'settings' => array(
+        'allowed_values' => array(
+          'block' => 'Block',
+          'cube' => 'Cube',
+          'cubeRandom' => 'Cube Random',
+          'cubeStop' => 'Cube Stop',
+          'cubeHide' => 'Cube Hide',
+          'cubeSize' => 'Cube Size',
+          'horizontal' => 'Horizontal',
+          'showBars' => 'Bars',
+          'showBarsRandom' => 'Bars Random',
+          'tube' => 'Tube',
+          'fade' => 'Fade',
+          'fadeFour' => 'Fade Four',
+          'paralell' => 'paralell',
+          'blind' => 'Blind',
+          'blindHeight' => 'Blind Height',
+          'blindWidth' => 'Blind Width',
+          'directionTop' => 'Direction Top',
+          'directionBottom' => 'Direction Bottom',
+          'directionRight' => 'Direction Right',
+          'directionLeft' => 'Direction Left',
+          'cubeStopRandom' => 'Cube Stop Random',
+          'cubeSpread' => 'Cube Spread',
+        ),
+        'allowed_values_function' => '',
+      ),
+      'translatable' => '0',
+      'type' => 'list_text',
+    ),
+    'field_instance' => array(
+      'bundle' => 'slide',
+      'default_value' => array(
+        0 => array(
+          'value' => 'cubeSize',
+        ),
+      ),
+      'deleted' => '0',
+      'description' => '',
+      'display' => array(
+        'default' => array(
+          'label' => 'above',
+          'module' => 'list',
+          'settings' => array(),
+          'type' => 'list_default',
+          'weight' => 13,
+        ),
+        'teaser' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+      ),
+      'entity_type' => 'node',
+      'field_name' => 'field_ik_slide_transition_effect',
+      'label' => 'Transition effect',
+      'required' => 0,
+      'settings' => array(
+        'user_register_form' => FALSE,
+      ),
+      'widget' => array(
+        'active' => 1,
+        'module' => 'options',
+        'settings' => array(),
+        'type' => 'options_select',
+        'weight' => '3',
+      ),
+    ),
+  );
+
   // Exported field: 'node-slide-field_layout'.
   $fields['node-slide-field_layout'] = array(
     'field_config' => array(
@@ -867,6 +954,7 @@ function ik_slides_field_default_fields() {
   t('Text');
   t('Text color');
   t('Textbox color');
+  t('Transition effect');
   t('You can upload a logo to be displayed in the upper right corner of the slide.');
 
   return $fields;

@@ -112,7 +112,7 @@ var IK = (function() {
 
     // Skitter image slideshow
     $('#slide-container .image-container').skitter({
-      animation: 'cubeSize',
+      animation: self.get('transition'),
       orgImgAspect: settings.orgImgAspect,
       fullscreen: settings.fullscreen,
       numbers: false,

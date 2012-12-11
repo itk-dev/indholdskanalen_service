@@ -233,6 +233,11 @@ function ik_frontend_fetch_slide($token, $sid) {
       $slide->logo = file_create_url($data[0]['uri']);
     }
 
+    $slide->transition = 'cubeSize';
+    if ($data = field_get_items('node', $entity, 'field_ik_slide_transition_effect')) {
+      $slide->transition = $data[0]['value'];
+    }
+
     $slide->media = array();
     if ($data = field_get_items('node', $entity, 'field_ik_slide_media')) {
       foreach ($data as $media) {

@@ -50,7 +50,7 @@ function ik_slides_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Categories',
-    'weight' => '3',
+    'weight' => '5',
     'children' => array(
       0 => 'field_ik_slide_category',
       1 => 'field_ik_slide_tags',
@@ -99,6 +99,35 @@ function ik_slides_field_group_info() {
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
+  $field_group->identifier = 'group_ik_slide_images|node|slide|form';
+  $field_group->group_name = 'group_ik_slide_images';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'slide';
+  $field_group->mode = 'form';
+  $field_group->parent_name = '';
+  $field_group->data = array(
+    'label' => 'Images',
+    'weight' => '3',
+    'children' => array(
+      0 => 'field_ik_slide_media',
+      1 => 'field_ik_slide_transition_effect',
+    ),
+    'format_type' => 'fieldset',
+    'format_settings' => array(
+      'label' => 'Images',
+      'instance_settings' => array(
+        'required_fields' => 1,
+        'classes' => '',
+        'description' => '',
+      ),
+      'formatter' => 'collapsible',
+    ),
+  );
+  $export['group_ik_slide_images|node|slide|form'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
   $field_group->identifier = 'group_ik_slide_layout|node|slide|form';
   $field_group->group_name = 'group_ik_slide_layout';
   $field_group->entity_type = 'node';
@@ -107,7 +136,7 @@ function ik_slides_field_group_info() {
   $field_group->parent_name = 'group_ik_slide_template';
   $field_group->data = array(
     'label' => 'Layout',
-    'weight' => '11',
+    'weight' => '15',
     'children' => array(
       0 => 'field_layout',
     ),
@@ -135,7 +164,7 @@ function ik_slides_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Template',
-    'weight' => '4',
+    'weight' => '6',
     'children' => array(
       0 => 'field_ik_slide_exposure',
       1 => 'group_ik_slide_layout',
