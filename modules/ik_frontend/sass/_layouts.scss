@@ -46,6 +46,7 @@
       @include rem('font-size', $heading-font-size);
       @include rem('line-height', $heading-font-size * 1.2);
       @include rem('margin-bottom', $default-spacing);
+      font-family: $font-family-heading;
       text-transform: uppercase;
     }
 
@@ -57,6 +58,7 @@
 
     .slide-subheading {
       @include rem('font-size', $subheading-font-size);
+      font-family: $font-family-subheading;
       font-style: italic;
       line-height: $subheading-font-size * 1.2;
       margin-bottom: $default-spacing / 2;
@@ -67,7 +69,6 @@
       @include rem('font-size', $textbox-font-size);
       @include rem('line-height', $base-font-size * 1.4);
       @include rem('letter-spacing', $base-font-size * 0.1);
-      font-family: $font-family-regular;
       padding: $textbox-padding;
     }
   }

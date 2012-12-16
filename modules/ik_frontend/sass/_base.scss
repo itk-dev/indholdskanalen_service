@@ -26,7 +26,7 @@ body {
 }
 
 body {
-  font-family: $font-family-light;
+  font-family: $font-family;
   @include rem('font-size', $base-font-size);
   color: $font-color;
   overflow: hidden;
@@ -42,12 +42,11 @@ p {
 
 strong,
 b {
-  font-family: "OswaldBold";
+  font-style: bold;
 }
 
 em,
 i {
-  font-family: $font-family-regular;
   font-style: italic;
 }
 
