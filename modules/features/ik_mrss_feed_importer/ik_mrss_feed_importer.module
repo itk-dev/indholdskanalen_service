@@ -1,0 +1,35 @@
+<?php
+/**
+ * @file
+ * Code for the MRSS Feed Importer feature.
+ */
+
+include_once 'ik_mrss_feed_importer.features.inc';
+
+/**
+ * Defines a new feeds parser to Yahoo Search Media RSS feeds. You can read 
+ * about the format at http://en.wikipedia.org/wiki/Media_RSS.
+ *
+ * @return array $info
+ */
+function ik_mrss_feed_importer_feeds_plugins() {
+  return array(
+    'MediaRSS' => array(
+      'name' => "Media RSS",
+      'description' => t('Parse Yahoo Media RSS feed'),
+      'handler' => array(
+        'parent' => 'FeedsParser',
+        'class' => 'MediaRSSParser',
+        'file' => 'mrss.class.inc',
+        'path' => drupal_get_path('module', 'ik_mrss_feed_importer' ) . '/includes',
+      ),
+    ),
+  );
+}
+
+/**
+ * Make sure that the feed parser cache is cleared on module activation.
+ */
+function ik_mrss_feed_importer_enable() {
+  cache_clear_all('plugins:feeds:plugins', 'cache');
+}
