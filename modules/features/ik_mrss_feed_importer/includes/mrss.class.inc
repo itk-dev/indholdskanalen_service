@@ -36,7 +36,6 @@ class MediaRSSParser extends FeedsParser {
       $data['media_url'] = (string)$media->attributes()->url;
       $data['media_image'] = $this->downloadImage($data['media_url'], basename($data['media_url']));
 
-
       // Add feed item
       $result->items[] = $data;
     }
@@ -161,7 +160,7 @@ class MediaRSSParser extends FeedsParser {
 
       case 'parent:design:logo':
         if ($source->feed_nid && $node) {
-          $value = field_get_items('node', $node, 'field_ik_slide_log');
+          $value = field_get_items('node', $node, 'field_ik_slide_logo');
           return $value[0]['uri'];
         }
         break;
