@@ -1,0 +1,14 @@
+name = MRSS Feed Importer
+description = Imports Yahoo Media RSS feeds
+core = 7.x
+package = Indholdskanalen
+php = 5.2.4
+version = 7.x-0.1-beta1
+project = ik_mrss_feed_importer
+dependencies[] = ctools
+dependencies[] = feeds
+dependencies[] = media_feeds
+features[ctools][] = feeds:feeds_importer_default:1
+features[features_api][] = api:1
+features[feeds_importer][] = mrss_feed_importer
+files[] = includes/mrss.class.inc
