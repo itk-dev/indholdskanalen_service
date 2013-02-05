@@ -35,7 +35,7 @@ class MediaRSSParser extends FeedsParser {
       $data['media_description'] = urldecode((string)$media->content->description);
       $data['media_url'] = (string)$media->attributes()->url;
       $data['media_image'] = $this->downloadImage($data['media_url'], basename($data['media_url']));
-      
+
 
       // Add feed item
       $result->items[] = $data;
@@ -62,7 +62,7 @@ class MediaRSSParser extends FeedsParser {
     }
     return FALSE;
   }
-  
+
   public function getMappingSources() {
     return array(
       'guid' => array(
@@ -97,6 +97,94 @@ class MediaRSSParser extends FeedsParser {
         'name' => t('Downloaded image'),
         'description' => t('Downloaded image'),
       ),
+      'parent:layout:exposure' => array(
+        'name' => t('Feed node: Exposure'),
+        'description' => t('The feed node exposure value.'),
+      ),
+      'parent:layout' => array(
+        'name' => t('Feed node: Layout'),
+        'description' => t('The feed node Layout value.'),
+      ),
+      'parent:design:textcolor' => array(
+        'name' => t('Feed node: Text Color'),
+        'description' => t('The feed node text color value.'),
+      ),
+      'parent:design:color' => array(
+        'name' => t('Feed node: Color'),
+        'description' => t('The feed node color value.'),
+      ),
+      'parent:design:logo' => array(
+        'name' => t('Feed node: Logo URI'),
+        'description' => t('The feed node logo URI value.'),
+      ),
+      'parent:og:department' => array(
+        'name' => t('Feed node: OG Department'),
+        'description' => t('The feed node OG department value.'),
+      ),
     ) + parent::getMappingSources();
+  }
+
+  public function getSourceElement(FeedsSource $source, FeedsParserResult $result, $element_key) {
+
+    // Load feed node.
+    $node = node_load($source->feed_nid);
+
+    switch ($element_key) {
+
+      case 'parent:layout:exposure':
+        if ($source->feed_nid && $node) {
+          $value = field_get_items('node', $node, 'field_ik_slide_exposure');
+          return $value[0]['value'];
+        }
+        break;
+
+      case 'parent:layout':
+        if ($source->feed_nid && $node) {
+          $value = field_get_items('node', $node, 'field_layout');
+          return $value[0]['value'];
+        }
+        break;
+
+      case 'parent:design:textcolor':
+        if ($source->feed_nid && $node) {
+          $value = field_get_items('node', $node, 'field_ik_slide_text_color');
+          return $value[0]['jquery_colorpicker'];
+        }
+        break;
+
+      case 'parent:design:color':
+        if ($source->feed_nid && $node) {
+          $value = field_get_items('node', $node, 'field_ik_slide_color');
+          return $value[0]['jquery_colorpicker'];
+        }
+        break;
+
+      case 'parent:design:logo':
+        if ($source->feed_nid && $node) {
+          $value = field_get_items('node', $node, 'field_ik_slide_log');
+          return $value[0]['uri'];
+        }
+        break;
+
+      case 'parent:og:department':
+        if ($source->feed_nid && $node) {
+          $value = field_get_items('node', $node, 'field_ik_slide_department_ref');
+          return $value[0]['target_id'];
+        }
+        break;
+
+      case 'parent:uid':
+        if ($source->feed_nid && $node) {
+          return $node->uid;
+        }
+        break;
+
+      case 'parent:nid':
+        return $source->feed_nid;
+
+    }
+
+    $item = $result->currentItem();
+    return isset($item[$element_key]) ? $item[$element_key] : '';
   }
 }

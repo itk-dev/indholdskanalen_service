@@ -57,6 +57,41 @@ function ik_mrss_feed_importer_feeds_importer_default() {
             'target' => 'field_ik_slide_media:MediaFeedsLibraryProvider',
             'unique' => FALSE,
           ),
+          4 => array(
+            'source' => 'parent:taxonomy:tags',
+            'target' => 'field_ik_slide_tags',
+            'unique' => FALSE,
+          ),
+          5 => array(
+            'source' => 'parent:taxonomy:subject',
+            'target' => 'field_ik_slide_category',
+            'unique' => FALSE,
+          ),
+          6 => array(
+            'source' => 'parent:uid',
+            'target' => 'uid',
+            'unique' => FALSE,
+          ),
+          7 => array(
+            'source' => 'parent:layout:exposure',
+            'target' => 'field_ik_slide_exposure',
+            'unique' => FALSE,
+          ),
+          8 => array(
+            'source' => 'parent:layout',
+            'target' => 'field_layout',
+            'unique' => FALSE,
+          ),
+          9 => array(
+            'source' => 'parent:design:logo',
+            'target' => 'field_ik_slide_logo:MediaFeedsLibraryProvider',
+            'unique' => FALSE,
+          ),
+          10 => array(
+            'source' => 'parent:og:department',
+            'target' => 'field_ik_og_department_ref',
+            'unique' => FALSE,
+          ),
         ),
         'update_existing' => '1',
         'input_format' => 'editor_html',

@@ -70,7 +70,7 @@ function ik_mrss_feed_importer_field_default_fields() {
             'link' => FALSE,
           ),
           'type' => 'entityreference_label',
-          'weight' => 9,
+          'weight' => '9',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -152,7 +152,7 @@ function ik_mrss_feed_importer_field_default_fields() {
           'module' => 'taxonomy',
           'settings' => array(),
           'type' => 'taxonomy_term_reference_link',
-          'weight' => 2,
+          'weight' => '2',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -209,7 +209,7 @@ function ik_mrss_feed_importer_field_default_fields() {
           'module' => 'jquery_colorpicker',
           'settings' => array(),
           'type' => 'jquery_colorpicker_color_display',
-          'weight' => 4,
+          'weight' => '4',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -284,7 +284,7 @@ function ik_mrss_feed_importer_field_default_fields() {
           'module' => 'list',
           'settings' => array(),
           'type' => 'list_default',
-          'weight' => 7,
+          'weight' => '7',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -350,10 +350,10 @@ function ik_mrss_feed_importer_field_default_fields() {
           'module' => 'image',
           'settings' => array(
             'image_link' => '',
-            'image_style' => '',
+            'image_style' => 'thumbnail',
           ),
           'type' => 'image',
-          'weight' => 5,
+          'weight' => '5',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -453,7 +453,7 @@ function ik_mrss_feed_importer_field_default_fields() {
           'module' => 'taxonomy',
           'settings' => array(),
           'type' => 'taxonomy_term_reference_link',
-          'weight' => 1,
+          'weight' => '1',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -513,7 +513,7 @@ function ik_mrss_feed_importer_field_default_fields() {
           'module' => 'jquery_colorpicker',
           'settings' => array(),
           'type' => 'jquery_colorpicker_color_display',
-          'weight' => 3,
+          'weight' => '3',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -535,89 +535,6 @@ function ik_mrss_feed_importer_field_default_fields() {
         'settings' => array(),
         'type' => 'jquery_colorpicker',
         'weight' => '9',
-      ),
-    ),
-  );
-
-  // Exported field: 'node-media_rss_slide_import-field_ik_slide_transition_effect'.
-  $fields['node-media_rss_slide_import-field_ik_slide_transition_effect'] = array(
-    'field_config' => array(
-      'active' => '1',
-      'cardinality' => '1',
-      'deleted' => '0',
-      'entity_types' => array(),
-      'field_name' => 'field_ik_slide_transition_effect',
-      'foreign keys' => array(),
-      'indexes' => array(
-        'value' => array(
-          0 => 'value',
-        ),
-      ),
-      'locked' => '0',
-      'module' => 'list',
-      'settings' => array(
-        'allowed_values' => array(
-          'block' => 'Block',
-          'cube' => 'Cube',
-          'cubeRandom' => 'Cube Random',
-          'cubeStop' => 'Cube Stop',
-          'cubeHide' => 'Cube Hide',
-          'cubeSize' => 'Cube Size',
-          'horizontal' => 'Horizontal',
-          'showBars' => 'Bars',
-          'showBarsRandom' => 'Bars Random',
-          'tube' => 'Tube',
-          'fade' => 'Fade',
-          'fadeFour' => 'Fade Four',
-          'paralell' => 'paralell',
-          'blind' => 'Blind',
-          'blindHeight' => 'Blind Height',
-          'blindWidth' => 'Blind Width',
-          'directionTop' => 'Direction Top',
-          'directionBottom' => 'Direction Bottom',
-          'directionRight' => 'Direction Right',
-          'directionLeft' => 'Direction Left',
-          'cubeStopRandom' => 'Cube Stop Random',
-          'cubeSpread' => 'Cube Spread',
-        ),
-        'allowed_values_function' => '',
-      ),
-      'translatable' => '0',
-      'type' => 'list_text',
-    ),
-    'field_instance' => array(
-      'bundle' => 'media_rss_slide_import',
-      'default_value' => NULL,
-      'deleted' => '0',
-      'description' => '',
-      'display' => array(
-        'default' => array(
-          'label' => 'above',
-          'module' => 'list',
-          'settings' => array(),
-          'type' => 'list_default',
-          'weight' => 6,
-        ),
-        'teaser' => array(
-          'label' => 'above',
-          'settings' => array(),
-          'type' => 'hidden',
-          'weight' => 0,
-        ),
-      ),
-      'entity_type' => 'node',
-      'field_name' => 'field_ik_slide_transition_effect',
-      'label' => 'Transition effect',
-      'required' => 0,
-      'settings' => array(
-        'user_register_form' => FALSE,
-      ),
-      'widget' => array(
-        'active' => 1,
-        'module' => 'options',
-        'settings' => array(),
-        'type' => 'options_select',
-        'weight' => '7',
       ),
     ),
   );
@@ -674,7 +591,7 @@ function ik_mrss_feed_importer_field_default_fields() {
           'module' => 'list',
           'settings' => array(),
           'type' => 'list_default',
-          'weight' => 8,
+          'weight' => '8',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -710,7 +627,6 @@ function ik_mrss_feed_importer_field_default_fields() {
   t('Tags');
   t('Text color');
   t('Textbox color');
-  t('Transition effect');
 
   return $fields;
 }
