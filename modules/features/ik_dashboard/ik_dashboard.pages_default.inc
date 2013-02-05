@@ -293,6 +293,8 @@ function ik_dashboard_default_page_manager_pages() {
       ),
     ),
     'logic' => 'and',
+    'type' => 'none',
+    'settings' => NULL,
   );
   $page->menu = array();
   $page->arguments = array();
@@ -350,7 +352,7 @@ function ik_dashboard_default_page_manager_pages() {
     $pane->pid = 'new-1';
     $pane->panel = 'left';
     $pane->type = 'views_panes';
-    $pane->subtype = 'ik_dashboard-panel_pane_4';
+    $pane->subtype = 'ik_dashboard-panel_pane_6';
     $pane->shown = TRUE;
     $pane->access = array();
     $pane->configuration = array();
@@ -366,7 +368,7 @@ function ik_dashboard_default_page_manager_pages() {
     $display->panels['left'][0] = 'new-1';
     $pane = new stdClass();
     $pane->pid = 'new-2';
-    $pane->panel = 'left';
+    $pane->panel = 'right';
     $pane->type = 'views_panes';
     $pane->subtype = 'ik_dashboard-panel_pane_5';
     $pane->shown = TRUE;
@@ -378,15 +380,15 @@ function ik_dashboard_default_page_manager_pages() {
     );
     $pane->css = array();
     $pane->extras = array();
-    $pane->position = 1;
+    $pane->position = 0;
     $pane->locks = array();
     $display->content['new-2'] = $pane;
-    $display->panels['left'][1] = 'new-2';
+    $display->panels['right'][0] = 'new-2';
     $pane = new stdClass();
     $pane->pid = 'new-3';
     $pane->panel = 'right';
     $pane->type = 'views_panes';
-    $pane->subtype = 'ik_dashboard-panel_pane_1';
+    $pane->subtype = 'ik_dashboard-panel_pane_4';
     $pane->shown = TRUE;
     $pane->access = array();
     $pane->configuration = array();
@@ -396,19 +398,17 @@ function ik_dashboard_default_page_manager_pages() {
     );
     $pane->css = array();
     $pane->extras = array();
-    $pane->position = 0;
+    $pane->position = 1;
     $pane->locks = array();
     $display->content['new-3'] = $pane;
-    $display->panels['right'][0] = 'new-3';
+    $display->panels['right'][1] = 'new-3';
     $pane = new stdClass();
     $pane->pid = 'new-4';
     $pane->panel = 'top';
     $pane->type = 'views_panes';
-    $pane->subtype = 'ik_dashboard-panel_pane_2';
+    $pane->subtype = 'ik_dashboard-panel_pane_1';
     $pane->shown = TRUE;
-    $pane->access = array(
-      'plugins' => array(),
-    );
+    $pane->access = array();
     $pane->configuration = array();
     $pane->cache = array();
     $pane->style = array(
@@ -424,7 +424,7 @@ function ik_dashboard_default_page_manager_pages() {
     $pane->pid = 'new-5';
     $pane->panel = 'top';
     $pane->type = 'views_panes';
-    $pane->subtype = 'ik_dashboard-panel_pane_3';
+    $pane->subtype = 'ik_dashboard-panel_pane_2';
     $pane->shown = TRUE;
     $pane->access = array(
       'plugins' => array(),
@@ -440,6 +440,26 @@ function ik_dashboard_default_page_manager_pages() {
     $pane->locks = array();
     $display->content['new-5'] = $pane;
     $display->panels['top'][1] = 'new-5';
+    $pane = new stdClass();
+    $pane->pid = 'new-6';
+    $pane->panel = 'top';
+    $pane->type = 'views_panes';
+    $pane->subtype = 'ik_dashboard-panel_pane_3';
+    $pane->shown = TRUE;
+    $pane->access = array(
+      'plugins' => array(),
+    );
+    $pane->configuration = array();
+    $pane->cache = array();
+    $pane->style = array(
+      'settings' => NULL,
+    );
+    $pane->css = array();
+    $pane->extras = array();
+    $pane->position = 2;
+    $pane->locks = array();
+    $display->content['new-6'] = $pane;
+    $display->panels['top'][2] = 'new-6';
   $display->hide_title = PANELS_TITLE_FIXED;
   $display->title_pane = '0';
   $handler->conf['display'] = $display;
