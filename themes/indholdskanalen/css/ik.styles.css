@@ -133,6 +133,10 @@ li.views-fluid-grid-item {
   margin-bottom: 2em;
 }
 
+.views-exposed-form .views-exposed-widget .description {
+  display: none;
+}
+
 /* Action links menu */
 .action-link-item {
   position: relative;
