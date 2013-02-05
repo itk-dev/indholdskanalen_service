@@ -63,12 +63,12 @@ function ik_mrss_feed_importer_feeds_importer_default() {
         'skip_hash_check' => 0,
       ),
     ),
-    'content_type' => '',
+    'content_type' => 'media_rss_slide_import',
     'update' => 0,
-    'import_period' => 1800,
+    'import_period' => '1800',
     'expire_period' => 3600,
-    'import_on_create' => TRUE,
-    'process_in_background' => FALSE,
+    'import_on_create' => 1,
+    'process_in_background' => 0,
   );
   $export['mrss_feed_importer'] = $feeds_importer;
 

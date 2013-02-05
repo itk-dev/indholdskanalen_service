@@ -47,7 +47,8 @@ function ik_channel_filter_get_slides($raw_values) {
         $types = array_filter($field_info['settings']['ik_search']['types']);
         $query = "SELECT n.nid, n.title
                     FROM node n
-                  WHERE n.title IN (" . $values_str . ")";
+                  WHERE n.title IN (" . $values_str . ")
+                    AND n.type = 'slide'";
         break;
 
       case 'og':
@@ -105,7 +106,8 @@ function ik_channel_filter_get_slides($raw_values) {
                     )
                     GROUP BY entity_id
                     HAVING count(1) = " . count($values) . "
-                  ) AS inner_nid ON inner_nid.nid = n.nid";
+                  ) AS inner_nid ON inner_nid.nid = n.nid
+                  WHERE n.type = 'slide'";
         break;
     }
 
