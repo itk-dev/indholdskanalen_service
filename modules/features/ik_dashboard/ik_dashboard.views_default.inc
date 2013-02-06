@@ -435,7 +435,7 @@ function ik_dashboard_views_default_views() {
   $handler->display->display_options['filters']['title']['expose']['operator_id'] = 'title_op';
   $handler->display->display_options['filters']['title']['expose']['label'] = 'Titel';
   $handler->display->display_options['filters']['title']['expose']['operator'] = 'title_op';
-  $handler->display->display_options['filters']['title']['expose']['identifier'] = 'title';
+  $handler->display->display_options['filters']['title']['expose']['identifier'] = 'title_my_content';
   $handler->display->display_options['filters']['title']['expose']['remember_roles'] = array(
     2 => '2',
     1 => 0,
@@ -989,7 +989,7 @@ function ik_dashboard_views_default_views() {
   $handler->display->display_options['filters']['title']['expose']['operator_id'] = 'title_op';
   $handler->display->display_options['filters']['title']['expose']['label'] = 'Titel';
   $handler->display->display_options['filters']['title']['expose']['operator'] = 'title_op';
-  $handler->display->display_options['filters']['title']['expose']['identifier'] = 'title';
+  $handler->display->display_options['filters']['title']['expose']['identifier'] = 'title_slide';
   $handler->display->display_options['filters']['title']['expose']['remember_roles'] = array(
     2 => '2',
     1 => 0,
@@ -1015,7 +1015,7 @@ function ik_dashboard_views_default_views() {
   $handler->display->display_options['filters']['uid']['expose']['label'] = 'Forfatter';
   $handler->display->display_options['filters']['uid']['expose']['description'] = ' ';
   $handler->display->display_options['filters']['uid']['expose']['operator'] = 'uid_op';
-  $handler->display->display_options['filters']['uid']['expose']['identifier'] = 'uid';
+  $handler->display->display_options['filters']['uid']['expose']['identifier'] = 'uid_slide';
   $handler->display->display_options['filters']['uid']['expose']['remember_roles'] = array(
     2 => '2',
     1 => 0,
@@ -1034,7 +1034,7 @@ function ik_dashboard_views_default_views() {
   $handler->display->display_options['filters']['title_2']['expose']['operator_id'] = 'title_2_op';
   $handler->display->display_options['filters']['title_2']['expose']['label'] = 'Organisation';
   $handler->display->display_options['filters']['title_2']['expose']['operator'] = 'title_2_op';
-  $handler->display->display_options['filters']['title_2']['expose']['identifier'] = 'title_2';
+  $handler->display->display_options['filters']['title_2']['expose']['identifier'] = 'title_slide_org';
   $handler->display->display_options['filters']['title_2']['expose']['remember_roles'] = array(
     2 => '2',
     1 => 0,
@@ -1059,7 +1059,7 @@ function ik_dashboard_views_default_views() {
   $handler->display->display_options['filters']['title_1']['expose']['operator_id'] = 'title_1_op';
   $handler->display->display_options['filters']['title_1']['expose']['label'] = 'Department';
   $handler->display->display_options['filters']['title_1']['expose']['operator'] = 'title_1_op';
-  $handler->display->display_options['filters']['title_1']['expose']['identifier'] = 'title_1';
+  $handler->display->display_options['filters']['title_1']['expose']['identifier'] = 'title_slide_depart';
   $handler->display->display_options['filters']['title_1']['expose']['remember_roles'] = array(
     2 => '2',
     1 => 0,
@@ -1713,7 +1713,7 @@ function ik_dashboard_views_default_views() {
   $handler->display->display_options['filters']['title']['expose']['operator_id'] = 'title_op';
   $handler->display->display_options['filters']['title']['expose']['label'] = 'Titel';
   $handler->display->display_options['filters']['title']['expose']['operator'] = 'title_op';
-  $handler->display->display_options['filters']['title']['expose']['identifier'] = 'title';
+  $handler->display->display_options['filters']['title']['expose']['identifier'] = 'title_channel';
   $handler->display->display_options['filters']['title']['expose']['remember_roles'] = array(
     2 => '2',
     1 => 0,
@@ -1757,7 +1757,7 @@ function ik_dashboard_views_default_views() {
   $handler->display->display_options['filters']['title_2']['expose']['operator_id'] = 'title_2_op';
   $handler->display->display_options['filters']['title_2']['expose']['label'] = 'Organisation';
   $handler->display->display_options['filters']['title_2']['expose']['operator'] = 'title_2_op';
-  $handler->display->display_options['filters']['title_2']['expose']['identifier'] = 'title_2';
+  $handler->display->display_options['filters']['title_2']['expose']['identifier'] = 'title_channel_org';
   $handler->display->display_options['filters']['title_2']['expose']['remember_roles'] = array(
     2 => '2',
     1 => 0,
@@ -1782,7 +1782,7 @@ function ik_dashboard_views_default_views() {
   $handler->display->display_options['filters']['title_1']['expose']['operator_id'] = 'title_1_op';
   $handler->display->display_options['filters']['title_1']['expose']['label'] = 'Department';
   $handler->display->display_options['filters']['title_1']['expose']['operator'] = 'title_1_op';
-  $handler->display->display_options['filters']['title_1']['expose']['identifier'] = 'title_1';
+  $handler->display->display_options['filters']['title_1']['expose']['identifier'] = 'title_channel_depart';
   $handler->display->display_options['filters']['title_1']['expose']['remember_roles'] = array(
     2 => '2',
     1 => 0,
@@ -2307,7 +2307,7 @@ function ik_dashboard_views_default_views() {
   $handler->display->display_options['filters']['title']['expose']['operator_id'] = 'title_op';
   $handler->display->display_options['filters']['title']['expose']['label'] = 'Titel';
   $handler->display->display_options['filters']['title']['expose']['operator'] = 'title_op';
-  $handler->display->display_options['filters']['title']['expose']['identifier'] = 'title';
+  $handler->display->display_options['filters']['title']['expose']['identifier'] = 'title_org2';
   $handler->display->display_options['filters']['title']['expose']['remember_roles'] = array(
     2 => '2',
     1 => 0,
@@ -2630,7 +2630,7 @@ function ik_dashboard_views_default_views() {
   $handler->display->display_options['filters']['title']['expose']['operator_id'] = 'title_op';
   $handler->display->display_options['filters']['title']['expose']['label'] = 'Titel';
   $handler->display->display_options['filters']['title']['expose']['operator'] = 'title_op';
-  $handler->display->display_options['filters']['title']['expose']['identifier'] = 'title';
+  $handler->display->display_options['filters']['title']['expose']['identifier'] = 'title_depart';
   $handler->display->display_options['filters']['title']['expose']['remember_roles'] = array(
     2 => '2',
     1 => 0,
@@ -2654,7 +2654,7 @@ function ik_dashboard_views_default_views() {
   $handler->display->display_options['filters']['title_1']['expose']['operator_id'] = 'title_1_op';
   $handler->display->display_options['filters']['title_1']['expose']['label'] = 'Organisation';
   $handler->display->display_options['filters']['title_1']['expose']['operator'] = 'title_1_op';
-  $handler->display->display_options['filters']['title_1']['expose']['identifier'] = 'title_1';
+  $handler->display->display_options['filters']['title_1']['expose']['identifier'] = 'title_depart_org';
   $handler->display->display_options['filters']['title_1']['expose']['remember_roles'] = array(
     2 => '2',
     1 => 0,
@@ -3125,7 +3125,7 @@ function ik_dashboard_views_default_views() {
   $handler->display->display_options['filters']['title']['expose']['operator_id'] = 'title_op';
   $handler->display->display_options['filters']['title']['expose']['label'] = 'Titel';
   $handler->display->display_options['filters']['title']['expose']['operator'] = 'title_op';
-  $handler->display->display_options['filters']['title']['expose']['identifier'] = 'title';
+  $handler->display->display_options['filters']['title']['expose']['identifier'] = 'title_imp';
   $handler->display->display_options['filters']['title']['expose']['remember_roles'] = array(
     2 => '2',
     1 => 0,
@@ -3151,7 +3151,7 @@ function ik_dashboard_views_default_views() {
   $handler->display->display_options['filters']['uid']['expose']['label'] = 'Forfatter';
   $handler->display->display_options['filters']['uid']['expose']['description'] = ' ';
   $handler->display->display_options['filters']['uid']['expose']['operator'] = 'uid_op';
-  $handler->display->display_options['filters']['uid']['expose']['identifier'] = 'uid';
+  $handler->display->display_options['filters']['uid']['expose']['identifier'] = 'uid_imp';
   $handler->display->display_options['filters']['uid']['expose']['remember_roles'] = array(
     2 => '2',
     1 => 0,
@@ -3170,7 +3170,7 @@ function ik_dashboard_views_default_views() {
   $handler->display->display_options['filters']['title_2']['expose']['operator_id'] = 'title_2_op';
   $handler->display->display_options['filters']['title_2']['expose']['label'] = 'Organisation';
   $handler->display->display_options['filters']['title_2']['expose']['operator'] = 'title_2_op';
-  $handler->display->display_options['filters']['title_2']['expose']['identifier'] = 'title_2';
+  $handler->display->display_options['filters']['title_2']['expose']['identifier'] = 'title_imp_org';
   $handler->display->display_options['filters']['title_2']['expose']['remember_roles'] = array(
     2 => '2',
     1 => 0,
@@ -3195,7 +3195,7 @@ function ik_dashboard_views_default_views() {
   $handler->display->display_options['filters']['title_1']['expose']['operator_id'] = 'title_1_op';
   $handler->display->display_options['filters']['title_1']['expose']['label'] = 'Department';
   $handler->display->display_options['filters']['title_1']['expose']['operator'] = 'title_1_op';
-  $handler->display->display_options['filters']['title_1']['expose']['identifier'] = 'title_1';
+  $handler->display->display_options['filters']['title_1']['expose']['identifier'] = 'title_imp_depart';
   $handler->display->display_options['filters']['title_1']['expose']['remember_roles'] = array(
     2 => '2',
     1 => 0,
