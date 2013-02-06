@@ -285,10 +285,14 @@ function ik_frontend_fetch_slide($token, $sid) {
  *
  * Remove the -none- option from OG group reference field on slide add form.
  */
-function ik_frontend_form_slide_node_form_alter(&$form, &$form_state, $form_id) {
-  $language = $form['field_ik_og_department_ref']['#language'];
-  if (isset($form['field_ik_og_department_ref'][$language][0]['default']['#options'])) {
-    array_shift($form['field_ik_og_department_ref'][$language][0]['default']['#options']);  
+function ik_frontend_form_alter(&$form, &$form_state, $form_id) {
+  
+  $forms_to_alter = array('channel_node_form' , 'slide_node_form' , 'media_rss_slide_import_node_form' );
+  if ( in_array( $form['form_id']['#value'] , $forms_to_alter ) ) {
+    $language = $form['field_ik_og_department_ref']['#language'];
+    if (isset($form['field_ik_og_department_ref'][$language][0]['default']['#options'])) {
+      array_shift($form['field_ik_og_department_ref'][$language][0]['default']['#options']);  
+    }
   }
 }
 

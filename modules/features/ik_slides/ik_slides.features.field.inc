@@ -87,7 +87,7 @@ function ik_slides_field_default_fields() {
         'behaviors' => array(
           'og_widget' => array(
             'admin' => array(
-              'widget_type' => 'entityreference_autocomplete',
+              'widget_type' => 'options_select',
             ),
             'default' => array(
               'widget_type' => 'options_select',
