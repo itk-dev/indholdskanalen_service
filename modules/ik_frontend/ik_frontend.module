@@ -291,7 +291,7 @@ function ik_frontend_form_alter(&$form, &$form_state, $form_id) {
   if ( in_array( $form['form_id']['#value'] , $forms_to_alter ) ) {
     $language = $form['field_ik_og_department_ref']['#language'];
     if (isset($form['field_ik_og_department_ref'][$language][0]['default']['#options'])) {
-      array_shift($form['field_ik_og_department_ref'][$language][0]['default']['#options']);  
+      unset($form['field_ik_og_department_ref'][$language][0]['default']['#options']['_none']);  
     }
   }
 }
