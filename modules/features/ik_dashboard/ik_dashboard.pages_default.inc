@@ -426,6 +426,24 @@ function ik_dashboard_default_page_manager_pages() {
     $pane->pid = 'new-5';
     $pane->panel = 'top';
     $pane->type = 'views_panes';
+    $pane->subtype = 'ik_dashboard-panel_pane_6';
+    $pane->shown = TRUE;
+    $pane->access = array();
+    $pane->configuration = array();
+    $pane->cache = array();
+    $pane->style = array(
+      'settings' => NULL,
+    );
+    $pane->css = array();
+    $pane->extras = array();
+    $pane->position = 2;
+    $pane->locks = array();
+    $display->content['new-5'] = $pane;
+    $display->panels['top'][2] = 'new-5';
+    $pane = new stdClass();
+    $pane->pid = 'new-6';
+    $pane->panel = 'top';
+    $pane->type = 'views_panes';
     $pane->subtype = 'ik_dashboard-panel_pane_3';
     $pane->shown = TRUE;
     $pane->access = array(
@@ -438,10 +456,10 @@ function ik_dashboard_default_page_manager_pages() {
     );
     $pane->css = array();
     $pane->extras = array();
-    $pane->position = 2;
+    $pane->position = 3;
     $pane->locks = array();
-    $display->content['new-5'] = $pane;
-    $display->panels['top'][2] = 'new-5';
+    $display->content['new-6'] = $pane;
+    $display->panels['top'][3] = 'new-6';
   $display->hide_title = PANELS_TITLE_FIXED;
   $display->title_pane = '0';
   $handler->conf['display'] = $display;
