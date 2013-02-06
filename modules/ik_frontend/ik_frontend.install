@@ -51,10 +51,3 @@ function ik_frontend_schema() {
 
   return $schema;
 }
-
-/**
- * Add database schema and cache table.
- */
-function ik_frontend_update_7001() {
-  drupal_install_schema('ik_frontend');
-}
