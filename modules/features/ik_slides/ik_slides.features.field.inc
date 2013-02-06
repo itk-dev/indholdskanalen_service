@@ -164,7 +164,7 @@ function ik_slides_field_default_fields() {
       'entity_type' => 'node',
       'field_name' => 'field_ik_slide_category',
       'label' => 'Category',
-      'required' => 0,
+      'required' => 1,
       'settings' => array(
         'user_register_form' => FALSE,
       ),
@@ -629,7 +629,7 @@ function ik_slides_field_default_fields() {
       'entity_type' => 'node',
       'field_name' => 'field_ik_slide_tags',
       'label' => 'Tags',
-      'required' => 0,
+      'required' => 1,
       'settings' => array(
         'user_register_form' => FALSE,
       ),
