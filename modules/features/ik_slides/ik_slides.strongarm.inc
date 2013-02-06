@@ -90,13 +90,13 @@ function ik_slides_strongarm() {
           'weight' => '1',
         ),
         'path' => array(
-          'weight' => '9',
-        ),
-        'redirect' => array(
           'weight' => '8',
         ),
+        'redirect' => array(
+          'weight' => '7',
+        ),
         'flag' => array(
-          'weight' => '10',
+          'weight' => '9',
         ),
       ),
       'display' => array(),

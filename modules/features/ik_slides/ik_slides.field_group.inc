@@ -50,7 +50,7 @@ function ik_slides_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Categories',
-    'weight' => '5',
+    'weight' => '3',
     'children' => array(
       0 => 'field_ik_slide_category',
       1 => 'field_ik_slide_tags',
@@ -107,7 +107,7 @@ function ik_slides_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Images',
-    'weight' => '3',
+    'weight' => '2',
     'children' => array(
       0 => 'field_ik_slide_media',
       1 => 'field_ik_slide_transition_effect',
@@ -124,6 +124,35 @@ function ik_slides_field_group_info() {
     ),
   );
   $export['group_ik_slide_images|node|slide|form'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
+  $field_group->identifier = 'group_ik_slide_import|node|slide|form';
+  $field_group->group_name = 'group_ik_slide_import';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'slide';
+  $field_group->mode = 'form';
+  $field_group->parent_name = '';
+  $field_group->data = array(
+    'label' => 'Import',
+    'weight' => '5',
+    'children' => array(
+      0 => 'field_ik_slide_imported',
+      1 => 'field_ik_slide_import_node',
+    ),
+    'format_type' => 'fieldset',
+    'format_settings' => array(
+      'label' => 'Import',
+      'instance_settings' => array(
+        'required_fields' => 0,
+        'classes' => '',
+        'description' => '',
+      ),
+      'formatter' => 'collapsed',
+    ),
+  );
+  $export['group_ik_slide_import|node|slide|form'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -164,7 +193,7 @@ function ik_slides_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Template',
-    'weight' => '6',
+    'weight' => '4',
     'children' => array(
       0 => 'field_ik_slide_exposure',
       1 => 'group_ik_slide_layout',

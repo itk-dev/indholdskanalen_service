@@ -62,6 +62,9 @@ function ik_mrss_feed_importer_feeds_processor_targets_alter(&$targets, $entity_
 
     // Change OG node field tagets
     $targets['field_ik_og_department_ref']['callback'] = 'ik_mrss_feed_importer_og_set_target';
+
+    // Change taget for feed ref.
+    $targets['field_ik_slide_import_node']['callback'] = 'ik_mrss_feed_importer_og_set_target';
   }
 }
 

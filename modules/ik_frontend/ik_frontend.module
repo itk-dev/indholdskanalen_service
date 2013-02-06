@@ -86,6 +86,11 @@ function ik_frontend_node_insert($node) {
     $record = array('nid' => $node->nid, 'token' => $token);
     drupal_write_record('ik_channel_mapping', $record);
   }
+  
+  /**
+   * @TODO: if slide Clear channel cache.
+   */
+
 }
 
 /**
@@ -111,6 +116,11 @@ function ik_frontend_node_update($node) {
   if ($node->type == 'slide') {
     // Remove node from slids cache.
     cache_clear_all('slide_' . $node->nid, 'cache_ik_frontend');
+    
+    /**
+     * @TODO:   Clear channel cache.
+     */
+    
   }
 }
 

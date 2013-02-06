@@ -127,11 +127,15 @@ class MediaRSSParser extends FeedsParser {
         'name' => t('Feed node: OG Department'),
         'description' => t('The feed node OG department value.'),
       ),
+      'imported' => array(
+        'name' => t('Imported checkbox (true)'),
+        'description' => t('Flag to indicate that the content is imported.'),
+      ),
     ) + parent::getMappingSources();
   }
 
   /**
-   * Implements source element mapping to get the feed node (MRSS node) feeds 
+   * Implements source element mapping to get the feed node (MRSS node) feeds
    * mapped to slide nodes.
    */
   public function getSourceElement(FeedsSource $source, FeedsParserResult $result, $element_key) {
@@ -189,9 +193,12 @@ class MediaRSSParser extends FeedsParser {
         }
         break;
 
+      case 'imported':
+        return 'imported';
+        break;
+
       case 'parent:nid':
         return $source->feed_nid;
-
     }
 
     $item = $result->currentItem();

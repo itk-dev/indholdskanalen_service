@@ -92,6 +92,16 @@ function ik_mrss_feed_importer_feeds_importer_default() {
             'target' => 'field_ik_og_department_ref',
             'unique' => FALSE,
           ),
+          11 => array(
+            'source' => 'imported',
+            'target' => 'field_ik_slide_imported',
+            'unique' => FALSE,
+          ),
+          12 => array(
+            'source' => 'parent:nid',
+            'target' => 'field_ik_slide_import_node',
+            'unique' => FALSE,
+          ),
         ),
         'update_existing' => '1',
         'input_format' => 'editor_html',

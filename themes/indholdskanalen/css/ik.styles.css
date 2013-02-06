@@ -185,3 +185,6 @@ li.views-fluid-grid-item {
   background-color: #999;
 }
 
+.panel-pane.hidden {
+  display: none;
+}
