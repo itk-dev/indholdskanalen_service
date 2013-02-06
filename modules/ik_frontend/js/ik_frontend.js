@@ -38,7 +38,7 @@ var IK = (function() {
     this.token = token;
     this.sid = sid;
 
-    // Build directive for PURE
+    // Build directive for PURE.
     this.directive = {
       '.image-container li' : {
         'medium<-media' : {

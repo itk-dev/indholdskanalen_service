@@ -7,7 +7,7 @@
 include_once 'ik_mrss_feed_importer.features.inc';
 
 /**
- * Defines a new feeds parser to Yahoo Search Media RSS feeds. You can read 
+ * Defines a new feeds parser to Yahoo Search Media RSS feeds. You can read
  * about the format at http://en.wikipedia.org/wiki/Media_RSS.
  *
  * @return array $info
@@ -32,4 +32,51 @@ function ik_mrss_feed_importer_feeds_plugins() {
  */
 function ik_mrss_feed_importer_enable() {
   cache_clear_all('plugins:feeds:plugins', 'cache');
+}
+
+/**
+ * Alter mapping targets for entities. In this case alter target for jQuery
+ * colorpicker fields on slide nodes.
+ *
+ * @param &$targets
+ *   Array containing the targets to be offered to the user. Add to this array
+ *   to expose additional options. Remove from this array to suppress options.
+ *   Remove with caution.
+ * @param $entity_type
+ *   The entity type of the target, for instance a 'node' entity.
+ * @param $bundle_name
+ *   The bundle name for which to alter targets.
+ */
+function ik_mrss_feed_importer_feeds_processor_targets_alter(&$targets, $entity_type, $bundle_name) {
+  if ($entity_type == 'node' && $bundle_name == 'slide') {
+    $targets['field_ik_slide_text_color'] = array(
+      'name' => t('Text Color'),
+      'description' => t('Set slide text color.'),
+      'callback' => 'ik_mrss_feed_importer_color_set_target',
+    );
+    $targets['field_ik_slide_color'] = array(
+      'name' => t('Color'),
+      'description' => t('Set slide color.'),
+      'callback' => 'ik_mrss_feed_importer_color_set_target',
+    );
+  }
+}
+
+/**
+ * Save jQuery color picker value for feeds taget mapping.
+ *
+ * @param $source
+ *   Field mapper source settings.
+ * @param $entity
+ *   An entity object, for instance a node object.
+ * @param $target
+ *   A string identifying the target on the node.
+ * @param $value
+ *   The value to populate the target with.
+ * @param $mapping
+ *  Associative array of the mapping settings from the per mapping
+ *  configuration form.
+ */
+function ik_mrss_feed_importer_color_set_target($source, $entity, $target, $value, $mapping) {
+  $entity->{$target}[$entity->language][0]['jquery_colorpicker'] = $value;
 }

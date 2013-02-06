@@ -57,18 +57,53 @@ function ik_mrss_feed_importer_feeds_importer_default() {
             'target' => 'field_ik_slide_media:MediaFeedsLibraryProvider',
             'unique' => FALSE,
           ),
+          4 => array(
+            'source' => 'parent:taxonomy:tags',
+            'target' => 'field_ik_slide_tags',
+            'unique' => FALSE,
+          ),
+          5 => array(
+            'source' => 'parent:taxonomy:subject',
+            'target' => 'field_ik_slide_category',
+            'unique' => FALSE,
+          ),
+          6 => array(
+            'source' => 'parent:uid',
+            'target' => 'uid',
+            'unique' => FALSE,
+          ),
+          7 => array(
+            'source' => 'parent:layout:exposure',
+            'target' => 'field_ik_slide_exposure',
+            'unique' => FALSE,
+          ),
+          8 => array(
+            'source' => 'parent:layout',
+            'target' => 'field_layout',
+            'unique' => FALSE,
+          ),
+          9 => array(
+            'source' => 'parent:design:logo',
+            'target' => 'field_ik_slide_logo:MediaFeedsLibraryProvider',
+            'unique' => FALSE,
+          ),
+          10 => array(
+            'source' => 'parent:og:department',
+            'target' => 'field_ik_og_department_ref',
+            'unique' => FALSE,
+          ),
         ),
         'update_existing' => '1',
         'input_format' => 'editor_html',
         'skip_hash_check' => 0,
       ),
     ),
-    'content_type' => '',
+    'content_type' => 'media_rss_slide_import',
     'update' => 0,
-    'import_period' => 1800,
+    'import_period' => '1800',
     'expire_period' => 3600,
-    'import_on_create' => TRUE,
-    'process_in_background' => FALSE,
+    'import_on_create' => 1,
+    'process_in_background' => 0,
   );
   $export['mrss_feed_importer'] = $feeds_importer;
 
