@@ -59,7 +59,30 @@ function ik_mrss_feed_importer_feeds_processor_targets_alter(&$targets, $entity_
       'description' => t('Set slide color.'),
       'callback' => 'ik_mrss_feed_importer_color_set_target',
     );
+
+    // Change OG node field tagets
+    $targets['field_ik_og_department_ref']['callback'] = 'ik_mrss_feed_importer_og_set_target';
   }
+}
+
+/**
+ * Save OG values for feeds taget mapping as they conflict with feeds own ref
+ * fields.
+ *
+ * @param $source
+ *   Field mapper source settings.
+ * @param $entity
+ *   An entity object, for instance a node object.
+ * @param $target
+ *   A string identifying the target on the node.
+ * @param $value
+ *   The value to populate the target with.
+ * @param $mapping
+ *  Associative array of the mapping settings from the per mapping
+ *  configuration form.
+ */
+function ik_mrss_feed_importer_color_set_target($source, $entity, $target, $value, $mapping) {
+  $entity->{$target}[$entity->language][0]['jquery_colorpicker'] = $value;
 }
 
 /**
@@ -77,6 +100,6 @@ function ik_mrss_feed_importer_feeds_processor_targets_alter(&$targets, $entity_
  *  Associative array of the mapping settings from the per mapping
  *  configuration form.
  */
-function ik_mrss_feed_importer_color_set_target($source, $entity, $target, $value, $mapping) {
-  $entity->{$target}[$entity->language][0]['jquery_colorpicker'] = $value;
+function ik_mrss_feed_importer_og_set_target($source, $entity, $target, $value, $mapping) {
+  $entity->{$target}[$entity->language][0]['target_id'] = $value;
 }

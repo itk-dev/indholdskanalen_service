@@ -8,6 +8,9 @@
 
 class MediaRSSParser extends FeedsParser {
 
+  /**
+   * Parse the RAW xml input feed into PHP arrays.
+   */
   public function parse(FeedsSource $source, FeedsFetcherResult $fetcher_result) {
 
     // Load library helper functions.
@@ -62,6 +65,10 @@ class MediaRSSParser extends FeedsParser {
     return FALSE;
   }
 
+  /**
+   * Implements source mapping to give feeds ui the fields have available in the
+   * mapping.
+   */
   public function getMappingSources() {
     return array(
       'guid' => array(
@@ -123,6 +130,10 @@ class MediaRSSParser extends FeedsParser {
     ) + parent::getMappingSources();
   }
 
+  /**
+   * Implements source element mapping to get the feed node (MRSS node) feeds 
+   * mapped to slide nodes.
+   */
   public function getSourceElement(FeedsSource $source, FeedsParserResult $result, $element_key) {
 
     // Load feed node.
@@ -167,7 +178,7 @@ class MediaRSSParser extends FeedsParser {
 
       case 'parent:og:department':
         if ($source->feed_nid && $node) {
-          $value = field_get_items('node', $node, 'field_ik_slide_department_ref');
+          $value = field_get_items('node', $node, 'field_ik_og_department_ref');
           return $value[0]['target_id'];
         }
         break;
