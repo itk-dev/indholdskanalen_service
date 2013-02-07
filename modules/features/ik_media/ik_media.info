@@ -1,0 +1,14 @@
+name = IK media
+description = Feature that configure media module and browser
+core = 7.x
+package = Indholdskanalen
+version = 7.x-0.1
+project = ik_media
+dependencies[] = media
+dependencies[] = media_browser_plus
+dependencies[] = mediafield
+dependencies[] = strongarm
+features[ctools][] = strongarm:strongarm:1
+features[features_api][] = api:1
+features[variable][] = media__file_extensions
+features[variable][] = media__wysiwyg_browser_plugins
