@@ -13,6 +13,15 @@ function ik_slide_preview_form_slide_node_form_alter(&$form, &$form_state, $form
   }
 }
 
+/**
+ * Edit slide node preview callback.
+ * 
+ * @staticvar boolean $build_node
+ * @staticvar null $publish_on
+ * @staticvar null $unpublish_on
+ * @param type $form
+ * @param type $form_state 
+ */
 function ik_slide_preview_build_preview($form, &$form_state) {
   static $build_node = TRUE;
   static $publish_on = NULL;
@@ -87,7 +96,8 @@ function ik_slide_preview_build_preview($form, &$form_state) {
 }
 
 /**
- * diff files. text -> check_markup
+ * Build slide based on node from edit node form preview. The main diff from the
+ * one in ik_frontend is images, subheadings and text fields.
  *
  * @param type $entity
  * @return type
