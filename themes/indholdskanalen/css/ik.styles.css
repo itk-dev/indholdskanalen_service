@@ -190,6 +190,6 @@ li.views-fluid-grid-item {
 }
 
 /* Media upload form */
-#media-tab-upload .form-disabled {
+#media-tab-upload .form-item-field-folder {
   display: none;
 }

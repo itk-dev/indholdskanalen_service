@@ -18,12 +18,9 @@ function ik_admin_form_alter(&$form, &$form_state, $form_id) {
 
   // Manipulate the media upload form.
   if ($form['form_id']['#value'] == 'file_entity_add_upload') {
-    // Set the media plus browser folders to desired destinations.
+    // Set the media plus browser folders to logoer.
     if (stristr($form['upload']['#upload_location'], 'slide_logo_files')) {
       $form['field_folder']['#default_value'] = 30;
-      $form['field_folder']['#disabled'] = true; 
-    } else {
-      $form['field_folder']['#disabled'] = true;
     }
   }
 }
