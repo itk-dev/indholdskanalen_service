@@ -5,7 +5,7 @@
  *
  * Remove the -none- option from OG group reference field on slide add form.
  */
-function ik_frontend_form_alter(&$form, &$form_state, $form_id) {
+function ik_admin_form_alter(&$form, &$form_state, $form_id) {
   
   // OG department reference alter
   $forms_to_alter = array('channel_node_form' , 'slide_node_form' , 'media_rss_slide_import_node_form' );
@@ -16,9 +16,9 @@ function ik_frontend_form_alter(&$form, &$form_state, $form_id) {
     }
   }
 
-  /*if ( $form['form_id']['#value'] == 'file_entity_add_upload' ) {
+  if ( $form['form_id']['#value'] == 'file_entity_add_upload' ) {
     kpr($form);
-  }*/
+  }
 }
 
 /**

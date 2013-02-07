@@ -8,7 +8,7 @@
 /**
 * Implements hook_install().
 */ 
-function ik_frontend_install() {
+function ik_admin_install() {
   db_update('system')
     ->fields(array('weight' => 10))
     ->condition('name', 'ik_frontend', '=')
@@ -18,7 +18,7 @@ function ik_frontend_install() {
 /**
 * Update module weight.
 */ 
-function ik_frontend_update_7000() {
+function ik_admin_update_7000() {
   db_update('system')
     ->fields(array('weight' => 10))
     ->condition('name', 'ik_frontend', '=')
