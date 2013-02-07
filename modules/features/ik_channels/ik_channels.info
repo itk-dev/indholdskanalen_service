@@ -29,6 +29,7 @@ features[field][] = node-channel-field_ik_og_department_ref
 features[field_group][] = group_channel_basic|node|channel|form
 features[field_group][] = group_channel_filter|node|channel|form
 features[image][] = slide_images
+features[image][] = slide_logoes
 features[node][] = channel
 features[page_manager_handlers][] = node_edit_panel_context
 features[page_manager_handlers][] = node_view_panel_context_3

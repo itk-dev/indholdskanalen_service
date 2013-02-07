@@ -5,4 +5,5 @@ package = Indholdskanalen
 
 dependencies[] = panels
 dependencies[] = ik_channel_filter
+dependencies[] = ik_channels
 
