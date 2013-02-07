@@ -367,6 +367,18 @@ var IK = (function() {
   }
 
   /**
+   * Helper function used to display a single slide. Mostly used to preview a
+   * slide in the administration interface.
+   */
+  function showSlide(sid) {
+    // Get the slide with a fictive token, so its hardcoded.
+    var slide = new Slide('7e7b4ad812dc593d898eccd7a10607d1', sid);
+    
+    // Render current slide.
+    slide.render();
+  }
+
+  /**
    * Destroy the channel object and its objects.
    */
   function destory() {
@@ -394,15 +406,8 @@ var IK = (function() {
   return {
     start: start,
     stop: stop,
+    showSlide: showSlide,
     destory: destory,
     debug: debug
   };
 })();
-
-
-(function($){
-  $(document).ready(function() {
-    IK.debug();
-    IK.start(IKFrontend.settings.token);
-  });
-})(jQuery);
