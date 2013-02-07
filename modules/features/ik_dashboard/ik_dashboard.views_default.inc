@@ -22,6 +22,7 @@ function ik_dashboard_views_default_views() {
 
   /* Display: Master */
   $handler = $view->new_display('default', 'Master', 'default');
+  $handler->display->display_options['use_ajax'] = TRUE;
   $handler->display->display_options['use_more_always'] = FALSE;
   $handler->display->display_options['use_more_text'] = 'mere';
   $handler->display->display_options['link_display'] = 'page_2';
@@ -386,7 +387,7 @@ function ik_dashboard_views_default_views() {
   $handler->display->display_options['filters']['status']['expose']['operator_id'] = '';
   $handler->display->display_options['filters']['status']['expose']['label'] = 'Udgivet';
   $handler->display->display_options['filters']['status']['expose']['operator'] = 'status_op';
-  $handler->display->display_options['filters']['status']['expose']['identifier'] = 'status';
+  $handler->display->display_options['filters']['status']['expose']['identifier'] = 'status_my_content';
   $handler->display->display_options['filters']['status']['expose']['remember_roles'] = array(
     2 => '2',
     1 => 0,
@@ -407,7 +408,7 @@ function ik_dashboard_views_default_views() {
   $handler->display->display_options['filters']['type']['expose']['operator_id'] = 'type_op';
   $handler->display->display_options['filters']['type']['expose']['label'] = 'Type';
   $handler->display->display_options['filters']['type']['expose']['operator'] = 'type_op';
-  $handler->display->display_options['filters']['type']['expose']['identifier'] = 'type';
+  $handler->display->display_options['filters']['type']['expose']['identifier'] = 'type_my_content';
   $handler->display->display_options['filters']['type']['expose']['remember_roles'] = array(
     2 => '2',
     1 => 0,
@@ -434,7 +435,7 @@ function ik_dashboard_views_default_views() {
   $handler->display->display_options['filters']['title']['expose']['operator_id'] = 'title_op';
   $handler->display->display_options['filters']['title']['expose']['label'] = 'Titel';
   $handler->display->display_options['filters']['title']['expose']['operator'] = 'title_op';
-  $handler->display->display_options['filters']['title']['expose']['identifier'] = 'title';
+  $handler->display->display_options['filters']['title']['expose']['identifier'] = 'title_my_content';
   $handler->display->display_options['filters']['title']['expose']['remember_roles'] = array(
     2 => '2',
     1 => 0,
@@ -442,6 +443,11 @@ function ik_dashboard_views_default_views() {
     4 => 0,
     5 => 0,
   );
+  $handler->display->display_options['filters']['title']['expose']['autocomplete_items'] = '10';
+  $handler->display->display_options['filters']['title']['expose']['autocomplete_field'] = 'title';
+  $handler->display->display_options['filters']['title']['expose']['autocomplete_raw_suggestion'] = 1;
+  $handler->display->display_options['filters']['title']['expose']['autocomplete_raw_dropdown'] = 1;
+  $handler->display->display_options['filters']['title']['expose']['autocomplete_dependent'] = 1;
   /* Filterkriterie: Indhold: Imported (field_ik_slide_imported) */
   $handler->display->display_options['filters']['field_ik_slide_imported_value']['id'] = 'field_ik_slide_imported_value';
   $handler->display->display_options['filters']['field_ik_slide_imported_value']['table'] = 'field_data_field_ik_slide_imported';
@@ -964,7 +970,7 @@ function ik_dashboard_views_default_views() {
   $handler->display->display_options['filters']['status']['expose']['operator_id'] = '';
   $handler->display->display_options['filters']['status']['expose']['label'] = 'Udgivet';
   $handler->display->display_options['filters']['status']['expose']['operator'] = 'status_op';
-  $handler->display->display_options['filters']['status']['expose']['identifier'] = 'status';
+  $handler->display->display_options['filters']['status']['expose']['identifier'] = 'status_slide';
   $handler->display->display_options['filters']['status']['expose']['remember_roles'] = array(
     2 => '2',
     1 => 0,
@@ -982,7 +988,7 @@ function ik_dashboard_views_default_views() {
   $handler->display->display_options['filters']['title']['expose']['operator_id'] = 'title_op';
   $handler->display->display_options['filters']['title']['expose']['label'] = 'Titel';
   $handler->display->display_options['filters']['title']['expose']['operator'] = 'title_op';
-  $handler->display->display_options['filters']['title']['expose']['identifier'] = 'title';
+  $handler->display->display_options['filters']['title']['expose']['identifier'] = 'title_slide';
   $handler->display->display_options['filters']['title']['expose']['remember_roles'] = array(
     2 => '2',
     1 => 0,
@@ -990,6 +996,11 @@ function ik_dashboard_views_default_views() {
     4 => 0,
     5 => 0,
   );
+  $handler->display->display_options['filters']['title']['expose']['autocomplete_items'] = '10';
+  $handler->display->display_options['filters']['title']['expose']['autocomplete_field'] = 'title';
+  $handler->display->display_options['filters']['title']['expose']['autocomplete_raw_suggestion'] = 1;
+  $handler->display->display_options['filters']['title']['expose']['autocomplete_raw_dropdown'] = 1;
+  $handler->display->display_options['filters']['title']['expose']['autocomplete_dependent'] = 1;
   /* Filterkriterie: Bruger: Navn */
   $handler->display->display_options['filters']['uid']['id'] = 'uid';
   $handler->display->display_options['filters']['uid']['table'] = 'users';
@@ -1002,7 +1013,7 @@ function ik_dashboard_views_default_views() {
   $handler->display->display_options['filters']['uid']['expose']['label'] = 'Forfatter';
   $handler->display->display_options['filters']['uid']['expose']['description'] = ' ';
   $handler->display->display_options['filters']['uid']['expose']['operator'] = 'uid_op';
-  $handler->display->display_options['filters']['uid']['expose']['identifier'] = 'uid';
+  $handler->display->display_options['filters']['uid']['expose']['identifier'] = 'uid_slide';
   $handler->display->display_options['filters']['uid']['expose']['remember_roles'] = array(
     2 => '2',
     1 => 0,
@@ -1021,7 +1032,7 @@ function ik_dashboard_views_default_views() {
   $handler->display->display_options['filters']['title_2']['expose']['operator_id'] = 'title_2_op';
   $handler->display->display_options['filters']['title_2']['expose']['label'] = 'Organisation';
   $handler->display->display_options['filters']['title_2']['expose']['operator'] = 'title_2_op';
-  $handler->display->display_options['filters']['title_2']['expose']['identifier'] = 'title_2';
+  $handler->display->display_options['filters']['title_2']['expose']['identifier'] = 'title_slide_org';
   $handler->display->display_options['filters']['title_2']['expose']['remember_roles'] = array(
     2 => '2',
     1 => 0,
@@ -1029,6 +1040,12 @@ function ik_dashboard_views_default_views() {
     4 => 0,
     5 => 0,
   );
+  $handler->display->display_options['filters']['title_2']['expose']['autocomplete_filter'] = 1;
+  $handler->display->display_options['filters']['title_2']['expose']['autocomplete_items'] = '10';
+  $handler->display->display_options['filters']['title_2']['expose']['autocomplete_field'] = 'title_2';
+  $handler->display->display_options['filters']['title_2']['expose']['autocomplete_raw_suggestion'] = 1;
+  $handler->display->display_options['filters']['title_2']['expose']['autocomplete_raw_dropdown'] = 1;
+  $handler->display->display_options['filters']['title_2']['expose']['autocomplete_dependent'] = 1;
   /* Filterkriterie: Indhold: Titel */
   $handler->display->display_options['filters']['title_1']['id'] = 'title_1';
   $handler->display->display_options['filters']['title_1']['table'] = 'node';
@@ -1040,7 +1057,7 @@ function ik_dashboard_views_default_views() {
   $handler->display->display_options['filters']['title_1']['expose']['operator_id'] = 'title_1_op';
   $handler->display->display_options['filters']['title_1']['expose']['label'] = 'Department';
   $handler->display->display_options['filters']['title_1']['expose']['operator'] = 'title_1_op';
-  $handler->display->display_options['filters']['title_1']['expose']['identifier'] = 'title_1';
+  $handler->display->display_options['filters']['title_1']['expose']['identifier'] = 'title_slide_depart';
   $handler->display->display_options['filters']['title_1']['expose']['remember_roles'] = array(
     2 => '2',
     1 => 0,
@@ -1048,6 +1065,12 @@ function ik_dashboard_views_default_views() {
     4 => 0,
     5 => 0,
   );
+  $handler->display->display_options['filters']['title_1']['expose']['autocomplete_filter'] = 1;
+  $handler->display->display_options['filters']['title_1']['expose']['autocomplete_items'] = '10';
+  $handler->display->display_options['filters']['title_1']['expose']['autocomplete_field'] = 'title_1';
+  $handler->display->display_options['filters']['title_1']['expose']['autocomplete_raw_suggestion'] = 1;
+  $handler->display->display_options['filters']['title_1']['expose']['autocomplete_raw_dropdown'] = 1;
+  $handler->display->display_options['filters']['title_1']['expose']['autocomplete_dependent'] = 1;
   $handler->display->display_options['filters']['title_1']['group_info']['label'] = 'Titel';
   $handler->display->display_options['filters']['title_1']['group_info']['identifier'] = 'title_1';
   $handler->display->display_options['filters']['title_1']['group_info']['remember'] = FALSE;
@@ -1074,6 +1097,7 @@ function ik_dashboard_views_default_views() {
   $handler->display->display_options['allow']['exposed_form'] = 0;
   $handler->display->display_options['allow']['fields_override'] = 0;
   $handler->display->display_options['link_to_view'] = '0';
+  $handler->display->display_options['inherit_panels_path'] = '1';
 
   /* Display: Slide list page */
   $handler = $view->new_display('page', 'Slide list page', 'page_2');
@@ -1669,7 +1693,7 @@ function ik_dashboard_views_default_views() {
   $handler->display->display_options['filters']['status']['expose']['operator_id'] = '';
   $handler->display->display_options['filters']['status']['expose']['label'] = 'Udgivet';
   $handler->display->display_options['filters']['status']['expose']['operator'] = 'status_op';
-  $handler->display->display_options['filters']['status']['expose']['identifier'] = 'status';
+  $handler->display->display_options['filters']['status']['expose']['identifier'] = 'status_channel';
   $handler->display->display_options['filters']['status']['expose']['remember_roles'] = array(
     2 => '2',
     1 => 0,
@@ -1687,7 +1711,7 @@ function ik_dashboard_views_default_views() {
   $handler->display->display_options['filters']['title']['expose']['operator_id'] = 'title_op';
   $handler->display->display_options['filters']['title']['expose']['label'] = 'Titel';
   $handler->display->display_options['filters']['title']['expose']['operator'] = 'title_op';
-  $handler->display->display_options['filters']['title']['expose']['identifier'] = 'title';
+  $handler->display->display_options['filters']['title']['expose']['identifier'] = 'title_channel';
   $handler->display->display_options['filters']['title']['expose']['remember_roles'] = array(
     2 => '2',
     1 => 0,
@@ -1695,6 +1719,11 @@ function ik_dashboard_views_default_views() {
     4 => 0,
     5 => 0,
   );
+  $handler->display->display_options['filters']['title']['expose']['autocomplete_items'] = '10';
+  $handler->display->display_options['filters']['title']['expose']['autocomplete_field'] = 'title';
+  $handler->display->display_options['filters']['title']['expose']['autocomplete_raw_suggestion'] = 1;
+  $handler->display->display_options['filters']['title']['expose']['autocomplete_raw_dropdown'] = 1;
+  $handler->display->display_options['filters']['title']['expose']['autocomplete_dependent'] = 1;
   /* Filterkriterie: Bruger: Navn */
   $handler->display->display_options['filters']['uid']['id'] = 'uid';
   $handler->display->display_options['filters']['uid']['table'] = 'users';
@@ -1725,7 +1754,7 @@ function ik_dashboard_views_default_views() {
   $handler->display->display_options['filters']['title_2']['expose']['operator_id'] = 'title_2_op';
   $handler->display->display_options['filters']['title_2']['expose']['label'] = 'Organisation';
   $handler->display->display_options['filters']['title_2']['expose']['operator'] = 'title_2_op';
-  $handler->display->display_options['filters']['title_2']['expose']['identifier'] = 'title_2';
+  $handler->display->display_options['filters']['title_2']['expose']['identifier'] = 'title_channel_org';
   $handler->display->display_options['filters']['title_2']['expose']['remember_roles'] = array(
     2 => '2',
     1 => 0,
@@ -1733,6 +1762,12 @@ function ik_dashboard_views_default_views() {
     4 => 0,
     5 => 0,
   );
+  $handler->display->display_options['filters']['title_2']['expose']['autocomplete_filter'] = 1;
+  $handler->display->display_options['filters']['title_2']['expose']['autocomplete_items'] = '10';
+  $handler->display->display_options['filters']['title_2']['expose']['autocomplete_field'] = 'title_2';
+  $handler->display->display_options['filters']['title_2']['expose']['autocomplete_raw_suggestion'] = 1;
+  $handler->display->display_options['filters']['title_2']['expose']['autocomplete_raw_dropdown'] = 1;
+  $handler->display->display_options['filters']['title_2']['expose']['autocomplete_dependent'] = 1;
   /* Filterkriterie: Indhold: Titel */
   $handler->display->display_options['filters']['title_1']['id'] = 'title_1';
   $handler->display->display_options['filters']['title_1']['table'] = 'node';
@@ -1744,7 +1779,7 @@ function ik_dashboard_views_default_views() {
   $handler->display->display_options['filters']['title_1']['expose']['operator_id'] = 'title_1_op';
   $handler->display->display_options['filters']['title_1']['expose']['label'] = 'Department';
   $handler->display->display_options['filters']['title_1']['expose']['operator'] = 'title_1_op';
-  $handler->display->display_options['filters']['title_1']['expose']['identifier'] = 'title_1';
+  $handler->display->display_options['filters']['title_1']['expose']['identifier'] = 'title_channel_depart';
   $handler->display->display_options['filters']['title_1']['expose']['remember_roles'] = array(
     2 => '2',
     1 => 0,
@@ -1752,6 +1787,12 @@ function ik_dashboard_views_default_views() {
     4 => 0,
     5 => 0,
   );
+  $handler->display->display_options['filters']['title_1']['expose']['autocomplete_filter'] = 1;
+  $handler->display->display_options['filters']['title_1']['expose']['autocomplete_items'] = '10';
+  $handler->display->display_options['filters']['title_1']['expose']['autocomplete_field'] = 'title_1';
+  $handler->display->display_options['filters']['title_1']['expose']['autocomplete_raw_suggestion'] = 1;
+  $handler->display->display_options['filters']['title_1']['expose']['autocomplete_raw_dropdown'] = 1;
+  $handler->display->display_options['filters']['title_1']['expose']['autocomplete_dependent'] = 1;
   $handler->display->display_options['filters']['title_1']['group_info']['label'] = 'Titel';
   $handler->display->display_options['filters']['title_1']['group_info']['identifier'] = 'title_1';
   $handler->display->display_options['filters']['title_1']['group_info']['remember'] = FALSE;
@@ -1770,6 +1811,7 @@ function ik_dashboard_views_default_views() {
   $handler->display->display_options['allow']['exposed_form'] = 0;
   $handler->display->display_options['allow']['fields_override'] = 0;
   $handler->display->display_options['link_to_view'] = '0';
+  $handler->display->display_options['inherit_panels_path'] = '1';
 
   /* Display: Channel list page */
   $handler = $view->new_display('page', 'Channel list page', 'page_3');
@@ -2262,7 +2304,7 @@ function ik_dashboard_views_default_views() {
   $handler->display->display_options['filters']['title']['expose']['operator_id'] = 'title_op';
   $handler->display->display_options['filters']['title']['expose']['label'] = 'Titel';
   $handler->display->display_options['filters']['title']['expose']['operator'] = 'title_op';
-  $handler->display->display_options['filters']['title']['expose']['identifier'] = 'title';
+  $handler->display->display_options['filters']['title']['expose']['identifier'] = 'title_org2';
   $handler->display->display_options['filters']['title']['expose']['remember_roles'] = array(
     2 => '2',
     1 => 0,
@@ -2270,6 +2312,11 @@ function ik_dashboard_views_default_views() {
     4 => 0,
     5 => 0,
   );
+  $handler->display->display_options['filters']['title']['expose']['autocomplete_items'] = '10';
+  $handler->display->display_options['filters']['title']['expose']['autocomplete_field'] = 'title';
+  $handler->display->display_options['filters']['title']['expose']['autocomplete_raw_suggestion'] = 1;
+  $handler->display->display_options['filters']['title']['expose']['autocomplete_raw_dropdown'] = 1;
+  $handler->display->display_options['filters']['title']['expose']['autocomplete_dependent'] = 1;
   $handler->display->display_options['allow']['use_pager'] = 0;
   $handler->display->display_options['allow']['items_per_page'] = 0;
   $handler->display->display_options['allow']['offset'] = 0;
@@ -2280,6 +2327,7 @@ function ik_dashboard_views_default_views() {
   $handler->display->display_options['allow']['exposed_form'] = 0;
   $handler->display->display_options['allow']['fields_override'] = 0;
   $handler->display->display_options['link_to_view'] = '0';
+  $handler->display->display_options['inherit_panels_path'] = '1';
 
   /* Display: Organisation list page */
   $handler = $view->new_display('page', 'Organisation list page', 'page_4');
@@ -2578,7 +2626,7 @@ function ik_dashboard_views_default_views() {
   $handler->display->display_options['filters']['title']['expose']['operator_id'] = 'title_op';
   $handler->display->display_options['filters']['title']['expose']['label'] = 'Titel';
   $handler->display->display_options['filters']['title']['expose']['operator'] = 'title_op';
-  $handler->display->display_options['filters']['title']['expose']['identifier'] = 'title';
+  $handler->display->display_options['filters']['title']['expose']['identifier'] = 'title_depart';
   $handler->display->display_options['filters']['title']['expose']['remember_roles'] = array(
     2 => '2',
     1 => 0,
@@ -2586,6 +2634,11 @@ function ik_dashboard_views_default_views() {
     4 => 0,
     5 => 0,
   );
+  $handler->display->display_options['filters']['title']['expose']['autocomplete_items'] = '10';
+  $handler->display->display_options['filters']['title']['expose']['autocomplete_field'] = 'title';
+  $handler->display->display_options['filters']['title']['expose']['autocomplete_raw_suggestion'] = 1;
+  $handler->display->display_options['filters']['title']['expose']['autocomplete_raw_dropdown'] = 1;
+  $handler->display->display_options['filters']['title']['expose']['autocomplete_dependent'] = 1;
   /* Filterkriterie: Indhold: Titel */
   $handler->display->display_options['filters']['title_1']['id'] = 'title_1';
   $handler->display->display_options['filters']['title_1']['table'] = 'node';
@@ -2596,7 +2649,7 @@ function ik_dashboard_views_default_views() {
   $handler->display->display_options['filters']['title_1']['expose']['operator_id'] = 'title_1_op';
   $handler->display->display_options['filters']['title_1']['expose']['label'] = 'Organisation';
   $handler->display->display_options['filters']['title_1']['expose']['operator'] = 'title_1_op';
-  $handler->display->display_options['filters']['title_1']['expose']['identifier'] = 'title_1';
+  $handler->display->display_options['filters']['title_1']['expose']['identifier'] = 'title_depart_org';
   $handler->display->display_options['filters']['title_1']['expose']['remember_roles'] = array(
     2 => '2',
     1 => 0,
@@ -2604,6 +2657,12 @@ function ik_dashboard_views_default_views() {
     4 => 0,
     5 => 0,
   );
+  $handler->display->display_options['filters']['title_1']['expose']['autocomplete_filter'] = 1;
+  $handler->display->display_options['filters']['title_1']['expose']['autocomplete_items'] = '10';
+  $handler->display->display_options['filters']['title_1']['expose']['autocomplete_field'] = 'title_1';
+  $handler->display->display_options['filters']['title_1']['expose']['autocomplete_raw_suggestion'] = 1;
+  $handler->display->display_options['filters']['title_1']['expose']['autocomplete_raw_dropdown'] = 1;
+  $handler->display->display_options['filters']['title_1']['expose']['autocomplete_dependent'] = 1;
   $handler->display->display_options['allow']['use_pager'] = 0;
   $handler->display->display_options['allow']['items_per_page'] = 0;
   $handler->display->display_options['allow']['offset'] = 0;
@@ -2614,6 +2673,7 @@ function ik_dashboard_views_default_views() {
   $handler->display->display_options['allow']['exposed_form'] = 0;
   $handler->display->display_options['allow']['fields_override'] = 0;
   $handler->display->display_options['link_to_view'] = '0';
+  $handler->display->display_options['inherit_panels_path'] = '1';
 
   /* Display: Department list page */
   $handler = $view->new_display('page', 'Department list page', 'page_5');
@@ -3042,7 +3102,7 @@ function ik_dashboard_views_default_views() {
   $handler->display->display_options['filters']['status']['expose']['operator_id'] = '';
   $handler->display->display_options['filters']['status']['expose']['label'] = 'Udgivet';
   $handler->display->display_options['filters']['status']['expose']['operator'] = 'status_op';
-  $handler->display->display_options['filters']['status']['expose']['identifier'] = 'status';
+  $handler->display->display_options['filters']['status']['expose']['identifier'] = 'status_imp';
   $handler->display->display_options['filters']['status']['expose']['remember_roles'] = array(
     2 => '2',
     1 => 0,
@@ -3060,7 +3120,7 @@ function ik_dashboard_views_default_views() {
   $handler->display->display_options['filters']['title']['expose']['operator_id'] = 'title_op';
   $handler->display->display_options['filters']['title']['expose']['label'] = 'Titel';
   $handler->display->display_options['filters']['title']['expose']['operator'] = 'title_op';
-  $handler->display->display_options['filters']['title']['expose']['identifier'] = 'title';
+  $handler->display->display_options['filters']['title']['expose']['identifier'] = 'title_imp';
   $handler->display->display_options['filters']['title']['expose']['remember_roles'] = array(
     2 => '2',
     1 => 0,
@@ -3068,6 +3128,11 @@ function ik_dashboard_views_default_views() {
     4 => 0,
     5 => 0,
   );
+  $handler->display->display_options['filters']['title']['expose']['autocomplete_items'] = '10';
+  $handler->display->display_options['filters']['title']['expose']['autocomplete_field'] = 'title';
+  $handler->display->display_options['filters']['title']['expose']['autocomplete_raw_suggestion'] = 1;
+  $handler->display->display_options['filters']['title']['expose']['autocomplete_raw_dropdown'] = 1;
+  $handler->display->display_options['filters']['title']['expose']['autocomplete_dependent'] = 1;
   /* Filterkriterie: Bruger: Navn */
   $handler->display->display_options['filters']['uid']['id'] = 'uid';
   $handler->display->display_options['filters']['uid']['table'] = 'users';
@@ -3080,7 +3145,7 @@ function ik_dashboard_views_default_views() {
   $handler->display->display_options['filters']['uid']['expose']['label'] = 'Forfatter';
   $handler->display->display_options['filters']['uid']['expose']['description'] = ' ';
   $handler->display->display_options['filters']['uid']['expose']['operator'] = 'uid_op';
-  $handler->display->display_options['filters']['uid']['expose']['identifier'] = 'uid';
+  $handler->display->display_options['filters']['uid']['expose']['identifier'] = 'uid_imp';
   $handler->display->display_options['filters']['uid']['expose']['remember_roles'] = array(
     2 => '2',
     1 => 0,
@@ -3099,7 +3164,7 @@ function ik_dashboard_views_default_views() {
   $handler->display->display_options['filters']['title_2']['expose']['operator_id'] = 'title_2_op';
   $handler->display->display_options['filters']['title_2']['expose']['label'] = 'Organisation';
   $handler->display->display_options['filters']['title_2']['expose']['operator'] = 'title_2_op';
-  $handler->display->display_options['filters']['title_2']['expose']['identifier'] = 'title_2';
+  $handler->display->display_options['filters']['title_2']['expose']['identifier'] = 'title_imp_org';
   $handler->display->display_options['filters']['title_2']['expose']['remember_roles'] = array(
     2 => '2',
     1 => 0,
@@ -3107,6 +3172,12 @@ function ik_dashboard_views_default_views() {
     4 => 0,
     5 => 0,
   );
+  $handler->display->display_options['filters']['title_2']['expose']['autocomplete_filter'] = 1;
+  $handler->display->display_options['filters']['title_2']['expose']['autocomplete_items'] = '10';
+  $handler->display->display_options['filters']['title_2']['expose']['autocomplete_field'] = 'title_2';
+  $handler->display->display_options['filters']['title_2']['expose']['autocomplete_raw_suggestion'] = 1;
+  $handler->display->display_options['filters']['title_2']['expose']['autocomplete_raw_dropdown'] = 1;
+  $handler->display->display_options['filters']['title_2']['expose']['autocomplete_dependent'] = 1;
   /* Filterkriterie: Indhold: Titel */
   $handler->display->display_options['filters']['title_1']['id'] = 'title_1';
   $handler->display->display_options['filters']['title_1']['table'] = 'node';
@@ -3118,7 +3189,7 @@ function ik_dashboard_views_default_views() {
   $handler->display->display_options['filters']['title_1']['expose']['operator_id'] = 'title_1_op';
   $handler->display->display_options['filters']['title_1']['expose']['label'] = 'Department';
   $handler->display->display_options['filters']['title_1']['expose']['operator'] = 'title_1_op';
-  $handler->display->display_options['filters']['title_1']['expose']['identifier'] = 'title_1';
+  $handler->display->display_options['filters']['title_1']['expose']['identifier'] = 'title_imp_depart';
   $handler->display->display_options['filters']['title_1']['expose']['remember_roles'] = array(
     2 => '2',
     1 => 0,
@@ -3126,6 +3197,12 @@ function ik_dashboard_views_default_views() {
     4 => 0,
     5 => 0,
   );
+  $handler->display->display_options['filters']['title_1']['expose']['autocomplete_filter'] = 1;
+  $handler->display->display_options['filters']['title_1']['expose']['autocomplete_items'] = '10';
+  $handler->display->display_options['filters']['title_1']['expose']['autocomplete_field'] = 'title_1';
+  $handler->display->display_options['filters']['title_1']['expose']['autocomplete_raw_suggestion'] = 1;
+  $handler->display->display_options['filters']['title_1']['expose']['autocomplete_raw_dropdown'] = 1;
+  $handler->display->display_options['filters']['title_1']['expose']['autocomplete_dependent'] = 1;
   $handler->display->display_options['filters']['title_1']['group_info']['label'] = 'Titel';
   $handler->display->display_options['filters']['title_1']['group_info']['identifier'] = 'title_1';
   $handler->display->display_options['filters']['title_1']['group_info']['remember'] = FALSE;
@@ -3151,6 +3228,7 @@ function ik_dashboard_views_default_views() {
   $handler->display->display_options['allow']['exposed_form'] = 0;
   $handler->display->display_options['allow']['fields_override'] = 0;
   $handler->display->display_options['link_to_view'] = '0';
+  $handler->display->display_options['inherit_panels_path'] = '1';
 
   /* Display: Imported slide list page */
   $handler = $view->new_display('page', 'Imported slide list page', 'page_6');
