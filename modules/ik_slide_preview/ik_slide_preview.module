@@ -2,8 +2,8 @@
 
 /**
  * Implements hook_form_alter().
- * 
- * 
+ *
+ *
  */
 function ik_slide_preview_form_slide_node_form_alter(&$form, &$form_state, $form_id) {
   if (isset($form['actions']['preview']['#submit'])) {
@@ -20,11 +20,10 @@ function ik_slide_preview_build_preview($form, &$form_state) {
   if ($build_node) {
     // Build node from the form.
     $node = node_form_submit_build_node($form, $form_state);
-    
+
     // Build json array.
     $slide = ik_slide_preview_build_slide($node);
-    $slide->text = preg_replace('/\s{2}+|\n|\r/', '', str_replace('"', '\"', $slide->text));
-        
+
     // Theme content
     $content = theme('ik_frontend', array(
       'settings' => array(
@@ -33,26 +32,35 @@ function ik_slide_preview_build_preview($form, &$form_state) {
       ),
       'start' => FALSE,
     ));
-    
+
     // Convert content into a JavaScript string.
     $content = str_replace("'", "\'", $content);
     $content = str_replace('</script>', '<\/script>', $content);
     $content = preg_replace('/\s{2}+|\n|\r/', '', $content);
 
     // Add inline js into the node preview area.
-    $form_state['node_preview'] = 
+    $form_state['node_preview'] =
      "<script type=\"text/javascript\">
         (function($){
           $(document).ready(function() {
-            
-            // Build jQuery UI dialog.
 
             // Build iframe.
             var frame = document.createElement('iframe');
+            frame.width = '480px';
+            frame.height = '270px';
             frame.src = 'about:blank';
-            document.body.appendChild(frame);
 
-            // Get IKFrontend.settings.content
+            // Build jQuery UI dialog.
+            $('<div id=\"slide-preview\"></div>').dialog({
+              modal: true,
+              width: 507,
+              height: '322'
+            });
+
+            // Append iframe to the dialog.
+            $('#slide-preview').append(frame);
+
+            // Add content to the iframe.
             var content = '".$content."';
             frame.contentWindow.contents = content;
             frame.src = 'javascript:window[\"contents\"]';
@@ -63,7 +71,7 @@ function ik_slide_preview_build_preview($form, &$form_state) {
     // Fix schedulering module and panels multi form rebuild and alter.
     $publish_on = $form_state['values']['publish_on'];
     $unpublish_on = $form_state['values']['unpublish_on'];
-    
+
     $build_node = FALSE;
   }
 
@@ -73,16 +81,19 @@ function ik_slide_preview_build_preview($form, &$form_state) {
 
   // Rebuild form
   $form_state['rebuild'] = TRUE;
+
+  // Load jquery UI dialog.
+  drupal_add_library('system', 'ui.dialog');
 }
 
 /**
  * diff files. text -> check_markup
- * 
+ *
  * @param type $entity
- * @return type 
+ * @return type
  */
 function ik_slide_preview_build_slide($entity) {
-  
+
   // Build slide with information found on the node.
   $slide = new stdClass();
   $slide->sid = $entity->nid;
@@ -114,13 +125,19 @@ function ik_slide_preview_build_slide($entity) {
 
   $slide->subheading = '';
   if ($data = field_get_items('node', $entity, 'field_ik_slide_subheading')) {
-    $slide->subheading = $data[0]['safe_value'];
+    $slide->subheading = check_markup($data[0]['value'], $data[0]['format']);
+
+    // Make it JavaScript string friendly.
+    $slide->subheading = preg_replace('/\s{2}+|\n|\r/', '', str_replace('"', '\"', $slide->subheading));
   }
 
   $slide->text = '';
   if ($data = field_get_items('node', $entity, 'field_ik_slide_text')) {
     $formats = filter_formats();
-    $slide->text = check_markup($data[0]['value'], $data[0]['format']); 
+    $slide->text = check_markup($data[0]['value'], $data[0]['format']);
+
+    // Make it JavaScript string friendly.
+    $slide->text = preg_replace('/\s{2}+|\n|\r/', '', str_replace('"', '\"', $slide->text));
   }
 
   $slide->text_color = 'FFF';
@@ -138,6 +155,6 @@ function ik_slide_preview_build_slide($entity) {
   if ($data = field_get_items('node', $entity, 'field_layout')) {
     $slide->layout = str_replace('_', '-', $data[0]['value']);
   }
-  
+
   return $slide;
 }

@@ -379,6 +379,8 @@ var IK = (function() {
     // Set slide content.
     slide.processSlide(content);
     
+    settings.animateChange = true;
+
     // Render current slide and display it.
     slide.render();
     

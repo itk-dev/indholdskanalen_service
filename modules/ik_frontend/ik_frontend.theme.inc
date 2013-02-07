@@ -19,7 +19,7 @@ function template_preprocess_ik_frontend(&$vars) {
   foreach ($csses as $css) {
     $vars['css'] .= ' <link href="/' . $path . $css . '" type="text/css" media="all" rel="stylesheet" />';
   }
-  
+
   // Build settings extension.
   $element = array(
     '#tag' => 'script',
@@ -30,7 +30,7 @@ function template_preprocess_ik_frontend(&$vars) {
   $js_element = $element;
   $js_element['#value'] = 'jQuery.extend(IKFrontend.settings, ' . drupal_json_encode($vars['settings']) . ");";
   $vars['js_settings'] = theme('html_tag', array('element' => $js_element));
-  
+
   // Add script files.
   $vars['scripts'] = '';
   $scripts = array(
@@ -46,10 +46,10 @@ function template_preprocess_ik_frontend(&$vars) {
     $vars['scripts'] .= '<script type="text/javascript" src="/' . $path . $script . '"></script>';
   }
 
-  // Should the slide show load and start. We may not want this for slide 
+  // Should the slide show load and start. We may not want this for slide
   // preview etc.
   if ($vars['start']) {
-    $vars['run_script'] .= 
+    $vars['run_script'] =
       '(function($){
           $(document).ready(function() {
             IK.start("' . $vars['settings']['token'] . '");
@@ -57,10 +57,10 @@ function template_preprocess_ik_frontend(&$vars) {
        })(jQuery);';
   }
   else {
-    $vars['run_script'] .= 
+    // Slide preview.
+    $vars['run_script'] =
       '(function($){
           $(window).load(function() {
-            console.log(IKFrontend.settings.content);
             IK.showSlide(IKFrontend.settings.content);
           });
        })(jQuery);';
