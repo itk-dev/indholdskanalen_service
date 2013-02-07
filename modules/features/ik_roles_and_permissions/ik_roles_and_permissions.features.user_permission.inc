@@ -10,6 +10,24 @@
 function ik_roles_and_permissions_user_default_permissions() {
   $permissions = array();
 
+  // Exported permission: access comments.
+  $permissions['access comments'] = array(
+    'name' => 'access comments',
+    'roles' => array(
+      0 => 'administrator',
+    ),
+    'module' => 'comment',
+  );
+
+  // Exported permission: access media backend.
+  $permissions['access media backend'] = array(
+    'name' => 'access media backend',
+    'roles' => array(
+      0 => 'administrator',
+    ),
+    'module' => 'media_browser_plus',
+  );
+
   // Exported permission: access user profiles.
   $permissions['access user profiles'] = array(
     'name' => 'access user profiles',
@@ -25,10 +43,27 @@ function ik_roles_and_permissions_user_default_permissions() {
     'name' => 'add media from remote sources',
     'roles' => array(
       0 => 'administrator',
-      1 => 'contributor',
-      2 => 'editor',
+      1 => 'editor',
     ),
     'module' => 'media_internet',
+  );
+
+  // Exported permission: administer comments.
+  $permissions['administer comments'] = array(
+    'name' => 'administer comments',
+    'roles' => array(
+      0 => 'administrator',
+    ),
+    'module' => 'comment',
+  );
+
+  // Exported permission: administer feeds.
+  $permissions['administer feeds'] = array(
+    'name' => 'administer feeds',
+    'roles' => array(
+      0 => 'administrator',
+    ),
+    'module' => 'feeds',
   );
 
   // Exported permission: administer files.
@@ -40,6 +75,15 @@ function ik_roles_and_permissions_user_default_permissions() {
       2 => 'editor',
     ),
     'module' => 'file_entity',
+  );
+
+  // Exported permission: administer media folders.
+  $permissions['administer media folders'] = array(
+    'name' => 'administer media folders',
+    'roles' => array(
+      0 => 'administrator',
+    ),
+    'module' => 'media_browser_plus',
   );
 
   // Exported permission: administer taxonomy.
@@ -58,6 +102,15 @@ function ik_roles_and_permissions_user_default_permissions() {
       0 => 'administrator',
     ),
     'module' => 'user',
+  );
+
+  // Exported permission: clear mrss_feed_importer feeds.
+  $permissions['clear mrss_feed_importer feeds'] = array(
+    'name' => 'clear mrss_feed_importer feeds',
+    'roles' => array(
+      0 => 'administrator',
+    ),
+    'module' => 'feeds',
   );
 
   // Exported permission: clone node.
@@ -101,6 +154,16 @@ function ik_roles_and_permissions_user_default_permissions() {
     'module' => 'node',
   );
 
+  // Exported permission: create media_rss_slide_import content.
+  $permissions['create media_rss_slide_import content'] = array(
+    'name' => 'create media_rss_slide_import content',
+    'roles' => array(
+      0 => 'administrator',
+      1 => 'editor',
+    ),
+    'module' => 'node',
+  );
+
   // Exported permission: create organisation content.
   $permissions['create organisation content'] = array(
     'name' => 'create organisation content',
@@ -124,7 +187,9 @@ function ik_roles_and_permissions_user_default_permissions() {
   // Exported permission: create static_page content.
   $permissions['create static_page content'] = array(
     'name' => 'create static_page content',
-    'roles' => array(),
+    'roles' => array(
+      0 => 'administrator',
+    ),
     'module' => 'node',
   );
 
@@ -140,6 +205,15 @@ function ik_roles_and_permissions_user_default_permissions() {
   // Exported permission: delete any department content.
   $permissions['delete any department content'] = array(
     'name' => 'delete any department content',
+    'roles' => array(
+      0 => 'administrator',
+    ),
+    'module' => 'node',
+  );
+
+  // Exported permission: delete any media_rss_slide_import content.
+  $permissions['delete any media_rss_slide_import content'] = array(
+    'name' => 'delete any media_rss_slide_import content',
     'roles' => array(
       0 => 'administrator',
     ),
@@ -167,7 +241,9 @@ function ik_roles_and_permissions_user_default_permissions() {
   // Exported permission: delete any static_page content.
   $permissions['delete any static_page content'] = array(
     'name' => 'delete any static_page content',
-    'roles' => array(),
+    'roles' => array(
+      0 => 'administrator',
+    ),
     'module' => 'node',
   );
 
@@ -186,6 +262,16 @@ function ik_roles_and_permissions_user_default_permissions() {
     'name' => 'delete own department content',
     'roles' => array(
       0 => 'administrator',
+    ),
+    'module' => 'node',
+  );
+
+  // Exported permission: delete own media_rss_slide_import content.
+  $permissions['delete own media_rss_slide_import content'] = array(
+    'name' => 'delete own media_rss_slide_import content',
+    'roles' => array(
+      0 => 'administrator',
+      1 => 'editor',
     ),
     'module' => 'node',
   );
@@ -213,7 +299,9 @@ function ik_roles_and_permissions_user_default_permissions() {
   // Exported permission: delete own static_page content.
   $permissions['delete own static_page content'] = array(
     'name' => 'delete own static_page content',
-    'roles' => array(),
+    'roles' => array(
+      0 => 'administrator',
+    ),
     'module' => 'node',
   );
 
@@ -235,6 +323,24 @@ function ik_roles_and_permissions_user_default_permissions() {
     'module' => 'taxonomy',
   );
 
+  // Exported permission: delete terms in 3.
+  $permissions['delete terms in 3'] = array(
+    'name' => 'delete terms in 3',
+    'roles' => array(
+      0 => 'administrator',
+    ),
+    'module' => 'taxonomy',
+  );
+
+  // Exported permission: download files.
+  $permissions['download files'] = array(
+    'name' => 'download files',
+    'roles' => array(
+      0 => 'administrator',
+    ),
+    'module' => 'media_browser_plus',
+  );
+
   // Exported permission: edit any channel content.
   $permissions['edit any channel content'] = array(
     'name' => 'edit any channel content',
@@ -247,6 +353,15 @@ function ik_roles_and_permissions_user_default_permissions() {
   // Exported permission: edit any department content.
   $permissions['edit any department content'] = array(
     'name' => 'edit any department content',
+    'roles' => array(
+      0 => 'administrator',
+    ),
+    'module' => 'node',
+  );
+
+  // Exported permission: edit any media_rss_slide_import content.
+  $permissions['edit any media_rss_slide_import content'] = array(
+    'name' => 'edit any media_rss_slide_import content',
     'roles' => array(
       0 => 'administrator',
     ),
@@ -274,7 +389,9 @@ function ik_roles_and_permissions_user_default_permissions() {
   // Exported permission: edit any static_page content.
   $permissions['edit any static_page content'] = array(
     'name' => 'edit any static_page content',
-    'roles' => array(),
+    'roles' => array(
+      0 => 'administrator',
+    ),
     'module' => 'node',
   );
 
@@ -297,11 +414,30 @@ function ik_roles_and_permissions_user_default_permissions() {
     'module' => 'node',
   );
 
+  // Exported permission: edit own comments.
+  $permissions['edit own comments'] = array(
+    'name' => 'edit own comments',
+    'roles' => array(
+      0 => 'administrator',
+    ),
+    'module' => 'comment',
+  );
+
   // Exported permission: edit own department content.
   $permissions['edit own department content'] = array(
     'name' => 'edit own department content',
     'roles' => array(
       0 => 'administrator',
+    ),
+    'module' => 'node',
+  );
+
+  // Exported permission: edit own media_rss_slide_import content.
+  $permissions['edit own media_rss_slide_import content'] = array(
+    'name' => 'edit own media_rss_slide_import content',
+    'roles' => array(
+      0 => 'administrator',
+      1 => 'editor',
     ),
     'module' => 'node',
   );
@@ -329,7 +465,9 @@ function ik_roles_and_permissions_user_default_permissions() {
   // Exported permission: edit own static_page content.
   $permissions['edit own static_page content'] = array(
     'name' => 'edit own static_page content',
-    'roles' => array(),
+    'roles' => array(
+      0 => 'administrator',
+    ),
     'module' => 'node',
   );
 
@@ -351,15 +489,124 @@ function ik_roles_and_permissions_user_default_permissions() {
     'module' => 'taxonomy',
   );
 
-  // Exported permission: import media.
-  $permissions['import media'] = array(
-    'name' => 'import media',
+  // Exported permission: edit terms in 3.
+  $permissions['edit terms in 3'] = array(
+    'name' => 'edit terms in 3',
+    'roles' => array(
+      0 => 'administrator',
+    ),
+    'module' => 'taxonomy',
+  );
+
+  // Exported permission: filter media.
+  $permissions['filter media'] = array(
+    'name' => 'filter media',
     'roles' => array(
       0 => 'administrator',
       1 => 'contributor',
       2 => 'editor',
     ),
+    'module' => 'media_browser_plus',
+  );
+
+  // Exported permission: import media.
+  $permissions['import media'] = array(
+    'name' => 'import media',
+    'roles' => array(
+      0 => 'administrator',
+      1 => 'editor',
+    ),
     'module' => 'media',
+  );
+
+  // Exported permission: import mrss_feed_importer feeds.
+  $permissions['import mrss_feed_importer feeds'] = array(
+    'name' => 'import mrss_feed_importer feeds',
+    'roles' => array(
+      0 => 'administrator',
+      1 => 'editor',
+    ),
+    'module' => 'feeds',
+  );
+
+  // Exported permission: media grid view.
+  $permissions['media grid view'] = array(
+    'name' => 'media grid view',
+    'roles' => array(
+      0 => 'administrator',
+      1 => 'contributor',
+      2 => 'editor',
+    ),
+    'module' => 'media_browser_plus',
+  );
+
+  // Exported permission: media list view.
+  $permissions['media list view'] = array(
+    'name' => 'media list view',
+    'roles' => array(
+      0 => 'administrator',
+      1 => 'contributor',
+      2 => 'editor',
+    ),
+    'module' => 'media_browser_plus',
+  );
+
+  // Exported permission: post comments.
+  $permissions['post comments'] = array(
+    'name' => 'post comments',
+    'roles' => array(
+      0 => 'administrator',
+    ),
+    'module' => 'comment',
+  );
+
+  // Exported permission: preview media.
+  $permissions['preview media'] = array(
+    'name' => 'preview media',
+    'roles' => array(
+      0 => 'administrator',
+    ),
+    'module' => 'media_browser_plus',
+  );
+
+  // Exported permission: skip comment approval.
+  $permissions['skip comment approval'] = array(
+    'name' => 'skip comment approval',
+    'roles' => array(
+      0 => 'administrator',
+    ),
+    'module' => 'comment',
+  );
+
+  // Exported permission: switch users.
+  $permissions['switch users'] = array(
+    'name' => 'switch users',
+    'roles' => array(
+      0 => 'administrator',
+      1 => 'contributor',
+      2 => 'editor',
+    ),
+    'module' => 'devel',
+  );
+
+  // Exported permission: unlock mrss_feed_importer feeds.
+  $permissions['unlock mrss_feed_importer feeds'] = array(
+    'name' => 'unlock mrss_feed_importer feeds',
+    'roles' => array(
+      0 => 'administrator',
+    ),
+    'module' => 'feeds',
+  );
+
+  // Exported permission: upload media.
+  $permissions['upload media'] = array(
+    'name' => 'upload media',
+    'roles' => array(
+      0 => 'administrator',
+      1 => 'contributor',
+      2 => 'editor',
+    ),
+    'module' => 'media_browser_plus',
   );
 
   // Exported permission: use text format editor_html.
