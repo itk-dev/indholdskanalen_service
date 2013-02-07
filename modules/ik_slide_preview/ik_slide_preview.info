@@ -1,0 +1,7 @@
+name = Indholdskanalen slide preview.
+description = Preview a single slide.
+core = 7.x
+package = Indholdskanalen
+
+dependencies[] = panels
+dependencies[] = ik_frontend
