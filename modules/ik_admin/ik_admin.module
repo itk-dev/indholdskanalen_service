@@ -8,8 +8,8 @@
 function ik_admin_form_alter(&$form, &$form_state, $form_id) {
   
   // OG department reference alter.
-  $forms_to_alter = array('channel_node_form' , 'slide_node_form' , 'media_rss_slide_import_node_form' );
-  if ( in_array( $form['form_id']['#value'] , $forms_to_alter ) ) {
+  $forms_to_alter = array('channel_node_form' , 'slide_node_form' , 'media_rss_slide_import_node_form');
+  if (in_array($form['form_id']['#value'] , $forms_to_alter)) {
     $language = $form['field_ik_og_department_ref']['#language'];
     if (isset($form['field_ik_og_department_ref'][$language][0]['default']['#options'])) {
       unset($form['field_ik_og_department_ref'][$language][0]['default']['#options']['_none']);  
@@ -17,9 +17,13 @@ function ik_admin_form_alter(&$form, &$form_state, $form_id) {
   }
 
   // Manipulate the media upload form.
-  if ( $form['form_id']['#value'] == 'file_entity_add_upload' ) {
-    if ( stristr($form['upload']['#upload_location'], 'slide_logo_files') ) {
-      kpr($form);
+  if ($form['form_id']['#value'] == 'file_entity_add_upload') {
+    // Set the media plus browser folders to desired destinations.
+    if (stristr($form['upload']['#upload_location'], 'slide_logo_files')) {
+      $form['field_folder']['#default_value'] = 30;
+      $form['field_folder']['#disabled'] = true; 
+    } else {
+      $form['field_folder']['#disabled'] = true;
     }
   }
 }
