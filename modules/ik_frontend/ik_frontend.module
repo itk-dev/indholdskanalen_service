@@ -289,25 +289,3 @@ function ik_frontend_fetch_slide($token, $sid) {
   // Return the slide as JSON.
   drupal_json_output($slide);
 }
-
-/**
- * Implements hook_form_alter().
- *
- * Remove the -none- option from OG group reference field on slide add form.
- */
-function ik_frontend_form_alter(&$form, &$form_state, $form_id) {
-  
-  // OG department reference alter
-  $forms_to_alter = array('channel_node_form' , 'slide_node_form' , 'media_rss_slide_import_node_form' );
-  if ( in_array( $form['form_id']['#value'] , $forms_to_alter ) ) {
-    $language = $form['field_ik_og_department_ref']['#language'];
-    if (isset($form['field_ik_og_department_ref'][$language][0]['default']['#options'])) {
-      unset($form['field_ik_og_department_ref'][$language][0]['default']['#options']['_none']);  
-    }
-  }
-
-  /*if ( $form['form_id']['#value'] == 'file_entity_add_upload' ) {
-    kpr($form);
-  }*/
-}
-

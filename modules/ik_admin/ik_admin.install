@@ -1,0 +1,26 @@
+<?php
+/**
+ * @file
+ *
+ */
+
+
+/**
+* Implements hook_install().
+*/ 
+function ik_frontend_install() {
+  db_update('system')
+    ->fields(array('weight' => 10))
+    ->condition('name', 'ik_frontend', '=')
+    ->execute();
+}
+
+/**
+* Update module weight.
+*/ 
+function ik_frontend_update_7000() {
+  db_update('system')
+    ->fields(array('weight' => 10))
+    ->condition('name', 'ik_frontend', '=')
+    ->execute();
+}

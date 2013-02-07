@@ -5,16 +5,6 @@
  */
 
 /**
-* Implements hook_install().
-*/ 
-function ik_frontend_install() {
-  db_update('system')
-    ->fields(array('weight' => 10))
-    ->condition('name', 'ik_frontend', '=')
-    ->execute();
-}
-
-/**
  * Implements hook_field_schema().
  */
 function ik_frontend_field_schema($field) {
@@ -60,14 +50,4 @@ function ik_frontend_schema() {
   $schema['cache_ik_frontend'] = drupal_get_schema_unprocessed('system', 'cache');
 
   return $schema;
-}
-
-/**
-* Update module weight.
-*/ 
-function ik_frontend_update_7000() {
-  db_update('system')
-    ->fields(array('weight' => 10))
-    ->condition('name', 'ik_frontend', '=')
-    ->execute();
 }
