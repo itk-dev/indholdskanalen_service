@@ -11,16 +11,6 @@
 function ik_admin_install() {
   db_update('system')
     ->fields(array('weight' => 10))
-    ->condition('name', 'ik_frontend', '=')
-    ->execute();
-}
-
-/**
-* Update module weight.
-*/ 
-function ik_admin_update_7000() {
-  db_update('system')
-    ->fields(array('weight' => 10))
-    ->condition('name', 'ik_frontend', '=')
+    ->condition('name', 'ik_admin', '=')
     ->execute();
 }
