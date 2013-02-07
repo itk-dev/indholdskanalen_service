@@ -209,7 +209,7 @@ function ik_slides_field_default_fields() {
           'module' => 'jquery_colorpicker',
           'settings' => array(),
           'type' => 'jquery_colorpicker_color_display',
-          'weight' => '3',
+          'weight' => 3,
         ),
         'teaser' => array(
           'label' => 'above',
@@ -530,22 +530,22 @@ function ik_slides_field_default_fields() {
         'module' => 'media',
         'settings' => array(
           'allowed_schemes' => array(
-            'private' => 'private',
+            'private' => 0,
             'public' => 'public',
-            'vimeo' => 0,
-            'youtube' => 0,
           ),
           'allowed_types' => array(
+            0 => 0,
             'audio' => 0,
             'default' => 0,
             'image' => 'image',
             'video' => 0,
           ),
           'browser_plugins' => array(
-            'library' => 'library',
-            'media_default--media_browser_1' => 'media_default--media_browser_1',
+            'library' => 0,
+            'library_plus' => 'library_plus',
+            'media_default--media_browser_1' => 0,
             'media_default--media_browser_my_files' => 'media_default--media_browser_my_files',
-            'media_internet' => 'media_internet',
+            'media_internet' => 0,
             'upload' => 'upload',
           ),
           'progress_indicator' => 'throbber',
@@ -609,7 +609,7 @@ function ik_slides_field_default_fields() {
       'label' => 'Media',
       'required' => 0,
       'settings' => array(
-        'file_extensions' => 'jpg jpeg gif png mp3 mov m4v mpeg avi ogg oga ogv wmv',
+        'file_extensions' => 'jpg jpeg gif png',
         'user_register_form' => FALSE,
       ),
       'widget' => array(
@@ -617,22 +617,22 @@ function ik_slides_field_default_fields() {
         'module' => 'media',
         'settings' => array(
           'allowed_schemes' => array(
-            'private' => 'private',
+            'private' => 0,
             'public' => 'public',
-            'vimeo' => 'vimeo',
-            'youtube' => 'youtube',
           ),
           'allowed_types' => array(
             'audio' => 0,
             'default' => 0,
             'image' => 'image',
             'video' => 'video',
+            0 => 0,
           ),
           'browser_plugins' => array(
-            'library' => 'library',
-            'media_default--media_browser_1' => 'media_default--media_browser_1',
+            'library' => 0,
+            'library_plus' => 'library_plus',
+            'media_default--media_browser_1' => 0,
             'media_default--media_browser_my_files' => 'media_default--media_browser_my_files',
-            'media_internet' => 'media_internet',
+            'media_internet' => 0,
             'upload' => 'upload',
           ),
           'progress_indicator' => 'throbber',
@@ -683,7 +683,7 @@ function ik_slides_field_default_fields() {
           'module' => 'text',
           'settings' => array(),
           'type' => 'text_default',
-          'weight' => '2',
+          'weight' => 2,
         ),
         'teaser' => array(
           'label' => 'above',
@@ -828,7 +828,7 @@ function ik_slides_field_default_fields() {
           'module' => 'text',
           'settings' => array(),
           'type' => 'text_default',
-          'weight' => '7',
+          'weight' => 7,
         ),
         'teaser' => array(
           'label' => 'above',
@@ -888,7 +888,7 @@ function ik_slides_field_default_fields() {
           'module' => 'jquery_colorpicker',
           'settings' => array(),
           'type' => 'jquery_colorpicker_color_display',
-          'weight' => '4',
+          'weight' => 4,
         ),
         'teaser' => array(
           'label' => 'above',
@@ -975,7 +975,7 @@ function ik_slides_field_default_fields() {
           'module' => 'list',
           'settings' => array(),
           'type' => 'list_default',
-          'weight' => '13',
+          'weight' => 13,
         ),
         'teaser' => array(
           'label' => 'above',
@@ -1053,7 +1053,7 @@ function ik_slides_field_default_fields() {
           'module' => 'list',
           'settings' => array(),
           'type' => 'list_default',
-          'weight' => '11',
+          'weight' => 11,
         ),
         'teaser' => array(
           'label' => 'above',
