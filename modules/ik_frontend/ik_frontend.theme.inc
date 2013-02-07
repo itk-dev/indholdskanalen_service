@@ -40,5 +40,28 @@ function template_preprocess_ik_frontend(&$vars) {
   foreach ($scripts as $script) {
     $vars['scripts'] .= '<script type="text/javascript" src="/' . $path . $script . '"></script>';
   }
+  
+  // Get context (show channel or slide)
+  if ($vars['context'] == 'channel') {
+    $vars['scripts'] .= 
+      '<script type="text/javascript">
+        (function($){
+          $(document).ready(function() {
+            IK.start("' . $vars['token'] . '");
+          });
+        })(jQuery);
+      </script>';
+  }
+  else {
+    // Assumes that we are trying to preview a single slide.
+    $vars['scripts'] .= 
+      '<script type="text/javascript">
+        (function($){
+          $(document).ready(function() {
+            IK.showSlide("' . $vars['sid'] . '");
+          });
+        })(jQuery);
+      </script>';
+  }
 }
 
