@@ -43,8 +43,7 @@ function ik_roles_and_permissions_user_default_permissions() {
     'name' => 'add media from remote sources',
     'roles' => array(
       0 => 'administrator',
-      1 => 'contributor',
-      2 => 'editor',
+      1 => 'editor',
     ),
     'module' => 'media_internet',
   );
@@ -160,7 +159,7 @@ function ik_roles_and_permissions_user_default_permissions() {
     'name' => 'create media_rss_slide_import content',
     'roles' => array(
       0 => 'administrator',
-      1 => 'contributor',
+      1 => 'editor',
     ),
     'module' => 'node',
   );
@@ -272,7 +271,7 @@ function ik_roles_and_permissions_user_default_permissions() {
     'name' => 'delete own media_rss_slide_import content',
     'roles' => array(
       0 => 'administrator',
-      1 => 'contributor',
+      1 => 'editor',
     ),
     'module' => 'node',
   );
@@ -438,7 +437,7 @@ function ik_roles_and_permissions_user_default_permissions() {
     'name' => 'edit own media_rss_slide_import content',
     'roles' => array(
       0 => 'administrator',
-      1 => 'contributor',
+      1 => 'editor',
     ),
     'module' => 'node',
   );
@@ -515,8 +514,7 @@ function ik_roles_and_permissions_user_default_permissions() {
     'name' => 'import media',
     'roles' => array(
       0 => 'administrator',
-      1 => 'contributor',
-      2 => 'editor',
+      1 => 'editor',
     ),
     'module' => 'media',
   );
@@ -526,7 +524,7 @@ function ik_roles_and_permissions_user_default_permissions() {
     'name' => 'import mrss_feed_importer feeds',
     'roles' => array(
       0 => 'administrator',
-      1 => 'contributor',
+      1 => 'editor',
     ),
     'module' => 'feeds',
   );
