@@ -1,0 +1,170 @@
+<?php
+
+/**
+ * Implements hook_form_alter().
+ *
+ *
+ */
+function ik_slide_preview_form_slide_node_form_alter(&$form, &$form_state, $form_id) {
+  if (isset($form['actions']['preview']['#submit'])) {
+    $form['actions']['preview']['#submit'] = array(
+      'ik_slide_preview_build_preview',
+    );
+  }
+}
+
+/**
+ * Edit slide node preview callback.
+ * 
+ * @staticvar boolean $build_node
+ * @staticvar null $publish_on
+ * @staticvar null $unpublish_on
+ * @param type $form
+ * @param type $form_state 
+ */
+function ik_slide_preview_build_preview($form, &$form_state) {
+  static $build_node = TRUE;
+  static $publish_on = NULL;
+  static $unpublish_on = NULL;
+  if ($build_node) {
+    // Build node from the form.
+    $node = node_form_submit_build_node($form, $form_state);
+
+    // Build json array.
+    $slide = ik_slide_preview_build_slide($node);
+
+    // Theme content
+    $content = theme('ik_frontend', array(
+      'settings' => array(
+        'content' => $slide,
+        'token' => 'preview',
+      ),
+      'start' => FALSE,
+    ));
+
+    // Convert content into a JavaScript string.
+    $content = str_replace("'", "\'", $content);
+    $content = str_replace('</script>', '<\/script>', $content);
+    $content = preg_replace('/\s{2}+|\n|\r/', '', $content);
+
+    // Add inline js into the node preview area.
+    $form_state['node_preview'] =
+     "<script type=\"text/javascript\">
+        (function($){
+          $(document).ready(function() {
+
+            // Build iframe.
+            var frame = document.createElement('iframe');
+            frame.width = '480px';
+            frame.height = '270px';
+            frame.src = 'about:blank';
+
+            // Build jQuery UI dialog.
+            $('<div id=\"slide-preview\"></div>').dialog({
+              modal: true,
+              width: 507,
+              height: '322'
+            });
+
+            // Append iframe to the dialog.
+            $('#slide-preview').append(frame);
+
+            // Add content to the iframe.
+            var content = '".$content."';
+            frame.contentWindow.contents = content;
+            frame.src = 'javascript:window[\"contents\"]';
+          });
+        })(jQuery);
+      </script>";
+
+    // Fix schedulering module and panels multi form rebuild and alter.
+    $publish_on = $form_state['values']['publish_on'];
+    $unpublish_on = $form_state['values']['unpublish_on'];
+
+    $build_node = FALSE;
+  }
+
+  // Restore scheduling values from first rebuild.
+  $form_state['values']['publish_on'] = $publish_on;
+  $form_state['values']['unpublish_on'] = $unpublish_on;
+
+  // Rebuild form
+  $form_state['rebuild'] = TRUE;
+
+  // Load jquery UI dialog.
+  drupal_add_library('system', 'ui.dialog');
+}
+
+/**
+ * Build slide based on node from edit node form preview. The main diff from the
+ * one in ik_frontend is images, subheadings and text fields.
+ *
+ * @param type $entity
+ * @return type
+ */
+function ik_slide_preview_build_slide($entity) {
+
+  // Build slide with information found on the node.
+  $slide = new stdClass();
+  $slide->sid = $entity->nid;
+  $slide->title = check_plain($entity->title);
+
+  $slide->color = 'F90';
+  if ($data = field_get_items('node', $entity, 'field_ik_slide_color')) {
+    $slide->color = $data[0]['jquery_colorpicker'];
+  }
+
+  $slide->logo = '';
+  if ($data = field_get_items('node', $entity, 'field_ik_slide_logo')) {
+    $file = file_load($data[0]['fid']);
+    $slide->logo = image_style_url('slide_logoes', $file->uri);
+  }
+
+  $slide->transition = 'cubeSize';
+  if ($data = field_get_items('node', $entity, 'field_ik_slide_transition_effect')) {
+    $slide->transition = $data[0]['value'];
+  }
+
+  $slide->media = array();
+  if ($data = field_get_items('node', $entity, 'field_ik_slide_media')) {
+    foreach ($data as $media) {
+      $file = file_load($media['fid']);
+      $slide->media[] = image_style_url('slide_images', $file->uri);
+    }
+  }
+
+  $slide->subheading = '';
+  if ($data = field_get_items('node', $entity, 'field_ik_slide_subheading')) {
+    $slide->subheading = check_markup($data[0]['value'], $data[0]['format']);
+
+    // Make it JavaScript string friendly.
+    $slide->subheading = preg_replace('/\s{2}+|\n|\r/', '', str_replace('"', '\"', $slide->subheading));
+  }
+
+  $slide->text = '';
+  if ($data = field_get_items('node', $entity, 'field_ik_slide_text')) {
+    $formats = filter_formats();
+    $slide->text = check_markup($data[0]['value'], $data[0]['format']);
+
+    // Make it JavaScript string friendly.
+    $slide->text = preg_replace('/\s{2}+|\n|\r/', '', str_replace('"', '\"', $slide->text));
+  }
+
+  $slide->text_color = 'FFF';
+  if ($data = field_get_items('node', $entity, 'field_ik_slide_text_color')) {
+    $slide->text_color = $data[0]['jquery_colorpicker'];
+  }
+
+  // Convert exposure to mill sec.
+  $slide->exposure = 30000;
+  if ($data = field_get_items('node', $entity, 'field_ik_slide_exposure')) {
+    $slide->exposure = $data[0]['value'] * 1000;
+  }
+
+  $slide->layout = 'layout-1';
+  if ($data = field_get_items('node', $entity, 'field_layout')) {
+    $slide->layout = str_replace('_', '-', $data[0]['value']);
+  }
+
+  return $slide;
+}

@@ -2,13 +2,12 @@
 <html>
 <head>
   <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
-  <title><?php echo t('Channel') . ": " . $token; ?></title>
+  <title><?php echo t('Channel') . ": " . $settings['token']; ?></title>
   <?php echo $css; ?>
   <?php echo $scripts; ?>
-  <?php echo $settings; ?>
+  <?php echo $js_settings; ?>
 </head>
-<body onResize="window.location=window.location;">
-
+<body>
   <!-- template -->
   <div id="pure-template" class="slide">
     <div class="image-container box_skitter">
@@ -37,5 +36,8 @@
 
   <div id="slide-container">
   </div>
+  <script type="text/javascript">
+    <?php echo $run_script; ?>
+  </script>
 </body>
 </html>

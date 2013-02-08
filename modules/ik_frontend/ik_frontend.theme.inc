@@ -20,11 +20,16 @@ function template_preprocess_ik_frontend(&$vars) {
     $vars['css'] .= ' <link href="/' . $path . $css . '" type="text/css" media="all" rel="stylesheet" />';
   }
 
-  // Build settings.
-  $settings = array(
-    'token' => $vars['token'],
+  // Build settings extension.
+  $element = array(
+    '#tag' => 'script',
+    '#attributes' => array(
+      'type' => 'text/javascript',
+    ),
   );
-  $vars['settings'] = '<script type="text/javascript">jQuery.extend(IKFrontend.settings, '. drupal_json_encode($settings) .');</script>';
+  $js_element = $element;
+  $js_element['#value'] = 'jQuery.extend(IKFrontend.settings, ' . drupal_json_encode($vars['settings']) . ");";
+  $vars['js_settings'] = theme('html_tag', array('element' => $js_element));
 
   // Add script files.
   $vars['scripts'] = '';
@@ -40,28 +45,25 @@ function template_preprocess_ik_frontend(&$vars) {
   foreach ($scripts as $script) {
     $vars['scripts'] .= '<script type="text/javascript" src="/' . $path . $script . '"></script>';
   }
-  
-  // Get context (show channel or slide)
-  if ($vars['context'] == 'channel') {
-    $vars['scripts'] .= 
-      '<script type="text/javascript">
-        (function($){
+
+  // Should the slide show load and start. We may not want this for slide
+  // preview etc.
+  if ($vars['start']) {
+    $vars['run_script'] =
+      '(function($){
           $(document).ready(function() {
-            IK.start("' . $vars['token'] . '");
+            IK.start("' . $vars['settings']['token'] . '");
           });
-        })(jQuery);
-      </script>';
+       })(jQuery);';
   }
   else {
-    // Assumes that we are trying to preview a single slide.
-    $vars['scripts'] .= 
-      '<script type="text/javascript">
-        (function($){
-          $(document).ready(function() {
-            IK.showSlide("' . $vars['sid'] . '");
+    // Slide preview.
+    $vars['run_script'] =
+      '(function($){
+          $(window).load(function() {
+            IK.showSlide(IKFrontend.settings.content);
           });
-        })(jQuery);
-      </script>';
+       })(jQuery);';
   }
 }
 

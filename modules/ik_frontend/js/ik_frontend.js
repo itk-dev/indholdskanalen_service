@@ -24,17 +24,17 @@ var IK = (function() {
    * Using prototype to ensure that the objects uses the same implementation and
    * not creates a copy for each slide object.
    */
-  function Slide(token, sid) {
+  function Slide(token, sid, fetch) {
     this.propreties = {};
 
-    this.__construct(token, sid);
+    this.__construct(token, sid, fetch);
   }
 
   /**
    * Constructor that is called on object creation and ensure that the slide is
    * fetched from the backend.
    */
-  Slide.prototype.__construct = function (token, sid) {
+  Slide.prototype.__construct = function (token, sid, fetch) {
     this.token = token;
     this.sid = sid;
 
@@ -63,7 +63,9 @@ var IK = (function() {
     this.template = $('#pure-template').compile(this.directive);
 
     // Fetch all slides for the channel
-    this.fetchSlide();
+    if (fetch) {
+      this.fetchSlide();
+    }
   };
 
   /**
@@ -251,7 +253,7 @@ var IK = (function() {
       // Load all slides in the channel.
       var self = this;
       $.each(data, function(i, item) {
-        var slide = new Slide(self.token, item.nid);
+        var slide = new Slide(self.token, item.nid, true);
         self.slides.push(slide);
       });
 
@@ -370,12 +372,22 @@ var IK = (function() {
    * Helper function used to display a single slide. Mostly used to preview a
    * slide in the administration interface.
    */
-  function showSlide(sid) {
-    // Get the slide with a fictive token, so its hardcoded.
-    var slide = new Slide('7e7b4ad812dc593d898eccd7a10607d1', sid);
+  function showSlide(content) {
+    // Get an empty slide object.
+    var slide = new Slide('', '', false);
     
-    // Render current slide.
+    // Set slide content.
+    slide.processSlide(content);
+    
+    settings.animateChange = true;
+
+    // Render current slide and display it.
     slide.render();
+    
+    // Re-render the slide to reset the display.
+    this.timeout = setTimeout(function() {
+      slide.render();
+    }, parseInt(slide.get('exposure'), 10));
   }
 
   /**

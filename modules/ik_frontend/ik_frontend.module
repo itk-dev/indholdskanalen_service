@@ -190,7 +190,12 @@ function ik_frontend_get_slides($token, $entity) {
 function ik_frontend_run($token) {
   // Return skeleton for slide show (complet HTML page <header><content><footer>
   // etc.).
-  echo theme('ik_frontend', array('token' => $token, 'context' => 'channel'));
+  echo theme('ik_frontend', array(
+    'settings' => array(
+      'token' => $token
+    ),
+    'start' => TRUE,
+  ));
 }
 
 /**
