@@ -86,6 +86,15 @@ function ik_roles_and_permissions_user_default_permissions() {
     'module' => 'media_browser_plus',
   );
 
+  // Exported permission: administer scheduler.
+  $permissions['administer scheduler'] = array(
+    'name' => 'administer scheduler',
+    'roles' => array(
+      0 => 'administrator',
+    ),
+    'module' => 'scheduler',
+  );
+
   // Exported permission: administer taxonomy.
   $permissions['administer taxonomy'] = array(
     'name' => 'administer taxonomy',
@@ -567,6 +576,17 @@ function ik_roles_and_permissions_user_default_permissions() {
       0 => 'administrator',
     ),
     'module' => 'media_browser_plus',
+  );
+
+  // Exported permission: schedule (un)publishing of nodes.
+  $permissions['schedule (un)publishing of nodes'] = array(
+    'name' => 'schedule (un)publishing of nodes',
+    'roles' => array(
+      0 => 'administrator',
+      1 => 'contributor',
+      2 => 'editor',
+    ),
+    'module' => 'scheduler',
   );
 
   // Exported permission: skip comment approval.
