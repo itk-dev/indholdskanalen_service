@@ -15,12 +15,12 @@ function ik_slide_preview_form_slide_node_form_alter(&$form, &$form_state, $form
 
 /**
  * Edit slide node preview callback.
- * 
+ *
  * @staticvar boolean $build_node
  * @staticvar null $publish_on
  * @staticvar null $unpublish_on
  * @param type $form
- * @param type $form_state 
+ * @param type $form_state
  */
 function ik_slide_preview_build_preview($form, &$form_state) {
   static $build_node = TRUE;
@@ -47,30 +47,36 @@ function ik_slide_preview_build_preview($form, &$form_state) {
     $content = str_replace('</script>', '<\/script>', $content);
     $content = preg_replace('/\s{2}+|\n|\r/', '', $content);
 
-    // Add inline js into the node preview area.
+    // Add inline js into the node preview area to create the iframe and fill it
+    // with the slide content.
     $form_state['node_preview'] =
      "<script type=\"text/javascript\">
         (function($){
           $(document).ready(function() {
+            // Iframe content.
+            var content = '".$content."';
 
             // Build iframe.
             var frame = document.createElement('iframe');
-            frame.width = '480px';
-            frame.height = '270px';
+            frame.width = '99%';
+            frame.height = '99%';
             frame.src = 'about:blank';
 
             // Build jQuery UI dialog.
-            $('<div id=\"slide-preview\"></div>').dialog({
+            $('<div id=\"slide-preview\" style=\"overflow:hidden\"></div>').dialog({
               modal: true,
               width: 507,
-              height: '322'
+              height: '322',
+              resize: function(event, ui) {
+                frame.contentWindow.contents = content;
+                frame.src = 'javascript:window[\"contents\"]';
+              }
             });
 
             // Append iframe to the dialog.
             $('#slide-preview').append(frame);
 
             // Add content to the iframe.
-            var content = '".$content."';
             frame.contentWindow.contents = content;
             frame.src = 'javascript:window[\"contents\"]';
           });
@@ -78,15 +84,19 @@ function ik_slide_preview_build_preview($form, &$form_state) {
       </script>";
 
     // Fix schedulering module and panels multi form rebuild and alter.
-    $publish_on = $form_state['values']['publish_on'];
-    $unpublish_on = $form_state['values']['unpublish_on'];
+    if (isset($form_state['values']['publish_on'])) {
+      $publish_on = $form_state['values']['publish_on'];
+      $unpublish_on = $form_state['values']['unpublish_on'];
+    }
 
     $build_node = FALSE;
   }
 
   // Restore scheduling values from first rebuild.
-  $form_state['values']['publish_on'] = $publish_on;
-  $form_state['values']['unpublish_on'] = $unpublish_on;
+  if (isset($form_state['values']['publish_on'])) {
+    $form_state['values']['publish_on'] = $publish_on;
+    $form_state['values']['unpublish_on'] = $unpublish_on;
+  }
 
   // Rebuild form
   $form_state['rebuild'] = TRUE;
