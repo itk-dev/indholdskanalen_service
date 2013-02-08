@@ -491,7 +491,7 @@ function ik_slides_field_default_fields() {
     'field_instance' => array(
       'bundle' => 'slide',
       'deleted' => '0',
-      'description' => 'You can upload a logo to be displayed in the upper right corner of the slide.',
+      'description' => 'Tilføj et logo som indsættes på sliden. Logoet skaleres automatisk til 150 pixel i bredden. Det anbefales at uploade et logo med transparent baggrund, af samme grund tillades jpg filer ikke.',
       'display' => array(
         'default' => array(
           'label' => 'above',
@@ -518,8 +518,8 @@ function ik_slides_field_default_fields() {
         'alt_field' => 0,
         'default_image' => 0,
         'file_directory' => 'slide_logo_files',
-        'file_extensions' => 'png gif jpg jpeg',
-        'max_filesize' => '250 KB',
+        'file_extensions' => 'png gif',
+        'max_filesize' => '1 MB',
         'max_resolution' => '',
         'min_resolution' => '',
         'title_field' => 0,
@@ -586,7 +586,7 @@ function ik_slides_field_default_fields() {
     'field_instance' => array(
       'bundle' => 'slide',
       'deleted' => '0',
-      'description' => 'Add media to your slide.',
+      'description' => 'Tilføj billeder til slide. Billeder skaleres og beskæres automatisk til 1920x1080 pixel (Full HD, 16:9 format). Ønsker du fuld kontrol over hvordan dit billede ser ud anbefales det at uploade billedet i størrelsen 1920x1080 på forhånd.',
       'display' => array(
         'default' => array(
           'label' => 'above',
@@ -1081,7 +1081,6 @@ function ik_slides_field_default_fields() {
 
   // Translatables
   // Included for use with string extractors like potx.
-  t('Add media to your slide.');
   t('Add one more more tags that describe the slide.');
   t('Category');
   t('Choose a main category for the slide');
@@ -1100,8 +1099,9 @@ function ik_slides_field_default_fields() {
   t('Text');
   t('Text color');
   t('Textbox color');
+  t('Tilføj billeder til slide. Billeder skaleres og beskæres automatisk til 1920x1080 pixel (Full HD, 16:9 format). Ønsker du fuld kontrol over hvordan dit billede ser ud anbefales det at uploade billedet i størrelsen 1920x1080 på forhånd.');
+  t('Tilføj et logo som indsættes på sliden. Logoet skaleres automatisk til 150 pixel i bredden. Det anbefales at uploade et logo med transparent baggrund, af samme grund tillades jpg filer ikke.');
   t('Transition effect');
-  t('You can upload a logo to be displayed in the upper right corner of the slide.');
 
   return $fields;
 }
