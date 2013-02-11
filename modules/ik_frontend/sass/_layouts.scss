@@ -47,6 +47,7 @@
       @include rem('line-height', $heading-font-size);
       @include rem('margin-bottom', $default-spacing);
       font-family: $font-family-heading;
+      text-transform: uppercase;
     }
 
     .divider {
@@ -57,16 +58,16 @@
 
     .slide-subheading {
       @include rem('font-size', $subheading-font-size);
+      @include rem('line-height', $subheading-font-size * 1.2);
       font-family: $font-family-subheading;
-      line-height: $subheading-font-size * 1.3;
       margin-bottom: $default-spacing / 2;
     }
 
     .slide-text {
       @include box-sizing(border-box);
       @include rem('font-size', $textbox-font-size);
-      @include rem('line-height', $base-font-size * 1.3);
-      @include rem('letter-spacing', $base-font-size * 0.1);
+      @include rem('line-height', $textbox-font-size * 1.2);
+      //@include rem('letter-spacing', $base-font-size * 0.1);
       padding: $textbox-padding;
     }
   }
