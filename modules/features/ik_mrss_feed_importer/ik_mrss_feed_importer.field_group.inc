@@ -23,8 +23,8 @@ function ik_mrss_feed_importer_field_group_info() {
     'label' => 'Categories',
     'weight' => '6',
     'children' => array(
-      0 => 'field_ik_slide_tags',
-      1 => 'field_ik_slide_category',
+      0 => 'field_ik_slide_category',
+      1 => 'field_ik_slide_tags',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
@@ -51,9 +51,10 @@ function ik_mrss_feed_importer_field_group_info() {
     'label' => 'Design',
     'weight' => '4',
     'children' => array(
-      0 => 'field_ik_slide_text_color',
-      1 => 'field_ik_slide_color',
-      2 => 'field_ik_slide_logo',
+      0 => 'field_ik_slide_color',
+      1 => 'field_ik_slide_logo',
+      2 => 'field_ik_slide_text_color',
+      3 => 'field_ik_slide_color_theme',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
@@ -79,9 +80,7 @@ function ik_mrss_feed_importer_field_group_info() {
   $field_group->data = array(
     'label' => 'Images',
     'weight' => '5',
-    'children' => array(
-      0 => 'field_ik_slide_transition_effect',
-    ),
+    'children' => array(),
     'format_type' => 'fieldset',
     'format_settings' => array(
       'formatter' => 'collapsible',

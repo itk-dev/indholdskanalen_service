@@ -102,6 +102,11 @@ function ik_mrss_feed_importer_feeds_importer_default() {
             'target' => 'field_ik_slide_import_node',
             'unique' => FALSE,
           ),
+          13 => array(
+            'source' => 'parent:design:color',
+            'target' => 'field_ik_slide_color_theme',
+            'unique' => FALSE,
+          ),
         ),
         'update_existing' => '1',
         'input_format' => 'editor_html',

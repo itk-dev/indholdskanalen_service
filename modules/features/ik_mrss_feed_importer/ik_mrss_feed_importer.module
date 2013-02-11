@@ -49,14 +49,9 @@ function ik_mrss_feed_importer_enable() {
  */
 function ik_mrss_feed_importer_feeds_processor_targets_alter(&$targets, $entity_type, $bundle_name) {
   if ($entity_type == 'node' && $bundle_name == 'slide') {
-    $targets['field_ik_slide_text_color'] = array(
-      'name' => t('Text Color'),
-      'description' => t('Set slide text color.'),
-      'callback' => 'ik_mrss_feed_importer_color_set_target',
-    );
-    $targets['field_ik_slide_color'] = array(
-      'name' => t('Color'),
-      'description' => t('Set slide color.'),
+    $targets['field_ik_slide_color_theme'] = array(
+      'name' => t('Color theme'),
+      'description' => t('Choose color theme for slide.'),
       'callback' => 'ik_mrss_feed_importer_color_set_target',
     );
 
@@ -85,7 +80,7 @@ function ik_mrss_feed_importer_feeds_processor_targets_alter(&$targets, $entity_
  *  configuration form.
  */
 function ik_mrss_feed_importer_color_set_target($source, $entity, $target, $value, $mapping) {
-  $entity->{$target}[$entity->language][0]['jquery_colorpicker'] = $value;
+  $entity->{$target}[$entity->language][0]['value'] = $value;
 }
 
 /**

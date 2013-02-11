@@ -241,9 +241,13 @@ function ik_frontend_fetch_slide($token, $sid, $json = TRUE) {
     $slide->sid = $sid;
     $slide->title = check_plain($entity->title);
 
-    $slide->color = 'F90';
-    if ($data = field_get_items('node', $entity, 'field_ik_slide_color')) {
-      $slide->color = $data[0]['jquery_colorpicker'];
+    // Color theme for textbox
+    $slide->color = '006027'; //Green as default
+    $slide->text_color = 'fff'; //White as default
+    if ($data = field_get_items('node', $entity, 'field_ik_slide_color_theme')) {
+      $color_theme = ik_frontend_select_color_theme($data[0]['value']);
+      $slide->color = $color_theme[1];
+      $slide->text_color = $color_theme[0];
     }
 
     $slide->logo = '';
@@ -274,11 +278,6 @@ function ik_frontend_fetch_slide($token, $sid, $json = TRUE) {
       $slide->text = $data[0]['safe_value'];
     }
 
-    $slide->text_color = 'FFF';
-    if ($data = field_get_items('node', $entity, 'field_ik_slide_text_color')) {
-      $slide->text_color = $data[0]['jquery_colorpicker'];
-    }
-
     // Convert exposure to mill sec.
     $slide->exposure = 30000;
     if ($data = field_get_items('node', $entity, 'field_ik_slide_exposure')) {
@@ -301,4 +300,33 @@ function ik_frontend_fetch_slide($token, $sid, $json = TRUE) {
   else {
     return $slide;
   }
+}
+
+/**
+ * Returns an array with color codes for the selected color theme.
+ *
+ * @param int $value
+ *  Value from color theme field.
+ */
+function ik_frontend_select_color_theme($value) {
+  switch ($value) {
+    case 1:
+      $color_theme = array('fff','006027');
+      break;
+    case 2:
+      $color_theme = array('fff','004154');
+      break;
+    case 3:
+      $color_theme = array('fff','8a1002');
+      break;
+    case 4:
+      $color_theme = array('fff','707173');
+      break;
+    case 5:
+      $color_theme = array('000','f7a600');
+      break;
+    default:
+      $color_theme = array('fff','006027');
+  }
+  return $color_theme;
 }

@@ -178,27 +178,40 @@ function ik_mrss_feed_importer_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-media_rss_slide_import-field_ik_slide_color'.
-  $fields['node-media_rss_slide_import-field_ik_slide_color'] = array(
+  // Exported field: 'node-media_rss_slide_import-field_ik_slide_color_theme'.
+  $fields['node-media_rss_slide_import-field_ik_slide_color_theme'] = array(
     'field_config' => array(
       'active' => '1',
       'cardinality' => '1',
       'deleted' => '0',
       'entity_types' => array(),
-      'field_name' => 'field_ik_slide_color',
+      'field_name' => 'field_ik_slide_color_theme',
       'foreign keys' => array(),
-      'indexes' => array(),
+      'indexes' => array(
+        'value' => array(
+          0 => 'value',
+        ),
+      ),
       'locked' => '0',
-      'module' => 'jquery_colorpicker',
-      'settings' => array(),
+      'module' => 'list',
+      'settings' => array(
+        'allowed_values' => array(
+          1 => 'Hvid på grøn',
+          2 => 'Hvid på blå',
+          3 => 'Hvid på bordeaux',
+          4 => 'Hvid på grå',
+          5 => 'Sort på orange',
+        ),
+        'allowed_values_function' => '',
+      ),
       'translatable' => '0',
-      'type' => 'jquery_colorpicker',
+      'type' => 'list_integer',
     ),
     'field_instance' => array(
       'bundle' => 'media_rss_slide_import',
       'default_value' => array(
         0 => array(
-          'jquery_colorpicker' => 'bbda55',
+          'value' => '1',
         ),
       ),
       'deleted' => '0',
@@ -206,10 +219,10 @@ function ik_mrss_feed_importer_field_default_fields() {
       'display' => array(
         'default' => array(
           'label' => 'above',
-          'module' => 'jquery_colorpicker',
+          'module' => 'list',
           'settings' => array(),
-          'type' => 'jquery_colorpicker_color_display',
-          'weight' => '4',
+          'type' => 'list_default',
+          'weight' => 10,
         ),
         'teaser' => array(
           'label' => 'above',
@@ -219,18 +232,20 @@ function ik_mrss_feed_importer_field_default_fields() {
         ),
       ),
       'entity_type' => 'node',
-      'field_name' => 'field_ik_slide_color',
-      'label' => 'Textbox color',
+      'field_name' => 'field_ik_slide_color_theme',
+      'label' => 'Color theme',
       'required' => 0,
       'settings' => array(
         'user_register_form' => FALSE,
       ),
       'widget' => array(
-        'active' => 0,
-        'module' => 'jquery_colorpicker',
-        'settings' => array(),
-        'type' => 'jquery_colorpicker',
-        'weight' => '8',
+        'active' => 1,
+        'module' => 'options',
+        'settings' => array(
+          'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
+        ),
+        'type' => 'options_select',
+        'weight' => '18',
       ),
     ),
   );
@@ -403,7 +418,7 @@ function ik_mrss_feed_importer_field_default_fields() {
           'progress_indicator' => 'throbber',
         ),
         'type' => 'media_generic',
-        'weight' => '10',
+        'weight' => '21',
       ),
     ),
   );
@@ -478,63 +493,6 @@ function ik_mrss_feed_importer_field_default_fields() {
         ),
         'type' => 'autocomplete_deluxe_taxonomy',
         'weight' => '6',
-      ),
-    ),
-  );
-
-  // Exported field: 'node-media_rss_slide_import-field_ik_slide_text_color'.
-  $fields['node-media_rss_slide_import-field_ik_slide_text_color'] = array(
-    'field_config' => array(
-      'active' => '1',
-      'cardinality' => '1',
-      'deleted' => '0',
-      'entity_types' => array(),
-      'field_name' => 'field_ik_slide_text_color',
-      'foreign keys' => array(),
-      'indexes' => array(),
-      'locked' => '0',
-      'module' => 'jquery_colorpicker',
-      'settings' => array(),
-      'translatable' => '0',
-      'type' => 'jquery_colorpicker',
-    ),
-    'field_instance' => array(
-      'bundle' => 'media_rss_slide_import',
-      'default_value' => array(
-        0 => array(
-          'jquery_colorpicker' => 'ffffff',
-        ),
-      ),
-      'deleted' => '0',
-      'description' => '',
-      'display' => array(
-        'default' => array(
-          'label' => 'above',
-          'module' => 'jquery_colorpicker',
-          'settings' => array(),
-          'type' => 'jquery_colorpicker_color_display',
-          'weight' => '3',
-        ),
-        'teaser' => array(
-          'label' => 'above',
-          'settings' => array(),
-          'type' => 'hidden',
-          'weight' => 0,
-        ),
-      ),
-      'entity_type' => 'node',
-      'field_name' => 'field_ik_slide_text_color',
-      'label' => 'Text color',
-      'required' => 0,
-      'settings' => array(
-        'user_register_form' => FALSE,
-      ),
-      'widget' => array(
-        'active' => 0,
-        'module' => 'jquery_colorpicker',
-        'settings' => array(),
-        'type' => 'jquery_colorpicker',
-        'weight' => '9',
       ),
     ),
   );
@@ -620,13 +578,12 @@ function ik_mrss_feed_importer_field_default_fields() {
   // Translatables
   // Included for use with string extractors like potx.
   t('Category');
+  t('Color theme');
   t('Department');
   t('Exposure');
   t('Layout');
   t('Logo');
   t('Tags');
-  t('Text color');
-  t('Textbox color');
 
   return $fields;
 }
