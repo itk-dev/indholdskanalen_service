@@ -141,27 +141,27 @@ i {
 
 /* line 63, ../sass/_base.scss */
 h1 {
-  font-size: 64px; }
+  font-size: 72px; }
 
 /* line 67, ../sass/_base.scss */
 h2 {
-  font-size: 27.2px; }
+  font-size: 16px; }
 
 /* line 71, ../sass/_base.scss */
 h3 {
-  font-size: 21.12px; }
+  font-size: 17.6px; }
 
 /* line 75, ../sass/_base.scss */
 h4 {
-  font-size: 23.04px; }
+  font-size: 19.2px; }
 
 /* line 79, ../sass/_base.scss */
 h5 {
-  font-size: 24.96px; }
+  font-size: 20.8px; }
 
 /* line 83, ../sass/_base.scss */
 h6 {
-  font-size: 26.88px; }
+  font-size: 22.4px; }
 
 /*
 * Layouts default styling
@@ -210,41 +210,39 @@ h6 {
       padding: 20px; }
     /* line 45, ../sass/_layouts.scss */
     .slide .text-container .slide-heading {
-      font-size: 64px;
-      font-size: 4rem;
-      line-height: 77px;
-      line-height: 4.8rem;
+      font-size: 72px;
+      font-size: 4.5rem;
+      line-height: 72px;
+      line-height: 4.5rem;
       margin-bottom: 20px;
       margin-bottom: 1.25rem;
-      font-family: "AllerBold", "Aller", "Helvetica Neue", Helvetica, Arial, sans-serif;
-      text-transform: uppercase; }
-    /* line 53, ../sass/_layouts.scss */
+      font-family: "AllerBold", "Aller", "Helvetica Neue", Helvetica, Arial, sans-serif; }
+    /* line 52, ../sass/_layouts.scss */
     .slide .text-container .divider {
       width: 10%;
       border-bottom: 0.2em solid white;
       margin-bottom: 10px;
       margin-bottom: 0.625rem; }
-    /* line 59, ../sass/_layouts.scss */
+    /* line 58, ../sass/_layouts.scss */
     .slide .text-container .slide-subheading {
-      font-size: 27px;
-      font-size: 1.7rem;
+      font-size: 16px;
+      font-size: 1rem;
       font-family: "AllerBold", "Aller", "Helvetica Neue", Helvetica, Arial, sans-serif;
-      font-style: italic;
-      line-height: 32.64px;
+      line-height: 20.8px;
       margin-bottom: 10px; }
-    /* line 67, ../sass/_layouts.scss */
+    /* line 65, ../sass/_layouts.scss */
     .slide .text-container .slide-text {
       -webkit-box-sizing: border-box;
       -moz-box-sizing: border-box;
       box-sizing: border-box;
-      font-size: 19px;
-      font-size: 1.2rem;
-      line-height: 22px;
-      line-height: 1.4rem;
+      font-size: 16px;
+      font-size: 1rem;
+      line-height: 21px;
+      line-height: 1.3rem;
       letter-spacing: 2px;
       letter-spacing: 0.1rem;
       padding: 20px; }
-  /* line 76, ../sass/_layouts.scss */
+  /* line 74, ../sass/_layouts.scss */
   .slide .logo-container {
     z-index: 21000;
     position: absolute;
@@ -265,26 +263,26 @@ h6 {
 * ---------------------------
 *
 */
-/* line 103, ../sass/_layouts.scss */
+/* line 101, ../sass/_layouts.scss */
 .layout-1 .text-container, .layout-2 .text-container, .layout-3 .text-container, .layout-4 .text-container, .layout-5 .text-container {
   width: 100%;
   top: 10%; }
-  /* line 107, ../sass/_layouts.scss */
+  /* line 105, ../sass/_layouts.scss */
   .layout-1 .text-container .heading-container, .layout-2 .text-container .heading-container, .layout-3 .text-container .heading-container, .layout-4 .text-container .heading-container, .layout-5 .text-container .heading-container {
     width: 49.5%;
     float: left; }
-  /* line 112, ../sass/_layouts.scss */
+  /* line 110, ../sass/_layouts.scss */
   .layout-1 .text-container .slide-heading, .layout-2 .text-container .slide-heading, .layout-3 .text-container .slide-heading, .layout-4 .text-container .slide-heading, .layout-5 .text-container .slide-heading {
     margin-bottom: 10px;
     margin-bottom: 0.625rem; }
-  /* line 116, ../sass/_layouts.scss */
+  /* line 114, ../sass/_layouts.scss */
   .layout-1 .text-container .slide-text, .layout-2 .text-container .slide-text, .layout-3 .text-container .slide-text, .layout-4 .text-container .slide-text, .layout-5 .text-container .slide-text {
     width: 49.5%;
     float: left; }
-  /* line 121, ../sass/_layouts.scss */
+  /* line 119, ../sass/_layouts.scss */
   .layout-1 .text-container .divider, .layout-2 .text-container .divider, .layout-3 .text-container .divider, .layout-4 .text-container .divider, .layout-5 .text-container .divider {
     display: none; }
-/* line 126, ../sass/_layouts.scss */
+/* line 124, ../sass/_layouts.scss */
 .layout-1 .logo-container, .layout-2 .logo-container, .layout-3 .logo-container, .layout-4 .logo-container, .layout-5 .logo-container {
   top: auto;
   bottom: 20px; }
@@ -303,11 +301,11 @@ h6 {
 * ---------------------------
 *
 */
-/* line 149, ../sass/_layouts.scss */
+/* line 147, ../sass/_layouts.scss */
 .layout-2 .text-container {
   top: auto;
   bottom: 10%; }
-/* line 154, ../sass/_layouts.scss */
+/* line 152, ../sass/_layouts.scss */
 .layout-2 .logo-container {
   top: 20px;
   bottom: auto; }
@@ -326,12 +324,12 @@ h6 {
 * ---------------------------
 *
 */
-/* line 177, ../sass/_layouts.scss */
+/* line 175, ../sass/_layouts.scss */
 .layout-3 .text-container {
   top: 50%;
   margin-top: -134px;
   /* Must be replaced with javascript */ }
-/* line 182, ../sass/_layouts.scss */
+/* line 180, ../sass/_layouts.scss */
 .layout-3 .logo-container {
   top: 20px;
   bottom: auto; }
@@ -350,11 +348,11 @@ h6 {
 * ---------------------------
 *
 */
-/* line 205, ../sass/_layouts.scss */
+/* line 203, ../sass/_layouts.scss */
 .layout-4 .text-container {
   top: auto;
   bottom: 0; }
-/* line 209, ../sass/_layouts.scss */
+/* line 207, ../sass/_layouts.scss */
 .layout-4 .logo-container {
   top: 20px;
   bottom: auto; }
@@ -373,10 +371,10 @@ h6 {
 * ---------------------------
 *
 */
-/* line 232, ../sass/_layouts.scss */
+/* line 230, ../sass/_layouts.scss */
 .layout-5 .text-container {
   top: 0; }
-/* line 235, ../sass/_layouts.scss */
+/* line 233, ../sass/_layouts.scss */
 .layout-5 .logo-container {
   top: auto;
   bottom: 20px; }
@@ -395,7 +393,7 @@ h6 {
 * ---------------------------
 *
 */
-/* line 257, ../sass/_layouts.scss */
+/* line 255, ../sass/_layouts.scss */
 .layout-6 .text-container, .layout-7 .text-container, .layout-8 .text-container, .layout-9 .text-container, .layout-10 .text-container, .layout-11 .text-container {
   top: 0;
   left: 0;
@@ -416,11 +414,11 @@ h6 {
 * ---------------------------
 *
 */
-/* line 282, ../sass/_layouts.scss */
+/* line 280, ../sass/_layouts.scss */
 .layout-7 .text-container {
   left: auto;
   right: 0; }
-/* line 286, ../sass/_layouts.scss */
+/* line 284, ../sass/_layouts.scss */
 .layout-7 .logo-container {
   right: auto;
   left: 20px; }
@@ -439,12 +437,12 @@ h6 {
 * ---------------------------
 *
 */
-/* line 309, ../sass/_layouts.scss */
+/* line 307, ../sass/_layouts.scss */
 .layout-8 .text-container {
   width: 75%;
   right: 0;
   left: auto; }
-/* line 314, ../sass/_layouts.scss */
+/* line 312, ../sass/_layouts.scss */
 .layout-8 .logo-container {
   right: auto;
   left: 20px; }
@@ -463,7 +461,7 @@ h6 {
 * ---------------------------
 *
 */
-/* line 337, ../sass/_layouts.scss */
+/* line 335, ../sass/_layouts.scss */
 .layout-9 .text-container {
   width: 75%; }
 
@@ -481,7 +479,7 @@ h6 {
 * ---------------------------
 *
 */
-/* line 359, ../sass/_layouts.scss */
+/* line 357, ../sass/_layouts.scss */
 .layout-10 .text-container {
   width: 25%; }
 
@@ -499,12 +497,12 @@ h6 {
 * ---------------------------
 *
 */
-/* line 381, ../sass/_layouts.scss */
+/* line 379, ../sass/_layouts.scss */
 .layout-11 .text-container {
   width: 25%;
   right: 0;
   left: auto; }
-/* line 386, ../sass/_layouts.scss */
+/* line 384, ../sass/_layouts.scss */
 .layout-11 .logo-container {
   right: auto;
   left: 20px; }
@@ -523,7 +521,7 @@ h6 {
 * ---------------------------
 *
 */
-/* line 408, ../sass/_layouts.scss */
+/* line 406, ../sass/_layouts.scss */
 .layout-12 .text-container {
   display: none; }
 
@@ -541,10 +539,10 @@ h6 {
 * ---------------------------
 *
 */
-/* line 429, ../sass/_layouts.scss */
+/* line 427, ../sass/_layouts.scss */
 .layout-13 .image-container {
   display: none; }
-/* line 433, ../sass/_layouts.scss */
+/* line 431, ../sass/_layouts.scss */
 .layout-13 .text-container {
   width: 100%;
   height: 100%; }
