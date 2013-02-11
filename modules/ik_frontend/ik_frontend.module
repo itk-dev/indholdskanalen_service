@@ -153,7 +153,7 @@ function ik_frontend_find_channel_nid($token) {
  */
 function ik_frontend_get_slides($token, $entity) {
   // Use frontend cache, if available.
-  if ($cache = cache_get('channel_' . $token, 'cache_ik_frontend')) {
+  if ($cache = cache_get('channel_' . $token, 'cache_ik_frontend') && $cache->expire > REQUEST_TIME) {
       $slides = $cache->data;
   }
   else {
@@ -174,7 +174,7 @@ function ik_frontend_get_slides($token, $entity) {
     $slides = ik_channel_filter_get_slides($values);
 
     // Save the content in the cache (removed on node update).
-    cache_set('channel_' . $token, $slides, 'cache_ik_frontend');
+    cache_set('channel_' . $token, $slides, 'cache_ik_frontend', REQUEST_TIME + 600);
   }
 
   return $slides;
