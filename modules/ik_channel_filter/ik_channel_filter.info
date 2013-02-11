@@ -7,4 +7,4 @@ dependencies[] = field
 dependencies[] = field_ui
 
 files[] = ik_channel_filter.module
-files[] = includes/ik_channel_filter.queries.inc
+files[] = ik_channel_filter.queries.inc

@@ -21,13 +21,13 @@ function ik_frontend_buttons_content_type_render($subtype, $conf, $panel_args, $
       'title' => t('Start'),
       'link' => token_replace('channels/[ik_channel:hash]/run', array('node' => $context[0]->data)),
     ),
-    'preview' => array(
-      'title' => t('Preview'),
-      'link' => token_replace('channels/[ik_channel:hash]', array('node' => $context[0]->data)),
-    ),
     'bookmark' => array(
       'title' => t('Bookmark'),
       'link' => token_replace('channels/[ik_channel:hash]', array('node' => $context[0]->data)),
+    ),
+    'feed' => array(
+      'title' => t('Feed (export)'),
+      'link' => token_replace('channels/[ik_channel:hash]/feed', array('node' => $context[0]->data)),
     ),
   );
 
