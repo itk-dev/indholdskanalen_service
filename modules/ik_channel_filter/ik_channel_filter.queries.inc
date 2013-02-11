@@ -8,13 +8,7 @@
  *
  * @todo: build cache into this.
  *
- * @param Entity $entity
- *  The node/entity holding the channel filter fields that should be used on the
- *  search/filtering.
- * @param array $values
- *  If values is parsed they are used in the filter. If no the values are loaded
- *  from the entity. This is utilized when make AJAX callback to get new filter
- *  result before the node is stored.
+ * @param mixed $raw_values
  * @return array
  *  Database result with the found nid's and there titles.
  */
