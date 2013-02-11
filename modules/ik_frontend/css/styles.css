@@ -67,30 +67,30 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
  * Base stylesheet collecting all files
  */
 @font-face {
-  font-family: "OswaldLight";
-  src: url('/sites/service.indholdskanalen.dk/modules/ik_frontend/css/fonts/oswald/Oswald-Light-webfont.eot');
-  src: url('/sites/service.indholdskanalen.dk/modules/ik_frontend/css/fonts/oswald/Oswald-Light-webfont.eot?#iefix') format('eot'), url('/sites/service.indholdskanalen.dk/modules/ik_frontend/css/fonts/oswald/Oswald-Light-webfont.woff') format('woff'), url('/sites/service.indholdskanalen.dk/modules/ik_frontend/css/fonts/oswald/Oswald-Light-webfont.ttf') format('truetype'), url('/sites/service.indholdskanalen.dk/modules/ik_frontend/css/fonts/oswald/Oswald-Light-webfont.svg#OswaldLight') format('svg');
+  font-family: "AllerBold";
+  src: url('/sites/service.indholdskanalen.dk/modules/ik_frontend/css/fonts/aller/aller_bd-webfont.eot');
+  src: url('/sites/service.indholdskanalen.dk/modules/ik_frontend/css/fonts/aller/aller_bd-webfont.eot?#iefix') format('eot'), url('/sites/service.indholdskanalen.dk/modules/ik_frontend/css/fonts/aller/aller_bd-webfont.woff') format('woff'), url('/sites/service.indholdskanalen.dk/modules/ik_frontend/css/fonts/aller/aller_bd-webfont.ttf') format('truetype'), url('/sites/service.indholdskanalen.dk/modules/ik_frontend/css/fonts/aller/aller_bd-webfont.svg#allerbold') format('svg');
   font-weight: "normal";
   font-style: "normal"; }
 
 @font-face {
-  font-family: "OswaldBook";
-  src: url('/sites/service.indholdskanalen.dk/modules/ik_frontend/css/fonts/oswald/Oswald-Regular-webfont.eot');
-  src: url('/sites/service.indholdskanalen.dk/modules/ik_frontend/css/fonts/oswald/Oswald-Regular-webfont.eot?#iefix') format('eot'), url('/sites/service.indholdskanalen.dk/modules/ik_frontend/css/fonts/oswald/Oswald-Regular-webfont.woff') format('woff'), url('/sites/service.indholdskanalen.dk/modules/ik_frontend/css/fonts/oswald/Oswald-Regular-webfont.ttf') format('truetype'), url('/sites/service.indholdskanalen.dk/modules/ik_frontend/css/fonts/oswald/Oswald-Regular-webfont.svg#OswaldBook') format('svg');
+  font-family: "AllerBoldItalic";
+  src: url('/sites/service.indholdskanalen.dk/modules/ik_frontend/css/fonts/aller_bdit-webfont.eot');
+  src: url('/sites/service.indholdskanalen.dk/modules/ik_frontend/css/fonts/aller_bdit-webfont.eot?#iefix') format('eot'), url('/sites/service.indholdskanalen.dk/modules/ik_frontend/css/fonts/aller/aller_bdit-webfont.woff') format('woff'), url('/sites/service.indholdskanalen.dk/modules/ik_frontend/css/fonts/aller_bdit-webfont.ttf') format('truetype'), url('/sites/service.indholdskanalen.dk/modules/ik_frontend/css/fonts/aller_bdit-webfont.svg#allerbold_italic') format('svg');
   font-weight: "normal";
   font-style: "normal"; }
 
 @font-face {
-  font-family: "OswaldBold";
-  src: url('/sites/service.indholdskanalen.dk/modules/ik_frontend/css/fonts/oswald/Oswald-Bold-webfont.eot');
-  src: url('/sites/service.indholdskanalen.dk/modules/ik_frontend/css/fonts/oswald/Oswald-Bold-webfont.eot?#iefix') format('eot'), url('/sites/service.indholdskanalen.dk/modules/ik_frontend/css/fonts/oswald/Oswald-Bold-webfont.woff') format('woff'), url('/sites/service.indholdskanalen.dk/modules/ik_frontend/css/fonts/oswald/Oswald-Bold-webfont.ttf') format('truetype'), url('/sites/service.indholdskanalen.dk/modules/ik_frontend/css/fonts/oswald/Oswald-Bold-webfont.svg#OswaldBold') format('svg');
+  font-family: "AllerItalic";
+  src: url('/sites/service.indholdskanalen.dk/modules/ik_frontend/css/fonts/aller/aller_it-webfont.eot');
+  src: url('/sites/service.indholdskanalen.dk/modules/ik_frontend/css/fonts/aller/aller_it-webfont.eot?#iefix') format('eot'), url('/sites/service.indholdskanalen.dk/modules/ik_frontend/css/fonts/aller/aller_it-webfont.woff') format('woff'), url('/sites/service.indholdskanalen.dk/modules/ik_frontend/css/fonts/aller/aller_it-webfont.ttf') format('truetype'), url('/sites/service.indholdskanalen.dk/modules/ik_frontend/css/fonts/aller/aller_it-webfont.svg#alleritalic') format('svg');
   font-weight: "normal";
   font-style: "normal"; }
 
 @font-face {
-  font-family: "OswaldStencilRegular";
-  src: url('/sites/service.indholdskanalen.dk/modules/ik_frontend/css/fonts/oswald/Oswald-Stencil-webfont.eot');
-  src: url('/sites/service.indholdskanalen.dk/modules/ik_frontend/css/fonts/oswald/Oswald-Stencil-webfont.eot?#iefix') format('eot'), url('/sites/service.indholdskanalen.dk/modules/ik_frontend/css/fonts/oswald/Oswald-Stencil-webfont.woff') format('woff'), url('/sites/service.indholdskanalen.dk/modules/ik_frontend/css/fonts/oswald/Oswald-Stencil-webfont.ttf') format('truetype'), url('/sites/service.indholdskanalen.dk/modules/ik_frontend/css/fonts/oswald/Oswald-Stencil-webfont.svg#OswaldStencilRegular') format('svg');
+  font-family: "Aller";
+  src: url('/sites/service.indholdskanalen.dk/modules/ik_frontend/css/fonts/aller/aller_rg-webfont.eot');
+  src: url('/sites/service.indholdskanalen.dk/modules/ik_frontend/css/fonts/aller/aller_rg-webfont.eot?#iefix') format('eot'), url('/sites/service.indholdskanalen.dk/modules/ik_frontend/css/fonts/aller/aller_rg-webfont.woff') format('woff'), url('/sites/service.indholdskanalen.dk/modules/ik_frontend/css/fonts/aller/aller_rg-webfont.ttf') format('truetype'), url('/sites/service.indholdskanalen.dk/modules/ik_frontend/css/fonts/aller/aller_rg-webfont.svg#allerregular') format('svg');
   font-weight: "normal";
   font-style: "normal"; }
 
@@ -103,7 +103,7 @@ body {
 
 /* line 28, ../sass/_base.scss */
 body {
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family: "Aller", "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 16px;
   font-size: 1rem;
   color: white;
@@ -120,34 +120,46 @@ p {
 /* line 44, ../sass/_base.scss */
 strong,
 b {
-  font-style: bold; }
+  font-family: "AllerBold", "Aller", "Helvetica Neue", Helvetica, Arial, sans-serif; }
+  /* line 48, ../sass/_base.scss */
+  strong em,
+  strong i,
+  b em,
+  b i {
+    font-family: "AllerBoldItalic", "Aller", "Helvetica Neue", Helvetica, Arial, sans-serif; }
 
-/* line 49, ../sass/_base.scss */
+/* line 54, ../sass/_base.scss */
 em,
 i {
-  font-style: italic; }
+  font-family: "AllerItalic", "Aller", "Helvetica Neue", Helvetica, Arial, sans-serif; }
+  /* line 58, ../sass/_base.scss */
+  em strong,
+  em b,
+  i strong,
+  i b {
+    font-family: "AllerBoldItalic", "Aller", "Helvetica Neue", Helvetica, Arial, sans-serif; }
 
-/* line 53, ../sass/_base.scss */
+/* line 63, ../sass/_base.scss */
 h1 {
   font-size: 64px; }
 
-/* line 57, ../sass/_base.scss */
+/* line 67, ../sass/_base.scss */
 h2 {
   font-size: 27.2px; }
 
-/* line 61, ../sass/_base.scss */
+/* line 71, ../sass/_base.scss */
 h3 {
   font-size: 21.12px; }
 
-/* line 65, ../sass/_base.scss */
+/* line 75, ../sass/_base.scss */
 h4 {
   font-size: 23.04px; }
 
-/* line 69, ../sass/_base.scss */
+/* line 79, ../sass/_base.scss */
 h5 {
   font-size: 24.96px; }
 
-/* line 73, ../sass/_base.scss */
+/* line 83, ../sass/_base.scss */
 h6 {
   font-size: 26.88px; }
 
@@ -204,7 +216,7 @@ h6 {
       line-height: 4.8rem;
       margin-bottom: 20px;
       margin-bottom: 1.25rem;
-      font-family: "OswaldBook", "Helvetica Neue", Helvetica, Arial, sans-serif;
+      font-family: "AllerBold", "Aller", "Helvetica Neue", Helvetica, Arial, sans-serif;
       text-transform: uppercase; }
     /* line 53, ../sass/_layouts.scss */
     .slide .text-container .divider {
@@ -216,7 +228,7 @@ h6 {
     .slide .text-container .slide-subheading {
       font-size: 27px;
       font-size: 1.7rem;
-      font-family: "OswaldBold", "Helvetica Neue", Helvetica, Arial, sans-serif;
+      font-family: "AllerBold", "Aller", "Helvetica Neue", Helvetica, Arial, sans-serif;
       font-style: italic;
       line-height: 32.64px;
       margin-bottom: 10px; }
