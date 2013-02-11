@@ -349,7 +349,7 @@ function ik_slides_field_default_fields() {
             'type' => 'none',
           ),
           'target_bundles' => array(
-            'slide' => 'slide',
+            'media_rss_slide_import' => 'media_rss_slide_import',
           ),
         ),
         'target_type' => 'node',
@@ -534,8 +534,8 @@ function ik_slides_field_default_fields() {
             'public' => 'public',
           ),
           'allowed_types' => array(
-            0 => 0,
             'audio' => 0,
+            0 => 0,
             'default' => 0,
             'image' => 'image',
             'video' => 0,
@@ -623,9 +623,9 @@ function ik_slides_field_default_fields() {
           'allowed_types' => array(
             'audio' => 0,
             'default' => 0,
+            0 => 0,
             'image' => 'image',
             'video' => 'video',
-            0 => 0,
           ),
           'browser_plugins' => array(
             'library' => 0,
