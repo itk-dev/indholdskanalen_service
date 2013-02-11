@@ -95,6 +95,9 @@ function ik_mrss_feed_importer_strongarm() {
         'redirect' => array(
           'weight' => '1',
         ),
+        'feeds' => array(
+          'weight' => '0',
+        ),
       ),
       'display' => array(),
     ),

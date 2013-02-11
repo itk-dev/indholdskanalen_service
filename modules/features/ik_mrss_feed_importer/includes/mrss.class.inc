@@ -111,10 +111,6 @@ class MediaRSSParser extends FeedsParser {
         'name' => t('Feed node: Layout'),
         'description' => t('The feed node Layout value.'),
       ),
-      'parent:design:textcolor' => array(
-        'name' => t('Feed node: Text Color'),
-        'description' => t('The feed node text color value.'),
-      ),
       'parent:design:color' => array(
         'name' => t('Feed node: Color'),
         'description' => t('The feed node color value.'),
@@ -159,17 +155,10 @@ class MediaRSSParser extends FeedsParser {
         }
         break;
 
-      case 'parent:design:textcolor':
-        if ($source->feed_nid && $node) {
-          $value = field_get_items('node', $node, 'field_ik_slide_text_color');
-          return $value[0]['jquery_colorpicker'];
-        }
-        break;
-
       case 'parent:design:color':
         if ($source->feed_nid && $node) {
-          $value = field_get_items('node', $node, 'field_ik_slide_color');
-          return $value[0]['jquery_colorpicker'];
+          $value = field_get_items('node', $node, 'field_ik_slide_color_theme');
+          return $value[0]['value'];
         }
         break;
 
