@@ -14,6 +14,7 @@ dependencies[] = field_group
 dependencies[] = file_entity
 dependencies[] = itkore_taxonomies
 dependencies[] = jquery_colorpicker
+dependencies[] = maxlength
 dependencies[] = media
 dependencies[] = media_browser_plus
 dependencies[] = mediafield
