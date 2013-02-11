@@ -2,21 +2,21 @@
  * Base stylesheet collecting all files
  */
 
-@include font-face("OswaldLight", font-files("oswald/Oswald-Light-webfont.woff",
-   "oswald/Oswald-Light-webfont.ttf", "oswald/Oswald-Light-webfont.svg#OswaldLight"),
-   "oswald/Oswald-Light-webfont.eot", 'normal', 'normal');
+@include font-face("AllerBold", font-files("aller/aller_bd-webfont.woff",
+   "aller/aller_bd-webfont.ttf", "aller/aller_bd-webfont.svg#allerbold"),
+   "aller/aller_bd-webfont.eot", 'normal', 'normal');
 
-@include font-face("OswaldBook", font-files("oswald/Oswald-Regular-webfont.woff",
-   "oswald/Oswald-Regular-webfont.ttf", "oswald/Oswald-Regular-webfont.svg#OswaldBook"),
-   "oswald/Oswald-Regular-webfont.eot", 'normal', 'normal');
+@include font-face("AllerBoldItalic", font-files("aller/aller_bdit-webfont.woff",
+   "aller_bdit-webfont.ttf", "aller_bdit-webfont.svg#allerbold_italic"),
+   "aller_bdit-webfont.eot", 'normal', 'normal');
 
-@include font-face("OswaldBold", font-files("oswald/Oswald-Bold-webfont.woff",
-   "oswald/Oswald-Bold-webfont.ttf", "oswald/Oswald-Bold-webfont.svg#OswaldBold"),
-   "oswald/Oswald-Bold-webfont.eot", 'normal', 'normal');
+@include font-face("AllerItalic", font-files("aller/aller_it-webfont.woff",
+   "aller/aller_it-webfont.ttf", "aller/aller_it-webfont.svg#alleritalic"),
+   "aller/aller_it-webfont.eot", 'normal', 'normal');
 
-@include font-face("OswaldStencilRegular", font-files("oswald/Oswald-Stencil-webfont.woff",
-   "oswald/Oswald-Stencil-webfont.ttf", "oswald/Oswald-Stencil-webfont.svg#OswaldStencilRegular"),
-   "oswald/Oswald-Stencil-webfont.eot", 'normal', 'normal');
+@include font-face("Aller", font-files("aller/aller_rg-webfont.woff",
+   "aller/aller_rg-webfont.ttf", "aller/aller_rg-webfont.svg#allerregular"),
+   "aller/aller_rg-webfont.eot", 'normal', 'normal');
 
 html,
 body {
@@ -42,12 +42,22 @@ p {
 
 strong,
 b {
-  font-style: bold;
+  font-family: "AllerBold", $font-family;
+
+  em,
+  i {
+    font-family: "AllerBoldItalic", $font-family;
+  }
 }
 
 em,
 i {
-  font-style: italic;
+  font-family: "AllerItalic", $font-family;
+
+  strong,
+  b {
+    font-family: "AllerBoldItalic", $font-family;
+  }
 }
 
 h1 {
