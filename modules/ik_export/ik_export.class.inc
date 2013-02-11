@@ -129,7 +129,7 @@ class IKMRSSExport {
     
     $file = file_load($fid);
     $info = image_get_info($file->uri);
-    $media->setAttribute('type', $info['mine_type']);
+    $media->setAttribute('type', $info['mime_type']);
     $media->setAttribute('height', $style['effects'][1]['data']['height']);
     $media->setAttribute('width', $style['effects'][1]['data']['width']);
     $media->setAttribute('medium', 'image');
