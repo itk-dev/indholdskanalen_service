@@ -178,38 +178,51 @@ function ik_slides_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-slide-field_ik_slide_color'.
-  $fields['node-slide-field_ik_slide_color'] = array(
+  // Exported field: 'node-slide-field_ik_slide_color_theme'.
+  $fields['node-slide-field_ik_slide_color_theme'] = array(
     'field_config' => array(
       'active' => '1',
       'cardinality' => '1',
       'deleted' => '0',
       'entity_types' => array(),
-      'field_name' => 'field_ik_slide_color',
+      'field_name' => 'field_ik_slide_color_theme',
       'foreign keys' => array(),
-      'indexes' => array(),
+      'indexes' => array(
+        'value' => array(
+          0 => 'value',
+        ),
+      ),
       'locked' => '0',
-      'module' => 'jquery_colorpicker',
-      'settings' => array(),
+      'module' => 'list',
+      'settings' => array(
+        'allowed_values' => array(
+          1 => 'Hvid på grøn',
+          2 => 'Hvid på blå',
+          3 => 'Hvid på bordeaux',
+          4 => 'Hvid på grå',
+          5 => 'Sort på orange',
+        ),
+        'allowed_values_function' => '',
+      ),
       'translatable' => '0',
-      'type' => 'jquery_colorpicker',
+      'type' => 'list_integer',
     ),
     'field_instance' => array(
       'bundle' => 'slide',
       'default_value' => array(
         0 => array(
-          'jquery_colorpicker' => '38ab38',
+          'value' => '1',
         ),
       ),
       'deleted' => '0',
-      'description' => 'Choose the color to use as background on the textbox.',
+      'description' => 'Choose a color scheme for the slide',
       'display' => array(
         'default' => array(
           'label' => 'above',
-          'module' => 'jquery_colorpicker',
+          'module' => 'list',
           'settings' => array(),
-          'type' => 'jquery_colorpicker_color_display',
-          'weight' => 3,
+          'type' => 'list_default',
+          'weight' => 16,
         ),
         'teaser' => array(
           'label' => 'above',
@@ -219,18 +232,20 @@ function ik_slides_field_default_fields() {
         ),
       ),
       'entity_type' => 'node',
-      'field_name' => 'field_ik_slide_color',
-      'label' => 'Textbox color',
+      'field_name' => 'field_ik_slide_color_theme',
+      'label' => 'Color theme',
       'required' => 0,
       'settings' => array(
         'user_register_form' => FALSE,
       ),
       'widget' => array(
-        'active' => 0,
-        'module' => 'jquery_colorpicker',
-        'settings' => array(),
-        'type' => 'jquery_colorpicker',
-        'weight' => '7',
+        'active' => 1,
+        'module' => 'options',
+        'settings' => array(
+          'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
+        ),
+        'type' => 'options_select',
+        'weight' => '15',
       ),
     ),
   );
@@ -534,8 +549,8 @@ function ik_slides_field_default_fields() {
             'public' => 'public',
           ),
           'allowed_types' => array(
-            'audio' => 0,
             0 => 0,
+            'audio' => 0,
             'default' => 0,
             'image' => 'image',
             'video' => 0,
@@ -551,7 +566,7 @@ function ik_slides_field_default_fields() {
           'progress_indicator' => 'throbber',
         ),
         'type' => 'media_generic',
-        'weight' => '9',
+        'weight' => '18',
       ),
     ),
   );
@@ -623,9 +638,9 @@ function ik_slides_field_default_fields() {
           'allowed_types' => array(
             'audio' => 0,
             'default' => 0,
-            0 => 0,
             'image' => 'image',
             'video' => 'video',
+            0 => 0,
           ),
           'browser_plugins' => array(
             'library' => 0,
@@ -865,59 +880,6 @@ function ik_slides_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-slide-field_ik_slide_text_color'.
-  $fields['node-slide-field_ik_slide_text_color'] = array(
-    'field_config' => array(
-      'active' => '1',
-      'cardinality' => '1',
-      'deleted' => '0',
-      'entity_types' => array(),
-      'field_name' => 'field_ik_slide_text_color',
-      'foreign keys' => array(),
-      'indexes' => array(),
-      'locked' => '0',
-      'module' => 'jquery_colorpicker',
-      'settings' => array(),
-      'translatable' => '0',
-      'type' => 'jquery_colorpicker',
-    ),
-    'field_instance' => array(
-      'bundle' => 'slide',
-      'default_value' => NULL,
-      'deleted' => '0',
-      'description' => 'Select the color for the text displayed on the slide.',
-      'display' => array(
-        'default' => array(
-          'label' => 'above',
-          'module' => 'jquery_colorpicker',
-          'settings' => array(),
-          'type' => 'jquery_colorpicker_color_display',
-          'weight' => 4,
-        ),
-        'teaser' => array(
-          'label' => 'above',
-          'settings' => array(),
-          'type' => 'hidden',
-          'weight' => 0,
-        ),
-      ),
-      'entity_type' => 'node',
-      'field_name' => 'field_ik_slide_text_color',
-      'label' => 'Text color',
-      'required' => 0,
-      'settings' => array(
-        'user_register_form' => FALSE,
-      ),
-      'widget' => array(
-        'active' => 0,
-        'module' => 'jquery_colorpicker',
-        'settings' => array(),
-        'type' => 'jquery_colorpicker',
-        'weight' => '8',
-      ),
-    ),
-  );
-
   // Exported field: 'node-slide-field_ik_slide_transition_effect'.
   $fields['node-slide-field_ik_slide_transition_effect'] = array(
     'field_config' => array(
@@ -1075,9 +1037,10 @@ function ik_slides_field_default_fields() {
   // Included for use with string extractors like potx.
   t('Add one more more tags that describe the slide.');
   t('Category');
+  t('Choose a color scheme for the slide');
   t('Choose a main category for the slide');
-  t('Choose the color to use as background on the textbox.');
   t('Choose the layout you wish the slide to use.');
+  t('Color theme');
   t('Department');
   t('Exposure');
   t('Import parent');
@@ -1085,12 +1048,9 @@ function ik_slides_field_default_fields() {
   t('Layout');
   t('Logo');
   t('Media');
-  t('Select the color for the text displayed on the slide.');
   t('Subheading');
   t('Tags');
   t('Text');
-  t('Text color');
-  t('Textbox color');
   t('Tilføj billeder til slide. Billeder skaleres og beskæres automatisk til 1920x1080 pixel (Full HD, 16:9 format). Ønsker du fuld kontrol over hvordan dit billede ser ud anbefales det at uploade billedet i størrelsen 1920x1080 på forhånd.');
   t('Tilføj et logo som indsættes på sliden. Logoet skaleres automatisk til 150 pixel i bredden. Det anbefales at uploade et logo med transparent baggrund, af samme grund tillades jpg filer ikke.');
   t('Transition effect');

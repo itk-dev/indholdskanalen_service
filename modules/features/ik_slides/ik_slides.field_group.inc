@@ -83,6 +83,7 @@ function ik_slides_field_group_info() {
       0 => 'field_ik_slide_color',
       1 => 'field_ik_slide_logo',
       2 => 'field_ik_slide_text_color',
+      3 => 'field_ik_slide_color_theme',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
@@ -138,8 +139,8 @@ function ik_slides_field_group_info() {
     'label' => 'Import',
     'weight' => '5',
     'children' => array(
-      0 => 'field_ik_slide_imported',
-      1 => 'field_ik_slide_import_node',
+      0 => 'field_ik_slide_import_node',
+      1 => 'field_ik_slide_imported',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
