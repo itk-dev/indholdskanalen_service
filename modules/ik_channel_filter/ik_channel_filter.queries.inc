@@ -5,8 +5,7 @@
  */
 
 /**
- *
- * @todo: build cache into this.
+ * Find slide titles and nids for a given filters values.
  *
  * @param mixed $raw_values
  * @return array
@@ -147,6 +146,9 @@ function ik_channel_filter_get_slides($raw_values) {
   return $query->execute()->fetchAll();
 }
 
+/**
+ * Channel filter preview. 
+ */
 function _ik_channel_preview_update() {
   $raw_values = array();
   if (isset($_POST['ik_preview_values'])) {
