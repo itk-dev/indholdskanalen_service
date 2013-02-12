@@ -283,6 +283,7 @@ function ik_frontend_fetch_slide($token, $sid, $json = TRUE) {
     if ($data = field_get_items('node', $entity, 'field_ik_slide_exposure')) {
       $slide->exposure = $data[0]['value'] * 1000;
     }
+
     // Amount of media on slide, used to calculate interval.
     $slide->mediacount = count($slide->media);
 
