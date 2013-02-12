@@ -71,7 +71,7 @@
     .slide-text {
       @include box-sizing(border-box);
       @include rem('font-size', $textbox-font-size);
-      @include rem('line-height', $textbox-font-size * 1.3);
+      @include rem('line-height', $textbox-font-size * 1.4);
       padding: $textbox-padding;
     }
   }

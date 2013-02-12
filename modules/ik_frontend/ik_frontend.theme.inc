@@ -36,7 +36,7 @@ function template_preprocess_ik_frontend(&$vars) {
   $scripts = array(
     'jquery-1.8.3.min.js',
     'pure_min.js',
-    'idle-timer.js',
+    'idle-timer.min.js',
     'ik_frontend.js',
     'skitterslideshow/js/jquery.easing.1.3.js',
     'skitterslideshow/js/jquery.animate-colors-min.js',

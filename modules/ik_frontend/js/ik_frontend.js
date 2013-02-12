@@ -435,12 +435,10 @@ var IK = (function() {
   });
   
   $( document ).on( "idle.idleTimer", function(){
-    document.body.style.cursor = "none";
-    console.log("Inactive user");
+    $("body").css("cursor","none");
   });
   
   $( document ).on( "active.idleTimer", function(){
-    document.body.style.cursor = "default";
-    console.log("Active user");
+    $("body").css("cursor","default");
   });
 })(jQuery);
