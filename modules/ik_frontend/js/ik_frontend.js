@@ -423,3 +423,24 @@ var IK = (function() {
     debug: debug
   };
 })();
+
+// Disable/Enable cursor if user is inactive/active.
+(function($){
+  var timeout = 5000;
+  $( document ).idleTimer( timeout, {
+    startImmediately: false, // starts a timeout as soon as the timer is set up; otherwise it waits for the first event.
+    idle:    false,         // indicates if the user is idle
+    enabled: true,          // indicates if the idle timer is enabled
+    events:  'mousemove keydown DOMMouseScroll mousewheel mousedown touchstart touchmove' // activity is one of these events
+  });
+  
+  $( document ).on( "idle.idleTimer", function(){
+    document.body.style.cursor = "none";
+    console.log("Inactive user");
+  });
+  
+  $( document ).on( "active.idleTimer", function(){
+    document.body.style.cursor = "default";
+    console.log("Active user");
+  });
+})(jQuery);
