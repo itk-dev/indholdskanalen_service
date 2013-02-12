@@ -284,11 +284,12 @@ function ik_dashboard_views_default_views() {
   $handler->display->display_options['use_more'] = TRUE;
   $handler->display->display_options['defaults']['use_more_always'] = FALSE;
   $handler->display->display_options['defaults']['use_more_always'] = FALSE;
-  $handler->display->display_options['use_more_always'] = TRUE;
+  $handler->display->display_options['use_more_always'] = FALSE;
   $handler->display->display_options['defaults']['use_more_text'] = FALSE;
   $handler->display->display_options['use_more_text'] = 'mere';
   $handler->display->display_options['defaults']['link_display'] = FALSE;
-  $handler->display->display_options['link_display'] = 'page_1';
+  $handler->display->display_options['link_display'] = 'custom_url';
+  $handler->display->display_options['link_url'] = 'dashboard/my-content';
   $handler->display->display_options['defaults']['access'] = FALSE;
   $handler->display->display_options['access']['type'] = 'role';
   $handler->display->display_options['access']['role'] = array(
@@ -456,6 +457,7 @@ function ik_dashboard_views_default_views() {
   $handler->display->display_options['filters']['field_ik_slide_imported_value']['value'] = array(
     'imported' => 'imported',
   );
+  $handler->display->display_options['inherit_panels_path'] = '1';
 
   /* Display: My content page */
   $handler = $view->new_display('page', 'My content page', 'page_1');
@@ -565,6 +567,7 @@ function ik_dashboard_views_default_views() {
           'media_rss_slide_import::field_ik_slide_logo' => 'media_rss_slide_import::field_ik_slide_logo',
           'media_rss_slide_import::field_ik_slide_tags' => 'media_rss_slide_import::field_ik_slide_tags',
           'media_rss_slide_import::field_layout' => 'media_rss_slide_import::field_layout',
+          'media_rss_slide_import::field_ik_slide_color_theme' => 'media_rss_slide_import::field_ik_slide_color_theme',
           'slide::field_ik_slide_logo' => 'slide::field_ik_slide_logo',
           'slide::field_ik_slide_category' => 'slide::field_ik_slide_category',
           'slide::field_ik_slide_exposure' => 'slide::field_ik_slide_exposure',
@@ -572,6 +575,7 @@ function ik_dashboard_views_default_views() {
           'slide::field_layout' => 'slide::field_layout',
           'slide::field_ik_og_department_ref' => 'slide::field_ik_og_department_ref',
           'slide::field_ik_slide_transition_effect' => 'slide::field_ik_slide_transition_effect',
+          'slide::field_ik_slide_color_theme' => 'slide::field_ik_slide_color_theme',
         ),
       ),
     ),
@@ -776,11 +780,12 @@ function ik_dashboard_views_default_views() {
   $handler->display->display_options['use_more'] = TRUE;
   $handler->display->display_options['defaults']['use_more_always'] = FALSE;
   $handler->display->display_options['defaults']['use_more_always'] = FALSE;
-  $handler->display->display_options['use_more_always'] = TRUE;
+  $handler->display->display_options['use_more_always'] = FALSE;
   $handler->display->display_options['defaults']['use_more_text'] = FALSE;
   $handler->display->display_options['use_more_text'] = 'mere';
   $handler->display->display_options['defaults']['link_display'] = FALSE;
-  $handler->display->display_options['link_display'] = 'page_2';
+  $handler->display->display_options['link_display'] = 'custom_url';
+  $handler->display->display_options['link_url'] = 'dashboard/slides';
   $handler->display->display_options['defaults']['pager'] = FALSE;
   $handler->display->display_options['pager']['type'] = 'full';
   $handler->display->display_options['pager']['options']['items_per_page'] = '10';
@@ -1256,6 +1261,7 @@ function ik_dashboard_views_default_views() {
           'media_rss_slide_import::field_ik_slide_logo' => 'media_rss_slide_import::field_ik_slide_logo',
           'media_rss_slide_import::field_ik_slide_tags' => 'media_rss_slide_import::field_ik_slide_tags',
           'media_rss_slide_import::field_layout' => 'media_rss_slide_import::field_layout',
+          'media_rss_slide_import::field_ik_slide_color_theme' => 'media_rss_slide_import::field_ik_slide_color_theme',
           'slide::field_ik_slide_logo' => 'slide::field_ik_slide_logo',
           'slide::field_ik_slide_category' => 'slide::field_ik_slide_category',
           'slide::field_ik_slide_exposure' => 'slide::field_ik_slide_exposure',
@@ -1263,6 +1269,7 @@ function ik_dashboard_views_default_views() {
           'slide::field_layout' => 'slide::field_layout',
           'slide::field_ik_og_department_ref' => 'slide::field_ik_og_department_ref',
           'slide::field_ik_slide_transition_effect' => 'slide::field_ik_slide_transition_effect',
+          'slide::field_ik_slide_color_theme' => 'slide::field_ik_slide_color_theme',
         ),
       ),
     ),
@@ -1523,11 +1530,12 @@ function ik_dashboard_views_default_views() {
   $handler->display->display_options['use_more'] = TRUE;
   $handler->display->display_options['defaults']['use_more_always'] = FALSE;
   $handler->display->display_options['defaults']['use_more_always'] = FALSE;
-  $handler->display->display_options['use_more_always'] = TRUE;
+  $handler->display->display_options['use_more_always'] = FALSE;
   $handler->display->display_options['defaults']['use_more_text'] = FALSE;
   $handler->display->display_options['use_more_text'] = 'mere';
   $handler->display->display_options['defaults']['link_display'] = FALSE;
-  $handler->display->display_options['link_display'] = 'page_3';
+  $handler->display->display_options['link_display'] = 'custom_url';
+  $handler->display->display_options['link_url'] = 'dashboard/channels';
   $handler->display->display_options['defaults']['pager'] = FALSE;
   $handler->display->display_options['pager']['type'] = 'full';
   $handler->display->display_options['pager']['options']['items_per_page'] = '10';
@@ -1994,6 +2002,7 @@ function ik_dashboard_views_default_views() {
           'media_rss_slide_import::field_ik_slide_logo' => 'media_rss_slide_import::field_ik_slide_logo',
           'media_rss_slide_import::field_ik_slide_tags' => 'media_rss_slide_import::field_ik_slide_tags',
           'media_rss_slide_import::field_layout' => 'media_rss_slide_import::field_layout',
+          'media_rss_slide_import::field_ik_slide_color_theme' => 'media_rss_slide_import::field_ik_slide_color_theme',
           'slide::field_ik_slide_logo' => 'slide::field_ik_slide_logo',
           'slide::field_ik_slide_category' => 'slide::field_ik_slide_category',
           'slide::field_ik_slide_exposure' => 'slide::field_ik_slide_exposure',
@@ -2001,6 +2010,7 @@ function ik_dashboard_views_default_views() {
           'slide::field_layout' => 'slide::field_layout',
           'slide::field_ik_og_department_ref' => 'slide::field_ik_og_department_ref',
           'slide::field_ik_slide_transition_effect' => 'slide::field_ik_slide_transition_effect',
+          'slide::field_ik_slide_color_theme' => 'slide::field_ik_slide_color_theme',
         ),
       ),
     ),
@@ -2253,11 +2263,12 @@ function ik_dashboard_views_default_views() {
   $handler->display->display_options['use_more'] = TRUE;
   $handler->display->display_options['defaults']['use_more_always'] = FALSE;
   $handler->display->display_options['defaults']['use_more_always'] = FALSE;
-  $handler->display->display_options['use_more_always'] = TRUE;
+  $handler->display->display_options['use_more_always'] = FALSE;
   $handler->display->display_options['defaults']['use_more_text'] = FALSE;
   $handler->display->display_options['use_more_text'] = 'mere';
   $handler->display->display_options['defaults']['link_display'] = FALSE;
-  $handler->display->display_options['link_display'] = 'page_4';
+  $handler->display->display_options['link_display'] = 'custom_url';
+  $handler->display->display_options['link_url'] = 'dashboard/organisations';
   $handler->display->display_options['defaults']['pager'] = FALSE;
   $handler->display->display_options['pager']['type'] = 'full';
   $handler->display->display_options['pager']['options']['items_per_page'] = '6';
@@ -2551,11 +2562,12 @@ function ik_dashboard_views_default_views() {
   $handler->display->display_options['use_more'] = TRUE;
   $handler->display->display_options['defaults']['use_more_always'] = FALSE;
   $handler->display->display_options['defaults']['use_more_always'] = FALSE;
-  $handler->display->display_options['use_more_always'] = TRUE;
+  $handler->display->display_options['use_more_always'] = FALSE;
   $handler->display->display_options['defaults']['use_more_text'] = FALSE;
   $handler->display->display_options['use_more_text'] = 'mere';
   $handler->display->display_options['defaults']['link_display'] = FALSE;
-  $handler->display->display_options['link_display'] = 'page_5';
+  $handler->display->display_options['link_display'] = 'custom_url';
+  $handler->display->display_options['link_url'] = 'dashboard/departments';
   $handler->display->display_options['defaults']['pager'] = FALSE;
   $handler->display->display_options['pager']['type'] = 'full';
   $handler->display->display_options['pager']['options']['items_per_page'] = '6';
@@ -2939,11 +2951,12 @@ function ik_dashboard_views_default_views() {
   $handler->display->display_options['use_more'] = TRUE;
   $handler->display->display_options['defaults']['use_more_always'] = FALSE;
   $handler->display->display_options['defaults']['use_more_always'] = FALSE;
-  $handler->display->display_options['use_more_always'] = TRUE;
+  $handler->display->display_options['use_more_always'] = FALSE;
   $handler->display->display_options['defaults']['use_more_text'] = FALSE;
   $handler->display->display_options['use_more_text'] = 'mere';
   $handler->display->display_options['defaults']['link_display'] = FALSE;
-  $handler->display->display_options['link_display'] = 'page_6';
+  $handler->display->display_options['link_display'] = 'custom_url';
+  $handler->display->display_options['link_url'] = 'dashboard/imported/slides';
   $handler->display->display_options['defaults']['pager'] = FALSE;
   $handler->display->display_options['pager']['type'] = 'full';
   $handler->display->display_options['pager']['options']['items_per_page'] = '10';
@@ -3435,6 +3448,7 @@ function ik_dashboard_views_default_views() {
           'media_rss_slide_import::field_ik_slide_logo' => 'media_rss_slide_import::field_ik_slide_logo',
           'media_rss_slide_import::field_ik_slide_tags' => 'media_rss_slide_import::field_ik_slide_tags',
           'media_rss_slide_import::field_layout' => 'media_rss_slide_import::field_layout',
+          'media_rss_slide_import::field_ik_slide_color_theme' => 'media_rss_slide_import::field_ik_slide_color_theme',
           'slide::field_ik_slide_logo' => 'slide::field_ik_slide_logo',
           'slide::field_ik_slide_category' => 'slide::field_ik_slide_category',
           'slide::field_ik_slide_exposure' => 'slide::field_ik_slide_exposure',
@@ -3442,6 +3456,7 @@ function ik_dashboard_views_default_views() {
           'slide::field_layout' => 'slide::field_layout',
           'slide::field_ik_og_department_ref' => 'slide::field_ik_og_department_ref',
           'slide::field_ik_slide_transition_effect' => 'slide::field_ik_slide_transition_effect',
+          'slide::field_ik_slide_color_theme' => 'slide::field_ik_slide_color_theme',
         ),
       ),
     ),
