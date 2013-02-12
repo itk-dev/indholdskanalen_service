@@ -100,8 +100,9 @@ function ik_favorites_views_default_views() {
   $handler->display->display_options['fields']['field_ik_slide_media']['element_wrapper_type'] = '0';
   $handler->display->display_options['fields']['field_ik_slide_media']['element_default_classes'] = FALSE;
   $handler->display->display_options['fields']['field_ik_slide_media']['click_sort_column'] = 'fid';
+  $handler->display->display_options['fields']['field_ik_slide_media']['type'] = 'media';
   $handler->display->display_options['fields']['field_ik_slide_media']['settings'] = array(
-    'file_view_mode' => 'teaser',
+    'file_view_mode' => 'media_small',
   );
   $handler->display->display_options['fields']['field_ik_slide_media']['delta_limit'] = '1';
   $handler->display->display_options['fields']['field_ik_slide_media']['delta_offset'] = '0';
