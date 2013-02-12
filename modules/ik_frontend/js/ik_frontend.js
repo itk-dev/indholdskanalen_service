@@ -121,7 +121,7 @@ var IK = (function() {
       navigation: false,
       label: false,
       stop_over: false,
-      interval: ((self.get('exposure') / self.get('media').length) - 600),
+      interval: ((self.get('exposure') / self.get('mediacount')) - 600),
       structure: '<div class="container_skitter">'
                   + '<div class="image">'
                     + '<a href=""><img class="image_main" /></a>'
