@@ -1,6 +1,184 @@
 /*
 * Variables for use in stylesheets
 */
+/*
+* Neat mixins
+*/
+/* line 24, ../sass/_ik.buttons.scss */
+.button, .more-link a,
+a.button, input.form-submit, .ik-channel-filter-add-button.button, .more-link a.ik-channel-filter-add-button, .button.start, .more-link a.start, input.form-submit#edit-submit, input.form-submit#edit-delete, .ik-channel-filter-remove.button, .more-link a.ik-channel-filter-remove, input.form-submit#edit-preview {
+  font-size: 14px;
+  font-size: 0.875rem;
+  -webkit-border-radius: 8px;
+  -moz-border-radius: 8px;
+  -ms-border-radius: 8px;
+  -o-border-radius: 8px;
+  border-radius: 8px;
+  display: inline-block;
+  padding: 8px 14px;
+  position: relative;
+  box-shadow: 0 0 1px #595959 inset;
+  cursor: pointer;
+  text-align: center;
+  vertical-align: middle; }
+  /* line 39, ../sass/_ik.buttons.scss */
+  .button:focus, .more-link a:focus, input.form-submit:focus, .more-link a.ik-channel-filter-add-button:focus, .more-link a.start:focus, input.form-submit#edit-submit:focus, input.form-submit#edit-delete:focus, .more-link a.ik-channel-filter-remove:focus, input.form-submit#edit-preview:focus, .button:hover, .more-link a:hover, input.form-submit:hover, .more-link a.ik-channel-filter-add-button:hover, .more-link a.start:hover, input.form-submit#edit-submit:hover, input.form-submit#edit-delete:hover, .more-link a.ik-channel-filter-remove:hover, input.form-submit#edit-preview:hover, .button:active, .more-link a:active, input.form-submit:active, .more-link a.ik-channel-filter-add-button:active, .more-link a.start:active, input.form-submit#edit-submit:active, input.form-submit#edit-delete:active, .more-link a.ik-channel-filter-remove:active, input.form-submit#edit-preview:active {
+    text-decoration: none; }
+  /* line 45, ../sass/_ik.buttons.scss */
+  .disabled.button, .more-link a.disabled, input.disabled.form-submit, .more-link a.disabled.ik-channel-filter-add-button, .more-link a.disabled.start, input.disabled.form-submit#edit-submit, input.disabled.form-submit#edit-delete, .more-link a.disabled.ik-channel-filter-remove, input.disabled.form-submit#edit-preview, [disabled].button, .more-link a[disabled], input[disabled].form-submit, .more-link a[disabled].ik-channel-filter-add-button, .more-link a[disabled].start, input[disabled].form-submit#edit-submit, input[disabled].form-submit#edit-delete, .more-link a[disabled].ik-channel-filter-remove, input[disabled].form-submit#edit-preview {
+    filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=65);
+    opacity: 0.65;
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
+    cursor: default; }
+
+/* line 86, ../sass/_ik.buttons.scss */
+.button, .more-link a,
+a.button,
+.more-link a {
+  background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #8c8c8c), color-stop(100%, #737373));
+  background-image: -webkit-linear-gradient(#8c8c8c, #737373);
+  background-image: -moz-linear-gradient(#8c8c8c, #737373);
+  background-image: -o-linear-gradient(#8c8c8c, #737373);
+  background-image: linear-gradient(#8c8c8c, #737373);
+  background-color: #8c8c8c;
+  border: 0;
+  color: white; }
+  /* line 71, ../sass/_ik.buttons.scss */
+  .button:focus, .more-link a:focus, .button:hover, .more-link a:hover, .button:active, .more-link a:active,
+  a.button:focus,
+  .more-link a:focus,
+  a.button:hover,
+  .more-link a:hover,
+  a.button:active,
+  .more-link a:active {
+    background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #808080), color-stop(100%, #666666));
+    background-image: -webkit-linear-gradient(#808080, #666666);
+    background-image: -moz-linear-gradient(#808080, #666666);
+    background-image: -o-linear-gradient(#808080, #666666);
+    background-image: linear-gradient(#808080, #666666);
+    background-color: #737373;
+    color: white; }
+  /* line 79, ../sass/_ik.buttons.scss */
+  .button:link, .more-link a:link, .button:visited, .more-link a:visited,
+  a.button:link,
+  .more-link a:link,
+  a.button:visited,
+  .more-link a:visited {
+    color: white; }
+
+/* line 91, ../sass/_ik.buttons.scss */
+input.form-submit, .ik-channel-filter-add-button.button, .more-link a.ik-channel-filter-add-button {
+  background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #595959), color-stop(100%, #1a1a1a));
+  background-image: -webkit-linear-gradient(#595959, #1a1a1a);
+  background-image: -moz-linear-gradient(#595959, #1a1a1a);
+  background-image: -o-linear-gradient(#595959, #1a1a1a);
+  background-image: linear-gradient(#595959, #1a1a1a);
+  background-color: #595959;
+  border: 0;
+  color: white; }
+  /* line 71, ../sass/_ik.buttons.scss */
+  input.form-submit:focus, .ik-channel-filter-add-button.button:focus, .more-link a.ik-channel-filter-add-button:focus, input.form-submit:hover, .ik-channel-filter-add-button.button:hover, .more-link a.ik-channel-filter-add-button:hover, input.form-submit:active, .ik-channel-filter-add-button.button:active, .more-link a.ik-channel-filter-add-button:active {
+    background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #4d4d4d), color-stop(100%, #0d0d0d));
+    background-image: -webkit-linear-gradient(#4d4d4d, #0d0d0d);
+    background-image: -moz-linear-gradient(#4d4d4d, #0d0d0d);
+    background-image: -o-linear-gradient(#4d4d4d, #0d0d0d);
+    background-image: linear-gradient(#4d4d4d, #0d0d0d);
+    background-color: #1a1a1a;
+    color: white; }
+  /* line 79, ../sass/_ik.buttons.scss */
+  input.form-submit:link, .ik-channel-filter-add-button.button:link, .more-link a.ik-channel-filter-add-button:link, input.form-submit:visited, .ik-channel-filter-add-button.button:visited, .more-link a.ik-channel-filter-add-button:visited {
+    color: white; }
+
+/* line 101, ../sass/_ik.buttons.scss */
+.button.start, .more-link a.start, input.form-submit#edit-submit {
+  background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #59a414), color-stop(100%, #34600c));
+  background-image: -webkit-linear-gradient(#59a414, #34600c);
+  background-image: -moz-linear-gradient(#59a414, #34600c);
+  background-image: -o-linear-gradient(#59a414, #34600c);
+  background-image: linear-gradient(#59a414, #34600c);
+  background-color: #59a414;
+  border: 0;
+  color: white; }
+  /* line 71, ../sass/_ik.buttons.scss */
+  .button.start:focus, .more-link a.start:focus, input.form-submit#edit-submit:focus, .button.start:hover, .more-link a.start:hover, input.form-submit#edit-submit:hover, .button.start:active, .more-link a.start:active, input.form-submit#edit-submit:active {
+    background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #4d8d11), color-stop(100%, #284909));
+    background-image: -webkit-linear-gradient(#4d8d11, #284909);
+    background-image: -moz-linear-gradient(#4d8d11, #284909);
+    background-image: -o-linear-gradient(#4d8d11, #284909);
+    background-image: linear-gradient(#4d8d11, #284909);
+    background-color: #34600c;
+    color: white; }
+  /* line 79, ../sass/_ik.buttons.scss */
+  .button.start:link, .more-link a.start:link, input.form-submit#edit-submit:link, .button.start:visited, .more-link a.start:visited, input.form-submit#edit-submit:visited {
+    color: white; }
+
+/* line 106, ../sass/_ik.buttons.scss */
+input.form-submit#edit-delete, .ik-channel-filter-remove.button, .more-link a.ik-channel-filter-remove {
+  background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #c30511), color-stop(100%, #78030a));
+  background-image: -webkit-linear-gradient(#c30511, #78030a);
+  background-image: -moz-linear-gradient(#c30511, #78030a);
+  background-image: -o-linear-gradient(#c30511, #78030a);
+  background-image: linear-gradient(#c30511, #78030a);
+  background-color: #c30511;
+  border: 0;
+  color: white; }
+  /* line 71, ../sass/_ik.buttons.scss */
+  input.form-submit#edit-delete:focus, .ik-channel-filter-remove.button:focus, .more-link a.ik-channel-filter-remove:focus, input.form-submit#edit-delete:hover, .ik-channel-filter-remove.button:hover, .more-link a.ik-channel-filter-remove:hover, input.form-submit#edit-delete:active, .ik-channel-filter-remove.button:active, .more-link a.ik-channel-filter-remove:active {
+    background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #aa040f), color-stop(100%, #600208));
+    background-image: -webkit-linear-gradient(#aa040f, #600208);
+    background-image: -moz-linear-gradient(#aa040f, #600208);
+    background-image: -o-linear-gradient(#aa040f, #600208);
+    background-image: linear-gradient(#aa040f, #600208);
+    background-color: #78030a;
+    color: white; }
+  /* line 79, ../sass/_ik.buttons.scss */
+  input.form-submit#edit-delete:link, .ik-channel-filter-remove.button:link, .more-link a.ik-channel-filter-remove:link, input.form-submit#edit-delete:visited, .ik-channel-filter-remove.button:visited, .more-link a.ik-channel-filter-remove:visited {
+    color: white; }
+
+/* line 111, ../sass/_ik.buttons.scss */
+input.form-submit#edit-preview {
+  background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #f55d04), color-stop(100%, #aa4003));
+  background-image: -webkit-linear-gradient(#f55d04, #aa4003);
+  background-image: -moz-linear-gradient(#f55d04, #aa4003);
+  background-image: -o-linear-gradient(#f55d04, #aa4003);
+  background-image: linear-gradient(#f55d04, #aa4003);
+  background-color: #f55d04;
+  border: 0;
+  color: white; }
+  /* line 71, ../sass/_ik.buttons.scss */
+  input.form-submit#edit-preview:focus, input.form-submit#edit-preview:hover, input.form-submit#edit-preview:active {
+    background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #dc5304), color-stop(100%, #913702));
+    background-image: -webkit-linear-gradient(#dc5304, #913702);
+    background-image: -moz-linear-gradient(#dc5304, #913702);
+    background-image: -o-linear-gradient(#dc5304, #913702);
+    background-image: linear-gradient(#dc5304, #913702);
+    background-color: #aa4003;
+    color: white; }
+  /* line 79, ../sass/_ik.buttons.scss */
+  input.form-submit#edit-preview:link, input.form-submit#edit-preview:visited {
+    color: white; }
+
+/* line 129, ../sass/_ik.buttons.scss */
+input[type=submit].button,
+button.button {
+  -webkit-appearance: none; }
+
+@-moz-document url-prefix() {
+  /* line 140, ../sass/_ik.buttons.scss */
+  button::-moz-focus-inner,
+  input[type="reset"]::-moz-focus-inner,
+  input[type="button"]::-moz-focus-inner,
+  input[type="submit"]::-moz-focus-inner,
+  input[type="file"] > input[type="button"]::-moz-focus-inner {
+    border: none;
+    padding: 0; } }
+
+/* line 7, ../sass/_ik.views.scss */
+.view-ik-favorites .more-link {
+  clear: both; }
+
 /* line 5, ../sass/_ik.base.scss */
 html,
 body,
@@ -19,6 +197,26 @@ body {
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box; }
+
+/* line 59, ../sass/_ik.base.scss */
+.media-widget .button, .media-widget .more-link a, .more-link .media-widget a {
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  -ms-border-radius: 4px;
+  -o-border-radius: 4px;
+  border-radius: 4px;
+  padding: 2px 4px;
+  font-size: 10.76923px; }
+
+/* line 73, ../sass/_ik.base.scss */
+.ik-channel-filter-remove.button, .more-link a.ik-channel-filter-remove {
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  -ms-border-radius: 4px;
+  -o-border-radius: 4px;
+  border-radius: 4px;
+  padding: 2px 4px;
+  font-size: 10.76923px; }
 
 /* line 1, ../sass/_ik.legacy.scss */
 #page {
@@ -160,22 +358,18 @@ li.views-fluid-grid-item {
 .views-exposed-form .views-exposed-widget .description {
   display: none; }
 
-/* line 131, ../sass/_ik.legacy.scss */
-.more-link {
-  clear: both; }
-
 /* Action links menu */
-/* line 137, ../sass/_ik.legacy.scss */
+/* line 132, ../sass/_ik.legacy.scss */
 .action-link-item {
   position: relative;
   clear: both;
   padding-top: 1em; }
 
-/* line 143, ../sass/_ik.legacy.scss */
+/* line 138, ../sass/_ik.legacy.scss */
 .action-container {
   display: none; }
 
-/* line 146, ../sass/_ik.legacy.scss */
+/* line 141, ../sass/_ik.legacy.scss */
 .action-link-item:hover > .action-container {
   display: block;
   position: absolute;
@@ -183,18 +377,18 @@ li.views-fluid-grid-item {
   right: 0;
   z-index: 10; }
 
-/* line 154, ../sass/_ik.legacy.scss */
+/* line 149, ../sass/_ik.legacy.scss */
 .action-links {
   background-color: #eaeaea;
   padding: 5px; }
 
-/* line 158, ../sass/_ik.legacy.scss */
+/* line 153, ../sass/_ik.legacy.scss */
 .action-links ul {
   margin: 0;
   padding: 0;
   list-style: none; }
 
-/* line 164, ../sass/_ik.legacy.scss */
+/* line 159, ../sass/_ik.legacy.scss */
 .action-link-item img {
   float: left;
   margin-right: 5px;
@@ -202,24 +396,24 @@ li.views-fluid-grid-item {
   height: auto; }
 
 /* Slide node form */
-/* line 173, ../sass/_ik.legacy.scss */
+/* line 168, ../sass/_ik.legacy.scss */
 #slide-node-form .form-type-radio {
   float: left;
   margin-right: 10px; }
 
-/* line 177, ../sass/_ik.legacy.scss */
+/* line 172, ../sass/_ik.legacy.scss */
 #slide-node-form .description {
   clear: both; }
 
-/* line 180, ../sass/_ik.legacy.scss */
+/* line 175, ../sass/_ik.legacy.scss */
 #slide-node-form .field-name-field-ik-slide-logo .media-item {
   background-color: #999; }
 
-/* line 184, ../sass/_ik.legacy.scss */
+/* line 179, ../sass/_ik.legacy.scss */
 .panel-pane.hidden {
   display: none; }
 
 /* Media upload form */
-/* line 189, ../sass/_ik.legacy.scss */
+/* line 184, ../sass/_ik.legacy.scss */
 #media-tab-upload .form-item-field-folder {
   display: none; }

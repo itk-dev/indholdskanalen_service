@@ -16,3 +16,72 @@ body > #container {
 body {
   @include box-sizing('border-box');
 }
+
+// -----------------------------------------------------------------------------
+// General styling
+// -----------------------------------------------------------------------------
+//
+
+.more-link {
+  a {
+    @extend .button;
+  } 
+}
+
+.button {
+  &.start {
+    @extend %button-green;
+  }
+}
+
+input.form-submit {
+  @extend %button-gray;
+
+  &#edit-submit {
+    @extend %button-green;
+  }
+
+  &#edit-preview {
+    @extend %button-orange;
+  }
+
+  &#edit-delete {
+    @extend %button-red;
+  }
+}
+
+// -----------------------------------------------------------------------------
+// Media module
+// -----------------------------------------------------------------------------
+//
+
+.media-widget {
+  .button {
+    @include border-radius(4px);
+    
+    padding: 2px 4px;
+    font-size: $theme-font-size / 1.3;
+  }
+}
+
+// -----------------------------------------------------------------------------
+// Channel node view and edit
+// -----------------------------------------------------------------------------
+//
+
+.ik-channel-filter-remove {
+  &.button {
+    @extend %button-red;
+    @include border-radius(4px);
+    
+    padding: 2px 4px;
+    font-size: $theme-font-size / 1.3;
+  }
+}
+
+.ik-channel-filter-add-button {
+  &.button {
+    @extend %button-gray;
+  }
+}
+
