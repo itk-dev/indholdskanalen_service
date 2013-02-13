@@ -126,10 +126,10 @@ function phantomjs_test_submit($form, $form_state) {
   $url = $form_state['values']['phantomjs_test']['url'];
   $file = 'test' . $form_state['values']['phantomjs_test']['format'];
   $dest = file_default_scheme() . '://' . variable_get('phantomjs_dest', 'phantomjs');
-
+  
   // Get the screenshot and create success/error message.
   $output = '<div class="messages status"><ul><li>' . t('File have been generated. You can get it !url', array('!url' => l(t('here'), file_create_url($dest . '/' . $file)))) . '</ul></li></div>';
-  if (!phantomjs_capture_screen($url, $file)) {
+  if (!phantomjs_capture_screen($url, $dest, $file)) {
     $output = '<div class="messages error"><ul><li>' . t('The address entered could not be retrieved') . '</ul></li></div>';
   }
 
@@ -220,7 +220,19 @@ function _phantomjs_get_binray() {
   return $binary;
 }
 
-function phantomjs_capture_screen($url, $filename) {
+/**
+ * Captures a screenshot using PhantomJS by calling the program.
+ * 
+ * @param string $url
+ *  The ULR/http(s) to render the screenshot from.
+ * @param type $dest
+ *  The destionation for the rendered file (e.g. public://fecth_images).
+ * @param type $filename
+ *  The filename to store the file as in the destination.
+ * @return boolean 
+ *  Returns TRUE if the screenshot was taken else FALSE on error.
+ */
+function phantomjs_capture_screen($url, $dest, $filename) {
   // Get PhantomJS binary.
   $binary = _phantomjs_get_binray();
   if (!$binary) {
@@ -228,12 +240,12 @@ function phantomjs_capture_screen($url, $filename) {
     return FALSE;
   }
 
-  // Check that destination can be created.
-  $dest = file_default_scheme() . '://' . variable_get('phantomjs_dest', 'phantomjs');
-  if (!file_prepare_directory($dest, FILE_CREATE_DIRECTORY)) {
+  // Check that destination is writeable.
+  if (!file_prepare_directory($dest, FILE_CREATE_DIRECTORY)) {    
     drupal_set_message(t('The PhantomJS destination path (@dest) was not writeable or could not be created.', array(
       '@dest' => $dest,
     )));
+    return FALSE;
   }
 
   // Get absolute path to PhantomJS script and the destionation file.
