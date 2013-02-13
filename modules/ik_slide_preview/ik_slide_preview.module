@@ -235,14 +235,22 @@ function ik_slide_preview_field_formatter_settings_summary($field, $instance, $v
  */
 function ik_slide_preview_field_formatter_view($entity_type, $entity, $field, $instance, $langcode, $items, $display) {
   $element = array();
-
-  // Try to get screenshot uri.
-
+  
+  // Build urls and destionation.
+  $url = url('slide/' . $entity->nid . '/preview', array('absolute' => TRUE));
+  $file = md5($entity->nid) . '.png';
+  $dest = $field['settings']['uri_scheme'] . '://' . $instance['settings']['file_directory'];
+  
+  // Get the screenshot and create success/error message.
+  //$output = '<div class="messages status"><ul><li>' . t('File have been generated. You can get it !url', array('!url' => l(t('here'), file_create_url($dest . '/' . $file)))) . '</ul></li></div>';
+  if (!phantomjs_capture_screen($url, $dest, $file)) {
+    //$output = '<div class="messages error"><ul><li>' . t('The address entered could not be retrieved') . '</ul></li></div>';
+  }
 
   $element = array(
     '#theme' => 'image_formatter',
     '#item' => array(
-      'uri' => $uri,
+      'uri' => $dest . '/' . $file,
     ),
     '#image_style' => $display['settings']['image_style'],
     '#path' => isset($uri) ? $uri : '',
