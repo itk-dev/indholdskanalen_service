@@ -154,6 +154,7 @@
 
   .text-wrapper {
     top: 0;
+    width: 100%;
   }
 
   .text-container {
@@ -199,6 +200,7 @@
 
   .text-wrapper {
     bottom: 0;
+    width: 100%;
   }
 
   .text-container {
@@ -273,6 +275,28 @@
 
 /*
 * Layout 5
+* Image only
+*
+* ---------------------------
+* |                         |
+* |                         |
+* |                         |
+* |                         |
+* |                         |
+* |                         |
+* |                         |
+* ---------------------------
+*
+*/
+
+.layout-5 {
+  .text-wrapper {
+    display: none;
+  }
+}
+
+/*
+* Layout 6
 *
 * ---------------------------
 * |                         |
@@ -286,7 +310,7 @@
 *
 */
 
-.layout-5 {
+.layout-6 {
   .image-container {
     display: none;
   }
@@ -307,28 +331,6 @@
 
   .divider {
     display:none;
-  }
-}
-
-/*
-* Layout 6
-* Image only
-*
-* ---------------------------
-* |                         |
-* |                         |
-* |                         |
-* |                         |
-* |                         |
-* |                         |
-* |                         |
-* ---------------------------
-*
-*/
-
-.layout-6 {
-  .text-wrapper {
-    display: none;
   }
 }
 
