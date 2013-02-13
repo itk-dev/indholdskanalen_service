@@ -1,0 +1,18 @@
+// _ik.base.scss
+
+html,
+body,
+#container {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+body > #container {
+  height: auto;
+  min-height: 100%;
+}
+
+body {
+  @include box-sizing('border-box');
+}
