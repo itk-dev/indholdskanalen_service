@@ -35,7 +35,13 @@ function phantomjs_menu() {
 function phantomjs_admin_form() {
   $form = array();
   
-  $form['phantomjs_binary'] = array(
+  $form['pahntomjs_settings'] = array(
+    '#type' => 'fieldset',
+    '#title' => t('PhantomJS settings'),
+    '#colapsible' => FALSE,
+  );
+  
+  $form['pahntomjs_settings']['phantomjs_binary'] = array(
     '#type' => 'textfield',
     '#required' => TRUE,
     '#title' => t('Path to phantomJS'),
@@ -45,7 +51,7 @@ function phantomjs_admin_form() {
     '#default_value' => variable_get('phantomjs_binary', phantomjs_get_binray()),
   );
   
-  $form['phantomjs_dest'] = array(
+  $form['pahntomjs_settings']['phantomjs_dest'] = array(
     '#type' => 'textfield',
     '#required' => TRUE,
     '#title' => t('Default destination'),
@@ -53,8 +59,65 @@ function phantomjs_admin_form() {
     '#default_value' => variable_get('phantomjs_dest', 'phantomjs'),
   );
   
+  $form['pahntomjs_settings']['phantomjs_script'] = array(
+    '#type' => 'textfield',
+    '#required' => TRUE,
+    '#title' => t('PhantomJS capture script'),
+    '#description' => t('The script used by PhantomJS to capture the screen.'),
+    '#default_value' => variable_get('phantomjs_script', drupal_get_path('module', 'phantomjs') . '/js/phantomjs_capture.js'),
+  );
+  
+  $form['pahntomjs_test'] = array(
+    '#type' => 'fieldset',
+    '#title' => t('PhantomJS test'),
+    '#description' => t('You can use the form in this section to test your installation of PhantomJS..'),
+    '#colapsible' => FALSE,
+    '#tree' => TRUE,
+  );
+  
+  $form['pahntomjs_test']['url'] = array(
+    '#type' => 'textfield',
+    '#title' => t('URL'),
+    '#description' => t('Absolute URL to page to capture.'),
+    '#default_value' => 'http://www.google.com',
+  );
+  
+  $form['pahntomjs_test']['format'] = array(
+    '#type' => 'select',
+    '#title' => 'File format',
+    '#options' => array('png', 'jpg', 'pdf'),
+  );
+  
+  $form['pahntomjs_test']['result'] = array(
+    '#prefix' => '<div id="phantomjs-test-result">',
+    '#suffix' => '</div>',
+    '#markup' => '',
+  );
+      
+  $form['pahntomjs_test']['button'] = array(
+    '#type' => 'button',
+    '#value' => t('Capture'),
+    "#ajax" => array(
+      "callback" => "phantomjs_test_submit",
+      "wrapper" => "phantomjs-test-result",
+      "method" => 'replace',
+      "effect" => "fade"
+    )
+  );
+  
+  
   return system_settings_form($form);
 }
+
+function phantomjs_test_submit($form, $form_state) {  
+  return array(
+   'pahntomjs_test' => array(
+     'result' => array(
+       '#markup' => '<p>file link</p>',
+     )
+   ),
+  );
+} 
 
 /**
  * Validation of the administration form. It tests that the locations given
@@ -67,7 +130,7 @@ function phantomjs_admin_form() {
 function phantomjs_admin_form_validate(&$form, &$form_state) {
   // Check that phantomjs exists.
   if (!file_exists($form_state['values']['phantomjs_binary'])) {
-    form_set_error('phantomjs_binary', t('PhantomJS was not found at that location.'));
+    form_set_error('phantomjs_binary', t('PhantomJS was not found at the location given.'));
   }
   else {
     drupal_set_message(t('PhantomJS version @version found.', array('@version' => phantomjs_get_version($form_state['values']['phantomjs_binary']))));
@@ -78,6 +141,14 @@ function phantomjs_admin_form_validate(&$form, &$form_state) {
   if (!file_prepare_directory($dest, FILE_CREATE_DIRECTORY)) {
     form_set_error('phantomjs_dest', t('The path was not writeable or could not be created.'));
   }
+  
+  // Check that capture script exists.
+  if (!file_exists($form_state['values']['phantomjs_script'])) {
+    form_set_error('phantomjs_script', t('PhantomJS script was not found at the location given.'));
+  }
+    
+  // Remove test form.
+  unset($form_state['values']['pahntomjs_test']);
 }
 
 /**
