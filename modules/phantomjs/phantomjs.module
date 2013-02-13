@@ -1,0 +1,126 @@
+<?php
+/**
+ * @file
+ * Defines the administration interface and utility functions to use PhantomJS
+ * and test screenshot capture functions. 
+ */
+
+
+// @todo: hook_help.
+
+/**
+ * Implements hook_menu().
+ */
+function phantomjs_menu() {
+  $items = array();
+  
+  $items['admin/config/user-interface/phantomjs'] = array(
+    'title' => 'PhantomJS',
+    'description' => 'Screen capture with PhantomJS',
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('phantomjs_admin_form'),
+    'access arguments' => array('adminstre site'),
+  );
+  
+  return $items;
+}
+
+/**
+ * The administration form that allows site admins to enter information about
+ * the systems installation of PhantomJS.
+ * 
+ * @return array $form
+ *  Drupal form array witht the administration form.
+ */
+function phantomjs_admin_form() {
+  $form = array();
+  
+  $form['phantomjs_binary'] = array(
+    '#type' => 'textfield',
+    '#required' => TRUE,
+    '#title' => t('Path to phantomJS'),
+    '#description' => t('This module requries that you install PhantomJS on your server and enter the path to the executable. The program is not include in the module due to linces and operation system constrains. See !url for information about download.', array(
+      '!url' => l('PhantomJs.org','http://phantomjs.org/'),
+    )),
+    '#default_value' => variable_get('phantomjs_binary', phantomjs_get_binray()),
+  );
+  
+  $form['phantomjs_dest'] = array(
+    '#type' => 'textfield',
+    '#required' => TRUE,
+    '#title' => t('Default destination'),
+    '#description' => t('The default destination for screenshots captures with PhantomJS'),
+    '#default_value' => variable_get('phantomjs_dest', 'phantomjs'),
+  );
+  
+  return system_settings_form($form);
+}
+
+/**
+ * Validation of the administration form. It tests that the locations given
+ * exists and that the PhantomJS binary is executable (by getting its version
+ * number).
+ * 
+ * @param type $form
+ * @param type $form_state 
+ */
+function phantomjs_admin_form_validate(&$form, &$form_state) {
+  // Check that phantomjs exists.
+  if (!file_exists($form_state['values']['phantomjs_binary'])) {
+    form_set_error('phantomjs_binary', t('PhantomJS was not found at that location.'));
+  }
+  else {
+    drupal_set_message(t('PhantomJS version @version found.', array('@version' => phantomjs_get_version($form_state['values']['phantomjs_binary']))));
+  }
+  
+  // Check that destination can be created.
+  $dest = file_default_scheme() . '://' . $form_state['values']['phantomjs_dest'];
+  if (!file_prepare_directory($dest, FILE_CREATE_DIRECTORY)) {
+    form_set_error('phantomjs_dest', t('The path was not writeable or could not be created.'));
+  }
+}
+
+/**
+ * Returns the version number of the currently install PhantomJS.
+ * 
+ * @param string $binary
+ *  Optional absolute path with the PhantomJS binary. If not given the default
+ *  location is used.
+ * @return string|boolean 
+ *  If PhantomJS is found and executeable the version number is returned else
+ *  FALSE is returned.
+ */
+function phantomjs_get_version($binary = NULL) {
+  // If the binary is not given try the default path.
+  if (is_null($binary)) {
+    $binary = phantomjs_get_binray();
+    if (!$binary) {
+      drupal_set_message(t('PhantomJS binary was not found. Plase intall PhantomJS on the system.'));
+      return FALSE;
+    }
+  }
+  
+  // Execute PhantomJS to get its version, if PhantomJS was found.
+  $output = array();
+  exec($binary . ' -v', $output);
+  return $output[0];
+}
+
+/**
+ * Returns the absolute path with the binray to the installed PhantomJS.
+ * 
+ * @return string|boolean 
+ *  The executable PhantomJS binary or FALSE if not found.
+ */
+function phantomjs_get_binray() {
+  $binary = variable_get('phantomjs_binary', '/usr/local/bin/phantomjs');
+  if (!file_exists($binary)) {    
+    return FALSE;
+  }
+  return $binary;
+}
+
+function phantomjs_capture_screen($url, $dest) {
+  
+}
+
