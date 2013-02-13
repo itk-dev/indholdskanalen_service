@@ -1,9 +1,56 @@
 <?php
+/**
+ * @file
+ * Addes support for previewing slides in the node edit form befor saving a
+ * slide. It also implements a new field that shows an preview of the slide when
+ * displaying the node.
+ */
+
+
+/**
+ * Implements hook_menu().
+ */
+function ik_slide_preview_menu() {
+  $items = array();
+
+  // Callback to show a complete slide rendering as shown in the frontend,
+  // mainly to create screen shoots of slides.
+  $items['slide/%/preview'] = array(
+    'title' => 'Preview single slide',
+    'page callback' => 'ik_slide_preview_page',
+    'page arguments' => array(1),
+    'access arguments' => array('access content'),
+    'type' => MENU_CALLBACK,
+  );
+
+  return $items;
+}
+
+/**
+ * Simple callback the renders a sigle slide.
+ *
+ * @param int $sid
+ *  The node id of the slide to render.
+ */
+function ik_slide_preview_page($sid) {
+  $slide = ik_frontend_fetch_slide(NULL, $sid, FALSE);
+
+  // Return skeleton for slide show (complet HTML page <header><content><footer>
+  // etc.).
+  echo theme('ik_frontend', array(
+    'settings' => array(
+      'content' => $slide,
+      'token' => $token,
+    ),
+    'start' => FALSE,
+  ));
+}
+
 
 /**
  * Implements hook_form_alter().
  *
- *
+ * Change the default node edit preview form button to the new handler.
  */
 function ik_slide_preview_form_slide_node_form_alter(&$form, &$form_state, $form_id) {
   if (isset($form['actions']['preview']['#submit'])) {
@@ -68,6 +115,7 @@ function ik_slide_preview_build_preview($form, &$form_state) {
               width: 507,
               height: '322',
               resize: function(event, ui) {
+                // Reload iframe content.
                 frame.contentWindow.contents = content;
                 frame.src = 'javascript:window[\"contents\"]';
               }
