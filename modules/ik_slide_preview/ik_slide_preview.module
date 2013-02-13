@@ -40,11 +40,223 @@ function ik_slide_preview_page($sid) {
   echo theme('ik_frontend', array(
     'settings' => array(
       'content' => $slide,
-      'token' => $token,
+      'token' => 'Preview',
     ),
     'start' => FALSE,
   ));
 }
+
+/**
+ * Implements hook_field_info().
+ *
+ * Adds a new field that can be used to show image screenshots of the slide its
+ * attached to.
+ */
+function ik_slide_preview_field_info() {
+  return array(
+    'ik_slide_preview' => array(
+      'label' => t('Slide preview'),
+      'description' => t('Previw slide'),
+      'settings' => array(
+        'uri_scheme' => variable_get('file_default_scheme', 'public'),
+        'default_image' => 0,
+      ),
+      'instance_settings' => array(
+        'file_directory' => '',
+      ),
+      'default_widget' => 'ik_slide_preview_widget',
+      'default_formatter' => 'ik_slide_preview_formatter'
+    ),
+  );
+}
+
+/**
+ * Implements hook_field_validate().
+ *
+ */
+function ik_slide_preview_field_validate($entity_type, $entity, $field, $instance, $langcode, $items, &$errors) {
+
+}
+
+/**
+ * Implements hook_field_is_empty().
+ *
+ */
+function ik_slide_preview_field_is_empty($item, $field) {
+  return empty($item['data']);
+}
+
+
+/**
+ * Implements hook_field_widget_info().
+ *
+ */
+function ik_slide_preview_field_widget_info() {
+  return array(
+    'ik_slide_preview_image' => array(
+      'label' => t('Phantom JS image'),
+      'field types' => array('ik_slide_preview'),
+    ),
+  );
+}
+
+
+/**
+ * Implements hook_field_settings_form().
+ *
+ */
+function ik_slide_preview_field_settings_form($field, $instance, $has_data) {
+  $form = array();
+  $defaults = field_info_field_settings($field['type']);
+  $settings = array_merge($defaults, $field['settings']);
+
+  $scheme_options = array();
+  foreach (file_get_stream_wrappers(STREAM_WRAPPERS_WRITE_VISIBLE) as $scheme => $stream_wrapper) {
+    $scheme_options[$scheme] = $stream_wrapper['name'];
+  }
+  $form['uri_scheme'] = array(
+    '#type' => 'radios',
+    '#title' => t('Upload destination'),
+    '#options' => $scheme_options,
+    '#default_value' => $settings['uri_scheme'],
+    '#description' => t('Select where the final files should be stored. Private file storage has significantly more overhead than public files, but allows restricted access to files within this field.'),
+  );
+
+  return $form;
+}
+
+/**
+ * Implements hook_field_instance_settings_form().
+ */
+function ik_slide_preview_field_instance_settings_form($field, $instance) {
+  $settings = $instance['settings'];
+  $form = array();
+
+  $form['file_directory'] = array(
+    '#type' => 'textfield',
+    '#title' => t('File directory'),
+    '#default_value' => $settings['file_directory'],
+    '#description' => t('Optional subdirectory within the upload destination where files will be stored. Do not include preceding or trailing slashes.'),
+    '#element_validate' => array('_file_generic_settings_file_directory_validate'),
+    '#weight' => 3,
+  );
+
+  return $form;
+}
+
+/**
+ * Implements hook_field_widget_form().
+ *
+ * The form that is used to display the widget defined above in the widget info
+ * hook.
+ */
+function ik_slide_preview_field_widget_form(&$form, &$form_state, $field, $instance, $langcode, $items, $delta, $element) {
+  // Simple hidden field on in the edit form.
+  $element += array(
+    '#type' => 'hidden',
+  );
+  return $element;
+}
+
+/**
+ * Implements hook_field_widget_error().
+ *
+ */
+function ik_slide_preview_field_widget_error($element, $error, $form, &$form_state) {
+  // The field does not hold any information, so no need to check for errors.
+}
+
+
+/**
+ * Implements hook_field_formatter_info().
+ *
+ */
+function ik_slide_preview_field_formatter_info() {
+  return array(
+    'ik_slide_preview_formatter' => array(
+      'label' => t('Default'),
+      'field types' => array('ik_slide_preview'),
+      'settings' => array('image_style' => ''),
+    ),
+  );
+}
+
+/**
+ * Implements hook_field_formatter_settings_form().
+ */
+function ik_slide_preview_field_formatter_settings_form($field, $instance, $view_mode, $form, &$form_state) {
+  $display = $instance['display'][$view_mode];
+  $settings = $display['settings'];
+
+  $element = array();
+
+  $image_styles = image_style_options(FALSE);
+  $element['image_style'] = array(
+    '#title' => t('Image style'),
+    '#type' => 'select',
+    '#default_value' => $settings['image_style'],
+    '#empty_option' => t('None (original image)'),
+    '#options' => $image_styles,
+  );
+
+  return $element;
+}
+
+/**
+ * Implements hook_field_formatter_settings_summary().
+ */
+function ik_slide_preview_field_formatter_settings_summary($field, $instance, $view_mode) {
+  $display = $instance['display'][$view_mode];
+  $settings = $display['settings'];
+
+  $summary = array();
+
+  $image_styles = image_style_options(FALSE);
+  // Unset possible 'No defined styles' option.
+  unset($image_styles['']);
+  // Styles could be lost because of enabled/disabled modules that defines
+  // their styles in code.
+  if (isset($image_styles[$settings['image_style']])) {
+    $summary[] = t('Image style: @style', array('@style' => $image_styles[$settings['image_style']]));
+  }
+  else {
+    $summary[] = t('Original image');
+  }
+
+  return implode('<br />', $summary);
+}
+
+
+/**
+ * Implements hook_field_formatter_view().
+ *
+ * Defines different formatters for the slide preview filter used on the channel
+ * node edit and in views.
+ */
+function ik_slide_preview_field_formatter_view($entity_type, $entity, $field, $instance, $langcode, $items, $display) {
+  $element = array();
+
+  // Try to get screenshot uri.
+
+
+  $element = array(
+    '#theme' => 'image_formatter',
+    '#item' => array(
+      'uri' => $uri,
+    ),
+    '#image_style' => $display['settings']['image_style'],
+    '#path' => isset($uri) ? $uri : '',
+  );
+
+
+  return $element;
+}
+
+
+
+
+
+
 
 
 /**
@@ -84,7 +296,7 @@ function ik_slide_preview_build_preview($form, &$form_state) {
     $content = theme('ik_frontend', array(
       'settings' => array(
         'content' => $slide,
-        'token' => 'preview',
+        'token' => 'Preview',
       ),
       'start' => FALSE,
     ));

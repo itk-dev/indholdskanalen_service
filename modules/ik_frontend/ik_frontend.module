@@ -88,7 +88,7 @@ function ik_frontend_node_insert($node) {
   }
   
   /**
-   * @TODO: if slide Clear channel cache.
+   * @TODO: create screenshot. 
    */
 
 }
@@ -117,10 +117,10 @@ function ik_frontend_node_update($node) {
     // Remove node from slids cache.
     cache_clear_all('slide_' . $node->nid, 'cache_ik_frontend');
     
-    /**
-     * @TODO:   Clear channel cache.
-     */
-    
+   /**
+    * @TODO: create screenshot. 
+    */
+
   }
 }
 
