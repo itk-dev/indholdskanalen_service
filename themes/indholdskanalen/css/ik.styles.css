@@ -175,9 +175,44 @@ button.button {
     border: none;
     padding: 0; } }
 
+/* line 23, ../sass/_ik.pagination.scss */
+.pager {
+  padding-left: 0; }
+  /* line 26, ../sass/_ik.pagination.scss */
+  .pager li {
+    display: inline-block;
+    margin-left: -4px;
+    margin-right: 4px; }
+    /* line 32, ../sass/_ik.pagination.scss */
+    .pager li.pager-current,
+    .pager li a {
+      background-color: #efefef;
+      display: inline-block;
+      padding: 5px 15px; }
+  /* line 40, ../sass/_ik.pagination.scss */
+  .pager .active a,
+  .pager .active a:hover {
+    cursor: default;
+    text-decoration: underline; }
+  /* line 45, ../sass/_ik.pagination.scss */
+  .pager .disabled {
+    background-color: #fbfbfb; }
+  /* line 48, ../sass/_ik.pagination.scss */
+  .pager .disabled a:hover {
+    cursor: default;
+    text-decoration: none; }
+
 /* line 7, ../sass/_ik.views.scss */
 .view-ik-favorites .more-link {
   clear: both; }
+
+/* line 13, ../sass/_ik.views.scss */
+.pane-views-panes .pane-title {
+  margin-bottom: 20px; }
+/* line 17, ../sass/_ik.views.scss */
+.pane-views-panes .view-filters {
+  padding: 10px;
+  background-color: #e1e2dc; }
 
 /* line 5, ../sass/_ik.base.scss */
 html,
@@ -236,7 +271,7 @@ body {
 #pageinner #content {
   margin-right: 2em; }
 
-@media only screen and (max-width: 800px) {
+@media only screen and (max-width: 1200px) {
   /* line 20, ../sass/_ik.legacy.scss */
   #sidebar-first {
     float: none;
@@ -319,57 +354,56 @@ body {
 .sidebar .content {
   overflow: hidden; }
 
-/* line 95, ../sass/_ik.legacy.scss */
-.sidebar .block h2,
-.panel-pane h2.pane-title {
+/* line 94, ../sass/_ik.legacy.scss */
+.sidebar .block h2 {
   margin: 0; }
 
-/* line 99, ../sass/_ik.legacy.scss */
+/* line 98, ../sass/_ik.legacy.scss */
 .panel-pane fieldset {
   margin: 0; }
 
 /* Panels margin tweaks */
-/* line 104, ../sass/_ik.legacy.scss */
+/* line 103, ../sass/_ik.legacy.scss */
 .panel-col-last .inside {
   margin-left: 1em!important; }
 
-/* line 107, ../sass/_ik.legacy.scss */
+/* line 106, ../sass/_ik.legacy.scss */
 .panel-col-first .inside {
   margin-right: 1em!important; }
 
-/* line 110, ../sass/_ik.legacy.scss */
+/* line 109, ../sass/_ik.legacy.scss */
 .panel-col .inside {
   margin-left: 1em!important;
   margin-right: 1em!important; }
 
 /* Views styles */
-/* line 116, ../sass/_ik.legacy.scss */
+/* line 115, ../sass/_ik.legacy.scss */
 ul.views-fluid-grid-list {
   margin-left: 0; }
 
-/* line 120, ../sass/_ik.legacy.scss */
+/* line 119, ../sass/_ik.legacy.scss */
 li.views-fluid-grid-item {
   color: inherit;
   background-color: inherit;
   border: none;
   margin-bottom: 2em; }
 
-/* line 127, ../sass/_ik.legacy.scss */
+/* line 126, ../sass/_ik.legacy.scss */
 .views-exposed-form .views-exposed-widget .description {
   display: none; }
 
 /* Action links menu */
-/* line 132, ../sass/_ik.legacy.scss */
+/* line 131, ../sass/_ik.legacy.scss */
 .action-link-item {
   position: relative;
   clear: both;
   padding-top: 1em; }
 
-/* line 138, ../sass/_ik.legacy.scss */
+/* line 137, ../sass/_ik.legacy.scss */
 .action-container {
   display: none; }
 
-/* line 141, ../sass/_ik.legacy.scss */
+/* line 140, ../sass/_ik.legacy.scss */
 .action-link-item:hover > .action-container {
   display: block;
   position: absolute;
@@ -377,18 +411,18 @@ li.views-fluid-grid-item {
   right: 0;
   z-index: 10; }
 
-/* line 149, ../sass/_ik.legacy.scss */
+/* line 148, ../sass/_ik.legacy.scss */
 .action-links {
   background-color: #eaeaea;
   padding: 5px; }
 
-/* line 153, ../sass/_ik.legacy.scss */
+/* line 152, ../sass/_ik.legacy.scss */
 .action-links ul {
   margin: 0;
   padding: 0;
   list-style: none; }
 
-/* line 159, ../sass/_ik.legacy.scss */
+/* line 158, ../sass/_ik.legacy.scss */
 .action-link-item img {
   float: left;
   margin-right: 5px;
@@ -396,24 +430,24 @@ li.views-fluid-grid-item {
   height: auto; }
 
 /* Slide node form */
-/* line 168, ../sass/_ik.legacy.scss */
+/* line 167, ../sass/_ik.legacy.scss */
 #slide-node-form .form-type-radio {
   float: left;
   margin-right: 10px; }
 
-/* line 172, ../sass/_ik.legacy.scss */
+/* line 171, ../sass/_ik.legacy.scss */
 #slide-node-form .description {
   clear: both; }
 
-/* line 175, ../sass/_ik.legacy.scss */
+/* line 174, ../sass/_ik.legacy.scss */
 #slide-node-form .field-name-field-ik-slide-logo .media-item {
   background-color: #999; }
 
-/* line 179, ../sass/_ik.legacy.scss */
+/* line 178, ../sass/_ik.legacy.scss */
 .panel-pane.hidden {
   display: none; }
 
 /* Media upload form */
-/* line 184, ../sass/_ik.legacy.scss */
+/* line 183, ../sass/_ik.legacy.scss */
 #media-tab-upload .form-item-field-folder {
   display: none; }
