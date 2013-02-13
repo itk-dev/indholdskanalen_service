@@ -8,3 +8,16 @@
     clear: both;
   }
 }
+
+.pane-views-panes {
+  .pane-title {
+    margin-bottom: $default-spacing;
+  }
+
+  .view-filters {
+    padding: $default-spacing / 2;
+    background-color: #e1e2dc;
+    //border: 1px solid #bebfb9;
+    //border-bottom: none;
+  }
+}
