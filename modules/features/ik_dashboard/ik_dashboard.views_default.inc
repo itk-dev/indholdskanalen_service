@@ -1192,7 +1192,7 @@ function ik_dashboard_views_default_views() {
     'title_2' => 'title_2',
     'title_1' => 'title_1',
     'name' => 'name',
-    'ops' => 'ops',
+    'ops' => 'edit_node',
     'delete_node' => 'edit_node',
     'edit_node' => 'edit_node',
   );
@@ -2039,7 +2039,7 @@ function ik_dashboard_views_default_views() {
     'name' => 'name',
     'title_2' => 'title_2',
     'title_1' => 'title_1',
-    'ops' => 'ops',
+    'ops' => 'edit_node',
     'delete_node' => 'edit_node',
     'edit_node' => 'edit_node',
   );
@@ -3597,7 +3597,7 @@ function ik_dashboard_views_default_views() {
     'title_2' => 'title_2',
     'title_1' => 'title_1',
     'name' => 'name',
-    'ops' => 'ops',
+    'ops' => 'edit_node',
     'delete_node' => 'edit_node',
     'edit_node' => 'edit_node',
   );
