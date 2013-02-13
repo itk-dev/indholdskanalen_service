@@ -19,13 +19,15 @@
         </li>
       </ul>
     </div>
-    <div class="text-container">
-      <div class="heading-container">
-        <div class="slide-heading"></div>
-        <div class="divider"></div>
-        <div class="slide-subheading"></div>
-      </div>
-      <div class="slide-text">
+    <div class="text-wrapper">
+      <div class="text-container">
+        <div class="heading-container">
+          <div class="slide-heading"></div>
+          <div class="divider"></div>
+          <div class="slide-subheading"></div>
+        </div>
+        <div class="slide-text">
+        </div>
       </div>
     </div>
     <div class="logo-container">

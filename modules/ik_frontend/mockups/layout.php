@@ -76,13 +76,15 @@ $skitter_effects = array(
         </li>
       </ul>
     </div>
-    <div class="text-container">
-      <div class="heading-container">
-        <div class="slide-heading"></div>
-        <div class="divider"></div>
-        <div class="slide-subheading"></div>
-      </div>
-      <div class="slide-text">
+    <div class="text-wrapper">
+      <div class="text-container">
+        <div class="heading-container">
+          <div class="slide-heading"></div>
+          <div class="divider"></div>
+          <div class="slide-subheading"></div>
+        </div>
+        <div class="slide-text">
+        </div>
       </div>
     </div>
     <div class="logo-container"></div>
@@ -103,16 +105,16 @@ $skitter_effects = array(
           ?>
         </ul>
       </div>
-      <div class="text-container">
-        <div class="heading-container">
-          <div class="slide-heading">This is a Heading</div>
-          <div class="divider"></div>
-          <div class="slide-subheading">Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh.</div>
-        </div>
-        <div class="slide-text">
-          <p>Nullam quis risus eget urna mollis ornare vel eu leo. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. <strong>Praesent commodo cursus magna</strong>, vel scelerisque nisl consectetur et. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Nullam quis risus eget urna mollis ornare vel eu leo.</p>
-          <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui.</p>
-          <p>Nullam id dolor id nibh ultricies vehicula ut id elit. Vestibulum id ligula porta felis euismod semper. <em>Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit.</em> Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum.</p>
+      <div class="text-wrapper">
+        <div class="text-container">
+          <div class="heading-container">
+            <div class="slide-heading">This is a Heading</div>
+            <div class="divider"></div>
+            <div class="slide-subheading">Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh.</div>
+          </div>
+          <div class="slide-text">
+            <p>Etiam porta sem malesuada magna mollis euismod. Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Aenean lacinia bibendum nulla sed consectetur. Etiam porta sem malesuada magna mollis euismod. Aenean lacinia bibendum nulla sed consectetur. Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Vivamus sagittis lacus vel augue laoreet rutrum.</p><p>Cras mattis consectetur purus sit amet fermentum. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.</p>
+          </div>
         </div>
       </div>
       <div class="logo-container"><img src="images/aak_logo.png" /></div>

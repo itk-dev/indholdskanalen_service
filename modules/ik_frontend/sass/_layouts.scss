@@ -35,11 +35,21 @@
     }
   }
 
-  .text-container {
+  .text-wrapper {
     @include box-sizing(border-box);
 
-    z-index: 20000;
+    z-index: 19999;
+    padding: $default-spacing * 2;
     position: absolute;
+  }
+
+  .text-container {
+    @include box-sizing(border-box);
+    @include border-radius($box-border-radius);
+
+    z-index: 20000;
+    overflow: hidden;
+    position: relative;
     background-color: $textbox-color;
 
     .heading-container {
@@ -79,22 +89,60 @@
   .logo-container {
     z-index: 21000;
     position:absolute;
-    top: $default-spacing;
-    right: $default-spacing;
+    bottom: $default-spacing;
+    right: $default-spacing * 2;
+
+    img {
+      max-width: 250px;
+    }
   }
 
 }
 
-
-
 /*
 * Layout 1
+* Text to the left
 *
 * ---------------------------
-* |                         |
+* |         |               |
+* |    T    |               |
+* |    E    |               |
+* |    X    |               |
+* |    T    |               |
+* |         |               |
+* |         |               |
+* ---------------------------
+*
+*/
+
+.layout-1 {
+  
+  .text-wrapper {
+    top: 0;
+    left: 0;
+    width: 35%;
+    height: 100%;
+  }
+
+  .text-container {
+    width: 100%;
+    height: 100%;
+  }
+
+  .divider {
+    display:none;
+  }
+}
+
+/*
+* Layout 2
+* Text in top
+*
+* ---------------------------
 * |-------------------------|
 * |        text box         |
 * |-------------------------|
+* |                         |
 * |                         |
 * |                         |
 * |                         |
@@ -102,10 +150,14 @@
 *
 */
 
-.layout-1 {
+.layout-2 {
+
+  .text-wrapper {
+    top: 0;
+  }
+
   .text-container {
     width: 100%;
-    top:10%;
 
     .heading-container {
       width: 49.5%;
@@ -125,296 +177,102 @@
       display:none;
     }
   }
-
-  .logo-container {
-    top: auto;
-    bottom: $default-spacing;
-  }
-}
-
-/*
-* Layout 2
-*
-* ---------------------------
-* |                         |
-* |                         |
-* |                         |
-* |-------------------------|
-* |        text box         |
-* |-------------------------|
-* |                         |
-* ---------------------------
-*
-*/
-
-.layout-2 {
-  @extend .layout-1;
-  .text-container {
-    top: auto;
-    bottom: 10%;
-  }
-
-  .logo-container {
-    top: $default-spacing;
-    bottom: auto;
-  }
 }
 
 /*
 * Layout 3
+* Text in bottom
 *
 * ---------------------------
+* |                         |
+* |                         |
 * |                         |
 * |                         |
 * |-------------------------|
 * |        text box         |
 * |-------------------------|
-* |                         |
-* |                         |
 * ---------------------------
 *
 */
 
 .layout-3 {
-  @extend .layout-1;
-  .text-container {
-    top: 50%;
-    margin-top: -134px; /* Must be replaced with javascript */
+
+  .text-wrapper {
+    bottom: 0;
   }
 
+  .text-container {
+    width: 100%;
+
+    .heading-container {
+      width: 49.5%;
+      float: left;
+    }
+
+    .slide-heading {
+      @include rem('margin-bottom', $default-spacing / 2);
+    }
+
+    .slide-text {
+      width: 49.5%;
+      float: left;
+    }
+
+    .divider {
+      display:none;
+    }
+  }
+  
   .logo-container {
-    top: $default-spacing;
     bottom: auto;
+    top: $default-spacing;
   }
 }
 
 /*
 * Layout 4
+* Text to the right
 *
 * ---------------------------
-* |                         |
-* |                         |
-* |                         |
-* |                         |
-* |-------------------------|
-* |        text box         |
-* |-------------------------|
+* |               |         |
+* |               |    T    |
+* |               |    E    |
+* |               |    X    |
+* |               |    T    |
+* |               |         |
+* |               |         |
 * ---------------------------
 *
 */
 
 .layout-4 {
-  @extend .layout-1;
-  .text-container {
-    top: auto;
-    bottom: 0;
+  
+  .text-wrapper {
+    top: 0;
+    right: 0;
+    width: 35%;
+    height: 100%;
   }
+
+  .text-container {
+    width: 100%;
+    height: 100%;
+  }
+
+  .divider {
+    display:none;
+  }
+
   .logo-container {
-    top: $default-spacing;
     bottom: auto;
+    right: auto;
+    left: $default-spacing * 2;
+    top: $default-spacing;
   }
 }
 
 /*
 * Layout 5
-*
-* ---------------------------
-* |-------------------------|
-* |        text box         |
-* |-------------------------|
-* |                         |
-* |                         |
-* |                         |
-* |                         |
-* ---------------------------
-*
-*/
-
-.layout-5 {
-  @extend .layout-1;
-  .text-container {
-    top: 0;
-  }
-  .logo-container {
-    top: auto;
-    bottom: $default-spacing;
-  }
-}
-
-/*
-* Layout 6
-*
-* ---------------------------
-* |            |            |
-* |      T     |            |
-* |      E     |            |
-* |      X     |            |
-* |      T     |            |
-* |            |            |
-* |            |            |
-* ---------------------------
-*
-*/
-
-.layout-6 {
-  .text-container {
-    top: 0;
-    left: 0;
-    width: 50%;
-    height: 100%;
-  }
-}
-
-/*
-* Layout 7
-*
-* ---------------------------
-* |            |            |
-* |            |      T     |
-* |            |      E     |
-* |            |      X     |
-* |            |      T     |
-* |            |            |
-* |            |            |
-* ---------------------------
-*
-*/
-
-.layout-7 {
-  @extend .layout-6;
-  .text-container {
-    left: auto;
-    right: 0;
-  }
-  .logo-container {
-    right: auto;
-    left: $default-spacing;
-  }
-}
-
-/*
-* Layout 8
-*
-* ---------------------------
-* |        |                |
-* |        |        T       |
-* |        |        E       |
-* |        |        X       |
-* |        |        T       |
-* |        |                |
-* |        |                |
-* ---------------------------
-*
-*/
-
-.layout-8 {
-  @extend .layout-6;
-  .text-container {
-    width: 75%;
-    right: 0;
-    left: auto;
-  }
-  .logo-container {
-    right: auto;
-    left: $default-spacing;
-  }
-}
-
-/*
-* Layout 9
-*
-* ---------------------------
-* |                |        |
-* |        T       |        |
-* |        E       |        |
-* |        X       |        |
-* |        T       |        |
-* |                |        |
-* |                |        |
-* ---------------------------
-*
-*/
-
-.layout-9 {
-  @extend .layout-6;
-  .text-container {
-    width: 75%;
-  }
-}
-
-/*
-* Layout 10
-*
-* ---------------------------
-* |        |                |
-* |    T   |                |
-* |    E   |                |
-* |    X   |                |
-* |    T   |                |
-* |        |                |
-* |        |                |
-* ---------------------------
-*
-*/
-
-.layout-10 {
-  @extend .layout-6;
-  .text-container {
-    width: 25%;
-  }
-}
-
-/*
-* Layout 11
-*
-* ---------------------------
-* |                |        |
-* |                |    T   |
-* |                |    E   |
-* |                |    X   |
-* |                |    T   |
-* |                |        |
-* |                |        |
-* ---------------------------
-*
-*/
-
-.layout-11 {
-  @extend .layout-6;
-  .text-container {
-    width: 25%;
-    right: 0;
-    left: auto;
-  }
-  .logo-container {
-    right: auto;
-    left: $default-spacing;
-  }
-}
-
-/*
-* Layout 12
-*
-* ---------------------------
-* |                         |
-* |                         |
-* |                         |
-* |                         |
-* |                         |
-* |                         |
-* |                         |
-* ---------------------------
-*
-*/
-
-.layout-12 {
-  .text-container {
-    display: none;
-  }
-}
-
-/*
-* Layout 13
 *
 * ---------------------------
 * |                         |
@@ -428,13 +286,49 @@
 *
 */
 
-.layout-13 {
+.layout-5 {
   .image-container {
     display: none;
   }
 
+  .text-wrapper {
+    padding: 0;
+  }
+
+  .text-container {
+    @include border-radius(0);
+  }
+
+  .text-wrapper,
   .text-container {
     width: 100%;
     height: 100%;
   }
+
+  .divider {
+    display:none;
+  }
 }
+
+/*
+* Layout 6
+* Image only
+*
+* ---------------------------
+* |                         |
+* |                         |
+* |                         |
+* |                         |
+* |                         |
+* |                         |
+* |                         |
+* ---------------------------
+*
+*/
+
+.layout-6 {
+  .text-wrapper {
+    display: none;
+  }
+}
+
