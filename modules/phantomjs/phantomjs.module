@@ -113,20 +113,32 @@ function phantomjs_admin_form() {
   return system_settings_form($form);
 }
 
+/**
+ * Ajax callback for the test PhantomJS form on the administration page.
+ *
+ * @param type $form
+ * @param type $form_state
+ * @return type
+ */
 function phantomjs_test_submit($form, $form_state) {
-
-
+  // Build urls and destionation.
   $url = $form_state['values']['phantomjs_test']['url'];
   $file = 'test' . $form_state['values']['phantomjs_test']['format'];
   $dest = file_default_scheme() . '://' . variable_get('phantomjs_dest', 'phantomjs');
-  phantomjs_capture_screen($url, $file);
 
+  // Get the screenshot and create success/error message.
+  $output = '<div class="messages status"><ul><li>' . t('File have been generated. You can get it !url', array('!url' => l(t('here'), file_create_url($dest . '/' . $file)))) . '</ul></li></div>';
+  if (!phantomjs_capture_screen($url, $file)) {
+    $output = '<div class="messages error"><ul><li>' . t('The address entered could not be retrieved') . '</ul></li></div>';
+  }
+
+  // Return
   return array(
    'phantomjs_test' => array(
      'result' => array(
        '#prefix' => '<div id="phantomjs-test-result">',
        '#suffix' => '</div>',
-       '#markup' => '<div class="messages status"><ul><li>' . t('File have been generated. You can get it !url', array('!url' => l(t('here'), file_create_url($dest . '/' . $file)))) . '</ul></li></div>',
+       '#markup' => $output,
      )
    ),
   );
@@ -227,5 +239,12 @@ function phantomjs_capture_screen($url, $filename) {
   $script = realpath(variable_get('phantomjs_script', drupal_get_path('module', 'phantomjs') . '/js/phantomjs_capture.js'));
   $dest = drupal_realpath(file_uri_to_object($dest . '/' . $filename)->uri);
 
+  // Run PhantomJS to create the screen shot.
   exec($binary . ' ' . $script . ' ' . $url . ' ' . $dest, $output);
+
+  // Check that PhantomJS was able to load the page.
+  if ($output[0] == '500') {
+    return FALSE;
+  }
+  return TRUE;
 }

@@ -17,10 +17,12 @@ if (system.args.length === 3 && system.args[1].substr(-4) === ".pdf") {
 
 page.open(address, function (status) {
   if (status !== 'success') {
-    console.log('Unable to load the address!');
+    console.log('500');
+    phantom.exit();
   } else {
     window.setTimeout(function () {
       page.render(output);
+      console.log('200');
       phantom.exit();
     }, 200);
   }
