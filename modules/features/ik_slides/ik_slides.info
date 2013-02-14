@@ -102,6 +102,7 @@ features[variable][] = menu_parent_slide
 features[variable][] = node_options_slide
 features[variable][] = node_preview_slide
 features[variable][] = node_submitted_slide
+features[variable][] = pathauto_node_slide_pattern
 features[variable][] = scheduler_publish_enable_slide
 features[variable][] = scheduler_publish_required_slide
 features[variable][] = scheduler_publish_revision_slide
