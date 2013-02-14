@@ -339,27 +339,40 @@ function ik_slide_preview_field_prepare_view($entity_type, $entities, $field, $i
 /**
  * Implements hook_node_delete().
  *
+ * Clean up old screenshots on node deletion.
  */
 function ik_slide_preview_node_delete($node) {
-//  if ($node->type == 'slide') {
-//    // Get basic settings about the field.
-//    $info = field_info_instances('node', $node->type);
-//    $instance = $info['field_ik_slide_preview'];
-//    $field = field_info_field('field_ik_slide_preview');
-//
-//    // Build path.
-//    $file = md5($node->nid) . '.png';
-//    $dest = $field['settings']['uri_scheme'] . '://' . $instance['settings']['file_directory'];
-//    $path = drupal_realpath($dest . '/' . $file);
-//
-//    // Remove slide screenshot.
-//    if (file_exists($path)) {
-//      unlink($path);
-//      /**
-//       * REMOVE FILE FROM IMAGE STYLES.
-//       */
-//    }
-//  }
+  if ($node->type == 'slide') {
+    // Get basic settings about the field.
+    $info = field_info_instances('node', $node->type);
+    $instance = $info['field_ik_slide_preview'];
+    $field = field_info_field('field_ik_slide_preview');
+
+    // Build path.
+    $items = field_get_items('node', $node, 'field_ik_slide_preview');
+    foreach ($items as $item) {
+      $file = $item['image'];
+      $dest = $field['settings']['uri_scheme'] . '://' . $instance['settings']['file_directory'];
+      $path = drupal_realpath($dest . '/' . $file);
+
+      // Remove slide screenshot.
+      if (file_exists($path)) {
+        unlink($path);
+        /**
+        * REMOVE FILE FROM IMAGE STYLES.
+        */
+      }
+
+      // Remove old image styles.
+      $styles = array('slide_preview_small', 'slide_preview_medium', 'slide_preview_large');
+      foreach ($styles as $style) {
+        $path = drupal_realpath($field['settings']['uri_scheme'] . '://styles/' . $style . '/public/slide_previews/' . $file);
+        if (file_exists($path)) {
+          unlink($path);
+        }
+      }
+    }
+  }
 }
 
 /**
