@@ -243,10 +243,12 @@ function ik_slide_preview_field_formatter_settings_summary($field, $instance, $v
 function ik_slide_preview_field_formatter_view($entity_type, $entity, $field, $instance, $langcode, $items, $display) {
   // Build urls and destionation.
   $dest = $field['settings']['uri_scheme'] . '://' . $instance['settings']['file_directory'];
-  $uri = $dest . '/' . $items[0]['image'];
 
-  // Build return element
-  $element = array(
+  foreach ($items as $delta => $item) {
+    $uri = $dest . '/' . $item['image'];
+
+    // Build return element
+    $element[$delta] = array(
       '#theme' => 'image_formatter',
       '#item' => array(
         'uri' => $uri,
@@ -255,7 +257,8 @@ function ik_slide_preview_field_formatter_view($entity_type, $entity, $field, $i
       ),
       '#image_style' => $display['settings']['image_style'],
       '#path' => '',
-  );
+    );
+  }
 
   return $element;
 }
@@ -271,7 +274,7 @@ function ik_slide_preview_field_presave($entity_type, $entity, $field, $instance
       ->fields('t')
       ->condition('entity_type', $entity_type)
       ->condition('entity_id', $entity->nid, '=')
-      ->condition('language', field_available_languages($entity_type, $field), 'IN')
+      ->condition('language', $langcode, '=')
       ->orderBy('delta');
 
   $results = $query->execute();
