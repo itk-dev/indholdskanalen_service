@@ -22,7 +22,6 @@ function ik_favorites_views_default_views() {
 
   /* Display: Master */
   $handler = $view->new_display('default', 'Master', 'default');
-  $handler->display->display_options['use_more'] = TRUE;
   $handler->display->display_options['use_more_always'] = TRUE;
   $handler->display->display_options['use_more_text'] = 'mere';
   $handler->display->display_options['access']['type'] = 'perm';
@@ -126,24 +125,24 @@ function ik_favorites_views_default_views() {
   $handler->display->display_options['pager']['options']['items_per_page'] = '6';
   $handler->display->display_options['pager']['options']['offset'] = '0';
   $handler->display->display_options['defaults']['fields'] = FALSE;
-  /* Felt: Indhold: Media */
-  $handler->display->display_options['fields']['field_ik_slide_media']['id'] = 'field_ik_slide_media';
-  $handler->display->display_options['fields']['field_ik_slide_media']['table'] = 'field_data_field_ik_slide_media';
-  $handler->display->display_options['fields']['field_ik_slide_media']['field'] = 'field_ik_slide_media';
-  $handler->display->display_options['fields']['field_ik_slide_media']['label'] = '';
-  $handler->display->display_options['fields']['field_ik_slide_media']['alter']['strip_tags'] = TRUE;
-  $handler->display->display_options['fields']['field_ik_slide_media']['alter']['preserve_tags'] = '<img>';
-  $handler->display->display_options['fields']['field_ik_slide_media']['element_type'] = '0';
-  $handler->display->display_options['fields']['field_ik_slide_media']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['field_ik_slide_media']['element_wrapper_type'] = '0';
-  $handler->display->display_options['fields']['field_ik_slide_media']['element_default_classes'] = FALSE;
-  $handler->display->display_options['fields']['field_ik_slide_media']['click_sort_column'] = 'fid';
-  $handler->display->display_options['fields']['field_ik_slide_media']['type'] = 'media';
-  $handler->display->display_options['fields']['field_ik_slide_media']['settings'] = array(
-    'file_view_mode' => 'media_small',
+  /* Felt: Indhold: Nid */
+  $handler->display->display_options['fields']['nid']['id'] = 'nid';
+  $handler->display->display_options['fields']['nid']['table'] = 'node';
+  $handler->display->display_options['fields']['nid']['field'] = 'nid';
+  $handler->display->display_options['fields']['nid']['label'] = '';
+  $handler->display->display_options['fields']['nid']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['nid']['element_label_colon'] = FALSE;
+  /* Felt: Indhold: Preview */
+  $handler->display->display_options['fields']['field_ik_slide_preview']['id'] = 'field_ik_slide_preview';
+  $handler->display->display_options['fields']['field_ik_slide_preview']['table'] = 'field_data_field_ik_slide_preview';
+  $handler->display->display_options['fields']['field_ik_slide_preview']['field'] = 'field_ik_slide_preview';
+  $handler->display->display_options['fields']['field_ik_slide_preview']['label'] = '';
+  $handler->display->display_options['fields']['field_ik_slide_preview']['alter']['make_link'] = TRUE;
+  $handler->display->display_options['fields']['field_ik_slide_preview']['alter']['path'] = 'node/[nid]';
+  $handler->display->display_options['fields']['field_ik_slide_preview']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_ik_slide_preview']['settings'] = array(
+    'image_style' => 'slide_preview_small',
   );
-  $handler->display->display_options['fields']['field_ik_slide_media']['delta_limit'] = '1';
-  $handler->display->display_options['fields']['field_ik_slide_media']['delta_offset'] = '0';
   /* Felt: Indhold: Titel */
   $handler->display->display_options['fields']['title']['id'] = 'title';
   $handler->display->display_options['fields']['title']['table'] = 'node';
@@ -294,18 +293,24 @@ function ik_favorites_views_default_views() {
   $handler->display->display_options['defaults']['row_plugin'] = FALSE;
   $handler->display->display_options['defaults']['row_options'] = FALSE;
   $handler->display->display_options['defaults']['fields'] = FALSE;
-  /* Felt: Indhold: Media */
-  $handler->display->display_options['fields']['field_ik_slide_media']['id'] = 'field_ik_slide_media';
-  $handler->display->display_options['fields']['field_ik_slide_media']['table'] = 'field_data_field_ik_slide_media';
-  $handler->display->display_options['fields']['field_ik_slide_media']['field'] = 'field_ik_slide_media';
-  $handler->display->display_options['fields']['field_ik_slide_media']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['field_ik_slide_media']['click_sort_column'] = 'fid';
-  $handler->display->display_options['fields']['field_ik_slide_media']['type'] = 'media';
-  $handler->display->display_options['fields']['field_ik_slide_media']['settings'] = array(
-    'file_view_mode' => 'media_small',
+  /* Felt: Indhold: Nid */
+  $handler->display->display_options['fields']['nid']['id'] = 'nid';
+  $handler->display->display_options['fields']['nid']['table'] = 'node';
+  $handler->display->display_options['fields']['nid']['field'] = 'nid';
+  $handler->display->display_options['fields']['nid']['label'] = '';
+  $handler->display->display_options['fields']['nid']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['nid']['element_label_colon'] = FALSE;
+  /* Felt: Indhold: Preview */
+  $handler->display->display_options['fields']['field_ik_slide_preview']['id'] = 'field_ik_slide_preview';
+  $handler->display->display_options['fields']['field_ik_slide_preview']['table'] = 'field_data_field_ik_slide_preview';
+  $handler->display->display_options['fields']['field_ik_slide_preview']['field'] = 'field_ik_slide_preview';
+  $handler->display->display_options['fields']['field_ik_slide_preview']['label'] = '';
+  $handler->display->display_options['fields']['field_ik_slide_preview']['alter']['make_link'] = TRUE;
+  $handler->display->display_options['fields']['field_ik_slide_preview']['alter']['path'] = 'node/[nid]';
+  $handler->display->display_options['fields']['field_ik_slide_preview']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_ik_slide_preview']['settings'] = array(
+    'image_style' => 'slide_preview_small',
   );
-  $handler->display->display_options['fields']['field_ik_slide_media']['delta_limit'] = '1';
-  $handler->display->display_options['fields']['field_ik_slide_media']['delta_offset'] = '0';
   /* Felt: Indhold: Titel */
   $handler->display->display_options['fields']['title']['id'] = 'title';
   $handler->display->display_options['fields']['title']['table'] = 'node';
@@ -674,7 +679,6 @@ function ik_favorites_views_default_views() {
 </div>
 </div>'),
     t('User favorite slides, page'),
-    t('Media'),
     t('Titel'),
     t('Forfatter'),
     t('Organisation'),
