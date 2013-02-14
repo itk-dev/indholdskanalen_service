@@ -804,7 +804,7 @@ function ik_dashboard_views_default_views() {
   $handler->display->display_options['path'] = 'dashboard/my-content';
   $handler->display->display_options['menu']['type'] = 'normal';
   $handler->display->display_options['menu']['title'] = 'My content';
-  $handler->display->display_options['menu']['weight'] = '0';
+  $handler->display->display_options['menu']['weight'] = '-10';
   $handler->display->display_options['menu']['name'] = 'user-menu';
   $handler->display->display_options['menu']['context'] = 0;
 
@@ -1677,7 +1677,7 @@ function ik_dashboard_views_default_views() {
   $handler->display->display_options['path'] = 'dashboard/slides';
   $handler->display->display_options['menu']['type'] = 'normal';
   $handler->display->display_options['menu']['title'] = 'Slides';
-  $handler->display->display_options['menu']['weight'] = '0';
+  $handler->display->display_options['menu']['weight'] = '-9';
   $handler->display->display_options['menu']['name'] = 'user-menu';
   $handler->display->display_options['menu']['context'] = 0;
 
@@ -2532,7 +2532,7 @@ function ik_dashboard_views_default_views() {
   $handler->display->display_options['path'] = 'dashboard/channels';
   $handler->display->display_options['menu']['type'] = 'normal';
   $handler->display->display_options['menu']['title'] = 'Kanaler';
-  $handler->display->display_options['menu']['weight'] = '0';
+  $handler->display->display_options['menu']['weight'] = '-8';
   $handler->display->display_options['menu']['name'] = 'user-menu';
   $handler->display->display_options['menu']['context'] = 0;
 
@@ -2838,7 +2838,7 @@ function ik_dashboard_views_default_views() {
   $handler->display->display_options['path'] = 'dashboard/organisations';
   $handler->display->display_options['menu']['type'] = 'normal';
   $handler->display->display_options['menu']['title'] = 'Organisationer';
-  $handler->display->display_options['menu']['weight'] = '0';
+  $handler->display->display_options['menu']['weight'] = '-4';
   $handler->display->display_options['menu']['name'] = 'user-menu';
   $handler->display->display_options['menu']['context'] = 0;
 
@@ -3240,7 +3240,7 @@ function ik_dashboard_views_default_views() {
   $handler->display->display_options['path'] = 'dashboard/departments';
   $handler->display->display_options['menu']['type'] = 'normal';
   $handler->display->display_options['menu']['title'] = 'Afdelinger';
-  $handler->display->display_options['menu']['weight'] = '0';
+  $handler->display->display_options['menu']['weight'] = '-5';
   $handler->display->display_options['menu']['name'] = 'user-menu';
   $handler->display->display_options['menu']['context'] = 0;
 
@@ -4145,7 +4145,7 @@ function ik_dashboard_views_default_views() {
   $handler->display->display_options['path'] = 'dashboard/imported/slides';
   $handler->display->display_options['menu']['type'] = 'normal';
   $handler->display->display_options['menu']['title'] = 'Importerede slides';
-  $handler->display->display_options['menu']['weight'] = '0';
+  $handler->display->display_options['menu']['weight'] = '-7';
   $handler->display->display_options['menu']['name'] = 'user-menu';
   $handler->display->display_options['menu']['context'] = 0;
 
@@ -4979,7 +4979,7 @@ function ik_dashboard_views_default_views() {
   $handler->display->display_options['path'] = 'dashboard/slide-importers';
   $handler->display->display_options['menu']['type'] = 'normal';
   $handler->display->display_options['menu']['title'] = 'Slide importerer';
-  $handler->display->display_options['menu']['weight'] = '0';
+  $handler->display->display_options['menu']['weight'] = '-6';
   $handler->display->display_options['menu']['name'] = 'user-menu';
   $handler->display->display_options['menu']['context'] = 0;
   $translatables['ik_dashboard'] = array(
