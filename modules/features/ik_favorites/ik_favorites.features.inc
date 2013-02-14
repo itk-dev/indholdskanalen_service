@@ -16,7 +16,7 @@ function ik_favorites_views_api() {
  */
 function ik_favorites_flag_default_flags() {
   $flags = array();
-  // Exported flag: "Favorites".
+  // Exported flag: "Favoritter".
   $flags['favorites'] = array(
     'content_type' => 'node',
     'title' => 'Favorites',
