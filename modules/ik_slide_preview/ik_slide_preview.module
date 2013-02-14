@@ -358,9 +358,6 @@ function ik_slide_preview_node_delete($node) {
       // Remove slide screenshot.
       if (file_exists($path)) {
         unlink($path);
-        /**
-        * REMOVE FILE FROM IMAGE STYLES.
-        */
       }
 
       // Remove old image styles.
