@@ -234,38 +234,90 @@ function ik_slide_preview_field_formatter_settings_summary($field, $instance, $v
  * node edit and in views.
  */
 function ik_slide_preview_field_formatter_view($entity_type, $entity, $field, $instance, $langcode, $items, $display) {
-  $element = array();
-  
   // Build urls and destionation.
   $url = url('slide/' . $entity->nid . '/preview', array('absolute' => TRUE));
   $file = md5($entity->nid) . '.png';
   $dest = $field['settings']['uri_scheme'] . '://' . $instance['settings']['file_directory'];
-  
-  // Get the screenshot and create success/error message.
-  //$output = '<div class="messages status"><ul><li>' . t('File have been generated. You can get it !url', array('!url' => l(t('here'), file_create_url($dest . '/' . $file)))) . '</ul></li></div>';
-  if (!phantomjs_capture_screen($url, $dest, $file)) {
-    //$output = '<div class="messages error"><ul><li>' . t('The address entered could not be retrieved') . '</ul></li></div>';
+  $uri = $dest . '/' . $file;
+
+  // Check if screenshot exists.
+  if (!file_exists(drupal_realpath($uri))) {
+    // Get the screenshot and create success/error message.
+    if (!phantomjs_capture_screen($url, $dest, $file)) {
+      return array(
+        '#markup' => '<div class="messages error"><ul><li>' . t('The screenshot could not be retrieved.') . '</ul></li></div>'
+      );
+    }
   }
 
+  // Build return element
   $element = array(
     '#theme' => 'image_formatter',
     '#item' => array(
-      'uri' => $dest . '/' . $file,
+      'uri' => $uri,
+      'alt' => '',
+      'title' => '',
     ),
     '#image_style' => $display['settings']['image_style'],
-    '#path' => isset($uri) ? $uri : '',
+    '#path' => '',
   );
-
 
   return $element;
 }
 
+/**
+ * Implements hook_node_update().
+ *
+ */
+function ik_slide_preview_node_update($node) {
+  if ($node->type == 'slide') {
+    // Get basic settings about the field.
+    $info = field_info_instances('node', $node->type);
+    $instance = $info['field_slide_preview'];
+    $field = field_info_field('field_slide_preview');
 
+    // Build urls and destionation.
+    $url = url('slide/' . $node->nid . '/preview', array('absolute' => TRUE));
+    $file = md5($node->nid) . '.png';
+    $dest = $field['settings']['uri_scheme'] . '://' . $instance['settings']['file_directory'];
 
+    // Create screenshot.
+    if (!phantomjs_capture_screen($url, $dest, $file)) {
+      drupal_set_message(t('PhantomJS chould not create screenshot of the slide'), 'error');
+    }
+    else {
+      /**
+       * REMOVE FILE FROM IMAGE STYLES.
+       */
+    }
+  }
+}
 
+/**
+ * Implements hook_node_delete().
+ *
+ */
+function ik_slide_preview_node_delete($node) {
+  if ($node->type == 'slide') {
+    // Get basic settings about the field.
+    $info = field_info_instances('node', $node->type);
+    $instance = $info['field_slide_preview'];
+    $field = field_info_field('field_slide_preview');
 
+    // Build path.
+    $file = md5($node->nid) . '.png';
+    $dest = $field['settings']['uri_scheme'] . '://' . $instance['settings']['file_directory'];
+    $path = drupal_realpath($dest . '/' . $file);
 
-
+    // Remove slide screenshot.
+    if (file_exists($path)) {
+      file_delete($path);
+      /**
+       * REMOVE FILE FROM IMAGE STYLES.
+       */
+    }
+  }
+}
 
 /**
  * Implements hook_form_alter().
