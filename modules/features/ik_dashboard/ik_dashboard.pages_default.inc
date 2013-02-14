@@ -213,8 +213,8 @@ function ik_dashboard_default_page_manager_handlers() {
     $pane = new stdClass();
     $pane->pid = 'new-7';
     $pane->panel = 'right';
-    $pane->type = 'entity_form_field';
-    $pane->subtype = 'node:field_ik_og_department_ref';
+    $pane->type = 'entity_form_field_group';
+    $pane->subtype = 'node:group_ik_slide_department';
     $pane->shown = TRUE;
     $pane->access = array();
     $pane->configuration = array(
