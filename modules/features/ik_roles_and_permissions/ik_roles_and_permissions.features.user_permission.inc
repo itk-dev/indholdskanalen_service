@@ -168,7 +168,8 @@ function ik_roles_and_permissions_user_default_permissions() {
     'name' => 'create media_rss_slide_import content',
     'roles' => array(
       0 => 'administrator',
-      1 => 'editor',
+      1 => 'contributor',
+      2 => 'editor',
     ),
     'module' => 'node',
   );
@@ -280,7 +281,8 @@ function ik_roles_and_permissions_user_default_permissions() {
     'name' => 'delete own media_rss_slide_import content',
     'roles' => array(
       0 => 'administrator',
-      1 => 'editor',
+      1 => 'contributor',
+      2 => 'editor',
     ),
     'module' => 'node',
   );
@@ -446,7 +448,8 @@ function ik_roles_and_permissions_user_default_permissions() {
     'name' => 'edit own media_rss_slide_import content',
     'roles' => array(
       0 => 'administrator',
-      1 => 'editor',
+      1 => 'contributor',
+      2 => 'editor',
     ),
     'module' => 'node',
   );
@@ -533,7 +536,8 @@ function ik_roles_and_permissions_user_default_permissions() {
     'name' => 'import mrss_feed_importer feeds',
     'roles' => array(
       0 => 'administrator',
-      1 => 'editor',
+      1 => 'contributor',
+      2 => 'editor',
     ),
     'module' => 'feeds',
   );
@@ -645,10 +649,9 @@ function ik_roles_and_permissions_user_default_permissions() {
     'name' => 'use text format filtered_html',
     'roles' => array(
       0 => 'administrator',
-      1 => 'anonymous user',
-      2 => 'authenticated user',
-      3 => 'contributor',
-      4 => 'editor',
+      1 => 'authenticated user',
+      2 => 'contributor',
+      3 => 'editor',
     ),
     'module' => 'filter',
   );
@@ -667,8 +670,7 @@ function ik_roles_and_permissions_user_default_permissions() {
     'name' => 'view file',
     'roles' => array(
       0 => 'administrator',
-      1 => 'anonymous user',
-      2 => 'authenticated user',
+      1 => 'authenticated user',
     ),
     'module' => 'file_entity',
   );
