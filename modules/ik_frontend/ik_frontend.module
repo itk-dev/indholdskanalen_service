@@ -115,7 +115,7 @@ function ik_frontend_node_update($node) {
   }
   if ($node->type == 'slide') {
     // Remove node from slids cache.
-    cache_clear_all('slide_' . $node->nid, 'cache_ik_frontend');
+//    cache_clear_all('slide_' . $node->nid, 'cache_ik_frontend');
     
    /**
     * @TODO: create screenshot. 
@@ -220,16 +220,16 @@ function ik_frontend_update($token) {
 /**
  * Builds a slide as a JSON object based on slide id and channel token.
  *
- * @param string $token
- *  Channel token.
  * @param int $sid
  *  Slide id (node id).
  * @param bool $json
  *  Should the function JSON encode the result (defaults to TRUE).
+ * @param bool $reset
+ *  Reset cache if TRUE. Default FALSE.
  */
-function ik_frontend_fetch_slide($token, $sid, $json = TRUE) {
+function ik_frontend_fetch_slide($sid, $json = TRUE, $reset = FALSE) {
   // Use frontend cache, if available.
-  if ($cache = cache_get('slide_' . $sid, 'cache_ik_frontend')) {
+  if (!$reset && $cache = cache_get('slide_' . $sid, 'cache_ik_frontend')) {
       $slide = $cache->data;
   }
   else {

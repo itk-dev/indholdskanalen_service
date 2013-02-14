@@ -93,7 +93,7 @@ class IKMRSSExport {
    */
   private function createItem($sid) {
     // Load slide.
-    $slide = ik_frontend_fetch_slide($this->token, $sid, FALSE);
+    $slide = ik_frontend_fetch_slide($sid, FALSE);
     
     // Create item.
     $item = $this->xml->createElement('item');

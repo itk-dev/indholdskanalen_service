@@ -350,7 +350,7 @@ function ik_slides_file_default_displays() {
   $file_display->weight = -50;
   $file_display->status = TRUE;
   $file_display->settings = array(
-    'image_style' => 'ik_list_thumb',
+    'image_style' => 'slide_preview_small',
   );
   $export['image__media_small__file_image'] = $file_display;
 
