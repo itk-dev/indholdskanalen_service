@@ -30,7 +30,7 @@ function ik_frontend_menu() {
   $items['channels/%/slide/%'] = array(
     'title' => 'Request slide information',
     'page callback' => 'ik_frontend_fetch_slide',
-    'page arguments' => array(1, 3),
+    'page arguments' => array(3),
     'access arguments' => array('access content'),
     'type' => MENU_CALLBACK,
   );
