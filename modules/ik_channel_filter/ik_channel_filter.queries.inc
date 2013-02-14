@@ -76,7 +76,8 @@ function ik_channel_filter_get_slides($raw_values) {
                       AND ogm.entity_type = 'node') inner_ogm
                     ON ogm.gid = inner_ogm.etid
                     INNER JOIN {node} n ON ogm.etid = n.nid
-                    WHERE ogm.entity_type = 'node'";
+                    WHERE ogm.entity_type = 'node'
+                    AND n.type = 'slide'";
         }
         break;
 

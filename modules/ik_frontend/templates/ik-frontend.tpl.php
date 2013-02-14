@@ -13,7 +13,7 @@
     <div class="image-container box_skitter">
       <ul>
         <li>
-          <a href="">
+          <a href="javascript:void(0)">
             <img src="" />
           </a>
         </li>

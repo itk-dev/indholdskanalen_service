@@ -43,11 +43,19 @@ function ik_roles_and_permissions_og_features_default_permissions() {
     'roles' => array(),
   );
 
+  // Exported og permission: 'node:department:create media_rss_slide_import content'
+  $permissions['node:department:create media_rss_slide_import content'] = array(
+    'roles' => array(
+      'editor' => 'editor',
+      'contributor' => 'contributor',
+    ),
+  );
+
   // Exported og permission: 'node:department:create slide content'
   $permissions['node:department:create slide content'] = array(
     'roles' => array(
-      'contributor' => 'contributor',
       'editor' => 'editor',
+      'contributor' => 'contributor',
     ),
   );
 
@@ -61,6 +69,13 @@ function ik_roles_and_permissions_og_features_default_permissions() {
   // Exported og permission: 'node:department:delete any department content'
   $permissions['node:department:delete any department content'] = array(
     'roles' => array(),
+  );
+
+  // Exported og permission: 'node:department:delete any media_rss_slide_import content'
+  $permissions['node:department:delete any media_rss_slide_import content'] = array(
+    'roles' => array(
+      'editor' => 'editor',
+    ),
   );
 
   // Exported og permission: 'node:department:delete any slide content'
@@ -82,11 +97,19 @@ function ik_roles_and_permissions_og_features_default_permissions() {
     'roles' => array(),
   );
 
+  // Exported og permission: 'node:department:delete own media_rss_slide_import content'
+  $permissions['node:department:delete own media_rss_slide_import content'] = array(
+    'roles' => array(
+      'contributor' => 'contributor',
+      'editor' => 'editor',
+    ),
+  );
+
   // Exported og permission: 'node:department:delete own slide content'
   $permissions['node:department:delete own slide content'] = array(
     'roles' => array(
-      'editor' => 'editor',
       'contributor' => 'contributor',
+      'editor' => 'editor',
     ),
   );
 
@@ -138,6 +161,13 @@ function ik_roles_and_permissions_og_features_default_permissions() {
     'roles' => array(),
   );
 
+  // Exported og permission: 'node:department:update any media_rss_slide_import content'
+  $permissions['node:department:update any media_rss_slide_import content'] = array(
+    'roles' => array(
+      'editor' => 'editor',
+    ),
+  );
+
   // Exported og permission: 'node:department:update any slide content'
   $permissions['node:department:update any slide content'] = array(
     'roles' => array(
@@ -164,11 +194,19 @@ function ik_roles_and_permissions_og_features_default_permissions() {
     'roles' => array(),
   );
 
-  // Exported og permission: 'node:department:update own slide content'
-  $permissions['node:department:update own slide content'] = array(
+  // Exported og permission: 'node:department:update own media_rss_slide_import content'
+  $permissions['node:department:update own media_rss_slide_import content'] = array(
     'roles' => array(
       'editor' => 'editor',
       'contributor' => 'contributor',
+    ),
+  );
+
+  // Exported og permission: 'node:department:update own slide content'
+  $permissions['node:department:update own slide content'] = array(
+    'roles' => array(
+      'contributor' => 'contributor',
+      'editor' => 'editor',
     ),
   );
 
@@ -203,6 +241,11 @@ function ik_roles_and_permissions_og_features_default_permissions() {
     'roles' => array(),
   );
 
+  // Exported og permission: 'node:organisation:create media_rss_slide_import content'
+  $permissions['node:organisation:create media_rss_slide_import content'] = array(
+    'roles' => array(),
+  );
+
   // Exported og permission: 'node:organisation:create slide content'
   $permissions['node:organisation:create slide content'] = array(
     'roles' => array(),
@@ -218,6 +261,11 @@ function ik_roles_and_permissions_og_features_default_permissions() {
     'roles' => array(),
   );
 
+  // Exported og permission: 'node:organisation:delete any media_rss_slide_import content'
+  $permissions['node:organisation:delete any media_rss_slide_import content'] = array(
+    'roles' => array(),
+  );
+
   // Exported og permission: 'node:organisation:delete any slide content'
   $permissions['node:organisation:delete any slide content'] = array(
     'roles' => array(),
@@ -230,6 +278,11 @@ function ik_roles_and_permissions_og_features_default_permissions() {
 
   // Exported og permission: 'node:organisation:delete own department content'
   $permissions['node:organisation:delete own department content'] = array(
+    'roles' => array(),
+  );
+
+  // Exported og permission: 'node:organisation:delete own media_rss_slide_import content'
+  $permissions['node:organisation:delete own media_rss_slide_import content'] = array(
     'roles' => array(),
   );
 
@@ -286,6 +339,11 @@ function ik_roles_and_permissions_og_features_default_permissions() {
     'roles' => array(),
   );
 
+  // Exported og permission: 'node:organisation:update any media_rss_slide_import content'
+  $permissions['node:organisation:update any media_rss_slide_import content'] = array(
+    'roles' => array(),
+  );
+
   // Exported og permission: 'node:organisation:update any slide content'
   $permissions['node:organisation:update any slide content'] = array(
     'roles' => array(),
@@ -305,6 +363,11 @@ function ik_roles_and_permissions_og_features_default_permissions() {
 
   // Exported og permission: 'node:organisation:update own department content'
   $permissions['node:organisation:update own department content'] = array(
+    'roles' => array(),
+  );
+
+  // Exported og permission: 'node:organisation:update own media_rss_slide_import content'
+  $permissions['node:organisation:update own media_rss_slide_import content'] = array(
     'roles' => array(),
   );
 

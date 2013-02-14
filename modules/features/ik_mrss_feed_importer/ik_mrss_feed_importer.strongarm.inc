@@ -90,10 +90,10 @@ function ik_mrss_feed_importer_strongarm() {
           'weight' => '0',
         ),
         'path' => array(
-          'weight' => '2',
+          'weight' => '3',
         ),
         'redirect' => array(
-          'weight' => '1',
+          'weight' => '2',
         ),
         'feeds' => array(
           'weight' => '0',

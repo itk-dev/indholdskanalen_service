@@ -118,7 +118,7 @@ function ik_favorites_views_default_views() {
   /* Display: Users favorite slides */
   $handler = $view->new_display('block', 'Users favorite slides', 'block_1');
   $handler->display->display_options['defaults']['title'] = FALSE;
-  $handler->display->display_options['title'] = 'Favorite slides';
+  $handler->display->display_options['title'] = 'Slide favoritter';
   $handler->display->display_options['defaults']['hide_admin_links'] = FALSE;
   $handler->display->display_options['hide_admin_links'] = TRUE;
   $handler->display->display_options['defaults']['pager'] = FALSE;
@@ -172,7 +172,7 @@ function ik_favorites_views_default_views() {
   $handler->display->display_options['fields']['clone_node']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['clone_node']['element_wrapper_type'] = '0';
   $handler->display->display_options['fields']['clone_node']['element_default_classes'] = FALSE;
-  $handler->display->display_options['fields']['clone_node']['text'] = 'Duplicate';
+  $handler->display->display_options['fields']['clone_node']['text'] = 'Opret kopi';
   /* Felt: Indhold: Redigér-link */
   $handler->display->display_options['fields']['edit_node']['id'] = 'edit_node';
   $handler->display->display_options['fields']['edit_node']['table'] = 'views_entity_node';
@@ -225,7 +225,7 @@ function ik_favorites_views_default_views() {
   /* Display: User favorite slides, page */
   $handler = $view->new_display('page', 'User favorite slides, page', 'page_1');
   $handler->display->display_options['defaults']['title'] = FALSE;
-  $handler->display->display_options['title'] = 'Favorite slides';
+  $handler->display->display_options['title'] = 'Slide favoritter';
   $handler->display->display_options['defaults']['hide_admin_links'] = FALSE;
   $handler->display->display_options['defaults']['style_plugin'] = FALSE;
   $handler->display->display_options['style_plugin'] = 'table';
@@ -332,7 +332,7 @@ function ik_favorites_views_default_views() {
   $handler->display->display_options['fields']['title_1']['table'] = 'node';
   $handler->display->display_options['fields']['title_1']['field'] = 'title';
   $handler->display->display_options['fields']['title_1']['relationship'] = 'og_membership_related_node_group';
-  $handler->display->display_options['fields']['title_1']['label'] = 'Department';
+  $handler->display->display_options['fields']['title_1']['label'] = 'Afdeling';
   $handler->display->display_options['fields']['title_1']['element_label_colon'] = FALSE;
   /* Felt: Flag: Flag-link */
   $handler->display->display_options['fields']['ops']['id'] = 'ops';
@@ -382,7 +382,7 @@ function ik_favorites_views_default_views() {
   /* Display: Users favorite channels */
   $handler = $view->new_display('block', 'Users favorite channels', 'block_2');
   $handler->display->display_options['defaults']['title'] = FALSE;
-  $handler->display->display_options['title'] = 'Favorite channels';
+  $handler->display->display_options['title'] = 'Kanal favoritter';
   $handler->display->display_options['defaults']['hide_admin_links'] = FALSE;
   $handler->display->display_options['hide_admin_links'] = TRUE;
   $handler->display->display_options['defaults']['link_display'] = FALSE;
@@ -399,6 +399,18 @@ function ik_favorites_views_default_views() {
   $handler->display->display_options['fields']['title']['label'] = '';
   $handler->display->display_options['fields']['title']['alter']['word_boundary'] = FALSE;
   $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
+  /* Felt: Indhold: Preview */
+  $handler->display->display_options['fields']['field_channel_preview']['id'] = 'field_channel_preview';
+  $handler->display->display_options['fields']['field_channel_preview']['table'] = 'field_data_field_channel_preview';
+  $handler->display->display_options['fields']['field_channel_preview']['field'] = 'field_channel_preview';
+  $handler->display->display_options['fields']['field_channel_preview']['label'] = '';
+  $handler->display->display_options['fields']['field_channel_preview']['alter']['text'] = '([field_channel_preview])';
+  $handler->display->display_options['fields']['field_channel_preview']['alter']['strip_tags'] = TRUE;
+  $handler->display->display_options['fields']['field_channel_preview']['element_type'] = '0';
+  $handler->display->display_options['fields']['field_channel_preview']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_channel_preview']['element_wrapper_type'] = '0';
+  $handler->display->display_options['fields']['field_channel_preview']['element_default_classes'] = FALSE;
+  $handler->display->display_options['fields']['field_channel_preview']['type'] = 'ik_channel_filter_preview_count_formatter';
   /* Felt: Flag: Flag-link */
   $handler->display->display_options['fields']['ops']['id'] = 'ops';
   $handler->display->display_options['fields']['ops']['table'] = 'flag_content';
@@ -420,7 +432,7 @@ function ik_favorites_views_default_views() {
   $handler->display->display_options['fields']['clone_node']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['clone_node']['element_wrapper_type'] = '0';
   $handler->display->display_options['fields']['clone_node']['element_default_classes'] = FALSE;
-  $handler->display->display_options['fields']['clone_node']['text'] = 'Duplicate';
+  $handler->display->display_options['fields']['clone_node']['text'] = 'Opret kopi';
   /* Felt: Indhold: Redigér-link */
   $handler->display->display_options['fields']['edit_node']['id'] = 'edit_node';
   $handler->display->display_options['fields']['edit_node']['table'] = 'views_entity_node';
@@ -473,14 +485,14 @@ function ik_favorites_views_default_views() {
   /* Display: User favorite channels, page */
   $handler = $view->new_display('page', 'User favorite channels, page', 'page_2');
   $handler->display->display_options['defaults']['title'] = FALSE;
-  $handler->display->display_options['title'] = 'Favorite channels';
+  $handler->display->display_options['title'] = 'Kanal favoritter';
   $handler->display->display_options['defaults']['hide_admin_links'] = FALSE;
   $handler->display->display_options['defaults']['style_plugin'] = FALSE;
   $handler->display->display_options['style_plugin'] = 'table';
   $handler->display->display_options['style_options']['columns'] = array(
-    'field_ik_slide_media' => 'field_ik_slide_media',
     'title' => 'title',
     'name' => 'name',
+    'field_channel_preview' => 'field_channel_preview',
     'title_2' => 'title_2',
     'title_1' => 'title_1',
     'ops' => 'delete_node',
@@ -489,11 +501,6 @@ function ik_favorites_views_default_views() {
   );
   $handler->display->display_options['style_options']['default'] = '-1';
   $handler->display->display_options['style_options']['info'] = array(
-    'field_ik_slide_media' => array(
-      'align' => '',
-      'separator' => '',
-      'empty_column' => 0,
-    ),
     'title' => array(
       'sortable' => 1,
       'default_sort_order' => 'asc',
@@ -502,6 +509,13 @@ function ik_favorites_views_default_views() {
       'empty_column' => 0,
     ),
     'name' => array(
+      'sortable' => 1,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'field_channel_preview' => array(
       'sortable' => 1,
       'default_sort_order' => 'asc',
       'align' => '',
@@ -556,6 +570,17 @@ function ik_favorites_views_default_views() {
   $handler->display->display_options['fields']['name']['relationship'] = 'uid';
   $handler->display->display_options['fields']['name']['label'] = 'Forfatter';
   $handler->display->display_options['fields']['name']['element_label_colon'] = FALSE;
+  /* Felt: Indhold: Preview */
+  $handler->display->display_options['fields']['field_channel_preview']['id'] = 'field_channel_preview';
+  $handler->display->display_options['fields']['field_channel_preview']['table'] = 'field_data_field_channel_preview';
+  $handler->display->display_options['fields']['field_channel_preview']['field'] = 'field_channel_preview';
+  $handler->display->display_options['fields']['field_channel_preview']['label'] = 'Antal slides';
+  $handler->display->display_options['fields']['field_channel_preview']['alter']['strip_tags'] = TRUE;
+  $handler->display->display_options['fields']['field_channel_preview']['element_type'] = '0';
+  $handler->display->display_options['fields']['field_channel_preview']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_channel_preview']['element_wrapper_type'] = '0';
+  $handler->display->display_options['fields']['field_channel_preview']['element_default_classes'] = FALSE;
+  $handler->display->display_options['fields']['field_channel_preview']['type'] = 'ik_channel_filter_preview_count_formatter';
   /* Felt: Indhold: Titel */
   $handler->display->display_options['fields']['title_2']['id'] = 'title_2';
   $handler->display->display_options['fields']['title_2']['table'] = 'node';
@@ -568,7 +593,7 @@ function ik_favorites_views_default_views() {
   $handler->display->display_options['fields']['title_1']['table'] = 'node';
   $handler->display->display_options['fields']['title_1']['field'] = 'title';
   $handler->display->display_options['fields']['title_1']['relationship'] = 'og_membership_related_node_group';
-  $handler->display->display_options['fields']['title_1']['label'] = 'Department';
+  $handler->display->display_options['fields']['title_1']['label'] = 'Afdeling';
   $handler->display->display_options['fields']['title_1']['element_label_colon'] = FALSE;
   /* Felt: Flag: Flag-link */
   $handler->display->display_options['fields']['ops']['id'] = 'ops';
@@ -636,8 +661,8 @@ function ik_favorites_views_default_views() {
     t('OG membership: OG membership from node'),
     t('OG membership: Group node from OG membership'),
     t('Users favorite slides'),
-    t('Favorite slides'),
-    t('Duplicate'),
+    t('Slide favoritter'),
+    t('Opret kopi'),
     t('Redigér'),
     t('<div class="action-container">
 <div class="action-links">
@@ -653,12 +678,14 @@ function ik_favorites_views_default_views() {
     t('Titel'),
     t('Forfatter'),
     t('Organisation'),
-    t('Department'),
+    t('Afdeling'),
     t('Handlinger'),
     t('Slet'),
     t('Users favorite channels'),
-    t('Favorite channels'),
+    t('Kanal favoritter'),
+    t('([field_channel_preview])'),
     t('User favorite channels, page'),
+    t('Antal slides'),
   );
   $export['ik_favorites'] = $view;
 

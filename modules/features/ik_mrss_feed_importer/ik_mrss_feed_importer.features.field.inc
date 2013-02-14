@@ -102,7 +102,7 @@ function ik_mrss_feed_importer_field_default_fields() {
         'module' => 'og',
         'settings' => array(),
         'type' => 'og_complex',
-        'weight' => '16',
+        'weight' => '9',
       ),
     ),
   );
