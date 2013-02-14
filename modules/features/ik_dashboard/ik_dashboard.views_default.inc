@@ -172,10 +172,18 @@ function ik_dashboard_views_default_views() {
       'empty_column' => 0,
     ),
   );
+  /* Overskrift: Global: Tekstområde */
+  $handler->display->display_options['header']['area']['id'] = 'area';
+  $handler->display->display_options['header']['area']['table'] = 'views';
+  $handler->display->display_options['header']['area']['field'] = 'area';
+  $handler->display->display_options['header']['area']['label'] = 'Search filters heading';
+  $handler->display->display_options['header']['area']['content'] = '<h3>Filtrer listen</h3>';
+  $handler->display->display_options['header']['area']['format'] = 'editor_html';
   /* Overskrift: Global: Resumé af resultat */
   $handler->display->display_options['header']['result']['id'] = 'result';
   $handler->display->display_options['header']['result']['table'] = 'views';
   $handler->display->display_options['header']['result']['field'] = 'result';
+  $handler->display->display_options['header']['result']['content'] = '<div class="result-summary">Displaying @start - @end of @total</div>';
   /* Opførsel ved ingen resultater: Global: Tekstområde */
   $handler->display->display_options['empty']['area']['id'] = 'area';
   $handler->display->display_options['empty']['area']['table'] = 'views';
@@ -244,8 +252,8 @@ function ik_dashboard_views_default_views() {
   $handler->display->display_options['filters']['status']['group'] = 1;
   $handler->display->display_options['filters']['status']['expose']['operator'] = FALSE;
 
-  /* Display: My content */
-  $handler = $view->new_display('panel_pane', 'My content', 'panel_pane_1');
+  /* Display: My content pane */
+  $handler = $view->new_display('panel_pane', 'My content pane', 'panel_pane_1');
   $handler->display->display_options['defaults']['title'] = FALSE;
   $handler->display->display_options['title'] = 'Mit indhold';
   $handler->display->display_options['display_description'] = 'A content pane displaying users own content';
@@ -273,7 +281,8 @@ function ik_dashboard_views_default_views() {
   $handler->display->display_options['pager']['options']['offset'] = '0';
   $handler->display->display_options['pager']['options']['id'] = '0';
   $handler->display->display_options['pager']['options']['quantity'] = '9';
-  $handler->display->display_options['pager']['options']['expose']['items_per_page_label'] = 'Antal elementer';
+  $handler->display->display_options['pager']['options']['expose']['items_per_page'] = TRUE;
+  $handler->display->display_options['pager']['options']['expose']['items_per_page_label'] = 'Antal';
   $handler->display->display_options['pager']['options']['expose']['items_per_page_options_all_label'] = '- Alle -';
   $handler->display->display_options['pager']['options']['expose']['offset_label'] = 'Forskydning';
   $handler->display->display_options['pager']['options']['tags']['first'] = '« første';
@@ -326,7 +335,6 @@ function ik_dashboard_views_default_views() {
   $handler->display->display_options['defaults']['style_options'] = FALSE;
   $handler->display->display_options['defaults']['row_plugin'] = FALSE;
   $handler->display->display_options['defaults']['row_options'] = FALSE;
-  $handler->display->display_options['defaults']['header'] = FALSE;
   $handler->display->display_options['defaults']['arguments'] = FALSE;
   $handler->display->display_options['defaults']['filter_groups'] = FALSE;
   $handler->display->display_options['defaults']['filters'] = FALSE;
@@ -448,7 +456,8 @@ function ik_dashboard_views_default_views() {
   $handler->display->display_options['pager']['options']['offset'] = '0';
   $handler->display->display_options['pager']['options']['id'] = '0';
   $handler->display->display_options['pager']['options']['quantity'] = '9';
-  $handler->display->display_options['pager']['options']['expose']['items_per_page_label'] = 'Antal elementer';
+  $handler->display->display_options['pager']['options']['expose']['items_per_page'] = TRUE;
+  $handler->display->display_options['pager']['options']['expose']['items_per_page_label'] = 'Antal';
   $handler->display->display_options['pager']['options']['expose']['items_per_page_options_all_label'] = '- Alle -';
   $handler->display->display_options['pager']['options']['expose']['offset_label'] = 'Forskydning';
   $handler->display->display_options['pager']['options']['tags']['first'] = '« første';
@@ -815,7 +824,7 @@ function ik_dashboard_views_default_views() {
   $handler->display->display_options['pager']['options']['id'] = '0';
   $handler->display->display_options['pager']['options']['quantity'] = '9';
   $handler->display->display_options['pager']['options']['expose']['items_per_page'] = TRUE;
-  $handler->display->display_options['pager']['options']['expose']['items_per_page_label'] = 'Antal elementer';
+  $handler->display->display_options['pager']['options']['expose']['items_per_page_label'] = 'Antal';
   $handler->display->display_options['pager']['options']['expose']['items_per_page_options_all_label'] = '- Alle -';
   $handler->display->display_options['pager']['options']['expose']['offset_label'] = 'Forskydning';
   $handler->display->display_options['pager']['options']['tags']['first'] = '« første';
@@ -890,7 +899,6 @@ function ik_dashboard_views_default_views() {
   $handler->display->display_options['defaults']['style_options'] = FALSE;
   $handler->display->display_options['defaults']['row_plugin'] = FALSE;
   $handler->display->display_options['defaults']['row_options'] = FALSE;
-  $handler->display->display_options['defaults']['header'] = FALSE;
   $handler->display->display_options['defaults']['relationships'] = FALSE;
   /* Forbindelse: OG membership: OG membership from Indholdselement */
   $handler->display->display_options['relationships']['og_membership_rel']['id'] = 'og_membership_rel';
@@ -1175,7 +1183,7 @@ function ik_dashboard_views_default_views() {
   $handler->display->display_options['pager']['options']['id'] = '0';
   $handler->display->display_options['pager']['options']['quantity'] = '9';
   $handler->display->display_options['pager']['options']['expose']['items_per_page'] = TRUE;
-  $handler->display->display_options['pager']['options']['expose']['items_per_page_label'] = 'Antal elementer';
+  $handler->display->display_options['pager']['options']['expose']['items_per_page_label'] = 'Antal';
   $handler->display->display_options['pager']['options']['expose']['items_per_page_options_all_label'] = '- Alle -';
   $handler->display->display_options['pager']['options']['expose']['offset_label'] = 'Forskydning';
   $handler->display->display_options['pager']['options']['tags']['first'] = '« første';
@@ -1670,7 +1678,7 @@ function ik_dashboard_views_default_views() {
   $handler->display->display_options['pager']['options']['id'] = '0';
   $handler->display->display_options['pager']['options']['quantity'] = '9';
   $handler->display->display_options['pager']['options']['expose']['items_per_page'] = TRUE;
-  $handler->display->display_options['pager']['options']['expose']['items_per_page_label'] = 'Antal elementer';
+  $handler->display->display_options['pager']['options']['expose']['items_per_page_label'] = 'Antal';
   $handler->display->display_options['pager']['options']['expose']['items_per_page_options_all_label'] = '- Alle -';
   $handler->display->display_options['pager']['options']['expose']['offset_label'] = 'Forskydning';
   $handler->display->display_options['pager']['options']['tags']['first'] = '« første';
@@ -1753,7 +1761,6 @@ function ik_dashboard_views_default_views() {
   $handler->display->display_options['defaults']['style_options'] = FALSE;
   $handler->display->display_options['defaults']['row_plugin'] = FALSE;
   $handler->display->display_options['defaults']['row_options'] = FALSE;
-  $handler->display->display_options['defaults']['header'] = FALSE;
   $handler->display->display_options['defaults']['relationships'] = FALSE;
   /* Forbindelse: OG membership: OG membership from Indholdselement */
   $handler->display->display_options['relationships']['og_membership_rel']['id'] = 'og_membership_rel';
@@ -2023,7 +2030,7 @@ function ik_dashboard_views_default_views() {
   $handler->display->display_options['pager']['options']['id'] = '0';
   $handler->display->display_options['pager']['options']['quantity'] = '9';
   $handler->display->display_options['pager']['options']['expose']['items_per_page'] = TRUE;
-  $handler->display->display_options['pager']['options']['expose']['items_per_page_label'] = 'Antal elementer';
+  $handler->display->display_options['pager']['options']['expose']['items_per_page_label'] = 'Antal';
   $handler->display->display_options['pager']['options']['expose']['items_per_page_options_all_label'] = '- Alle -';
   $handler->display->display_options['pager']['options']['expose']['offset_label'] = 'Forskydning';
   $handler->display->display_options['pager']['options']['tags']['first'] = '« første';
@@ -2491,7 +2498,8 @@ function ik_dashboard_views_default_views() {
   $handler->display->display_options['pager']['options']['offset'] = '0';
   $handler->display->display_options['pager']['options']['id'] = '0';
   $handler->display->display_options['pager']['options']['quantity'] = '9';
-  $handler->display->display_options['pager']['options']['expose']['items_per_page_label'] = 'Antal elementer';
+  $handler->display->display_options['pager']['options']['expose']['items_per_page'] = TRUE;
+  $handler->display->display_options['pager']['options']['expose']['items_per_page_label'] = 'Antal';
   $handler->display->display_options['pager']['options']['expose']['items_per_page_options_all_label'] = '- Alle -';
   $handler->display->display_options['pager']['options']['expose']['offset_label'] = 'Forskydning';
   $handler->display->display_options['pager']['options']['tags']['first'] = '« første';
@@ -2536,20 +2544,8 @@ function ik_dashboard_views_default_views() {
   $handler->display->display_options['defaults']['style_options'] = FALSE;
   $handler->display->display_options['defaults']['row_plugin'] = FALSE;
   $handler->display->display_options['defaults']['row_options'] = FALSE;
-  $handler->display->display_options['defaults']['header'] = FALSE;
   $handler->display->display_options['defaults']['relationships'] = FALSE;
   $handler->display->display_options['defaults']['fields'] = FALSE;
-  /* Felt: Indhold: Logo */
-  $handler->display->display_options['fields']['field_ik_org_logo']['id'] = 'field_ik_org_logo';
-  $handler->display->display_options['fields']['field_ik_org_logo']['table'] = 'field_data_field_ik_org_logo';
-  $handler->display->display_options['fields']['field_ik_org_logo']['field'] = 'field_ik_org_logo';
-  $handler->display->display_options['fields']['field_ik_org_logo']['label'] = '';
-  $handler->display->display_options['fields']['field_ik_org_logo']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['field_ik_org_logo']['click_sort_column'] = 'fid';
-  $handler->display->display_options['fields']['field_ik_org_logo']['settings'] = array(
-    'image_style' => 'thumbnail',
-    'image_link' => 'content',
-  );
   /* Felt: Indhold: Titel */
   $handler->display->display_options['fields']['title']['id'] = 'title';
   $handler->display->display_options['fields']['title']['table'] = 'node';
@@ -2651,7 +2647,7 @@ function ik_dashboard_views_default_views() {
   $handler->display->display_options['pager']['options']['id'] = '0';
   $handler->display->display_options['pager']['options']['quantity'] = '9';
   $handler->display->display_options['pager']['options']['expose']['items_per_page'] = TRUE;
-  $handler->display->display_options['pager']['options']['expose']['items_per_page_label'] = 'Antal elementer';
+  $handler->display->display_options['pager']['options']['expose']['items_per_page_label'] = 'Antal';
   $handler->display->display_options['pager']['options']['expose']['items_per_page_options_all_label'] = '- Alle -';
   $handler->display->display_options['pager']['options']['expose']['offset_label'] = 'Forskydning';
   $handler->display->display_options['pager']['options']['tags']['first'] = '« første';
@@ -2801,7 +2797,8 @@ function ik_dashboard_views_default_views() {
   $handler->display->display_options['pager']['options']['offset'] = '0';
   $handler->display->display_options['pager']['options']['id'] = '0';
   $handler->display->display_options['pager']['options']['quantity'] = '9';
-  $handler->display->display_options['pager']['options']['expose']['items_per_page_label'] = 'Antal elementer';
+  $handler->display->display_options['pager']['options']['expose']['items_per_page'] = TRUE;
+  $handler->display->display_options['pager']['options']['expose']['items_per_page_label'] = 'Antal';
   $handler->display->display_options['pager']['options']['expose']['items_per_page_options_all_label'] = '- Alle -';
   $handler->display->display_options['pager']['options']['expose']['offset_label'] = 'Forskydning';
   $handler->display->display_options['pager']['options']['tags']['first'] = '« første';
@@ -2854,7 +2851,6 @@ function ik_dashboard_views_default_views() {
   $handler->display->display_options['defaults']['style_options'] = FALSE;
   $handler->display->display_options['defaults']['row_plugin'] = FALSE;
   $handler->display->display_options['defaults']['row_options'] = FALSE;
-  $handler->display->display_options['defaults']['header'] = FALSE;
   $handler->display->display_options['defaults']['relationships'] = FALSE;
   /* Forbindelse: OG membership: OG membership from Indholdselement */
   $handler->display->display_options['relationships']['og_membership_rel']['id'] = 'og_membership_rel';
@@ -2866,18 +2862,6 @@ function ik_dashboard_views_default_views() {
   $handler->display->display_options['relationships']['og_membership_related_node_group']['field'] = 'og_membership_related_node_group';
   $handler->display->display_options['relationships']['og_membership_related_node_group']['relationship'] = 'og_membership_rel';
   $handler->display->display_options['defaults']['fields'] = FALSE;
-  /* Felt: Indhold: Logo */
-  $handler->display->display_options['fields']['field_ik_org_logo']['id'] = 'field_ik_org_logo';
-  $handler->display->display_options['fields']['field_ik_org_logo']['table'] = 'field_data_field_ik_org_logo';
-  $handler->display->display_options['fields']['field_ik_org_logo']['field'] = 'field_ik_org_logo';
-  $handler->display->display_options['fields']['field_ik_org_logo']['relationship'] = 'og_membership_related_node_group';
-  $handler->display->display_options['fields']['field_ik_org_logo']['label'] = '';
-  $handler->display->display_options['fields']['field_ik_org_logo']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['field_ik_org_logo']['click_sort_column'] = 'fid';
-  $handler->display->display_options['fields']['field_ik_org_logo']['settings'] = array(
-    'image_style' => 'thumbnail',
-    'image_link' => 'content',
-  );
   /* Felt: Indhold: Titel */
   $handler->display->display_options['fields']['title']['id'] = 'title';
   $handler->display->display_options['fields']['title']['table'] = 'node';
@@ -3010,7 +2994,7 @@ function ik_dashboard_views_default_views() {
   $handler->display->display_options['pager']['options']['id'] = '0';
   $handler->display->display_options['pager']['options']['quantity'] = '9';
   $handler->display->display_options['pager']['options']['expose']['items_per_page'] = TRUE;
-  $handler->display->display_options['pager']['options']['expose']['items_per_page_label'] = 'Antal elementer';
+  $handler->display->display_options['pager']['options']['expose']['items_per_page_label'] = 'Antal';
   $handler->display->display_options['pager']['options']['expose']['items_per_page_options_all_label'] = '- Alle -';
   $handler->display->display_options['pager']['options']['expose']['offset_label'] = 'Forskydning';
   $handler->display->display_options['pager']['options']['tags']['first'] = '« første';
@@ -3203,7 +3187,7 @@ function ik_dashboard_views_default_views() {
   $handler->display->display_options['pager']['options']['id'] = '0';
   $handler->display->display_options['pager']['options']['quantity'] = '9';
   $handler->display->display_options['pager']['options']['expose']['items_per_page'] = TRUE;
-  $handler->display->display_options['pager']['options']['expose']['items_per_page_label'] = 'Antal elementer';
+  $handler->display->display_options['pager']['options']['expose']['items_per_page_label'] = 'Antal';
   $handler->display->display_options['pager']['options']['expose']['items_per_page_options_all_label'] = '- Alle -';
   $handler->display->display_options['pager']['options']['expose']['offset_label'] = 'Forskydning';
   $handler->display->display_options['pager']['options']['tags']['first'] = '« første';
@@ -3286,7 +3270,6 @@ function ik_dashboard_views_default_views() {
   $handler->display->display_options['defaults']['style_options'] = FALSE;
   $handler->display->display_options['defaults']['row_plugin'] = FALSE;
   $handler->display->display_options['defaults']['row_options'] = FALSE;
-  $handler->display->display_options['defaults']['header'] = FALSE;
   $handler->display->display_options['defaults']['relationships'] = FALSE;
   /* Forbindelse: OG membership: OG membership from Indholdselement */
   $handler->display->display_options['relationships']['og_membership_rel']['id'] = 'og_membership_rel';
@@ -3579,7 +3562,7 @@ function ik_dashboard_views_default_views() {
   $handler->display->display_options['pager']['options']['id'] = '0';
   $handler->display->display_options['pager']['options']['quantity'] = '9';
   $handler->display->display_options['pager']['options']['expose']['items_per_page'] = TRUE;
-  $handler->display->display_options['pager']['options']['expose']['items_per_page_label'] = 'Antal elementer';
+  $handler->display->display_options['pager']['options']['expose']['items_per_page_label'] = 'Antal';
   $handler->display->display_options['pager']['options']['expose']['items_per_page_options_all_label'] = '- Alle -';
   $handler->display->display_options['pager']['options']['expose']['offset_label'] = 'Forskydning';
   $handler->display->display_options['pager']['options']['tags']['first'] = '« første';
@@ -4090,7 +4073,7 @@ function ik_dashboard_views_default_views() {
   $handler->display->display_options['pager']['options']['id'] = '0';
   $handler->display->display_options['pager']['options']['quantity'] = '9';
   $handler->display->display_options['pager']['options']['expose']['items_per_page'] = TRUE;
-  $handler->display->display_options['pager']['options']['expose']['items_per_page_label'] = 'Antal elementer';
+  $handler->display->display_options['pager']['options']['expose']['items_per_page_label'] = 'Antal';
   $handler->display->display_options['pager']['options']['expose']['items_per_page_options_all_label'] = '- Alle -';
   $handler->display->display_options['pager']['options']['expose']['offset_label'] = 'Forskydning';
   $handler->display->display_options['pager']['options']['tags']['first'] = '« første';
@@ -4173,7 +4156,6 @@ function ik_dashboard_views_default_views() {
   $handler->display->display_options['defaults']['style_options'] = FALSE;
   $handler->display->display_options['defaults']['row_plugin'] = FALSE;
   $handler->display->display_options['defaults']['row_options'] = FALSE;
-  $handler->display->display_options['defaults']['header'] = FALSE;
   $handler->display->display_options['defaults']['relationships'] = FALSE;
   /* Forbindelse: OG membership: OG membership from Indholdselement */
   $handler->display->display_options['relationships']['og_membership_rel']['id'] = 'og_membership_rel';
@@ -4430,7 +4412,7 @@ function ik_dashboard_views_default_views() {
   $handler->display->display_options['pager']['options']['id'] = '0';
   $handler->display->display_options['pager']['options']['quantity'] = '9';
   $handler->display->display_options['pager']['options']['expose']['items_per_page'] = TRUE;
-  $handler->display->display_options['pager']['options']['expose']['items_per_page_label'] = 'Antal elementer';
+  $handler->display->display_options['pager']['options']['expose']['items_per_page_label'] = 'Antal';
   $handler->display->display_options['pager']['options']['expose']['items_per_page_options_all_label'] = '- Alle -';
   $handler->display->display_options['pager']['options']['expose']['offset_label'] = 'Forskydning';
   $handler->display->display_options['pager']['options']['tags']['first'] = '« første';
@@ -4897,7 +4879,9 @@ function ik_dashboard_views_default_views() {
     t('‹ forrige'),
     t('næste ›'),
     t('sidste »'),
-    t('Displaying @start - @end of @total'),
+    t('Search filters heading'),
+    t('<h3>Filtrer listen</h3>'),
+    t('<div class="result-summary">Displaying @start - @end of @total</div>'),
     t('Intet resultat tekst'),
     t('No results found'),
     t('forfatter'),
@@ -4907,9 +4891,10 @@ function ik_dashboard_views_default_views() {
     t('Slet'),
     t('Handlinger'),
     t('Redigér'),
-    t('My content'),
+    t('My content pane'),
     t('Mit indhold'),
     t('A content pane displaying users own content'),
+    t('Antal'),
     t('Udgivet'),
     t('View panes'),
     t('My content page'),
