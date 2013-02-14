@@ -1,0 +1,23 @@
+<?php
+
+/**
+ * @file
+ * Defines the schema used by the slide preview filed.
+ */
+
+/**
+ * Implements hook_field_schema().
+ */
+function ik_slide_preview_field_schema($field) {
+  $columns = array(
+    'image' => array(
+      'type' => 'text',
+      'not null' => TRUE,
+    ),
+  );
+
+  return array(
+    'columns' => $columns,
+    'indexes' => array(),
+  );
+}
