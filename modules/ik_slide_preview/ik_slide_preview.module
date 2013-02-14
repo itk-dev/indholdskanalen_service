@@ -151,10 +151,16 @@ function ik_slide_preview_field_instance_settings_form($field, $instance) {
  * hook.
  */
 function ik_slide_preview_field_widget_form(&$form, &$form_state, $field, $instance, $langcode, $items, $delta, $element) {
+  static $default;
   // Simple hidden field on in the edit form.
+  if (is_null($default)) {
+    $default = $items[0]['image'];
+  }
   $element += array(
-    '#type' => 'hidden',
-    '#default_value' => isset($items[0]['image']) ? $items[0]['image'] : '',
+    'image' => array(
+      '#type' => 'hidden',
+      '#default_value' => $default,
+    ),
   );
   return $element;
 }
@@ -239,16 +245,6 @@ function ik_slide_preview_field_formatter_view($entity_type, $entity, $field, $i
   $dest = $field['settings']['uri_scheme'] . '://' . $instance['settings']['file_directory'];
   $uri = $dest . '/' . $items[0]['image'];
 
-  // Check if screenshot exists.
-  if (!file_exists(drupal_realpath($uri))) {
-    // Get the screenshot and create success/error message.
-    if (!phantomjs_capture_screen($url, $dest, $file)) {
-      return array(
-        '#markup' => '<div class="messages error"><ul><li>' . t('The screenshot could not be retrieved.') . '</ul></li></div>'
-      );
-    }
-  }
-
   // Build return element
   $element = array(
       '#theme' => 'image_formatter',
@@ -265,37 +261,50 @@ function ik_slide_preview_field_formatter_view($entity_type, $entity, $field, $i
 }
 
 /**
+ * Implements hook_field_load().
+ */
+function ik_slide_preview_field_load($entity_type, $entities, $field, $instances, $langcode, &$items, $age) {}
+
+/**
  * Implements hook_field_insert().
  */
-function ik_slide_preview_field_insert($entity_type, $entity, $field, $instance, $langcode, &$items) {
-  $t = 0;
-}
+function ik_slide_preview_field_insert($entity_type, $entity, $field, $instance, $langcode, &$items) {}
 
 /**
  * Implements hook_field_update().
  */
-function ik_slide_preview_field_update($entity_type, $entity, $field, $instance, $langcode, &$items) {
-  // Build urls and destionation.
-  $url = url('slide/' . $entity->nid . '/preview', array('absolute' => TRUE));
-  $file = md5($entity->nid . REQUEST_TIME) . '.png';
-  $dest = $field['settings']['uri_scheme'] . '://' . $instance['settings']['file_directory'];
-  
-  // Remove old image styles.
-  $styles = array('slide_preview_small', 'slide_preview_medium', 'slide_preview_large');
-  foreach ($styles as $style) { 
-    $path = drupal_realpath($field['settings']['uri_scheme'] . '://styles/' . $style . '/public/slide_previews/' . $items[0]); 
-    if (file_exists($path)) {
-      unlink($path);
+function ik_slide_preview_field_update($entity_type, $entity, $field, $instance, $langcode, &$items) {}
+
+/**
+ * Implements hook_field_prepare_view().
+ * 
+ * After an update/insert field the $items are empty, which we can use to 
+ * capture a new screenshot. I have no f**king idea why it's empty, it just is.
+ */
+function ik_slide_preview_field_prepare_view($entity_type, $entities, $field, $instances, $langcode, &$items) {
+  foreach ($entities as $id => &$entity) {
+   // Create screenshot.
+    if (!isset($items[$id][0]['image'])) {
+      // Build urls and destionation.
+      $url = url('slide/' . $entity->nid . '/preview', array('absolute' => TRUE));
+      $file = md5($entity->nid . REQUEST_TIME) . '.png';
+      $dest = $field['settings']['uri_scheme'] . '://' . $instances[$id]['settings']['file_directory'];
+
+      // Capture new screenshot.
+      if (phantomjs_capture_screen($url, $dest, $file)) {
+        // Update the loaded field values.
+        $items[$id][0]['image'] = $file;
+
+        // Update the database and clear field cache.
+        $entity->{$field['field_name']}[$langcode][0]['image'] = $file;
+        field_sql_storage_field_storage_write($entity_type, $entity, FIELD_STORAGE_UPDATE, array($field['id']));
+        field_cache_clear();
+      }
+      else {
+        // Set message and use old field value.
+        drupal_set_message(t('PhantomJS chould not create screenshot of the slide'), 'error');
+      }
     }
-  }
-      
-  // Create screenshot.
-  if (!phantomjs_capture_screen($url, $dest, $file)) {
-    drupal_set_message(t('PhantomJS chould not create screenshot of the slide'), 'error');
-    $items[0] = array('image' => 'empty');
-  }  
-  else {
-    $items[0] = array('image' => $file);
   }
 }
 
