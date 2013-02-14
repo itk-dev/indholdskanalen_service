@@ -1845,7 +1845,7 @@ function ik_dashboard_views_default_views() {
   $handler->display->display_options['fields']['field_channel_preview']['id'] = 'field_channel_preview';
   $handler->display->display_options['fields']['field_channel_preview']['table'] = 'field_data_field_channel_preview';
   $handler->display->display_options['fields']['field_channel_preview']['field'] = 'field_channel_preview';
-  $handler->display->display_options['fields']['field_channel_preview']['label'] = 'Gennemse';
+  $handler->display->display_options['fields']['field_channel_preview']['label'] = 'Antal slides';
   $handler->display->display_options['fields']['field_channel_preview']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['field_channel_preview']['type'] = 'ik_channel_filter_preview_count_formatter';
   /* Felt: Indhold: Titel */
@@ -2071,6 +2071,7 @@ function ik_dashboard_views_default_views() {
     'title' => 'title',
     'changed' => 'changed',
     'name' => 'name',
+    'field_channel_preview' => 'field_channel_preview',
     'title_2' => 'title_2',
     'title_1' => 'title_1',
     'ops' => 'edit_node',
@@ -2099,6 +2100,13 @@ function ik_dashboard_views_default_views() {
       'empty_column' => 0,
     ),
     'name' => array(
+      'sortable' => 1,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'field_channel_preview' => array(
       'sortable' => 1,
       'default_sort_order' => 'asc',
       'align' => '',
@@ -2358,6 +2366,13 @@ function ik_dashboard_views_default_views() {
   $handler->display->display_options['fields']['name']['relationship'] = 'uid';
   $handler->display->display_options['fields']['name']['label'] = 'Forfatter';
   $handler->display->display_options['fields']['name']['element_label_colon'] = FALSE;
+  /* Felt: Indhold: Preview */
+  $handler->display->display_options['fields']['field_channel_preview']['id'] = 'field_channel_preview';
+  $handler->display->display_options['fields']['field_channel_preview']['table'] = 'field_data_field_channel_preview';
+  $handler->display->display_options['fields']['field_channel_preview']['field'] = 'field_channel_preview';
+  $handler->display->display_options['fields']['field_channel_preview']['label'] = 'Antal slides';
+  $handler->display->display_options['fields']['field_channel_preview']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_channel_preview']['type'] = 'ik_channel_filter_preview_count_formatter';
   /* Felt: Indhold: Titel */
   $handler->display->display_options['fields']['title_2']['id'] = 'title_2';
   $handler->display->display_options['fields']['title_2']['table'] = 'node';
@@ -5011,16 +5026,15 @@ function ik_dashboard_views_default_views() {
     t('Group node from Group node OG membership'),
     t('flag'),
     t('Organisation'),
-    t('Department'),
+    t('Afdeling'),
     t('Forfatter'),
     t(' '),
-    t('Afdeling'),
     t('Slide list page'),
     t('Media'),
     t('Channel list pane'),
     t('Kanaler'),
     t('A content pane displaying channels'),
-    t('Gennemse'),
+    t('Antal slides'),
     t('Channel list page'),
     t('Organisation list pane'),
     t('Organisationer'),
@@ -5390,7 +5404,7 @@ function ik_dashboard_views_default_views() {
     t('Titel'),
     t('Type'),
     t('Organisation'),
-    t('Department'),
+    t('Afdeling'),
     t('Tags'),
     t('Handlinger'),
     t('Slet'),
