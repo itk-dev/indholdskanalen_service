@@ -80,10 +80,8 @@ function ik_slides_field_group_info() {
     'label' => 'Design',
     'weight' => '1',
     'children' => array(
-      0 => 'field_ik_slide_color',
-      1 => 'field_ik_slide_logo',
-      2 => 'field_ik_slide_text_color',
-      3 => 'field_ik_slide_color_theme',
+      0 => 'field_ik_slide_logo',
+      1 => 'field_ik_slide_color_theme',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(

@@ -5,3 +5,4 @@ package = Indholdskanalen
 
 dependencies[] = panels
 dependencies[] = ik_frontend
+dependencies[] = phantomjs
