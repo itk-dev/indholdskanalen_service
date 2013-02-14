@@ -56,7 +56,14 @@ var IK = (function() {
       '.slide-heading' : 'title',
       '.slide-subheading' : 'subheading',
       '.slide-text' : 'text',
-      '.logo-container img@src' : 'logo'
+      '.logo-container img@src' : 'logo',
+      '.logo-container@style' : function (arg) {
+        if (arg.context.logo) {
+          return 'display:block;';
+        } else {
+          return 'display:none;'
+        }
+      }
     };
 
     // Compile template with the directive.
