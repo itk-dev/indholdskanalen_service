@@ -416,6 +416,43 @@ h6 {
 
 /*
 * Layout 5
+* Text only
+*
+* ---------------------------
+* |                         |
+* |                         |
+* |                         |
+* |        Textbox          |
+* |                         |
+* |                         |
+* |                         |
+* ---------------------------
+*
+*/
+/* line 293, ../sass/_layouts.scss */
+.layout-5 .image-container {
+  display: none; }
+/* line 297, ../sass/_layouts.scss */
+.layout-5 .text-wrapper {
+  padding: 0; }
+/* line 301, ../sass/_layouts.scss */
+.layout-5 .text-container {
+  -webkit-border-radius: 0;
+  -moz-border-radius: 0;
+  -ms-border-radius: 0;
+  -o-border-radius: 0;
+  border-radius: 0; }
+/* line 306, ../sass/_layouts.scss */
+.layout-5 .text-wrapper,
+.layout-5 .text-container {
+  width: 100%;
+  height: 100%; }
+/* line 311, ../sass/_layouts.scss */
+.layout-5 .divider {
+  display: none; }
+
+/*
+* Layout 6
 * Image only
 *
 * ---------------------------
@@ -429,42 +466,6 @@ h6 {
 * ---------------------------
 *
 */
-/* line 293, ../sass/_layouts.scss */
-.layout-5 .text-wrapper {
-  display: none; }
-
-/*
-* Layout 6
-*
-* ---------------------------
-* |                         |
-* |                         |
-* |                         |
-* |        Textbox          |
-* |                         |
-* |                         |
-* |                         |
-* ---------------------------
-*
-*/
-/* line 314, ../sass/_layouts.scss */
-.layout-6 .image-container {
-  display: none; }
-/* line 318, ../sass/_layouts.scss */
+/* line 333, ../sass/_layouts.scss */
 .layout-6 .text-wrapper {
-  padding: 0; }
-/* line 322, ../sass/_layouts.scss */
-.layout-6 .text-container {
-  -webkit-border-radius: 0;
-  -moz-border-radius: 0;
-  -ms-border-radius: 0;
-  -o-border-radius: 0;
-  border-radius: 0; }
-/* line 327, ../sass/_layouts.scss */
-.layout-6 .text-wrapper,
-.layout-6 .text-container {
-  width: 100%;
-  height: 100%; }
-/* line 332, ../sass/_layouts.scss */
-.layout-6 .divider {
   display: none; }
