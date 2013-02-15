@@ -27,6 +27,16 @@ function ik_slide_preview_menu() {
 }
 
 /**
+ * Implements hook_ctools_plugin_directory().
+ *
+ */
+function ik_slide_preview_ctools_plugin_directory($module, $plugin) {
+  if ($module == 'ctools' && !empty($plugin)) {
+    return "plugins/$plugin";
+  }
+}
+
+/**
  * Simple callback the renders a sigle slide.
  *
  * @param int $sid
@@ -495,7 +505,7 @@ function ik_slide_preview_build_slide($entity) {
 
   $slide->subheading = '';
   if ($data = field_get_items('node', $entity, 'field_ik_slide_subheading')) {
-    $slide->subheading = check_markup($data[0]['value'], $data[0]['format']);
+    $slide->subheading = check_plain($data[0]['value']);
 
     // Make it JavaScript string friendly.
     $slide->subheading = preg_replace('/\s{2}+|\n|\r/', '', str_replace('"', '\"', $slide->subheading));
