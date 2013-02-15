@@ -31,6 +31,7 @@ features[field][] = node-media_rss_slide_import-field_layout
 features[field_group][] = group_ik_mrss_categories|node|media_rss_slide_import|form
 features[field_group][] = group_ik_mrss_department|node|media_rss_slide_import|form
 features[field_group][] = group_ik_mrss_design|node|media_rss_slide_import|form
+features[field_group][] = group_ik_mrss_feed_group|node|media_rss_slide_import|form
 features[field_group][] = group_ik_mrss_images|node|media_rss_slide_import|form
 features[field_group][] = group_ik_mrss_layout|node|media_rss_slide_import|form
 features[field_group][] = group_ik_mrss_template|node|media_rss_slide_import|form
