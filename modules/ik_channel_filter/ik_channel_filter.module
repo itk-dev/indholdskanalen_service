@@ -68,6 +68,7 @@ function _ik_channel_filter_autocomplete($field_name, $string = '') {
         $results = $query
           ->fields('n', array('nid', 'title'))
           ->condition('n.type', $types)
+          ->condition('n.status', 1)
           ->condition('n.title', '%' . db_like($string) . '%', 'LIKE')
           ->range(0, 10)
           ->execute()
