@@ -1,3 +1,5 @@
+#1304846 by Thomas_Zahreddin: Don't explain UI-elements to the user
+
 publishcontent-7.x-1.0 release
 #1244136 by gionnibgud - fixed PHP Notice in views handler
 #1204540, #1267484 - fixed typo in permission hook

@@ -29,3 +29,8 @@ USAGE
 A tab button (like Edit and View) 'Publish' or 'Unpublish' should appear on the
 node edit and view pages.
 Click on 'Publish' to publish and 'Unpublish' to unpublish, it's that simple!
+
+CONFIGURATION
+
+admin/config/content/publishcontent
+Here you can disable the display of Publish/Unpublish tabs.
