@@ -247,14 +247,13 @@ function ik_slide_preview_field_formatter_view($entity_type, $entity, $field, $i
   // Build urls and destionation.
   $dest = $field['settings']['uri_scheme'] . '://' . $instance['settings']['file_directory'];
 
+  $element = array();
   foreach ($items as $delta => $item) {
-    $uri = $dest . '/' . $item['image'];
-
     // Build return element
     $element[$delta] = array(
       '#theme' => 'image_formatter',
       '#item' => array(
-        'uri' => $uri,
+        'uri' => $item['image'],
         'alt' => '',
         'title' => '',
       ),
@@ -269,33 +268,28 @@ function ik_slide_preview_field_formatter_view($entity_type, $entity, $field, $i
 function ik_slide_preview_field_update($entity_type, $entity, $field, $instance, $langcode, &$items) {
   foreach ($items as $delta => $item) {
     if (isset($item['image'])) {
-      $file = $item['image'];
-
-      // Build path and remove old screenshot.
-      $path = $field['settings']['uri_scheme'] . '://' . $instance['settings']['file_directory'] . '/' . $file;
-      if (file_exists($path)) {
-        unlink($path);
+      $file = drupal_realpath($item['image']);
+      
+      // Build path and remove old screenshot.      
+      if (file_exists($file)) {
+        unlink($file);
       }
 
-      // Remove old image styles.
-      $styles = array('slide_preview_small', 'slide_preview_medium', 'slide_preview_large');
-      foreach ($styles as $style) {
-        $path = drupal_realpath($field['settings']['uri_scheme'] . '://styles/' . $style . '/public/slide_previews/' . $file);
-        if (file_exists($path)) {
-          unlink($path);
-        }
-      }
+      // Remove image styles.
+      image_path_flush($file);
     }
 
     // Old files remove (if any), so create new ones.
-    $items[$delta]['image'] = md5($entity->nid . REQUEST_TIME . $delta) . '.png';
+    $path = $field['settings']['uri_scheme'] . '://' . $instance['settings']['file_directory'] . '/';
+    $items[$delta]['image'] = $path . md5($entity->nid . REQUEST_TIME . $delta) . '.jpg';
   }
 }
 
 function ik_slide_preview_field_insert($entity_type, $entity, $field, $instance, $langcode, &$items) {
   foreach ($items as $delta => $item) {
     // Fill in new file name to trigger generation in prepare view.
-    $items[$delta]['image'] = md5($entity->nid . REQUEST_TIME . $delta) . '.png';
+    $path = $field['settings']['uri_scheme'] . '://' . $instance['settings']['file_directory'] . '/';
+    $items[$delta]['image'] = $path . md5($entity->nid . REQUEST_TIME . $delta) . '.jpg';
   }
 }
 
@@ -312,19 +306,10 @@ function ik_slide_preview_field_prepare_view($entity_type, $entities, $field, $i
     $dest = $field['settings']['uri_scheme'] . '://' . $instances[$id]['settings']['file_directory'];
     $url = url('slide/' . $entity->nid . '/preview', array('absolute' => TRUE));
     foreach ($items[$id] as $delta => $item) {
-      if (!file_exists(drupal_realpath($dest . '/' . $item['image']))) {
+      $file = drupal_realpath($item['image']);
+      if (!file_exists($file)) {
         // Capture new screenshot.
-        if (phantomjs_capture_screen($url, $dest, $item['image'])) {
-          // Update the loaded field values.
-          $items[$id][$delta]['image'] = $item['image'];
-
-          // Update the database and clear field cache.
-          $entity->{$field['field_name']}[$langcode][$delta]['image'] = $item['image'];
-          field_sql_storage_field_storage_write($entity_type, $entity, FIELD_STORAGE_UPDATE, array($field['id']));
-          field_cache_clear();
-        }
-        else {
-          // Set message and use old field value.
+        if (!phantomjs_capture_screen($url, $dest, basename($file))) {
           drupal_set_message(t('PhantomJS chould not create screenshot of the slide'), 'error');
         }
       }
@@ -332,39 +317,16 @@ function ik_slide_preview_field_prepare_view($entity_type, $entities, $field, $i
   }
 }
 
-/**
- * Implements hook_node_delete().
- *
- * Clean up old screenshots on node deletion.
- */
-function ik_slide_preview_node_delete($node) {
-  if ($node->type == 'slide') {
-    // Get basic settings about the field.
-    $info = field_info_instances('node', $node->type);
-    $instance = $info['field_ik_slide_preview'];
-    $field = field_info_field('field_ik_slide_preview');
-
-    // Build path.
-    $items = field_get_items('node', $node, 'field_ik_slide_preview');
-    foreach ($items as $item) {
-      $file = $item['image'];
-      $dest = $field['settings']['uri_scheme'] . '://' . $instance['settings']['file_directory'];
-      $path = drupal_realpath($dest . '/' . $file);
-
-      // Remove slide screenshot.
-      if (file_exists($path)) {
-        unlink($path);
-      }
-
-      // Remove old image styles.
-      $styles = array('slide_preview_small', 'slide_preview_medium', 'slide_preview_large');
-      foreach ($styles as $style) {
-        $path = drupal_realpath($field['settings']['uri_scheme'] . '://styles/' . $style . '/public/slide_previews/' . $file);
-        if (file_exists($path)) {
-          unlink($path);
-        }
-      }
+function ik_slide_preview_field_delete($entity_type, $entities, $field, $instances, $langcode, &$items) {
+  foreach ($items[$id] as $item) {
+    $file = drupal_realpath($item['image']);
+    // Remove slide screenshot.
+    if (file_exists($path)) {
+      unlink($path);
     }
+
+    // Remove image style.
+    image_path_flush($file);
   }
 }
 

@@ -21,3 +21,18 @@ function ik_slide_preview_field_schema($field) {
     'indexes' => array(),
   );
 }
+
+/**
+ * Update preview field with new URI.
+ */
+function ik_slide_preview_update_7001() {
+  $info = field_info_instances('node', 'slide');
+  $instance = $info['field_ik_slide_preview'];
+  $field = field_info_field('field_ik_slide_preview');
+  
+  $uri = $field['settings']['uri_scheme'] . '://' . $instance['settings']['file_directory'];
+  $query = "UPDATE {field_data_field_ik_slide_preview} 
+               SET field_ik_slide_preview_image = CONCAT('".$uri."/', field_ik_slide_preview_image)";
+  db_query($query);
+  return FALSE;
+}
