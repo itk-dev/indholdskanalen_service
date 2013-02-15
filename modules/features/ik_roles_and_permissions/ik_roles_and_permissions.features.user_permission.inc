@@ -19,6 +19,17 @@ function ik_roles_and_permissions_user_default_permissions() {
     'module' => 'comment',
   );
 
+  // Exported permission: access content.
+  $permissions['access content'] = array(
+    'name' => 'access content',
+    'roles' => array(
+      0 => 'administrator',
+      1 => 'anonymous user',
+      2 => 'authenticated user',
+    ),
+    'module' => 'node',
+  );
+
   // Exported permission: access media backend.
   $permissions['access media backend'] = array(
     'name' => 'access media backend',
@@ -84,6 +95,15 @@ function ik_roles_and_permissions_user_default_permissions() {
       0 => 'administrator',
     ),
     'module' => 'media_browser_plus',
+  );
+
+  // Exported permission: administer permissions.
+  $permissions['administer permissions'] = array(
+    'name' => 'administer permissions',
+    'roles' => array(
+      0 => 'administrator',
+    ),
+    'module' => 'user',
   );
 
   // Exported permission: administer scheduler.
@@ -582,6 +602,183 @@ function ik_roles_and_permissions_user_default_permissions() {
     'module' => 'media_browser_plus',
   );
 
+  // Exported permission: publish any channel content.
+  $permissions['publish any channel content'] = array(
+    'name' => 'publish any channel content',
+    'roles' => array(
+      0 => 'administrator',
+    ),
+    'module' => 'publishcontent',
+  );
+
+  // Exported permission: publish any content.
+  $permissions['publish any content'] = array(
+    'name' => 'publish any content',
+    'roles' => array(
+      0 => 'administrator',
+    ),
+    'module' => 'publishcontent',
+  );
+
+  // Exported permission: publish any department content.
+  $permissions['publish any department content'] = array(
+    'name' => 'publish any department content',
+    'roles' => array(
+      0 => 'administrator',
+    ),
+    'module' => 'publishcontent',
+  );
+
+  // Exported permission: publish any media_rss_slide_import content.
+  $permissions['publish any media_rss_slide_import content'] = array(
+    'name' => 'publish any media_rss_slide_import content',
+    'roles' => array(
+      0 => 'administrator',
+    ),
+    'module' => 'publishcontent',
+  );
+
+  // Exported permission: publish any organisation content.
+  $permissions['publish any organisation content'] = array(
+    'name' => 'publish any organisation content',
+    'roles' => array(
+      0 => 'administrator',
+    ),
+    'module' => 'publishcontent',
+  );
+
+  // Exported permission: publish any slide content.
+  $permissions['publish any slide content'] = array(
+    'name' => 'publish any slide content',
+    'roles' => array(
+      0 => 'administrator',
+    ),
+    'module' => 'publishcontent',
+  );
+
+  // Exported permission: publish any static_page content.
+  $permissions['publish any static_page content'] = array(
+    'name' => 'publish any static_page content',
+    'roles' => array(
+      0 => 'administrator',
+    ),
+    'module' => 'publishcontent',
+  );
+
+  // Exported permission: publish editable channel content.
+  $permissions['publish editable channel content'] = array(
+    'name' => 'publish editable channel content',
+    'roles' => array(
+      0 => 'administrator',
+      1 => 'contributor',
+      2 => 'editor',
+    ),
+    'module' => 'publishcontent',
+  );
+
+  // Exported permission: publish editable department content.
+  $permissions['publish editable department content'] = array(
+    'name' => 'publish editable department content',
+    'roles' => array(
+      0 => 'administrator',
+    ),
+    'module' => 'publishcontent',
+  );
+
+  // Exported permission: publish editable media_rss_slide_import content.
+  $permissions['publish editable media_rss_slide_import content'] = array(
+    'name' => 'publish editable media_rss_slide_import content',
+    'roles' => array(
+      0 => 'administrator',
+      1 => 'contributor',
+      2 => 'editor',
+    ),
+    'module' => 'publishcontent',
+  );
+
+  // Exported permission: publish editable organisation content.
+  $permissions['publish editable organisation content'] = array(
+    'name' => 'publish editable organisation content',
+    'roles' => array(
+      0 => 'administrator',
+    ),
+    'module' => 'publishcontent',
+  );
+
+  // Exported permission: publish editable slide content.
+  $permissions['publish editable slide content'] = array(
+    'name' => 'publish editable slide content',
+    'roles' => array(
+      0 => 'administrator',
+      1 => 'contributor',
+      2 => 'editor',
+    ),
+    'module' => 'publishcontent',
+  );
+
+  // Exported permission: publish editable static_page content.
+  $permissions['publish editable static_page content'] = array(
+    'name' => 'publish editable static_page content',
+    'roles' => array(
+      0 => 'administrator',
+    ),
+    'module' => 'publishcontent',
+  );
+
+  // Exported permission: publish own channel content.
+  $permissions['publish own channel content'] = array(
+    'name' => 'publish own channel content',
+    'roles' => array(
+      0 => 'administrator',
+    ),
+    'module' => 'publishcontent',
+  );
+
+  // Exported permission: publish own department content.
+  $permissions['publish own department content'] = array(
+    'name' => 'publish own department content',
+    'roles' => array(
+      0 => 'administrator',
+    ),
+    'module' => 'publishcontent',
+  );
+
+  // Exported permission: publish own media_rss_slide_import content.
+  $permissions['publish own media_rss_slide_import content'] = array(
+    'name' => 'publish own media_rss_slide_import content',
+    'roles' => array(
+      0 => 'administrator',
+    ),
+    'module' => 'publishcontent',
+  );
+
+  // Exported permission: publish own organisation content.
+  $permissions['publish own organisation content'] = array(
+    'name' => 'publish own organisation content',
+    'roles' => array(
+      0 => 'administrator',
+    ),
+    'module' => 'publishcontent',
+  );
+
+  // Exported permission: publish own slide content.
+  $permissions['publish own slide content'] = array(
+    'name' => 'publish own slide content',
+    'roles' => array(
+      0 => 'administrator',
+    ),
+    'module' => 'publishcontent',
+  );
+
+  // Exported permission: publish own static_page content.
+  $permissions['publish own static_page content'] = array(
+    'name' => 'publish own static_page content',
+    'roles' => array(
+      0 => 'administrator',
+    ),
+    'module' => 'publishcontent',
+  );
+
   // Exported permission: schedule (un)publishing of nodes.
   $permissions['schedule (un)publishing of nodes'] = array(
     'name' => 'schedule (un)publishing of nodes',
@@ -602,17 +799,6 @@ function ik_roles_and_permissions_user_default_permissions() {
     'module' => 'comment',
   );
 
-  // Exported permission: switch users.
-  $permissions['switch users'] = array(
-    'name' => 'switch users',
-    'roles' => array(
-      0 => 'administrator',
-      1 => 'contributor',
-      2 => 'editor',
-    ),
-    'module' => 'devel',
-  );
-
   // Exported permission: unlock mrss_feed_importer feeds.
   $permissions['unlock mrss_feed_importer feeds'] = array(
     'name' => 'unlock mrss_feed_importer feeds',
@@ -620,6 +806,183 @@ function ik_roles_and_permissions_user_default_permissions() {
       0 => 'administrator',
     ),
     'module' => 'feeds',
+  );
+
+  // Exported permission: unpublish any channel content.
+  $permissions['unpublish any channel content'] = array(
+    'name' => 'unpublish any channel content',
+    'roles' => array(
+      0 => 'administrator',
+    ),
+    'module' => 'publishcontent',
+  );
+
+  // Exported permission: unpublish any content.
+  $permissions['unpublish any content'] = array(
+    'name' => 'unpublish any content',
+    'roles' => array(
+      0 => 'administrator',
+    ),
+    'module' => 'publishcontent',
+  );
+
+  // Exported permission: unpublish any department content.
+  $permissions['unpublish any department content'] = array(
+    'name' => 'unpublish any department content',
+    'roles' => array(
+      0 => 'administrator',
+    ),
+    'module' => 'publishcontent',
+  );
+
+  // Exported permission: unpublish any media_rss_slide_import content.
+  $permissions['unpublish any media_rss_slide_import content'] = array(
+    'name' => 'unpublish any media_rss_slide_import content',
+    'roles' => array(
+      0 => 'administrator',
+    ),
+    'module' => 'publishcontent',
+  );
+
+  // Exported permission: unpublish any organisation content.
+  $permissions['unpublish any organisation content'] = array(
+    'name' => 'unpublish any organisation content',
+    'roles' => array(
+      0 => 'administrator',
+    ),
+    'module' => 'publishcontent',
+  );
+
+  // Exported permission: unpublish any slide content.
+  $permissions['unpublish any slide content'] = array(
+    'name' => 'unpublish any slide content',
+    'roles' => array(
+      0 => 'administrator',
+    ),
+    'module' => 'publishcontent',
+  );
+
+  // Exported permission: unpublish any static_page content.
+  $permissions['unpublish any static_page content'] = array(
+    'name' => 'unpublish any static_page content',
+    'roles' => array(
+      0 => 'administrator',
+    ),
+    'module' => 'publishcontent',
+  );
+
+  // Exported permission: unpublish editable channel content.
+  $permissions['unpublish editable channel content'] = array(
+    'name' => 'unpublish editable channel content',
+    'roles' => array(
+      0 => 'administrator',
+      1 => 'contributor',
+      2 => 'editor',
+    ),
+    'module' => 'publishcontent',
+  );
+
+  // Exported permission: unpublish editable department content.
+  $permissions['unpublish editable department content'] = array(
+    'name' => 'unpublish editable department content',
+    'roles' => array(
+      0 => 'administrator',
+    ),
+    'module' => 'publishcontent',
+  );
+
+  // Exported permission: unpublish editable media_rss_slide_import content.
+  $permissions['unpublish editable media_rss_slide_import content'] = array(
+    'name' => 'unpublish editable media_rss_slide_import content',
+    'roles' => array(
+      0 => 'administrator',
+      1 => 'contributor',
+      2 => 'editor',
+    ),
+    'module' => 'publishcontent',
+  );
+
+  // Exported permission: unpublish editable organisation content.
+  $permissions['unpublish editable organisation content'] = array(
+    'name' => 'unpublish editable organisation content',
+    'roles' => array(
+      0 => 'administrator',
+    ),
+    'module' => 'publishcontent',
+  );
+
+  // Exported permission: unpublish editable slide content.
+  $permissions['unpublish editable slide content'] = array(
+    'name' => 'unpublish editable slide content',
+    'roles' => array(
+      0 => 'administrator',
+      1 => 'contributor',
+      2 => 'editor',
+    ),
+    'module' => 'publishcontent',
+  );
+
+  // Exported permission: unpublish editable static_page content.
+  $permissions['unpublish editable static_page content'] = array(
+    'name' => 'unpublish editable static_page content',
+    'roles' => array(
+      0 => 'administrator',
+    ),
+    'module' => 'publishcontent',
+  );
+
+  // Exported permission: unpublish own channel content.
+  $permissions['unpublish own channel content'] = array(
+    'name' => 'unpublish own channel content',
+    'roles' => array(
+      0 => 'administrator',
+    ),
+    'module' => 'publishcontent',
+  );
+
+  // Exported permission: unpublish own department content.
+  $permissions['unpublish own department content'] = array(
+    'name' => 'unpublish own department content',
+    'roles' => array(
+      0 => 'administrator',
+    ),
+    'module' => 'publishcontent',
+  );
+
+  // Exported permission: unpublish own media_rss_slide_import content.
+  $permissions['unpublish own media_rss_slide_import content'] = array(
+    'name' => 'unpublish own media_rss_slide_import content',
+    'roles' => array(
+      0 => 'administrator',
+    ),
+    'module' => 'publishcontent',
+  );
+
+  // Exported permission: unpublish own organisation content.
+  $permissions['unpublish own organisation content'] = array(
+    'name' => 'unpublish own organisation content',
+    'roles' => array(
+      0 => 'administrator',
+    ),
+    'module' => 'publishcontent',
+  );
+
+  // Exported permission: unpublish own slide content.
+  $permissions['unpublish own slide content'] = array(
+    'name' => 'unpublish own slide content',
+    'roles' => array(
+      0 => 'administrator',
+    ),
+    'module' => 'publishcontent',
+  );
+
+  // Exported permission: unpublish own static_page content.
+  $permissions['unpublish own static_page content'] = array(
+    'name' => 'unpublish own static_page content',
+    'roles' => array(
+      0 => 'administrator',
+    ),
+    'module' => 'publishcontent',
   );
 
   // Exported permission: upload media.
@@ -673,6 +1036,17 @@ function ik_roles_and_permissions_user_default_permissions() {
       1 => 'authenticated user',
     ),
     'module' => 'file_entity',
+  );
+
+  // Exported permission: view own unpublished content.
+  $permissions['view own unpublished content'] = array(
+    'name' => 'view own unpublished content',
+    'roles' => array(
+      0 => 'administrator',
+      1 => 'contributor',
+      2 => 'editor',
+    ),
+    'module' => 'node',
   );
 
   return $permissions;
