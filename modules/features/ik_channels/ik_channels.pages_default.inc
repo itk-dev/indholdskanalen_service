@@ -390,6 +390,7 @@ function ik_channels_default_page_manager_handlers() {
       'delta_reversed' => FALSE,
       'formatter_settings' => array(
         'image_style' => 'slide_preview_small',
+        'limit' => 0,
       ),
       'context' => 'argument_entity_id:node_1',
       'override_title' => 0,

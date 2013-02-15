@@ -147,12 +147,15 @@ function ik_channel_filter_get_slides($raw_values) {
     $query = $or_query;
   }
 
+  // Sort the result to get the same order each time.
+  $query->orderBy('nid');
+
   // Get the final result.
   return $query->execute()->fetchAll();
 }
 
 /**
- * Channel filter preview. 
+ * Channel filter preview.
  */
 function _ik_channel_preview_update() {
   $raw_values = array();
