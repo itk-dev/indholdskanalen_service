@@ -20,10 +20,6 @@ function ik_channel_filter_menu() {
     'type' => MENU_CALLBACK,
   );
 
-  /**
-   * @todo: This path may need to be change, when we start on the front-end.
-   *        Remember to update the JS in the preview code.
-   */
   $items['ik/preview/update'] = array(
     'title' => 'Update slides preview',
     'page callback' => '_ik_channel_preview_update',
@@ -463,7 +459,61 @@ function ik_channel_filter_field_formatter_info() {
       'label' => t('Number of slides'),
       'field types' => array('ik_channel_filter_preview'),
     ),
+    'ik_channel_filter_preview_images_formatter' => array(
+      'label' => t('Screenshots'),
+      'field types' => array('ik_channel_filter_preview'),
+      'settings' => array('image_style' => ''),
+    ),
   );
+}
+
+/**
+ * Implements hook_field_formatter_settings_form().
+ */
+function ik_channel_filter_field_formatter_settings_form($field, $instance, $view_mode, $form, &$form_state) {
+  if ($view_mode == 'ik_channel_filter_preview_images_formatter' || $view_mode == 'ctools') {
+    $display = $instance['display'][$view_mode];
+    $settings = $display['settings'];
+
+    $element = array();
+
+    $image_styles = image_style_options(FALSE);
+    $element['image_style'] = array(
+      '#title' => t('Image style'),
+      '#type' => 'select',
+      '#default_value' => $settings['image_style'],
+      '#empty_option' => t('None (original image)'),
+      '#options' => $image_styles,
+    );
+
+    return $element;
+  }
+}
+
+/**
+ * Implements hook_field_formatter_settings_summary().
+ */
+function ik_channel_filter_field_formatter_settings_summary($field, $instance, $view_mode) {
+  if ($view_mode == 'ik_channel_filter_preview_images_formatter' || $view_mode == 'ctools') {
+    $display = $instance['display'][$view_mode];
+    $settings = $display['settings'];
+
+    $summary = array();
+
+    $image_styles = image_style_options(FALSE);
+    // Unset possible 'No defined styles' option.
+    unset($image_styles['']);
+    // Styles could be lost because of enabled/disabled modules that defines
+    // their styles in code.
+    if (isset($image_styles[$settings['image_style']])) {
+      $summary[] = t('Image style: @style', array('@style' => $image_styles[$settings['image_style']]));
+    }
+    else {
+      $summary[] = t('Original image');
+    }
+
+    return implode('<br />', $summary);
+  }
 }
 
 /**
@@ -500,6 +550,45 @@ function ik_channel_filter_field_formatter_view($entity_type, $entity, $field, $
       $element['preview'] = array(
         '#prefix' => '<div class="ik-filter-preview-wrapper">',
         '#markup' => format_plural(count($slides), '1 slide', '@count slides'),
+        '#suffix' => '</div>',
+      );
+      break;
+
+    case 'ik_channel_filter_preview_images_formatter':
+      // Get slides.
+      $slides = ik_channel_filter_formatter_helper($field, $entity, $langcode);
+      $elements = array();
+
+      // Get images.
+      $data = array();
+      foreach ($slides as $slide) {
+        $data[$slide->nid] = $slide->title;
+      }
+      $query = db_select('field_data_field_ik_slide_preview', 'f')
+        ->fields('f', array('entity_id', 'field_ik_slide_preview_image'))
+        ->condition('entity_id', array_keys($data), 'IN');
+      $results = $query->execute();
+
+      // Render images.
+      foreach ($results as $row) {
+        $elements[$row->entity_id] = array(
+          '#theme' => 'image_formatter',
+          '#item' => array(
+            'uri' => $row->field_ik_slide_preview_image,
+            'alt' => $data[$row->entity_id],
+            'title' => $data[$row->entity_id],
+          ),
+          '#image_style' => $settings['image_style'],
+          '#path' => array(
+            'path' => 'node/' . $row->entity_id,
+            'options' => array(),
+          ),
+        );
+      }
+
+      $element['preview'] = array(
+        '#prefix' => '<div class="ik-filter-preview-wrapper">',
+        '#markup' => drupal_render($elements),
         '#suffix' => '</div>',
       );
       break;
