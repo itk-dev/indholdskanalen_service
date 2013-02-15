@@ -41,7 +41,8 @@ function ik_channel_filter_get_slides($raw_values) {
         $query = "SELECT n.nid, n.title
                     FROM node n
                   WHERE n.title IN (" . $values_str . ")
-                    AND n.type = 'slide'";
+                    AND n.type = 'slide'
+                    AND n.status = 1";
         break;
 
       case 'og':
@@ -62,7 +63,8 @@ function ik_channel_filter_get_slides($raw_values) {
                       )
                       AND entity_type = 'node'
                     ) inner_og ON n.nid = inner_og.etid
-                    AND n.type = 'slide'";
+                    AND n.type = 'slide'
+                    AND n.status = 1";
         }
         else {
           // Two level OG search.
@@ -77,7 +79,8 @@ function ik_channel_filter_get_slides($raw_values) {
                     ON ogm.gid = inner_ogm.etid
                     INNER JOIN {node} n ON ogm.etid = n.nid
                     WHERE ogm.entity_type = 'node'
-                    AND n.type = 'slide'";
+                    AND n.type = 'slide'
+                    AND n.status = 1";
         }
         break;
 
@@ -101,7 +104,8 @@ function ik_channel_filter_get_slides($raw_values) {
                     GROUP BY entity_id
                     HAVING count(1) = " . count($values) . "
                   ) AS inner_nid ON inner_nid.nid = n.nid
-                  WHERE n.type = 'slide'";
+                  WHERE n.type = 'slide'
+                  AND n.status = 1";
         break;
     }
 
