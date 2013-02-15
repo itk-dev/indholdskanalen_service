@@ -155,8 +155,8 @@ function ik_slide_preview_field_widget_form(&$form, &$form_state, $field, $insta
   // Simple hidden field on in the edit form.
   if (is_null($default)) {
     // Just checking to avoid error on create node forms.
-    if ($items) {
-      $default = $items[0]['image'];
+    if (isset($items[$delta]['image'])) {
+      $default = $items[$delta]['image'];
     }
   }
   $element += array(
