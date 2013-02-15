@@ -22,6 +22,7 @@ function ik_favorites_views_default_views() {
 
   /* Display: Master */
   $handler = $view->new_display('default', 'Master', 'default');
+  $handler->display->display_options['use_more'] = TRUE;
   $handler->display->display_options['use_more_always'] = TRUE;
   $handler->display->display_options['use_more_text'] = 'mere';
   $handler->display->display_options['access']['type'] = 'perm';
@@ -226,6 +227,12 @@ function ik_favorites_views_default_views() {
   $handler->display->display_options['defaults']['title'] = FALSE;
   $handler->display->display_options['title'] = 'Slide favoritter';
   $handler->display->display_options['defaults']['hide_admin_links'] = FALSE;
+  $handler->display->display_options['defaults']['use_more'] = FALSE;
+  $handler->display->display_options['defaults']['use_more_always'] = FALSE;
+  $handler->display->display_options['defaults']['use_more_always'] = FALSE;
+  $handler->display->display_options['use_more_always'] = TRUE;
+  $handler->display->display_options['defaults']['use_more_text'] = FALSE;
+  $handler->display->display_options['use_more_text'] = 'mere';
   $handler->display->display_options['defaults']['style_plugin'] = FALSE;
   $handler->display->display_options['style_plugin'] = 'table';
   $handler->display->display_options['style_options']['columns'] = array(
@@ -397,6 +404,26 @@ function ik_favorites_views_default_views() {
   $handler->display->display_options['pager']['options']['items_per_page'] = '6';
   $handler->display->display_options['pager']['options']['offset'] = '0';
   $handler->display->display_options['defaults']['fields'] = FALSE;
+  /* Felt: Indhold: Nid */
+  $handler->display->display_options['fields']['nid']['id'] = 'nid';
+  $handler->display->display_options['fields']['nid']['table'] = 'node';
+  $handler->display->display_options['fields']['nid']['field'] = 'nid';
+  $handler->display->display_options['fields']['nid']['label'] = '';
+  $handler->display->display_options['fields']['nid']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['nid']['element_label_colon'] = FALSE;
+  /* Felt: Indhold: Preview */
+  $handler->display->display_options['fields']['field_channel_preview_1']['id'] = 'field_channel_preview_1';
+  $handler->display->display_options['fields']['field_channel_preview_1']['table'] = 'field_data_field_channel_preview';
+  $handler->display->display_options['fields']['field_channel_preview_1']['field'] = 'field_channel_preview';
+  $handler->display->display_options['fields']['field_channel_preview_1']['label'] = '';
+  $handler->display->display_options['fields']['field_channel_preview_1']['alter']['make_link'] = TRUE;
+  $handler->display->display_options['fields']['field_channel_preview_1']['alter']['path'] = 'node/[nid]';
+  $handler->display->display_options['fields']['field_channel_preview_1']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_channel_preview_1']['type'] = 'ik_channel_filter_preview_images_formatter';
+  $handler->display->display_options['fields']['field_channel_preview_1']['settings'] = array(
+    'image_style' => 'slide_preview_small',
+    'limit' => 1,
+  );
   /* Felt: Indhold: Titel */
   $handler->display->display_options['fields']['title']['id'] = 'title';
   $handler->display->display_options['fields']['title']['table'] = 'node';
@@ -409,6 +436,7 @@ function ik_favorites_views_default_views() {
   $handler->display->display_options['fields']['field_channel_preview']['table'] = 'field_data_field_channel_preview';
   $handler->display->display_options['fields']['field_channel_preview']['field'] = 'field_channel_preview';
   $handler->display->display_options['fields']['field_channel_preview']['label'] = '';
+  $handler->display->display_options['fields']['field_channel_preview']['alter']['alter_text'] = TRUE;
   $handler->display->display_options['fields']['field_channel_preview']['alter']['text'] = '([field_channel_preview])';
   $handler->display->display_options['fields']['field_channel_preview']['alter']['strip_tags'] = TRUE;
   $handler->display->display_options['fields']['field_channel_preview']['element_type'] = '0';
@@ -492,6 +520,12 @@ function ik_favorites_views_default_views() {
   $handler->display->display_options['defaults']['title'] = FALSE;
   $handler->display->display_options['title'] = 'Kanal favoritter';
   $handler->display->display_options['defaults']['hide_admin_links'] = FALSE;
+  $handler->display->display_options['defaults']['use_more'] = FALSE;
+  $handler->display->display_options['defaults']['use_more_always'] = FALSE;
+  $handler->display->display_options['defaults']['use_more_always'] = FALSE;
+  $handler->display->display_options['use_more_always'] = TRUE;
+  $handler->display->display_options['defaults']['use_more_text'] = FALSE;
+  $handler->display->display_options['use_more_text'] = 'mere';
   $handler->display->display_options['defaults']['style_plugin'] = FALSE;
   $handler->display->display_options['style_plugin'] = 'table';
   $handler->display->display_options['style_options']['columns'] = array(
@@ -561,6 +595,26 @@ function ik_favorites_views_default_views() {
   $handler->display->display_options['defaults']['row_plugin'] = FALSE;
   $handler->display->display_options['defaults']['row_options'] = FALSE;
   $handler->display->display_options['defaults']['fields'] = FALSE;
+  /* Felt: Indhold: Nid */
+  $handler->display->display_options['fields']['nid']['id'] = 'nid';
+  $handler->display->display_options['fields']['nid']['table'] = 'node';
+  $handler->display->display_options['fields']['nid']['field'] = 'nid';
+  $handler->display->display_options['fields']['nid']['label'] = '';
+  $handler->display->display_options['fields']['nid']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['nid']['element_label_colon'] = FALSE;
+  /* Felt: Indhold: Preview */
+  $handler->display->display_options['fields']['field_channel_preview_1']['id'] = 'field_channel_preview_1';
+  $handler->display->display_options['fields']['field_channel_preview_1']['table'] = 'field_data_field_channel_preview';
+  $handler->display->display_options['fields']['field_channel_preview_1']['field'] = 'field_channel_preview';
+  $handler->display->display_options['fields']['field_channel_preview_1']['label'] = '';
+  $handler->display->display_options['fields']['field_channel_preview_1']['alter']['make_link'] = TRUE;
+  $handler->display->display_options['fields']['field_channel_preview_1']['alter']['path'] = 'node/[nid]';
+  $handler->display->display_options['fields']['field_channel_preview_1']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_channel_preview_1']['type'] = 'ik_channel_filter_preview_images_formatter';
+  $handler->display->display_options['fields']['field_channel_preview_1']['settings'] = array(
+    'image_style' => 'slide_preview_small',
+    'limit' => 1,
+  );
   /* Felt: Indhold: Titel */
   $handler->display->display_options['fields']['title']['id'] = 'title';
   $handler->display->display_options['fields']['title']['table'] = 'node';
