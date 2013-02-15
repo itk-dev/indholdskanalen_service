@@ -61,7 +61,7 @@ function ik_mrss_feed_importer_field_default_fields() {
       'bundle' => 'media_rss_slide_import',
       'default_value' => NULL,
       'deleted' => '0',
-      'description' => '',
+      'description' => 'Vælg hvilken afdeling de importerede slides skal tilhøre (Du kan kun tilknytte til den/de afdeling(er) som du er en del af).',
       'display' => array(
         'default' => array(
           'label' => 'above',
@@ -81,7 +81,7 @@ function ik_mrss_feed_importer_field_default_fields() {
       ),
       'entity_type' => 'node',
       'field_name' => 'field_ik_og_department_ref',
-      'label' => 'Department',
+      'label' => 'Afdeling',
       'required' => 0,
       'settings' => array(
         'behaviors' => array(
@@ -100,7 +100,9 @@ function ik_mrss_feed_importer_field_default_fields() {
       'widget' => array(
         'active' => 0,
         'module' => 'og',
-        'settings' => array(),
+        'settings' => array(
+          'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
+        ),
         'type' => 'og_complex',
         'weight' => '9',
       ),
@@ -145,7 +147,7 @@ function ik_mrss_feed_importer_field_default_fields() {
       'bundle' => 'media_rss_slide_import',
       'default_value' => NULL,
       'deleted' => '0',
-      'description' => '',
+      'description' => 'Vælg en hovedkategori som skal knyttes til de importerede slides',
       'display' => array(
         'default' => array(
           'label' => 'above',
@@ -163,7 +165,7 @@ function ik_mrss_feed_importer_field_default_fields() {
       ),
       'entity_type' => 'node',
       'field_name' => 'field_ik_slide_category',
-      'label' => 'Category',
+      'label' => 'Kategori',
       'required' => 1,
       'settings' => array(
         'user_register_form' => FALSE,
@@ -171,7 +173,9 @@ function ik_mrss_feed_importer_field_default_fields() {
       'widget' => array(
         'active' => 1,
         'module' => 'options',
-        'settings' => array(),
+        'settings' => array(
+          'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
+        ),
         'type' => 'options_select',
         'weight' => '5',
       ),
@@ -215,7 +219,7 @@ function ik_mrss_feed_importer_field_default_fields() {
         ),
       ),
       'deleted' => '0',
-      'description' => '',
+      'description' => 'Vælg et farvetema som skal benyttes for de importerede slides.',
       'display' => array(
         'default' => array(
           'label' => 'above',
@@ -233,7 +237,7 @@ function ik_mrss_feed_importer_field_default_fields() {
       ),
       'entity_type' => 'node',
       'field_name' => 'field_ik_slide_color_theme',
-      'label' => 'Color theme',
+      'label' => 'Farvetema',
       'required' => 0,
       'settings' => array(
         'user_register_form' => FALSE,
@@ -268,20 +272,20 @@ function ik_mrss_feed_importer_field_default_fields() {
       'module' => 'list',
       'settings' => array(
         'allowed_values' => array(
-          5 => '5 seconds',
-          10 => '10 seconds',
-          15 => '15 seconds',
-          20 => '20 seconds',
-          25 => '25 seconds',
-          30 => '30 seconds',
-          35 => '35 seconds',
-          40 => '40 seconds',
-          45 => '45 seconds',
-          50 => '50 seconds',
-          55 => '55 seconds',
-          60 => '60 seconds',
-          90 => '90 seconds',
-          120 => '120 seconds',
+          5 => '5 sekunder',
+          10 => '10 sekunder',
+          15 => '15 sekunder',
+          20 => '20 sekunder',
+          25 => '25 sekunder',
+          30 => '30 sekunder',
+          35 => '35 sekunder',
+          40 => '40 sekunder',
+          45 => '45 sekunder',
+          50 => '50 sekunder',
+          55 => '55 sekunder',
+          60 => '60 sekunder',
+          90 => '90 sekunder',
+          120 => '120 sekunder',
         ),
         'allowed_values_function' => '',
       ),
@@ -292,7 +296,7 @@ function ik_mrss_feed_importer_field_default_fields() {
       'bundle' => 'media_rss_slide_import',
       'default_value' => NULL,
       'deleted' => '0',
-      'description' => '',
+      'description' => 'Vælg hvor længe et slide skal eksponeres.',
       'display' => array(
         'default' => array(
           'label' => 'above',
@@ -310,7 +314,7 @@ function ik_mrss_feed_importer_field_default_fields() {
       ),
       'entity_type' => 'node',
       'field_name' => 'field_ik_slide_exposure',
-      'label' => 'Exposure',
+      'label' => 'Eksponering',
       'required' => 0,
       'settings' => array(
         'user_register_form' => FALSE,
@@ -318,7 +322,9 @@ function ik_mrss_feed_importer_field_default_fields() {
       'widget' => array(
         'active' => 1,
         'module' => 'options',
-        'settings' => array(),
+        'settings' => array(
+          'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
+        ),
         'type' => 'options_select',
         'weight' => '12',
       ),
@@ -358,7 +364,7 @@ function ik_mrss_feed_importer_field_default_fields() {
     'field_instance' => array(
       'bundle' => 'media_rss_slide_import',
       'deleted' => '0',
-      'description' => '',
+      'description' => 'Tilføj et logo som indsættes på sliden. Logoet skaleres automatisk til 150 pixel i bredden. Det anbefales at uploade et logo med transparent baggrund, af samme grund tillades jpg filer ikke.',
       'display' => array(
         'default' => array(
           'label' => 'above',
@@ -384,9 +390,9 @@ function ik_mrss_feed_importer_field_default_fields() {
       'settings' => array(
         'alt_field' => 0,
         'default_image' => 0,
-        'file_directory' => '',
-        'file_extensions' => 'png gif jpg jpeg',
-        'max_filesize' => '',
+        'file_directory' => 'slide_logo_files',
+        'file_extensions' => 'png gif',
+        'max_filesize' => '1MB',
         'max_resolution' => '',
         'min_resolution' => '',
         'title_field' => 0,
@@ -399,22 +405,23 @@ function ik_mrss_feed_importer_field_default_fields() {
           'allowed_schemes' => array(
             'private' => 0,
             'public' => 'public',
-            'vimeo' => 0,
-            'youtube' => 0,
           ),
           'allowed_types' => array(
+            0 => 0,
             'audio' => 0,
             'default' => 0,
             'image' => 'image',
             'video' => 0,
           ),
           'browser_plugins' => array(
-            'library' => 'library',
-            'media_default--media_browser_1' => 'media_default--media_browser_1',
+            'library' => 0,
+            'library_plus' => 'library_plus',
+            'media_default--media_browser_1' => 0,
             'media_default--media_browser_my_files' => 'media_default--media_browser_my_files',
-            'media_internet' => 'media_internet',
+            'media_internet' => 0,
             'upload' => 'upload',
           ),
+          'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
           'progress_indicator' => 'throbber',
         ),
         'type' => 'media_generic',
@@ -461,7 +468,7 @@ function ik_mrss_feed_importer_field_default_fields() {
       'bundle' => 'media_rss_slide_import',
       'default_value' => NULL,
       'deleted' => '0',
-      'description' => '',
+      'description' => 'Vælg et eller flere tags som beskriver de importerede slides.',
       'display' => array(
         'default' => array(
           'label' => 'above',
@@ -489,6 +496,7 @@ function ik_mrss_feed_importer_field_default_fields() {
         'module' => 'autocomplete_deluxe',
         'settings' => array(
           'autocomplete_deluxe_path' => 'autocomplete_deluxe/taxonomy',
+          'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
           'size' => '60',
         ),
         'type' => 'autocomplete_deluxe_taxonomy',
@@ -531,11 +539,11 @@ function ik_mrss_feed_importer_field_default_fields() {
       'bundle' => 'media_rss_slide_import',
       'default_value' => array(
         0 => array(
-          'value' => 'layout_1',
+          'value' => 'layout_6',
         ),
       ),
       'deleted' => '0',
-      'description' => '',
+      'description' => 'Vælg et layout til de importerede slides. Det anbefales at vælge kun billede visning hvis dit feed primært indeholder billeder.',
       'display' => array(
         'default' => array(
           'label' => 'above',
@@ -561,7 +569,9 @@ function ik_mrss_feed_importer_field_default_fields() {
       'widget' => array(
         'active' => 1,
         'module' => 'options',
-        'settings' => array(),
+        'settings' => array(
+          'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
+        ),
         'type' => 'options_buttons',
         'weight' => '14',
       ),
@@ -570,13 +580,20 @@ function ik_mrss_feed_importer_field_default_fields() {
 
   // Translatables
   // Included for use with string extractors like potx.
-  t('Category');
-  t('Color theme');
-  t('Department');
-  t('Exposure');
+  t('Afdeling');
+  t('Eksponering');
+  t('Farvetema');
+  t('Kategori');
   t('Layout');
   t('Logo');
   t('Tags');
+  t('Tilføj et logo som indsættes på sliden. Logoet skaleres automatisk til 150 pixel i bredden. Det anbefales at uploade et logo med transparent baggrund, af samme grund tillades jpg filer ikke.');
+  t('Vælg en hovedkategori som skal knyttes til de importerede slides');
+  t('Vælg et eller flere tags som beskriver de importerede slides.');
+  t('Vælg et farvetema som skal benyttes for de importerede slides.');
+  t('Vælg et layout til de importerede slides. Det anbefales at vælge kun billede visning hvis dit feed primært indeholder billeder.');
+  t('Vælg hvilken afdeling de importerede slides skal tilhøre (Du kan kun tilknytte til den/de afdeling(er) som du er en del af).');
+  t('Vælg hvor længe et slide skal eksponeres.');
 
   return $fields;
 }

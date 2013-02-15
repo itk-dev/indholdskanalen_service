@@ -191,7 +191,7 @@ function ik_channels_field_default_fields() {
       'bundle' => 'channel',
       'default_value' => NULL,
       'deleted' => '0',
-      'description' => '',
+      'description' => 'Angiv en beskrivelse af kanalen (benyttes kun i administrationen).',
       'display' => array(
         'default' => array(
           'label' => 'above',
@@ -209,20 +209,24 @@ function ik_channels_field_default_fields() {
       ),
       'entity_type' => 'node',
       'field_name' => 'field_channel_description',
-      'label' => 'Description',
+      'label' => 'Beskrivelse',
       'required' => 1,
       'settings' => array(
         'linkit' => array(
           'enable' => 0,
           'insert_plugin' => '',
         ),
-        'text_processing' => '1',
+        'text_processing' => '0',
         'user_register_form' => FALSE,
       ),
       'widget' => array(
         'active' => 1,
         'module' => 'text',
         'settings' => array(
+          'maxlength_js' => '',
+          'maxlength_js_enforce' => 0,
+          'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
+          'maxlength_js_truncate_html' => 0,
           'rows' => '5',
         ),
         'type' => 'text_textarea',
@@ -574,7 +578,7 @@ function ik_channels_field_default_fields() {
       'bundle' => 'channel',
       'default_value' => NULL,
       'deleted' => '0',
-      'description' => '',
+      'description' => 'Vælg hvilken afdeling denne kanal skal tilhøre (Du kan kun tilknytte til den/de afdeling(er) som du er en del af).',
       'display' => array(
         'default' => array(
           'label' => 'above',
@@ -594,7 +598,7 @@ function ik_channels_field_default_fields() {
       ),
       'entity_type' => 'node',
       'field_name' => 'field_ik_og_department_ref',
-      'label' => 'Department',
+      'label' => 'Afdeling',
       'required' => 1,
       'settings' => array(
         'behaviors' => array(
@@ -613,7 +617,9 @@ function ik_channels_field_default_fields() {
       'widget' => array(
         'active' => 0,
         'module' => 'og',
-        'settings' => array(),
+        'settings' => array(
+          'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
+        ),
         'type' => 'og_complex',
         'weight' => '4',
       ),
@@ -622,14 +628,16 @@ function ik_channels_field_default_fields() {
 
   // Translatables
   // Included for use with string extractors like potx.
-  t('Department');
-  t('Description');
+  t('Afdeling');
+  t('Angiv en beskrivelse af kanalen (benyttes kun i administrationen).');
+  t('Beskrivelse');
   t('Filter on categories');
   t('Filter on department');
   t('Filter on orgnization');
   t('Filter on tags');
   t('Preview');
   t('Slides');
+  t('Vælg hvilken afdeling denne kanal skal tilhøre (Du kan kun tilknytte til den/de afdeling(er) som du er en del af).');
 
   return $fields;
 }

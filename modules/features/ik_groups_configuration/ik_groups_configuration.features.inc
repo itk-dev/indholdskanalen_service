@@ -31,9 +31,9 @@ function ik_groups_configuration_views_api() {
 function ik_groups_configuration_node_info() {
   $items = array(
     'department' => array(
-      'name' => t('Department'),
+      'name' => t('Afdeling'),
       'base' => 'node_content',
-      'description' => t('A department belong to an organisation and is where users are organized. Slides and Channels are posted in a department.'),
+      'description' => t('En afdeling benyttes til at gruppere brugere og indhold. En afdeling tilknyttes en organisation.'),
       'has_title' => '1',
       'title_label' => t('Titel'),
       'help' => '',
@@ -41,7 +41,7 @@ function ik_groups_configuration_node_info() {
     'organisation' => array(
       'name' => t('Organisation'),
       'base' => 'node_content',
-      'description' => t('An organisation is a group container for departments.'),
+      'description' => t('En organisation benyttes til at organisere afdelinger under.'),
       'has_title' => '1',
       'title_label' => t('Titel'),
       'help' => '',

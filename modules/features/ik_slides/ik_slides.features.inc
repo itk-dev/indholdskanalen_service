@@ -108,7 +108,7 @@ function ik_slides_node_info() {
     'slide' => array(
       'name' => t('Slide'),
       'base' => 'node_content',
-      'description' => t('A slide is used to create the individual elements for presenting information.'),
+      'description' => t('En slide benyttes til at oprette et element med information som kan indgå i en kanal'),
       'has_title' => '1',
       'title_label' => t('Overskrift'),
       'help' => '',

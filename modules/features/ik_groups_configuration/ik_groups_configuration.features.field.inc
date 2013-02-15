@@ -41,7 +41,7 @@ function ik_groups_configuration_field_default_fields() {
       'bundle' => 'department',
       'default_value' => NULL,
       'deleted' => '0',
-      'description' => 'Provide a description about the department.',
+      'description' => 'Angiv en kort beskrivelse af afdelingen.',
       'display' => array(
         'default' => array(
           'label' => 'above',
@@ -59,7 +59,7 @@ function ik_groups_configuration_field_default_fields() {
       ),
       'entity_type' => 'node',
       'field_name' => 'field_ik_department_description',
-      'label' => 'Description',
+      'label' => 'Beskrivelse',
       'required' => 0,
       'settings' => array(
         'linkit' => array(
@@ -73,6 +73,10 @@ function ik_groups_configuration_field_default_fields() {
         'active' => 1,
         'module' => 'text',
         'settings' => array(
+          'maxlength_js' => '',
+          'maxlength_js_enforce' => 0,
+          'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
+          'maxlength_js_truncate_html' => 0,
           'rows' => '8',
         ),
         'type' => 'text_textarea',
@@ -132,7 +136,7 @@ function ik_groups_configuration_field_default_fields() {
       'bundle' => 'department',
       'default_value' => NULL,
       'deleted' => '0',
-      'description' => '',
+      'description' => 'Vælg hvilken organisation denne afdeling skal tilknyttes.',
       'display' => array(
         'default' => array(
           'label' => 'above',
@@ -171,7 +175,9 @@ function ik_groups_configuration_field_default_fields() {
       'widget' => array(
         'active' => 0,
         'module' => 'og',
-        'settings' => array(),
+        'settings' => array(
+          'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
+        ),
         'type' => 'og_complex',
         'weight' => '3',
       ),
@@ -293,7 +299,7 @@ function ik_groups_configuration_field_default_fields() {
       'bundle' => 'organisation',
       'default_value' => NULL,
       'deleted' => '0',
-      'description' => 'Please provide a short description about the department.',
+      'description' => 'Angiv en kort beskivelse af organisationen.',
       'display' => array(
         'default' => array(
           'label' => 'hidden',
@@ -311,7 +317,7 @@ function ik_groups_configuration_field_default_fields() {
       ),
       'entity_type' => 'node',
       'field_name' => 'field_ik_org_descp',
-      'label' => 'Description',
+      'label' => 'Beskrivelse',
       'required' => 0,
       'settings' => array(
         'linkit' => array(
@@ -325,6 +331,10 @@ function ik_groups_configuration_field_default_fields() {
         'active' => 1,
         'module' => 'text',
         'settings' => array(
+          'maxlength_js' => '',
+          'maxlength_js_enforce' => 0,
+          'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
+          'maxlength_js_truncate_html' => 0,
           'rows' => '5',
         ),
         'type' => 'text_textarea',
@@ -499,14 +509,15 @@ function ik_groups_configuration_field_default_fields() {
 
   // Translatables
   // Included for use with string extractors like potx.
-  t('Description');
+  t('Angiv en kort beskivelse af organisationen.');
+  t('Angiv en kort beskrivelse af afdelingen.');
+  t('Beskrivelse');
   t('Determine if this is an OG group.');
   t('Group');
   t('Here you can add the organisations logo, it will be displayed on the organisation page.');
   t('Logo');
   t('Organisation');
-  t('Please provide a short description about the department.');
-  t('Provide a description about the department.');
+  t('Vælg hvilken organisation denne afdeling skal tilknyttes.');
 
   return $fields;
 }

@@ -82,9 +82,9 @@ function ik_channels_image_default_styles() {
 function ik_channels_node_info() {
   $items = array(
     'channel' => array(
-      'name' => t('Channel'),
+      'name' => t('Kanal'),
       'base' => 'node_content',
-      'description' => t('A channel is used to present selected slides.'),
+      'description' => t('En kanal benyttes til at udvælge og præsentere slides.'),
       'has_title' => '1',
       'title_label' => t('Titel'),
       'help' => '',

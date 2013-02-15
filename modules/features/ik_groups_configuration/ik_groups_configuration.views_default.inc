@@ -46,29 +46,29 @@ function ik_groups_configuration_views_default_views() {
   $handler->display->display_options['pager']['options']['tags']['last'] = 'sidste »';
   $handler->display->display_options['style_plugin'] = 'grid';
   $handler->display->display_options['row_plugin'] = 'node';
-  /* No results behavior: Global: Text area */
+  /* Opførsel ved ingen resultater: Global: Tekstområde */
   $handler->display->display_options['empty']['area']['id'] = 'area';
   $handler->display->display_options['empty']['area']['table'] = 'views';
   $handler->display->display_options['empty']['area']['field'] = 'area';
   $handler->display->display_options['empty']['area']['content'] = 'There is no content in this group.';
-  /* Relationship: OG membership: OG membership from Node */
+  /* Forbindelse: OG membership: OG membership from Indholdselement */
   $handler->display->display_options['relationships']['og_membership_rel']['id'] = 'og_membership_rel';
   $handler->display->display_options['relationships']['og_membership_rel']['table'] = 'node';
   $handler->display->display_options['relationships']['og_membership_rel']['field'] = 'og_membership_rel';
-  /* Field: Content: Media */
+  /* Felt: Indhold: Medier */
   $handler->display->display_options['fields']['field_ik_slide_media']['id'] = 'field_ik_slide_media';
   $handler->display->display_options['fields']['field_ik_slide_media']['table'] = 'field_data_field_ik_slide_media';
   $handler->display->display_options['fields']['field_ik_slide_media']['field'] = 'field_ik_slide_media';
-  /* Field: Content: Title */
+  /* Felt: Indhold: Titel */
   $handler->display->display_options['fields']['title']['id'] = 'title';
   $handler->display->display_options['fields']['title']['table'] = 'node';
   $handler->display->display_options['fields']['title']['field'] = 'title';
-  /* Sort criterion: Content: Post date */
+  /* Sorteringskriterie: Indhold: Oprettelsesdato */
   $handler->display->display_options['sorts']['created']['id'] = 'created';
   $handler->display->display_options['sorts']['created']['table'] = 'node';
   $handler->display->display_options['sorts']['created']['field'] = 'created';
   $handler->display->display_options['sorts']['created']['order'] = 'DESC';
-  /* Contextual filter: OG membership: Group ID */
+  /* Kontekstuelt filter: OG membership: Group ID */
   $handler->display->display_options['arguments']['gid']['id'] = 'gid';
   $handler->display->display_options['arguments']['gid']['table'] = 'og_membership';
   $handler->display->display_options['arguments']['gid']['field'] = 'gid';
@@ -81,12 +81,12 @@ function ik_groups_configuration_views_default_views() {
   $handler->display->display_options['arguments']['gid']['summary_options']['items_per_page'] = '25';
   $handler->display->display_options['arguments']['gid']['specify_validation'] = TRUE;
   $handler->display->display_options['arguments']['gid']['validate']['type'] = 'og';
-  /* Filter criterion: Content: Published */
+  /* Filterkriterie: Indhold: Udgivet */
   $handler->display->display_options['filters']['status']['id'] = 'status';
   $handler->display->display_options['filters']['status']['table'] = 'node';
   $handler->display->display_options['filters']['status']['field'] = 'status';
   $handler->display->display_options['filters']['status']['value'] = '1';
-  /* Filter criterion: OG membership: Group_type */
+  /* Filterkriterie: OG membership: Group_type */
   $handler->display->display_options['filters']['group_type']['id'] = 'group_type';
   $handler->display->display_options['filters']['group_type']['table'] = 'og_membership';
   $handler->display->display_options['filters']['group_type']['field'] = 'group_type';
@@ -131,7 +131,7 @@ function ik_groups_configuration_views_default_views() {
   $handler->display->display_options['row_plugin'] = 'fields';
   $handler->display->display_options['defaults']['row_options'] = FALSE;
   $handler->display->display_options['defaults']['fields'] = FALSE;
-  /* Field: Content: Media */
+  /* Felt: Indhold: Medier */
   $handler->display->display_options['fields']['field_ik_slide_media']['id'] = 'field_ik_slide_media';
   $handler->display->display_options['fields']['field_ik_slide_media']['table'] = 'field_data_field_ik_slide_media';
   $handler->display->display_options['fields']['field_ik_slide_media']['field'] = 'field_ik_slide_media';
@@ -144,7 +144,7 @@ function ik_groups_configuration_views_default_views() {
   );
   $handler->display->display_options['fields']['field_ik_slide_media']['delta_limit'] = '1';
   $handler->display->display_options['fields']['field_ik_slide_media']['delta_offset'] = '0';
-  /* Field: Content: Title */
+  /* Felt: Indhold: Titel */
   $handler->display->display_options['fields']['title']['id'] = 'title';
   $handler->display->display_options['fields']['title']['table'] = 'node';
   $handler->display->display_options['fields']['title']['field'] = 'title';
@@ -152,12 +152,12 @@ function ik_groups_configuration_views_default_views() {
   $handler->display->display_options['fields']['title']['element_label_colon'] = FALSE;
   $handler->display->display_options['defaults']['filter_groups'] = FALSE;
   $handler->display->display_options['defaults']['filters'] = FALSE;
-  /* Filter criterion: Content: Published */
+  /* Filterkriterie: Indhold: Udgivet */
   $handler->display->display_options['filters']['status']['id'] = 'status';
   $handler->display->display_options['filters']['status']['table'] = 'node';
   $handler->display->display_options['filters']['status']['field'] = 'status';
   $handler->display->display_options['filters']['status']['value'] = '1';
-  /* Filter criterion: OG membership: Group_type */
+  /* Filterkriterie: OG membership: Group_type */
   $handler->display->display_options['filters']['group_type']['id'] = 'group_type';
   $handler->display->display_options['filters']['group_type']['table'] = 'og_membership';
   $handler->display->display_options['filters']['group_type']['field'] = 'group_type';
@@ -165,7 +165,7 @@ function ik_groups_configuration_views_default_views() {
   $handler->display->display_options['filters']['group_type']['value'] = array(
     'node' => 'node',
   );
-  /* Filter criterion: Content: Type */
+  /* Filterkriterie: Indhold: Type */
   $handler->display->display_options['filters']['type']['id'] = 'type';
   $handler->display->display_options['filters']['type']['table'] = 'node';
   $handler->display->display_options['filters']['type']['field'] = 'type';
@@ -186,7 +186,7 @@ function ik_groups_configuration_views_default_views() {
   /* Display: OG channels */
   $handler = $view->new_display('panel_pane', 'OG channels', 'panel_pane_3');
   $handler->display->display_options['defaults']['title'] = FALSE;
-  $handler->display->display_options['title'] = 'Channels';
+  $handler->display->display_options['title'] = 'Kanaler';
   $handler->display->display_options['display_description'] = 'Display a list of channels in specified OG';
   $handler->display->display_options['defaults']['hide_admin_links'] = FALSE;
   $handler->display->display_options['defaults']['link_display'] = FALSE;
@@ -207,14 +207,14 @@ function ik_groups_configuration_views_default_views() {
   $handler->display->display_options['row_plugin'] = 'fields';
   $handler->display->display_options['defaults']['row_options'] = FALSE;
   $handler->display->display_options['defaults']['fields'] = FALSE;
-  /* Field: Content: Title */
+  /* Felt: Indhold: Titel */
   $handler->display->display_options['fields']['title']['id'] = 'title';
   $handler->display->display_options['fields']['title']['table'] = 'node';
   $handler->display->display_options['fields']['title']['field'] = 'title';
   $handler->display->display_options['fields']['title']['label'] = '';
   $handler->display->display_options['fields']['title']['element_type'] = 'h3';
   $handler->display->display_options['fields']['title']['element_label_colon'] = FALSE;
-  /* Field: Content: Description */
+  /* Felt: Indhold: Beskrivelse */
   $handler->display->display_options['fields']['field_channel_description']['id'] = 'field_channel_description';
   $handler->display->display_options['fields']['field_channel_description']['table'] = 'field_data_field_channel_description';
   $handler->display->display_options['fields']['field_channel_description']['field'] = 'field_channel_description';
@@ -226,12 +226,12 @@ function ik_groups_configuration_views_default_views() {
   );
   $handler->display->display_options['defaults']['filter_groups'] = FALSE;
   $handler->display->display_options['defaults']['filters'] = FALSE;
-  /* Filter criterion: Content: Published */
+  /* Filterkriterie: Indhold: Udgivet */
   $handler->display->display_options['filters']['status']['id'] = 'status';
   $handler->display->display_options['filters']['status']['table'] = 'node';
   $handler->display->display_options['filters']['status']['field'] = 'status';
   $handler->display->display_options['filters']['status']['value'] = '1';
-  /* Filter criterion: OG membership: Group_type */
+  /* Filterkriterie: OG membership: Group_type */
   $handler->display->display_options['filters']['group_type']['id'] = 'group_type';
   $handler->display->display_options['filters']['group_type']['table'] = 'og_membership';
   $handler->display->display_options['filters']['group_type']['field'] = 'group_type';
@@ -239,7 +239,7 @@ function ik_groups_configuration_views_default_views() {
   $handler->display->display_options['filters']['group_type']['value'] = array(
     'node' => 'node',
   );
-  /* Filter criterion: Content: Type */
+  /* Filterkriterie: Indhold: Type */
   $handler->display->display_options['filters']['type']['id'] = 'type';
   $handler->display->display_options['filters']['type']['table'] = 'node';
   $handler->display->display_options['filters']['type']['field'] = 'type';
@@ -260,7 +260,7 @@ function ik_groups_configuration_views_default_views() {
   /* Display: OG departments */
   $handler = $view->new_display('panel_pane', 'OG departments', 'panel_pane_4');
   $handler->display->display_options['defaults']['title'] = FALSE;
-  $handler->display->display_options['title'] = 'Departments';
+  $handler->display->display_options['title'] = 'Afdelinger';
   $handler->display->display_options['display_description'] = 'List showing all departments in selected OG';
   $handler->display->display_options['defaults']['hide_admin_links'] = FALSE;
   $handler->display->display_options['defaults']['pager'] = FALSE;
@@ -294,13 +294,13 @@ function ik_groups_configuration_views_default_views() {
   $handler->display->display_options['row_plugin'] = 'fields';
   $handler->display->display_options['defaults']['row_options'] = FALSE;
   $handler->display->display_options['defaults']['fields'] = FALSE;
-  /* Field: Content: Title */
+  /* Felt: Indhold: Titel */
   $handler->display->display_options['fields']['title']['id'] = 'title';
   $handler->display->display_options['fields']['title']['table'] = 'node';
   $handler->display->display_options['fields']['title']['field'] = 'title';
   $handler->display->display_options['fields']['title']['label'] = '';
   $handler->display->display_options['fields']['title']['element_label_colon'] = FALSE;
-  /* Field: Content: Description */
+  /* Felt: Indhold: Beskrivelse */
   $handler->display->display_options['fields']['field_ik_department_description']['id'] = 'field_ik_department_description';
   $handler->display->display_options['fields']['field_ik_department_description']['table'] = 'field_data_field_ik_department_description';
   $handler->display->display_options['fields']['field_ik_department_description']['field'] = 'field_ik_department_description';
@@ -311,23 +311,23 @@ function ik_groups_configuration_views_default_views() {
     'trim_length' => '250',
   );
   $handler->display->display_options['defaults']['sorts'] = FALSE;
-  /* Sort criterion: Content: Title */
+  /* Sorteringskriterie: Indhold: Titel */
   $handler->display->display_options['sorts']['title']['id'] = 'title';
   $handler->display->display_options['sorts']['title']['table'] = 'node';
   $handler->display->display_options['sorts']['title']['field'] = 'title';
-  /* Sort criterion: Content: Post date */
+  /* Sorteringskriterie: Indhold: Oprettelsesdato */
   $handler->display->display_options['sorts']['created']['id'] = 'created';
   $handler->display->display_options['sorts']['created']['table'] = 'node';
   $handler->display->display_options['sorts']['created']['field'] = 'created';
   $handler->display->display_options['sorts']['created']['order'] = 'DESC';
   $handler->display->display_options['defaults']['filter_groups'] = FALSE;
   $handler->display->display_options['defaults']['filters'] = FALSE;
-  /* Filter criterion: Content: Published */
+  /* Filterkriterie: Indhold: Udgivet */
   $handler->display->display_options['filters']['status']['id'] = 'status';
   $handler->display->display_options['filters']['status']['table'] = 'node';
   $handler->display->display_options['filters']['status']['field'] = 'status';
   $handler->display->display_options['filters']['status']['value'] = '1';
-  /* Filter criterion: OG membership: Group_type */
+  /* Filterkriterie: OG membership: Group_type */
   $handler->display->display_options['filters']['group_type']['id'] = 'group_type';
   $handler->display->display_options['filters']['group_type']['table'] = 'og_membership';
   $handler->display->display_options['filters']['group_type']['field'] = 'group_type';
@@ -335,7 +335,7 @@ function ik_groups_configuration_views_default_views() {
   $handler->display->display_options['filters']['group_type']['value'] = array(
     'node' => 'node',
   );
-  /* Filter criterion: Content: Type */
+  /* Filterkriterie: Indhold: Type */
   $handler->display->display_options['filters']['type']['id'] = 'type';
   $handler->display->display_options['filters']['type']['table'] = 'node';
   $handler->display->display_options['filters']['type']['field'] = 'type';
@@ -367,7 +367,7 @@ function ik_groups_configuration_views_default_views() {
   $handler->display->display_options['defaults']['row_options'] = FALSE;
   $handler->display->display_options['defaults']['relationships'] = FALSE;
   $handler->display->display_options['defaults']['fields'] = FALSE;
-  /* Field: Content: Logo */
+  /* Felt: Indhold: Logo */
   $handler->display->display_options['fields']['field_ik_org_logo']['id'] = 'field_ik_org_logo';
   $handler->display->display_options['fields']['field_ik_org_logo']['table'] = 'field_data_field_ik_org_logo';
   $handler->display->display_options['fields']['field_ik_org_logo']['field'] = 'field_ik_org_logo';
@@ -378,7 +378,7 @@ function ik_groups_configuration_views_default_views() {
     'image_style' => 'thumbnail',
     'image_link' => 'content',
   );
-  /* Field: Content: Title */
+  /* Felt: Indhold: Titel */
   $handler->display->display_options['fields']['title']['id'] = 'title';
   $handler->display->display_options['fields']['title']['table'] = 'node';
   $handler->display->display_options['fields']['title']['field'] = 'title';
@@ -387,12 +387,12 @@ function ik_groups_configuration_views_default_views() {
   $handler->display->display_options['defaults']['arguments'] = FALSE;
   $handler->display->display_options['defaults']['filter_groups'] = FALSE;
   $handler->display->display_options['defaults']['filters'] = FALSE;
-  /* Filter criterion: Content: Published */
+  /* Filterkriterie: Indhold: Udgivet */
   $handler->display->display_options['filters']['status']['id'] = 'status';
   $handler->display->display_options['filters']['status']['table'] = 'node';
   $handler->display->display_options['filters']['status']['field'] = 'status';
   $handler->display->display_options['filters']['status']['value'] = '1';
-  /* Filter criterion: Content: Type */
+  /* Filterkriterie: Indhold: Type */
   $handler->display->display_options['filters']['type']['id'] = 'type';
   $handler->display->display_options['filters']['type']['table'] = 'node';
   $handler->display->display_options['filters']['type']['field'] = 'type';
@@ -427,21 +427,20 @@ function ik_groups_configuration_views_default_views() {
     t('sidste »'),
     t('There is no content in this group.'),
     t('OG membership from node'),
-    t('Media'),
-    t('Title'),
+    t('Medier'),
+    t('Titel'),
     t('Alle'),
     t('OG content'),
     t('Default list showing all OG content'),
-    t('more'),
     t('View panes'),
     t('OG slides'),
     t('Slides'),
     t('Display a list of slides in specified OG'),
     t('OG channels'),
-    t('Channels'),
+    t('Kanaler'),
     t('Display a list of channels in specified OG'),
     t('OG departments'),
-    t('Departments'),
+    t('Afdelinger'),
     t('List showing all departments in selected OG'),
     t('OG organisations'),
     t('Organisations'),

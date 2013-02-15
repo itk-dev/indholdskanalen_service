@@ -42,6 +42,7 @@ features[field][] = node-slide-field_ik_slide_transition_effect
 features[field][] = node-slide-field_layout
 features[field_group][] = group_ik_basic_information|node|slide|form
 features[field_group][] = group_ik_slide_categories|node|slide|form
+features[field_group][] = group_ik_slide_department|node|slide|form
 features[field_group][] = group_ik_slide_design|node|slide|form
 features[field_group][] = group_ik_slide_images|node|slide|form
 features[field_group][] = group_ik_slide_import|node|slide|form

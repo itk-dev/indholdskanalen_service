@@ -34,7 +34,7 @@ function ik_mrss_feed_importer_node_info() {
     'media_rss_slide_import' => array(
       'name' => t('Media RSS slide import'),
       'base' => 'node_content',
-      'description' => t('Import slides from a Media RSS Image feed e.i http://flickr.com/services/feeds/photos_public.gne?id=57329149@N07&lang=en-us&format=rss_200.'),
+      'description' => t('Importer slides fra et Media RSS Image feed, f.eks. http://flickr.com/services/feeds/photos_public.gne?id=57329149@N07&lang=en-us&format=rss_200.'),
       'has_title' => '1',
       'title_label' => t('Titel'),
       'help' => '',

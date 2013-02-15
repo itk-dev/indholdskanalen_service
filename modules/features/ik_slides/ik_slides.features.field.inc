@@ -61,7 +61,7 @@ function ik_slides_field_default_fields() {
       'bundle' => 'slide',
       'default_value' => NULL,
       'deleted' => '0',
-      'description' => '',
+      'description' => 'Vælg hvilken afdeling denne slide skal tilhøre (Du kan kun tilknytte til den/de afdeling(er) som du er en del af).',
       'display' => array(
         'default' => array(
           'label' => 'above',
@@ -78,7 +78,7 @@ function ik_slides_field_default_fields() {
       ),
       'entity_type' => 'node',
       'field_name' => 'field_ik_og_department_ref',
-      'label' => 'Department',
+      'label' => 'Afdeling',
       'required' => 1,
       'settings' => array(
         'behaviors' => array(
@@ -97,7 +97,9 @@ function ik_slides_field_default_fields() {
       'widget' => array(
         'active' => 0,
         'module' => 'og',
-        'settings' => array(),
+        'settings' => array(
+          'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
+        ),
         'type' => 'og_complex',
         'weight' => '6',
       ),
@@ -142,7 +144,7 @@ function ik_slides_field_default_fields() {
       'bundle' => 'slide',
       'default_value' => NULL,
       'deleted' => '0',
-      'description' => 'Choose a main category for the slide',
+      'description' => 'Vælg en hovedkategori for denne slide.',
       'display' => array(
         'default' => array(
           'label' => 'above',
@@ -159,7 +161,7 @@ function ik_slides_field_default_fields() {
       ),
       'entity_type' => 'node',
       'field_name' => 'field_ik_slide_category',
-      'label' => 'Category',
+      'label' => 'Kategori',
       'required' => 1,
       'settings' => array(
         'user_register_form' => FALSE,
@@ -167,7 +169,9 @@ function ik_slides_field_default_fields() {
       'widget' => array(
         'active' => 1,
         'module' => 'options',
-        'settings' => array(),
+        'settings' => array(
+          'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
+        ),
         'type' => 'options_select',
         'weight' => '7',
       ),
@@ -211,7 +215,7 @@ function ik_slides_field_default_fields() {
         ),
       ),
       'deleted' => '0',
-      'description' => 'Choose a color scheme for the slide',
+      'description' => 'Vælg et farve tema for denne slide.',
       'display' => array(
         'default' => array(
           'label' => 'above',
@@ -228,7 +232,7 @@ function ik_slides_field_default_fields() {
       ),
       'entity_type' => 'node',
       'field_name' => 'field_ik_slide_color_theme',
-      'label' => 'Color theme',
+      'label' => 'Farve tema',
       'required' => 0,
       'settings' => array(
         'user_register_form' => FALSE,
@@ -263,20 +267,20 @@ function ik_slides_field_default_fields() {
       'module' => 'list',
       'settings' => array(
         'allowed_values' => array(
-          5 => '5 seconds',
-          10 => '10 seconds',
-          15 => '15 seconds',
-          20 => '20 seconds',
-          25 => '25 seconds',
-          30 => '30 seconds',
-          35 => '35 seconds',
-          40 => '40 seconds',
-          45 => '45 seconds',
-          50 => '50 seconds',
-          55 => '55 seconds',
-          60 => '60 seconds',
-          90 => '90 seconds',
-          120 => '120 seconds',
+          5 => '5 sekunder',
+          10 => '10 sekunder',
+          15 => '15 sekunder',
+          20 => '20 sekunder',
+          25 => '25 sekunder',
+          30 => '30 sekunder',
+          35 => '35 sekunder',
+          40 => '40 sekunder',
+          45 => '45 sekunder',
+          50 => '50 sekunder',
+          55 => '55 sekunder',
+          60 => '60 sekunder',
+          90 => '90 sekunder',
+          120 => '120 sekunder',
         ),
         'allowed_values_function' => '',
       ),
@@ -291,7 +295,7 @@ function ik_slides_field_default_fields() {
         ),
       ),
       'deleted' => '0',
-      'description' => '',
+      'description' => 'Vælg hvor længe denne slide skal eksponseres.',
       'display' => array(
         'default' => array(
           'label' => 'above',
@@ -308,7 +312,7 @@ function ik_slides_field_default_fields() {
       ),
       'entity_type' => 'node',
       'field_name' => 'field_ik_slide_exposure',
-      'label' => 'Exposure',
+      'label' => 'Eksponering',
       'required' => 0,
       'settings' => array(
         'user_register_form' => FALSE,
@@ -316,7 +320,9 @@ function ik_slides_field_default_fields() {
       'widget' => array(
         'active' => 1,
         'module' => 'options',
-        'settings' => array(),
+        'settings' => array(
+          'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
+        ),
         'type' => 'options_select',
         'weight' => '14',
       ),
@@ -539,11 +545,11 @@ function ik_slides_field_default_fields() {
             'public' => 'public',
           ),
           'allowed_types' => array(
-            'audio' => 0,
-            'default' => 0,
-            0 => 0,
             'image' => 'image',
             'video' => 0,
+            0 => 0,
+            'audio' => 0,
+            'default' => 0,
           ),
           'browser_plugins' => array(
             'library' => 0,
@@ -608,7 +614,7 @@ function ik_slides_field_default_fields() {
       ),
       'entity_type' => 'node',
       'field_name' => 'field_ik_slide_media',
-      'label' => 'Media',
+      'label' => 'Medier',
       'required' => 0,
       'settings' => array(
         'file_extensions' => 'jpg jpeg gif png',
@@ -623,11 +629,11 @@ function ik_slides_field_default_fields() {
             'public' => 'public',
           ),
           'allowed_types' => array(
-            'image' => 'image',
-            'video' => 'video',
-            0 => 0,
             'audio' => 0,
             'default' => 0,
+            0 => 0,
+            'image' => 'image',
+            'video' => 'video',
           ),
           'browser_plugins' => array(
             'library' => 0,
@@ -637,6 +643,7 @@ function ik_slides_field_default_fields() {
             'media_internet' => 0,
             'upload' => 'upload',
           ),
+          'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
           'progress_indicator' => 'throbber',
         ),
         'type' => 'media_generic',
@@ -756,7 +763,7 @@ function ik_slides_field_default_fields() {
       ),
       'entity_type' => 'node',
       'field_name' => 'field_ik_slide_subheading',
-      'label' => 'Subheading',
+      'label' => 'Manchet',
       'required' => 0,
       'settings' => array(
         'linkit' => array(
@@ -770,6 +777,8 @@ function ik_slides_field_default_fields() {
         'active' => 1,
         'module' => 'text',
         'settings' => array(
+          'maxlength_js' => 0,
+          'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
           'size' => '60',
         ),
         'type' => 'text_textfield',
@@ -816,7 +825,7 @@ function ik_slides_field_default_fields() {
       'bundle' => 'slide',
       'default_value' => NULL,
       'deleted' => '0',
-      'description' => 'Add one more more tags that describe the slide.',
+      'description' => 'Tilføj et eller flere tags som beskriver denne slide.',
       'display' => array(
         'default' => array(
           'label' => 'above',
@@ -843,6 +852,7 @@ function ik_slides_field_default_fields() {
         'module' => 'autocomplete_deluxe',
         'settings' => array(
           'autocomplete_deluxe_path' => 'autocomplete_deluxe/taxonomy',
+          'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
           'size' => '60',
         ),
         'type' => 'autocomplete_deluxe_taxonomy',
@@ -899,7 +909,7 @@ function ik_slides_field_default_fields() {
       ),
       'entity_type' => 'node',
       'field_name' => 'field_ik_slide_text',
-      'label' => 'Text',
+      'label' => 'Tekst',
       'required' => 0,
       'settings' => array(
         'linkit' => array(
@@ -915,7 +925,7 @@ function ik_slides_field_default_fields() {
         'settings' => array(
           'maxlength_js' => '500',
           'maxlength_js_enforce' => 0,
-          'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
+          'maxlength_js_label' => 'Indhold begrænses til @limit karaktere, antal tegn tilbage: <strong>@remaining</strong>',
           'maxlength_js_truncate_html' => 1,
           'rows' => '8',
         ),
@@ -965,7 +975,7 @@ function ik_slides_field_default_fields() {
         ),
       ),
       'deleted' => '0',
-      'description' => '',
+      'description' => 'Vælg hvilken effekt som skal benyttes i overgang imellem billeder.',
       'display' => array(
         'default' => array(
           'label' => 'above',
@@ -982,7 +992,7 @@ function ik_slides_field_default_fields() {
       ),
       'entity_type' => 'node',
       'field_name' => 'field_ik_slide_transition_effect',
-      'label' => 'Transition effect',
+      'label' => 'Overgangseffekt',
       'required' => 0,
       'settings' => array(
         'user_register_form' => FALSE,
@@ -1037,7 +1047,7 @@ function ik_slides_field_default_fields() {
         ),
       ),
       'deleted' => '0',
-      'description' => 'Choose the layout you wish the slide to use.',
+      'description' => 'Vælg et layout som denne slide skal benytte.',
       'display' => array(
         'default' => array(
           'label' => 'above',
@@ -1073,26 +1083,29 @@ function ik_slides_field_default_fields() {
 
   // Translatables
   // Included for use with string extractors like potx.
-  t('Add one more more tags that describe the slide.');
-  t('Category');
-  t('Choose a color scheme for the slide');
-  t('Choose a main category for the slide');
-  t('Choose the layout you wish the slide to use.');
-  t('Color theme');
-  t('Department');
-  t('Exposure');
+  t('Afdeling');
+  t('Eksponering');
+  t('Farve tema');
   t('Import parent');
   t('Imported');
+  t('Kategori');
   t('Layout');
   t('Logo');
-  t('Media');
+  t('Manchet');
+  t('Medier');
+  t('Overgangseffekt');
   t('Preview');
-  t('Subheading');
   t('Tags');
-  t('Text');
+  t('Tekst');
   t('Tilføj billeder til slide. Billeder skaleres og beskæres automatisk til 1920x1080 pixel (Full HD, 16:9 format). Ønsker du fuld kontrol over hvordan dit billede ser ud anbefales det at uploade billedet i størrelsen 1920x1080 på forhånd.');
+  t('Tilføj et eller flere tags som beskriver denne slide.');
   t('Tilføj et logo som indsættes på sliden. Logoet skaleres automatisk til 150 pixel i bredden. Det anbefales at uploade et logo med transparent baggrund, af samme grund tillades jpg filer ikke.');
-  t('Transition effect');
+  t('Vælg en hovedkategori for denne slide.');
+  t('Vælg et farve tema for denne slide.');
+  t('Vælg et layout som denne slide skal benytte.');
+  t('Vælg hvilken afdeling denne slide skal tilhøre (Du kan kun tilknytte til den/de afdeling(er) som du er en del af).');
+  t('Vælg hvilken effekt som skal benyttes i overgang imellem billeder.');
+  t('Vælg hvor længe denne slide skal eksponseres.');
 
   return $fields;
 }
