@@ -265,12 +265,17 @@ function ik_slide_preview_field_formatter_view($entity_type, $entity, $field, $i
   return $element;
 }
 
+/**
+ * Implements hook_field_update().
+ *
+ * Removes old screenshots an image styles and prepares the new image path.
+ */
 function ik_slide_preview_field_update($entity_type, $entity, $field, $instance, $langcode, &$items) {
   foreach ($items as $delta => $item) {
     if (isset($item['image'])) {
       $file = drupal_realpath($item['image']);
-      
-      // Build path and remove old screenshot.      
+
+      // Build path and remove old screenshot.
       if (file_exists($file)) {
         unlink($file);
       }
@@ -285,6 +290,11 @@ function ik_slide_preview_field_update($entity_type, $entity, $field, $instance,
   }
 }
 
+/**
+ * Implements hook_field_insert().
+ *
+ * Prepares the screenshot image file.
+ */
 function ik_slide_preview_field_insert($entity_type, $entity, $field, $instance, $langcode, &$items) {
   foreach ($items as $delta => $item) {
     // Fill in new file name to trigger generation in prepare view.
@@ -317,6 +327,11 @@ function ik_slide_preview_field_prepare_view($entity_type, $entities, $field, $i
   }
 }
 
+/**
+ * Implements hook_field_delete().
+ *
+ * Removes screenshots and image styles images for the removed node.
+ */
 function ik_slide_preview_field_delete($entity_type, $entities, $field, $instances, $langcode, &$items) {
   foreach ($items[$id] as $item) {
     $file = drupal_realpath($item['image']);

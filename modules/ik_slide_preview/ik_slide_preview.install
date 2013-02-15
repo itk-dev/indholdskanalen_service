@@ -29,10 +29,10 @@ function ik_slide_preview_update_7001() {
   $info = field_info_instances('node', 'slide');
   $instance = $info['field_ik_slide_preview'];
   $field = field_info_field('field_ik_slide_preview');
-  
+
   $uri = $field['settings']['uri_scheme'] . '://' . $instance['settings']['file_directory'];
-  $query = "UPDATE {field_data_field_ik_slide_preview} 
-               SET field_ik_slide_preview_image = CONCAT('".$uri."/', field_ik_slide_preview_image)";
+  $query = "UPDATE {field_data_field_ik_slide_preview}
+               SET field_ik_slide_preview_image = CONCAT('".$uri."/', REPLACE(field_ik_slide_preview_image, '.png', '.jpg'))";
   db_query($query);
   return FALSE;
 }
