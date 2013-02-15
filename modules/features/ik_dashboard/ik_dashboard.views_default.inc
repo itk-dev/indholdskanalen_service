@@ -1831,6 +1831,26 @@ function ik_dashboard_views_default_views() {
   $handler->display->display_options['relationships']['uid']['table'] = 'node';
   $handler->display->display_options['relationships']['uid']['field'] = 'uid';
   $handler->display->display_options['defaults']['fields'] = FALSE;
+  /* Felt: Indhold: Nid */
+  $handler->display->display_options['fields']['nid']['id'] = 'nid';
+  $handler->display->display_options['fields']['nid']['table'] = 'node';
+  $handler->display->display_options['fields']['nid']['field'] = 'nid';
+  $handler->display->display_options['fields']['nid']['label'] = '';
+  $handler->display->display_options['fields']['nid']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['nid']['element_label_colon'] = FALSE;
+  /* Felt: Indhold: Preview */
+  $handler->display->display_options['fields']['field_channel_preview_1']['id'] = 'field_channel_preview_1';
+  $handler->display->display_options['fields']['field_channel_preview_1']['table'] = 'field_data_field_channel_preview';
+  $handler->display->display_options['fields']['field_channel_preview_1']['field'] = 'field_channel_preview';
+  $handler->display->display_options['fields']['field_channel_preview_1']['label'] = '';
+  $handler->display->display_options['fields']['field_channel_preview_1']['alter']['make_link'] = TRUE;
+  $handler->display->display_options['fields']['field_channel_preview_1']['alter']['path'] = 'node/[nid]';
+  $handler->display->display_options['fields']['field_channel_preview_1']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_channel_preview_1']['type'] = 'ik_channel_filter_preview_images_formatter';
+  $handler->display->display_options['fields']['field_channel_preview_1']['settings'] = array(
+    'image_style' => 'slide_preview_small',
+    'limit' => 1,
+  );
   /* Felt: Indhold: Titel */
   $handler->display->display_options['fields']['title']['id'] = 'title';
   $handler->display->display_options['fields']['title']['table'] = 'node';
@@ -2190,6 +2210,26 @@ function ik_dashboard_views_default_views() {
   $handler->display->display_options['relationships']['uid']['table'] = 'node';
   $handler->display->display_options['relationships']['uid']['field'] = 'uid';
   $handler->display->display_options['defaults']['fields'] = FALSE;
+  /* Felt: Indhold: Nid */
+  $handler->display->display_options['fields']['nid']['id'] = 'nid';
+  $handler->display->display_options['fields']['nid']['table'] = 'node';
+  $handler->display->display_options['fields']['nid']['field'] = 'nid';
+  $handler->display->display_options['fields']['nid']['label'] = '';
+  $handler->display->display_options['fields']['nid']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['nid']['element_label_colon'] = FALSE;
+  /* Felt: Indhold: Preview */
+  $handler->display->display_options['fields']['field_channel_preview_1']['id'] = 'field_channel_preview_1';
+  $handler->display->display_options['fields']['field_channel_preview_1']['table'] = 'field_data_field_channel_preview';
+  $handler->display->display_options['fields']['field_channel_preview_1']['field'] = 'field_channel_preview';
+  $handler->display->display_options['fields']['field_channel_preview_1']['label'] = '';
+  $handler->display->display_options['fields']['field_channel_preview_1']['alter']['make_link'] = TRUE;
+  $handler->display->display_options['fields']['field_channel_preview_1']['alter']['path'] = 'node/[nid]';
+  $handler->display->display_options['fields']['field_channel_preview_1']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_channel_preview_1']['type'] = 'ik_channel_filter_preview_images_formatter';
+  $handler->display->display_options['fields']['field_channel_preview_1']['settings'] = array(
+    'image_style' => 'slide_preview_small',
+    'limit' => 1,
+  );
   /* Felt: Masse-handlinger: Indhold */
   $handler->display->display_options['fields']['views_bulk_operations']['id'] = 'views_bulk_operations';
   $handler->display->display_options['fields']['views_bulk_operations']['table'] = 'node';
