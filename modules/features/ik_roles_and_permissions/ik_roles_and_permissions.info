@@ -7,7 +7,6 @@ version = 7.x-0.1
 project = ik_roles_and_permissions
 dependencies[] = clone
 dependencies[] = comment
-dependencies[] = devel
 dependencies[] = features
 dependencies[] = feeds
 dependencies[] = file_entity
