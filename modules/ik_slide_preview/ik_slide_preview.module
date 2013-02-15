@@ -83,7 +83,7 @@ function ik_slide_preview_field_validate($entity_type, $entity, $field, $instanc
  *
  */
 function ik_slide_preview_field_is_empty($item, $field) {
-  return empty($item['data']);
+  return empty($item['image']);
 }
 
 
@@ -263,47 +263,41 @@ function ik_slide_preview_field_formatter_view($entity_type, $entity, $field, $i
   return $element;
 }
 
-/**
- * Implements hook_field_presave().
- *
- * Remove old screenshots before data is save to the database.
- */
-function ik_slide_preview_field_presave($entity_type, $entity, $field, $instance, $langcode, &$items) {
+function ik_slide_preview_field_update($entity_type, $entity, $field, $instance, $langcode, &$items) {
+  foreach ($items as $delta => $item) {
+    if (isset($item['image'])) {
+      $file = $item['image'];
 
-  $query = db_select(_field_sql_storage_tablename($field) , 't')
-      ->fields('t')
-      ->condition('entity_type', $entity_type)
-      ->condition('entity_id', $entity->nid, '=')
-      ->condition('language', $langcode, '=')
-      ->orderBy('delta');
-
-  $results = $query->execute();
-  foreach ($results as $row) {
-    $file = $row->field_ik_slide_preview_image;
-
-    // Build path and remove old screenshot.
-    $path = $field['settings']['uri_scheme'] . '://' . $instance['settings']['file_directory'] . '/' . $file;
-    if (file_exists($path)) {
-      unlink($path);
-    }
-
-    // Remove old image styles.
-    $styles = array('slide_preview_small', 'slide_preview_medium', 'slide_preview_large');
-    foreach ($styles as $style) {
-      $path = drupal_realpath($field['settings']['uri_scheme'] . '://styles/' . $style . '/public/slide_previews/' . $file);
+      // Build path and remove old screenshot.
+      $path = $field['settings']['uri_scheme'] . '://' . $instance['settings']['file_directory'] . '/' . $file;
       if (file_exists($path)) {
         unlink($path);
       }
+
+      // Remove old image styles.
+      $styles = array('slide_preview_small', 'slide_preview_medium', 'slide_preview_large');
+      foreach ($styles as $style) {
+        $path = drupal_realpath($field['settings']['uri_scheme'] . '://styles/' . $style . '/public/slide_previews/' . $file);
+        if (file_exists($path)) {
+          unlink($path);
+        }
+      }
     }
+
+    // Old files remove (if any), so create new ones.
+    $items[$delta]['image'] = md5($entity->nid . REQUEST_TIME . $delta) . '.png';
   }
 }
 
+function ik_slide_preview_field_insert($entity_type, $entity, $field, $instance, $langcode, &$items) {
+  foreach ($items as $delta => $item) {
+    // Fill in new file name to trigger generation in prepare view.
+    $items[$delta]['image'] = md5($entity->nid . REQUEST_TIME . $delta) . '.png';
+  }
+}
 
 /**
  * Implements hook_field_prepare_view().
- *
- * After an update/insert field the $items are empty, which we can use to
- * capture a new screenshot. I have no f**king idea why it's empty, it just is.
  *
  * The image is generated in the prepare_view hook because we have to save the
  * node before we can generate a screenshot of it, so this prepare view also
@@ -311,26 +305,25 @@ function ik_slide_preview_field_presave($entity_type, $entity, $field, $instance
  */
 function ik_slide_preview_field_prepare_view($entity_type, $entities, $field, $instances, $langcode, &$items) {
   foreach ($entities as $id => &$entity) {
-   // Create screenshot.
-    if (!isset($items[$id][0]['image'])) {
-      // Build urls and destionation.
-      $url = url('slide/' . $entity->nid . '/preview', array('absolute' => TRUE));
-      $file = md5($entity->nid . REQUEST_TIME) . '.png';
-      $dest = $field['settings']['uri_scheme'] . '://' . $instances[$id]['settings']['file_directory'];
+    // Find destination for the screenshot and generate it if th does not exists.
+    $dest = $field['settings']['uri_scheme'] . '://' . $instances[$id]['settings']['file_directory'];
+    $url = url('slide/' . $entity->nid . '/preview', array('absolute' => TRUE));
+    foreach ($items[$id] as $delta => $item) {
+      if (!file_exists(drupal_realpath($dest . '/' . $item['image']))) {
+        // Capture new screenshot.
+        if (phantomjs_capture_screen($url, $dest, $item['image'])) {
+          // Update the loaded field values.
+          $items[$id][$delta]['image'] = $item['image'];
 
-      // Capture new screenshot.
-      if (phantomjs_capture_screen($url, $dest, $file)) {
-        // Update the loaded field values.
-        $items[$id][0]['image'] = $file;
-
-        // Update the database and clear field cache.
-        $entity->{$field['field_name']}[$langcode][0]['image'] = $file;
-        field_sql_storage_field_storage_write($entity_type, $entity, FIELD_STORAGE_UPDATE, array($field['id']));
-        field_cache_clear();
-      }
-      else {
-        // Set message and use old field value.
-        drupal_set_message(t('PhantomJS chould not create screenshot of the slide'), 'error');
+          // Update the database and clear field cache.
+          $entity->{$field['field_name']}[$langcode][$delta]['image'] = $item['image'];
+          field_sql_storage_field_storage_write($entity_type, $entity, FIELD_STORAGE_UPDATE, array($field['id']));
+          field_cache_clear();
+        }
+        else {
+          // Set message and use old field value.
+          drupal_set_message(t('PhantomJS chould not create screenshot of the slide'), 'error');
+        }
       }
     }
   }
