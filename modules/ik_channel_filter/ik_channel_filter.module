@@ -462,7 +462,7 @@ function ik_channel_filter_field_formatter_info() {
     'ik_channel_filter_preview_images_formatter' => array(
       'label' => t('Screenshots'),
       'field types' => array('ik_channel_filter_preview'),
-      'settings' => array('image_style' => ''),
+      'settings' => array('image_style' => '', 'limit' => 0),
     ),
   );
 }
@@ -471,7 +471,7 @@ function ik_channel_filter_field_formatter_info() {
  * Implements hook_field_formatter_settings_form().
  */
 function ik_channel_filter_field_formatter_settings_form($field, $instance, $view_mode, $form, &$form_state) {
-  if ($view_mode == 'ik_channel_filter_preview_images_formatter' || $view_mode == 'ctools') {
+  if ($instance['display'][$view_mode]['type'] == 'ik_channel_filter_preview_images_formatter') {
     $display = $instance['display'][$view_mode];
     $settings = $display['settings'];
 
@@ -486,6 +486,14 @@ function ik_channel_filter_field_formatter_settings_form($field, $instance, $vie
       '#options' => $image_styles,
     );
 
+    $element['limit'] = array(
+      '#title' => t('Limit screenshots'),
+      '#type' => 'checkbox',
+      '#description' => t('Only show the channels first slide screenshot.'),
+      '#default_value' => $settings['limit'],
+      '#empty_option' => 0,
+    );
+
     return $element;
   }
 }
@@ -494,7 +502,7 @@ function ik_channel_filter_field_formatter_settings_form($field, $instance, $vie
  * Implements hook_field_formatter_settings_summary().
  */
 function ik_channel_filter_field_formatter_settings_summary($field, $instance, $view_mode) {
-  if ($view_mode == 'ik_channel_filter_preview_images_formatter' || $view_mode == 'ctools') {
+  if ($instance['display'][$view_mode]['type'] == 'ik_channel_filter_preview_images_formatter') {
     $display = $instance['display'][$view_mode];
     $settings = $display['settings'];
 
@@ -559,17 +567,30 @@ function ik_channel_filter_field_formatter_view($entity_type, $entity, $field, $
       $slides = ik_channel_filter_formatter_helper($field, $entity, $langcode);
       $elements = array();
 
-      // Get images.
+      // Transform array to be index by nid.
       $data = array();
       foreach ($slides as $slide) {
         $data[$slide->nid] = $slide->title;
       }
-      $query = db_select('field_data_field_ik_slide_preview', 'f')
-        ->fields('f', array('entity_id', 'field_ik_slide_preview_image'))
-        ->condition('entity_id', array_keys($data), 'IN');
-      $results = $query->execute();
 
-      // Render images.
+      // Get image URIs.
+      if ($settings['limit']) {
+        // Limit active only get first slide image.
+        $slide = $slides[0];
+        $query = db_select('field_data_field_ik_slide_preview', 'f')
+          ->fields('f', array('entity_id', 'field_ik_slide_preview_image'))
+          ->condition('entity_id', $slide->nid, '=');
+        $results = $query->execute();
+      }
+      else {
+        // No limit get all slide images.
+        $query = db_select('field_data_field_ik_slide_preview', 'f')
+          ->fields('f', array('entity_id', 'field_ik_slide_preview_image'))
+          ->condition('entity_id', array_keys($data), 'IN');
+        $results = $query->execute();
+      }
+
+      // Build render array with the image(s).
       foreach ($results as $row) {
         $elements[$row->entity_id] = array(
           '#theme' => 'image_formatter',
@@ -586,6 +607,7 @@ function ik_channel_filter_field_formatter_view($entity_type, $entity, $field, $
         );
       }
 
+      // Render the images.
       $element['preview'] = array(
         '#prefix' => '<div class="ik-filter-preview-wrapper">',
         '#markup' => drupal_render($elements),
