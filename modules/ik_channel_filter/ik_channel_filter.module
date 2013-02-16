@@ -462,7 +462,7 @@ function ik_channel_filter_field_formatter_info() {
     'ik_channel_filter_preview_images_formatter' => array(
       'label' => t('Screenshots'),
       'field types' => array('ik_channel_filter_preview'),
-      'settings' => array('image_style' => '', 'limit' => 0),
+      'settings' => array('image_style' => '', 'limit' => 0, 'link' => 0),
     ),
   );
 }
@@ -491,6 +491,14 @@ function ik_channel_filter_field_formatter_settings_form($field, $instance, $vie
       '#type' => 'checkbox',
       '#description' => t('Only show the channels first slide screenshot.'),
       '#default_value' => $settings['limit'],
+      '#empty_option' => 0,
+    );
+
+    $element['link'] = array(
+      '#title' => t('Link to slide'),
+      '#type' => 'checkbox',
+      '#description' => t('Link the screenshot image to the slide node.'),
+      '#default_value' => $settings['link'],
       '#empty_option' => 0,
     );
 
@@ -600,11 +608,16 @@ function ik_channel_filter_field_formatter_view($entity_type, $entity, $field, $
             'title' => $data[$row->entity_id],
           ),
           '#image_style' => $settings['image_style'],
-          '#path' => array(
+          '#path' => '',
+        );
+
+        // Should the screenshot link to the slide.
+        if ($settings['link']) {
+          $elements[$row->entity_id]['#path'] = array(
             'path' => 'node/' . $row->entity_id,
             'options' => array(),
-          ),
-        );
+          );
+        }
       }
 
       // Render the images.
