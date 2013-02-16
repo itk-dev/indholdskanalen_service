@@ -147,8 +147,11 @@ function ik_channel_filter_get_slides($raw_values) {
     $query = $or_query;
   }
 
-  // Sort the result to get the same order each time.
-  $query->orderBy('nid');
+  // Sort the result to get the same order each time. It's wrapped in a select
+  // to ensure that order by and union works corretly.
+  $query = db_select($query, 'nodes')
+    ->fields('nodes', array('nid', 'title'))
+    ->orderBy('nid');
 
   // Get the final result.
   return $query->execute()->fetchAll();
