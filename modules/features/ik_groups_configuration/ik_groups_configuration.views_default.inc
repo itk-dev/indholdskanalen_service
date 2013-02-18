@@ -23,8 +23,9 @@ function ik_groups_configuration_views_default_views() {
   /* Display: Defaults */
   $handler = $view->new_display('default', 'Defaults', 'default');
   $handler->display->display_options['title'] = 'Group content';
+  $handler->display->display_options['use_ajax'] = TRUE;
   $handler->display->display_options['use_more'] = TRUE;
-  $handler->display->display_options['use_more_always'] = TRUE;
+  $handler->display->display_options['use_more_always'] = FALSE;
   $handler->display->display_options['use_more_text'] = 'mere';
   $handler->display->display_options['access']['type'] = 'none';
   $handler->display->display_options['cache']['type'] = 'none';
@@ -37,6 +38,10 @@ function ik_groups_configuration_views_default_views() {
   $handler->display->display_options['exposed_form']['options']['sort_asc_label'] = 'Stigende';
   $handler->display->display_options['exposed_form']['options']['sort_desc_label'] = 'Faldende';
   $handler->display->display_options['pager']['type'] = 'full';
+  $handler->display->display_options['pager']['options']['items_per_page'] = '15';
+  $handler->display->display_options['pager']['options']['offset'] = '0';
+  $handler->display->display_options['pager']['options']['id'] = '0';
+  $handler->display->display_options['pager']['options']['quantity'] = '9';
   $handler->display->display_options['pager']['options']['expose']['items_per_page_label'] = 'Antal elementer';
   $handler->display->display_options['pager']['options']['expose']['items_per_page_options_all_label'] = '- Alle -';
   $handler->display->display_options['pager']['options']['expose']['offset_label'] = 'Forskydning';
@@ -116,6 +121,25 @@ function ik_groups_configuration_views_default_views() {
   $handler->display->display_options['title'] = 'Slides';
   $handler->display->display_options['display_description'] = 'Display a list of slides in specified OG';
   $handler->display->display_options['defaults']['hide_admin_links'] = FALSE;
+  $handler->display->display_options['defaults']['use_more'] = FALSE;
+  $handler->display->display_options['defaults']['use_more_always'] = FALSE;
+  $handler->display->display_options['defaults']['use_more_always'] = FALSE;
+  $handler->display->display_options['use_more_always'] = FALSE;
+  $handler->display->display_options['defaults']['use_more_text'] = FALSE;
+  $handler->display->display_options['use_more_text'] = 'mere';
+  $handler->display->display_options['defaults']['pager'] = FALSE;
+  $handler->display->display_options['pager']['type'] = 'full';
+  $handler->display->display_options['pager']['options']['items_per_page'] = '15';
+  $handler->display->display_options['pager']['options']['offset'] = '0';
+  $handler->display->display_options['pager']['options']['id'] = '0';
+  $handler->display->display_options['pager']['options']['quantity'] = '9';
+  $handler->display->display_options['pager']['options']['expose']['items_per_page_label'] = 'Antal elementer';
+  $handler->display->display_options['pager']['options']['expose']['items_per_page_options_all_label'] = '- Alle -';
+  $handler->display->display_options['pager']['options']['expose']['offset_label'] = 'Forskydning';
+  $handler->display->display_options['pager']['options']['tags']['first'] = '« første';
+  $handler->display->display_options['pager']['options']['tags']['previous'] = '‹ forrige';
+  $handler->display->display_options['pager']['options']['tags']['next'] = 'næste ›';
+  $handler->display->display_options['pager']['options']['tags']['last'] = 'sidste »';
   $handler->display->display_options['defaults']['style_plugin'] = FALSE;
   $handler->display->display_options['style_plugin'] = 'fluid_grid';
   $handler->display->display_options['style_options']['items_width'] = '180';
@@ -131,19 +155,24 @@ function ik_groups_configuration_views_default_views() {
   $handler->display->display_options['row_plugin'] = 'fields';
   $handler->display->display_options['defaults']['row_options'] = FALSE;
   $handler->display->display_options['defaults']['fields'] = FALSE;
-  /* Felt: Indhold: Medier */
-  $handler->display->display_options['fields']['field_ik_slide_media']['id'] = 'field_ik_slide_media';
-  $handler->display->display_options['fields']['field_ik_slide_media']['table'] = 'field_data_field_ik_slide_media';
-  $handler->display->display_options['fields']['field_ik_slide_media']['field'] = 'field_ik_slide_media';
-  $handler->display->display_options['fields']['field_ik_slide_media']['label'] = '';
-  $handler->display->display_options['fields']['field_ik_slide_media']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['field_ik_slide_media']['click_sort_column'] = 'fid';
-  $handler->display->display_options['fields']['field_ik_slide_media']['type'] = 'media';
-  $handler->display->display_options['fields']['field_ik_slide_media']['settings'] = array(
-    'file_view_mode' => 'media_small',
+  /* Felt: Indhold: Nid */
+  $handler->display->display_options['fields']['nid']['id'] = 'nid';
+  $handler->display->display_options['fields']['nid']['table'] = 'node';
+  $handler->display->display_options['fields']['nid']['field'] = 'nid';
+  $handler->display->display_options['fields']['nid']['label'] = '';
+  $handler->display->display_options['fields']['nid']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['nid']['element_label_colon'] = FALSE;
+  /* Felt: Indhold: Preview */
+  $handler->display->display_options['fields']['field_ik_slide_preview']['id'] = 'field_ik_slide_preview';
+  $handler->display->display_options['fields']['field_ik_slide_preview']['table'] = 'field_data_field_ik_slide_preview';
+  $handler->display->display_options['fields']['field_ik_slide_preview']['field'] = 'field_ik_slide_preview';
+  $handler->display->display_options['fields']['field_ik_slide_preview']['label'] = '';
+  $handler->display->display_options['fields']['field_ik_slide_preview']['alter']['make_link'] = TRUE;
+  $handler->display->display_options['fields']['field_ik_slide_preview']['alter']['path'] = 'node/[nid]';
+  $handler->display->display_options['fields']['field_ik_slide_preview']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_ik_slide_preview']['settings'] = array(
+    'image_style' => 'slide_preview_small',
   );
-  $handler->display->display_options['fields']['field_ik_slide_media']['delta_limit'] = '1';
-  $handler->display->display_options['fields']['field_ik_slide_media']['delta_offset'] = '0';
   /* Felt: Indhold: Titel */
   $handler->display->display_options['fields']['title']['id'] = 'title';
   $handler->display->display_options['fields']['title']['table'] = 'node';
@@ -182,6 +211,7 @@ function ik_groups_configuration_views_default_views() {
       'label' => 'OG membership: Group ID',
     ),
   );
+  $handler->display->display_options['inherit_panels_path'] = '1';
 
   /* Display: OG channels */
   $handler = $view->new_display('panel_pane', 'OG channels', 'panel_pane_3');
@@ -189,9 +219,29 @@ function ik_groups_configuration_views_default_views() {
   $handler->display->display_options['title'] = 'Kanaler';
   $handler->display->display_options['display_description'] = 'Display a list of channels in specified OG';
   $handler->display->display_options['defaults']['hide_admin_links'] = FALSE;
+  $handler->display->display_options['defaults']['use_more'] = FALSE;
+  $handler->display->display_options['use_more'] = TRUE;
+  $handler->display->display_options['defaults']['use_more_always'] = FALSE;
+  $handler->display->display_options['defaults']['use_more_always'] = FALSE;
+  $handler->display->display_options['use_more_always'] = FALSE;
+  $handler->display->display_options['defaults']['use_more_text'] = FALSE;
+  $handler->display->display_options['use_more_text'] = 'mere';
   $handler->display->display_options['defaults']['link_display'] = FALSE;
   $handler->display->display_options['link_display'] = 'custom_url';
   $handler->display->display_options['link_url'] = 'dashboard/channels/?title=%1';
+  $handler->display->display_options['defaults']['pager'] = FALSE;
+  $handler->display->display_options['pager']['type'] = 'full';
+  $handler->display->display_options['pager']['options']['items_per_page'] = '10';
+  $handler->display->display_options['pager']['options']['offset'] = '0';
+  $handler->display->display_options['pager']['options']['id'] = '0';
+  $handler->display->display_options['pager']['options']['quantity'] = '9';
+  $handler->display->display_options['pager']['options']['expose']['items_per_page_label'] = 'Antal elementer';
+  $handler->display->display_options['pager']['options']['expose']['items_per_page_options_all_label'] = '- Alle -';
+  $handler->display->display_options['pager']['options']['expose']['offset_label'] = 'Forskydning';
+  $handler->display->display_options['pager']['options']['tags']['first'] = '« første';
+  $handler->display->display_options['pager']['options']['tags']['previous'] = '‹ forrige';
+  $handler->display->display_options['pager']['options']['tags']['next'] = 'næste ›';
+  $handler->display->display_options['pager']['options']['tags']['last'] = 'sidste »';
   $handler->display->display_options['defaults']['style_plugin'] = FALSE;
   $handler->display->display_options['style_plugin'] = 'fluid_grid';
   $handler->display->display_options['style_options']['items_width'] = '180';
@@ -199,7 +249,7 @@ function ik_groups_configuration_views_default_views() {
     'align' => TRUE,
   );
   $handler->display->display_options['style_options']['list_alignment'] = 'left';
-  $handler->display->display_options['style_options']['items_alignment'] = 'left';
+  $handler->display->display_options['style_options']['items_alignment'] = 'center';
   $handler->display->display_options['style_options']['box_shadow'] = '0';
   $handler->display->display_options['style_options']['border_radius'] = '0';
   $handler->display->display_options['defaults']['style_options'] = FALSE;
@@ -207,23 +257,43 @@ function ik_groups_configuration_views_default_views() {
   $handler->display->display_options['row_plugin'] = 'fields';
   $handler->display->display_options['defaults']['row_options'] = FALSE;
   $handler->display->display_options['defaults']['fields'] = FALSE;
+  /* Felt: Indhold: Preview */
+  $handler->display->display_options['fields']['field_channel_preview_1']['id'] = 'field_channel_preview_1';
+  $handler->display->display_options['fields']['field_channel_preview_1']['table'] = 'field_data_field_channel_preview';
+  $handler->display->display_options['fields']['field_channel_preview_1']['field'] = 'field_channel_preview';
+  $handler->display->display_options['fields']['field_channel_preview_1']['label'] = '';
+  $handler->display->display_options['fields']['field_channel_preview_1']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['field_channel_preview_1']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_channel_preview_1']['type'] = 'ik_channel_filter_preview_count_formatter';
+  /* Felt: Indhold: Nid */
+  $handler->display->display_options['fields']['nid']['id'] = 'nid';
+  $handler->display->display_options['fields']['nid']['table'] = 'node';
+  $handler->display->display_options['fields']['nid']['field'] = 'nid';
+  $handler->display->display_options['fields']['nid']['label'] = '';
+  $handler->display->display_options['fields']['nid']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['nid']['element_label_colon'] = FALSE;
+  /* Felt: Indhold: Preview */
+  $handler->display->display_options['fields']['field_channel_preview']['id'] = 'field_channel_preview';
+  $handler->display->display_options['fields']['field_channel_preview']['table'] = 'field_data_field_channel_preview';
+  $handler->display->display_options['fields']['field_channel_preview']['field'] = 'field_channel_preview';
+  $handler->display->display_options['fields']['field_channel_preview']['label'] = '';
+  $handler->display->display_options['fields']['field_channel_preview']['alter']['make_link'] = TRUE;
+  $handler->display->display_options['fields']['field_channel_preview']['alter']['path'] = 'node/[nid]';
+  $handler->display->display_options['fields']['field_channel_preview']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_channel_preview']['type'] = 'ik_channel_filter_preview_images_formatter';
+  $handler->display->display_options['fields']['field_channel_preview']['settings'] = array(
+    'image_style' => 'slide_preview_small',
+    'limit' => 1,
+    'link' => 0,
+  );
   /* Felt: Indhold: Titel */
   $handler->display->display_options['fields']['title']['id'] = 'title';
   $handler->display->display_options['fields']['title']['table'] = 'node';
   $handler->display->display_options['fields']['title']['field'] = 'title';
   $handler->display->display_options['fields']['title']['label'] = '';
-  $handler->display->display_options['fields']['title']['element_type'] = 'h3';
+  $handler->display->display_options['fields']['title']['alter']['alter_text'] = TRUE;
+  $handler->display->display_options['fields']['title']['alter']['text'] = '[title] - [field_channel_preview_1]';
   $handler->display->display_options['fields']['title']['element_label_colon'] = FALSE;
-  /* Felt: Indhold: Beskrivelse */
-  $handler->display->display_options['fields']['field_channel_description']['id'] = 'field_channel_description';
-  $handler->display->display_options['fields']['field_channel_description']['table'] = 'field_data_field_channel_description';
-  $handler->display->display_options['fields']['field_channel_description']['field'] = 'field_channel_description';
-  $handler->display->display_options['fields']['field_channel_description']['label'] = '';
-  $handler->display->display_options['fields']['field_channel_description']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['field_channel_description']['type'] = 'text_trimmed';
-  $handler->display->display_options['fields']['field_channel_description']['settings'] = array(
-    'trim_length' => '250',
-  );
   $handler->display->display_options['defaults']['filter_groups'] = FALSE;
   $handler->display->display_options['defaults']['filters'] = FALSE;
   /* Filterkriterie: Indhold: Udgivet */
@@ -256,6 +326,7 @@ function ik_groups_configuration_views_default_views() {
       'label' => 'OG membership: Group ID',
     ),
   );
+  $handler->display->display_options['inherit_panels_path'] = '1';
 
   /* Display: OG departments */
   $handler = $view->new_display('panel_pane', 'OG departments', 'panel_pane_4');
@@ -439,6 +510,7 @@ function ik_groups_configuration_views_default_views() {
     t('OG channels'),
     t('Kanaler'),
     t('Display a list of channels in specified OG'),
+    t('[title] - [field_channel_preview_1]'),
     t('OG departments'),
     t('Afdelinger'),
     t('List showing all departments in selected OG'),

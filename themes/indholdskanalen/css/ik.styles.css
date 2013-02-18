@@ -287,7 +287,7 @@ body {
   font-size: 10.76923px; }
 
 /* line 88, ../sass/_ik.base.scss */
-.ik-filter-preview-wrapper img {
+.pane-node-field-channel-preview .ik-filter-preview-wrapper img {
   margin: 0 20px 20px 0; }
 
 /* line 97, ../sass/_ik.base.scss */
