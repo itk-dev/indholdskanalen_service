@@ -391,6 +391,7 @@ function ik_channels_default_page_manager_handlers() {
       'formatter_settings' => array(
         'image_style' => 'slide_preview_small',
         'limit' => 0,
+        'link' => 1,
       ),
       'context' => 'argument_entity_id:node_1',
       'override_title' => 0,

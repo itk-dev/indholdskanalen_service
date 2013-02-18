@@ -63,12 +63,12 @@ function ik_slides_default_page_manager_handlers() {
     $pane = new stdClass();
     $pane->pid = 'new-1';
     $pane->panel = 'bottom';
-    $pane->type = 'node_author';
-    $pane->subtype = 'node_author';
+    $pane->type = 'node_created';
+    $pane->subtype = 'node_created';
     $pane->shown = TRUE;
     $pane->access = array();
     $pane->configuration = array(
-      'link' => 1,
+      'format' => 'medium',
       'context' => 'argument_entity_id:node_1',
       'override_title' => 0,
       'override_title_text' => '',
@@ -86,12 +86,12 @@ function ik_slides_default_page_manager_handlers() {
     $pane = new stdClass();
     $pane->pid = 'new-2';
     $pane->panel = 'bottom';
-    $pane->type = 'node_created';
-    $pane->subtype = 'node_created';
+    $pane->type = 'node_author';
+    $pane->subtype = 'node_author';
     $pane->shown = TRUE;
     $pane->access = array();
     $pane->configuration = array(
-      'format' => 'medium',
+      'link' => 1,
       'context' => 'argument_entity_id:node_1',
       'override_title' => 0,
       'override_title_text' => '',
@@ -155,6 +155,30 @@ function ik_slides_default_page_manager_handlers() {
     $pane = new stdClass();
     $pane->pid = 'new-5';
     $pane->panel = 'top';
+    $pane->type = 'slide_buttons';
+    $pane->subtype = 'slide_buttons';
+    $pane->shown = TRUE;
+    $pane->access = array();
+    $pane->configuration = array(
+      'context' => array(
+        0 => 'argument_entity_id:node_1',
+      ),
+      'override_title' => 0,
+      'override_title_text' => '',
+    );
+    $pane->cache = array();
+    $pane->style = array(
+      'settings' => NULL,
+    );
+    $pane->css = array();
+    $pane->extras = array();
+    $pane->position = 1;
+    $pane->locks = array();
+    $display->content['new-5'] = $pane;
+    $display->panels['top'][1] = 'new-5';
+    $pane = new stdClass();
+    $pane->pid = 'new-6';
+    $pane->panel = 'top';
     $pane->type = 'entity_field';
     $pane->subtype = 'node:field_ik_slide_preview';
     $pane->shown = TRUE;
@@ -178,10 +202,10 @@ function ik_slides_default_page_manager_handlers() {
     );
     $pane->css = array();
     $pane->extras = array();
-    $pane->position = 1;
+    $pane->position = 2;
     $pane->locks = array();
-    $display->content['new-5'] = $pane;
-    $display->panels['top'][1] = 'new-5';
+    $display->content['new-6'] = $pane;
+    $display->panels['top'][2] = 'new-6';
   $display->hide_title = PANELS_TITLE_FIXED;
   $display->title_pane = '0';
   $handler->conf['display'] = $display;
