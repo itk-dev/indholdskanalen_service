@@ -85,3 +85,30 @@ input.form-submit {
   }
 }
 
+.ik-filter-preview-wrapper img {
+  margin: 0 $default-spacing $default-spacing 0;
+}
+
+// -----------------------------------------------------------------------------
+// Slide node view and edit
+// -----------------------------------------------------------------------------
+//
+
+.user-picture {
+  display: none;
+}
+
+.submitted {
+  margin-bottom: $default-spacing;
+}
+
+.field-type-ik-slide-preview {
+  .field-label {
+    font-size: $theme-font-size * 1.5;
+    margin-bottom: $default-spacing / 2;
+  }
+
+  img {
+    max-width: 100%;
+  }
+}

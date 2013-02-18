@@ -286,6 +286,26 @@ body {
   padding: 2px 4px;
   font-size: 10.76923px; }
 
+/* line 88, ../sass/_ik.base.scss */
+.ik-filter-preview-wrapper img {
+  margin: 0 20px 20px 0; }
+
+/* line 97, ../sass/_ik.base.scss */
+.user-picture {
+  display: none; }
+
+/* line 101, ../sass/_ik.base.scss */
+.submitted {
+  margin-bottom: 20px; }
+
+/* line 106, ../sass/_ik.base.scss */
+.field-type-ik-slide-preview .field-label {
+  font-size: 21px;
+  margin-bottom: 10px; }
+/* line 111, ../sass/_ik.base.scss */
+.field-type-ik-slide-preview img {
+  max-width: 100%; }
+
 /* line 1, ../sass/_ik.legacy.scss */
 #page {
   overflow: hidden; }
