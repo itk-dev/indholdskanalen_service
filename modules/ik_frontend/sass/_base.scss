@@ -27,9 +27,13 @@ body {
 
 body {
   font-family: $font-family;
-  @include rem('font-size', $base-font-size);
+  font-size: $theme-font-size;
   color: $font-color;
   overflow: hidden;
+
+  &.slide-preview {
+    font-size: $theme-font-size / 1.5;
+  }
 }
 
 /*

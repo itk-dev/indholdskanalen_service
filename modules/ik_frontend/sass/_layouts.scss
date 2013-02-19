@@ -59,9 +59,15 @@
 
     .slide-heading {
       @include rem('font-size', $heading-font-size);
-      @include rem('line-height', $heading-font-size);
-      @include rem('margin-bottom', $default-spacing);
+      //@include rem('line-height', $heading-font-size);
+      //@include rem('margin-bottom', $default-spacing);
+
+      display: block;
+      width: 100%;
+      
       font-family: $font-family-heading;
+      font-size: $heading-font-size;
+      line-height: normal;
       text-transform: uppercase;
     }
 
@@ -72,17 +78,29 @@
     }
 
     .slide-subheading {
-      @include rem('font-size', $subheading-font-size);
-      @include rem('line-height', $subheading-font-size * 1.2);
+      //@include rem('font-size', $subheading-font-size);
+      //@include rem('line-height', $subheading-font-size * 1.2);
+
+      display: block;
+      width: 100%;
+      
       font-family: $font-family-subheading;
+      font-size: $subheading-font-size;
+      line-height: normal;
       margin-bottom: $default-spacing / 2;
     }
 
     .slide-text {
       @include box-sizing(border-box);
-      @include rem('font-size', $textbox-font-size);
-      @include rem('line-height', $textbox-font-size * 1.4);
+      //@include rem('font-size', $textbox-font-size);
+      //@include rem('line-height', $textbox-font-size * 1.4);
+
+      display: block;
+      width: 100%;
+
       padding: $textbox-padding;
+      font-size: $textbox-font-size;
+      line-height: $textbox-font-size * 0.8;
     }
   }
 
@@ -97,6 +115,14 @@
     }
   }
 
+}
+
+body.slide-preview {
+  .logo-container {
+    img {
+      max-width: 100px;
+    }
+  }
 }
 
 /*

@@ -12,8 +12,8 @@
       // Build jQuery UI dialog.
       $('<div id=\"slide-preview\" style=\"overflow:hidden\"></div>').dialog({
         modal: true,
-        width: 507,
-        height: '322',
+        width: $(window).width() - 100,
+        height: $(window).height() - 100,
         resize: function(event, ui) {
           // Reload iframe content.
           frame.src = src;
@@ -25,8 +25,16 @@
 
       // Add content to the iframe.
       frame.src = src;
-      
+     
+      // Add class to body.
+      setTimeout(
+        function(){
+          var element = $('body', frames[0].document);
+          element.addClass('slide-preview');
+        }, 1000
+      );
+
       return false;
-    })    
+    })
   });
 })(jQuery);

@@ -104,64 +104,66 @@ body {
 /* line 28, ../sass/_base.scss */
 body {
   font-family: "Aller", "Helvetica Neue", Helvetica, Arial, sans-serif;
-  font-size: 16px;
-  font-size: 1rem;
+  font-size: 1em;
   color: white;
   overflow: hidden; }
+  /* line 34, ../sass/_base.scss */
+  body.slide-preview {
+    font-size: 0.66667em; }
 
 /*
 * Default typography
 */
-/* line 39, ../sass/_base.scss */
+/* line 43, ../sass/_base.scss */
 p {
   margin-bottom: 10px;
   margin-bottom: 0.625rem; }
 
-/* line 44, ../sass/_base.scss */
+/* line 48, ../sass/_base.scss */
 strong,
 b {
   font-family: "AllerBold", "Aller", "Helvetica Neue", Helvetica, Arial, sans-serif; }
-  /* line 48, ../sass/_base.scss */
+  /* line 52, ../sass/_base.scss */
   strong em,
   strong i,
   b em,
   b i {
     font-family: "AllerBoldItalic", "Aller", "Helvetica Neue", Helvetica, Arial, sans-serif; }
 
-/* line 54, ../sass/_base.scss */
+/* line 58, ../sass/_base.scss */
 em,
 i {
   font-family: "AllerItalic", "Aller", "Helvetica Neue", Helvetica, Arial, sans-serif; }
-  /* line 58, ../sass/_base.scss */
+  /* line 62, ../sass/_base.scss */
   em strong,
   em b,
   i strong,
   i b {
     font-family: "AllerBoldItalic", "Aller", "Helvetica Neue", Helvetica, Arial, sans-serif; }
 
-/* line 63, ../sass/_base.scss */
-h1 {
-  font-size: 72px; }
-
 /* line 67, ../sass/_base.scss */
-h2 {
-  font-size: 26px; }
+h1 {
+  font-size: 4.5em; }
 
 /* line 71, ../sass/_base.scss */
-h3 {
-  font-size: 26.4px; }
+h2 {
+  font-size: 1.625em; }
 
 /* line 75, ../sass/_base.scss */
-h4 {
-  font-size: 28.8px; }
+h3 {
+  font-size: 1.65em; }
 
 /* line 79, ../sass/_base.scss */
-h5 {
-  font-size: 31.2px; }
+h4 {
+  font-size: 1.8em; }
 
 /* line 83, ../sass/_base.scss */
+h5 {
+  font-size: 1.95em; }
+
+/* line 87, ../sass/_base.scss */
 h6 {
-  font-size: 33.6px; }
+  font-size: 2.1em; }
 
 /*
 * Layouts default styling
@@ -228,47 +230,51 @@ h6 {
       padding: 20px; }
     /* line 60, ../sass/_layouts.scss */
     .slide .text-container .slide-heading {
-      font-size: 72px;
-      font-size: 4.5rem;
-      line-height: 72px;
-      line-height: 4.5rem;
-      margin-bottom: 20px;
-      margin-bottom: 1.25rem;
+      font-size: 4.5em;
+      font-size: 4.5em;
+      display: block;
+      width: 100%;
       font-family: "AllerBold", "Aller", "Helvetica Neue", Helvetica, Arial, sans-serif;
+      font-size: 4.5em;
+      line-height: normal;
       text-transform: uppercase; }
-    /* line 68, ../sass/_layouts.scss */
+    /* line 74, ../sass/_layouts.scss */
     .slide .text-container .divider {
       width: 10%;
       border-bottom: 0.2em solid white;
       margin-bottom: 10px;
       margin-bottom: 0.625rem; }
-    /* line 74, ../sass/_layouts.scss */
+    /* line 80, ../sass/_layouts.scss */
     .slide .text-container .slide-subheading {
-      font-size: 26px;
-      font-size: 1.625rem;
-      line-height: 31px;
-      line-height: 1.95rem;
+      display: block;
+      width: 100%;
       font-family: "AllerBold", "Aller", "Helvetica Neue", Helvetica, Arial, sans-serif;
+      font-size: 1.625em;
+      line-height: normal;
       margin-bottom: 10px; }
-    /* line 81, ../sass/_layouts.scss */
+    /* line 93, ../sass/_layouts.scss */
     .slide .text-container .slide-text {
       -webkit-box-sizing: border-box;
       -moz-box-sizing: border-box;
       box-sizing: border-box;
-      font-size: 24px;
-      font-size: 1.5rem;
-      line-height: 34px;
-      line-height: 2.1rem;
-      padding: 20px; }
-  /* line 89, ../sass/_layouts.scss */
+      display: block;
+      width: 100%;
+      padding: 20px;
+      font-size: 1.5em;
+      line-height: 1.2em; }
+  /* line 107, ../sass/_layouts.scss */
   .slide .logo-container {
     z-index: 21000;
     position: absolute;
     bottom: 20px;
     right: 40px; }
-    /* line 95, ../sass/_layouts.scss */
+    /* line 113, ../sass/_layouts.scss */
     .slide .logo-container img {
       max-width: 250px; }
+
+/* line 122, ../sass/_layouts.scss */
+body.slide-preview .logo-container img {
+  max-width: 100px; }
 
 /*
 * Layout 1
@@ -285,17 +291,17 @@ h6 {
 * ---------------------------
 *
 */
-/* line 120, ../sass/_layouts.scss */
+/* line 146, ../sass/_layouts.scss */
 .layout-1 .text-wrapper {
   top: 0;
   left: 0;
   width: 35%;
   height: 100%; }
-/* line 127, ../sass/_layouts.scss */
+/* line 153, ../sass/_layouts.scss */
 .layout-1 .text-container {
   width: 100%;
   height: 100%; }
-/* line 132, ../sass/_layouts.scss */
+/* line 158, ../sass/_layouts.scss */
 .layout-1 .divider {
   display: none; }
 
@@ -314,26 +320,26 @@ h6 {
 * ---------------------------
 *
 */
-/* line 155, ../sass/_layouts.scss */
+/* line 181, ../sass/_layouts.scss */
 .layout-2 .text-wrapper {
   top: 0;
   width: 100%; }
-/* line 160, ../sass/_layouts.scss */
+/* line 186, ../sass/_layouts.scss */
 .layout-2 .text-container {
   width: 100%; }
-  /* line 163, ../sass/_layouts.scss */
+  /* line 189, ../sass/_layouts.scss */
   .layout-2 .text-container .heading-container {
     width: 49.5%;
     float: left; }
-  /* line 168, ../sass/_layouts.scss */
+  /* line 194, ../sass/_layouts.scss */
   .layout-2 .text-container .slide-heading {
     margin-bottom: 10px;
     margin-bottom: 0.625rem; }
-  /* line 172, ../sass/_layouts.scss */
+  /* line 198, ../sass/_layouts.scss */
   .layout-2 .text-container .slide-text {
     width: 49.5%;
     float: left; }
-  /* line 177, ../sass/_layouts.scss */
+  /* line 203, ../sass/_layouts.scss */
   .layout-2 .text-container .divider {
     display: none; }
 
@@ -352,29 +358,29 @@ h6 {
 * ---------------------------
 *
 */
-/* line 201, ../sass/_layouts.scss */
+/* line 227, ../sass/_layouts.scss */
 .layout-3 .text-wrapper {
   bottom: 0;
   width: 100%; }
-/* line 206, ../sass/_layouts.scss */
+/* line 232, ../sass/_layouts.scss */
 .layout-3 .text-container {
   width: 100%; }
-  /* line 209, ../sass/_layouts.scss */
+  /* line 235, ../sass/_layouts.scss */
   .layout-3 .text-container .heading-container {
     width: 49.5%;
     float: left; }
-  /* line 214, ../sass/_layouts.scss */
+  /* line 240, ../sass/_layouts.scss */
   .layout-3 .text-container .slide-heading {
     margin-bottom: 10px;
     margin-bottom: 0.625rem; }
-  /* line 218, ../sass/_layouts.scss */
+  /* line 244, ../sass/_layouts.scss */
   .layout-3 .text-container .slide-text {
     width: 49.5%;
     float: left; }
-  /* line 223, ../sass/_layouts.scss */
+  /* line 249, ../sass/_layouts.scss */
   .layout-3 .text-container .divider {
     display: none; }
-/* line 228, ../sass/_layouts.scss */
+/* line 254, ../sass/_layouts.scss */
 .layout-3 .logo-container {
   bottom: auto;
   top: 20px; }
@@ -394,20 +400,20 @@ h6 {
 * ---------------------------
 *
 */
-/* line 252, ../sass/_layouts.scss */
+/* line 278, ../sass/_layouts.scss */
 .layout-4 .text-wrapper {
   top: 0;
   right: 0;
   width: 35%;
   height: 100%; }
-/* line 259, ../sass/_layouts.scss */
+/* line 285, ../sass/_layouts.scss */
 .layout-4 .text-container {
   width: 100%;
   height: 100%; }
-/* line 264, ../sass/_layouts.scss */
+/* line 290, ../sass/_layouts.scss */
 .layout-4 .divider {
   display: none; }
-/* line 268, ../sass/_layouts.scss */
+/* line 294, ../sass/_layouts.scss */
 .layout-4 .logo-container {
   bottom: auto;
   right: auto;
@@ -429,25 +435,25 @@ h6 {
 * ---------------------------
 *
 */
-/* line 293, ../sass/_layouts.scss */
+/* line 319, ../sass/_layouts.scss */
 .layout-5 .image-container {
   display: none; }
-/* line 297, ../sass/_layouts.scss */
+/* line 323, ../sass/_layouts.scss */
 .layout-5 .text-wrapper {
   padding: 0; }
-/* line 301, ../sass/_layouts.scss */
+/* line 327, ../sass/_layouts.scss */
 .layout-5 .text-container {
   -webkit-border-radius: 0;
   -moz-border-radius: 0;
   -ms-border-radius: 0;
   -o-border-radius: 0;
   border-radius: 0; }
-/* line 306, ../sass/_layouts.scss */
+/* line 332, ../sass/_layouts.scss */
 .layout-5 .text-wrapper,
 .layout-5 .text-container {
   width: 100%;
   height: 100%; }
-/* line 311, ../sass/_layouts.scss */
+/* line 337, ../sass/_layouts.scss */
 .layout-5 .divider {
   display: none; }
 
@@ -466,6 +472,6 @@ h6 {
 * ---------------------------
 *
 */
-/* line 333, ../sass/_layouts.scss */
+/* line 359, ../sass/_layouts.scss */
 .layout-6 .text-wrapper {
   display: none; }
