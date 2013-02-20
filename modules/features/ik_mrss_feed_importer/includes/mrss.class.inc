@@ -41,11 +41,22 @@ class MediaRSSParser extends FeedsParser {
       $title = urldecode((string)$media->content->title);
 
       $namespaces = $item->getNameSpaces(true);
-      $media = $item->children($namespaces['media']);
-      $data['media_title'] = empty($title) ? $alt_title : $title;
-      $data['media_description'] = urldecode((string)$media->content->description);
-      $data['media_url'] = (string)$media->attributes()->url;
-      $data['media_image'] = $this->downloadImage($data['media_url'], basename($data['media_url']));
+      if (isset($namespaces['media'])) {
+        // Assume Media RSS format
+        $media = $item->children($namespaces['media']);
+        $data['media_title'] = empty($title) ? $alt_title : $title;
+        $data['media_description'] = urldecode((string)$media->content->description);
+        $data['media_url'] = (string)$media->attributes()->url;
+        $data['media_image'] = $this->downloadImage($data['media_url'], basename($data['media_url']));
+      }
+      else {
+        // Try enclosure filed
+        $title = (string)$item->title;
+        $data['media_title'] = empty($title) ? $alt_title : $title;
+        $data['media_description'] = '';
+        $data['media_url'] = (string)$item->enclosure->attributes()->url;
+        $data['media_image'] = $this->downloadImage($data['media_url'], basename($data['media_url']));
+      }
 
       // Add feed item
       $result->items[] = $data;
