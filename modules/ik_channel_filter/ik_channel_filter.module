@@ -582,20 +582,25 @@ function ik_channel_filter_field_formatter_view($entity_type, $entity, $field, $
       }
 
       // Get image URIs.
+      $results = array();
       if ($settings['limit']) {
         // Limit active only get first slide image.
-        $slide = $slides[0];
-        $query = db_select('field_data_field_ik_slide_preview', 'f')
-          ->fields('f', array('entity_id', 'field_ik_slide_preview_image'))
-          ->condition('entity_id', $slide->nid, '=');
-        $results = $query->execute();
+        if (!empty($slides)) {
+          $slide = $slides[0];
+          $query = db_select('field_data_field_ik_slide_preview', 'f')
+            ->fields('f', array('entity_id', 'field_ik_slide_preview_image'))
+            ->condition('entity_id', $slide->nid, '=');
+          $results = $query->execute();
+        }
       }
       else {
         // No limit get all slide images.
-        $query = db_select('field_data_field_ik_slide_preview', 'f')
-          ->fields('f', array('entity_id', 'field_ik_slide_preview_image'))
-          ->condition('entity_id', array_keys($data), 'IN');
-        $results = $query->execute();
+        if (!empty($data)) {
+          $query = db_select('field_data_field_ik_slide_preview', 'f')
+            ->fields('f', array('entity_id', 'field_ik_slide_preview_image'))
+            ->condition('entity_id', array_keys($data), 'IN');
+          $results = $query->execute();
+        }
       }
 
       // Build render array with the image(s).
