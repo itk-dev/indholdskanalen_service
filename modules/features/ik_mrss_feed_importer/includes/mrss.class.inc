@@ -74,12 +74,14 @@ class MediaRSSParser extends FeedsParser {
    *  Id or name to store the image under.
    */
   private function downloadImage($url, $id) {
-    // Download and save the image.
-    $photo = file_get_contents($url);
-    $file = file_save_data($photo, 'public://' . $id, FILE_EXISTS_REPLACE);
+    if (!empty($url)) {
+      // Download and save the image.
+      $photo = file_get_contents($url);
+      $file = file_save_data($photo, 'public://' . $id, FILE_EXISTS_REPLACE);
 
-    if (is_object($file) && file_exists($file->uri)) {
-      return $file->uri;
+      if (is_object($file) && file_exists($file->uri)) {
+        return $file->uri;
+      }
     }
     return FALSE;
   }

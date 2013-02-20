@@ -30,10 +30,10 @@ function ik_mrss_feed_importer_feeds_importer_default() {
       'config' => array(),
     ),
     'processor' => array(
-      'plugin_key' => 'FeedsNodeProcessor',
+      'plugin_key' => 'SlideProcessor',
       'config' => array(
         'content_type' => 'slide',
-        'expire' => '-1',
+        'expire' => '259200',
         'author' => 0,
         'authorize' => 1,
         'mappings' => array(
