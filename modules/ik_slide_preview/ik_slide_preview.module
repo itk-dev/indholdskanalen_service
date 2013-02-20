@@ -306,11 +306,13 @@ function ik_slide_preview_field_update($entity_type, $entity, $field, $instance,
  * Prepares the screenshot image file.
  */
 function ik_slide_preview_field_insert($entity_type, $entity, $field, $instance, $langcode, &$items) {
-  foreach ($items as $delta => $item) {
-    // Fill in new file name to trigger generation in prepare view.
-    $path = $field['settings']['uri_scheme'] . '://' . $instance['settings']['file_directory'] . '/';
-    $items[$delta]['image'] = $path . md5($entity->nid . REQUEST_TIME . $delta) . '.jpg';
-  }
+  // Fill in new file name to trigger generation in prepare view.
+  $path = $field['settings']['uri_scheme'] . '://' . $instance['settings']['file_directory'] . '/';
+  $items = array(
+    array(
+      'image' => $path . md5($entity->nid . REQUEST_TIME . $delta) . '.jpg',
+    ),
+  );
 }
 
 /**

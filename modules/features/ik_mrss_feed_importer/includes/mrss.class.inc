@@ -24,17 +24,25 @@ class MediaRSSParser extends FeedsParser {
     $result->title = 'Yahoo Media RSS';
     $result->description = 'Parse Yahoo Media RSS feed';
 
-    // Run through news items
+    // Run through news items.
+    $delta = 0;
     foreach ($xml->channel->item as $item) {
+      $delta++;
+      $alt_title = (string)$xml->channel->title . ' - ' . sprintf("%02d", $delta);
+
+      $title = (string)$item->title;
+
       $data = array();
       $data['guid'] = (string)$item->guid;
-      $data['title'] = (string)$item->title;
+      $data['title'] = empty($item->title) ? $alt_title : (string)$item->title;
       $data['link'] = (string)$item->link;
-      $data['description'] = urldecode((string)$item->description);
+      $data['description'] = (string)$item->description;
+
+      $title = urldecode((string)$media->content->title);
 
       $namespaces = $item->getNameSpaces(true);
       $media = $item->children($namespaces['media']);
-      $data['media_title'] = urldecode((string)$media->content->title);
+      $data['media_title'] = empty($title) ? $alt_title : $title;
       $data['media_description'] = urldecode((string)$media->content->description);
       $data['media_url'] = (string)$media->attributes()->url;
       $data['media_image'] = $this->downloadImage($data['media_url'], basename($data['media_url']));
