@@ -14,10 +14,8 @@
         modal: true,
         width: $(window).width() - 100,
         height: $(window).height() - 100,
-        resize: function(event, ui) {
-          // Reload iframe content.
-          frame.src = src;
-        }
+        resizable: false,
+        draggable: false,
       });
 
       // Append iframe to the dialog.

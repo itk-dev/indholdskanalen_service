@@ -422,11 +422,8 @@ function ik_slide_preview_build_preview($form, &$form_state) {
               modal: true,
               width: $(window).width() - 100,
               height: $(window).height() - 100,
-              resize: function(event, ui) {
-                // Reload iframe content.
-                frame.contentWindow.contents = content;
-                frame.src = 'javascript:window[\"contents\"]';
-              }
+              resizable: false,
+              draggable: false,
             });
 
             // Append iframe to the dialog.
