@@ -384,6 +384,28 @@
 
 /*
 * Layout 5
+* Image only
+*
+* ---------------------------
+* |                         |
+* |                         |
+* |                         |
+* |                         |
+* |                         |
+* |                         |
+* |                         |
+* ---------------------------
+*
+*/
+
+.layout-5 {
+  .text-wrapper {
+    display: none;
+  }
+}
+
+/*
+* Layout 6
 * Text only
 *
 * ---------------------------
@@ -398,7 +420,7 @@
 *
 */
 
-.layout-5 {
+.layout-6 {
   .image-container {
     display: none;
   }
@@ -419,28 +441,6 @@
 
   .divider {
     display:none;
-  }
-}
-
-/*
-* Layout 6
-* Image only
-*
-* ---------------------------
-* |                         |
-* |                         |
-* |                         |
-* |                         |
-* |                         |
-* |                         |
-* |                         |
-* ---------------------------
-*
-*/
-
-.layout-6 {
-  .text-wrapper {
-    display: none;
   }
 }
 
