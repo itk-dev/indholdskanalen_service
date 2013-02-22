@@ -50,6 +50,11 @@ input.form-submit {
   }
 }
 
+#logo-container {
+  padding: $default-spacing;
+  background-color: $logo-bg-color;
+}
+
 // -----------------------------------------------------------------------------
 // Media module
 // -----------------------------------------------------------------------------

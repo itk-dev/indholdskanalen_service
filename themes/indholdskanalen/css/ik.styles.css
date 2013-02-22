@@ -266,7 +266,12 @@ body {
   -moz-box-sizing: border-box;
   box-sizing: border-box; }
 
-/* line 59, ../sass/_ik.base.scss */
+/* line 53, ../sass/_ik.base.scss */
+#logo-container {
+  padding: 20px;
+  background-color: #1a1919; }
+
+/* line 64, ../sass/_ik.base.scss */
 .media-widget .button, .media-widget .more-link a, .more-link .media-widget a {
   -webkit-border-radius: 4px;
   -moz-border-radius: 4px;
@@ -276,7 +281,7 @@ body {
   padding: 2px 4px;
   font-size: 10.76923px; }
 
-/* line 73, ../sass/_ik.base.scss */
+/* line 78, ../sass/_ik.base.scss */
 .ik-channel-filter-remove.button, .more-link a.ik-channel-filter-remove {
   -webkit-border-radius: 4px;
   -moz-border-radius: 4px;
@@ -286,23 +291,23 @@ body {
   padding: 2px 4px;
   font-size: 10.76923px; }
 
-/* line 88, ../sass/_ik.base.scss */
+/* line 93, ../sass/_ik.base.scss */
 .pane-node-field-channel-preview .ik-filter-preview-wrapper img {
   margin: 0 20px 20px 0; }
 
-/* line 97, ../sass/_ik.base.scss */
+/* line 102, ../sass/_ik.base.scss */
 .user-picture {
   display: none; }
 
-/* line 101, ../sass/_ik.base.scss */
+/* line 106, ../sass/_ik.base.scss */
 .submitted {
   margin-bottom: 20px; }
 
-/* line 106, ../sass/_ik.base.scss */
+/* line 111, ../sass/_ik.base.scss */
 .field-type-ik-slide-preview .field-label {
   font-size: 21px;
   margin-bottom: 10px; }
-/* line 111, ../sass/_ik.base.scss */
+/* line 116, ../sass/_ik.base.scss */
 .field-type-ik-slide-preview img {
   max-width: 100%; }
 

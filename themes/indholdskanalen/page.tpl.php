@@ -1,4 +1,9 @@
 <div id="container">
+  <?php if ($logo): ?>
+    <div id="logo-container">
+      <img src="<?php print $logo ?>" alt="<?php print t('Logo'); ?>" title="<?php print t('Logo'); ?>" id="logo" />
+    </div>
+  <?php endif; ?>
   <div id="branding" class="clearfix">
     <?php print $breadcrumb; ?>
     <?php print render($title_prefix); ?>
