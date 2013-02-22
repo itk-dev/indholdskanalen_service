@@ -30,25 +30,6 @@
   }
 }
 
-#footer {
-  clear: both;
-  position: relative;
-  z-index: 10;
-  height: 6em;
-  margin-top: -6em;
-  width: 100%;
-  background-color: #666666;
-  color: white;
-  -moz-box-shadow: 0 3px 20px #000;
-  -webkit-box-shadow: 0 3px 20px black;
-  box-shadow: 0 3px 20px black;
-  filter: progid:DXImageTransform.Microsoft.Shadow(color=#000000, direction='180', strength='10');
-  -ms-filter: "progid:DXImageTransform.Microsoft.Shadow(color=#000000, direction='180', strength='10')";
-  -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
-  -moz-box-sizing: border-box;    /* Firefox, other Gecko */
-  box-sizing: border-box;         /* Opera/IE 8+ */
-  padding: 20px 20px 40px 20px;
-}
 /* Page must have at least same padding bottom as height of footer */
 #page {
   padding-bottom: 7em;

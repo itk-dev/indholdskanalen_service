@@ -271,7 +271,31 @@ body {
   padding: 20px;
   background-color: #1a1919; }
 
-/* line 64, ../sass/_ik.base.scss */
+/* line 58, ../sass/_ik.base.scss */
+#footer {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  clear: both;
+  position: relative;
+  z-index: 10;
+  height: 6em;
+  margin-top: -6em;
+  width: 100%;
+  padding: 20px 20px 40px 20px;
+  background-color: #1a1919;
+  color: white; }
+  /* line 73, ../sass/_ik.base.scss */
+  #footer a:link,
+  #footer a:visited,
+  #footer a:active {
+    color: white;
+    text-decoration: underline; }
+  /* line 78, ../sass/_ik.base.scss */
+  #footer a:hover {
+    color: #0074bd; }
+
+/* line 89, ../sass/_ik.base.scss */
 .media-widget .button, .media-widget .more-link a, .more-link .media-widget a {
   -webkit-border-radius: 4px;
   -moz-border-radius: 4px;
@@ -281,7 +305,7 @@ body {
   padding: 2px 4px;
   font-size: 10.76923px; }
 
-/* line 78, ../sass/_ik.base.scss */
+/* line 103, ../sass/_ik.base.scss */
 .ik-channel-filter-remove.button, .more-link a.ik-channel-filter-remove {
   -webkit-border-radius: 4px;
   -moz-border-radius: 4px;
@@ -291,23 +315,23 @@ body {
   padding: 2px 4px;
   font-size: 10.76923px; }
 
-/* line 93, ../sass/_ik.base.scss */
+/* line 118, ../sass/_ik.base.scss */
 .pane-node-field-channel-preview .ik-filter-preview-wrapper img {
   margin: 0 20px 20px 0; }
 
-/* line 102, ../sass/_ik.base.scss */
+/* line 127, ../sass/_ik.base.scss */
 .user-picture {
   display: none; }
 
-/* line 106, ../sass/_ik.base.scss */
+/* line 131, ../sass/_ik.base.scss */
 .submitted {
   margin-bottom: 20px; }
 
-/* line 111, ../sass/_ik.base.scss */
+/* line 136, ../sass/_ik.base.scss */
 .field-type-ik-slide-preview .field-label {
   font-size: 21px;
   margin-bottom: 10px; }
-/* line 116, ../sass/_ik.base.scss */
+/* line 141, ../sass/_ik.base.scss */
 .field-type-ik-slide-preview img {
   max-width: 100%; }
 
@@ -343,125 +367,102 @@ body {
   /* line 28, ../sass/_ik.legacy.scss */
   #pageinner #content {
     margin-right: 0; } }
-/* line 33, ../sass/_ik.legacy.scss */
-#footer {
-  clear: both;
-  position: relative;
-  z-index: 10;
-  height: 6em;
-  margin-top: -6em;
-  width: 100%;
-  background-color: #666666;
-  color: white;
-  -moz-box-shadow: 0 3px 20px black;
-  -webkit-box-shadow: 0 3px 20px black;
-  box-shadow: 0 3px 20px black;
-  filter: progid:DXImageTransform.Microsoft.Shadow(color=#000000, direction='180', strength='10');
-  -ms-filter: "progid:DXImageTransform.Microsoft.Shadow(color=#000000, direction='180', strength='10')";
-  -webkit-box-sizing: border-box;
-  /* Safari/Chrome, other WebKit */
-  -moz-box-sizing: border-box;
-  /* Firefox, other Gecko */
-  box-sizing: border-box;
-  /* Opera/IE 8+ */
-  padding: 20px 20px 40px 20px; }
-
 /* Page must have at least same padding bottom as height of footer */
-/* line 53, ../sass/_ik.legacy.scss */
+/* line 34, ../sass/_ik.legacy.scss */
 #page {
   padding-bottom: 7em; }
 
 /* Sidebar menu styling */
-/* line 59, ../sass/_ik.legacy.scss */
+/* line 40, ../sass/_ik.legacy.scss */
 .sidebar ul.menu,
 .sidebar ul.links {
   margin: 0; }
 
-/* line 64, ../sass/_ik.legacy.scss */
+/* line 45, ../sass/_ik.legacy.scss */
 .sidebar .menu li,
 .sidebar .menu li.expanded,
 .sidebar .menu li.collapsed {
   margin: 0;
   list-style: none; }
 
-/* line 68, ../sass/_ik.legacy.scss */
+/* line 49, ../sass/_ik.legacy.scss */
 .sidebar .menu li a {
   display: block; }
 
-/* line 71, ../sass/_ik.legacy.scss */
+/* line 52, ../sass/_ik.legacy.scss */
 .sidebar .menu li a.active {
   background-color: #E0E0D8;
   padding-left: 2px; }
 
-/* line 76, ../sass/_ik.legacy.scss */
+/* line 57, ../sass/_ik.legacy.scss */
 .sidebar .menu .menu li a {
   padding-left: 5px; }
 
-/* line 79, ../sass/_ik.legacy.scss */
+/* line 60, ../sass/_ik.legacy.scss */
 .sidebar .menu .menu li a:before {
   content: "- "; }
 
 /* Default sidebar block's and panel pane's styling */
-/* line 85, ../sass/_ik.legacy.scss */
+/* line 66, ../sass/_ik.legacy.scss */
 .sidebar .block,
 .panel-pane {
   margin-bottom: 2em;
   clear: both; }
 
-/* line 90, ../sass/_ik.legacy.scss */
+/* line 71, ../sass/_ik.legacy.scss */
 .sidebar .content {
   overflow: hidden; }
 
-/* line 94, ../sass/_ik.legacy.scss */
+/* line 75, ../sass/_ik.legacy.scss */
 .sidebar .block h2 {
   margin: 0; }
 
-/* line 98, ../sass/_ik.legacy.scss */
+/* line 79, ../sass/_ik.legacy.scss */
 .panel-pane fieldset {
   margin: 0; }
 
 /* Panels margin tweaks */
-/* line 103, ../sass/_ik.legacy.scss */
+/* line 84, ../sass/_ik.legacy.scss */
 .panel-col-last .inside {
   margin-left: 1em!important; }
 
-/* line 106, ../sass/_ik.legacy.scss */
+/* line 87, ../sass/_ik.legacy.scss */
 .panel-col-first .inside {
   margin-right: 1em!important; }
 
-/* line 109, ../sass/_ik.legacy.scss */
+/* line 90, ../sass/_ik.legacy.scss */
 .panel-col .inside {
   margin-left: 1em!important;
   margin-right: 1em!important; }
 
 /* Views styles */
-/* line 115, ../sass/_ik.legacy.scss */
+/* line 96, ../sass/_ik.legacy.scss */
 ul.views-fluid-grid-list {
   margin-left: 0; }
 
-/* line 119, ../sass/_ik.legacy.scss */
+/* line 100, ../sass/_ik.legacy.scss */
 li.views-fluid-grid-item {
   color: inherit;
   background-color: inherit;
   border: none;
   margin-bottom: 2em; }
 
-/* line 126, ../sass/_ik.legacy.scss */
+/* line 107, ../sass/_ik.legacy.scss */
 .views-exposed-form .views-exposed-widget .description {
   display: none; }
 
 /* Action links menu */
-/* line 131, ../sass/_ik.legacy.scss */
+/* line 112, ../sass/_ik.legacy.scss */
 .action-link-item {
   position: relative;
   clear: both;
   padding-top: 1em; }
 
-/* line 137, ../sass/_ik.legacy.scss */
+/* line 118, ../sass/_ik.legacy.scss */
 .action-container {
   display: none; }
 
-/* line 140, ../sass/_ik.legacy.scss */
+/* line 121, ../sass/_ik.legacy.scss */
 .action-link-item:hover > .action-container {
   display: block;
   position: absolute;
@@ -469,18 +470,18 @@ li.views-fluid-grid-item {
   right: 0;
   z-index: 10; }
 
-/* line 148, ../sass/_ik.legacy.scss */
+/* line 129, ../sass/_ik.legacy.scss */
 .action-links {
   background-color: #eaeaea;
   padding: 5px; }
 
-/* line 152, ../sass/_ik.legacy.scss */
+/* line 133, ../sass/_ik.legacy.scss */
 .action-links ul {
   margin: 0;
   padding: 0;
   list-style: none; }
 
-/* line 158, ../sass/_ik.legacy.scss */
+/* line 139, ../sass/_ik.legacy.scss */
 .action-link-item img {
   float: left;
   margin-right: 5px;
@@ -488,24 +489,24 @@ li.views-fluid-grid-item {
   height: auto; }
 
 /* Slide node form */
-/* line 167, ../sass/_ik.legacy.scss */
+/* line 148, ../sass/_ik.legacy.scss */
 #slide-node-form .form-type-radio {
   float: left;
   margin-right: 10px; }
 
-/* line 171, ../sass/_ik.legacy.scss */
+/* line 152, ../sass/_ik.legacy.scss */
 #slide-node-form .description {
   clear: both; }
 
-/* line 174, ../sass/_ik.legacy.scss */
+/* line 155, ../sass/_ik.legacy.scss */
 #slide-node-form .field-name-field-ik-slide-logo .media-item {
   background-color: #999; }
 
-/* line 178, ../sass/_ik.legacy.scss */
+/* line 159, ../sass/_ik.legacy.scss */
 .panel-pane.hidden {
   display: none; }
 
 /* Media upload form */
-/* line 183, ../sass/_ik.legacy.scss */
+/* line 164, ../sass/_ik.legacy.scss */
 #media-tab-upload .form-item-field-folder {
   display: none; }
