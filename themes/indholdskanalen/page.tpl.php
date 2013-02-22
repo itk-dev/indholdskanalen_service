@@ -1,7 +1,7 @@
 <div id="container">
   <?php if ($logo): ?>
     <div id="logo-container">
-      <img src="<?php print $logo ?>" alt="<?php print t('Logo'); ?>" title="<?php print t('Logo'); ?>" id="logo" />
+      <a href="/"><img src="<?php print $logo ?>" alt="<?php print t('Logo'); ?>" title="<?php print t('Logo'); ?>" id="logo" /></a>
     </div>
   <?php endif; ?>
   <div id="branding" class="clearfix">
