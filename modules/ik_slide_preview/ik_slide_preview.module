@@ -345,7 +345,7 @@ function ik_slide_preview_field_prepare_view($entity_type, $entities, $field, $i
  * Removes screenshots and image styles images for the removed node.
  */
 function ik_slide_preview_field_delete($entity_type, $entities, $field, $instances, $langcode, &$items) {
-  foreach ($items[$id] as $item) {
+  foreach ($items as $item) {
     $file = drupal_realpath($item['image']);
     // Remove slide screenshot.
     if (file_exists($path)) {
