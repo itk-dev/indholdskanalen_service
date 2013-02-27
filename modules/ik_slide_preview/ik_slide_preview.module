@@ -346,14 +346,14 @@ function ik_slide_preview_field_prepare_view($entity_type, $entities, $field, $i
  */
 function ik_slide_preview_field_delete($entity_type, $entities, $field, $instances, $langcode, &$items) {
   foreach ($items as $item) {
-    $file = drupal_realpath($item['image']);
+    $path = drupal_realpath($item['image']);
     // Remove slide screenshot.
     if (file_exists($path)) {
       unlink($path);
     }
 
     // Remove image style.
-    image_path_flush($file);
+    image_path_flush($item['image']);
   }
 }
 
