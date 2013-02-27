@@ -50,6 +50,36 @@ input.form-submit {
   }
 }
 
+#logo-container {
+  padding: $default-spacing;
+  background-color: $logo-bg-color;
+}
+
+#footer {
+  @include box-sizing(border-box);
+
+  clear: both;
+  position: relative;
+  z-index: 10;
+  height: 6em;
+  margin-top: -6em;
+  width: 100%;
+  padding: 20px 20px 40px 20px;
+  background-color: $logo-bg-color;
+  color: $white;
+
+  a:link,
+  a:visited,
+  a:active{
+    color: $white;
+    text-decoration: underline;
+  }
+
+  a:hover {
+    color: $link-color;
+  }
+}
+
 // -----------------------------------------------------------------------------
 // Media module
 // -----------------------------------------------------------------------------

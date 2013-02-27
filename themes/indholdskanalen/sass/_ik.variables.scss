@@ -8,6 +8,8 @@ $default-spacing: 20px;
 $base-font-size:  16px;
 $theme-font-size: 14px;
 
+$logo-bg-color: #1a1919;
+
 // -----------------------------------------------------------------------------
 // Standard color definitions
 // -----------------------------------------------------------------------------
@@ -19,3 +21,5 @@ $gray-light:            lighten($gray, 10%) !default;
 $gray-lighter:          lighten($gray, 15%) !default;
 $gray-dark:             darken($gray, 10%) !default;
 $gray-darker:           darken($gray, 25%) !default;
+
+$link-color: #0074BD;
