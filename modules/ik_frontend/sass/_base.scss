@@ -1,0 +1,89 @@
+/* 
+ * Base stylesheet collecting all files
+ */
+
+@include font-face("AllerBold", font-files("aller/aller_bd-webfont.woff",
+   "aller/aller_bd-webfont.ttf", "aller/aller_bd-webfont.svg#allerbold"),
+   "aller/aller_bd-webfont.eot", 'normal', 'normal');
+
+@include font-face("AllerBoldItalic", font-files("aller/aller_bdit-webfont.woff",
+   "aller_bdit-webfont.ttf", "aller_bdit-webfont.svg#allerbold_italic"),
+   "aller_bdit-webfont.eot", 'normal', 'normal');
+
+@include font-face("AllerItalic", font-files("aller/aller_it-webfont.woff",
+   "aller/aller_it-webfont.ttf", "aller/aller_it-webfont.svg#alleritalic"),
+   "aller/aller_it-webfont.eot", 'normal', 'normal');
+
+@include font-face("Aller", font-files("aller/aller_rg-webfont.woff",
+   "aller/aller_rg-webfont.ttf", "aller/aller_rg-webfont.svg#allerregular"),
+   "aller/aller_rg-webfont.eot", 'normal', 'normal');
+
+html,
+body {
+  width: 100%;
+  height: 100%;
+  margin: 0 auto;
+}
+
+body {
+  font-family: $font-family;
+  font-size: $theme-font-size;
+  color: $font-color;
+  overflow: hidden;
+
+  &.slide-preview {
+    font-size: $theme-font-size / 1.5;
+  }
+}
+
+/*
+* Default typography
+*/
+
+p {
+  @include rem('margin-bottom', $default-spacing / 2);
+}
+
+strong,
+b {
+  font-family: "AllerBold", $font-family;
+
+  em,
+  i {
+    font-family: "AllerBoldItalic", $font-family;
+  }
+}
+
+em,
+i {
+  font-family: "AllerItalic", $font-family;
+
+  strong,
+  b {
+    font-family: "AllerBoldItalic", $font-family;
+  }
+}
+
+h1 {
+  font-size: $heading-font-size;
+}
+
+h2 {
+  font-size: $subheading-font-size;
+}
+
+h3 {
+  font-size: $textbox-font-size * 1.1;
+}
+
+h4 {
+  font-size: $textbox-font-size * 1.2;
+}
+
+h5 {
+  font-size: $textbox-font-size * 1.3;
+}
+
+h6 {
+  font-size: $textbox-font-size * 1.4;
+}

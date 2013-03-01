@@ -1,0 +1,10 @@
+name = Custom channel filter.
+description = Creates a new field type that can be used to filter slides for a given channel.
+core = 7.x
+package = Indholdskanalen
+
+dependencies[] = field
+dependencies[] = field_ui
+
+files[] = ik_channel_filter.module
+files[] = ik_channel_filter.queries.inc

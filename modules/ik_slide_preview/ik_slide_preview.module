@@ -1,0 +1,571 @@
+<?php
+/**
+ * @file
+ * Addes support for previewing slides in the node edit form befor saving a
+ * slide. It also implements a new field that shows an preview of the slide when
+ * displaying the node.
+ */
+
+
+/**
+ * Implements hook_menu().
+ */
+function ik_slide_preview_menu() {
+  $items = array();
+
+  // Callback to show a complete slide rendering as shown in the frontend,
+  // mainly to create screen shoots of slides.
+  $items['slide/%/preview'] = array(
+    'title' => 'Preview single slide',
+    'page callback' => 'ik_slide_preview_page',
+    'page arguments' => array(1),
+    'access arguments' => array('access content'),
+    'type' => MENU_CALLBACK,
+  );
+
+  return $items;
+}
+
+/**
+ * Implements hook_ctools_plugin_directory().
+ *
+ */
+function ik_slide_preview_ctools_plugin_directory($module, $plugin) {
+  if ($module == 'ctools' && !empty($plugin)) {
+    return "plugins/$plugin";
+  }
+}
+
+/**
+ * Simple callback the renders a sigle slide.
+ *
+ * @param int $sid
+ *  The node id of the slide to render.
+ */
+function ik_slide_preview_page($sid) {
+  $slide = ik_frontend_fetch_slide($sid, FALSE, TRUE);
+
+  // Return skeleton for slide show (complet HTML page <header><content><footer>
+  // etc.).
+  echo theme('ik_frontend', array(
+    'settings' => array(
+      'content' => $slide,
+      'token' => 'Preview',
+    ),
+    'start' => FALSE,
+  ));
+}
+
+/**
+ * Implements hook_field_info().
+ *
+ * Adds a new field that can be used to show image screenshots of the slide its
+ * attached to.
+ */
+function ik_slide_preview_field_info() {
+  return array(
+    'ik_slide_preview' => array(
+      'label' => t('Slide preview'),
+      'description' => t('Previw slide'),
+      'settings' => array(
+        'uri_scheme' => variable_get('file_default_scheme', 'public'),
+        'default_image' => 0,
+      ),
+      'instance_settings' => array(
+        'file_directory' => '',
+      ),
+      'default_widget' => 'ik_slide_preview_widget',
+      'default_formatter' => 'ik_slide_preview_formatter'
+    ),
+  );
+}
+
+/**
+ * Implements hook_field_validate().
+ *
+ */
+function ik_slide_preview_field_validate($entity_type, $entity, $field, $instance, $langcode, $items, &$errors) {
+
+}
+
+/**
+ * Implements hook_field_is_empty().
+ *
+ */
+function ik_slide_preview_field_is_empty($item, $field) {
+  return empty($item['image']);
+}
+
+
+/**
+ * Implements hook_field_widget_info().
+ *
+ */
+function ik_slide_preview_field_widget_info() {
+  return array(
+    'ik_slide_preview_image' => array(
+      'label' => t('Phantom JS image'),
+      'field types' => array('ik_slide_preview'),
+    ),
+  );
+}
+
+
+/**
+ * Implements hook_field_settings_form().
+ *
+ */
+function ik_slide_preview_field_settings_form($field, $instance, $has_data) {
+  $form = array();
+  $defaults = field_info_field_settings($field['type']);
+  $settings = array_merge($defaults, $field['settings']);
+
+  $scheme_options = array();
+  foreach (file_get_stream_wrappers(STREAM_WRAPPERS_WRITE_VISIBLE) as $scheme => $stream_wrapper) {
+    $scheme_options[$scheme] = $stream_wrapper['name'];
+  }
+  $form['uri_scheme'] = array(
+    '#type' => 'radios',
+    '#title' => t('Upload destination'),
+    '#options' => $scheme_options,
+    '#default_value' => $settings['uri_scheme'],
+    '#description' => t('Select where the final files should be stored. Private file storage has significantly more overhead than public files, but allows restricted access to files within this field.'),
+  );
+
+  return $form;
+}
+
+/**
+ * Implements hook_field_instance_settings_form().
+ */
+function ik_slide_preview_field_instance_settings_form($field, $instance) {
+  $settings = $instance['settings'];
+  $form = array();
+
+  $form['file_directory'] = array(
+    '#type' => 'textfield',
+    '#title' => t('File directory'),
+    '#default_value' => $settings['file_directory'],
+    '#description' => t('Optional subdirectory within the upload destination where files will be stored. Do not include preceding or trailing slashes.'),
+    '#element_validate' => array('_file_generic_settings_file_directory_validate'),
+    '#weight' => 3,
+  );
+
+  return $form;
+}
+
+/**
+ * Implements hook_field_widget_form().
+ *
+ * The form that is used to display the widget defined above in the widget info
+ * hook.
+ */
+function ik_slide_preview_field_widget_form(&$form, &$form_state, $field, $instance, $langcode, $items, $delta, $element) {
+  static $default;
+  // Simple hidden field on in the edit form.
+  if (is_null($default)) {
+    // Just checking to avoid error on create node forms.
+    if (isset($items[$delta]['image'])) {
+      $default = $items[$delta]['image'];
+    }
+  }
+  $element += array(
+    'image' => array(
+      '#type' => 'hidden',
+      '#default_value' => $default,
+    ),
+  );
+  return $element;
+}
+
+/**
+ * Implements hook_field_widget_error().
+ *
+ */
+function ik_slide_preview_field_widget_error($element, $error, $form, &$form_state) {
+  // The field does not hold any information, so no need to check for errors.
+}
+
+
+/**
+ * Implements hook_field_formatter_info().
+ *
+ */
+function ik_slide_preview_field_formatter_info() {
+  return array(
+    'ik_slide_preview_formatter' => array(
+      'label' => t('Default'),
+      'field types' => array('ik_slide_preview'),
+      'settings' => array('image_style' => ''),
+    ),
+  );
+}
+
+/**
+ * Implements hook_field_formatter_settings_form().
+ */
+function ik_slide_preview_field_formatter_settings_form($field, $instance, $view_mode, $form, &$form_state) {
+  $display = $instance['display'][$view_mode];
+  $settings = $display['settings'];
+
+  $element = array();
+
+  $image_styles = image_style_options(FALSE);
+  $element['image_style'] = array(
+    '#title' => t('Image style'),
+    '#type' => 'select',
+    '#default_value' => $settings['image_style'],
+    '#empty_option' => t('None (original image)'),
+    '#options' => $image_styles,
+  );
+
+  return $element;
+}
+
+/**
+ * Implements hook_field_formatter_settings_summary().
+ */
+function ik_slide_preview_field_formatter_settings_summary($field, $instance, $view_mode) {
+  $display = $instance['display'][$view_mode];
+  $settings = $display['settings'];
+
+  $summary = array();
+
+  $image_styles = image_style_options(FALSE);
+  // Unset possible 'No defined styles' option.
+  unset($image_styles['']);
+  // Styles could be lost because of enabled/disabled modules that defines
+  // their styles in code.
+  if (isset($image_styles[$settings['image_style']])) {
+    $summary[] = t('Image style: @style', array('@style' => $image_styles[$settings['image_style']]));
+  }
+  else {
+    $summary[] = t('Original image');
+  }
+
+  return implode('<br />', $summary);
+}
+
+
+/**
+ * Implements hook_field_formatter_view().
+ *
+ * Defines different formatters for the slide preview filter used on the channel
+ * node edit and in views.
+ */
+function ik_slide_preview_field_formatter_view($entity_type, $entity, $field, $instance, $langcode, $items, $display) {
+  // Build urls and destionation.
+  $dest = $field['settings']['uri_scheme'] . '://' . $instance['settings']['file_directory'];
+
+  $element = array();
+  foreach ($items as $delta => $item) {
+    // Build return element
+    $element[$delta] = array(
+      '#theme' => 'image_formatter',
+      '#item' => array(
+        'uri' => $item['image'],
+        'alt' => '',
+        'title' => '',
+      ),
+      '#image_style' => $display['settings']['image_style'],
+      '#path' => '',
+    );
+  }
+
+  return $element;
+}
+
+/**
+ * Implements hook_field_update().
+ *
+ * Removes old screenshots an image styles and prepares the new image path.
+ */
+function ik_slide_preview_field_update($entity_type, $entity, $field, $instance, $langcode, &$items) {
+  foreach ($items as $delta => $item) {
+    if (isset($item['image'])) {
+      $file = drupal_realpath($item['image']);
+
+      // Build path and remove old screenshot.
+      if (file_exists($file)) {
+        unlink($file);
+      }
+
+      // Remove image styles.
+      image_path_flush($file);
+    }
+
+    // Old files remove (if any), so create new ones.
+    $path = $field['settings']['uri_scheme'] . '://' . $instance['settings']['file_directory'] . '/';
+    $items[$delta]['image'] = $path . md5($entity->nid . REQUEST_TIME . $delta) . '.jpg';
+  }
+}
+
+/**
+ * Implements hook_field_insert().
+ *
+ * Prepares the screenshot image file.
+ */
+function ik_slide_preview_field_insert($entity_type, $entity, $field, $instance, $langcode, &$items) {
+  // Fill in new file name to trigger generation in prepare view.
+  $path = $field['settings']['uri_scheme'] . '://' . $instance['settings']['file_directory'] . '/';
+  $items = array(
+    array(
+      'image' => $path . md5($entity->nid . REQUEST_TIME . $delta) . '.jpg',
+    ),
+  );
+}
+
+/**
+ * Implements hook_field_prepare_view().
+ *
+ * The image is generated in the prepare_view hook because we have to save the
+ * node before we can generate a screenshot of it, so this prepare view also
+ * stores information in the database first time after a node update/insert.
+ */
+function ik_slide_preview_field_prepare_view($entity_type, $entities, $field, $instances, $langcode, &$items) {
+  foreach ($entities as $id => &$entity) {
+    // Find destination for the screenshot and generate it if th does not exists.
+    $dest = $field['settings']['uri_scheme'] . '://' . $instances[$id]['settings']['file_directory'];
+    $url = url('slide/' . $entity->nid . '/preview', array('absolute' => TRUE));
+    foreach ($items[$id] as $delta => $item) {
+      $file = drupal_realpath($item['image']);
+      if (!file_exists($file)) {
+        // Capture new screenshot.
+        if (!phantomjs_capture_screen($url, $dest, basename($file))) {
+          drupal_set_message(t('PhantomJS chould not create screenshot of the slide'), 'error');
+        }
+      }
+    }
+  }
+}
+
+/**
+ * Implements hook_field_delete().
+ *
+ * Removes screenshots and image styles images for the removed node.
+ */
+function ik_slide_preview_field_delete($entity_type, $entities, $field, $instances, $langcode, &$items) {
+  foreach ($items as $item) {
+    $path = drupal_realpath($item['image']);
+    // Remove slide screenshot.
+    if (file_exists($path)) {
+      unlink($path);
+    }
+
+    // Remove image style.
+    image_path_flush($item['image']);
+  }
+}
+
+/**
+ * Implements hook_form_alter().
+ *
+ * Change the default node edit preview form button to the new handler.
+ */
+function ik_slide_preview_form_slide_node_form_alter(&$form, &$form_state, $form_id) {
+  if (isset($form['actions']['preview']['#submit'])) {
+    $form['actions']['preview']['#submit'] = array(
+      'ik_slide_preview_build_preview',
+    );
+  }
+}
+
+/**
+ * Edit slide node preview callback.
+ *
+ * @staticvar boolean $build_node
+ * @staticvar null $publish_on
+ * @staticvar null $unpublish_on
+ * @param type $form
+ * @param type $form_state
+ */
+function ik_slide_preview_build_preview($form, &$form_state) {
+  static $build_node = TRUE;
+  static $publish_on = NULL;
+  static $unpublish_on = NULL;
+  if ($build_node) {
+    // Build node from the form.
+    $node = node_form_submit_build_node($form, $form_state);
+
+    // Build json array.
+    $slide = ik_slide_preview_build_slide($node);
+
+    // Theme content
+    $content = theme('ik_frontend', array(
+      'settings' => array(
+        'content' => $slide,
+        'token' => 'Preview',
+      ),
+      'start' => FALSE,
+    ));
+
+    // Convert content into a JavaScript string.
+    $content = str_replace("'", "\'", $content);
+    $content = str_replace('</script>', '<\/script>', $content);
+    $content = preg_replace('/\s{2}+|\n|\r/', '', $content);
+
+    // Add inline js into the node preview area to create the iframe and fill it
+    // with the slide content.
+    $form_state['node_preview'] =
+     "<script type=\"text/javascript\">
+        (function($){
+          $(document).ready(function() {
+            // Iframe content.
+            var content = '".$content."';
+
+            // Build iframe.
+            var frame = document.createElement('iframe');
+            frame.width = '99%';
+            frame.height = '99%';
+            frame.src = 'about:blank';
+
+            // Build jQuery UI dialog.
+            $('<div id=\"slide-preview\" style=\"overflow:hidden\"></div>').dialog({
+              modal: true,
+              width: $(window).width() - 100,
+              height: $(window).height() - 100,
+              resizable: false,
+              draggable: false,
+            });
+
+            // Append iframe to the dialog.
+            $('#slide-preview').append(frame);
+
+            // Add content to the iframe.
+            frame.contentWindow.contents = content;
+            frame.src = 'javascript:window[\"contents\"]';
+
+            // Add class to body.
+            setTimeout(
+              function(){
+                var element = $('body', frames[0].document);
+                element.addClass('slide-preview');
+              }, 1000
+            );
+          });
+        })(jQuery);
+      </script>";
+
+    // Fix schedulering module and panels multi form rebuild and alter.
+    if (isset($form_state['values']['publish_on'])) {
+      $publish_on = $form_state['values']['publish_on'];
+      $unpublish_on = $form_state['values']['unpublish_on'];
+    }
+
+    $build_node = FALSE;
+  }
+
+  // Restore scheduling values from first rebuild.
+  if (isset($form_state['values']['publish_on'])) {
+    $form_state['values']['publish_on'] = $publish_on;
+    $form_state['values']['unpublish_on'] = $unpublish_on;
+  }
+
+  // Rebuild form
+  $form_state['rebuild'] = TRUE;
+
+  // Load jquery UI dialog.
+  drupal_add_library('system', 'ui.dialog');
+}
+
+/**
+ * Build slide based on node from edit node form preview. The main diff from the
+ * one in ik_frontend is images, subheadings and text fields.
+ *
+ * @param type $entity
+ * @return type
+ */
+function ik_slide_preview_build_slide($entity) {
+
+  // Build slide with information found on the node.
+  $slide = new stdClass();
+  $slide->sid = $entity->nid;
+  $slide->title = check_plain($entity->title);
+
+  // Color theme for textbox
+  $slide->color = '006027'; //Green as default
+  $slide->text_color = 'fff'; //White as default
+  if ($data = field_get_items('node', $entity, 'field_ik_slide_color_theme')) {
+    $color_theme = ik_frontend_select_color_theme($data[0]['value']);
+    $slide->color = $color_theme[1];
+    $slide->text_color = $color_theme[0];
+  }
+
+  $slide->logo = '';
+  if ($data = field_get_items('node', $entity, 'field_ik_slide_logo')) {
+    $file = file_load($data[0]['fid']);
+    $slide->logo = image_style_url('slide_logoes', $file->uri);
+  }
+
+  $slide->transition = 'cubeSize';
+  if ($data = field_get_items('node', $entity, 'field_ik_slide_transition_effect')) {
+    $slide->transition = $data[0]['value'];
+  }
+
+  $slide->media = array();
+  if ($data = field_get_items('node', $entity, 'field_ik_slide_media')) {
+    foreach ($data as $media) {
+      $file = file_load($media['fid']);
+      $slide->media[] = image_style_url('slide_images', $file->uri);
+    }
+  }
+
+  $slide->subheading = '';
+  if ($data = field_get_items('node', $entity, 'field_ik_slide_subheading')) {
+    $slide->subheading = check_plain($data[0]['value']);
+
+    // Make it JavaScript string friendly.
+    $slide->subheading = preg_replace('/\s{2}+|\n|\r/', '', str_replace('"', '\"', $slide->subheading));
+  }
+
+  $slide->text = '';
+  if ($data = field_get_items('node', $entity, 'field_ik_slide_text')) {
+    $formats = filter_formats();
+    $slide->text = check_markup($data[0]['value'], $data[0]['format']);
+
+    // Make it JavaScript string friendly.
+    $slide->text = preg_replace('/\s{2}+|\n|\r/', '', str_replace('"', '\"', $slide->text));
+  }
+
+  // Convert exposure to mill sec.
+  $slide->exposure = 30000;
+  if ($data = field_get_items('node', $entity, 'field_ik_slide_exposure')) {
+    $slide->exposure = $data[0]['value'] * 1000;
+  }
+
+  $slide->layout = 'layout-1';
+  if ($data = field_get_items('node', $entity, 'field_layout')) {
+    $slide->layout = str_replace('_', '-', $data[0]['value']);
+  }
+
+  return $slide;
+}
+
+/**
+ * Returns an array with color codes for the selected color theme.
+ *
+ * @param int $value
+ *  Value from color theme field.
+ */
+function ik_slide_select_color_theme($value) {
+  switch ($value) {
+    case 1:
+      $color_theme = array('fff','006027');
+      break;
+    case 2:
+      $color_theme = array('fff','004154');
+      break;
+    case 3:
+      $color_theme = array('fff','8a1002');
+      break;
+    case 4:
+      $color_theme = array('fff','707173');
+      break;
+    case 5:
+      $color_theme = array('000','f7a600');
+      break;
+    default:
+      $color_theme = array('fff','006027');
+  }
+  return $color_theme;
+}

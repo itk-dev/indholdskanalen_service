@@ -1,0 +1,35 @@
+<?php
+
+/**
+ * Implements hook_menu().
+ *
+ */
+function ik_export_menu() {
+  $items = array();
+
+  $items['channels/%/feed'] = array(
+    'title' => 'Channel Media RSS feed',
+    'page callback' => 'ik_export_feed',
+    'page arguments' => array(1),
+    'access arguments' => array('access content'),
+    'type' => MENU_CALLBACK,
+  );
+
+  return $items;
+}
+
+/**
+ * Menu callback that creates new feed object and returns the XML.
+ */
+function ik_export_feed($token) {
+  // Get the channel.
+  $nid = ik_frontend_find_channel_nid($token);
+  $entity = node_load($nid);
+  
+  // Create the feed.
+  $feed = new IKMRSSExport($token, $entity);
+
+  // Return the feed to the user.
+  header("Content-Type: application/rss+xml");
+  echo $feed->getXML();
+}

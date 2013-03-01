@@ -1,0 +1,4 @@
+name = Administration module.
+description = Different fixes.
+core = 7.x
+package = Indholdskanalen

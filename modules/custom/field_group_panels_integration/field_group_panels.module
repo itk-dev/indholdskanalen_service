@@ -1,0 +1,11 @@
+<?php
+
+/**
+ * Implementation of hook_ctools_plugin_directory().
+ * Panels integration
+ */
+function field_group_panels_ctools_plugin_directory($module, $plugin) {
+  if (in_array($module, array('panels', 'ctools', 'page_manager'))) {
+    return 'plugins/' . $plugin;
+  }
+}

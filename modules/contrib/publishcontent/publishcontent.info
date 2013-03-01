@@ -1,0 +1,14 @@
+name = Publish Content
+description = "Adds a 'Publish' or 'Unpublish' link on the node edit/view pages,<br />and a field 'Publish Link' if the Views module is enabled."
+core = 7.x
+
+files[] = publishcontent.module
+files[] = publishcontent.install
+files[] = publishcontent_views_handler_field_node_link.inc
+
+; Information added by drupal.org packaging script on 2012-08-15
+version = "7.x-1.0+9-dev"
+core = "7.x"
+project = "publishcontent"
+datestamp = "1344991505"
+

@@ -1,0 +1,70 @@
+// -----------------------------------------------------------------------------
+// Variables
+// -----------------------------------------------------------------------------
+//
+
+$table-header-bg-color: #e1e2dc;
+
+// -----------------------------------------------------------------------------
+// Favorites lists
+// -----------------------------------------------------------------------------
+//
+.view-ik-favorites {
+  .more-link {
+    clear: both;
+  }
+}
+
+// -----------------------------------------------------------------------------
+// View panes on dashboard
+// -----------------------------------------------------------------------------
+//
+
+.pane-views-panes {
+  .pane-title {
+    margin-bottom: $default-spacing;
+  }
+
+  .view-filters,
+  .view-header {
+    padding: $default-spacing / 2;
+    background-color: $table-header-bg-color;
+  }
+
+  .view-filters {
+    padding-top: 0;
+    clear: both;
+
+    .form-item {
+      padding-top: 0;
+
+      input[type="text"] {
+        @include rem('width', 150px);
+      }
+    }
+
+    .views-submit-button {
+      .form-submit {
+        @include border-radius(4px);
+    
+        padding: 6px 4px;
+        margin-top: 0.7em;
+        margin-right: 0;
+      }
+    }
+  }
+
+  .view-header {
+    padding-bottom: 0;
+    overflow: hidden;
+
+    h3 {
+      margin: 0;
+      float: left;
+    }
+
+    .result-summary {
+      float: right;
+    }
+  }
+}
