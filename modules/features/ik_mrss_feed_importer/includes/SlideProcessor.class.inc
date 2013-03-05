@@ -1,7 +1,7 @@
 <?php
 
 class SlideProcessor extends FeedsNodeProcessor {
-  
+
   /**
    * Save a node.
    */
@@ -11,7 +11,7 @@ class SlideProcessor extends FeedsNodeProcessor {
       $entity->is_new = TRUE;
     }
     node_save($entity);
-    
+
     // Get information about the slide.
     $info = field_info_instances('node', $entity->type);
     $instance = $info['field_ik_slide_preview'];
@@ -27,5 +27,5 @@ class SlideProcessor extends FeedsNodeProcessor {
         drupal_set_message(t('PhantomJS chould not create screenshot of the slide'), 'error');
       }
     }
-  }  
+  }
 }

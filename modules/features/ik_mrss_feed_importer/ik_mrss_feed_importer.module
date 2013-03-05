@@ -131,11 +131,11 @@ function ik_mrss_feed_importer_og_set_target($source, $entity, $target, $value, 
 
 /**
  * Implements hook_feed_presave().
- * 
+ *
  * Ensure that all imported slides have an image attached.
  */
 function ik_mrss_feed_importer_feeds_presave(FeedsSource $source, $entity, $item) {
-  if ($entity->feeds_item->id == 'mrss_feed_importer' && empty($item['media_url'])) {
+  if ($entity->feeds_item->id == 'mrss_feed_importer' && empty($item['media_url']) && !$item['text_only']) {
     // Skip saving this entity.
     $entity->feeds_item->skip = TRUE;
   }

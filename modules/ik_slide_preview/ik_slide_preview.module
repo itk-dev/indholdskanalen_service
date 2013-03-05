@@ -310,7 +310,7 @@ function ik_slide_preview_field_insert($entity_type, $entity, $field, $instance,
   $path = $field['settings']['uri_scheme'] . '://' . $instance['settings']['file_directory'] . '/';
   $items = array(
     array(
-      'image' => $path . md5($entity->nid . REQUEST_TIME . $delta) . '.jpg',
+      'image' => $path . md5($entity->nid . REQUEST_TIME) . '.jpg',
     ),
   );
 }

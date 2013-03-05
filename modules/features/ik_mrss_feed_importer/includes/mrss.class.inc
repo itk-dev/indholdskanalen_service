@@ -16,6 +16,10 @@ class MediaRSSParser extends FeedsParser {
     // Load library helper functions.
     feeds_include_library('common_syndication_parser.inc', 'common_syndication_parser');
 
+    // Text feed only.
+    $node = node_load($source->feed_nid);
+    $text_only = field_get_items('node', $node, 'field_ik_mrss_text_feed');
+
     // Parser data
     $xml = new SimpleXMLElement($fetcher_result->getRaw());
 
@@ -40,22 +44,38 @@ class MediaRSSParser extends FeedsParser {
 
       $title = urldecode((string)$media->content->title);
 
-      $namespaces = $item->getNameSpaces(true);
-      if (isset($namespaces['media'])) {
-        // Assume Media RSS format
-        $media = $item->children($namespaces['media']);
-        $data['media_title'] = empty($title) ? $alt_title : $title;
-        $data['media_description'] = urldecode((string)$media->content->description);
-        $data['media_url'] = (string)$media->attributes()->url;
-        $data['media_image'] = $this->downloadImage($data['media_url'], basename($data['media_url']));
+      if (!$text_only[0]['value']) {
+        $data['text_only'] = FALSE;
+        $namespaces = $item->getNameSpaces(true);
+        if (isset($namespaces['media'])) {
+          // Assume Media RSS format
+          $media = $item->children($namespaces['media']);
+          $data['media_title'] = empty($title) ? $alt_title : $title;
+          $data['media_description'] = urldecode((string)$media->content->description);
+          $data['media_url'] = (string)$media->attributes()->url;
+          $data['media_image'] = $this->downloadImage($data['media_url'], basename($data['media_url']));
+        }
+        else {
+          // Try enclosure filed
+          $title = (string)$item->title;
+          $data['media_title'] = empty($title) ? $alt_title : $title;
+          $data['media_description'] = '';
+          $data['media_url'] = (string)$item->enclosure->attributes()->url;
+
+          // Build image filename.
+          $ext = (string)$item->enclosure->attributes()->type;
+          $ext = drupal_substr($ext, strpos($ext, '/') + 1);
+          $file = basename($data['media_url']);
+          if (pathinfo($data['media_url'], PATHINFO_EXTENSION) != $ext) {
+            // The url is not the image file (it may be script).
+            $file = $data['guid'] . '.' . $ext;
+          }
+          $data['media_image'] = $this->downloadImage($data['media_url'], $file);
+        }
       }
       else {
-        // Try enclosure filed
-        $title = (string)$item->title;
-        $data['media_title'] = empty($title) ? $alt_title : $title;
-        $data['media_description'] = '';
-        $data['media_url'] = (string)$item->enclosure->attributes()->url;
-        $data['media_image'] = $this->downloadImage($data['media_url'], basename($data['media_url']));
+        // Used to control skip item in presave.
+        $data['text_only'] = TRUE;
       }
 
       // Add feed item

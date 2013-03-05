@@ -107,6 +107,7 @@ function ik_mrss_feed_importer_field_group_info() {
     'weight' => '1',
     'children' => array(
       0 => 'feeds',
+      1 => 'field_ik_mrss_text_feed',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(

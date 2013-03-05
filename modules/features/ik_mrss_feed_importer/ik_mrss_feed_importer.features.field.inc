@@ -10,6 +10,76 @@
 function ik_mrss_feed_importer_field_default_fields() {
   $fields = array();
 
+  // Exported field: 'node-media_rss_slide_import-field_ik_mrss_text_feed'.
+  $fields['node-media_rss_slide_import-field_ik_mrss_text_feed'] = array(
+    'field_config' => array(
+      'active' => '1',
+      'cardinality' => '1',
+      'deleted' => '0',
+      'entity_types' => array(),
+      'field_name' => 'field_ik_mrss_text_feed',
+      'foreign keys' => array(),
+      'indexes' => array(
+        'value' => array(
+          0 => 'value',
+        ),
+      ),
+      'locked' => '0',
+      'module' => 'list',
+      'settings' => array(
+        'allowed_values' => array(
+          0 => '',
+          1 => '',
+        ),
+        'allowed_values_function' => '',
+      ),
+      'translatable' => '0',
+      'type' => 'list_boolean',
+    ),
+    'field_instance' => array(
+      'bundle' => 'media_rss_slide_import',
+      'default_value' => array(
+        0 => array(
+          'value' => 0,
+        ),
+      ),
+      'deleted' => '0',
+      'description' => '',
+      'display' => array(
+        'default' => array(
+          'label' => 'above',
+          'module' => 'list',
+          'settings' => array(),
+          'type' => 'list_default',
+          'weight' => 11,
+        ),
+        'teaser' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+      ),
+      'entity_type' => 'node',
+      'field_name' => 'field_ik_mrss_text_feed',
+      'label' => 'Kun tekst feed',
+      'required' => 0,
+      'settings' => array(
+        'user_register_form' => FALSE,
+      ),
+      'widget' => array(
+        'active' => 1,
+        'module' => 'options',
+        'settings' => array(
+          'display_label' => 1,
+          'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
+        ),
+        'type' => 'options_onoff',
+        'weight' => '1',
+      ),
+    ),
+  );
+
   // Exported field: 'node-media_rss_slide_import-field_ik_og_department_ref'.
   $fields['node-media_rss_slide_import-field_ik_og_department_ref'] = array(
     'field_config' => array(
@@ -407,8 +477,8 @@ function ik_mrss_feed_importer_field_default_fields() {
             'public' => 'public',
           ),
           'allowed_types' => array(
-            0 => 0,
             'audio' => 0,
+            0 => 0,
             'default' => 0,
             'image' => 'image',
             'video' => 0,
@@ -584,6 +654,7 @@ function ik_mrss_feed_importer_field_default_fields() {
   t('Eksponering');
   t('Farvetema');
   t('Kategori');
+  t('Kun tekst feed');
   t('Layout');
   t('Logo');
   t('Tags');
