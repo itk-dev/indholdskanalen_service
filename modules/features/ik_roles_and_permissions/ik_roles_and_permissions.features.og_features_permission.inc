@@ -13,28 +13,28 @@ function ik_roles_and_permissions_og_features_default_permissions() {
   // Exported og permission: 'node:department:add user'
   $permissions['node:department:add user'] = array(
     'roles' => array(
-      'administrator member' => 'administrator member',
+      'Gruppe administrator' => 'Gruppe administrator',
     ),
   );
 
   // Exported og permission: 'node:department:administer group'
   $permissions['node:department:administer group'] = array(
     'roles' => array(
-      'administrator member' => 'administrator member',
+      'Gruppe administrator' => 'Gruppe administrator',
     ),
   );
 
   // Exported og permission: 'node:department:approve and deny subscription'
   $permissions['node:department:approve and deny subscription'] = array(
     'roles' => array(
-      'administrator member' => 'administrator member',
+      'Gruppe administrator' => 'Gruppe administrator',
     ),
   );
 
   // Exported og permission: 'node:department:create channel content'
   $permissions['node:department:create channel content'] = array(
     'roles' => array(
-      'editor' => 'editor',
+      'Redaktør' => 'Redaktør',
     ),
   );
 
@@ -46,23 +46,23 @@ function ik_roles_and_permissions_og_features_default_permissions() {
   // Exported og permission: 'node:department:create media_rss_slide_import content'
   $permissions['node:department:create media_rss_slide_import content'] = array(
     'roles' => array(
-      'editor' => 'editor',
-      'contributor' => 'contributor',
+      'Redaktør' => 'Redaktør',
+      'Bidragyder' => 'Bidragyder',
     ),
   );
 
   // Exported og permission: 'node:department:create slide content'
   $permissions['node:department:create slide content'] = array(
     'roles' => array(
-      'editor' => 'editor',
-      'contributor' => 'contributor',
+      'Redaktør' => 'Redaktør',
+      'Bidragyder' => 'Bidragyder',
     ),
   );
 
   // Exported og permission: 'node:department:delete any channel content'
   $permissions['node:department:delete any channel content'] = array(
     'roles' => array(
-      'editor' => 'editor',
+      'Redaktør' => 'Redaktør',
     ),
   );
 
@@ -74,21 +74,21 @@ function ik_roles_and_permissions_og_features_default_permissions() {
   // Exported og permission: 'node:department:delete any media_rss_slide_import content'
   $permissions['node:department:delete any media_rss_slide_import content'] = array(
     'roles' => array(
-      'editor' => 'editor',
+      'Redaktør' => 'Redaktør',
     ),
   );
 
   // Exported og permission: 'node:department:delete any slide content'
   $permissions['node:department:delete any slide content'] = array(
     'roles' => array(
-      'editor' => 'editor',
+      'Redaktør' => 'Redaktør',
     ),
   );
 
   // Exported og permission: 'node:department:delete own channel content'
   $permissions['node:department:delete own channel content'] = array(
     'roles' => array(
-      'editor' => 'editor',
+      'Redaktør' => 'Redaktør',
     ),
   );
 
@@ -100,37 +100,37 @@ function ik_roles_and_permissions_og_features_default_permissions() {
   // Exported og permission: 'node:department:delete own media_rss_slide_import content'
   $permissions['node:department:delete own media_rss_slide_import content'] = array(
     'roles' => array(
-      'contributor' => 'contributor',
-      'editor' => 'editor',
+      'Bidragyder' => 'Bidragyder',
+      'Redaktør' => 'Redaktør',
     ),
   );
 
   // Exported og permission: 'node:department:delete own slide content'
   $permissions['node:department:delete own slide content'] = array(
     'roles' => array(
-      'contributor' => 'contributor',
-      'editor' => 'editor',
+      'Bidragyder' => 'Bidragyder',
+      'Redaktør' => 'Redaktør',
     ),
   );
 
   // Exported og permission: 'node:department:manage members'
   $permissions['node:department:manage members'] = array(
     'roles' => array(
-      'administrator member' => 'administrator member',
+      'Gruppe administrator' => 'Gruppe administrator',
     ),
   );
 
   // Exported og permission: 'node:department:manage permissions'
   $permissions['node:department:manage permissions'] = array(
     'roles' => array(
-      'administrator member' => 'administrator member',
+      'Gruppe administrator' => 'Gruppe administrator',
     ),
   );
 
   // Exported og permission: 'node:department:manage roles'
   $permissions['node:department:manage roles'] = array(
     'roles' => array(
-      'administrator member' => 'administrator member',
+      'Gruppe administrator' => 'Gruppe administrator',
     ),
   );
 
@@ -152,7 +152,7 @@ function ik_roles_and_permissions_og_features_default_permissions() {
   // Exported og permission: 'node:department:update any channel content'
   $permissions['node:department:update any channel content'] = array(
     'roles' => array(
-      'editor' => 'editor',
+      'Redaktør' => 'Redaktør',
     ),
   );
 
@@ -164,28 +164,28 @@ function ik_roles_and_permissions_og_features_default_permissions() {
   // Exported og permission: 'node:department:update any media_rss_slide_import content'
   $permissions['node:department:update any media_rss_slide_import content'] = array(
     'roles' => array(
-      'editor' => 'editor',
+      'Redaktør' => 'Redaktør',
     ),
   );
 
   // Exported og permission: 'node:department:update any slide content'
   $permissions['node:department:update any slide content'] = array(
     'roles' => array(
-      'editor' => 'editor',
+      'Redaktør' => 'Redaktør',
     ),
   );
 
   // Exported og permission: 'node:department:update group'
   $permissions['node:department:update group'] = array(
     'roles' => array(
-      'administrator member' => 'administrator member',
+      'Gruppe administrator' => 'Gruppe administrator',
     ),
   );
 
   // Exported og permission: 'node:department:update own channel content'
   $permissions['node:department:update own channel content'] = array(
     'roles' => array(
-      'editor' => 'editor',
+      'Redaktør' => 'Redaktør',
     ),
   );
 
@@ -197,16 +197,16 @@ function ik_roles_and_permissions_og_features_default_permissions() {
   // Exported og permission: 'node:department:update own media_rss_slide_import content'
   $permissions['node:department:update own media_rss_slide_import content'] = array(
     'roles' => array(
-      'editor' => 'editor',
-      'contributor' => 'contributor',
+      'Redaktør' => 'Redaktør',
+      'Bidragyder' => 'Bidragyder',
     ),
   );
 
   // Exported og permission: 'node:department:update own slide content'
   $permissions['node:department:update own slide content'] = array(
     'roles' => array(
-      'contributor' => 'contributor',
-      'editor' => 'editor',
+      'Bidragyder' => 'Bidragyder',
+      'Redaktør' => 'Redaktør',
     ),
   );
 

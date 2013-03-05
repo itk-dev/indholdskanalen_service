@@ -14,7 +14,7 @@ function ik_roles_and_permissions_user_default_permissions() {
   $permissions['access comments'] = array(
     'name' => 'access comments',
     'roles' => array(
-      'administrator' => 'administrator',
+      'Administrator' => 'Administrator',
     ),
     'module' => 'comment',
   );
@@ -23,7 +23,7 @@ function ik_roles_and_permissions_user_default_permissions() {
   $permissions['access content'] = array(
     'name' => 'access content',
     'roles' => array(
-      'administrator' => 'administrator',
+      'Administrator' => 'Administrator',
       'anonymous user' => 'anonymous user',
       'authenticated user' => 'authenticated user',
     ),
@@ -34,8 +34,8 @@ function ik_roles_and_permissions_user_default_permissions() {
   $permissions['access media backend'] = array(
     'name' => 'access media backend',
     'roles' => array(
-      'administrator' => 'administrator',
-      'superuser' => 'superuser',
+      'Administrator' => 'Administrator',
+      'Superbruger' => 'Superbruger',
     ),
     'module' => 'media_browser_plus',
   );
@@ -44,7 +44,7 @@ function ik_roles_and_permissions_user_default_permissions() {
   $permissions['access user profiles'] = array(
     'name' => 'access user profiles',
     'roles' => array(
-      'administrator' => 'administrator',
+      'Administrator' => 'Administrator',
       'authenticated user' => 'authenticated user',
     ),
     'module' => 'user',
@@ -54,9 +54,9 @@ function ik_roles_and_permissions_user_default_permissions() {
   $permissions['add media from remote sources'] = array(
     'name' => 'add media from remote sources',
     'roles' => array(
-      'administrator' => 'administrator',
-      'editor' => 'editor',
-      'superuser' => 'superuser',
+      'Administrator' => 'Administrator',
+      'Redaktør' => 'Redaktør',
+      'Superbruger' => 'Superbruger',
     ),
     'module' => 'media_internet',
   );
@@ -65,7 +65,7 @@ function ik_roles_and_permissions_user_default_permissions() {
   $permissions['administer comments'] = array(
     'name' => 'administer comments',
     'roles' => array(
-      'administrator' => 'administrator',
+      'Administrator' => 'Administrator',
     ),
     'module' => 'comment',
   );
@@ -74,8 +74,8 @@ function ik_roles_and_permissions_user_default_permissions() {
   $permissions['administer feeds'] = array(
     'name' => 'administer feeds',
     'roles' => array(
-      'administrator' => 'administrator',
-      'superuser' => 'superuser',
+      'Administrator' => 'Administrator',
+      'Superbruger' => 'Superbruger',
     ),
     'module' => 'feeds',
   );
@@ -84,10 +84,10 @@ function ik_roles_and_permissions_user_default_permissions() {
   $permissions['administer files'] = array(
     'name' => 'administer files',
     'roles' => array(
-      'administrator' => 'administrator',
-      'contributor' => 'contributor',
-      'editor' => 'editor',
-      'superuser' => 'superuser',
+      'Administrator' => 'Administrator',
+      'Bidragyder' => 'Bidragyder',
+      'Redaktør' => 'Redaktør',
+      'Superbruger' => 'Superbruger',
     ),
     'module' => 'file_entity',
   );
@@ -96,7 +96,7 @@ function ik_roles_and_permissions_user_default_permissions() {
   $permissions['administer media folders'] = array(
     'name' => 'administer media folders',
     'roles' => array(
-      'administrator' => 'administrator',
+      'Administrator' => 'Administrator',
     ),
     'module' => 'media_browser_plus',
   );
@@ -105,8 +105,8 @@ function ik_roles_and_permissions_user_default_permissions() {
   $permissions['administer permissions'] = array(
     'name' => 'administer permissions',
     'roles' => array(
-      'administrator' => 'administrator',
-      'superuser' => 'superuser',
+      'Administrator' => 'Administrator',
+      'Superbruger' => 'Superbruger',
     ),
     'module' => 'user',
   );
@@ -115,7 +115,7 @@ function ik_roles_and_permissions_user_default_permissions() {
   $permissions['administer scheduler'] = array(
     'name' => 'administer scheduler',
     'roles' => array(
-      'administrator' => 'administrator',
+      'Administrator' => 'Administrator',
     ),
     'module' => 'scheduler',
   );
@@ -124,7 +124,7 @@ function ik_roles_and_permissions_user_default_permissions() {
   $permissions['administer taxonomy'] = array(
     'name' => 'administer taxonomy',
     'roles' => array(
-      'administrator' => 'administrator',
+      'Administrator' => 'Administrator',
     ),
     'module' => 'taxonomy',
   );
@@ -133,8 +133,8 @@ function ik_roles_and_permissions_user_default_permissions() {
   $permissions['administer users'] = array(
     'name' => 'administer users',
     'roles' => array(
-      'administrator' => 'administrator',
-      'superuser' => 'superuser',
+      'Administrator' => 'Administrator',
+      'Superbruger' => 'Superbruger',
     ),
     'module' => 'user',
   );
@@ -143,8 +143,8 @@ function ik_roles_and_permissions_user_default_permissions() {
   $permissions['clear mrss_feed_importer feeds'] = array(
     'name' => 'clear mrss_feed_importer feeds',
     'roles' => array(
-      'administrator' => 'administrator',
-      'superuser' => 'superuser',
+      'Administrator' => 'Administrator',
+      'Superbruger' => 'Superbruger',
     ),
     'module' => 'feeds',
   );
@@ -153,10 +153,10 @@ function ik_roles_and_permissions_user_default_permissions() {
   $permissions['clone node'] = array(
     'name' => 'clone node',
     'roles' => array(
-      'administrator' => 'administrator',
-      'contributor' => 'contributor',
-      'editor' => 'editor',
-      'superuser' => 'superuser',
+      'Administrator' => 'Administrator',
+      'Bidragyder' => 'Bidragyder',
+      'Redaktør' => 'Redaktør',
+      'Superbruger' => 'Superbruger',
     ),
     'module' => 'clone',
   );
@@ -165,10 +165,10 @@ function ik_roles_and_permissions_user_default_permissions() {
   $permissions['clone own nodes'] = array(
     'name' => 'clone own nodes',
     'roles' => array(
-      'administrator' => 'administrator',
-      'contributor' => 'contributor',
-      'editor' => 'editor',
-      'superuser' => 'superuser',
+      'Administrator' => 'Administrator',
+      'Bidragyder' => 'Bidragyder',
+      'Redaktør' => 'Redaktør',
+      'Superbruger' => 'Superbruger',
     ),
     'module' => 'clone',
   );
@@ -177,9 +177,9 @@ function ik_roles_and_permissions_user_default_permissions() {
   $permissions['create channel content'] = array(
     'name' => 'create channel content',
     'roles' => array(
-      'administrator' => 'administrator',
-      'editor' => 'editor',
-      'superuser' => 'superuser',
+      'Administrator' => 'Administrator',
+      'Redaktør' => 'Redaktør',
+      'Superbruger' => 'Superbruger',
     ),
     'module' => 'node',
   );
@@ -188,8 +188,8 @@ function ik_roles_and_permissions_user_default_permissions() {
   $permissions['create department content'] = array(
     'name' => 'create department content',
     'roles' => array(
-      'administrator' => 'administrator',
-      'superuser' => 'superuser',
+      'Administrator' => 'Administrator',
+      'Superbruger' => 'Superbruger',
     ),
     'module' => 'node',
   );
@@ -198,10 +198,10 @@ function ik_roles_and_permissions_user_default_permissions() {
   $permissions['create media_rss_slide_import content'] = array(
     'name' => 'create media_rss_slide_import content',
     'roles' => array(
-      'administrator' => 'administrator',
-      'contributor' => 'contributor',
-      'editor' => 'editor',
-      'superuser' => 'superuser',
+      'Administrator' => 'Administrator',
+      'Bidragyder' => 'Bidragyder',
+      'Redaktør' => 'Redaktør',
+      'Superbruger' => 'Superbruger',
     ),
     'module' => 'node',
   );
@@ -210,8 +210,8 @@ function ik_roles_and_permissions_user_default_permissions() {
   $permissions['create organisation content'] = array(
     'name' => 'create organisation content',
     'roles' => array(
-      'administrator' => 'administrator',
-      'superuser' => 'superuser',
+      'Administrator' => 'Administrator',
+      'Superbruger' => 'Superbruger',
     ),
     'module' => 'node',
   );
@@ -220,10 +220,10 @@ function ik_roles_and_permissions_user_default_permissions() {
   $permissions['create slide content'] = array(
     'name' => 'create slide content',
     'roles' => array(
-      'administrator' => 'administrator',
-      'contributor' => 'contributor',
-      'editor' => 'editor',
-      'superuser' => 'superuser',
+      'Administrator' => 'Administrator',
+      'Bidragyder' => 'Bidragyder',
+      'Redaktør' => 'Redaktør',
+      'Superbruger' => 'Superbruger',
     ),
     'module' => 'node',
   );
@@ -232,8 +232,8 @@ function ik_roles_and_permissions_user_default_permissions() {
   $permissions['create static_page content'] = array(
     'name' => 'create static_page content',
     'roles' => array(
-      'administrator' => 'administrator',
-      'superuser' => 'superuser',
+      'Administrator' => 'Administrator',
+      'Superbruger' => 'Superbruger',
     ),
     'module' => 'node',
   );
@@ -242,8 +242,8 @@ function ik_roles_and_permissions_user_default_permissions() {
   $permissions['delete any channel content'] = array(
     'name' => 'delete any channel content',
     'roles' => array(
-      'administrator' => 'administrator',
-      'superuser' => 'superuser',
+      'Administrator' => 'Administrator',
+      'Superbruger' => 'Superbruger',
     ),
     'module' => 'node',
   );
@@ -252,8 +252,8 @@ function ik_roles_and_permissions_user_default_permissions() {
   $permissions['delete any department content'] = array(
     'name' => 'delete any department content',
     'roles' => array(
-      'administrator' => 'administrator',
-      'superuser' => 'superuser',
+      'Administrator' => 'Administrator',
+      'Superbruger' => 'Superbruger',
     ),
     'module' => 'node',
   );
@@ -262,8 +262,8 @@ function ik_roles_and_permissions_user_default_permissions() {
   $permissions['delete any media_rss_slide_import content'] = array(
     'name' => 'delete any media_rss_slide_import content',
     'roles' => array(
-      'administrator' => 'administrator',
-      'superuser' => 'superuser',
+      'Administrator' => 'Administrator',
+      'Superbruger' => 'Superbruger',
     ),
     'module' => 'node',
   );
@@ -272,8 +272,8 @@ function ik_roles_and_permissions_user_default_permissions() {
   $permissions['delete any organisation content'] = array(
     'name' => 'delete any organisation content',
     'roles' => array(
-      'administrator' => 'administrator',
-      'superuser' => 'superuser',
+      'Administrator' => 'Administrator',
+      'Superbruger' => 'Superbruger',
     ),
     'module' => 'node',
   );
@@ -282,8 +282,8 @@ function ik_roles_and_permissions_user_default_permissions() {
   $permissions['delete any slide content'] = array(
     'name' => 'delete any slide content',
     'roles' => array(
-      'administrator' => 'administrator',
-      'superuser' => 'superuser',
+      'Administrator' => 'Administrator',
+      'Superbruger' => 'Superbruger',
     ),
     'module' => 'node',
   );
@@ -292,8 +292,8 @@ function ik_roles_and_permissions_user_default_permissions() {
   $permissions['delete any static_page content'] = array(
     'name' => 'delete any static_page content',
     'roles' => array(
-      'administrator' => 'administrator',
-      'superuser' => 'superuser',
+      'Administrator' => 'Administrator',
+      'Superbruger' => 'Superbruger',
     ),
     'module' => 'node',
   );
@@ -302,9 +302,9 @@ function ik_roles_and_permissions_user_default_permissions() {
   $permissions['delete own channel content'] = array(
     'name' => 'delete own channel content',
     'roles' => array(
-      'administrator' => 'administrator',
-      'editor' => 'editor',
-      'superuser' => 'superuser',
+      'Administrator' => 'Administrator',
+      'Redaktør' => 'Redaktør',
+      'Superbruger' => 'Superbruger',
     ),
     'module' => 'node',
   );
@@ -313,8 +313,8 @@ function ik_roles_and_permissions_user_default_permissions() {
   $permissions['delete own department content'] = array(
     'name' => 'delete own department content',
     'roles' => array(
-      'administrator' => 'administrator',
-      'superuser' => 'superuser',
+      'Administrator' => 'Administrator',
+      'Superbruger' => 'Superbruger',
     ),
     'module' => 'node',
   );
@@ -323,10 +323,10 @@ function ik_roles_and_permissions_user_default_permissions() {
   $permissions['delete own media_rss_slide_import content'] = array(
     'name' => 'delete own media_rss_slide_import content',
     'roles' => array(
-      'administrator' => 'administrator',
-      'contributor' => 'contributor',
-      'editor' => 'editor',
-      'superuser' => 'superuser',
+      'Administrator' => 'Administrator',
+      'Bidragyder' => 'Bidragyder',
+      'Redaktør' => 'Redaktør',
+      'Superbruger' => 'Superbruger',
     ),
     'module' => 'node',
   );
@@ -335,8 +335,8 @@ function ik_roles_and_permissions_user_default_permissions() {
   $permissions['delete own organisation content'] = array(
     'name' => 'delete own organisation content',
     'roles' => array(
-      'administrator' => 'administrator',
-      'superuser' => 'superuser',
+      'Administrator' => 'Administrator',
+      'Superbruger' => 'Superbruger',
     ),
     'module' => 'node',
   );
@@ -345,10 +345,10 @@ function ik_roles_and_permissions_user_default_permissions() {
   $permissions['delete own slide content'] = array(
     'name' => 'delete own slide content',
     'roles' => array(
-      'administrator' => 'administrator',
-      'contributor' => 'contributor',
-      'editor' => 'editor',
-      'superuser' => 'superuser',
+      'Administrator' => 'Administrator',
+      'Bidragyder' => 'Bidragyder',
+      'Redaktør' => 'Redaktør',
+      'Superbruger' => 'Superbruger',
     ),
     'module' => 'node',
   );
@@ -357,8 +357,8 @@ function ik_roles_and_permissions_user_default_permissions() {
   $permissions['delete own static_page content'] = array(
     'name' => 'delete own static_page content',
     'roles' => array(
-      'administrator' => 'administrator',
-      'superuser' => 'superuser',
+      'Administrator' => 'Administrator',
+      'Superbruger' => 'Superbruger',
     ),
     'module' => 'node',
   );
@@ -367,8 +367,8 @@ function ik_roles_and_permissions_user_default_permissions() {
   $permissions['delete terms in 1'] = array(
     'name' => 'delete terms in 1',
     'roles' => array(
-      'administrator' => 'administrator',
-      'superuser' => 'superuser',
+      'Administrator' => 'Administrator',
+      'Superbruger' => 'Superbruger',
     ),
     'module' => 'taxonomy',
   );
@@ -377,8 +377,8 @@ function ik_roles_and_permissions_user_default_permissions() {
   $permissions['delete terms in 2'] = array(
     'name' => 'delete terms in 2',
     'roles' => array(
-      'administrator' => 'administrator',
-      'superuser' => 'superuser',
+      'Administrator' => 'Administrator',
+      'Superbruger' => 'Superbruger',
     ),
     'module' => 'taxonomy',
   );
@@ -387,7 +387,7 @@ function ik_roles_and_permissions_user_default_permissions() {
   $permissions['delete terms in 3'] = array(
     'name' => 'delete terms in 3',
     'roles' => array(
-      'administrator' => 'administrator',
+      'Administrator' => 'Administrator',
     ),
     'module' => 'taxonomy',
   );
@@ -396,8 +396,8 @@ function ik_roles_and_permissions_user_default_permissions() {
   $permissions['download files'] = array(
     'name' => 'download files',
     'roles' => array(
-      'administrator' => 'administrator',
-      'superuser' => 'superuser',
+      'Administrator' => 'Administrator',
+      'Superbruger' => 'Superbruger',
     ),
     'module' => 'media_browser_plus',
   );
@@ -406,8 +406,8 @@ function ik_roles_and_permissions_user_default_permissions() {
   $permissions['edit any channel content'] = array(
     'name' => 'edit any channel content',
     'roles' => array(
-      'administrator' => 'administrator',
-      'superuser' => 'superuser',
+      'Administrator' => 'Administrator',
+      'Superbruger' => 'Superbruger',
     ),
     'module' => 'node',
   );
@@ -416,8 +416,8 @@ function ik_roles_and_permissions_user_default_permissions() {
   $permissions['edit any department content'] = array(
     'name' => 'edit any department content',
     'roles' => array(
-      'administrator' => 'administrator',
-      'superuser' => 'superuser',
+      'Administrator' => 'Administrator',
+      'Superbruger' => 'Superbruger',
     ),
     'module' => 'node',
   );
@@ -426,8 +426,8 @@ function ik_roles_and_permissions_user_default_permissions() {
   $permissions['edit any media_rss_slide_import content'] = array(
     'name' => 'edit any media_rss_slide_import content',
     'roles' => array(
-      'administrator' => 'administrator',
-      'superuser' => 'superuser',
+      'Administrator' => 'Administrator',
+      'Superbruger' => 'Superbruger',
     ),
     'module' => 'node',
   );
@@ -436,8 +436,8 @@ function ik_roles_and_permissions_user_default_permissions() {
   $permissions['edit any organisation content'] = array(
     'name' => 'edit any organisation content',
     'roles' => array(
-      'administrator' => 'administrator',
-      'superuser' => 'superuser',
+      'Administrator' => 'Administrator',
+      'Superbruger' => 'Superbruger',
     ),
     'module' => 'node',
   );
@@ -446,8 +446,8 @@ function ik_roles_and_permissions_user_default_permissions() {
   $permissions['edit any slide content'] = array(
     'name' => 'edit any slide content',
     'roles' => array(
-      'administrator' => 'administrator',
-      'superuser' => 'superuser',
+      'Administrator' => 'Administrator',
+      'Superbruger' => 'Superbruger',
     ),
     'module' => 'node',
   );
@@ -456,8 +456,8 @@ function ik_roles_and_permissions_user_default_permissions() {
   $permissions['edit any static_page content'] = array(
     'name' => 'edit any static_page content',
     'roles' => array(
-      'administrator' => 'administrator',
-      'superuser' => 'superuser',
+      'Administrator' => 'Administrator',
+      'Superbruger' => 'Superbruger',
     ),
     'module' => 'node',
   );
@@ -466,9 +466,9 @@ function ik_roles_and_permissions_user_default_permissions() {
   $permissions['edit own channel content'] = array(
     'name' => 'edit own channel content',
     'roles' => array(
-      'administrator' => 'administrator',
-      'editor' => 'editor',
-      'superuser' => 'superuser',
+      'Administrator' => 'Administrator',
+      'Redaktør' => 'Redaktør',
+      'Superbruger' => 'Superbruger',
     ),
     'module' => 'node',
   );
@@ -477,7 +477,7 @@ function ik_roles_and_permissions_user_default_permissions() {
   $permissions['edit own comments'] = array(
     'name' => 'edit own comments',
     'roles' => array(
-      'administrator' => 'administrator',
+      'Administrator' => 'Administrator',
     ),
     'module' => 'comment',
   );
@@ -486,8 +486,8 @@ function ik_roles_and_permissions_user_default_permissions() {
   $permissions['edit own department content'] = array(
     'name' => 'edit own department content',
     'roles' => array(
-      'administrator' => 'administrator',
-      'superuser' => 'superuser',
+      'Administrator' => 'Administrator',
+      'Superbruger' => 'Superbruger',
     ),
     'module' => 'node',
   );
@@ -496,10 +496,10 @@ function ik_roles_and_permissions_user_default_permissions() {
   $permissions['edit own media_rss_slide_import content'] = array(
     'name' => 'edit own media_rss_slide_import content',
     'roles' => array(
-      'administrator' => 'administrator',
-      'contributor' => 'contributor',
-      'editor' => 'editor',
-      'superuser' => 'superuser',
+      'Administrator' => 'Administrator',
+      'Bidragyder' => 'Bidragyder',
+      'Redaktør' => 'Redaktør',
+      'Superbruger' => 'Superbruger',
     ),
     'module' => 'node',
   );
@@ -508,8 +508,8 @@ function ik_roles_and_permissions_user_default_permissions() {
   $permissions['edit own organisation content'] = array(
     'name' => 'edit own organisation content',
     'roles' => array(
-      'administrator' => 'administrator',
-      'superuser' => 'superuser',
+      'Administrator' => 'Administrator',
+      'Superbruger' => 'Superbruger',
     ),
     'module' => 'node',
   );
@@ -518,10 +518,10 @@ function ik_roles_and_permissions_user_default_permissions() {
   $permissions['edit own slide content'] = array(
     'name' => 'edit own slide content',
     'roles' => array(
-      'administrator' => 'administrator',
-      'contributor' => 'contributor',
-      'editor' => 'editor',
-      'superuser' => 'superuser',
+      'Administrator' => 'Administrator',
+      'Bidragyder' => 'Bidragyder',
+      'Redaktør' => 'Redaktør',
+      'Superbruger' => 'Superbruger',
     ),
     'module' => 'node',
   );
@@ -530,8 +530,8 @@ function ik_roles_and_permissions_user_default_permissions() {
   $permissions['edit own static_page content'] = array(
     'name' => 'edit own static_page content',
     'roles' => array(
-      'administrator' => 'administrator',
-      'superuser' => 'superuser',
+      'Administrator' => 'Administrator',
+      'Superbruger' => 'Superbruger',
     ),
     'module' => 'node',
   );
@@ -540,8 +540,8 @@ function ik_roles_and_permissions_user_default_permissions() {
   $permissions['edit terms in 1'] = array(
     'name' => 'edit terms in 1',
     'roles' => array(
-      'administrator' => 'administrator',
-      'superuser' => 'superuser',
+      'Administrator' => 'Administrator',
+      'Superbruger' => 'Superbruger',
     ),
     'module' => 'taxonomy',
   );
@@ -550,8 +550,8 @@ function ik_roles_and_permissions_user_default_permissions() {
   $permissions['edit terms in 2'] = array(
     'name' => 'edit terms in 2',
     'roles' => array(
-      'administrator' => 'administrator',
-      'superuser' => 'superuser',
+      'Administrator' => 'Administrator',
+      'Superbruger' => 'Superbruger',
     ),
     'module' => 'taxonomy',
   );
@@ -560,7 +560,7 @@ function ik_roles_and_permissions_user_default_permissions() {
   $permissions['edit terms in 3'] = array(
     'name' => 'edit terms in 3',
     'roles' => array(
-      'administrator' => 'administrator',
+      'Administrator' => 'Administrator',
     ),
     'module' => 'taxonomy',
   );
@@ -569,10 +569,10 @@ function ik_roles_and_permissions_user_default_permissions() {
   $permissions['filter media'] = array(
     'name' => 'filter media',
     'roles' => array(
-      'administrator' => 'administrator',
-      'contributor' => 'contributor',
-      'editor' => 'editor',
-      'superuser' => 'superuser',
+      'Administrator' => 'Administrator',
+      'Bidragyder' => 'Bidragyder',
+      'Redaktør' => 'Redaktør',
+      'Superbruger' => 'Superbruger',
     ),
     'module' => 'media_browser_plus',
   );
@@ -581,9 +581,9 @@ function ik_roles_and_permissions_user_default_permissions() {
   $permissions['import media'] = array(
     'name' => 'import media',
     'roles' => array(
-      'administrator' => 'administrator',
-      'editor' => 'editor',
-      'superuser' => 'superuser',
+      'Administrator' => 'Administrator',
+      'Redaktør' => 'Redaktør',
+      'Superbruger' => 'Superbruger',
     ),
     'module' => 'media',
   );
@@ -592,10 +592,10 @@ function ik_roles_and_permissions_user_default_permissions() {
   $permissions['import mrss_feed_importer feeds'] = array(
     'name' => 'import mrss_feed_importer feeds',
     'roles' => array(
-      'administrator' => 'administrator',
-      'contributor' => 'contributor',
-      'editor' => 'editor',
-      'superuser' => 'superuser',
+      'Administrator' => 'Administrator',
+      'Bidragyder' => 'Bidragyder',
+      'Redaktør' => 'Redaktør',
+      'Superbruger' => 'Superbruger',
     ),
     'module' => 'feeds',
   );
@@ -604,10 +604,10 @@ function ik_roles_and_permissions_user_default_permissions() {
   $permissions['media grid view'] = array(
     'name' => 'media grid view',
     'roles' => array(
-      'administrator' => 'administrator',
-      'contributor' => 'contributor',
-      'editor' => 'editor',
-      'superuser' => 'superuser',
+      'Administrator' => 'Administrator',
+      'Bidragyder' => 'Bidragyder',
+      'Redaktør' => 'Redaktør',
+      'Superbruger' => 'Superbruger',
     ),
     'module' => 'media_browser_plus',
   );
@@ -616,10 +616,10 @@ function ik_roles_and_permissions_user_default_permissions() {
   $permissions['media list view'] = array(
     'name' => 'media list view',
     'roles' => array(
-      'administrator' => 'administrator',
-      'contributor' => 'contributor',
-      'editor' => 'editor',
-      'superuser' => 'superuser',
+      'Administrator' => 'Administrator',
+      'Bidragyder' => 'Bidragyder',
+      'Redaktør' => 'Redaktør',
+      'Superbruger' => 'Superbruger',
     ),
     'module' => 'media_browser_plus',
   );
@@ -628,7 +628,7 @@ function ik_roles_and_permissions_user_default_permissions() {
   $permissions['post comments'] = array(
     'name' => 'post comments',
     'roles' => array(
-      'administrator' => 'administrator',
+      'Administrator' => 'Administrator',
     ),
     'module' => 'comment',
   );
@@ -637,10 +637,10 @@ function ik_roles_and_permissions_user_default_permissions() {
   $permissions['preview media'] = array(
     'name' => 'preview media',
     'roles' => array(
-      'administrator' => 'administrator',
-      'contributor' => 'contributor',
-      'editor' => 'editor',
-      'superuser' => 'superuser',
+      'Administrator' => 'Administrator',
+      'Bidragyder' => 'Bidragyder',
+      'Redaktør' => 'Redaktør',
+      'Superbruger' => 'Superbruger',
     ),
     'module' => 'media_browser_plus',
   );
@@ -649,8 +649,8 @@ function ik_roles_and_permissions_user_default_permissions() {
   $permissions['publish any channel content'] = array(
     'name' => 'publish any channel content',
     'roles' => array(
-      'administrator' => 'administrator',
-      'superuser' => 'superuser',
+      'Administrator' => 'Administrator',
+      'Superbruger' => 'Superbruger',
     ),
     'module' => 'publishcontent',
   );
@@ -659,8 +659,8 @@ function ik_roles_and_permissions_user_default_permissions() {
   $permissions['publish any content'] = array(
     'name' => 'publish any content',
     'roles' => array(
-      'administrator' => 'administrator',
-      'superuser' => 'superuser',
+      'Administrator' => 'Administrator',
+      'Superbruger' => 'Superbruger',
     ),
     'module' => 'publishcontent',
   );
@@ -669,8 +669,8 @@ function ik_roles_and_permissions_user_default_permissions() {
   $permissions['publish any department content'] = array(
     'name' => 'publish any department content',
     'roles' => array(
-      'administrator' => 'administrator',
-      'superuser' => 'superuser',
+      'Administrator' => 'Administrator',
+      'Superbruger' => 'Superbruger',
     ),
     'module' => 'publishcontent',
   );
@@ -679,8 +679,8 @@ function ik_roles_and_permissions_user_default_permissions() {
   $permissions['publish any media_rss_slide_import content'] = array(
     'name' => 'publish any media_rss_slide_import content',
     'roles' => array(
-      'administrator' => 'administrator',
-      'superuser' => 'superuser',
+      'Administrator' => 'Administrator',
+      'Superbruger' => 'Superbruger',
     ),
     'module' => 'publishcontent',
   );
@@ -689,8 +689,8 @@ function ik_roles_and_permissions_user_default_permissions() {
   $permissions['publish any organisation content'] = array(
     'name' => 'publish any organisation content',
     'roles' => array(
-      'administrator' => 'administrator',
-      'superuser' => 'superuser',
+      'Administrator' => 'Administrator',
+      'Superbruger' => 'Superbruger',
     ),
     'module' => 'publishcontent',
   );
@@ -699,8 +699,8 @@ function ik_roles_and_permissions_user_default_permissions() {
   $permissions['publish any slide content'] = array(
     'name' => 'publish any slide content',
     'roles' => array(
-      'administrator' => 'administrator',
-      'superuser' => 'superuser',
+      'Administrator' => 'Administrator',
+      'Superbruger' => 'Superbruger',
     ),
     'module' => 'publishcontent',
   );
@@ -709,8 +709,8 @@ function ik_roles_and_permissions_user_default_permissions() {
   $permissions['publish any static_page content'] = array(
     'name' => 'publish any static_page content',
     'roles' => array(
-      'administrator' => 'administrator',
-      'superuser' => 'superuser',
+      'Administrator' => 'Administrator',
+      'Superbruger' => 'Superbruger',
     ),
     'module' => 'publishcontent',
   );
@@ -719,10 +719,10 @@ function ik_roles_and_permissions_user_default_permissions() {
   $permissions['publish editable channel content'] = array(
     'name' => 'publish editable channel content',
     'roles' => array(
-      'administrator' => 'administrator',
-      'contributor' => 'contributor',
-      'editor' => 'editor',
-      'superuser' => 'superuser',
+      'Administrator' => 'Administrator',
+      'Bidragyder' => 'Bidragyder',
+      'Redaktør' => 'Redaktør',
+      'Superbruger' => 'Superbruger',
     ),
     'module' => 'publishcontent',
   );
@@ -731,8 +731,8 @@ function ik_roles_and_permissions_user_default_permissions() {
   $permissions['publish editable department content'] = array(
     'name' => 'publish editable department content',
     'roles' => array(
-      'administrator' => 'administrator',
-      'superuser' => 'superuser',
+      'Administrator' => 'Administrator',
+      'Superbruger' => 'Superbruger',
     ),
     'module' => 'publishcontent',
   );
@@ -741,10 +741,10 @@ function ik_roles_and_permissions_user_default_permissions() {
   $permissions['publish editable media_rss_slide_import content'] = array(
     'name' => 'publish editable media_rss_slide_import content',
     'roles' => array(
-      'administrator' => 'administrator',
-      'contributor' => 'contributor',
-      'editor' => 'editor',
-      'superuser' => 'superuser',
+      'Administrator' => 'Administrator',
+      'Bidragyder' => 'Bidragyder',
+      'Redaktør' => 'Redaktør',
+      'Superbruger' => 'Superbruger',
     ),
     'module' => 'publishcontent',
   );
@@ -753,8 +753,8 @@ function ik_roles_and_permissions_user_default_permissions() {
   $permissions['publish editable organisation content'] = array(
     'name' => 'publish editable organisation content',
     'roles' => array(
-      'administrator' => 'administrator',
-      'superuser' => 'superuser',
+      'Administrator' => 'Administrator',
+      'Superbruger' => 'Superbruger',
     ),
     'module' => 'publishcontent',
   );
@@ -763,10 +763,10 @@ function ik_roles_and_permissions_user_default_permissions() {
   $permissions['publish editable slide content'] = array(
     'name' => 'publish editable slide content',
     'roles' => array(
-      'administrator' => 'administrator',
-      'contributor' => 'contributor',
-      'editor' => 'editor',
-      'superuser' => 'superuser',
+      'Administrator' => 'Administrator',
+      'Bidragyder' => 'Bidragyder',
+      'Redaktør' => 'Redaktør',
+      'Superbruger' => 'Superbruger',
     ),
     'module' => 'publishcontent',
   );
@@ -775,8 +775,8 @@ function ik_roles_and_permissions_user_default_permissions() {
   $permissions['publish editable static_page content'] = array(
     'name' => 'publish editable static_page content',
     'roles' => array(
-      'administrator' => 'administrator',
-      'superuser' => 'superuser',
+      'Administrator' => 'Administrator',
+      'Superbruger' => 'Superbruger',
     ),
     'module' => 'publishcontent',
   );
@@ -785,8 +785,8 @@ function ik_roles_and_permissions_user_default_permissions() {
   $permissions['publish own channel content'] = array(
     'name' => 'publish own channel content',
     'roles' => array(
-      'administrator' => 'administrator',
-      'superuser' => 'superuser',
+      'Administrator' => 'Administrator',
+      'Superbruger' => 'Superbruger',
     ),
     'module' => 'publishcontent',
   );
@@ -795,8 +795,8 @@ function ik_roles_and_permissions_user_default_permissions() {
   $permissions['publish own department content'] = array(
     'name' => 'publish own department content',
     'roles' => array(
-      'administrator' => 'administrator',
-      'superuser' => 'superuser',
+      'Administrator' => 'Administrator',
+      'Superbruger' => 'Superbruger',
     ),
     'module' => 'publishcontent',
   );
@@ -805,8 +805,8 @@ function ik_roles_and_permissions_user_default_permissions() {
   $permissions['publish own media_rss_slide_import content'] = array(
     'name' => 'publish own media_rss_slide_import content',
     'roles' => array(
-      'administrator' => 'administrator',
-      'superuser' => 'superuser',
+      'Administrator' => 'Administrator',
+      'Superbruger' => 'Superbruger',
     ),
     'module' => 'publishcontent',
   );
@@ -815,8 +815,8 @@ function ik_roles_and_permissions_user_default_permissions() {
   $permissions['publish own organisation content'] = array(
     'name' => 'publish own organisation content',
     'roles' => array(
-      'administrator' => 'administrator',
-      'superuser' => 'superuser',
+      'Administrator' => 'Administrator',
+      'Superbruger' => 'Superbruger',
     ),
     'module' => 'publishcontent',
   );
@@ -825,10 +825,10 @@ function ik_roles_and_permissions_user_default_permissions() {
   $permissions['publish own slide content'] = array(
     'name' => 'publish own slide content',
     'roles' => array(
-      'administrator' => 'administrator',
-      'contributor' => 'contributor',
-      'editor' => 'editor',
-      'superuser' => 'superuser',
+      'Administrator' => 'Administrator',
+      'Bidragyder' => 'Bidragyder',
+      'Redaktør' => 'Redaktør',
+      'Superbruger' => 'Superbruger',
     ),
     'module' => 'publishcontent',
   );
@@ -837,8 +837,8 @@ function ik_roles_and_permissions_user_default_permissions() {
   $permissions['publish own static_page content'] = array(
     'name' => 'publish own static_page content',
     'roles' => array(
-      'administrator' => 'administrator',
-      'superuser' => 'superuser',
+      'Administrator' => 'Administrator',
+      'Superbruger' => 'Superbruger',
     ),
     'module' => 'publishcontent',
   );
@@ -847,10 +847,10 @@ function ik_roles_and_permissions_user_default_permissions() {
   $permissions['schedule (un)publishing of nodes'] = array(
     'name' => 'schedule (un)publishing of nodes',
     'roles' => array(
-      'administrator' => 'administrator',
-      'contributor' => 'contributor',
-      'editor' => 'editor',
-      'superuser' => 'superuser',
+      'Administrator' => 'Administrator',
+      'Bidragyder' => 'Bidragyder',
+      'Redaktør' => 'Redaktør',
+      'Superbruger' => 'Superbruger',
     ),
     'module' => 'scheduler',
   );
@@ -859,7 +859,7 @@ function ik_roles_and_permissions_user_default_permissions() {
   $permissions['skip comment approval'] = array(
     'name' => 'skip comment approval',
     'roles' => array(
-      'administrator' => 'administrator',
+      'Administrator' => 'Administrator',
     ),
     'module' => 'comment',
   );
@@ -868,8 +868,8 @@ function ik_roles_and_permissions_user_default_permissions() {
   $permissions['unlock mrss_feed_importer feeds'] = array(
     'name' => 'unlock mrss_feed_importer feeds',
     'roles' => array(
-      'administrator' => 'administrator',
-      'superuser' => 'superuser',
+      'Administrator' => 'Administrator',
+      'Superbruger' => 'Superbruger',
     ),
     'module' => 'feeds',
   );
@@ -878,8 +878,8 @@ function ik_roles_and_permissions_user_default_permissions() {
   $permissions['unpublish any channel content'] = array(
     'name' => 'unpublish any channel content',
     'roles' => array(
-      'administrator' => 'administrator',
-      'superuser' => 'superuser',
+      'Administrator' => 'Administrator',
+      'Superbruger' => 'Superbruger',
     ),
     'module' => 'publishcontent',
   );
@@ -888,8 +888,8 @@ function ik_roles_and_permissions_user_default_permissions() {
   $permissions['unpublish any content'] = array(
     'name' => 'unpublish any content',
     'roles' => array(
-      'administrator' => 'administrator',
-      'superuser' => 'superuser',
+      'Administrator' => 'Administrator',
+      'Superbruger' => 'Superbruger',
     ),
     'module' => 'publishcontent',
   );
@@ -898,8 +898,8 @@ function ik_roles_and_permissions_user_default_permissions() {
   $permissions['unpublish any department content'] = array(
     'name' => 'unpublish any department content',
     'roles' => array(
-      'administrator' => 'administrator',
-      'superuser' => 'superuser',
+      'Administrator' => 'Administrator',
+      'Superbruger' => 'Superbruger',
     ),
     'module' => 'publishcontent',
   );
@@ -908,8 +908,8 @@ function ik_roles_and_permissions_user_default_permissions() {
   $permissions['unpublish any media_rss_slide_import content'] = array(
     'name' => 'unpublish any media_rss_slide_import content',
     'roles' => array(
-      'administrator' => 'administrator',
-      'superuser' => 'superuser',
+      'Administrator' => 'Administrator',
+      'Superbruger' => 'Superbruger',
     ),
     'module' => 'publishcontent',
   );
@@ -918,8 +918,8 @@ function ik_roles_and_permissions_user_default_permissions() {
   $permissions['unpublish any organisation content'] = array(
     'name' => 'unpublish any organisation content',
     'roles' => array(
-      'administrator' => 'administrator',
-      'superuser' => 'superuser',
+      'Administrator' => 'Administrator',
+      'Superbruger' => 'Superbruger',
     ),
     'module' => 'publishcontent',
   );
@@ -928,8 +928,8 @@ function ik_roles_and_permissions_user_default_permissions() {
   $permissions['unpublish any slide content'] = array(
     'name' => 'unpublish any slide content',
     'roles' => array(
-      'administrator' => 'administrator',
-      'superuser' => 'superuser',
+      'Administrator' => 'Administrator',
+      'Superbruger' => 'Superbruger',
     ),
     'module' => 'publishcontent',
   );
@@ -938,8 +938,8 @@ function ik_roles_and_permissions_user_default_permissions() {
   $permissions['unpublish any static_page content'] = array(
     'name' => 'unpublish any static_page content',
     'roles' => array(
-      'administrator' => 'administrator',
-      'superuser' => 'superuser',
+      'Administrator' => 'Administrator',
+      'Superbruger' => 'Superbruger',
     ),
     'module' => 'publishcontent',
   );
@@ -948,10 +948,10 @@ function ik_roles_and_permissions_user_default_permissions() {
   $permissions['unpublish editable channel content'] = array(
     'name' => 'unpublish editable channel content',
     'roles' => array(
-      'administrator' => 'administrator',
-      'contributor' => 'contributor',
-      'editor' => 'editor',
-      'superuser' => 'superuser',
+      'Administrator' => 'Administrator',
+      'Bidragyder' => 'Bidragyder',
+      'Redaktør' => 'Redaktør',
+      'Superbruger' => 'Superbruger',
     ),
     'module' => 'publishcontent',
   );
@@ -960,8 +960,8 @@ function ik_roles_and_permissions_user_default_permissions() {
   $permissions['unpublish editable department content'] = array(
     'name' => 'unpublish editable department content',
     'roles' => array(
-      'administrator' => 'administrator',
-      'superuser' => 'superuser',
+      'Administrator' => 'Administrator',
+      'Superbruger' => 'Superbruger',
     ),
     'module' => 'publishcontent',
   );
@@ -970,10 +970,10 @@ function ik_roles_and_permissions_user_default_permissions() {
   $permissions['unpublish editable media_rss_slide_import content'] = array(
     'name' => 'unpublish editable media_rss_slide_import content',
     'roles' => array(
-      'administrator' => 'administrator',
-      'contributor' => 'contributor',
-      'editor' => 'editor',
-      'superuser' => 'superuser',
+      'Administrator' => 'Administrator',
+      'Bidragyder' => 'Bidragyder',
+      'Redaktør' => 'Redaktør',
+      'Superbruger' => 'Superbruger',
     ),
     'module' => 'publishcontent',
   );
@@ -982,8 +982,8 @@ function ik_roles_and_permissions_user_default_permissions() {
   $permissions['unpublish editable organisation content'] = array(
     'name' => 'unpublish editable organisation content',
     'roles' => array(
-      'administrator' => 'administrator',
-      'superuser' => 'superuser',
+      'Administrator' => 'Administrator',
+      'Superbruger' => 'Superbruger',
     ),
     'module' => 'publishcontent',
   );
@@ -992,10 +992,10 @@ function ik_roles_and_permissions_user_default_permissions() {
   $permissions['unpublish editable slide content'] = array(
     'name' => 'unpublish editable slide content',
     'roles' => array(
-      'administrator' => 'administrator',
-      'contributor' => 'contributor',
-      'editor' => 'editor',
-      'superuser' => 'superuser',
+      'Administrator' => 'Administrator',
+      'Bidragyder' => 'Bidragyder',
+      'Redaktør' => 'Redaktør',
+      'Superbruger' => 'Superbruger',
     ),
     'module' => 'publishcontent',
   );
@@ -1004,8 +1004,8 @@ function ik_roles_and_permissions_user_default_permissions() {
   $permissions['unpublish editable static_page content'] = array(
     'name' => 'unpublish editable static_page content',
     'roles' => array(
-      'administrator' => 'administrator',
-      'superuser' => 'superuser',
+      'Administrator' => 'Administrator',
+      'Superbruger' => 'Superbruger',
     ),
     'module' => 'publishcontent',
   );
@@ -1014,8 +1014,8 @@ function ik_roles_and_permissions_user_default_permissions() {
   $permissions['unpublish own channel content'] = array(
     'name' => 'unpublish own channel content',
     'roles' => array(
-      'administrator' => 'administrator',
-      'superuser' => 'superuser',
+      'Administrator' => 'Administrator',
+      'Superbruger' => 'Superbruger',
     ),
     'module' => 'publishcontent',
   );
@@ -1024,8 +1024,8 @@ function ik_roles_and_permissions_user_default_permissions() {
   $permissions['unpublish own department content'] = array(
     'name' => 'unpublish own department content',
     'roles' => array(
-      'administrator' => 'administrator',
-      'superuser' => 'superuser',
+      'Administrator' => 'Administrator',
+      'Superbruger' => 'Superbruger',
     ),
     'module' => 'publishcontent',
   );
@@ -1034,8 +1034,8 @@ function ik_roles_and_permissions_user_default_permissions() {
   $permissions['unpublish own media_rss_slide_import content'] = array(
     'name' => 'unpublish own media_rss_slide_import content',
     'roles' => array(
-      'administrator' => 'administrator',
-      'superuser' => 'superuser',
+      'Administrator' => 'Administrator',
+      'Superbruger' => 'Superbruger',
     ),
     'module' => 'publishcontent',
   );
@@ -1044,8 +1044,8 @@ function ik_roles_and_permissions_user_default_permissions() {
   $permissions['unpublish own organisation content'] = array(
     'name' => 'unpublish own organisation content',
     'roles' => array(
-      'administrator' => 'administrator',
-      'superuser' => 'superuser',
+      'Administrator' => 'Administrator',
+      'Superbruger' => 'Superbruger',
     ),
     'module' => 'publishcontent',
   );
@@ -1054,10 +1054,10 @@ function ik_roles_and_permissions_user_default_permissions() {
   $permissions['unpublish own slide content'] = array(
     'name' => 'unpublish own slide content',
     'roles' => array(
-      'administrator' => 'administrator',
-      'contributor' => 'contributor',
-      'editor' => 'editor',
-      'superuser' => 'superuser',
+      'Administrator' => 'Administrator',
+      'Bidragyder' => 'Bidragyder',
+      'Redaktør' => 'Redaktør',
+      'Superbruger' => 'Superbruger',
     ),
     'module' => 'publishcontent',
   );
@@ -1066,8 +1066,8 @@ function ik_roles_and_permissions_user_default_permissions() {
   $permissions['unpublish own static_page content'] = array(
     'name' => 'unpublish own static_page content',
     'roles' => array(
-      'administrator' => 'administrator',
-      'superuser' => 'superuser',
+      'Administrator' => 'Administrator',
+      'Superbruger' => 'Superbruger',
     ),
     'module' => 'publishcontent',
   );
@@ -1076,10 +1076,10 @@ function ik_roles_and_permissions_user_default_permissions() {
   $permissions['upload media'] = array(
     'name' => 'upload media',
     'roles' => array(
-      'administrator' => 'administrator',
-      'contributor' => 'contributor',
-      'editor' => 'editor',
-      'superuser' => 'superuser',
+      'Administrator' => 'Administrator',
+      'Bidragyder' => 'Bidragyder',
+      'Redaktør' => 'Redaktør',
+      'Superbruger' => 'Superbruger',
     ),
     'module' => 'media_browser_plus',
   );
@@ -1088,10 +1088,10 @@ function ik_roles_and_permissions_user_default_permissions() {
   $permissions['use text format editor_html'] = array(
     'name' => 'use text format editor_html',
     'roles' => array(
-      'administrator' => 'administrator',
-      'contributor' => 'contributor',
-      'editor' => 'editor',
-      'superuser' => 'superuser',
+      'Administrator' => 'Administrator',
+      'Bidragyder' => 'Bidragyder',
+      'Redaktør' => 'Redaktør',
+      'Superbruger' => 'Superbruger',
     ),
     'module' => 'filter',
   );
@@ -1100,10 +1100,10 @@ function ik_roles_and_permissions_user_default_permissions() {
   $permissions['use text format filtered_html'] = array(
     'name' => 'use text format filtered_html',
     'roles' => array(
-      'administrator' => 'administrator',
+      'Administrator' => 'Administrator',
+      'Bidragyder' => 'Bidragyder',
+      'Redaktør' => 'Redaktør',
       'authenticated user' => 'authenticated user',
-      'contributor' => 'contributor',
-      'editor' => 'editor',
     ),
     'module' => 'filter',
   );
@@ -1112,7 +1112,7 @@ function ik_roles_and_permissions_user_default_permissions() {
   $permissions['use text format full_html'] = array(
     'name' => 'use text format full_html',
     'roles' => array(
-      'administrator' => 'administrator',
+      'Administrator' => 'Administrator',
     ),
     'module' => 'filter',
   );
@@ -1121,10 +1121,10 @@ function ik_roles_and_permissions_user_default_permissions() {
   $permissions['view own unpublished content'] = array(
     'name' => 'view own unpublished content',
     'roles' => array(
-      'administrator' => 'administrator',
-      'contributor' => 'contributor',
-      'editor' => 'editor',
-      'superuser' => 'superuser',
+      'Administrator' => 'Administrator',
+      'Bidragyder' => 'Bidragyder',
+      'Redaktør' => 'Redaktør',
+      'Superbruger' => 'Superbruger',
     ),
     'module' => 'node',
   );
