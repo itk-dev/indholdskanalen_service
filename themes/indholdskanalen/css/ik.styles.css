@@ -335,6 +335,10 @@ body {
 .field-type-ik-slide-preview img {
   max-width: 100%; }
 
+/* line 146, ../sass/_ik.base.scss */
+.field-name-field-ik-slide-transition-effect {
+  display: none; }
+
 /* line 1, ../sass/_ik.legacy.scss */
 #page {
   overflow: hidden; }
