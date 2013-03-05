@@ -35,6 +35,7 @@ function ik_roles_and_permissions_user_default_permissions() {
     'name' => 'access media backend',
     'roles' => array(
       'administrator' => 'administrator',
+      'superuser' => 'superuser',
     ),
     'module' => 'media_browser_plus',
   );
@@ -55,6 +56,7 @@ function ik_roles_and_permissions_user_default_permissions() {
     'roles' => array(
       'administrator' => 'administrator',
       'editor' => 'editor',
+      'superuser' => 'superuser',
     ),
     'module' => 'media_internet',
   );
@@ -73,6 +75,7 @@ function ik_roles_and_permissions_user_default_permissions() {
     'name' => 'administer feeds',
     'roles' => array(
       'administrator' => 'administrator',
+      'superuser' => 'superuser',
     ),
     'module' => 'feeds',
   );
@@ -84,6 +87,7 @@ function ik_roles_and_permissions_user_default_permissions() {
       'administrator' => 'administrator',
       'contributor' => 'contributor',
       'editor' => 'editor',
+      'superuser' => 'superuser',
     ),
     'module' => 'file_entity',
   );
@@ -102,6 +106,7 @@ function ik_roles_and_permissions_user_default_permissions() {
     'name' => 'administer permissions',
     'roles' => array(
       'administrator' => 'administrator',
+      'superuser' => 'superuser',
     ),
     'module' => 'user',
   );
@@ -129,6 +134,7 @@ function ik_roles_and_permissions_user_default_permissions() {
     'name' => 'administer users',
     'roles' => array(
       'administrator' => 'administrator',
+      'superuser' => 'superuser',
     ),
     'module' => 'user',
   );
@@ -138,6 +144,7 @@ function ik_roles_and_permissions_user_default_permissions() {
     'name' => 'clear mrss_feed_importer feeds',
     'roles' => array(
       'administrator' => 'administrator',
+      'superuser' => 'superuser',
     ),
     'module' => 'feeds',
   );
@@ -149,6 +156,7 @@ function ik_roles_and_permissions_user_default_permissions() {
       'administrator' => 'administrator',
       'contributor' => 'contributor',
       'editor' => 'editor',
+      'superuser' => 'superuser',
     ),
     'module' => 'clone',
   );
@@ -160,6 +168,7 @@ function ik_roles_and_permissions_user_default_permissions() {
       'administrator' => 'administrator',
       'contributor' => 'contributor',
       'editor' => 'editor',
+      'superuser' => 'superuser',
     ),
     'module' => 'clone',
   );
@@ -170,6 +179,7 @@ function ik_roles_and_permissions_user_default_permissions() {
     'roles' => array(
       'administrator' => 'administrator',
       'editor' => 'editor',
+      'superuser' => 'superuser',
     ),
     'module' => 'node',
   );
@@ -179,6 +189,7 @@ function ik_roles_and_permissions_user_default_permissions() {
     'name' => 'create department content',
     'roles' => array(
       'administrator' => 'administrator',
+      'superuser' => 'superuser',
     ),
     'module' => 'node',
   );
@@ -190,6 +201,7 @@ function ik_roles_and_permissions_user_default_permissions() {
       'administrator' => 'administrator',
       'contributor' => 'contributor',
       'editor' => 'editor',
+      'superuser' => 'superuser',
     ),
     'module' => 'node',
   );
@@ -199,6 +211,7 @@ function ik_roles_and_permissions_user_default_permissions() {
     'name' => 'create organisation content',
     'roles' => array(
       'administrator' => 'administrator',
+      'superuser' => 'superuser',
     ),
     'module' => 'node',
   );
@@ -210,6 +223,7 @@ function ik_roles_and_permissions_user_default_permissions() {
       'administrator' => 'administrator',
       'contributor' => 'contributor',
       'editor' => 'editor',
+      'superuser' => 'superuser',
     ),
     'module' => 'node',
   );
@@ -219,6 +233,7 @@ function ik_roles_and_permissions_user_default_permissions() {
     'name' => 'create static_page content',
     'roles' => array(
       'administrator' => 'administrator',
+      'superuser' => 'superuser',
     ),
     'module' => 'node',
   );
@@ -228,6 +243,7 @@ function ik_roles_and_permissions_user_default_permissions() {
     'name' => 'delete any channel content',
     'roles' => array(
       'administrator' => 'administrator',
+      'superuser' => 'superuser',
     ),
     'module' => 'node',
   );
@@ -237,6 +253,7 @@ function ik_roles_and_permissions_user_default_permissions() {
     'name' => 'delete any department content',
     'roles' => array(
       'administrator' => 'administrator',
+      'superuser' => 'superuser',
     ),
     'module' => 'node',
   );
@@ -246,6 +263,7 @@ function ik_roles_and_permissions_user_default_permissions() {
     'name' => 'delete any media_rss_slide_import content',
     'roles' => array(
       'administrator' => 'administrator',
+      'superuser' => 'superuser',
     ),
     'module' => 'node',
   );
@@ -255,6 +273,7 @@ function ik_roles_and_permissions_user_default_permissions() {
     'name' => 'delete any organisation content',
     'roles' => array(
       'administrator' => 'administrator',
+      'superuser' => 'superuser',
     ),
     'module' => 'node',
   );
@@ -264,6 +283,7 @@ function ik_roles_and_permissions_user_default_permissions() {
     'name' => 'delete any slide content',
     'roles' => array(
       'administrator' => 'administrator',
+      'superuser' => 'superuser',
     ),
     'module' => 'node',
   );
@@ -273,6 +293,7 @@ function ik_roles_and_permissions_user_default_permissions() {
     'name' => 'delete any static_page content',
     'roles' => array(
       'administrator' => 'administrator',
+      'superuser' => 'superuser',
     ),
     'module' => 'node',
   );
@@ -283,6 +304,7 @@ function ik_roles_and_permissions_user_default_permissions() {
     'roles' => array(
       'administrator' => 'administrator',
       'editor' => 'editor',
+      'superuser' => 'superuser',
     ),
     'module' => 'node',
   );
@@ -292,6 +314,7 @@ function ik_roles_and_permissions_user_default_permissions() {
     'name' => 'delete own department content',
     'roles' => array(
       'administrator' => 'administrator',
+      'superuser' => 'superuser',
     ),
     'module' => 'node',
   );
@@ -303,6 +326,7 @@ function ik_roles_and_permissions_user_default_permissions() {
       'administrator' => 'administrator',
       'contributor' => 'contributor',
       'editor' => 'editor',
+      'superuser' => 'superuser',
     ),
     'module' => 'node',
   );
@@ -312,6 +336,7 @@ function ik_roles_and_permissions_user_default_permissions() {
     'name' => 'delete own organisation content',
     'roles' => array(
       'administrator' => 'administrator',
+      'superuser' => 'superuser',
     ),
     'module' => 'node',
   );
@@ -323,6 +348,7 @@ function ik_roles_and_permissions_user_default_permissions() {
       'administrator' => 'administrator',
       'contributor' => 'contributor',
       'editor' => 'editor',
+      'superuser' => 'superuser',
     ),
     'module' => 'node',
   );
@@ -332,6 +358,7 @@ function ik_roles_and_permissions_user_default_permissions() {
     'name' => 'delete own static_page content',
     'roles' => array(
       'administrator' => 'administrator',
+      'superuser' => 'superuser',
     ),
     'module' => 'node',
   );
@@ -341,6 +368,7 @@ function ik_roles_and_permissions_user_default_permissions() {
     'name' => 'delete terms in 1',
     'roles' => array(
       'administrator' => 'administrator',
+      'superuser' => 'superuser',
     ),
     'module' => 'taxonomy',
   );
@@ -350,6 +378,7 @@ function ik_roles_and_permissions_user_default_permissions() {
     'name' => 'delete terms in 2',
     'roles' => array(
       'administrator' => 'administrator',
+      'superuser' => 'superuser',
     ),
     'module' => 'taxonomy',
   );
@@ -368,6 +397,7 @@ function ik_roles_and_permissions_user_default_permissions() {
     'name' => 'download files',
     'roles' => array(
       'administrator' => 'administrator',
+      'superuser' => 'superuser',
     ),
     'module' => 'media_browser_plus',
   );
@@ -377,6 +407,7 @@ function ik_roles_and_permissions_user_default_permissions() {
     'name' => 'edit any channel content',
     'roles' => array(
       'administrator' => 'administrator',
+      'superuser' => 'superuser',
     ),
     'module' => 'node',
   );
@@ -386,6 +417,7 @@ function ik_roles_and_permissions_user_default_permissions() {
     'name' => 'edit any department content',
     'roles' => array(
       'administrator' => 'administrator',
+      'superuser' => 'superuser',
     ),
     'module' => 'node',
   );
@@ -395,6 +427,7 @@ function ik_roles_and_permissions_user_default_permissions() {
     'name' => 'edit any media_rss_slide_import content',
     'roles' => array(
       'administrator' => 'administrator',
+      'superuser' => 'superuser',
     ),
     'module' => 'node',
   );
@@ -404,6 +437,7 @@ function ik_roles_and_permissions_user_default_permissions() {
     'name' => 'edit any organisation content',
     'roles' => array(
       'administrator' => 'administrator',
+      'superuser' => 'superuser',
     ),
     'module' => 'node',
   );
@@ -413,6 +447,7 @@ function ik_roles_and_permissions_user_default_permissions() {
     'name' => 'edit any slide content',
     'roles' => array(
       'administrator' => 'administrator',
+      'superuser' => 'superuser',
     ),
     'module' => 'node',
   );
@@ -422,6 +457,7 @@ function ik_roles_and_permissions_user_default_permissions() {
     'name' => 'edit any static_page content',
     'roles' => array(
       'administrator' => 'administrator',
+      'superuser' => 'superuser',
     ),
     'module' => 'node',
   );
@@ -432,6 +468,7 @@ function ik_roles_and_permissions_user_default_permissions() {
     'roles' => array(
       'administrator' => 'administrator',
       'editor' => 'editor',
+      'superuser' => 'superuser',
     ),
     'module' => 'node',
   );
@@ -450,6 +487,7 @@ function ik_roles_and_permissions_user_default_permissions() {
     'name' => 'edit own department content',
     'roles' => array(
       'administrator' => 'administrator',
+      'superuser' => 'superuser',
     ),
     'module' => 'node',
   );
@@ -461,6 +499,7 @@ function ik_roles_and_permissions_user_default_permissions() {
       'administrator' => 'administrator',
       'contributor' => 'contributor',
       'editor' => 'editor',
+      'superuser' => 'superuser',
     ),
     'module' => 'node',
   );
@@ -470,6 +509,7 @@ function ik_roles_and_permissions_user_default_permissions() {
     'name' => 'edit own organisation content',
     'roles' => array(
       'administrator' => 'administrator',
+      'superuser' => 'superuser',
     ),
     'module' => 'node',
   );
@@ -481,6 +521,7 @@ function ik_roles_and_permissions_user_default_permissions() {
       'administrator' => 'administrator',
       'contributor' => 'contributor',
       'editor' => 'editor',
+      'superuser' => 'superuser',
     ),
     'module' => 'node',
   );
@@ -490,6 +531,7 @@ function ik_roles_and_permissions_user_default_permissions() {
     'name' => 'edit own static_page content',
     'roles' => array(
       'administrator' => 'administrator',
+      'superuser' => 'superuser',
     ),
     'module' => 'node',
   );
@@ -499,6 +541,7 @@ function ik_roles_and_permissions_user_default_permissions() {
     'name' => 'edit terms in 1',
     'roles' => array(
       'administrator' => 'administrator',
+      'superuser' => 'superuser',
     ),
     'module' => 'taxonomy',
   );
@@ -508,6 +551,7 @@ function ik_roles_and_permissions_user_default_permissions() {
     'name' => 'edit terms in 2',
     'roles' => array(
       'administrator' => 'administrator',
+      'superuser' => 'superuser',
     ),
     'module' => 'taxonomy',
   );
@@ -528,6 +572,7 @@ function ik_roles_and_permissions_user_default_permissions() {
       'administrator' => 'administrator',
       'contributor' => 'contributor',
       'editor' => 'editor',
+      'superuser' => 'superuser',
     ),
     'module' => 'media_browser_plus',
   );
@@ -538,6 +583,7 @@ function ik_roles_and_permissions_user_default_permissions() {
     'roles' => array(
       'administrator' => 'administrator',
       'editor' => 'editor',
+      'superuser' => 'superuser',
     ),
     'module' => 'media',
   );
@@ -549,6 +595,7 @@ function ik_roles_and_permissions_user_default_permissions() {
       'administrator' => 'administrator',
       'contributor' => 'contributor',
       'editor' => 'editor',
+      'superuser' => 'superuser',
     ),
     'module' => 'feeds',
   );
@@ -560,6 +607,7 @@ function ik_roles_and_permissions_user_default_permissions() {
       'administrator' => 'administrator',
       'contributor' => 'contributor',
       'editor' => 'editor',
+      'superuser' => 'superuser',
     ),
     'module' => 'media_browser_plus',
   );
@@ -571,6 +619,7 @@ function ik_roles_and_permissions_user_default_permissions() {
       'administrator' => 'administrator',
       'contributor' => 'contributor',
       'editor' => 'editor',
+      'superuser' => 'superuser',
     ),
     'module' => 'media_browser_plus',
   );
@@ -589,6 +638,9 @@ function ik_roles_and_permissions_user_default_permissions() {
     'name' => 'preview media',
     'roles' => array(
       'administrator' => 'administrator',
+      'contributor' => 'contributor',
+      'editor' => 'editor',
+      'superuser' => 'superuser',
     ),
     'module' => 'media_browser_plus',
   );
@@ -598,6 +650,7 @@ function ik_roles_and_permissions_user_default_permissions() {
     'name' => 'publish any channel content',
     'roles' => array(
       'administrator' => 'administrator',
+      'superuser' => 'superuser',
     ),
     'module' => 'publishcontent',
   );
@@ -607,6 +660,7 @@ function ik_roles_and_permissions_user_default_permissions() {
     'name' => 'publish any content',
     'roles' => array(
       'administrator' => 'administrator',
+      'superuser' => 'superuser',
     ),
     'module' => 'publishcontent',
   );
@@ -616,6 +670,7 @@ function ik_roles_and_permissions_user_default_permissions() {
     'name' => 'publish any department content',
     'roles' => array(
       'administrator' => 'administrator',
+      'superuser' => 'superuser',
     ),
     'module' => 'publishcontent',
   );
@@ -625,6 +680,7 @@ function ik_roles_and_permissions_user_default_permissions() {
     'name' => 'publish any media_rss_slide_import content',
     'roles' => array(
       'administrator' => 'administrator',
+      'superuser' => 'superuser',
     ),
     'module' => 'publishcontent',
   );
@@ -634,6 +690,7 @@ function ik_roles_and_permissions_user_default_permissions() {
     'name' => 'publish any organisation content',
     'roles' => array(
       'administrator' => 'administrator',
+      'superuser' => 'superuser',
     ),
     'module' => 'publishcontent',
   );
@@ -643,6 +700,7 @@ function ik_roles_and_permissions_user_default_permissions() {
     'name' => 'publish any slide content',
     'roles' => array(
       'administrator' => 'administrator',
+      'superuser' => 'superuser',
     ),
     'module' => 'publishcontent',
   );
@@ -652,6 +710,7 @@ function ik_roles_and_permissions_user_default_permissions() {
     'name' => 'publish any static_page content',
     'roles' => array(
       'administrator' => 'administrator',
+      'superuser' => 'superuser',
     ),
     'module' => 'publishcontent',
   );
@@ -663,6 +722,7 @@ function ik_roles_and_permissions_user_default_permissions() {
       'administrator' => 'administrator',
       'contributor' => 'contributor',
       'editor' => 'editor',
+      'superuser' => 'superuser',
     ),
     'module' => 'publishcontent',
   );
@@ -672,6 +732,7 @@ function ik_roles_and_permissions_user_default_permissions() {
     'name' => 'publish editable department content',
     'roles' => array(
       'administrator' => 'administrator',
+      'superuser' => 'superuser',
     ),
     'module' => 'publishcontent',
   );
@@ -683,6 +744,7 @@ function ik_roles_and_permissions_user_default_permissions() {
       'administrator' => 'administrator',
       'contributor' => 'contributor',
       'editor' => 'editor',
+      'superuser' => 'superuser',
     ),
     'module' => 'publishcontent',
   );
@@ -692,6 +754,7 @@ function ik_roles_and_permissions_user_default_permissions() {
     'name' => 'publish editable organisation content',
     'roles' => array(
       'administrator' => 'administrator',
+      'superuser' => 'superuser',
     ),
     'module' => 'publishcontent',
   );
@@ -703,6 +766,7 @@ function ik_roles_and_permissions_user_default_permissions() {
       'administrator' => 'administrator',
       'contributor' => 'contributor',
       'editor' => 'editor',
+      'superuser' => 'superuser',
     ),
     'module' => 'publishcontent',
   );
@@ -712,6 +776,7 @@ function ik_roles_and_permissions_user_default_permissions() {
     'name' => 'publish editable static_page content',
     'roles' => array(
       'administrator' => 'administrator',
+      'superuser' => 'superuser',
     ),
     'module' => 'publishcontent',
   );
@@ -721,6 +786,7 @@ function ik_roles_and_permissions_user_default_permissions() {
     'name' => 'publish own channel content',
     'roles' => array(
       'administrator' => 'administrator',
+      'superuser' => 'superuser',
     ),
     'module' => 'publishcontent',
   );
@@ -730,6 +796,7 @@ function ik_roles_and_permissions_user_default_permissions() {
     'name' => 'publish own department content',
     'roles' => array(
       'administrator' => 'administrator',
+      'superuser' => 'superuser',
     ),
     'module' => 'publishcontent',
   );
@@ -739,6 +806,7 @@ function ik_roles_and_permissions_user_default_permissions() {
     'name' => 'publish own media_rss_slide_import content',
     'roles' => array(
       'administrator' => 'administrator',
+      'superuser' => 'superuser',
     ),
     'module' => 'publishcontent',
   );
@@ -748,6 +816,7 @@ function ik_roles_and_permissions_user_default_permissions() {
     'name' => 'publish own organisation content',
     'roles' => array(
       'administrator' => 'administrator',
+      'superuser' => 'superuser',
     ),
     'module' => 'publishcontent',
   );
@@ -759,6 +828,7 @@ function ik_roles_and_permissions_user_default_permissions() {
       'administrator' => 'administrator',
       'contributor' => 'contributor',
       'editor' => 'editor',
+      'superuser' => 'superuser',
     ),
     'module' => 'publishcontent',
   );
@@ -768,6 +838,7 @@ function ik_roles_and_permissions_user_default_permissions() {
     'name' => 'publish own static_page content',
     'roles' => array(
       'administrator' => 'administrator',
+      'superuser' => 'superuser',
     ),
     'module' => 'publishcontent',
   );
@@ -779,6 +850,7 @@ function ik_roles_and_permissions_user_default_permissions() {
       'administrator' => 'administrator',
       'contributor' => 'contributor',
       'editor' => 'editor',
+      'superuser' => 'superuser',
     ),
     'module' => 'scheduler',
   );
@@ -797,6 +869,7 @@ function ik_roles_and_permissions_user_default_permissions() {
     'name' => 'unlock mrss_feed_importer feeds',
     'roles' => array(
       'administrator' => 'administrator',
+      'superuser' => 'superuser',
     ),
     'module' => 'feeds',
   );
@@ -806,6 +879,7 @@ function ik_roles_and_permissions_user_default_permissions() {
     'name' => 'unpublish any channel content',
     'roles' => array(
       'administrator' => 'administrator',
+      'superuser' => 'superuser',
     ),
     'module' => 'publishcontent',
   );
@@ -815,6 +889,7 @@ function ik_roles_and_permissions_user_default_permissions() {
     'name' => 'unpublish any content',
     'roles' => array(
       'administrator' => 'administrator',
+      'superuser' => 'superuser',
     ),
     'module' => 'publishcontent',
   );
@@ -824,6 +899,7 @@ function ik_roles_and_permissions_user_default_permissions() {
     'name' => 'unpublish any department content',
     'roles' => array(
       'administrator' => 'administrator',
+      'superuser' => 'superuser',
     ),
     'module' => 'publishcontent',
   );
@@ -833,6 +909,7 @@ function ik_roles_and_permissions_user_default_permissions() {
     'name' => 'unpublish any media_rss_slide_import content',
     'roles' => array(
       'administrator' => 'administrator',
+      'superuser' => 'superuser',
     ),
     'module' => 'publishcontent',
   );
@@ -842,6 +919,7 @@ function ik_roles_and_permissions_user_default_permissions() {
     'name' => 'unpublish any organisation content',
     'roles' => array(
       'administrator' => 'administrator',
+      'superuser' => 'superuser',
     ),
     'module' => 'publishcontent',
   );
@@ -851,6 +929,7 @@ function ik_roles_and_permissions_user_default_permissions() {
     'name' => 'unpublish any slide content',
     'roles' => array(
       'administrator' => 'administrator',
+      'superuser' => 'superuser',
     ),
     'module' => 'publishcontent',
   );
@@ -860,6 +939,7 @@ function ik_roles_and_permissions_user_default_permissions() {
     'name' => 'unpublish any static_page content',
     'roles' => array(
       'administrator' => 'administrator',
+      'superuser' => 'superuser',
     ),
     'module' => 'publishcontent',
   );
@@ -871,6 +951,7 @@ function ik_roles_and_permissions_user_default_permissions() {
       'administrator' => 'administrator',
       'contributor' => 'contributor',
       'editor' => 'editor',
+      'superuser' => 'superuser',
     ),
     'module' => 'publishcontent',
   );
@@ -880,6 +961,7 @@ function ik_roles_and_permissions_user_default_permissions() {
     'name' => 'unpublish editable department content',
     'roles' => array(
       'administrator' => 'administrator',
+      'superuser' => 'superuser',
     ),
     'module' => 'publishcontent',
   );
@@ -891,6 +973,7 @@ function ik_roles_and_permissions_user_default_permissions() {
       'administrator' => 'administrator',
       'contributor' => 'contributor',
       'editor' => 'editor',
+      'superuser' => 'superuser',
     ),
     'module' => 'publishcontent',
   );
@@ -900,6 +983,7 @@ function ik_roles_and_permissions_user_default_permissions() {
     'name' => 'unpublish editable organisation content',
     'roles' => array(
       'administrator' => 'administrator',
+      'superuser' => 'superuser',
     ),
     'module' => 'publishcontent',
   );
@@ -911,6 +995,7 @@ function ik_roles_and_permissions_user_default_permissions() {
       'administrator' => 'administrator',
       'contributor' => 'contributor',
       'editor' => 'editor',
+      'superuser' => 'superuser',
     ),
     'module' => 'publishcontent',
   );
@@ -920,6 +1005,7 @@ function ik_roles_and_permissions_user_default_permissions() {
     'name' => 'unpublish editable static_page content',
     'roles' => array(
       'administrator' => 'administrator',
+      'superuser' => 'superuser',
     ),
     'module' => 'publishcontent',
   );
@@ -929,6 +1015,7 @@ function ik_roles_and_permissions_user_default_permissions() {
     'name' => 'unpublish own channel content',
     'roles' => array(
       'administrator' => 'administrator',
+      'superuser' => 'superuser',
     ),
     'module' => 'publishcontent',
   );
@@ -938,6 +1025,7 @@ function ik_roles_and_permissions_user_default_permissions() {
     'name' => 'unpublish own department content',
     'roles' => array(
       'administrator' => 'administrator',
+      'superuser' => 'superuser',
     ),
     'module' => 'publishcontent',
   );
@@ -947,6 +1035,7 @@ function ik_roles_and_permissions_user_default_permissions() {
     'name' => 'unpublish own media_rss_slide_import content',
     'roles' => array(
       'administrator' => 'administrator',
+      'superuser' => 'superuser',
     ),
     'module' => 'publishcontent',
   );
@@ -956,6 +1045,7 @@ function ik_roles_and_permissions_user_default_permissions() {
     'name' => 'unpublish own organisation content',
     'roles' => array(
       'administrator' => 'administrator',
+      'superuser' => 'superuser',
     ),
     'module' => 'publishcontent',
   );
@@ -967,6 +1057,7 @@ function ik_roles_and_permissions_user_default_permissions() {
       'administrator' => 'administrator',
       'contributor' => 'contributor',
       'editor' => 'editor',
+      'superuser' => 'superuser',
     ),
     'module' => 'publishcontent',
   );
@@ -976,6 +1067,7 @@ function ik_roles_and_permissions_user_default_permissions() {
     'name' => 'unpublish own static_page content',
     'roles' => array(
       'administrator' => 'administrator',
+      'superuser' => 'superuser',
     ),
     'module' => 'publishcontent',
   );
@@ -987,6 +1079,7 @@ function ik_roles_and_permissions_user_default_permissions() {
       'administrator' => 'administrator',
       'contributor' => 'contributor',
       'editor' => 'editor',
+      'superuser' => 'superuser',
     ),
     'module' => 'media_browser_plus',
   );
@@ -998,6 +1091,7 @@ function ik_roles_and_permissions_user_default_permissions() {
       'administrator' => 'administrator',
       'contributor' => 'contributor',
       'editor' => 'editor',
+      'superuser' => 'superuser',
     ),
     'module' => 'filter',
   );
@@ -1030,6 +1124,7 @@ function ik_roles_and_permissions_user_default_permissions() {
       'administrator' => 'administrator',
       'contributor' => 'contributor',
       'editor' => 'editor',
+      'superuser' => 'superuser',
     ),
     'module' => 'node',
   );
