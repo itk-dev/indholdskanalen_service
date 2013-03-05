@@ -8,7 +8,6 @@ project = ik_default_settings
 dependencies[] = ckeditor_link
 dependencies[] = ctools
 dependencies[] = features
-dependencies[] = itkore_text_formats
 dependencies[] = locale
 dependencies[] = media
 dependencies[] = menu
