@@ -1,0 +1,144 @@
+// _ik.base.scss
+
+html,
+body,
+#container {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+body > #container {
+  height: auto;
+  min-height: 100%;
+}
+
+body {
+  @include box-sizing('border-box');
+}
+
+// -----------------------------------------------------------------------------
+// General styling
+// -----------------------------------------------------------------------------
+//
+
+.more-link {
+  a {
+    @extend .button;
+  } 
+}
+
+.button {
+  &.start {
+    @extend %button-green;
+  }
+}
+
+input.form-submit {
+  @extend %button-gray;
+
+  &#edit-submit {
+    @extend %button-green;
+  }
+
+  &#edit-preview {
+    @extend %button-orange;
+  }
+
+  &#edit-delete {
+    @extend %button-red;
+  }
+}
+
+#logo-container {
+  padding: $default-spacing;
+  background-color: $logo-bg-color;
+}
+
+#footer {
+  @include box-sizing(border-box);
+
+  clear: both;
+  position: relative;
+  z-index: 10;
+  height: 6em;
+  margin-top: -6em;
+  width: 100%;
+  padding: 20px 20px 40px 20px;
+  background-color: $logo-bg-color;
+  color: $white;
+
+  a:link,
+  a:visited,
+  a:active{
+    color: $white;
+    text-decoration: underline;
+  }
+
+  a:hover {
+    color: $link-color;
+  }
+}
+
+// -----------------------------------------------------------------------------
+// Media module
+// -----------------------------------------------------------------------------
+//
+
+.media-widget {
+  .button {
+    @include border-radius(4px);
+    
+    padding: 2px 4px;
+    font-size: $theme-font-size / 1.3;
+  }
+}
+
+// -----------------------------------------------------------------------------
+// Channel node view and edit
+// -----------------------------------------------------------------------------
+//
+
+.ik-channel-filter-remove {
+  &.button {
+    @extend %button-red;
+    @include border-radius(4px);
+    
+    padding: 2px 4px;
+    font-size: $theme-font-size / 1.3;
+  }
+}
+
+.ik-channel-filter-add-button {
+  &.button {
+    @extend %button-gray;
+  }
+}
+
+.pane-node-field-channel-preview .ik-filter-preview-wrapper img {
+  margin: 0 $default-spacing $default-spacing 0;
+}
+
+// -----------------------------------------------------------------------------
+// Slide node view and edit
+// -----------------------------------------------------------------------------
+//
+
+.user-picture {
+  display: none;
+}
+
+.submitted {
+  margin-bottom: $default-spacing;
+}
+
+.field-type-ik-slide-preview {
+  .field-label {
+    font-size: $theme-font-size * 1.5;
+    margin-bottom: $default-spacing / 2;
+  }
+
+  img {
+    max-width: 100%;
+  }
+}

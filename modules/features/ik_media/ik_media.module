@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the IK media feature.
+ */
+
+include_once 'ik_media.features.inc';

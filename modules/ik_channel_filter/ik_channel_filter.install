@@ -1,0 +1,23 @@
+<?php
+
+/**
+ * @file
+ *
+ */
+
+/**
+ * Implements hook_field_schema().
+ */
+function ik_channel_filter_field_schema($field) {
+  $columns = array(
+    'data' => array(
+      'type' => 'text',
+      'not null' => TRUE,
+    ),
+  );
+
+  return array(
+    'columns' => $columns,
+    'indexes' => array(),
+  );
+}

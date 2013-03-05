@@ -1,0 +1,446 @@
+/*
+* Layouts default styling
+*/
+#pure-template{
+  display: none;
+}
+#slide-container {
+  width: 100%;
+  height: 100%;
+
+  #pure-template {
+    display: block;
+  }
+}
+
+.slide {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+
+  .image-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    
+    a {
+      pointer-events: none;
+      cursor: default;
+    }
+  }
+
+  .text-wrapper {
+    @include box-sizing(border-box);
+
+    z-index: 19999;
+    padding: $textbox-padding * 2;
+    position: absolute;
+  }
+
+  .text-container {
+    @include box-sizing(border-box);
+    @include border-radius($box-border-radius);
+
+    z-index: 20000;
+    overflow: hidden;
+    position: relative;
+    background-color: $textbox-color;
+
+    .heading-container {
+      @include box-sizing(border-box);
+      padding: $textbox-padding;
+    }
+
+    .slide-heading {
+      display: block;
+      width: 100%;
+      margin-bottom: $textbox-padding;
+      font-family: $font-family-heading;
+      font-size: $heading-font-size;
+      text-transform: uppercase;
+    }
+
+    .divider {
+      width:10%;
+      border-bottom: 0.2em solid $font-color;
+      @include rem('margin-bottom', $default-spacing / 2);
+    }
+
+    .slide-subheading {
+      display: block;
+      width: 100%;
+      font-family: $font-family-subheading;
+      font-size: $subheading-font-size;
+    }
+
+    .slide-text {
+      @include box-sizing(border-box);
+
+      display: block;
+      width: 100%;
+      padding: $textbox-padding;
+      font-size: $textbox-font-size;
+      line-height: $textbox-font-size * 1.1;
+    }
+  }
+
+  .logo-container {
+    z-index: 21000;
+    position:absolute;
+    bottom: $default-spacing;
+    right: $default-spacing * 2;
+
+    img {
+      max-width: 250px;
+    }
+  }
+
+}
+
+/*
+* Media queries
+*/
+@media (max-width: 1300px) {
+  body {
+    font-size: $theme-font-size / 1.5;
+    color: #f517d5!important;
+
+    &.slide-preview {
+      font-size: $theme-font-size / 2;
+
+      .slide-heading {
+        font-size: $heading-font-size / 2!important;
+      }
+      .logo-container {
+        img {
+          max-width: 100px!important;
+        }
+      }
+    }
+
+    .slide-heading {
+      font-size: $heading-font-size / 1.5!important;
+    }
+    .slide-text,
+    .heading-container {
+      padding: $textbox-padding / 1.2!important;
+    }
+  }
+
+  .slide .logo-container {
+    img {
+      max-width: 175px;
+    }
+  }
+}
+
+@media (max-width: 800px) {
+  body {
+    font-size: $theme-font-size / 2;
+    color: #ff6600!important;
+
+    &.slide-preview {
+      font-size: $theme-font-size / 2.5;
+
+      .slide-heading {
+        font-size: $heading-font-size / 2.5!important;
+      }
+      .logo-container {
+        img {
+          max-width: 75px!important;
+        }
+      }
+    }
+
+    .slide-heading {
+      font-size: $heading-font-size / 2!important;
+    }
+    .slide-text,
+    .heading-container {
+      padding: $textbox-padding / 1.5!important;
+    }
+  }
+
+  .slide .logo-container {
+    img {
+      max-width: 125px;
+    }
+  }
+}
+
+@media (max-width: 500px) {
+  body {
+    font-size: $theme-font-size / 2.5;
+    color: #5df51b!important;
+
+    &.slide-preview {
+      font-size: $theme-font-size / 3;
+      
+      .slide-heading {
+        font-size: $heading-font-size / 3!important;
+      }
+      .logo-container {
+        img {
+          max-width: 50px!important;
+        }
+      }
+    }
+
+    .slide-heading {
+      font-size: $heading-font-size / 2.5!important;
+    }
+    .slide-text,
+    .heading-container {
+      padding: $textbox-padding / 1.8!important;
+    }
+  }
+
+  .slide .logo-container {
+    img {
+      max-width: 75px;
+    }
+  }
+}
+
+/*
+* Layout 1
+* Text to the left
+*
+* ---------------------------
+* |         |               |
+* |    T    |               |
+* |    E    |               |
+* |    X    |               |
+* |    T    |               |
+* |         |               |
+* |         |               |
+* ---------------------------
+*
+*/
+
+.layout-1 {
+  
+  .text-wrapper {
+    top: 0;
+    left: 0;
+    width: 35%;
+    height: 100%;
+  }
+
+  .text-container {
+    width: 100%;
+    height: 100%;
+  }
+
+  .divider {
+    display:none;
+  }
+}
+
+/*
+* Layout 2
+* Text in top
+*
+* ---------------------------
+* |-------------------------|
+* |        text box         |
+* |-------------------------|
+* |                         |
+* |                         |
+* |                         |
+* |                         |
+* ---------------------------
+*
+*/
+
+.layout-2 {
+
+  .text-wrapper {
+    top: 0;
+    width: 100%;
+  }
+
+  .text-container {
+    width: 100%;
+
+    .heading-container {
+      width: 49.5%;
+      float: left;
+    }
+
+    .slide-heading {
+      @include rem('margin-bottom', $default-spacing / 2);
+    }
+
+    .slide-text {
+      width: 49.5%;
+      float: left;
+    }
+
+    .divider {
+      display:none;
+    }
+  }
+}
+
+/*
+* Layout 3
+* Text in bottom
+*
+* ---------------------------
+* |                         |
+* |                         |
+* |                         |
+* |                         |
+* |-------------------------|
+* |        text box         |
+* |-------------------------|
+* ---------------------------
+*
+*/
+
+.layout-3 {
+
+  .text-wrapper {
+    bottom: 0;
+    width: 100%;
+  }
+
+  .text-container {
+    width: 100%;
+
+    .heading-container {
+      width: 49.5%;
+      float: left;
+    }
+
+    .slide-heading {
+      @include rem('margin-bottom', $default-spacing / 2);
+    }
+
+    .slide-text {
+      width: 49.5%;
+      float: left;
+    }
+
+    .divider {
+      display:none;
+    }
+  }
+  
+  .logo-container {
+    bottom: auto;
+    top: $default-spacing;
+  }
+}
+
+/*
+* Layout 4
+* Text to the right
+*
+* ---------------------------
+* |               |         |
+* |               |    T    |
+* |               |    E    |
+* |               |    X    |
+* |               |    T    |
+* |               |         |
+* |               |         |
+* ---------------------------
+*
+*/
+
+.layout-4 {
+  
+  .text-wrapper {
+    top: 0;
+    right: 0;
+    width: 35%;
+    height: 100%;
+  }
+
+  .text-container {
+    width: 100%;
+    height: 100%;
+  }
+
+  .divider {
+    display:none;
+  }
+
+  .logo-container {
+    bottom: auto;
+    right: auto;
+    left: $default-spacing * 2;
+    top: $default-spacing;
+  }
+}
+
+/*
+* Layout 5
+* Image only
+*
+* ---------------------------
+* |                         |
+* |                         |
+* |                         |
+* |                         |
+* |                         |
+* |                         |
+* |                         |
+* ---------------------------
+*
+*/
+
+.layout-5 {
+  .text-wrapper {
+    display: none;
+  }
+}
+
+/*
+* Layout 6
+* Text only
+*
+* ---------------------------
+* |                         |
+* |                         |
+* |                         |
+* |        Textbox          |
+* |                         |
+* |                         |
+* |                         |
+* ---------------------------
+*
+*/
+
+.layout-6 {
+  .image-container {
+    display: none;
+  }
+
+  .text-wrapper {
+    padding: 0;
+  }
+
+  .text-container {
+    @include border-radius(0);
+  }
+
+  .text-wrapper,
+  .text-container {
+    width: 100%;
+    height: 100%;
+  }
+
+  .divider {
+    display:none;
+  }
+}
+

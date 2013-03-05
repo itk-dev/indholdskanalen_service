@@ -1,0 +1,335 @@
+<?php
+/**
+ * @file
+ *
+ */
+
+/**
+ * Implements hook_menu().
+ *
+ */
+function ik_frontend_menu() {
+  $items = array();
+
+  $items['channels/%/run'] = array(
+    'title' => 'Start slideshow channel',
+    'page callback' => 'ik_frontend_run',
+    'page arguments' => array(1),
+    'access arguments' => array('access content'),
+    'type' => MENU_CALLBACK,
+  );
+
+  $items['channels/%/update'] = array(
+    'title' => 'Request updated slide information',
+    'page callback' => 'ik_frontend_update',
+    'page arguments' => array(1),
+    'access arguments' => array('access content'),
+    'type' => MENU_CALLBACK,
+  );
+
+  $items['channels/%/slide/%'] = array(
+    'title' => 'Request slide information',
+    'page callback' => 'ik_frontend_fetch_slide',
+    'page arguments' => array(3),
+    'access arguments' => array('access content'),
+    'type' => MENU_CALLBACK,
+  );
+
+  return $items;
+}
+
+/**
+ * Implements hook_theme().
+ *
+ */
+function ik_frontend_theme() {
+  return array(
+    'ik_frontend_buttons' => array(
+      'variables' => array('title' => NULL, 'buttons' => NULL),
+      'template' => 'templates/ik-frontend-buttons',
+      'file' => 'ik_frontend.theme.inc',
+    ),
+    'ik_frontend' => array(
+      'varibles' => array('token' => NULL),
+      'template' => 'templates/ik-frontend',
+      'file' => 'ik_frontend.theme.inc',
+    ),
+  );
+}
+
+/**
+ * Implements hook_flush_caches().
+ */
+function ik_frontend_flush_caches() {
+  return array('cache_ik_frontend');
+}
+
+/**
+ * Implements hook_ctools_plugin_directory().
+ *
+ */
+function ik_frontend_ctools_plugin_directory($module, $plugin) {
+  if ($module == 'ctools' && !empty($plugin)) {
+    return "plugins/$plugin";
+  }
+}
+
+/**
+ * Implements hook_node_insert().
+ *
+ * It's a funny place to have the node hook, but we need this mapping in the
+ * front end to fast fetch channels.
+ */
+function ik_frontend_node_insert($node) {
+  if ($node->type == 'channel') {
+    $token = ik_channel_filter_token($node->nid);
+    $record = array('nid' => $node->nid, 'token' => $token);
+    drupal_write_record('ik_channel_mapping', $record);
+  }
+  
+  /**
+   * @TODO: create screenshot. 
+   */
+
+}
+
+/**
+ * Implements hook_node_delete().
+ *
+ * Make sure that we remove old channel tokens.
+ */
+function ik_frontend_node_delete($node) {
+  if ($node->type == 'channel') {
+    db_delete('ik_channel_mapping')->condition('nid', $node->nid)->execute();
+  }
+}
+
+/**
+ * Implements hook_node_update().
+ */
+function ik_frontend_node_update($node) {
+  if ($node->type == 'channel') {
+    // Remove node for channel cache.
+    $token = ik_channel_filter_token($node->nid);
+    cache_clear_all('channel_' . $token, 'cache_ik_frontend');
+  }
+  if ($node->type == 'slide') {
+    // Remove node from slids cache.
+//    cache_clear_all('slide_' . $node->nid, 'cache_ik_frontend');
+    
+   /**
+    * @TODO: create screenshot. 
+    */
+
+  }
+}
+
+/**
+ * Get channel nid based on channel token mapping.
+ *
+ * @param string $token
+ *  Token representing a given channel.
+ * @return int
+ *  Channel node id.
+ */
+function ik_frontend_find_channel_nid($token) {
+  $nid = db_select('ik_channel_mapping', 'ikcm')
+    ->fields('ikcm', array('nid'))
+    ->condition('token', $token)
+    ->execute()
+    ->fetchCol();
+  return $nid[0];
+}
+
+/**
+ * Helper function that fetches basic information about a channels slides based
+ * on the channels filter selections.
+ *
+ * @param type $entity
+ *  Channel node entity.
+ * @return array $slides
+ *  Array of slides with nid and title for each.
+ *
+ */
+function ik_frontend_get_slides($token, $entity) {
+  // Use frontend cache, if available.
+  if ($cache = cache_get('channel_' . $token, 'cache_ik_frontend') && $cache->expire > REQUEST_TIME) {
+      $slides = $cache->data;
+  }
+  else {
+    $field = field_info_field('field_channel_preview');
+    $field_names = isset($field['settings']['ik_search']['types']) ? $field['settings']['ik_search']['types'] : array();
+    $values = array();
+    foreach ($field_names as $fieldname) {
+      $field = $entity->$fieldname;
+      if (!empty($field)) {
+        foreach ($field as $lang => $data) {
+          $values[$fieldname] = check_plain($data[0]['data']);
+        }
+      }
+    }
+
+    // Get basic slide information based on the filter.
+    module_load_include('inc', 'ik_channel_filter', 'ik_channel_filter.queries');
+    $slides = ik_channel_filter_get_slides($values);
+
+    // Save the content in the cache (removed on node update).
+    cache_set('channel_' . $token, $slides, 'cache_ik_frontend', REQUEST_TIME + 600);
+  }
+
+  return $slides;
+}
+
+/**
+ * Menu callback that returns the basic slide show page. The starting point of
+ * the frontend JS.
+ *
+ * @param string $token
+ *  Channel token.
+ */
+function ik_frontend_run($token) {
+  // Return skeleton for slide show (complet HTML page <header><content><footer>
+  // etc.).
+  echo theme('ik_frontend', array(
+    'settings' => array(
+      'token' => $token
+    ),
+    'start' => TRUE,
+  ));
+}
+
+/**
+ * Builds information about a given channels slids and returns slide ids (node
+ * ids) for the channel.
+ *
+ * @param string $token
+ *  Channel token.
+ */
+function ik_frontend_update($token) {
+  // Find filter values, by loading channel node (cache the result).
+  $nid = ik_frontend_find_channel_nid($token);
+  $entity = node_load($nid);
+
+  // Get values that shold be used to find slids.
+  $slides = ik_frontend_get_slides($token, $entity);
+
+  // JSON encode.
+  echo drupal_json_output($slides);
+}
+
+/**
+ * Builds a slide as a JSON object based on slide id and channel token.
+ *
+ * @param int $sid
+ *  Slide id (node id).
+ * @param bool $json
+ *  Should the function JSON encode the result (defaults to TRUE).
+ * @param bool $reset
+ *  Reset cache if TRUE. Default FALSE.
+ */
+function ik_frontend_fetch_slide($sid, $json = TRUE, $reset = FALSE) {
+  // Use frontend cache, if available.
+  if (!$reset && $cache = cache_get('slide_' . $sid, 'cache_ik_frontend')) {
+      $slide = $cache->data;
+  }
+  else {
+    // Load slide node content entity_load().
+    $entity = node_load($sid);
+
+    // Build slide with information found on the node.
+    $slide = new stdClass();
+    $slide->sid = $sid;
+    $slide->title = check_plain($entity->title);
+
+    // Color theme for textbox
+    $slide->color = '006027'; //Green as default
+    $slide->text_color = 'fff'; //White as default
+    if ($data = field_get_items('node', $entity, 'field_ik_slide_color_theme')) {
+      $color_theme = ik_frontend_select_color_theme($data[0]['value']);
+      $slide->color = $color_theme[1];
+      $slide->text_color = $color_theme[0];
+    }
+
+    $slide->logo = '';
+    if ($data = field_get_items('node', $entity, 'field_ik_slide_logo')) {
+      $slide->logo = image_style_url('slide_logoes', $data[0]['uri']);
+    }
+
+    $slide->transition = 'cubeSize';
+    if ($data = field_get_items('node', $entity, 'field_ik_slide_transition_effect')) {
+      $slide->transition = $data[0]['value'];
+    }
+
+    $slide->media = array();
+    if ($data = field_get_items('node', $entity, 'field_ik_slide_media')) {
+      foreach ($data as $media) {
+        $file = file_load($media['fid']);
+        $slide->media[$media['fid']] = image_style_url('slide_images', $file->uri);
+      }
+    }
+
+    $slide->subheading = '';
+    if ($data = field_get_items('node', $entity, 'field_ik_slide_subheading')) {
+      $slide->subheading = $data[0]['safe_value'];
+    }
+
+    $slide->text = '';
+    if ($data = field_get_items('node', $entity, 'field_ik_slide_text')) {
+      $slide->text = $data[0]['safe_value'];
+    }
+
+    // Convert exposure to mill sec.
+    $slide->exposure = 30000;
+    if ($data = field_get_items('node', $entity, 'field_ik_slide_exposure')) {
+      $slide->exposure = $data[0]['value'] * 1000;
+    }
+
+    // Amount of media on slide, used to calculate interval.
+    $slide->mediacount = count($slide->media);
+
+    $slide->layout = 'layout-1';
+    if ($data = field_get_items('node', $entity, 'field_layout')) {
+      $slide->layout = str_replace('_', '-', $data[0]['value']);
+    }
+
+    // Save the content in the cache (updated on node save).
+    cache_set('slide_' . $sid, $slide, 'cache_ik_frontend');
+  }
+
+  // Return the slide as JSON.
+  if ($json) {
+    drupal_json_output($slide);
+  }
+  else {
+    return $slide;
+  }
+}
+
+/**
+ * Returns an array with color codes for the selected color theme.
+ *
+ * @param int $value
+ *  Value from color theme field.
+ */
+function ik_frontend_select_color_theme($value) {
+  switch ($value) {
+    case 1:
+      $color_theme = array('fff','006027');
+      break;
+    case 2:
+      $color_theme = array('fff','004154');
+      break;
+    case 3:
+      $color_theme = array('fff','8a1002');
+      break;
+    case 4:
+      $color_theme = array('fff','707173');
+      break;
+    case 5:
+      $color_theme = array('000','f7a600');
+      break;
+    default:
+      $color_theme = array('fff','006027');
+  }
+  return $color_theme;
+}

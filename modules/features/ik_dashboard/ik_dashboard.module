@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the IK Dashboard feature.
+ */
+
+include_once 'ik_dashboard.features.inc';

@@ -1,0 +1,25 @@
+/*
+* Variables for use in stylesheets
+*/
+
+@import "compass/css3";
+
+$default-spacing: 20px;
+$base-font-size:  16px;
+$theme-font-size: 14px;
+
+$logo-bg-color: #1a1919;
+
+// -----------------------------------------------------------------------------
+// Standard color definitions
+// -----------------------------------------------------------------------------
+//
+$white:                 #fff    !default;
+$black:                 #000    !default;
+$gray:                  #d5d5d5 !default;
+$gray-light:            lighten($gray, 10%) !default;
+$gray-lighter:          lighten($gray, 15%) !default;
+$gray-dark:             darken($gray, 10%) !default;
+$gray-darker:           darken($gray, 25%) !default;
+
+$link-color: #0074BD;

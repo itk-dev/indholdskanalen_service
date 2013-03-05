@@ -1,0 +1,53 @@
+<?php
+/**
+ * @file
+ *
+ */
+
+/**
+ * Implements hook_field_schema().
+ */
+function ik_frontend_field_schema($field) {
+  $columns = array(
+    'data' => array(
+      'type' => 'text',
+      'not null' => TRUE,
+    ),
+  );
+
+  return array(
+    'columns' => $columns,
+    'indexes' => array(),
+  );
+}
+
+/**
+ * Implements hook_schema().
+ */
+function ik_frontend_schema() {
+  $schema= array();
+
+  $schema['ik_channel_mapping'] = array(
+    'fields' => array(
+      'nid' => array(
+        'description' => 'The primary identifier for a node.',
+        'type' => 'int',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+      ),
+      'token' => array(
+        'type' => 'varchar',
+        'length' => '255',
+        'not null' => FALSE,
+      ),
+    ),
+    'indexes' => array(
+      'token' => array('token'),
+    ),
+    'primary key' => array('nid'),
+  );
+
+  $schema['cache_ik_frontend'] = drupal_get_schema_unprocessed('system', 'cache');
+
+  return $schema;
+}

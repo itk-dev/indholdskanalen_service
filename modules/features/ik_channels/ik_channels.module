@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the ik_channels feature.
+ */
+
+include_once 'ik_channels.features.inc';

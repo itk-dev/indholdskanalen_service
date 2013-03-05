@@ -1,0 +1,26 @@
+/*
+* Variables for use in stylesheets
+*/
+
+@import "compass/css3";
+
+$default-spacing: 20px;
+$box-border-radius: 12px;
+
+$font-family: "Aller", "Helvetica Neue", Helvetica, Arial, sans-serif;
+$font-family-heading: "AllerBold", $font-family;
+$font-family-subheading: "AllerBold", $font-family;
+
+$base-font-size:  16px;
+$theme-font-size: 1em;
+// 72px
+$heading-font-size: $theme-font-size * 4.5;
+// 26px
+$subheading-font-size: $theme-font-size * 1.625;
+// 24px
+$textbox-font-size: $theme-font-size * 1.5;
+
+$font-color: #ffffff;
+$textbox-color: #006027;
+$textbox-padding: 20px;
+

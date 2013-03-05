@@ -1,0 +1,8 @@
+name = Indholdskanalen frontend.
+description = Defineds callback for the JS frontend.
+core = 7.x
+package = Indholdskanalen
+
+dependencies[] = panels
+dependencies[] = ik_channel_filter
+dependencies[] = ik_channels

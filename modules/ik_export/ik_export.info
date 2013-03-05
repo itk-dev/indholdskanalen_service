@@ -1,0 +1,8 @@
+name = Indholdskanalen channel export.
+description = Export a channel as Media RSS Feed (mrss).
+core = 7.x
+package = Indholdskanalen
+
+files[] = ik_export.class.inc
+
+dependencies[] = ik_channel_filter

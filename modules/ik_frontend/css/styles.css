@@ -1,0 +1,547 @@
+/*
+* Main stylesheet
+*/
+/* line 17, ../../../../../../../../../../Applications/CodeKit.app/Contents/Resources/engines/compass/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font: inherit;
+  font-size: 100%;
+  vertical-align: baseline; }
+
+/* line 22, ../../../../../../../../../../Applications/CodeKit.app/Contents/Resources/engines/compass/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+html {
+  line-height: 1; }
+
+/* line 24, ../../../../../../../../../../Applications/CodeKit.app/Contents/Resources/engines/compass/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+ol, ul {
+  list-style: none; }
+
+/* line 26, ../../../../../../../../../../Applications/CodeKit.app/Contents/Resources/engines/compass/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+table {
+  border-collapse: collapse;
+  border-spacing: 0; }
+
+/* line 28, ../../../../../../../../../../Applications/CodeKit.app/Contents/Resources/engines/compass/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+caption, th, td {
+  text-align: left;
+  font-weight: normal;
+  vertical-align: middle; }
+
+/* line 30, ../../../../../../../../../../Applications/CodeKit.app/Contents/Resources/engines/compass/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+q, blockquote {
+  quotes: none; }
+  /* line 103, ../../../../../../../../../../Applications/CodeKit.app/Contents/Resources/engines/compass/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+  q:before, q:after, blockquote:before, blockquote:after {
+    content: "";
+    content: none; }
+
+/* line 32, ../../../../../../../../../../Applications/CodeKit.app/Contents/Resources/engines/compass/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+a img {
+  border: none; }
+
+/* line 116, ../../../../../../../../../../Applications/CodeKit.app/Contents/Resources/engines/compass/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section, summary {
+  display: block; }
+
+/*
+* Variables for use in stylesheets
+*/
+/*
+* Neat mixins
+*/
+/* 
+ * Base stylesheet collecting all files
+ */
+@font-face {
+  font-family: "AllerBold";
+  src: url('/sites/service.indholdskanalen.dk/modules/ik_frontend/css/fonts/aller/aller_bd-webfont.eot');
+  src: url('/sites/service.indholdskanalen.dk/modules/ik_frontend/css/fonts/aller/aller_bd-webfont.eot?#iefix') format('eot'), url('/sites/service.indholdskanalen.dk/modules/ik_frontend/css/fonts/aller/aller_bd-webfont.woff') format('woff'), url('/sites/service.indholdskanalen.dk/modules/ik_frontend/css/fonts/aller/aller_bd-webfont.ttf') format('truetype'), url('/sites/service.indholdskanalen.dk/modules/ik_frontend/css/fonts/aller/aller_bd-webfont.svg#allerbold') format('svg');
+  font-weight: "normal";
+  font-style: "normal"; }
+
+@font-face {
+  font-family: "AllerBoldItalic";
+  src: url('/sites/service.indholdskanalen.dk/modules/ik_frontend/css/fonts/aller_bdit-webfont.eot');
+  src: url('/sites/service.indholdskanalen.dk/modules/ik_frontend/css/fonts/aller_bdit-webfont.eot?#iefix') format('eot'), url('/sites/service.indholdskanalen.dk/modules/ik_frontend/css/fonts/aller/aller_bdit-webfont.woff') format('woff'), url('/sites/service.indholdskanalen.dk/modules/ik_frontend/css/fonts/aller_bdit-webfont.ttf') format('truetype'), url('/sites/service.indholdskanalen.dk/modules/ik_frontend/css/fonts/aller_bdit-webfont.svg#allerbold_italic') format('svg');
+  font-weight: "normal";
+  font-style: "normal"; }
+
+@font-face {
+  font-family: "AllerItalic";
+  src: url('/sites/service.indholdskanalen.dk/modules/ik_frontend/css/fonts/aller/aller_it-webfont.eot');
+  src: url('/sites/service.indholdskanalen.dk/modules/ik_frontend/css/fonts/aller/aller_it-webfont.eot?#iefix') format('eot'), url('/sites/service.indholdskanalen.dk/modules/ik_frontend/css/fonts/aller/aller_it-webfont.woff') format('woff'), url('/sites/service.indholdskanalen.dk/modules/ik_frontend/css/fonts/aller/aller_it-webfont.ttf') format('truetype'), url('/sites/service.indholdskanalen.dk/modules/ik_frontend/css/fonts/aller/aller_it-webfont.svg#alleritalic') format('svg');
+  font-weight: "normal";
+  font-style: "normal"; }
+
+@font-face {
+  font-family: "Aller";
+  src: url('/sites/service.indholdskanalen.dk/modules/ik_frontend/css/fonts/aller/aller_rg-webfont.eot');
+  src: url('/sites/service.indholdskanalen.dk/modules/ik_frontend/css/fonts/aller/aller_rg-webfont.eot?#iefix') format('eot'), url('/sites/service.indholdskanalen.dk/modules/ik_frontend/css/fonts/aller/aller_rg-webfont.woff') format('woff'), url('/sites/service.indholdskanalen.dk/modules/ik_frontend/css/fonts/aller/aller_rg-webfont.ttf') format('truetype'), url('/sites/service.indholdskanalen.dk/modules/ik_frontend/css/fonts/aller/aller_rg-webfont.svg#allerregular') format('svg');
+  font-weight: "normal";
+  font-style: "normal"; }
+
+/* line 22, ../sass/_base.scss */
+html,
+body {
+  width: 100%;
+  height: 100%;
+  margin: 0 auto; }
+
+/* line 28, ../sass/_base.scss */
+body {
+  font-family: "Aller", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 1em;
+  color: white;
+  overflow: hidden; }
+  /* line 34, ../sass/_base.scss */
+  body.slide-preview {
+    font-size: 0.66667em; }
+
+/*
+* Default typography
+*/
+/* line 43, ../sass/_base.scss */
+p {
+  margin-bottom: 10px;
+  margin-bottom: 0.625rem; }
+
+/* line 48, ../sass/_base.scss */
+strong,
+b {
+  font-family: "AllerBold", "Aller", "Helvetica Neue", Helvetica, Arial, sans-serif; }
+  /* line 52, ../sass/_base.scss */
+  strong em,
+  strong i,
+  b em,
+  b i {
+    font-family: "AllerBoldItalic", "Aller", "Helvetica Neue", Helvetica, Arial, sans-serif; }
+
+/* line 58, ../sass/_base.scss */
+em,
+i {
+  font-family: "AllerItalic", "Aller", "Helvetica Neue", Helvetica, Arial, sans-serif; }
+  /* line 62, ../sass/_base.scss */
+  em strong,
+  em b,
+  i strong,
+  i b {
+    font-family: "AllerBoldItalic", "Aller", "Helvetica Neue", Helvetica, Arial, sans-serif; }
+
+/* line 67, ../sass/_base.scss */
+h1 {
+  font-size: 4.5em; }
+
+/* line 71, ../sass/_base.scss */
+h2 {
+  font-size: 1.625em; }
+
+/* line 75, ../sass/_base.scss */
+h3 {
+  font-size: 1.65em; }
+
+/* line 79, ../sass/_base.scss */
+h4 {
+  font-size: 1.8em; }
+
+/* line 83, ../sass/_base.scss */
+h5 {
+  font-size: 1.95em; }
+
+/* line 87, ../sass/_base.scss */
+h6 {
+  font-size: 2.1em; }
+
+/*
+* Layouts default styling
+*/
+/* line 4, ../sass/_layouts.scss */
+#pure-template {
+  display: none; }
+
+/* line 7, ../sass/_layouts.scss */
+#slide-container {
+  width: 100%;
+  height: 100%; }
+  /* line 11, ../sass/_layouts.scss */
+  #slide-container #pure-template {
+    display: block; }
+
+/* line 16, ../sass/_layouts.scss */
+.slide {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0; }
+  /* line 25, ../sass/_layouts.scss */
+  .slide .image-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%; }
+    /* line 32, ../sass/_layouts.scss */
+    .slide .image-container a {
+      pointer-events: none;
+      cursor: default; }
+  /* line 38, ../sass/_layouts.scss */
+  .slide .text-wrapper {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    z-index: 19999;
+    padding: 40px;
+    position: absolute; }
+  /* line 46, ../sass/_layouts.scss */
+  .slide .text-container {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    -webkit-border-radius: 12px;
+    -moz-border-radius: 12px;
+    -ms-border-radius: 12px;
+    -o-border-radius: 12px;
+    border-radius: 12px;
+    z-index: 20000;
+    overflow: hidden;
+    position: relative;
+    background-color: #006027; }
+    /* line 55, ../sass/_layouts.scss */
+    .slide .text-container .heading-container {
+      -webkit-box-sizing: border-box;
+      -moz-box-sizing: border-box;
+      box-sizing: border-box;
+      padding: 20px; }
+    /* line 60, ../sass/_layouts.scss */
+    .slide .text-container .slide-heading {
+      display: block;
+      width: 100%;
+      margin-bottom: 20px;
+      font-family: "AllerBold", "Aller", "Helvetica Neue", Helvetica, Arial, sans-serif;
+      font-size: 4.5em;
+      text-transform: uppercase; }
+    /* line 69, ../sass/_layouts.scss */
+    .slide .text-container .divider {
+      width: 10%;
+      border-bottom: 0.2em solid white;
+      margin-bottom: 10px;
+      margin-bottom: 0.625rem; }
+    /* line 75, ../sass/_layouts.scss */
+    .slide .text-container .slide-subheading {
+      display: block;
+      width: 100%;
+      font-family: "AllerBold", "Aller", "Helvetica Neue", Helvetica, Arial, sans-serif;
+      font-size: 1.625em; }
+    /* line 82, ../sass/_layouts.scss */
+    .slide .text-container .slide-text {
+      -webkit-box-sizing: border-box;
+      -moz-box-sizing: border-box;
+      box-sizing: border-box;
+      display: block;
+      width: 100%;
+      padding: 20px;
+      font-size: 1.5em;
+      line-height: 1.65em; }
+  /* line 93, ../sass/_layouts.scss */
+  .slide .logo-container {
+    z-index: 21000;
+    position: absolute;
+    bottom: 20px;
+    right: 40px; }
+    /* line 99, ../sass/_layouts.scss */
+    .slide .logo-container img {
+      max-width: 250px; }
+
+/*
+* Media queries
+*/
+@media (max-width: 1300px) {
+  /* line 110, ../sass/_layouts.scss */
+  body {
+    font-size: 0.66667em;
+    color: #f517d5!important; }
+    /* line 114, ../sass/_layouts.scss */
+    body.slide-preview {
+      font-size: 0.5em; }
+      /* line 117, ../sass/_layouts.scss */
+      body.slide-preview .slide-heading {
+        font-size: 2.25em !important; }
+      /* line 121, ../sass/_layouts.scss */
+      body.slide-preview .logo-container img {
+        max-width: 100px!important; }
+    /* line 127, ../sass/_layouts.scss */
+    body .slide-heading {
+      font-size: 3em !important; }
+    /* line 131, ../sass/_layouts.scss */
+    body .slide-text,
+    body .heading-container {
+      padding: 16.66667px !important; }
+
+  /* line 137, ../sass/_layouts.scss */
+  .slide .logo-container img {
+    max-width: 175px; } }
+@media (max-width: 800px) {
+  /* line 144, ../sass/_layouts.scss */
+  body {
+    font-size: 0.5em;
+    color: #ff6600!important; }
+    /* line 148, ../sass/_layouts.scss */
+    body.slide-preview {
+      font-size: 0.4em; }
+      /* line 151, ../sass/_layouts.scss */
+      body.slide-preview .slide-heading {
+        font-size: 1.8em !important; }
+      /* line 155, ../sass/_layouts.scss */
+      body.slide-preview .logo-container img {
+        max-width: 75px!important; }
+    /* line 161, ../sass/_layouts.scss */
+    body .slide-heading {
+      font-size: 2.25em !important; }
+    /* line 165, ../sass/_layouts.scss */
+    body .slide-text,
+    body .heading-container {
+      padding: 13.33333px !important; }
+
+  /* line 171, ../sass/_layouts.scss */
+  .slide .logo-container img {
+    max-width: 125px; } }
+@media (max-width: 500px) {
+  /* line 178, ../sass/_layouts.scss */
+  body {
+    font-size: 0.4em;
+    color: #5df51b!important; }
+    /* line 182, ../sass/_layouts.scss */
+    body.slide-preview {
+      font-size: 0.33333em; }
+      /* line 185, ../sass/_layouts.scss */
+      body.slide-preview .slide-heading {
+        font-size: 1.5em !important; }
+      /* line 189, ../sass/_layouts.scss */
+      body.slide-preview .logo-container img {
+        max-width: 50px!important; }
+    /* line 195, ../sass/_layouts.scss */
+    body .slide-heading {
+      font-size: 1.8em !important; }
+    /* line 199, ../sass/_layouts.scss */
+    body .slide-text,
+    body .heading-container {
+      padding: 11.11111px !important; }
+
+  /* line 205, ../sass/_layouts.scss */
+  .slide .logo-container img {
+    max-width: 75px; } }
+/*
+* Layout 1
+* Text to the left
+*
+* ---------------------------
+* |         |               |
+* |    T    |               |
+* |    E    |               |
+* |    X    |               |
+* |    T    |               |
+* |         |               |
+* |         |               |
+* ---------------------------
+*
+*/
+/* line 229, ../sass/_layouts.scss */
+.layout-1 .text-wrapper {
+  top: 0;
+  left: 0;
+  width: 35%;
+  height: 100%; }
+/* line 236, ../sass/_layouts.scss */
+.layout-1 .text-container {
+  width: 100%;
+  height: 100%; }
+/* line 241, ../sass/_layouts.scss */
+.layout-1 .divider {
+  display: none; }
+
+/*
+* Layout 2
+* Text in top
+*
+* ---------------------------
+* |-------------------------|
+* |        text box         |
+* |-------------------------|
+* |                         |
+* |                         |
+* |                         |
+* |                         |
+* ---------------------------
+*
+*/
+/* line 264, ../sass/_layouts.scss */
+.layout-2 .text-wrapper {
+  top: 0;
+  width: 100%; }
+/* line 269, ../sass/_layouts.scss */
+.layout-2 .text-container {
+  width: 100%; }
+  /* line 272, ../sass/_layouts.scss */
+  .layout-2 .text-container .heading-container {
+    width: 49.5%;
+    float: left; }
+  /* line 277, ../sass/_layouts.scss */
+  .layout-2 .text-container .slide-heading {
+    margin-bottom: 10px;
+    margin-bottom: 0.625rem; }
+  /* line 281, ../sass/_layouts.scss */
+  .layout-2 .text-container .slide-text {
+    width: 49.5%;
+    float: left; }
+  /* line 286, ../sass/_layouts.scss */
+  .layout-2 .text-container .divider {
+    display: none; }
+
+/*
+* Layout 3
+* Text in bottom
+*
+* ---------------------------
+* |                         |
+* |                         |
+* |                         |
+* |                         |
+* |-------------------------|
+* |        text box         |
+* |-------------------------|
+* ---------------------------
+*
+*/
+/* line 310, ../sass/_layouts.scss */
+.layout-3 .text-wrapper {
+  bottom: 0;
+  width: 100%; }
+/* line 315, ../sass/_layouts.scss */
+.layout-3 .text-container {
+  width: 100%; }
+  /* line 318, ../sass/_layouts.scss */
+  .layout-3 .text-container .heading-container {
+    width: 49.5%;
+    float: left; }
+  /* line 323, ../sass/_layouts.scss */
+  .layout-3 .text-container .slide-heading {
+    margin-bottom: 10px;
+    margin-bottom: 0.625rem; }
+  /* line 327, ../sass/_layouts.scss */
+  .layout-3 .text-container .slide-text {
+    width: 49.5%;
+    float: left; }
+  /* line 332, ../sass/_layouts.scss */
+  .layout-3 .text-container .divider {
+    display: none; }
+/* line 337, ../sass/_layouts.scss */
+.layout-3 .logo-container {
+  bottom: auto;
+  top: 20px; }
+
+/*
+* Layout 4
+* Text to the right
+*
+* ---------------------------
+* |               |         |
+* |               |    T    |
+* |               |    E    |
+* |               |    X    |
+* |               |    T    |
+* |               |         |
+* |               |         |
+* ---------------------------
+*
+*/
+/* line 361, ../sass/_layouts.scss */
+.layout-4 .text-wrapper {
+  top: 0;
+  right: 0;
+  width: 35%;
+  height: 100%; }
+/* line 368, ../sass/_layouts.scss */
+.layout-4 .text-container {
+  width: 100%;
+  height: 100%; }
+/* line 373, ../sass/_layouts.scss */
+.layout-4 .divider {
+  display: none; }
+/* line 377, ../sass/_layouts.scss */
+.layout-4 .logo-container {
+  bottom: auto;
+  right: auto;
+  left: 40px;
+  top: 20px; }
+
+/*
+* Layout 5
+* Image only
+*
+* ---------------------------
+* |                         |
+* |                         |
+* |                         |
+* |                         |
+* |                         |
+* |                         |
+* |                         |
+* ---------------------------
+*
+*/
+/* line 402, ../sass/_layouts.scss */
+.layout-5 .text-wrapper {
+  display: none; }
+
+/*
+* Layout 6
+* Text only
+*
+* ---------------------------
+* |                         |
+* |                         |
+* |                         |
+* |        Textbox          |
+* |                         |
+* |                         |
+* |                         |
+* ---------------------------
+*
+*/
+/* line 424, ../sass/_layouts.scss */
+.layout-6 .image-container {
+  display: none; }
+/* line 428, ../sass/_layouts.scss */
+.layout-6 .text-wrapper {
+  padding: 0; }
+/* line 432, ../sass/_layouts.scss */
+.layout-6 .text-container {
+  -webkit-border-radius: 0;
+  -moz-border-radius: 0;
+  -ms-border-radius: 0;
+  -o-border-radius: 0;
+  border-radius: 0; }
+/* line 437, ../sass/_layouts.scss */
+.layout-6 .text-wrapper,
+.layout-6 .text-container {
+  width: 100%;
+  height: 100%; }
+/* line 442, ../sass/_layouts.scss */
+.layout-6 .divider {
+  display: none; }
