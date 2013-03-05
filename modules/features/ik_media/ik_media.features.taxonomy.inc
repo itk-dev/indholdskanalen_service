@@ -15,7 +15,7 @@ function ik_media_taxonomy_default_vocabularies() {
       'description' => 'Use media folders to organize your media',
       'hierarchy' => '1',
       'module' => 'taxonomy',
-      'weight' => '0',
+      'weight' => '-8',
       'rdf_mapping' => array(
         'rdftype' => array(
           0 => 'skos:ConceptScheme',

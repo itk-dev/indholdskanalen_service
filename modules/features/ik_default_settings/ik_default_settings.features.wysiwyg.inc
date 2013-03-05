@@ -33,14 +33,10 @@ function ik_default_settings_wysiwyg_default_profiles() {
           'BidiRtl' => 1,
           'BulletedList' => 1,
           'NumberedList' => 1,
+          'Outdent' => 1,
+          'Indent' => 1,
           'Link' => 1,
           'Unlink' => 1,
-        ),
-        'linkit' => array(
-          'linkit' => 1,
-        ),
-        'drupal' => array(
-          'media' => 1,
         ),
       ),
       'toolbar_loc' => 'top',

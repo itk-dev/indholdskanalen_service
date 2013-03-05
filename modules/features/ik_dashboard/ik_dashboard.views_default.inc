@@ -4214,7 +4214,7 @@ function ik_dashboard_views_default_views() {
   /* Display: Slide importers list pane */
   $handler = $view->new_display('panel_pane', 'Slide importers list pane', 'panel_pane_7');
   $handler->display->display_options['defaults']['title'] = FALSE;
-  $handler->display->display_options['title'] = 'Slide importerer';
+  $handler->display->display_options['title'] = 'Slide importer';
   $handler->display->display_options['display_description'] = 'A content pane displaying slide importers';
   $handler->display->display_options['defaults']['hide_admin_links'] = FALSE;
   $handler->display->display_options['defaults']['use_more'] = FALSE;
@@ -4565,7 +4565,7 @@ function ik_dashboard_views_default_views() {
   /* Display: Imported slide list page */
   $handler = $view->new_display('page', 'Imported slide list page', 'page_7');
   $handler->display->display_options['defaults']['title'] = FALSE;
-  $handler->display->display_options['title'] = 'Slide importerer';
+  $handler->display->display_options['title'] = 'Slide importer';
   $handler->display->display_options['defaults']['hide_admin_links'] = FALSE;
   $handler->display->display_options['defaults']['pager'] = FALSE;
   $handler->display->display_options['pager']['type'] = 'full';
@@ -5111,7 +5111,7 @@ function ik_dashboard_views_default_views() {
     t('Feed'),
     t('Imported slide list page'),
     t('Slide importers list pane'),
-    t('Slide importerer'),
+    t('Slide importer'),
     t('A content pane displaying slide importers'),
   );
   $export['ik_dashboard'] = $view;
