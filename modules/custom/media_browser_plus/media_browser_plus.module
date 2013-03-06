@@ -977,6 +977,8 @@ function _media_browser_plus_folder_hierarchy_list($folders) {
     $list_items[key($list_items)]['class'][] = 'selected';
   }
 
+  // Hide root folder
+  $list_items[83]['class'][] = 'element-invisible';
 
   return theme('item_list', array(
     'items' => $list_items,
