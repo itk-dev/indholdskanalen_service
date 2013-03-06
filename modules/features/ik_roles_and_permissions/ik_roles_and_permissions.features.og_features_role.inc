@@ -42,5 +42,13 @@ function ik_roles_and_permissions_og_features_default_roles() {
     'name' => 'Gruppe administrator',
   );
 
+  // Exported OG Role: 'node:organisation:Redaktør'.
+  $roles['node:organisation:Redaktør'] = array(
+    'gid' => 0,
+    'group_type' => 'node',
+    'group_bundle' => 'organisation',
+    'name' => 'Redaktør',
+  );
+
   return $roles;
 }

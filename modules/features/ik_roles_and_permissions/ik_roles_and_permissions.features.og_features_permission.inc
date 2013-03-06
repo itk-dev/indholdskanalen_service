@@ -100,16 +100,16 @@ function ik_roles_and_permissions_og_features_default_permissions() {
   // Exported og permission: 'node:department:delete own media_rss_slide_import content'
   $permissions['node:department:delete own media_rss_slide_import content'] = array(
     'roles' => array(
-      'Redaktør' => 'Redaktør',
       'Bidragyder' => 'Bidragyder',
+      'Redaktør' => 'Redaktør',
     ),
   );
 
   // Exported og permission: 'node:department:delete own slide content'
   $permissions['node:department:delete own slide content'] = array(
     'roles' => array(
-      'Redaktør' => 'Redaktør',
       'Bidragyder' => 'Bidragyder',
+      'Redaktør' => 'Redaktør',
     ),
   );
 
@@ -178,6 +178,7 @@ function ik_roles_and_permissions_og_features_default_permissions() {
   // Exported og permission: 'node:department:update group'
   $permissions['node:department:update group'] = array(
     'roles' => array(
+      'Redaktør' => 'Redaktør',
       'Gruppe administrator' => 'Gruppe administrator',
     ),
   );
@@ -205,8 +206,8 @@ function ik_roles_and_permissions_og_features_default_permissions() {
   // Exported og permission: 'node:department:update own slide content'
   $permissions['node:department:update own slide content'] = array(
     'roles' => array(
-      'Redaktør' => 'Redaktør',
       'Bidragyder' => 'Bidragyder',
+      'Redaktør' => 'Redaktør',
     ),
   );
 
@@ -238,7 +239,9 @@ function ik_roles_and_permissions_og_features_default_permissions() {
 
   // Exported og permission: 'node:organisation:create department content'
   $permissions['node:organisation:create department content'] = array(
-    'roles' => array(),
+    'roles' => array(
+      'Redaktør' => 'Redaktør',
+    ),
   );
 
   // Exported og permission: 'node:organisation:create media_rss_slide_import content'
@@ -278,7 +281,9 @@ function ik_roles_and_permissions_og_features_default_permissions() {
 
   // Exported og permission: 'node:organisation:delete own department content'
   $permissions['node:organisation:delete own department content'] = array(
-    'roles' => array(),
+    'roles' => array(
+      'Redaktør' => 'Redaktør',
+    ),
   );
 
   // Exported og permission: 'node:organisation:delete own media_rss_slide_import content'
@@ -363,7 +368,9 @@ function ik_roles_and_permissions_og_features_default_permissions() {
 
   // Exported og permission: 'node:organisation:update own department content'
   $permissions['node:organisation:update own department content'] = array(
-    'roles' => array(),
+    'roles' => array(
+      'Redaktør' => 'Redaktør',
+    ),
   );
 
   // Exported og permission: 'node:organisation:update own media_rss_slide_import content'
