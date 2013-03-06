@@ -229,6 +229,35 @@ function ik_dashboard_views_default_views() {
   $handler->display->display_options['fields']['edit_node']['label'] = 'Handlinger';
   $handler->display->display_options['fields']['edit_node']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['edit_node']['text'] = 'Redigér';
+  /* Felt: Indhold: Beskrivelse */
+  $handler->display->display_options['fields']['field_channel_description']['id'] = 'field_channel_description';
+  $handler->display->display_options['fields']['field_channel_description']['table'] = 'field_data_field_channel_description';
+  $handler->display->display_options['fields']['field_channel_description']['field'] = 'field_channel_description';
+  $handler->display->display_options['fields']['field_channel_description']['label'] = '';
+  $handler->display->display_options['fields']['field_channel_description']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['field_channel_description']['element_label_colon'] = FALSE;
+  /* Felt: Indhold: Manchet */
+  $handler->display->display_options['fields']['field_ik_slide_subheading']['id'] = 'field_ik_slide_subheading';
+  $handler->display->display_options['fields']['field_ik_slide_subheading']['table'] = 'field_data_field_ik_slide_subheading';
+  $handler->display->display_options['fields']['field_ik_slide_subheading']['field'] = 'field_ik_slide_subheading';
+  $handler->display->display_options['fields']['field_ik_slide_subheading']['label'] = '';
+  $handler->display->display_options['fields']['field_ik_slide_subheading']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['field_ik_slide_subheading']['element_label_colon'] = FALSE;
+  /* Felt: Indhold: Tekst */
+  $handler->display->display_options['fields']['field_ik_slide_text']['id'] = 'field_ik_slide_text';
+  $handler->display->display_options['fields']['field_ik_slide_text']['table'] = 'field_data_field_ik_slide_text';
+  $handler->display->display_options['fields']['field_ik_slide_text']['field'] = 'field_ik_slide_text';
+  $handler->display->display_options['fields']['field_ik_slide_text']['label'] = '';
+  $handler->display->display_options['fields']['field_ik_slide_text']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['field_ik_slide_text']['element_label_colon'] = FALSE;
+  /* Felt: Indhold: Titel */
+  $handler->display->display_options['fields']['title_1']['id'] = 'title_1';
+  $handler->display->display_options['fields']['title_1']['table'] = 'node';
+  $handler->display->display_options['fields']['title_1']['field'] = 'title';
+  $handler->display->display_options['fields']['title_1']['label'] = '';
+  $handler->display->display_options['fields']['title_1']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['title_1']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['title_1']['link_to_node'] = FALSE;
   /* Sorteringskriterie: Indhold: Opdateringsdato */
   $handler->display->display_options['sorts']['changed']['id'] = 'changed';
   $handler->display->display_options['sorts']['changed']['table'] = 'node';
@@ -435,6 +464,32 @@ function ik_dashboard_views_default_views() {
   $handler->display->display_options['filters']['field_ik_slide_imported_value']['operator'] = 'not';
   $handler->display->display_options['filters']['field_ik_slide_imported_value']['value'] = array(
     'imported' => 'imported',
+  );
+  /* Filterkriterie: Combined search in content */
+  $handler->display->display_options['filters']['combine']['id'] = 'combine';
+  $handler->display->display_options['filters']['combine']['table'] = 'views';
+  $handler->display->display_options['filters']['combine']['field'] = 'combine';
+  $handler->display->display_options['filters']['combine']['ui_name'] = 'Combined search in content';
+  $handler->display->display_options['filters']['combine']['operator'] = 'contains';
+  $handler->display->display_options['filters']['combine']['exposed'] = TRUE;
+  $handler->display->display_options['filters']['combine']['expose']['operator_id'] = 'combine_op';
+  $handler->display->display_options['filters']['combine']['expose']['label'] = 'Fritekst';
+  $handler->display->display_options['filters']['combine']['expose']['operator'] = 'combine_op';
+  $handler->display->display_options['filters']['combine']['expose']['identifier'] = 'my_content_combined_search';
+  $handler->display->display_options['filters']['combine']['expose']['remember_roles'] = array(
+    2 => '2',
+    1 => 0,
+    4 => 0,
+    5 => 0,
+    6 => 0,
+    3 => 0,
+  );
+  $handler->display->display_options['filters']['combine']['fields'] = array(
+    'title' => 'title',
+    'field_channel_description' => 'field_channel_description',
+    'field_ik_slide_subheading' => 'field_ik_slide_subheading',
+    'field_ik_slide_text' => 'field_ik_slide_text',
+    'title_1' => 'title_1',
   );
   $handler->display->display_options['inherit_panels_path'] = '1';
 
@@ -717,6 +772,35 @@ function ik_dashboard_views_default_views() {
   $handler->display->display_options['fields']['edit_node']['label'] = 'Handlinger';
   $handler->display->display_options['fields']['edit_node']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['edit_node']['text'] = 'Redigér';
+  /* Felt: Indhold: Beskrivelse */
+  $handler->display->display_options['fields']['field_channel_description']['id'] = 'field_channel_description';
+  $handler->display->display_options['fields']['field_channel_description']['table'] = 'field_data_field_channel_description';
+  $handler->display->display_options['fields']['field_channel_description']['field'] = 'field_channel_description';
+  $handler->display->display_options['fields']['field_channel_description']['label'] = '';
+  $handler->display->display_options['fields']['field_channel_description']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['field_channel_description']['element_label_colon'] = FALSE;
+  /* Felt: Indhold: Manchet */
+  $handler->display->display_options['fields']['field_ik_slide_subheading']['id'] = 'field_ik_slide_subheading';
+  $handler->display->display_options['fields']['field_ik_slide_subheading']['table'] = 'field_data_field_ik_slide_subheading';
+  $handler->display->display_options['fields']['field_ik_slide_subheading']['field'] = 'field_ik_slide_subheading';
+  $handler->display->display_options['fields']['field_ik_slide_subheading']['label'] = '';
+  $handler->display->display_options['fields']['field_ik_slide_subheading']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['field_ik_slide_subheading']['element_label_colon'] = FALSE;
+  /* Felt: Indhold: Tekst */
+  $handler->display->display_options['fields']['field_ik_slide_text']['id'] = 'field_ik_slide_text';
+  $handler->display->display_options['fields']['field_ik_slide_text']['table'] = 'field_data_field_ik_slide_text';
+  $handler->display->display_options['fields']['field_ik_slide_text']['field'] = 'field_ik_slide_text';
+  $handler->display->display_options['fields']['field_ik_slide_text']['label'] = '';
+  $handler->display->display_options['fields']['field_ik_slide_text']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['field_ik_slide_text']['element_label_colon'] = FALSE;
+  /* Felt: Indhold: Titel */
+  $handler->display->display_options['fields']['title_1']['id'] = 'title_1';
+  $handler->display->display_options['fields']['title_1']['table'] = 'node';
+  $handler->display->display_options['fields']['title_1']['field'] = 'title';
+  $handler->display->display_options['fields']['title_1']['label'] = '';
+  $handler->display->display_options['fields']['title_1']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['title_1']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['title_1']['link_to_node'] = FALSE;
   $handler->display->display_options['defaults']['filter_groups'] = FALSE;
   $handler->display->display_options['defaults']['filters'] = FALSE;
   /* Filterkriterie: Bruger: Aktuelle */
@@ -801,6 +885,33 @@ function ik_dashboard_views_default_views() {
   $handler->display->display_options['filters']['title']['expose']['autocomplete_raw_suggestion'] = 1;
   $handler->display->display_options['filters']['title']['expose']['autocomplete_raw_dropdown'] = 1;
   $handler->display->display_options['filters']['title']['expose']['autocomplete_dependent'] = 1;
+  /* Filterkriterie: Combined search in content */
+  $handler->display->display_options['filters']['combine']['id'] = 'combine';
+  $handler->display->display_options['filters']['combine']['table'] = 'views';
+  $handler->display->display_options['filters']['combine']['field'] = 'combine';
+  $handler->display->display_options['filters']['combine']['ui_name'] = 'Combined search in content';
+  $handler->display->display_options['filters']['combine']['operator'] = 'contains';
+  $handler->display->display_options['filters']['combine']['group'] = 1;
+  $handler->display->display_options['filters']['combine']['exposed'] = TRUE;
+  $handler->display->display_options['filters']['combine']['expose']['operator_id'] = 'combine_op';
+  $handler->display->display_options['filters']['combine']['expose']['label'] = 'Fritekst';
+  $handler->display->display_options['filters']['combine']['expose']['operator'] = 'combine_op';
+  $handler->display->display_options['filters']['combine']['expose']['identifier'] = 'my_content_combined_search_page';
+  $handler->display->display_options['filters']['combine']['expose']['remember_roles'] = array(
+    2 => '2',
+    1 => 0,
+    4 => 0,
+    5 => 0,
+    6 => 0,
+    3 => 0,
+  );
+  $handler->display->display_options['filters']['combine']['fields'] = array(
+    'title' => 'title',
+    'field_channel_description' => 'field_channel_description',
+    'field_ik_slide_subheading' => 'field_ik_slide_subheading',
+    'field_ik_slide_text' => 'field_ik_slide_text',
+    'title_1' => 'title_1',
+  );
   $handler->display->display_options['path'] = 'dashboard/my-content';
   $handler->display->display_options['menu']['type'] = 'normal';
   $handler->display->display_options['menu']['title'] = 'My content';
@@ -1013,6 +1124,20 @@ function ik_dashboard_views_default_views() {
   $handler->display->display_options['fields']['edit_node']['label'] = 'Handlinger';
   $handler->display->display_options['fields']['edit_node']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['edit_node']['text'] = 'Redigér';
+  /* Felt: Indhold: Manchet */
+  $handler->display->display_options['fields']['field_ik_slide_subheading']['id'] = 'field_ik_slide_subheading';
+  $handler->display->display_options['fields']['field_ik_slide_subheading']['table'] = 'field_data_field_ik_slide_subheading';
+  $handler->display->display_options['fields']['field_ik_slide_subheading']['field'] = 'field_ik_slide_subheading';
+  $handler->display->display_options['fields']['field_ik_slide_subheading']['label'] = '';
+  $handler->display->display_options['fields']['field_ik_slide_subheading']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['field_ik_slide_subheading']['element_label_colon'] = FALSE;
+  /* Felt: Indhold: Tekst */
+  $handler->display->display_options['fields']['field_ik_slide_text']['id'] = 'field_ik_slide_text';
+  $handler->display->display_options['fields']['field_ik_slide_text']['table'] = 'field_data_field_ik_slide_text';
+  $handler->display->display_options['fields']['field_ik_slide_text']['field'] = 'field_ik_slide_text';
+  $handler->display->display_options['fields']['field_ik_slide_text']['label'] = '';
+  $handler->display->display_options['fields']['field_ik_slide_text']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['field_ik_slide_text']['element_label_colon'] = FALSE;
   $handler->display->display_options['defaults']['arguments'] = FALSE;
   $handler->display->display_options['defaults']['filter_groups'] = FALSE;
   $handler->display->display_options['defaults']['filters'] = FALSE;
@@ -1086,6 +1211,31 @@ function ik_dashboard_views_default_views() {
   $handler->display->display_options['filters']['title']['expose']['autocomplete_raw_suggestion'] = 1;
   $handler->display->display_options['filters']['title']['expose']['autocomplete_raw_dropdown'] = 1;
   $handler->display->display_options['filters']['title']['expose']['autocomplete_dependent'] = 1;
+  /* Filterkriterie: Combined search in content */
+  $handler->display->display_options['filters']['combine']['id'] = 'combine';
+  $handler->display->display_options['filters']['combine']['table'] = 'views';
+  $handler->display->display_options['filters']['combine']['field'] = 'combine';
+  $handler->display->display_options['filters']['combine']['ui_name'] = 'Combined search in content';
+  $handler->display->display_options['filters']['combine']['operator'] = 'contains';
+  $handler->display->display_options['filters']['combine']['group'] = 1;
+  $handler->display->display_options['filters']['combine']['exposed'] = TRUE;
+  $handler->display->display_options['filters']['combine']['expose']['operator_id'] = 'combine_op';
+  $handler->display->display_options['filters']['combine']['expose']['label'] = 'Fritekst';
+  $handler->display->display_options['filters']['combine']['expose']['operator'] = 'combine_op';
+  $handler->display->display_options['filters']['combine']['expose']['identifier'] = 'slide_free_search_1';
+  $handler->display->display_options['filters']['combine']['expose']['remember_roles'] = array(
+    2 => '2',
+    1 => 0,
+    4 => 0,
+    5 => 0,
+    6 => 0,
+    3 => 0,
+  );
+  $handler->display->display_options['filters']['combine']['fields'] = array(
+    'title' => 'title',
+    'field_ik_slide_subheading' => 'field_ik_slide_subheading',
+    'field_ik_slide_text' => 'field_ik_slide_text',
+  );
   /* Filterkriterie: Bruger: Navn */
   $handler->display->display_options['filters']['uid']['id'] = 'uid';
   $handler->display->display_options['filters']['uid']['table'] = 'users';
@@ -1172,6 +1322,7 @@ function ik_dashboard_views_default_views() {
   $handler->display->display_options['filters']['field_ik_slide_imported_value']['value'] = array(
     'imported' => 'imported',
   );
+  $handler->display->display_options['filters']['field_ik_slide_imported_value']['group'] = 1;
   $handler->display->display_options['allow']['use_pager'] = 0;
   $handler->display->display_options['allow']['items_per_page'] = 0;
   $handler->display->display_options['allow']['offset'] = 0;
@@ -1556,6 +1707,20 @@ function ik_dashboard_views_default_views() {
   $handler->display->display_options['fields']['edit_node']['label'] = 'Handlinger';
   $handler->display->display_options['fields']['edit_node']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['edit_node']['text'] = 'Redigér';
+  /* Felt: Indhold: Manchet */
+  $handler->display->display_options['fields']['field_ik_slide_subheading']['id'] = 'field_ik_slide_subheading';
+  $handler->display->display_options['fields']['field_ik_slide_subheading']['table'] = 'field_data_field_ik_slide_subheading';
+  $handler->display->display_options['fields']['field_ik_slide_subheading']['field'] = 'field_ik_slide_subheading';
+  $handler->display->display_options['fields']['field_ik_slide_subheading']['label'] = '';
+  $handler->display->display_options['fields']['field_ik_slide_subheading']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['field_ik_slide_subheading']['element_label_colon'] = FALSE;
+  /* Felt: Indhold: Tekst */
+  $handler->display->display_options['fields']['field_ik_slide_text']['id'] = 'field_ik_slide_text';
+  $handler->display->display_options['fields']['field_ik_slide_text']['table'] = 'field_data_field_ik_slide_text';
+  $handler->display->display_options['fields']['field_ik_slide_text']['field'] = 'field_ik_slide_text';
+  $handler->display->display_options['fields']['field_ik_slide_text']['label'] = '';
+  $handler->display->display_options['fields']['field_ik_slide_text']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['field_ik_slide_text']['element_label_colon'] = FALSE;
   $handler->display->display_options['defaults']['filter_groups'] = FALSE;
   $handler->display->display_options['defaults']['filters'] = FALSE;
   /* Filterkriterie: Indhold: Type */
@@ -1608,6 +1773,31 @@ function ik_dashboard_views_default_views() {
   $handler->display->display_options['filters']['title_1']['expose']['autocomplete_raw_suggestion'] = 1;
   $handler->display->display_options['filters']['title_1']['expose']['autocomplete_raw_dropdown'] = 1;
   $handler->display->display_options['filters']['title_1']['expose']['autocomplete_dependent'] = 1;
+  /* Filterkriterie: Combined search in content */
+  $handler->display->display_options['filters']['combine']['id'] = 'combine';
+  $handler->display->display_options['filters']['combine']['table'] = 'views';
+  $handler->display->display_options['filters']['combine']['field'] = 'combine';
+  $handler->display->display_options['filters']['combine']['ui_name'] = 'Combined search in content';
+  $handler->display->display_options['filters']['combine']['operator'] = 'contains';
+  $handler->display->display_options['filters']['combine']['group'] = 1;
+  $handler->display->display_options['filters']['combine']['exposed'] = TRUE;
+  $handler->display->display_options['filters']['combine']['expose']['operator_id'] = 'combine_op';
+  $handler->display->display_options['filters']['combine']['expose']['label'] = 'Fritekst';
+  $handler->display->display_options['filters']['combine']['expose']['operator'] = 'combine_op';
+  $handler->display->display_options['filters']['combine']['expose']['identifier'] = 'slide_free_search';
+  $handler->display->display_options['filters']['combine']['expose']['remember_roles'] = array(
+    2 => '2',
+    1 => 0,
+    4 => 0,
+    5 => 0,
+    6 => 0,
+    3 => 0,
+  );
+  $handler->display->display_options['filters']['combine']['fields'] = array(
+    'title' => 'title',
+    'field_ik_slide_subheading' => 'field_ik_slide_subheading',
+    'field_ik_slide_text' => 'field_ik_slide_text',
+  );
   /* Filterkriterie: Bruger: Navn */
   $handler->display->display_options['filters']['uid']['id'] = 'uid';
   $handler->display->display_options['filters']['uid']['table'] = 'users';
@@ -1685,6 +1875,7 @@ function ik_dashboard_views_default_views() {
   $handler->display->display_options['filters']['field_ik_slide_imported_value']['value'] = array(
     'imported' => 'imported',
   );
+  $handler->display->display_options['filters']['field_ik_slide_imported_value']['group'] = 1;
   $handler->display->display_options['path'] = 'dashboard/slides';
   $handler->display->display_options['menu']['type'] = 'normal';
   $handler->display->display_options['menu']['title'] = 'Slides';
@@ -3517,6 +3708,20 @@ function ik_dashboard_views_default_views() {
   $handler->display->display_options['fields']['edit_node']['label'] = 'Handlinger';
   $handler->display->display_options['fields']['edit_node']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['edit_node']['text'] = 'Redigér';
+  /* Felt: Indhold: Manchet */
+  $handler->display->display_options['fields']['field_ik_slide_subheading']['id'] = 'field_ik_slide_subheading';
+  $handler->display->display_options['fields']['field_ik_slide_subheading']['table'] = 'field_data_field_ik_slide_subheading';
+  $handler->display->display_options['fields']['field_ik_slide_subheading']['field'] = 'field_ik_slide_subheading';
+  $handler->display->display_options['fields']['field_ik_slide_subheading']['label'] = '';
+  $handler->display->display_options['fields']['field_ik_slide_subheading']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['field_ik_slide_subheading']['element_label_colon'] = FALSE;
+  /* Felt: Indhold: Tekst */
+  $handler->display->display_options['fields']['field_ik_slide_text']['id'] = 'field_ik_slide_text';
+  $handler->display->display_options['fields']['field_ik_slide_text']['table'] = 'field_data_field_ik_slide_text';
+  $handler->display->display_options['fields']['field_ik_slide_text']['field'] = 'field_ik_slide_text';
+  $handler->display->display_options['fields']['field_ik_slide_text']['label'] = '';
+  $handler->display->display_options['fields']['field_ik_slide_text']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['field_ik_slide_text']['element_label_colon'] = FALSE;
   $handler->display->display_options['defaults']['arguments'] = FALSE;
   $handler->display->display_options['defaults']['filter_groups'] = FALSE;
   $handler->display->display_options['defaults']['filters'] = FALSE;
@@ -3590,6 +3795,31 @@ function ik_dashboard_views_default_views() {
   $handler->display->display_options['filters']['title']['expose']['autocomplete_raw_suggestion'] = 1;
   $handler->display->display_options['filters']['title']['expose']['autocomplete_raw_dropdown'] = 1;
   $handler->display->display_options['filters']['title']['expose']['autocomplete_dependent'] = 1;
+  /* Filterkriterie: Combined search in text */
+  $handler->display->display_options['filters']['combine']['id'] = 'combine';
+  $handler->display->display_options['filters']['combine']['table'] = 'views';
+  $handler->display->display_options['filters']['combine']['field'] = 'combine';
+  $handler->display->display_options['filters']['combine']['ui_name'] = 'Combined search in text';
+  $handler->display->display_options['filters']['combine']['operator'] = 'contains';
+  $handler->display->display_options['filters']['combine']['group'] = 1;
+  $handler->display->display_options['filters']['combine']['exposed'] = TRUE;
+  $handler->display->display_options['filters']['combine']['expose']['operator_id'] = 'combine_op';
+  $handler->display->display_options['filters']['combine']['expose']['label'] = 'Fritekst';
+  $handler->display->display_options['filters']['combine']['expose']['operator'] = 'combine_op';
+  $handler->display->display_options['filters']['combine']['expose']['identifier'] = 'imported_slide_free_search';
+  $handler->display->display_options['filters']['combine']['expose']['remember_roles'] = array(
+    2 => '2',
+    1 => 0,
+    4 => 0,
+    5 => 0,
+    6 => 0,
+    3 => 0,
+  );
+  $handler->display->display_options['filters']['combine']['fields'] = array(
+    'title' => 'title',
+    'field_ik_slide_subheading' => 'field_ik_slide_subheading',
+    'field_ik_slide_text' => 'field_ik_slide_text',
+  );
   /* Filterkriterie: Bruger: Navn */
   $handler->display->display_options['filters']['uid']['id'] = 'uid';
   $handler->display->display_options['filters']['uid']['table'] = 'users';
@@ -3675,6 +3905,7 @@ function ik_dashboard_views_default_views() {
   $handler->display->display_options['filters']['field_ik_slide_imported_value']['value'] = array(
     'imported' => 'imported',
   );
+  $handler->display->display_options['filters']['field_ik_slide_imported_value']['group'] = 1;
   $handler->display->display_options['allow']['use_pager'] = 0;
   $handler->display->display_options['allow']['items_per_page'] = 0;
   $handler->display->display_options['allow']['offset'] = 0;
@@ -4076,6 +4307,20 @@ function ik_dashboard_views_default_views() {
   $handler->display->display_options['fields']['edit_node']['label'] = 'Handlinger';
   $handler->display->display_options['fields']['edit_node']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['edit_node']['text'] = 'Redigér';
+  /* Felt: Indhold: Manchet */
+  $handler->display->display_options['fields']['field_ik_slide_subheading']['id'] = 'field_ik_slide_subheading';
+  $handler->display->display_options['fields']['field_ik_slide_subheading']['table'] = 'field_data_field_ik_slide_subheading';
+  $handler->display->display_options['fields']['field_ik_slide_subheading']['field'] = 'field_ik_slide_subheading';
+  $handler->display->display_options['fields']['field_ik_slide_subheading']['label'] = '';
+  $handler->display->display_options['fields']['field_ik_slide_subheading']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['field_ik_slide_subheading']['element_label_colon'] = FALSE;
+  /* Felt: Indhold: Tekst */
+  $handler->display->display_options['fields']['field_ik_slide_text']['id'] = 'field_ik_slide_text';
+  $handler->display->display_options['fields']['field_ik_slide_text']['table'] = 'field_data_field_ik_slide_text';
+  $handler->display->display_options['fields']['field_ik_slide_text']['field'] = 'field_ik_slide_text';
+  $handler->display->display_options['fields']['field_ik_slide_text']['label'] = '';
+  $handler->display->display_options['fields']['field_ik_slide_text']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['field_ik_slide_text']['element_label_colon'] = FALSE;
   $handler->display->display_options['defaults']['filter_groups'] = FALSE;
   $handler->display->display_options['defaults']['filters'] = FALSE;
   /* Filterkriterie: Indhold: Type */
@@ -4128,6 +4373,31 @@ function ik_dashboard_views_default_views() {
   $handler->display->display_options['filters']['title_1']['expose']['autocomplete_raw_suggestion'] = 1;
   $handler->display->display_options['filters']['title_1']['expose']['autocomplete_raw_dropdown'] = 1;
   $handler->display->display_options['filters']['title_1']['expose']['autocomplete_dependent'] = 1;
+  /* Filterkriterie: Combined search in content */
+  $handler->display->display_options['filters']['combine']['id'] = 'combine';
+  $handler->display->display_options['filters']['combine']['table'] = 'views';
+  $handler->display->display_options['filters']['combine']['field'] = 'combine';
+  $handler->display->display_options['filters']['combine']['ui_name'] = 'Combined search in content';
+  $handler->display->display_options['filters']['combine']['operator'] = 'contains';
+  $handler->display->display_options['filters']['combine']['group'] = 1;
+  $handler->display->display_options['filters']['combine']['exposed'] = TRUE;
+  $handler->display->display_options['filters']['combine']['expose']['operator_id'] = 'combine_op';
+  $handler->display->display_options['filters']['combine']['expose']['label'] = 'Fritekst';
+  $handler->display->display_options['filters']['combine']['expose']['operator'] = 'combine_op';
+  $handler->display->display_options['filters']['combine']['expose']['identifier'] = 'slide_imported_free_search_1';
+  $handler->display->display_options['filters']['combine']['expose']['remember_roles'] = array(
+    2 => '2',
+    1 => 0,
+    4 => 0,
+    5 => 0,
+    6 => 0,
+    3 => 0,
+  );
+  $handler->display->display_options['filters']['combine']['fields'] = array(
+    'title' => 'title',
+    'field_ik_slide_subheading' => 'field_ik_slide_subheading',
+    'field_ik_slide_text' => 'field_ik_slide_text',
+  );
   /* Filterkriterie: Bruger: Navn */
   $handler->display->display_options['filters']['uid']['id'] = 'uid';
   $handler->display->display_options['filters']['uid']['table'] = 'users';
@@ -4204,6 +4474,7 @@ function ik_dashboard_views_default_views() {
   $handler->display->display_options['filters']['field_ik_slide_imported_value']['value'] = array(
     'imported' => 'imported',
   );
+  $handler->display->display_options['filters']['field_ik_slide_imported_value']['group'] = 1;
   $handler->display->display_options['path'] = 'dashboard/imported/slides';
   $handler->display->display_options['menu']['type'] = 'normal';
   $handler->display->display_options['menu']['title'] = 'Importerede slides';
@@ -5076,6 +5347,7 @@ function ik_dashboard_views_default_views() {
     t('A content pane displaying users own content'),
     t('Antal'),
     t('Udgivet'),
+    t('Fritekst'),
     t('View panes'),
     t('My content page'),
     t('A page showing the users own content'),
