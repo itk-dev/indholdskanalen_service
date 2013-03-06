@@ -475,7 +475,7 @@ function ik_dashboard_views_default_views() {
   $handler->display->display_options['filters']['combine']['expose']['operator_id'] = 'combine_op';
   $handler->display->display_options['filters']['combine']['expose']['label'] = 'Fritekst';
   $handler->display->display_options['filters']['combine']['expose']['operator'] = 'combine_op';
-  $handler->display->display_options['filters']['combine']['expose']['identifier'] = 'my_content_combined_search';
+  $handler->display->display_options['filters']['combine']['expose']['identifier'] = 'slide_freetext_search_my_content';
   $handler->display->display_options['filters']['combine']['expose']['remember_roles'] = array(
     2 => '2',
     1 => 0,
@@ -896,7 +896,7 @@ function ik_dashboard_views_default_views() {
   $handler->display->display_options['filters']['combine']['expose']['operator_id'] = 'combine_op';
   $handler->display->display_options['filters']['combine']['expose']['label'] = 'Fritekst';
   $handler->display->display_options['filters']['combine']['expose']['operator'] = 'combine_op';
-  $handler->display->display_options['filters']['combine']['expose']['identifier'] = 'my_content_combined_search_page';
+  $handler->display->display_options['filters']['combine']['expose']['identifier'] = 'slide_freetext_search_my_content';
   $handler->display->display_options['filters']['combine']['expose']['remember_roles'] = array(
     2 => '2',
     1 => 0,
@@ -1222,7 +1222,7 @@ function ik_dashboard_views_default_views() {
   $handler->display->display_options['filters']['combine']['expose']['operator_id'] = 'combine_op';
   $handler->display->display_options['filters']['combine']['expose']['label'] = 'Fritekst';
   $handler->display->display_options['filters']['combine']['expose']['operator'] = 'combine_op';
-  $handler->display->display_options['filters']['combine']['expose']['identifier'] = 'slide_free_search_1';
+  $handler->display->display_options['filters']['combine']['expose']['identifier'] = 'slide_freetext_search';
   $handler->display->display_options['filters']['combine']['expose']['remember_roles'] = array(
     2 => '2',
     1 => 0,
@@ -1323,6 +1323,28 @@ function ik_dashboard_views_default_views() {
     'imported' => 'imported',
   );
   $handler->display->display_options['filters']['field_ik_slide_imported_value']['group'] = 1;
+  /* Filterkriterie: Filter by tags */
+  $handler->display->display_options['filters']['field_ik_slide_tags_tid']['id'] = 'field_ik_slide_tags_tid';
+  $handler->display->display_options['filters']['field_ik_slide_tags_tid']['table'] = 'field_data_field_ik_slide_tags';
+  $handler->display->display_options['filters']['field_ik_slide_tags_tid']['field'] = 'field_ik_slide_tags_tid';
+  $handler->display->display_options['filters']['field_ik_slide_tags_tid']['ui_name'] = 'Filter by tags';
+  $handler->display->display_options['filters']['field_ik_slide_tags_tid']['value'] = '';
+  $handler->display->display_options['filters']['field_ik_slide_tags_tid']['exposed'] = TRUE;
+  $handler->display->display_options['filters']['field_ik_slide_tags_tid']['expose']['operator_id'] = 'field_ik_slide_tags_tid_op';
+  $handler->display->display_options['filters']['field_ik_slide_tags_tid']['expose']['label'] = 'Tags';
+  $handler->display->display_options['filters']['field_ik_slide_tags_tid']['expose']['operator'] = 'field_ik_slide_tags_tid_op';
+  $handler->display->display_options['filters']['field_ik_slide_tags_tid']['expose']['identifier'] = 'field_ik_slide_tags_tid';
+  $handler->display->display_options['filters']['field_ik_slide_tags_tid']['expose']['multiple'] = TRUE;
+  $handler->display->display_options['filters']['field_ik_slide_tags_tid']['expose']['remember_roles'] = array(
+    2 => '2',
+    1 => 0,
+    4 => 0,
+    5 => 0,
+    6 => 0,
+    3 => 0,
+  );
+  $handler->display->display_options['filters']['field_ik_slide_tags_tid']['reduce_duplicates'] = TRUE;
+  $handler->display->display_options['filters']['field_ik_slide_tags_tid']['vocabulary'] = 'tags';
   $handler->display->display_options['allow']['use_pager'] = 0;
   $handler->display->display_options['allow']['items_per_page'] = 0;
   $handler->display->display_options['allow']['offset'] = 0;
@@ -1784,7 +1806,7 @@ function ik_dashboard_views_default_views() {
   $handler->display->display_options['filters']['combine']['expose']['operator_id'] = 'combine_op';
   $handler->display->display_options['filters']['combine']['expose']['label'] = 'Fritekst';
   $handler->display->display_options['filters']['combine']['expose']['operator'] = 'combine_op';
-  $handler->display->display_options['filters']['combine']['expose']['identifier'] = 'slide_free_search';
+  $handler->display->display_options['filters']['combine']['expose']['identifier'] = 'slide_freetext_search';
   $handler->display->display_options['filters']['combine']['expose']['remember_roles'] = array(
     2 => '2',
     1 => 0,
@@ -1876,6 +1898,28 @@ function ik_dashboard_views_default_views() {
     'imported' => 'imported',
   );
   $handler->display->display_options['filters']['field_ik_slide_imported_value']['group'] = 1;
+  /* Filterkriterie: Filter by tags */
+  $handler->display->display_options['filters']['field_ik_slide_tags_tid']['id'] = 'field_ik_slide_tags_tid';
+  $handler->display->display_options['filters']['field_ik_slide_tags_tid']['table'] = 'field_data_field_ik_slide_tags';
+  $handler->display->display_options['filters']['field_ik_slide_tags_tid']['field'] = 'field_ik_slide_tags_tid';
+  $handler->display->display_options['filters']['field_ik_slide_tags_tid']['ui_name'] = 'Filter by tags';
+  $handler->display->display_options['filters']['field_ik_slide_tags_tid']['value'] = '';
+  $handler->display->display_options['filters']['field_ik_slide_tags_tid']['exposed'] = TRUE;
+  $handler->display->display_options['filters']['field_ik_slide_tags_tid']['expose']['operator_id'] = 'field_ik_slide_tags_tid_op';
+  $handler->display->display_options['filters']['field_ik_slide_tags_tid']['expose']['label'] = 'Tags';
+  $handler->display->display_options['filters']['field_ik_slide_tags_tid']['expose']['operator'] = 'field_ik_slide_tags_tid_op';
+  $handler->display->display_options['filters']['field_ik_slide_tags_tid']['expose']['identifier'] = 'field_ik_slide_tags_tid';
+  $handler->display->display_options['filters']['field_ik_slide_tags_tid']['expose']['multiple'] = TRUE;
+  $handler->display->display_options['filters']['field_ik_slide_tags_tid']['expose']['remember_roles'] = array(
+    2 => '2',
+    1 => 0,
+    4 => 0,
+    5 => 0,
+    6 => 0,
+    3 => 0,
+  );
+  $handler->display->display_options['filters']['field_ik_slide_tags_tid']['reduce_duplicates'] = TRUE;
+  $handler->display->display_options['filters']['field_ik_slide_tags_tid']['vocabulary'] = 'tags';
   $handler->display->display_options['path'] = 'dashboard/slides';
   $handler->display->display_options['menu']['type'] = 'normal';
   $handler->display->display_options['menu']['title'] = 'Slides';
@@ -3647,8 +3691,10 @@ function ik_dashboard_views_default_views() {
   $handler->display->display_options['fields']['title']['id'] = 'title';
   $handler->display->display_options['fields']['title']['table'] = 'node';
   $handler->display->display_options['fields']['title']['field'] = 'title';
+  $handler->display->display_options['fields']['title']['alter']['trim_whitespace'] = TRUE;
+  $handler->display->display_options['fields']['title']['alter']['max_length'] = '35';
   $handler->display->display_options['fields']['title']['alter']['word_boundary'] = FALSE;
-  $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
+  $handler->display->display_options['fields']['title']['alter']['trim'] = TRUE;
   $handler->display->display_options['fields']['title']['element_label_colon'] = FALSE;
   /* Felt: Indhold: Opdateringsdato */
   $handler->display->display_options['fields']['changed']['id'] = 'changed';
@@ -3806,7 +3852,7 @@ function ik_dashboard_views_default_views() {
   $handler->display->display_options['filters']['combine']['expose']['operator_id'] = 'combine_op';
   $handler->display->display_options['filters']['combine']['expose']['label'] = 'Fritekst';
   $handler->display->display_options['filters']['combine']['expose']['operator'] = 'combine_op';
-  $handler->display->display_options['filters']['combine']['expose']['identifier'] = 'imported_slide_free_search';
+  $handler->display->display_options['filters']['combine']['expose']['identifier'] = 'imported_slide_freetext_search';
   $handler->display->display_options['filters']['combine']['expose']['remember_roles'] = array(
     2 => '2',
     1 => 0,
@@ -3906,6 +3952,28 @@ function ik_dashboard_views_default_views() {
     'imported' => 'imported',
   );
   $handler->display->display_options['filters']['field_ik_slide_imported_value']['group'] = 1;
+  /* Filterkriterie: Filter by tags */
+  $handler->display->display_options['filters']['field_ik_slide_tags_tid']['id'] = 'field_ik_slide_tags_tid';
+  $handler->display->display_options['filters']['field_ik_slide_tags_tid']['table'] = 'field_data_field_ik_slide_tags';
+  $handler->display->display_options['filters']['field_ik_slide_tags_tid']['field'] = 'field_ik_slide_tags_tid';
+  $handler->display->display_options['filters']['field_ik_slide_tags_tid']['ui_name'] = 'Filter by tags';
+  $handler->display->display_options['filters']['field_ik_slide_tags_tid']['value'] = '';
+  $handler->display->display_options['filters']['field_ik_slide_tags_tid']['exposed'] = TRUE;
+  $handler->display->display_options['filters']['field_ik_slide_tags_tid']['expose']['operator_id'] = 'field_ik_slide_tags_tid_op';
+  $handler->display->display_options['filters']['field_ik_slide_tags_tid']['expose']['label'] = 'Tags';
+  $handler->display->display_options['filters']['field_ik_slide_tags_tid']['expose']['operator'] = 'field_ik_slide_tags_tid_op';
+  $handler->display->display_options['filters']['field_ik_slide_tags_tid']['expose']['identifier'] = 'field_ik_slide_tags_tid';
+  $handler->display->display_options['filters']['field_ik_slide_tags_tid']['expose']['multiple'] = TRUE;
+  $handler->display->display_options['filters']['field_ik_slide_tags_tid']['expose']['remember_roles'] = array(
+    2 => '2',
+    1 => 0,
+    4 => 0,
+    5 => 0,
+    6 => 0,
+    3 => 0,
+  );
+  $handler->display->display_options['filters']['field_ik_slide_tags_tid']['reduce_duplicates'] = TRUE;
+  $handler->display->display_options['filters']['field_ik_slide_tags_tid']['vocabulary'] = 'tags';
   $handler->display->display_options['allow']['use_pager'] = 0;
   $handler->display->display_options['allow']['items_per_page'] = 0;
   $handler->display->display_options['allow']['offset'] = 0;
@@ -4246,8 +4314,10 @@ function ik_dashboard_views_default_views() {
   $handler->display->display_options['fields']['title']['id'] = 'title';
   $handler->display->display_options['fields']['title']['table'] = 'node';
   $handler->display->display_options['fields']['title']['field'] = 'title';
+  $handler->display->display_options['fields']['title']['alter']['trim_whitespace'] = TRUE;
+  $handler->display->display_options['fields']['title']['alter']['max_length'] = '35';
   $handler->display->display_options['fields']['title']['alter']['word_boundary'] = FALSE;
-  $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
+  $handler->display->display_options['fields']['title']['alter']['trim'] = TRUE;
   $handler->display->display_options['fields']['title']['element_label_colon'] = FALSE;
   /* Felt: Indhold: Opdateringsdato */
   $handler->display->display_options['fields']['changed']['id'] = 'changed';
@@ -4384,7 +4454,7 @@ function ik_dashboard_views_default_views() {
   $handler->display->display_options['filters']['combine']['expose']['operator_id'] = 'combine_op';
   $handler->display->display_options['filters']['combine']['expose']['label'] = 'Fritekst';
   $handler->display->display_options['filters']['combine']['expose']['operator'] = 'combine_op';
-  $handler->display->display_options['filters']['combine']['expose']['identifier'] = 'slide_imported_free_search_1';
+  $handler->display->display_options['filters']['combine']['expose']['identifier'] = 'imported_slide_freetext_search';
   $handler->display->display_options['filters']['combine']['expose']['remember_roles'] = array(
     2 => '2',
     1 => 0,
@@ -4475,6 +4545,28 @@ function ik_dashboard_views_default_views() {
     'imported' => 'imported',
   );
   $handler->display->display_options['filters']['field_ik_slide_imported_value']['group'] = 1;
+  /* Filterkriterie: Filter by tags */
+  $handler->display->display_options['filters']['field_ik_slide_tags_tid']['id'] = 'field_ik_slide_tags_tid';
+  $handler->display->display_options['filters']['field_ik_slide_tags_tid']['table'] = 'field_data_field_ik_slide_tags';
+  $handler->display->display_options['filters']['field_ik_slide_tags_tid']['field'] = 'field_ik_slide_tags_tid';
+  $handler->display->display_options['filters']['field_ik_slide_tags_tid']['ui_name'] = 'Filter by tags';
+  $handler->display->display_options['filters']['field_ik_slide_tags_tid']['value'] = '';
+  $handler->display->display_options['filters']['field_ik_slide_tags_tid']['exposed'] = TRUE;
+  $handler->display->display_options['filters']['field_ik_slide_tags_tid']['expose']['operator_id'] = 'field_ik_slide_tags_tid_op';
+  $handler->display->display_options['filters']['field_ik_slide_tags_tid']['expose']['label'] = 'Tags';
+  $handler->display->display_options['filters']['field_ik_slide_tags_tid']['expose']['operator'] = 'field_ik_slide_tags_tid_op';
+  $handler->display->display_options['filters']['field_ik_slide_tags_tid']['expose']['identifier'] = 'field_ik_slide_tags_tid';
+  $handler->display->display_options['filters']['field_ik_slide_tags_tid']['expose']['multiple'] = TRUE;
+  $handler->display->display_options['filters']['field_ik_slide_tags_tid']['expose']['remember_roles'] = array(
+    2 => '2',
+    1 => 0,
+    4 => 0,
+    5 => 0,
+    6 => 0,
+    3 => 0,
+  );
+  $handler->display->display_options['filters']['field_ik_slide_tags_tid']['reduce_duplicates'] = TRUE;
+  $handler->display->display_options['filters']['field_ik_slide_tags_tid']['vocabulary'] = 'tags';
   $handler->display->display_options['path'] = 'dashboard/imported/slides';
   $handler->display->display_options['menu']['type'] = 'normal';
   $handler->display->display_options['menu']['title'] = 'Importerede slides';
@@ -4821,6 +4913,28 @@ function ik_dashboard_views_default_views() {
     2 => array(),
     3 => array(),
   );
+  /* Filterkriterie: Filter by tags */
+  $handler->display->display_options['filters']['field_ik_slide_tags_tid']['id'] = 'field_ik_slide_tags_tid';
+  $handler->display->display_options['filters']['field_ik_slide_tags_tid']['table'] = 'field_data_field_ik_slide_tags';
+  $handler->display->display_options['filters']['field_ik_slide_tags_tid']['field'] = 'field_ik_slide_tags_tid';
+  $handler->display->display_options['filters']['field_ik_slide_tags_tid']['ui_name'] = 'Filter by tags';
+  $handler->display->display_options['filters']['field_ik_slide_tags_tid']['value'] = '';
+  $handler->display->display_options['filters']['field_ik_slide_tags_tid']['exposed'] = TRUE;
+  $handler->display->display_options['filters']['field_ik_slide_tags_tid']['expose']['operator_id'] = 'field_ik_slide_tags_tid_op';
+  $handler->display->display_options['filters']['field_ik_slide_tags_tid']['expose']['label'] = 'Tags';
+  $handler->display->display_options['filters']['field_ik_slide_tags_tid']['expose']['operator'] = 'field_ik_slide_tags_tid_op';
+  $handler->display->display_options['filters']['field_ik_slide_tags_tid']['expose']['identifier'] = 'field_ik_slide_tags_tid_importers';
+  $handler->display->display_options['filters']['field_ik_slide_tags_tid']['expose']['multiple'] = TRUE;
+  $handler->display->display_options['filters']['field_ik_slide_tags_tid']['expose']['remember_roles'] = array(
+    2 => '2',
+    1 => 0,
+    4 => 0,
+    5 => 0,
+    6 => 0,
+    3 => 0,
+  );
+  $handler->display->display_options['filters']['field_ik_slide_tags_tid']['reduce_duplicates'] = TRUE;
+  $handler->display->display_options['filters']['field_ik_slide_tags_tid']['vocabulary'] = 'tags';
   $handler->display->display_options['allow']['use_pager'] = 0;
   $handler->display->display_options['allow']['items_per_page'] = 0;
   $handler->display->display_options['allow']['offset'] = 0;
@@ -4833,8 +4947,8 @@ function ik_dashboard_views_default_views() {
   $handler->display->display_options['link_to_view'] = '0';
   $handler->display->display_options['inherit_panels_path'] = '1';
 
-  /* Display: Imported slide list page */
-  $handler = $view->new_display('page', 'Imported slide list page', 'page_7');
+  /* Display: Slide importers list page */
+  $handler = $view->new_display('page', 'Slide importers list page', 'page_7');
   $handler->display->display_options['defaults']['title'] = FALSE;
   $handler->display->display_options['title'] = 'Slide importer';
   $handler->display->display_options['defaults']['hide_admin_links'] = FALSE;
@@ -5309,6 +5423,28 @@ function ik_dashboard_views_default_views() {
   $handler->display->display_options['filters']['title']['expose']['autocomplete_raw_suggestion'] = 1;
   $handler->display->display_options['filters']['title']['expose']['autocomplete_raw_dropdown'] = 1;
   $handler->display->display_options['filters']['title']['expose']['autocomplete_dependent'] = 1;
+  /* Filterkriterie: Filter by tags */
+  $handler->display->display_options['filters']['field_ik_slide_tags_tid']['id'] = 'field_ik_slide_tags_tid';
+  $handler->display->display_options['filters']['field_ik_slide_tags_tid']['table'] = 'field_data_field_ik_slide_tags';
+  $handler->display->display_options['filters']['field_ik_slide_tags_tid']['field'] = 'field_ik_slide_tags_tid';
+  $handler->display->display_options['filters']['field_ik_slide_tags_tid']['ui_name'] = 'Filter by tags';
+  $handler->display->display_options['filters']['field_ik_slide_tags_tid']['value'] = '';
+  $handler->display->display_options['filters']['field_ik_slide_tags_tid']['exposed'] = TRUE;
+  $handler->display->display_options['filters']['field_ik_slide_tags_tid']['expose']['operator_id'] = 'field_ik_slide_tags_tid_op';
+  $handler->display->display_options['filters']['field_ik_slide_tags_tid']['expose']['label'] = 'Tags';
+  $handler->display->display_options['filters']['field_ik_slide_tags_tid']['expose']['operator'] = 'field_ik_slide_tags_tid_op';
+  $handler->display->display_options['filters']['field_ik_slide_tags_tid']['expose']['identifier'] = 'field_ik_slide_tags_tid_importers';
+  $handler->display->display_options['filters']['field_ik_slide_tags_tid']['expose']['multiple'] = TRUE;
+  $handler->display->display_options['filters']['field_ik_slide_tags_tid']['expose']['remember_roles'] = array(
+    2 => '2',
+    1 => 0,
+    4 => 0,
+    5 => 0,
+    6 => 0,
+    3 => 0,
+  );
+  $handler->display->display_options['filters']['field_ik_slide_tags_tid']['reduce_duplicates'] = TRUE;
+  $handler->display->display_options['filters']['field_ik_slide_tags_tid']['vocabulary'] = 'tags';
   $handler->display->display_options['path'] = 'dashboard/slide-importers';
   $handler->display->display_options['menu']['type'] = 'normal';
   $handler->display->display_options['menu']['title'] = 'Slide importerer';
@@ -5363,6 +5499,7 @@ function ik_dashboard_views_default_views() {
     t('Afdeling'),
     t('Forfatter'),
     t(' '),
+    t('Tags'),
     t('Slide list page'),
     t('Channel list pane'),
     t('Kanaler'),
@@ -5385,6 +5522,7 @@ function ik_dashboard_views_default_views() {
     t('Slide importers list pane'),
     t('Slide importer'),
     t('A content pane displaying slide importers'),
+    t('Slide importers list page'),
   );
   $export['ik_dashboard'] = $view;
 
