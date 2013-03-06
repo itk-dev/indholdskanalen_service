@@ -94,6 +94,11 @@ input.form-submit {
   }
 }
 
+/* Media upload form */
+#media-tab-upload .form-item-field-folder {
+  //display: none;
+}
+
 // -----------------------------------------------------------------------------
 // Channel node view and edit
 // -----------------------------------------------------------------------------

@@ -12,10 +12,6 @@
   vertical-align: top;
 }
 
-#media_folder_table .media-list-thumbnails{
-  overflow:auto;
-}
-
 #folder ul.hidden {
   display: none;
 }
@@ -90,11 +86,9 @@
   font-weight: normal;
 }
 
-#media-thumb-list .media-item .label-wrapper,
-#media-basket-list .media-item .label-wrapper {
-  margin-left: 0px;
+#media-thumb-list li {
+  display: inline;
 }
-
 
 #media_browser_plus_pages .media_paging_page {
   float: left;
@@ -152,11 +146,6 @@
 #media_paging_table .active_page a:hover {
   cursor: default;
   text-decoration: none;
-}
-
-#media-thumb-list .media-item,
-#media-basket-list .media-item{
-  padding: 16px 16px 4px 16px;
 }
 
 input.hidden {
@@ -253,3 +242,120 @@ ul#navlist {
     Change the following styles to modify the appearance of ColorBox.  They are
     ordered & tabbed in a way that represents the nesting of the generated HTML.
 */
+
+
+.mbp-item-list .media-list-thumbnails {
+  overflow: auto;
+  width: 100%;
+}
+
+.mbp-item-list ul.media-list-thumbnails {
+  margin: 0px;
+  padding: 0px;
+}
+
+.mbp-item-list .media-list-thumbnails > li {
+  float: left;
+  list-style: none;
+}
+
+.mbp-item-list .media-list-thumbnails .media-item {
+  padding: 16px 16px 4px 16px;
+}
+
+.mbp-item-list .media-list-thumbnails .form-type-checkbox {
+  margin: -35px 0 0 16px;
+  position:  absolute;
+}
+
+.mbp-item-list .media-item .media-type-icon {
+  border: none;
+  margin: 0 0 -5px;
+  width: auto;
+}
+
+.mbp-item-list .media-item {
+  background: #FFF;
+  border: 1px solid #CCCCCC;
+  margin: 10px;
+  padding: 6px 6px 2px;
+  width: 100px;
+}
+
+.mbp-item-list .media-item.selected {
+  background: #F4ECC7;
+}
+
+.mbp-item-list .media-item a {
+  display: block;
+}
+
+.mbp-item-list .media-item img {
+  border: 2px solid transparent;
+  display: inline-block;
+  margin-left: -2px;
+  height: auto;
+  width: 100%;
+}
+
+.mbp-item-list .media-item img:hover {
+  border-color: #058AC5;
+}
+
+
+.mbp-item-list .media-item-icons img{
+  height:25px;
+  width:25px;
+  float:left;
+}
+
+.mbp-item-list .media-item .label-wrapper {
+  overflow: hidden;
+  margin-left: 14px;
+}
+
+.mbp-item-list .media-item .label-wrapper:hover {
+  border-bottom: 2px solid #CCC;
+  border-right: 2px solid #CCC;
+  display: inline-block;
+  line-height: 16px;
+  margin-bottom: -1px;
+  overflow: visible;
+  position: relative;
+  z-index: 10;
+}
+
+.mbp-item-list .preview .media-item .label-wrapper {
+  margin-left: 0;
+}
+
+.preview {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.mbp-item-list .media-item .media-filename {
+  background: #FFF;
+  color: #058AC5;
+  font-size: 10px;
+  padding: 0 3px;
+  white-space: nowrap;
+}
+
+.mbp-item-list .media-item .label-wrapper:hover .media-filename {
+  border: 1px solid #888;
+  display: inline-block;
+  margin: 0 0 -2px -1px;
+}
+
+.mbp-item-list .media-item.selected .media-filename {
+  background: #F4ECC7;
+}
+
+.mbp-item-list .media-item .media-filename:hover {
+  text-decoration: underline;
+}
+
+.mbp-item-list .media-item .media-thumbnail a {
+  display: none;
+}

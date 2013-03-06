@@ -8,10 +8,13 @@
  * Implements hook_install().
  */
 function media_browser_plus_install() {
-  variable_set('media_root_folder', 'media');
   // Make sure the standard 'field_tags' field exists.
-  _media_browser_plus_ensure_field_tags();
   _media_browser_plus_ensure_field_folder();
+  // On installation attempt we have to trust the install profile - otherwise
+  // we get collisions with the tag name.
+  if (drupal_installation_attempted() && !variable_get('simpletest_parent_profile', FALSE)) {
+    _media_browser_plus_ensure_field_tags();
+  }
 }
 
 /**
@@ -158,22 +161,9 @@ function media_browser_plus_enable() {
   variable_set('media_browser_plus_thumbnails_as_default_browser', TRUE);
 
   // Create the media folder.
+  media_browser_plus_get_media_root_folder(TRUE);
   $dir = variable_get('file_default_scheme', 'public') . '://' . variable_get('media_root_folder') . '/';
   file_prepare_directory($dir, FILE_CREATE_DIRECTORY);
-  $term = media_browser_plus_get_media_root_folder(TRUE);
-  if (is_object($term)) {
-    // Load all media and apply tid of folder if none set.
-    variable_set('media_folder_import_start', 0);
-    $batch = array(
-      'title' => t('Assigning Media to Root Folder'),
-      'operations' => array(
-        array('media_browser_plus_folder_media_import', array($term->tid, $dir)),
-      ),
-      'finished' => 'media_browser_plus_folder_media_import_finished',
-      'file' => drupal_get_path('module', 'media_browser_plus') . '/includes/media_browser_plus.admin.inc',
-    );
-    batch_set($batch);
-  }
 }
 
 /**

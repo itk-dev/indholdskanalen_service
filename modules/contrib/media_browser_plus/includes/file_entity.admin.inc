@@ -10,6 +10,20 @@
  *
  * Alter the media browser from to enable new UI.
  */
+function media_browser_plus_form_file_entity_admin_file_alter(&$form, &$form_state) {
+  // File entity version > 01.03.2013
+  media_browser_plus_form_file_entity_admin_files_alter($form, $form_state);
+  unset(
+    $form['filter'],
+    $form['admin']
+  );
+}
+
+/**
+ * Implements hook_form_FORM_ID_alter() for file_entity_admin_files().
+ *
+ * Alter the media browser from to enable new UI.
+ */
 function media_browser_plus_form_file_entity_admin_files_alter(&$form, &$form_state) {
   $path = drupal_get_path('module', 'media_browser_plus');
 

@@ -305,7 +305,8 @@ body {
   padding: 2px 4px;
   font-size: 10.76923px; }
 
-/* line 103, ../sass/_ik.base.scss */
+/* Media upload form */
+/* line 108, ../sass/_ik.base.scss */
 .ik-channel-filter-remove.button, .more-link a.ik-channel-filter-remove {
   -webkit-border-radius: 4px;
   -moz-border-radius: 4px;
@@ -315,27 +316,27 @@ body {
   padding: 2px 4px;
   font-size: 10.76923px; }
 
-/* line 118, ../sass/_ik.base.scss */
+/* line 123, ../sass/_ik.base.scss */
 .pane-node-field-channel-preview .ik-filter-preview-wrapper img {
   margin: 0 20px 20px 0; }
 
-/* line 127, ../sass/_ik.base.scss */
+/* line 132, ../sass/_ik.base.scss */
 .user-picture {
   display: none; }
 
-/* line 131, ../sass/_ik.base.scss */
+/* line 136, ../sass/_ik.base.scss */
 .submitted {
   margin-bottom: 20px; }
 
-/* line 136, ../sass/_ik.base.scss */
+/* line 141, ../sass/_ik.base.scss */
 .field-type-ik-slide-preview .field-label {
   font-size: 21px;
   margin-bottom: 10px; }
-/* line 141, ../sass/_ik.base.scss */
+/* line 146, ../sass/_ik.base.scss */
 .field-type-ik-slide-preview img {
   max-width: 100%; }
 
-/* line 146, ../sass/_ik.base.scss */
+/* line 151, ../sass/_ik.base.scss */
 .field-name-field-ik-slide-transition-effect {
   display: none; }
 
@@ -508,9 +509,4 @@ li.views-fluid-grid-item {
 
 /* line 159, ../sass/_ik.legacy.scss */
 .panel-pane.hidden {
-  display: none; }
-
-/* Media upload form */
-/* line 164, ../sass/_ik.legacy.scss */
-#media-tab-upload .form-item-field-folder {
   display: none; }

@@ -75,9 +75,20 @@ function media_browser_plus_download_images_submit($form, &$form_state) {
  * Called by the JS fronted (ajax) to change the folder of a media object.
  */
 function media_browser_plus_change_folder($form, &$form_state) {
+  if (!isset($form_state['input']['media'])) {
+    // @fixme Decide: die() or return.
+    die('');
+    return $form;
+  }
   // Parse values.
   $folder = (int) (str_replace('folder_load_', '', $form_state['input']['folder']));
-  $media = file_load((int) (str_replace('edit-files-', '', $form_state['input']['media'])));
+  $media_id = (int) (str_replace('edit-files-', '', $form_state['input']['media']));
+  if (!$media_id) {
+    // @fixme Decide: die() or return.
+    die('');
+    return $form;
+  }
+  $media = file_load($media_id);
   // Apply new folder.
   if (isset($media->field_folder[LANGUAGE_NONE][0]['tid'])) {
     $media->field_folder[LANGUAGE_NONE][0]['tid'] = $folder;
@@ -146,7 +157,8 @@ function media_browser_plus_thumbnailsJSON() {
       // use this as condition.
       $query = db_select('file_managed')
         ->fields('file_managed', array('fid', 'fid'))
-        ->condition('uri', db_like('temporary://') . '%', 'NOT LIKE');
+        ->condition('uri', db_like('temporary://') . '%', 'NOT LIKE')
+        ->isNull('entity_id');
       $query->leftJoin('field_data_field_folder', 'folder', "entity_type = 'file' AND entity_id = file_managed.fid");
       $result = $query->execute()->fetchAll(PDO::FETCH_KEY_PAIR);
       $conditions[] = array(
@@ -764,20 +776,15 @@ function media_browser_plus_permission() {
  * Implements hook_library().
  */
 function media_browser_plus_library() {
-  $colorbox_path = variable_get('media_browser_plus_library_path', FALSE);
-  if ($colorbox_path === FALSE ) {
-    $colorbox_path = module_exists('libraries') ? libraries_get_path('colorbox') : 'sites/all/libraries/colorbox';
-  }
-  else {
-    $colorbox_path .= '/colorbox';
-  }
+  $colorbox_path = libraries_get_path('colorbox');
+  
   $stylesheet = variable_get('media_browser_plus_stylesheet', 'example1');
   $libraries['colorbox'] = array(
     'title' => 'Colorbox',
     'website' => 'http://colorpowered.com/colorbox/',
     'version' => '1.3.9',
     'js' => array(
-      $colorbox_path . '/colorbox/jquery.colorbox-min.js' => array(),
+      $colorbox_path . '/jquery.colorbox-min.js' => array(),
     ),
     'css' => array(
       $colorbox_path . '/' . $stylesheet . '/colorbox.css' => array(
@@ -997,6 +1004,7 @@ function _media_browser_plus_has_unsorted_media() {
   $query = db_select('file_managed')
     ->fields('file_managed', array('fid'))
     ->condition('uri', db_like('temporary://') . '%', 'NOT LIKE')
+    ->isNull('entity_id')
     ->range(0, 1);
   $query->leftJoin('field_data_field_folder', 'folder', "entity_type = 'file' AND entity_id = file_managed.fid");
   $result = $query->execute()->fetchCol();
@@ -1356,7 +1364,7 @@ function media_browser_plus_media_settings($form, &$form_state = array()) {
     'grid_window_height' => array(
       '#type' => 'textfield',
       '#title' => t('Grind Window Height'),
-      '#default_value' => variable_get('media_grid_window_height'),
+      '#default_value' => variable_get('media_grid_window_height', 400),
       '#description' => t('Set a maximum height of pixels for the media grid view.'),
       '#maxlength' => 4,
       '#required' => TRUE,
@@ -1380,9 +1388,8 @@ function media_browser_plus_media_settings($form, &$form_state = array()) {
     'root_folder' => array(
       '#type' => 'textfield',
       '#title' => t('Media Root folder'),
-      '#default_value' => variable_get('media_root_folder', 'media'),
-      '#description' => t('The root folder of uploaded images.Dont use start or end slashes. eg "media/images"'),
-      '#required' => TRUE,
+      '#default_value' => variable_get('media_root_folder'),
+      '#description' => t("The root folder for files handled by the media module. <strong>Attention: Changing this will move all existing files in the file system too!</strong>"),
     ),
     'media_browser_plus_thumbnails_as_default_browser' => array(
       '#type' => 'checkbox',
@@ -1402,30 +1409,24 @@ function media_browser_plus_media_settings($form, &$form_state = array()) {
  * Saves the entered settings.
  */
 function media_browser_plus_media_settings_submit($form, &$form_state) {
-  $scheme = variable_get('file_default_scheme', 'public') . '://';
-  // Get current media root folder.
-  $old_root = variable_get('media_root_folder');
-  // And set the new.
-  $new_root = trim($form_state['values']['root_folder'], '/');
-
   // Change settings.
   variable_set('media_media_per_page', (int) $form_state['values']['media_per_page']);
   variable_set('media_grid_window_height', (int) $form_state['values']['grid_window_height']);
   variable_set('media_page_items_per_page', (int) $form_state['values']['page_items_per_page']);
   media_variable_set('max_filesize', trim($form_state['values']['max_filesize']));
 
-  // Move the files to the new root folder if its changed.
+  // Check if the root folder was changed.
+  $old_root = variable_get('media_root_folder');
+  $new_root = trim($form_state['values']['root_folder'], '/');
+  // Move the files to the new root folder if necessary.
   if ($old_root != $new_root) {
-    variable_set('media_root_folder', $new_root);
-    $source = $scheme . $old_root;
-    $destination = $scheme . $new_root;
-    media_browser_plus_move_physical_folder($source, $destination);
+    // Load folder handling functions.
+    module_load_include('inc', 'media_browser_plus', 'includes/media_browser_plus.folders');
+    media_browser_plus_move_root_folder($old_root, $new_root);
   }
 
   // Notify user.
   drupal_set_message(t('Media Browser Plus Settings changed successfully'));
-  // Go back to media overview.
-  $form_state['redirect'] = array('admin/config');
 }
 
 /**
@@ -1570,37 +1571,25 @@ function media_browser_plus_load_tag_terms($tags, $tids_only = TRUE, $auto_creat
  *   The folder term or FALSE if not found.
  */
 function media_browser_plus_get_media_root_folder($autocreate = FALSE) {
+  $root_folder = FALSE;
   $vocabulary = taxonomy_vocabulary_machine_name_load('media_folders');
   if ($vocabulary) {
-    // @todo Would an EntityFieldQuery be appropriate?
-    // http://drupal.org/node/916776
-    $results = db_query('SELECT * FROM {taxonomy_term_data} ttd WHERE ttd.name = :name AND ttd.vid = :vocabulary',
-      array('name' => 'Media Root', 'vocabulary' => $vocabulary->vid));
-    $term = NULL;
-    foreach ($results as $result) {
-      $term_id = $result->tid;
+    // Fetch the media root term.
+    $results = taxonomy_get_term_by_name('Media Root', 'media_folders');
+    if (!empty($results)) {
+      $root_folder = reset($results);
     }
-    if (!isset($term_id) && $autocreate) {
-      $media_root_term = new stdClass();
-      $media_root_term->name = 'Media Root';
-      $media_root_term->description = 'default media folder';
-      $media_root_term->vid = $vocabulary->vid;
-      $media_root_term->weight = '-10';
+    elseif ($autocreate) {
+      $root_folder = new stdClass();
+      $root_folder->name = 'Media Root';
+      $root_folder->description = 'default media folder';
+      $root_folder->vid = $vocabulary->vid;
+      $root_folder->weight = '-10';
       // Save (default folder) term.
-      taxonomy_term_save($media_root_term);
-      // @todo Would an EntityFieldQuery be appropriate?
-      // http://drupal.org/node/916776
-      $results = db_query('SELECT * FROM {taxonomy_term_data} ttd WHERE ttd.name = :name AND ttd.vid = :vocabulary',
-      array('name' => 'Media Root', 'vocabulary' => $vocabulary->vid));
-      foreach ($results as $result) {
-        $term_id = $result->tid;
-      }
-    }
-    if (isset($term_id)) {
-      return media_browser_plus_folder_load($term_id);
+      taxonomy_term_save($root_folder);
     }
   }
-  return FALSE;
+  return $root_folder;
 }
 
 /**
@@ -1710,10 +1699,10 @@ function media_browser_plus_grid_view_form($library_mode = FALSE, $multiselect =
   // Build the folder form.
   $form['admin']['folder'] = array(
     '#type' => 'markup',
-    '#markup' => '<div id="folder" style="height:' . variable_get('media_grid_window_height') . 'px;">' . $folders . ' </div>',
+    '#markup' => '<div id="folder" style="height:' . variable_get('media_grid_window_height', 400) . 'px;">' . $folders . ' </div>',
   );
   $form['admin']['files']['#prefix'] = '<div class="media-display-thumbnails media-clear clearfix">' .
-    '<ul class="media-list-thumbnails" style="height:' . variable_get('media_grid_window_height') . 'px;">';
+    '<ul class="media-list-thumbnails" style="height:' . variable_get('media_grid_window_height', 400) . 'px;">';
   // Setting up the header.
   $header = array(
     array(
@@ -1782,7 +1771,7 @@ function media_browser_plus_grid_view_form($library_mode = FALSE, $multiselect =
       'categories' => array('data' => drupal_render($form['admin']['folder'])),
       'media' => array(
         'data' => '<div class="media-display-thumbnails media-clear clearfix">' .
-        '<ul class="media-list-thumbnails" id="media-thumb-list" style="height: ' . variable_get('media_grid_window_height') . 'px;">' .
+        '<ul class="media-list-thumbnails" id="media-thumb-list" style="height: ' . variable_get('media_grid_window_height', 400) . 'px;">' .
         '</ul></div>',
       ),
     ),
@@ -1808,7 +1797,10 @@ function media_browser_plus_grid_view_form($library_mode = FALSE, $multiselect =
   $table = array(
     'header' => $header,
     'rows' => $options,
-    'attributes' => array('id' => 'media_folder_table'),
+    'attributes' => array(
+      'id' => 'media_folder_table',
+      'class' => array('mbp-item-list'),
+    ),
     'empty' => t('No media added yet.'),
   );
   // Return themed table.
@@ -1831,11 +1823,9 @@ function media_browser_plus_main_view_javascript_settings() {
   // Gather environment data.
   $path = drupal_get_path('module', 'media_browser_plus');
   $url = rtrim(url('', array('absolute' => TRUE)), '/') . '/';
-  $clean_url = variable_get('clean_url', 0);
   // Create default settings.
   $settings = array(
     'media_browser_plus' => array(
-      'clean_url' => $clean_url,
       'filter_active' => isset($_SESSION['media-filter']),
       'url' => $url,
       'images_url' => $base_url . '/' . $path . '/images/',
@@ -1902,7 +1892,10 @@ function media_browser_plus_media_basket_form($library_mode = FALSE, &$form_stat
   $table = array(
     'header' => $header,
     'rows' => $options,
-    'attributes' => array('id' => 'media_basket_table'),
+    'attributes' => array(
+      'id' => 'media_basket_table',
+      'class' => array('mbp-item-list'),
+    ),
     'empty' => t('No media added yet.'),
   );
   return array(
@@ -1989,23 +1982,32 @@ function _media_browser_plus_media_basket_select_button() {
 /**
  * Construct the path of a media_folder term.
  *
- * @param object $term
- *   Containing term id and term name.
+ * @param object|NULL $term
+ *   Containing term id and term name. If left empty the root folder will be
+ *   returned.
+ *
+ * @return string
+ *   The path to the requested folder. Doesn't have a trailing slash.
  */
-function media_browser_plus_construct_dir_path($term) {
-  $file_default_scheme = variable_get('file_default_scheme', 'public') . ':/';
+function media_browser_plus_construct_dir_path($term = NULL) {
+  $path = variable_get('file_default_scheme', 'public') . '://';
+  if ($root_folder = variable_get('media_root_folder')) {
+    $path = $root_folder . '/';
+  }
+  $root_folder_term = media_browser_plus_get_media_root_folder();
   if ($term) {
     $parents = array_reverse(taxonomy_get_parents_all($term->tid));
-    $path = $file_default_scheme . '/';
     if (is_array($parents) && !empty($parents)) {
       foreach ($parents as $parent) {
-        $path .= $parent->name . '/';
+        // @TODO Shouldn't we sanitize this?!? There can be special chars!
+        $folder_name = $parent->name;
+        if ($parent->tid != $root_folder_term->tid) {
+          $path .= $folder_name . '/';
+        }
       }
     }
-    $path = str_replace('Media Root', variable_get('media_root_folder', 'media'), $path);
-    $dir_path = rtrim($path, '/');
   }
-  return isset($dir_path) ? $dir_path : $file_default_scheme;
+  return rtrim($path, '/');
 }
 
 /**
@@ -2032,6 +2034,7 @@ function media_browser_plus_move_physical_folder($source, $destination) {
     drupal_rmdir($source);
     file_prepare_directory($destination, FILE_CREATE_DIRECTORY);
   }
+  return TRUE;
 }
 
 /**
@@ -2064,5 +2067,95 @@ function media_browser_plus_move_file($tid, $media, $replace = FILE_EXISTS_RENAM
     $path = media_browser_plus_construct_dir_path($folder);
     file_prepare_directory($path, FILE_CREATE_DIRECTORY);
     file_move($media, $path, $replace);
+  }
+}
+
+/**
+ * Implements hook_taxonomy_term_presave().
+ *
+ * @see media_browser_plus_taxonomy_term_update().
+ */
+function media_browser_plus_taxonomy_term_presave($term) {
+  // Figure out if this is a folder term and if so store the current file path
+  // for further processing in media_browser_plus_taxonomy_term_update().
+  $vocabulary = taxonomy_vocabulary_machine_name_load('media_folders');
+  if (!empty($term->tid) && !empty($vocabulary) && $term->vid == $vocabulary->vid) {
+    $term->media_browser_plus_original_path = media_browser_plus_construct_dir_path($term);
+  }
+}
+
+/**
+ * Implements hook_taxonomy_term_insert().
+ */
+function media_browser_plus_taxonomy_term_insert($term) {
+  $dir = media_browser_plus_construct_dir_path($term);
+  if (file_prepare_directory($dir, FILE_CREATE_DIRECTORY)) {
+    drupal_set_message(t('Folder %term_name created successfully', array('%term_name' => $term->name)));
+  }
+  else {
+    drupal_set_message(t('Folder %term_name created successfully as term but failed to create as physical folder.Please do it manually', array('%term_name' => $term->name)), 'warning');
+  }
+}
+
+/**
+ * Implements hook_taxonomy_term_update().
+ *
+ * @see media_browser_plus_taxonomy_term_presave()
+ */
+function media_browser_plus_taxonomy_term_update($term) {
+  // Check if this is a folder term and the source path is set.
+  if (!empty($term->media_browser_plus_original_path)) {
+    module_load_include('inc', 'media_browser_plus', '/includes/media_browser_plus.folders');
+    // Update physical folder.
+    $destination = media_browser_plus_construct_dir_path($term);
+    media_browser_plus_move_subfolder($term, $term->media_browser_plus_original_path, $destination);
+  }
+}
+
+/**
+ * Implements hook_taxonomy_term_delete().
+ */
+function media_browser_plus_taxonomy_term_delete($term) {
+  // Figure out if this is a folder term and if so handle the related files.
+  $vocabulary = taxonomy_vocabulary_machine_name_load('media_folders');
+  if (!empty($vocabulary) && $term->vid == $vocabulary->vid) {
+    // Create an array of all the folders to handle.
+    $folders = array(
+      '0:' . $term->tid => $term,
+    );
+    // Fetch all sub-folders.
+    $tree = taxonomy_get_tree($term->vid, $term->tid);
+    foreach ($tree as $subterm) {
+      $folders[($subterm->depth + 1) . ':' . $subterm->tid] = $subterm;
+    }
+    // Ensure the order for processing is right.
+    krsort($folders);
+
+    foreach ($folders as $folder) {
+      // Fetch all files from the folder.
+      $conditions = array();
+      $conditions[] = array('field' => array('field_folder', 'tid', $folder->tid, '='));
+      $options = array(
+        'apply_filter' => FALSE,
+        'count_only' => FALSE,
+        'paging' => FALSE,
+        'conditions' => $conditions,
+      );
+      $files = media_browser_plus_load_multiple($options);
+      $deleted_all_files = TRUE;
+      foreach ($files as $file) {
+        if (!file_delete($file)) {
+          $deleted_all_files = FALSE;
+        }
+      }
+      $folder_path = media_browser_plus_construct_dir_path($folder);
+      if ($deleted_all_files) {
+        // This will fail if the folder isn't empty. This should be defensive
+        // enough.
+        if (!@drupal_rmdir($folder_path)) {
+          drupal_set_message(t('Unable to delete the folder (!path) on the disk', array('!path' => $folder_path)), 'error');
+        }
+      }
+    }
   }
 }
