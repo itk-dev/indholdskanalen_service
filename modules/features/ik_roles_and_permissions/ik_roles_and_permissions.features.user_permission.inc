@@ -144,6 +144,8 @@ function ik_roles_and_permissions_user_default_permissions() {
     'name' => 'clear mrss_feed_importer feeds',
     'roles' => array(
       'Administrator' => 'Administrator',
+      'Bidragyder' => 'Bidragyder',
+      'Redaktør' => 'Redaktør',
       'Superbruger' => 'Superbruger',
     ),
     'module' => 'feeds',
@@ -189,6 +191,7 @@ function ik_roles_and_permissions_user_default_permissions() {
     'name' => 'create department content',
     'roles' => array(
       'Administrator' => 'Administrator',
+      'Redaktør' => 'Redaktør',
       'Superbruger' => 'Superbruger',
     ),
     'module' => 'node',
@@ -314,6 +317,7 @@ function ik_roles_and_permissions_user_default_permissions() {
     'name' => 'delete own department content',
     'roles' => array(
       'Administrator' => 'Administrator',
+      'Redaktør' => 'Redaktør',
       'Superbruger' => 'Superbruger',
     ),
     'module' => 'node',
@@ -487,6 +491,7 @@ function ik_roles_and_permissions_user_default_permissions() {
     'name' => 'edit own department content',
     'roles' => array(
       'Administrator' => 'Administrator',
+      'Redaktør' => 'Redaktør',
       'Superbruger' => 'Superbruger',
     ),
     'module' => 'node',
@@ -732,6 +737,7 @@ function ik_roles_and_permissions_user_default_permissions() {
     'name' => 'publish editable department content',
     'roles' => array(
       'Administrator' => 'Administrator',
+      'Redaktør' => 'Redaktør',
       'Superbruger' => 'Superbruger',
     ),
     'module' => 'publishcontent',
@@ -796,6 +802,7 @@ function ik_roles_and_permissions_user_default_permissions() {
     'name' => 'publish own department content',
     'roles' => array(
       'Administrator' => 'Administrator',
+      'Redaktør' => 'Redaktør',
       'Superbruger' => 'Superbruger',
     ),
     'module' => 'publishcontent',
@@ -869,6 +876,7 @@ function ik_roles_and_permissions_user_default_permissions() {
     'name' => 'unlock mrss_feed_importer feeds',
     'roles' => array(
       'Administrator' => 'Administrator',
+      'Redaktør' => 'Redaktør',
       'Superbruger' => 'Superbruger',
     ),
     'module' => 'feeds',
@@ -961,6 +969,7 @@ function ik_roles_and_permissions_user_default_permissions() {
     'name' => 'unpublish editable department content',
     'roles' => array(
       'Administrator' => 'Administrator',
+      'Redaktør' => 'Redaktør',
       'Superbruger' => 'Superbruger',
     ),
     'module' => 'publishcontent',
@@ -1025,6 +1034,7 @@ function ik_roles_and_permissions_user_default_permissions() {
     'name' => 'unpublish own department content',
     'roles' => array(
       'Administrator' => 'Administrator',
+      'Redaktør' => 'Redaktør',
       'Superbruger' => 'Superbruger',
     ),
     'module' => 'publishcontent',

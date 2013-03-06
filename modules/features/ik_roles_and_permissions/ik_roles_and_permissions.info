@@ -96,6 +96,7 @@ features[og_features_role][] = node:department:Bidragyder
 features[og_features_role][] = node:department:Gruppe administrator
 features[og_features_role][] = node:department:Redaktør
 features[og_features_role][] = node:organisation:Gruppe administrator
+features[og_features_role][] = node:organisation:Redaktør
 features[og_membership_type][] = contributor
 features[og_membership_type][] = editor
 features[user_permission][] = access comments
