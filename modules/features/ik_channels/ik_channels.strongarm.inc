@@ -68,13 +68,16 @@ function ik_channels_strongarm() {
     'extra_fields' => array(
       'form' => array(
         'title' => array(
-          'weight' => '1',
+          'weight' => '10',
         ),
         'path' => array(
           'weight' => '3',
         ),
         'redirect' => array(
           'weight' => '2',
+        ),
+        'flag' => array(
+          'weight' => '10',
         ),
       ),
       'display' => array(),

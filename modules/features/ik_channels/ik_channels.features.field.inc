@@ -230,7 +230,7 @@ function ik_channels_field_default_fields() {
           'rows' => '5',
         ),
         'type' => 'text_textarea',
-        'weight' => '2',
+        'weight' => '11',
       ),
     ),
   );
@@ -377,6 +377,76 @@ function ik_channels_field_default_fields() {
     ),
   );
 
+  // Exported field: 'node-channel-field_channel_relevance'.
+  $fields['node-channel-field_channel_relevance'] = array(
+    'field_config' => array(
+      'active' => '1',
+      'cardinality' => '1',
+      'deleted' => '0',
+      'entity_types' => array(),
+      'field_name' => 'field_channel_relevance',
+      'foreign keys' => array(),
+      'indexes' => array(
+        'value' => array(
+          0 => 'value',
+        ),
+      ),
+      'locked' => '0',
+      'module' => 'list',
+      'settings' => array(
+        'allowed_values' => array(
+          0 => 'Nej',
+          1 => 'Ja',
+        ),
+        'allowed_values_function' => '',
+      ),
+      'translatable' => '0',
+      'type' => 'list_boolean',
+    ),
+    'field_instance' => array(
+      'bundle' => 'channel',
+      'default_value' => array(
+        0 => array(
+          'value' => 0,
+        ),
+      ),
+      'deleted' => '0',
+      'description' => '',
+      'display' => array(
+        'default' => array(
+          'label' => 'above',
+          'module' => 'list',
+          'settings' => array(),
+          'type' => 'list_default',
+          'weight' => 11,
+        ),
+        'teaser' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+      ),
+      'entity_type' => 'node',
+      'field_name' => 'field_channel_relevance',
+      'label' => 'Har national relevans',
+      'required' => 0,
+      'settings' => array(
+        'user_register_form' => FALSE,
+      ),
+      'widget' => array(
+        'active' => 1,
+        'module' => 'options',
+        'settings' => array(
+          'display_label' => 1,
+          'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
+        ),
+        'type' => 'options_onoff',
+        'weight' => '9',
+      ),
+    ),
+  );
+
   // Exported field: 'node-channel-field_channel_slides'.
   $fields['node-channel-field_channel_slides'] = array(
     'field_config' => array(
@@ -451,7 +521,7 @@ function ik_channels_field_default_fields() {
         'module' => 'ik_channel_filter',
         'settings' => array(),
         'type' => 'ik_filter_search_autocomplete',
-        'weight' => '9',
+        'weight' => '10',
       ),
     ),
   );
@@ -635,6 +705,7 @@ function ik_channels_field_default_fields() {
   t('Filter on department');
   t('Filter on orgnization');
   t('Filter on tags');
+  t('Har national relevans');
   t('Preview');
   t('Slides');
   t('Vælg hvilken afdeling denne kanal skal tilhøre (Du kan kun tilknytte til den/de afdeling(er) som du er en del af).');

@@ -23,6 +23,7 @@ features[field][] = node-channel-field_channel_department
 features[field][] = node-channel-field_channel_description
 features[field][] = node-channel-field_channel_orgnization
 features[field][] = node-channel-field_channel_preview
+features[field][] = node-channel-field_channel_relevance
 features[field][] = node-channel-field_channel_slides
 features[field][] = node-channel-field_channel_tags
 features[field][] = node-channel-field_ik_og_department_ref

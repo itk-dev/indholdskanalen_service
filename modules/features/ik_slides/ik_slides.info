@@ -37,6 +37,7 @@ features[field][] = node-slide-field_ik_slide_imported
 features[field][] = node-slide-field_ik_slide_logo
 features[field][] = node-slide-field_ik_slide_media
 features[field][] = node-slide-field_ik_slide_preview
+features[field][] = node-slide-field_ik_slide_relevance
 features[field][] = node-slide-field_ik_slide_subheading
 features[field][] = node-slide-field_ik_slide_tags
 features[field][] = node-slide-field_ik_slide_text

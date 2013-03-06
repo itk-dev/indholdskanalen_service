@@ -952,7 +952,10 @@ function ik_dashboard_views_default_views() {
   $handler->display->display_options['defaults']['style_plugin'] = FALSE;
   $handler->display->display_options['style_plugin'] = 'table';
   $handler->display->display_options['style_options']['columns'] = array(
+    'nid' => 'nid',
+    'field_ik_slide_preview' => 'field_ik_slide_preview',
     'title' => 'title',
+    'field_ik_slide_relevance' => 'field_ik_slide_relevance',
     'changed' => 'changed',
     'title_2' => 'title_2',
     'title_1' => 'title_1',
@@ -960,10 +963,33 @@ function ik_dashboard_views_default_views() {
     'ops' => 'edit_node',
     'delete_node' => 'edit_node',
     'edit_node' => 'edit_node',
+    'field_ik_slide_subheading' => 'field_ik_slide_subheading',
+    'field_ik_slide_text' => 'field_ik_slide_text',
   );
   $handler->display->display_options['style_options']['default'] = '-1';
   $handler->display->display_options['style_options']['info'] = array(
+    'nid' => array(
+      'sortable' => 0,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'field_ik_slide_preview' => array(
+      'sortable' => 0,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
     'title' => array(
+      'sortable' => 1,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'field_ik_slide_relevance' => array(
       'sortable' => 1,
       'default_sort_order' => 'asc',
       'align' => '',
@@ -1011,6 +1037,20 @@ function ik_dashboard_views_default_views() {
     'edit_node' => array(
       'align' => 'views-align-right',
       'separator' => ' | ',
+      'empty_column' => 0,
+    ),
+    'field_ik_slide_subheading' => array(
+      'sortable' => 0,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'field_ik_slide_text' => array(
+      'sortable' => 0,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
       'empty_column' => 0,
     ),
   );
@@ -1075,6 +1115,12 @@ function ik_dashboard_views_default_views() {
   $handler->display->display_options['fields']['title']['alter']['word_boundary'] = FALSE;
   $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
   $handler->display->display_options['fields']['title']['element_label_colon'] = FALSE;
+  /* Felt: Indhold: Har national relevans */
+  $handler->display->display_options['fields']['field_ik_slide_relevance']['id'] = 'field_ik_slide_relevance';
+  $handler->display->display_options['fields']['field_ik_slide_relevance']['table'] = 'field_data_field_ik_slide_relevance';
+  $handler->display->display_options['fields']['field_ik_slide_relevance']['field'] = 'field_ik_slide_relevance';
+  $handler->display->display_options['fields']['field_ik_slide_relevance']['label'] = 'National relevans';
+  $handler->display->display_options['fields']['field_ik_slide_relevance']['element_label_colon'] = FALSE;
   /* Felt: Indhold: Opdateringsdato */
   $handler->display->display_options['fields']['changed']['id'] = 'changed';
   $handler->display->display_options['fields']['changed']['table'] = 'node';
@@ -1187,6 +1233,26 @@ function ik_dashboard_views_default_views() {
     4 => 0,
     5 => 0,
   );
+  /* Filterkriterie: Har national relevans */
+  $handler->display->display_options['filters']['field_ik_slide_relevance_value']['id'] = 'field_ik_slide_relevance_value';
+  $handler->display->display_options['filters']['field_ik_slide_relevance_value']['table'] = 'field_data_field_ik_slide_relevance';
+  $handler->display->display_options['filters']['field_ik_slide_relevance_value']['field'] = 'field_ik_slide_relevance_value';
+  $handler->display->display_options['filters']['field_ik_slide_relevance_value']['ui_name'] = 'Har national relevans';
+  $handler->display->display_options['filters']['field_ik_slide_relevance_value']['group'] = 1;
+  $handler->display->display_options['filters']['field_ik_slide_relevance_value']['exposed'] = TRUE;
+  $handler->display->display_options['filters']['field_ik_slide_relevance_value']['expose']['operator_id'] = 'field_ik_slide_relevance_value_op';
+  $handler->display->display_options['filters']['field_ik_slide_relevance_value']['expose']['label'] = 'National relevans';
+  $handler->display->display_options['filters']['field_ik_slide_relevance_value']['expose']['operator'] = 'field_ik_slide_relevance_value_op';
+  $handler->display->display_options['filters']['field_ik_slide_relevance_value']['expose']['identifier'] = 'field_ik_slide_relevance_value';
+  $handler->display->display_options['filters']['field_ik_slide_relevance_value']['expose']['remember_roles'] = array(
+    2 => '2',
+    1 => 0,
+    4 => 0,
+    5 => 0,
+    6 => 0,
+    3 => 0,
+  );
+  $handler->display->display_options['filters']['field_ik_slide_relevance_value']['reduce_duplicates'] = TRUE;
   /* Filterkriterie: Indhold: Titel */
   $handler->display->display_options['filters']['title']['id'] = 'title';
   $handler->display->display_options['filters']['title']['table'] = 'node';
@@ -1329,6 +1395,7 @@ function ik_dashboard_views_default_views() {
   $handler->display->display_options['filters']['field_ik_slide_tags_tid']['field'] = 'field_ik_slide_tags_tid';
   $handler->display->display_options['filters']['field_ik_slide_tags_tid']['ui_name'] = 'Filter by tags';
   $handler->display->display_options['filters']['field_ik_slide_tags_tid']['value'] = '';
+  $handler->display->display_options['filters']['field_ik_slide_tags_tid']['group'] = 1;
   $handler->display->display_options['filters']['field_ik_slide_tags_tid']['exposed'] = TRUE;
   $handler->display->display_options['filters']['field_ik_slide_tags_tid']['expose']['operator_id'] = 'field_ik_slide_tags_tid_op';
   $handler->display->display_options['filters']['field_ik_slide_tags_tid']['expose']['label'] = 'Tags';
@@ -1380,8 +1447,10 @@ function ik_dashboard_views_default_views() {
   $handler->display->display_options['style_plugin'] = 'table';
   $handler->display->display_options['style_options']['columns'] = array(
     'views_bulk_operations' => 'views_bulk_operations',
-    'field_ik_slide_media' => 'field_ik_slide_media',
+    'nid' => 'nid',
+    'field_ik_slide_preview' => 'field_ik_slide_preview',
     'title' => 'title',
+    'field_ik_slide_relevance' => 'field_ik_slide_relevance',
     'changed' => 'changed',
     'title_2' => 'title_2',
     'title_1' => 'title_1',
@@ -1389,6 +1458,8 @@ function ik_dashboard_views_default_views() {
     'ops' => 'edit_node',
     'delete_node' => 'edit_node',
     'edit_node' => 'edit_node',
+    'field_ik_slide_subheading' => 'field_ik_slide_subheading',
+    'field_ik_slide_text' => 'field_ik_slide_text',
   );
   $handler->display->display_options['style_options']['default'] = '-1';
   $handler->display->display_options['style_options']['info'] = array(
@@ -1397,12 +1468,28 @@ function ik_dashboard_views_default_views() {
       'separator' => '',
       'empty_column' => 0,
     ),
-    'field_ik_slide_media' => array(
+    'nid' => array(
+      'sortable' => 0,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'field_ik_slide_preview' => array(
+      'sortable' => 0,
+      'default_sort_order' => 'asc',
       'align' => '',
       'separator' => '',
       'empty_column' => 0,
     ),
     'title' => array(
+      'sortable' => 1,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'field_ik_slide_relevance' => array(
       'sortable' => 1,
       'default_sort_order' => 'asc',
       'align' => '',
@@ -1450,6 +1537,20 @@ function ik_dashboard_views_default_views() {
     'edit_node' => array(
       'align' => 'views-align-right',
       'separator' => ' | ',
+      'empty_column' => 0,
+    ),
+    'field_ik_slide_subheading' => array(
+      'sortable' => 0,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'field_ik_slide_text' => array(
+      'sortable' => 0,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
       'empty_column' => 0,
     ),
   );
@@ -1680,6 +1781,12 @@ function ik_dashboard_views_default_views() {
   $handler->display->display_options['fields']['title']['alter']['word_boundary'] = FALSE;
   $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
   $handler->display->display_options['fields']['title']['element_label_colon'] = FALSE;
+  /* Felt: Indhold: Har national relevans */
+  $handler->display->display_options['fields']['field_ik_slide_relevance']['id'] = 'field_ik_slide_relevance';
+  $handler->display->display_options['fields']['field_ik_slide_relevance']['table'] = 'field_data_field_ik_slide_relevance';
+  $handler->display->display_options['fields']['field_ik_slide_relevance']['field'] = 'field_ik_slide_relevance';
+  $handler->display->display_options['fields']['field_ik_slide_relevance']['label'] = 'National relevans';
+  $handler->display->display_options['fields']['field_ik_slide_relevance']['element_label_colon'] = FALSE;
   /* Felt: Indhold: Opdateringsdato */
   $handler->display->display_options['fields']['changed']['id'] = 'changed';
   $handler->display->display_options['fields']['changed']['table'] = 'node';
@@ -1771,6 +1878,26 @@ function ik_dashboard_views_default_views() {
     4 => 0,
     5 => 0,
   );
+  /* Filterkriterie: Har national relevans */
+  $handler->display->display_options['filters']['field_ik_slide_relevance_value']['id'] = 'field_ik_slide_relevance_value';
+  $handler->display->display_options['filters']['field_ik_slide_relevance_value']['table'] = 'field_data_field_ik_slide_relevance';
+  $handler->display->display_options['filters']['field_ik_slide_relevance_value']['field'] = 'field_ik_slide_relevance_value';
+  $handler->display->display_options['filters']['field_ik_slide_relevance_value']['ui_name'] = 'Har national relevans';
+  $handler->display->display_options['filters']['field_ik_slide_relevance_value']['group'] = 1;
+  $handler->display->display_options['filters']['field_ik_slide_relevance_value']['exposed'] = TRUE;
+  $handler->display->display_options['filters']['field_ik_slide_relevance_value']['expose']['operator_id'] = 'field_ik_slide_relevance_value_op';
+  $handler->display->display_options['filters']['field_ik_slide_relevance_value']['expose']['label'] = 'National relevans';
+  $handler->display->display_options['filters']['field_ik_slide_relevance_value']['expose']['operator'] = 'field_ik_slide_relevance_value_op';
+  $handler->display->display_options['filters']['field_ik_slide_relevance_value']['expose']['identifier'] = 'field_ik_slide_relevance_value';
+  $handler->display->display_options['filters']['field_ik_slide_relevance_value']['expose']['remember_roles'] = array(
+    2 => '2',
+    1 => 0,
+    4 => 0,
+    5 => 0,
+    6 => 0,
+    3 => 0,
+  );
+  $handler->display->display_options['filters']['field_ik_slide_relevance_value']['reduce_duplicates'] = TRUE;
   /* Filterkriterie: Indhold: Titel */
   $handler->display->display_options['filters']['title_1']['id'] = 'title_1';
   $handler->display->display_options['filters']['title_1']['table'] = 'node';
@@ -1904,6 +2031,7 @@ function ik_dashboard_views_default_views() {
   $handler->display->display_options['filters']['field_ik_slide_tags_tid']['field'] = 'field_ik_slide_tags_tid';
   $handler->display->display_options['filters']['field_ik_slide_tags_tid']['ui_name'] = 'Filter by tags';
   $handler->display->display_options['filters']['field_ik_slide_tags_tid']['value'] = '';
+  $handler->display->display_options['filters']['field_ik_slide_tags_tid']['group'] = 1;
   $handler->display->display_options['filters']['field_ik_slide_tags_tid']['exposed'] = TRUE;
   $handler->display->display_options['filters']['field_ik_slide_tags_tid']['expose']['operator_id'] = 'field_ik_slide_tags_tid_op';
   $handler->display->display_options['filters']['field_ik_slide_tags_tid']['expose']['label'] = 'Tags';
@@ -1960,7 +2088,10 @@ function ik_dashboard_views_default_views() {
   $handler->display->display_options['defaults']['style_plugin'] = FALSE;
   $handler->display->display_options['style_plugin'] = 'table';
   $handler->display->display_options['style_options']['columns'] = array(
+    'nid' => 'nid',
+    'field_channel_preview_1' => 'field_channel_preview_1',
     'title' => 'title',
+    'field_channel_relevance' => 'field_channel_relevance',
     'changed' => 'changed',
     'name' => 'name',
     'field_channel_preview' => 'field_channel_preview',
@@ -1972,7 +2103,28 @@ function ik_dashboard_views_default_views() {
   );
   $handler->display->display_options['style_options']['default'] = '-1';
   $handler->display->display_options['style_options']['info'] = array(
+    'nid' => array(
+      'sortable' => 0,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'field_channel_preview_1' => array(
+      'sortable' => 0,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
     'title' => array(
+      'sortable' => 1,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'field_channel_relevance' => array(
       'sortable' => 1,
       'default_sort_order' => 'asc',
       'align' => '',
@@ -2093,6 +2245,12 @@ function ik_dashboard_views_default_views() {
   $handler->display->display_options['fields']['title']['alter']['word_boundary'] = FALSE;
   $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
   $handler->display->display_options['fields']['title']['element_label_colon'] = FALSE;
+  /* Felt: Indhold: Har national relevans */
+  $handler->display->display_options['fields']['field_channel_relevance']['id'] = 'field_channel_relevance';
+  $handler->display->display_options['fields']['field_channel_relevance']['table'] = 'field_data_field_channel_relevance';
+  $handler->display->display_options['fields']['field_channel_relevance']['field'] = 'field_channel_relevance';
+  $handler->display->display_options['fields']['field_channel_relevance']['label'] = 'National relevans';
+  $handler->display->display_options['fields']['field_channel_relevance']['element_label_colon'] = FALSE;
   /* Felt: Indhold: Opdateringsdato */
   $handler->display->display_options['fields']['changed']['id'] = 'changed';
   $handler->display->display_options['fields']['changed']['table'] = 'node';
@@ -2198,6 +2356,26 @@ function ik_dashboard_views_default_views() {
     4 => 0,
     5 => 0,
   );
+  /* Filterkriterie: Har national relevans */
+  $handler->display->display_options['filters']['field_channel_relevance_value']['id'] = 'field_channel_relevance_value';
+  $handler->display->display_options['filters']['field_channel_relevance_value']['table'] = 'field_data_field_channel_relevance';
+  $handler->display->display_options['filters']['field_channel_relevance_value']['field'] = 'field_channel_relevance_value';
+  $handler->display->display_options['filters']['field_channel_relevance_value']['ui_name'] = 'Har national relevans';
+  $handler->display->display_options['filters']['field_channel_relevance_value']['group'] = 1;
+  $handler->display->display_options['filters']['field_channel_relevance_value']['exposed'] = TRUE;
+  $handler->display->display_options['filters']['field_channel_relevance_value']['expose']['operator_id'] = 'field_channel_relevance_value_op';
+  $handler->display->display_options['filters']['field_channel_relevance_value']['expose']['label'] = 'National relevans';
+  $handler->display->display_options['filters']['field_channel_relevance_value']['expose']['operator'] = 'field_channel_relevance_value_op';
+  $handler->display->display_options['filters']['field_channel_relevance_value']['expose']['identifier'] = 'field_channel_relevance_value';
+  $handler->display->display_options['filters']['field_channel_relevance_value']['expose']['remember_roles'] = array(
+    2 => '2',
+    1 => 0,
+    4 => 0,
+    5 => 0,
+    6 => 0,
+    3 => 0,
+  );
+  $handler->display->display_options['filters']['field_channel_relevance_value']['reduce_duplicates'] = TRUE;
   /* Filterkriterie: Indhold: Titel */
   $handler->display->display_options['filters']['title']['id'] = 'title';
   $handler->display->display_options['filters']['title']['table'] = 'node';
@@ -2333,8 +2511,11 @@ function ik_dashboard_views_default_views() {
   $handler->display->display_options['defaults']['style_plugin'] = FALSE;
   $handler->display->display_options['style_plugin'] = 'table';
   $handler->display->display_options['style_options']['columns'] = array(
+    'nid' => 'nid',
+    'field_channel_preview_1' => 'field_channel_preview_1',
     'views_bulk_operations' => 'views_bulk_operations',
     'title' => 'title',
+    'field_channel_relevance' => 'field_channel_relevance',
     'changed' => 'changed',
     'name' => 'name',
     'field_channel_preview' => 'field_channel_preview',
@@ -2346,12 +2527,33 @@ function ik_dashboard_views_default_views() {
   );
   $handler->display->display_options['style_options']['default'] = '-1';
   $handler->display->display_options['style_options']['info'] = array(
+    'nid' => array(
+      'sortable' => 0,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'field_channel_preview_1' => array(
+      'sortable' => 0,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
     'views_bulk_operations' => array(
       'align' => '',
       'separator' => '',
       'empty_column' => 0,
     ),
     'title' => array(
+      'sortable' => 1,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'field_channel_relevance' => array(
       'sortable' => 1,
       'default_sort_order' => 'asc',
       'align' => '',
@@ -2638,6 +2840,12 @@ function ik_dashboard_views_default_views() {
   $handler->display->display_options['fields']['title']['alter']['word_boundary'] = FALSE;
   $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
   $handler->display->display_options['fields']['title']['element_label_colon'] = FALSE;
+  /* Felt: Indhold: Har national relevans */
+  $handler->display->display_options['fields']['field_channel_relevance']['id'] = 'field_channel_relevance';
+  $handler->display->display_options['fields']['field_channel_relevance']['table'] = 'field_data_field_channel_relevance';
+  $handler->display->display_options['fields']['field_channel_relevance']['field'] = 'field_channel_relevance';
+  $handler->display->display_options['fields']['field_channel_relevance']['label'] = 'National relevans';
+  $handler->display->display_options['fields']['field_channel_relevance']['element_label_colon'] = FALSE;
   /* Felt: Indhold: Opdateringsdato */
   $handler->display->display_options['fields']['changed']['id'] = 'changed';
   $handler->display->display_options['fields']['changed']['table'] = 'node';
@@ -2722,6 +2930,26 @@ function ik_dashboard_views_default_views() {
     4 => 0,
     5 => 0,
   );
+  /* Filterkriterie: Har national relevans */
+  $handler->display->display_options['filters']['field_channel_relevance_value']['id'] = 'field_channel_relevance_value';
+  $handler->display->display_options['filters']['field_channel_relevance_value']['table'] = 'field_data_field_channel_relevance';
+  $handler->display->display_options['filters']['field_channel_relevance_value']['field'] = 'field_channel_relevance_value';
+  $handler->display->display_options['filters']['field_channel_relevance_value']['ui_name'] = 'Har national relevans';
+  $handler->display->display_options['filters']['field_channel_relevance_value']['group'] = 1;
+  $handler->display->display_options['filters']['field_channel_relevance_value']['exposed'] = TRUE;
+  $handler->display->display_options['filters']['field_channel_relevance_value']['expose']['operator_id'] = 'field_channel_relevance_value_op';
+  $handler->display->display_options['filters']['field_channel_relevance_value']['expose']['label'] = 'National relevans';
+  $handler->display->display_options['filters']['field_channel_relevance_value']['expose']['operator'] = 'field_channel_relevance_value_op';
+  $handler->display->display_options['filters']['field_channel_relevance_value']['expose']['identifier'] = 'field_channel_relevance_value';
+  $handler->display->display_options['filters']['field_channel_relevance_value']['expose']['remember_roles'] = array(
+    2 => '2',
+    1 => 0,
+    4 => 0,
+    5 => 0,
+    6 => 0,
+    3 => 0,
+  );
+  $handler->display->display_options['filters']['field_channel_relevance_value']['reduce_duplicates'] = TRUE;
   /* Filterkriterie: Indhold: Titel */
   $handler->display->display_options['filters']['title_1']['id'] = 'title_1';
   $handler->display->display_options['filters']['title_1']['table'] = 'node';
@@ -5495,6 +5723,7 @@ function ik_dashboard_views_default_views() {
     t('Group node OG membership from node'),
     t('Group node from Group node OG membership'),
     t('flag'),
+    t('National relevans'),
     t('Organisation'),
     t('Afdeling'),
     t('Forfatter'),

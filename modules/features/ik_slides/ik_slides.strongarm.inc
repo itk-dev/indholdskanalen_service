@@ -87,16 +87,16 @@ function ik_slides_strongarm() {
     'extra_fields' => array(
       'form' => array(
         'title' => array(
-          'weight' => '1',
+          'weight' => '3',
         ),
         'path' => array(
-          'weight' => '8',
+          'weight' => '9',
         ),
         'redirect' => array(
-          'weight' => '7',
+          'weight' => '8',
         ),
         'flag' => array(
-          'weight' => '9',
+          'weight' => '10',
         ),
       ),
       'display' => array(),

@@ -26,6 +26,7 @@ function ik_slides_field_group_info() {
       0 => 'field_ik_slide_subheading',
       1 => 'field_ik_slide_text',
       2 => 'title',
+      3 => 'field_ik_slide_relevance',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
@@ -50,7 +51,7 @@ function ik_slides_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Categories',
-    'weight' => '3',
+    'weight' => '4',
     'children' => array(
       0 => 'field_ik_slide_category',
       1 => 'field_ik_slide_tags',
@@ -78,7 +79,7 @@ function ik_slides_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Afdeling',
-    'weight' => '6',
+    'weight' => '7',
     'children' => array(
       0 => 'field_ik_og_department_ref',
     ),
@@ -133,7 +134,7 @@ function ik_slides_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Images',
-    'weight' => '2',
+    'weight' => '3',
     'children' => array(
       0 => 'field_ik_slide_media',
       1 => 'field_ik_slide_transition_effect',
@@ -162,7 +163,7 @@ function ik_slides_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Import',
-    'weight' => '5',
+    'weight' => '6',
     'children' => array(
       0 => 'field_ik_slide_import_node',
       1 => 'field_ik_slide_imported',
@@ -191,7 +192,7 @@ function ik_slides_field_group_info() {
   $field_group->parent_name = 'group_ik_slide_template';
   $field_group->data = array(
     'label' => 'Layout',
-    'weight' => '15',
+    'weight' => '16',
     'children' => array(
       0 => 'field_layout',
     ),
@@ -219,7 +220,7 @@ function ik_slides_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Template',
-    'weight' => '4',
+    'weight' => '5',
     'children' => array(
       0 => 'field_ik_slide_exposure',
       1 => 'group_ik_slide_layout',

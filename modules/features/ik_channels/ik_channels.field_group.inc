@@ -25,6 +25,7 @@ function ik_channels_field_group_info() {
     'children' => array(
       0 => 'field_channel_description',
       1 => 'title',
+      2 => 'field_channel_relevance',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
@@ -55,8 +56,8 @@ function ik_channels_field_group_info() {
       0 => 'field_channel_department',
       1 => 'field_channel_orgnization',
       2 => 'field_channel_slides',
-      3 => 'field_channel_tags',
-      4 => 'field_channel_categories',
+      3 => 'field_channel_categories',
+      4 => 'field_channel_tags',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
