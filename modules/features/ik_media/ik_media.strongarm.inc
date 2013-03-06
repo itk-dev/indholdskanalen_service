@@ -29,12 +29,9 @@ function ik_media_strongarm() {
   $strongarm->api_version = 1;
   $strongarm->name = 'media__wysiwyg_browser_plugins';
   $strongarm->value = array(
-    'upload' => 'upload',
-    'media_default--media_browser_my_files' => 'media_default--media_browser_my_files',
-    'library_plus' => 'library_plus',
-    'library' => 0,
-    'media_default--media_browser_1' => 0,
-    'media_internet' => 0,
+    0 => 'upload',
+    1 => 'media_default--media_browser_my_files',
+    2 => 'library_plus',
   );
   $export['media__wysiwyg_browser_plugins'] = $strongarm;
 

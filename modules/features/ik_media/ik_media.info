@@ -5,6 +5,7 @@ package = Indholdskanalen
 php = 5.2.4
 version = 7.x-0.1
 project = ik_media
+dependencies[] = ctools
 dependencies[] = features
 dependencies[] = media
 dependencies[] = media_browser_plus
