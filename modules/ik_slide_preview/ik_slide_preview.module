@@ -45,6 +45,11 @@ function ik_slide_preview_ctools_plugin_directory($module, $plugin) {
 function ik_slide_preview_page($sid) {
   $slide = ik_frontend_fetch_slide($sid, FALSE, TRUE);
 
+  // Disable newrelic JS injection.
+  if (extension_loaded('newrelic')) {
+    newrelic_disable_autorum();
+  }
+
   // Return skeleton for slide show (complet HTML page <header><content><footer>
   // etc.).
   echo theme('ik_frontend', array(
@@ -466,6 +471,11 @@ function ik_slide_preview_build_preview($form, &$form_state) {
 
   // Load jquery UI dialog.
   drupal_add_library('system', 'ui.dialog');
+  
+  // Disable newrelic JS injection.
+  if (extension_loaded('newrelic')) {
+    newrelic_disable_autorum();
+  }
 }
 
 /**
