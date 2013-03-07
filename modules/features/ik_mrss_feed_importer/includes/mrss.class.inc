@@ -42,14 +42,13 @@ class MediaRSSParser extends FeedsParser {
       $data['link'] = (string)$item->link;
       $data['description'] = (string)$item->description;
 
-      $title = urldecode((string)$media->content->title);
-
       if (!$text_only[0]['value']) {
         $data['text_only'] = FALSE;
         $namespaces = $item->getNameSpaces(true);
         if (isset($namespaces['media'])) {
           // Assume Media RSS format
           $media = $item->children($namespaces['media']);
+          $title = isset($media->content->title) ? urldecode((string)$media->content->title) : '';
           $data['media_title'] = empty($title) ? $alt_title : $title;
           $data['media_description'] = urldecode((string)$media->content->description);
           $data['media_url'] = (string)$media->attributes()->url;
