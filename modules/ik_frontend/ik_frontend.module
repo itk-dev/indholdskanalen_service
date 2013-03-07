@@ -153,8 +153,10 @@ function ik_frontend_find_channel_nid($token) {
  */
 function ik_frontend_get_slides($token, $entity) {
   // Use frontend cache, if available.
-  if ($cache = cache_get('channel_' . $token, 'cache_ik_frontend') && $cache->expire > REQUEST_TIME) {
+  if ($cache = cache_get('channel_' . $token, 'cache_ik_frontend')) {
+    if ($cache->expire > REQUEST_TIME) {
       $slides = $cache->data;
+    }
   }
   else {
     $field = field_info_field('field_channel_preview');
