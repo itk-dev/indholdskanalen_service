@@ -17,6 +17,9 @@
 }
 
 @media only screen and (max-width: 1200px) {
+  html, body {
+    font-size: 12px;
+  }
   #sidebar-first {
     float: none;
     width: 100%;
@@ -27,6 +30,9 @@
   }
   #pageinner #content {
     margin-right: 0;
+  }
+  .views-field-field-ik-slide-preview img {
+    width: 75px;
   }
 }
 
