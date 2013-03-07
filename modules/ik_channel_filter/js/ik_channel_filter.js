@@ -10,9 +10,9 @@
 
       // Remove the value from the hidden field. This is some what a hack at the
       // moment.
-      var regex = new RegExp(str + ",?");
+      var regex = new RegExp(str + "\\|?");
       current = current.replace(regex, '');
-      if (current.charAt(current.length-1) == ',') {
+      if (current.charAt(current.length-1) == '|') {
         current = current.substr(0, current.length-1);
       }
 
@@ -36,7 +36,7 @@
         parent.find('input[type="hidden"]').val(data).change();
       }
       else {
-        parent.find('input[type="hidden"]').val(current + ',' + data).change();
+        parent.find('input[type="hidden"]').val(current + '|' + data).change();
       }
 
       // Update the UI by adding the element.

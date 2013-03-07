@@ -25,7 +25,7 @@ function ik_channel_filter_get_slides($raw_values) {
   foreach ($raw_values as $fieldname => $values) {
     // Get values and covert them into sql frendly string. Another
     // solution would be to use the query build...
-    $values = explode(',', check_plain($values));
+    $values = explode('|', check_plain($values));
     $values_str = "'" . implode("', '", $values) . "'";
 
     // Get information about the fields configuration.
