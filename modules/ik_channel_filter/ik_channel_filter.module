@@ -386,7 +386,7 @@ function ik_channel_filter_field_widget_form(&$form, &$form_state, $field, $inst
        */
       $output = '';
       if (!empty($field_content)) {
-        $field_items = explode(',', $field_content);
+        $field_items = explode('|', $field_content);
         foreach ($field_items as $item) {
           $output .= '<li><span class="value">' . $item . '</span><a class="button ik-channel-filter-remove">' . t('Remove') . '</a></li>';
         }
