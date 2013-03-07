@@ -471,6 +471,11 @@ function ik_slide_preview_build_preview($form, &$form_state) {
 
   // Load jquery UI dialog.
   drupal_add_library('system', 'ui.dialog');
+  
+  // Disable newrelic JS injection.
+  if (extension_loaded('newrelic')) {
+    newrelic_disable_autorum();
+  }
 }
 
 /**
