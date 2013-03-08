@@ -3,8 +3,8 @@
 // Drupal cache
 $conf['cache'] = 1;
 $conf['block_cache'] = 1;
-$conf['preprocess_css'] = 1;
-$conf['preprocess_js'] = 1;
+//$conf['preprocess_css'] = 1;
+//$conf['preprocess_js'] = 1;
 
 // Memcache configuration
 $conf += array(
