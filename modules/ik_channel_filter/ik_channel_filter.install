@@ -21,3 +21,27 @@ function ik_channel_filter_field_schema($field) {
     'indexes' => array(),
   );
 }
+
+/**
+ * Updated field sperator to pipe char from comma.
+ */
+function ik_channel_filter_update_7010() {
+  $ret = array();
+
+  $query = "UPDATE field_data_field_channel_slides SET field_channel_slides_data = REPLACE(field_channel_slides_data, ',', '|')";
+  $ret[] = db_query($query);
+
+  $query = "UPDATE field_data_field_channel_orgnization SET field_channel_orgnization_data = REPLACE(field_channel_orgnization_data, ',', '|')";
+  $ret[] = db_query($query);
+
+  $query = "UPDATE field_data_field_channel_department SET field_channel_department_data = REPLACE(field_channel_department_data, ',', '|')";
+  $ret[] = db_query($query);
+
+  $query = "UPDATE field_data_field_channel_categories SET field_channel_categories_data = REPLACE(field_channel_categories_data, ',', '|')";
+  $ret[] = db_query($query);
+
+  $query = "UPDATE field_data_field_channel_tags SET field_channel_tags_data = REPLACE(field_channel_tags_data, ',', '|')";
+  $ret[] = db_query($query);
+
+  return $ret;
+}

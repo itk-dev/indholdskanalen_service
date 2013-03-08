@@ -100,14 +100,9 @@ function _ik_channel_filter_autocomplete($field_name, $string = '') {
         break;
     }
 
-    // Results labels may contain commas or quotes that must be wrapped in
-    // quotes.
+    // Check plain results.
     foreach ($results as $label) {
-      $n = $label;
-      if (strpos($label, ',') !== FALSE || strpos($label, '"') !== FALSE) {
-        $n = '"' . str_replace('"', '""', $label) . '"';
-      }
-      $matches[$n] = check_plain($label);
+      $matches[$label] = check_plain($label);
     }
   }
 
@@ -391,7 +386,7 @@ function ik_channel_filter_field_widget_form(&$form, &$form_state, $field, $inst
        */
       $output = '';
       if (!empty($field_content)) {
-        $field_items = explode(',', $field_content);
+        $field_items = explode('|', $field_content);
         foreach ($field_items as $item) {
           $output .= '<li><span class="value">' . $item . '</span><a class="button ik-channel-filter-remove">' . t('Remove') . '</a></li>';
         }
