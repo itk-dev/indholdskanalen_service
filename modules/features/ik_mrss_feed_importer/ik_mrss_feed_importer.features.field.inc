@@ -364,7 +364,11 @@ function ik_mrss_feed_importer_field_default_fields() {
     ),
     'field_instance' => array(
       'bundle' => 'media_rss_slide_import',
-      'default_value' => NULL,
+      'default_value' => array(
+        0 => array(
+          'value' => '15',
+        ),
+      ),
       'deleted' => '0',
       'description' => 'Vælg hvor længe et slide skal eksponeres.',
       'display' => array(
@@ -496,6 +500,92 @@ function ik_mrss_feed_importer_field_default_fields() {
         ),
         'type' => 'media_generic',
         'weight' => '21',
+      ),
+    ),
+  );
+
+  // Exported field: 'node-media_rss_slide_import-field_ik_slide_media'.
+  $fields['node-media_rss_slide_import-field_ik_slide_media'] = array(
+    'field_config' => array(
+      'active' => '1',
+      'cardinality' => '-1',
+      'deleted' => '0',
+      'entity_types' => array(),
+      'field_name' => 'field_ik_slide_media',
+      'foreign keys' => array(
+        'file_managed' => array(
+          'columns' => array(
+            'fid' => 'fid',
+          ),
+          'table' => 'file_managed',
+        ),
+      ),
+      'indexes' => array(
+        'fid' => array(
+          0 => 'fid',
+        ),
+      ),
+      'locked' => '0',
+      'module' => 'mediafield',
+      'settings' => array(),
+      'translatable' => '0',
+      'type' => 'media',
+    ),
+    'field_instance' => array(
+      'bundle' => 'media_rss_slide_import',
+      'deleted' => '0',
+      'description' => '',
+      'display' => array(
+        'default' => array(
+          'label' => 'above',
+          'module' => 'mediafield',
+          'settings' => array(
+            'file_view_mode' => 'default',
+          ),
+          'type' => 'media',
+          'weight' => 12,
+        ),
+        'teaser' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+      ),
+      'entity_type' => 'node',
+      'field_name' => 'field_ik_slide_media',
+      'label' => 'Baggrundsbillede',
+      'required' => 0,
+      'settings' => array(
+        'file_extensions' => 'jpg jpeg gif png',
+        'user_register_form' => FALSE,
+      ),
+      'widget' => array(
+        'active' => 1,
+        'module' => 'media',
+        'settings' => array(
+          'allowed_schemes' => array(
+            'private' => 0,
+            'public' => 'public',
+          ),
+          'allowed_types' => array(
+            'audio' => 0,
+            'document' => 0,
+            'image' => 'image',
+            'video' => 0,
+          ),
+          'browser_plugins' => array(
+            'library_plus' => 'library_plus',
+            'media_default--media_browser_1' => 0,
+            'media_default--media_browser_my_files' => 'media_default--media_browser_my_files',
+            'media_internet' => 0,
+            'upload' => 'upload',
+          ),
+          'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
+          'progress_indicator' => 'throbber',
+        ),
+        'type' => 'media_generic',
+        'weight' => '4',
       ),
     ),
   );
@@ -651,6 +741,7 @@ function ik_mrss_feed_importer_field_default_fields() {
   // Translatables
   // Included for use with string extractors like potx.
   t('Afdeling');
+  t('Baggrundsbillede');
   t('Eksponering');
   t('Farvetema');
   t('Kategori');
