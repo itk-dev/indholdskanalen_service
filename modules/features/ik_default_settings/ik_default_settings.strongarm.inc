@@ -53,7 +53,7 @@ function ik_default_settings_strongarm() {
     'domain' => '',
     'prefix' => 'da',
     'weight' => '0',
-    'javascript' => 'VLLJvYkn5hM0GqvPFtfjQCIIomqNXFDwbNOetlgAiOs',
+    'javascript' => 'bycpK-fPhH48FflVt2pktKh1KQweXk-vHn0h8tDtmA8',
   );
   $export['language_default'] = $strongarm;
 
