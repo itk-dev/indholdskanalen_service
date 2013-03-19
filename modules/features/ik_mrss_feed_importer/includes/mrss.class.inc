@@ -163,6 +163,10 @@ class MediaRSSParser extends FeedsParser {
         'name' => t('Feed node: OG Department'),
         'description' => t('The feed node OG department value.'),
       ),
+      'parent:images:media' => array(
+        'name' => t('Feed node: Media URI'),
+        'description' => t('The feed node media URI value.'),
+      ),
       'imported' => array(
         'name' => t('Imported checkbox (true)'),
         'description' => t('Flag to indicate that the content is imported.'),
@@ -213,6 +217,13 @@ class MediaRSSParser extends FeedsParser {
         if ($source->feed_nid && $node) {
           $value = field_get_items('node', $node, 'field_ik_og_department_ref');
           return $value[0]['target_id'];
+        }
+        break;
+
+      case 'parent:images:media':
+        if ($source->feed_nid && $node) {
+          $value = field_get_items('node', $node, 'field_ik_slide_media');
+          return file_load($value[0]['fid'])->uri;
         }
         break;
 

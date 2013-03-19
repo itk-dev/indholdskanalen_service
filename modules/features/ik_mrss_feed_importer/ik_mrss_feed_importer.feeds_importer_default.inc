@@ -88,21 +88,26 @@ function ik_mrss_feed_importer_feeds_importer_default() {
             'unique' => FALSE,
           ),
           10 => array(
+            'source' => 'parent:images:media',
+            'target' => 'field_ik_slide_media:MediaFeedsLibraryProvider',
+            'unique' => FALSE,
+          ),
+          11 => array(
             'source' => 'parent:og:department',
             'target' => 'field_ik_og_department_ref',
             'unique' => FALSE,
           ),
-          11 => array(
+          12 => array(
             'source' => 'imported',
             'target' => 'field_ik_slide_imported',
             'unique' => FALSE,
           ),
-          12 => array(
+          13 => array(
             'source' => 'parent:nid',
             'target' => 'field_ik_slide_import_node',
             'unique' => FALSE,
           ),
-          13 => array(
+          14 => array(
             'source' => 'parent:design:color',
             'target' => 'field_ik_slide_color_theme',
             'unique' => FALSE,

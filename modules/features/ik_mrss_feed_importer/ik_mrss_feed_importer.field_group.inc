@@ -21,7 +21,7 @@ function ik_mrss_feed_importer_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Categories',
-    'weight' => '4',
+    'weight' => '5',
     'children' => array(
       0 => 'field_ik_slide_category',
       1 => 'field_ik_slide_tags',
@@ -49,7 +49,7 @@ function ik_mrss_feed_importer_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Afdeling',
-    'weight' => '6',
+    'weight' => '7',
     'children' => array(
       0 => 'field_ik_og_department_ref',
     ),
@@ -106,8 +106,8 @@ function ik_mrss_feed_importer_field_group_info() {
     'label' => 'Feed information',
     'weight' => '1',
     'children' => array(
-      0 => 'feeds',
-      1 => 'field_ik_mrss_text_feed',
+      0 => 'field_ik_mrss_text_feed',
+      1 => 'feeds',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
@@ -133,7 +133,9 @@ function ik_mrss_feed_importer_field_group_info() {
   $field_group->data = array(
     'label' => 'Images',
     'weight' => '3',
-    'children' => array(),
+    'children' => array(
+      0 => 'field_ik_slide_media',
+    ),
     'format_type' => 'fieldset',
     'format_settings' => array(
       'formatter' => 'collapsible',
@@ -185,7 +187,7 @@ function ik_mrss_feed_importer_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Template',
-    'weight' => '5',
+    'weight' => '6',
     'children' => array(
       0 => 'field_ik_slide_exposure',
       1 => 'group_ik_mrss_layout',
