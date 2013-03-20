@@ -167,6 +167,10 @@ class MediaRSSParser extends FeedsParser {
         'name' => t('Feed node: Media URI'),
         'description' => t('The feed node media URI value.'),
       ),
+      'parent:title' => array(
+        'name' => t('Feed node: Title'),
+        'description' => t('The feed node title value.'),
+      ),
       'imported' => array(
         'name' => t('Imported checkbox (true)'),
         'description' => t('Flag to indicate that the content is imported.'),
@@ -230,6 +234,12 @@ class MediaRSSParser extends FeedsParser {
       case 'parent:uid':
         if ($source->feed_nid && $node) {
           return $node->uid;
+        }
+        break;
+
+      case 'parent:title':
+        if ($source->feed_nid && $node) {
+          return $node->title;
         }
         break;
 

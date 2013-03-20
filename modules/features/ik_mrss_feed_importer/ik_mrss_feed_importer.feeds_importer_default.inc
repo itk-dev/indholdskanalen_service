@@ -58,56 +58,61 @@ function ik_mrss_feed_importer_feeds_importer_default() {
             'unique' => FALSE,
           ),
           4 => array(
+            'source' => 'parent:title',
+            'target' => 'field_ik_slide_subheading',
+            'unique' => FALSE,
+          ),
+          5 => array(
             'source' => 'parent:taxonomy:tags',
             'target' => 'field_ik_slide_tags',
             'unique' => FALSE,
           ),
-          5 => array(
+          6 => array(
             'source' => 'parent:taxonomy:subject',
             'target' => 'field_ik_slide_category',
             'unique' => FALSE,
           ),
-          6 => array(
+          7 => array(
             'source' => 'parent:uid',
             'target' => 'uid',
             'unique' => FALSE,
           ),
-          7 => array(
+          8 => array(
             'source' => 'parent:layout:exposure',
             'target' => 'field_ik_slide_exposure',
             'unique' => FALSE,
           ),
-          8 => array(
+          9 => array(
             'source' => 'parent:layout',
             'target' => 'field_layout',
             'unique' => FALSE,
           ),
-          9 => array(
+          10 => array(
             'source' => 'parent:design:logo',
             'target' => 'field_ik_slide_logo:MediaFeedsLibraryProvider',
             'unique' => FALSE,
           ),
-          10 => array(
+          11 => array(
             'source' => 'parent:images:media',
             'target' => 'field_ik_slide_media:MediaFeedsLibraryProvider',
             'unique' => FALSE,
           ),
-          11 => array(
+          12 => array(
             'source' => 'parent:og:department',
             'target' => 'field_ik_og_department_ref',
             'unique' => FALSE,
           ),
-          12 => array(
+          13 => array(
             'source' => 'imported',
             'target' => 'field_ik_slide_imported',
             'unique' => FALSE,
           ),
-          13 => array(
+          14 => array(
             'source' => 'parent:nid',
             'target' => 'field_ik_slide_import_node',
             'unique' => FALSE,
           ),
-          14 => array(
+          15 => array(
             'source' => 'parent:design:color',
             'target' => 'field_ik_slide_color_theme',
             'unique' => FALSE,
