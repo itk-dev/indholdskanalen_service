@@ -101,6 +101,11 @@
     }
   }
 
+  .rss-icon {
+    z-index: 22000;
+    display: none;
+  }
+
 }
 
 /*
@@ -119,7 +124,7 @@
       }
       .logo-container {
         img {
-          max-width: 100px!important;
+          max-width: 150px!important;
         }
       }
     }
@@ -135,7 +140,7 @@
 
   .slide .logo-container {
     img {
-      max-width: 175px;
+      max-width: 250px;
     }
   }
 }
@@ -153,7 +158,7 @@
       }
       .logo-container {
         img {
-          max-width: 75px!important;
+          max-width: 100px!important;
         }
       }
     }
@@ -169,7 +174,7 @@
 
   .slide .logo-container {
     img {
-      max-width: 125px;
+      max-width: 200px;
     }
   }
 }
@@ -187,7 +192,7 @@
       }
       .logo-container {
         img {
-          max-width: 50px!important;
+          max-width: 75px!important;
         }
       }
     }
@@ -203,7 +208,7 @@
 
   .slide .logo-container {
     img {
-      max-width: 75px;
+      max-width: 150px;
     }
   }
 }
@@ -441,6 +446,68 @@
 
   .divider {
     display:none;
+  }
+}
+
+/*
+* Layout 7
+* Text in top, modified for RSS text feed purpose
+*
+* ---------------------------
+* |-------------------------|
+* |      feed text box      |
+* |-------------------------|
+* |                         |
+* |                         |
+* |                         |
+* |                         |
+* ---------------------------
+*
+*/
+
+.layout-7 {
+
+  .text-wrapper {
+    top: 0;
+    width: 100%;
+  }
+
+  .text-container {
+    width: 100%;
+
+    .heading-container {
+      width: 49.5%;
+      float: left;
+    }
+
+    .slide-heading {
+      @include rem('margin-bottom', $default-spacing / 2);
+    }
+
+    .slide-text {
+      width: 49.5%;
+      float: left;
+    }
+
+    .divider {
+      display:none;
+    }
+  }
+
+  .logo-container {
+    right: auto;
+    left: $default-spacing * 2;
+  }
+
+  .rss-icon {
+    display: block;
+    position: absolute;
+    right: $default-spacing;
+    bottom: $default-spacing;
+    background-image: url('../images/rss_overlay_icon.png');
+    background-repeat: no-repeat;
+    width: 316px;
+    height: 273px;
   }
 }
 

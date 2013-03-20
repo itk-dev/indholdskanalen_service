@@ -438,7 +438,7 @@ function ik_mrss_feed_importer_field_default_fields() {
     'field_instance' => array(
       'bundle' => 'media_rss_slide_import',
       'deleted' => '0',
-      'description' => 'Tilføj et logo som indsættes på sliden. Logoet skaleres automatisk til 150 pixel i bredden. Det anbefales at uploade et logo med transparent baggrund, af samme grund tillades jpg filer ikke.',
+      'description' => 'Tilføj et logo som indsættes på sliden. Logoet skaleres automatisk til 250 pixel i bredden. Det anbefales at uploade et logo med transparent baggrund.',
       'display' => array(
         'default' => array(
           'label' => 'above',
@@ -465,7 +465,7 @@ function ik_mrss_feed_importer_field_default_fields() {
         'alt_field' => 0,
         'default_image' => 0,
         'file_directory' => 'slide_logo_files',
-        'file_extensions' => 'png gif',
+        'file_extensions' => 'png gif jpg jpeg',
         'max_filesize' => '1MB',
         'max_resolution' => '',
         'min_resolution' => '',
@@ -481,14 +481,13 @@ function ik_mrss_feed_importer_field_default_fields() {
             'public' => 'public',
           ),
           'allowed_types' => array(
-            'audio' => 0,
             0 => 0,
-            'default' => 0,
+            'audio' => 0,
+            'document' => 0,
             'image' => 'image',
             'video' => 0,
           ),
           'browser_plugins' => array(
-            'library' => 0,
             'library_plus' => 'library_plus',
             'media_default--media_browser_1' => 0,
             'media_default--media_browser_my_files' => 'media_default--media_browser_my_files',
@@ -687,8 +686,9 @@ function ik_mrss_feed_importer_field_default_fields() {
           'layout_2' => 'Tekst i top',
           'layout_3' => 'Tekst i bund',
           'layout_4' => 'Tekst til højre',
-          'layout_5' => 'Kun tekst',
-          'layout_6' => 'Kun billede',
+          'layout_5' => 'Kun billede',
+          'layout_6' => 'Kun tekst',
+          'layout_7' => 'Feed import (text)',
         ),
         'allowed_values_function' => '',
       ),
@@ -749,7 +749,7 @@ function ik_mrss_feed_importer_field_default_fields() {
   t('Layout');
   t('Logo');
   t('Tags');
-  t('Tilføj et logo som indsættes på sliden. Logoet skaleres automatisk til 150 pixel i bredden. Det anbefales at uploade et logo med transparent baggrund, af samme grund tillades jpg filer ikke.');
+  t('Tilføj et logo som indsættes på sliden. Logoet skaleres automatisk til 250 pixel i bredden. Det anbefales at uploade et logo med transparent baggrund.');
   t('Vælg en hovedkategori som skal knyttes til de importerede slides');
   t('Vælg et eller flere tags som beskriver de importerede slides.');
   t('Vælg et farvetema som skal benyttes for de importerede slides.');

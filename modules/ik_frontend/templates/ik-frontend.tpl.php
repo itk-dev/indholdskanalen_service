@@ -33,6 +33,7 @@
     <div class="logo-container">
       <img src="" />
     </div>
+    <div class="rss-icon"></div>
   </div>
   <!-- end template -->
 

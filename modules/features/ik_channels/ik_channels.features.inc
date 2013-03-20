@@ -54,9 +54,9 @@ function ik_channels_image_default_styles() {
   $styles['slide_logoes'] = array(
     'name' => 'slide_logoes',
     'effects' => array(
-      2 => array(
-        'label' => 'Scale',
-        'help' => 'Scaling will maintain the aspect-ratio of the original image. If only a single dimension is specified, the other dimension will be calculated.',
+      1 => array(
+        'label' => 'Skalér',
+        'help' => 'Skalering bevarer billedets højde-bredde-forhold. Hvis kun den ene dimension angives vil den anden blive beregnet.',
         'effect callback' => 'image_scale_effect',
         'dimensions callback' => 'image_scale_dimensions',
         'form callback' => 'image_scale_form',
@@ -64,7 +64,7 @@ function ik_channels_image_default_styles() {
         'module' => 'image',
         'name' => 'image_scale',
         'data' => array(
-          'width' => '150',
+          'width' => '250',
           'height' => '',
           'upscale' => 0,
         ),

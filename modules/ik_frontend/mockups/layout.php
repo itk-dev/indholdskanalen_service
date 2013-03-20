@@ -88,6 +88,7 @@ $skitter_effects = array(
       </div>
     </div>
     <div class="logo-container"></div>
+    <div class="rss-icon" style="display:none"></div>
   </div>
   <!-- end template -->
 
@@ -118,6 +119,7 @@ $skitter_effects = array(
         </div>
       </div>
       <div class="logo-container"><img src="images/aak_logo.png" /></div>
+      <div class="rss-icon" style="display:none"></div>
     </div>
   </div>
 <?php else: ?>
