@@ -574,30 +574,36 @@ h6 {
   width: 100%; }
   /* line 478, ../sass/_layouts.scss */
   .layout-7 .text-container .heading-container {
-    width: 49.5%;
+    width: 45.5%;
     float: left; }
   /* line 483, ../sass/_layouts.scss */
   .layout-7 .text-container .slide-heading {
     margin-bottom: 10px;
     margin-bottom: 0.625rem; }
   /* line 487, ../sass/_layouts.scss */
+  .layout-7 .text-container .slide-subheading {
+    filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=50);
+    opacity: 0.5; }
+  /* line 491, ../sass/_layouts.scss */
   .layout-7 .text-container .slide-text {
-    width: 49.5%;
+    width: 53.5%;
     float: left; }
-  /* line 492, ../sass/_layouts.scss */
+  /* line 496, ../sass/_layouts.scss */
   .layout-7 .text-container .divider {
     display: none; }
-/* line 497, ../sass/_layouts.scss */
+/* line 501, ../sass/_layouts.scss */
 .layout-7 .logo-container {
   right: auto;
   left: 40px; }
-/* line 502, ../sass/_layouts.scss */
+/* line 506, ../sass/_layouts.scss */
 .layout-7 .rss-icon {
+  filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=20);
+  opacity: 0.2;
   display: block;
   position: absolute;
   right: 20px;
   bottom: 20px;
   background-image: url("../images/rss_overlay_icon.png");
   background-repeat: no-repeat;
-  width: 316px;
-  height: 273px; }
+  width: 300px;
+  height: 300px; }

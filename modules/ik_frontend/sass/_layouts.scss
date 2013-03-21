@@ -476,7 +476,7 @@
     width: 100%;
 
     .heading-container {
-      width: 49.5%;
+      width: 45.5%;
       float: left;
     }
 
@@ -484,8 +484,12 @@
       @include rem('margin-bottom', $default-spacing / 2);
     }
 
+    .slide-subheading {
+      @include opacity(0.5);
+    }
+
     .slide-text {
-      width: 49.5%;
+      width: 53.5%;
       float: left;
     }
 
@@ -500,14 +504,17 @@
   }
 
   .rss-icon {
+    @include opacity(0.2);
+
     display: block;
     position: absolute;
     right: $default-spacing;
     bottom: $default-spacing;
     background-image: url('../images/rss_overlay_icon.png');
     background-repeat: no-repeat;
-    width: 316px;
-    height: 273px;
+    width: 300px;
+    height: 300px;
+
   }
 }
 
