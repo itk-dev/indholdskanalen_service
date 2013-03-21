@@ -699,7 +699,7 @@ function ik_mrss_feed_importer_field_default_fields() {
       'bundle' => 'media_rss_slide_import',
       'default_value' => array(
         0 => array(
-          'value' => 'layout_6',
+          'value' => 'layout_7',
         ),
       ),
       'deleted' => '0',
