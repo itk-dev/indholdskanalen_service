@@ -1,4 +1,59 @@
 /*
+* Color Themes
+* Class added to slide container
+*/
+
+// reset skitter bg color
+.box_skitter {
+  background-color: transparent!important;
+}
+
+.white-green {
+  background-color: darken(#006027, 10%);
+
+  .text-container {
+    color: #fff;
+    background-color: #006027;
+  }
+}
+
+.white-blue {
+  background-color: darken(#004154, 10%);
+
+  .text-container {
+    color: #fff;
+    background-color: #004154;
+  }
+}
+
+.white-bordeaux {
+  background-color: darken(#8a1002, 10%);
+
+  .text-container {
+    color: #fff;
+    background-color: #8a1002;
+  }
+}
+
+.white-grey {
+  background-color: darken(#707173, 10%);
+
+  .text-container {
+    color: #fff;
+    background-color: #707173;
+  }
+}
+
+.black-orange {
+  background-color: darken(#f7a600, 10%);
+
+  .text-container {
+    color: #000;
+    background-color: #f7a600;
+  }
+}
+
+/*
 * Layouts default styling
 */
 #pure-template{
@@ -50,7 +105,6 @@
     z-index: 20000;
     overflow: hidden;
     position: relative;
-    background-color: $textbox-color;
 
     .heading-container {
       @include box-sizing(border-box);
@@ -64,12 +118,6 @@
       font-family: $font-family-heading;
       font-size: $heading-font-size;
       text-transform: uppercase;
-    }
-
-    .divider {
-      width:10%;
-      border-bottom: 0.2em solid $font-color;
-      @include rem('margin-bottom', $default-spacing / 2);
     }
 
     .slide-subheading {
@@ -242,10 +290,6 @@
     width: 100%;
     height: 100%;
   }
-
-  .divider {
-    display:none;
-  }
 }
 
 /*
@@ -286,10 +330,6 @@
     .slide-text {
       width: 49.5%;
       float: left;
-    }
-
-    .divider {
-      display:none;
     }
   }
 }
@@ -333,10 +373,6 @@
       width: 49.5%;
       float: left;
     }
-
-    .divider {
-      display:none;
-    }
   }
   
   .logo-container {
@@ -373,10 +409,6 @@
   .text-container {
     width: 100%;
     height: 100%;
-  }
-
-  .divider {
-    display:none;
   }
 
   .logo-container {
@@ -443,10 +475,6 @@
     width: 100%;
     height: 100%;
   }
-
-  .divider {
-    display:none;
-  }
 }
 
 /*
@@ -491,10 +519,6 @@
     .slide-text {
       width: 53.5%;
       float: left;
-    }
-
-    .divider {
-      display:none;
     }
   }
 

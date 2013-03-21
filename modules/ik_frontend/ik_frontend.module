@@ -244,12 +244,9 @@ function ik_frontend_fetch_slide($sid, $json = TRUE, $reset = FALSE) {
     $slide->title = check_plain($entity->title);
 
     // Color theme for textbox
-    $slide->color = '006027'; //Green as default
-    $slide->text_color = 'fff'; //White as default
+    $slide->color = ik_frontend_select_color_theme('1'); // Default color option is #1
     if ($data = field_get_items('node', $entity, 'field_ik_slide_color_theme')) {
-      $color_theme = ik_frontend_select_color_theme($data[0]['value']);
-      $slide->color = $color_theme[1];
-      $slide->text_color = $color_theme[0];
+      $slide->color = ik_frontend_select_color_theme($data[0]['value']);
     }
 
     $slide->logo = '';
@@ -316,22 +313,22 @@ function ik_frontend_fetch_slide($sid, $json = TRUE, $reset = FALSE) {
 function ik_frontend_select_color_theme($value) {
   switch ($value) {
     case 1:
-      $color_theme = array('fff','006027');
+      $color_theme = 'white-green';
       break;
     case 2:
-      $color_theme = array('fff','004154');
+      $color_theme = 'white-blue';
       break;
     case 3:
-      $color_theme = array('fff','8a1002');
+      $color_theme = 'white-bordeaux';
       break;
     case 4:
-      $color_theme = array('fff','707173');
+      $color_theme = 'white-grey';
       break;
     case 5:
-      $color_theme = array('000','f7a600');
+      $color_theme = 'black-orange';
       break;
     default:
-      $color_theme = array('fff','006027');
+      $color_theme = 'white-green';
   }
   return $color_theme;
 }

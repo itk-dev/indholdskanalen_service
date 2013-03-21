@@ -23,7 +23,6 @@
       <div class="text-container">
         <div class="heading-container">
           <div class="slide-heading" id="fitHeading"></div>
-          <div class="divider"></div>
           <div class="slide-subheading"></div>
         </div>
         <div class="slide-text">

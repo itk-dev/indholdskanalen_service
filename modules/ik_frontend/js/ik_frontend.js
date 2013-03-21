@@ -45,14 +45,6 @@ var IK = (function() {
           'img@src' : 'medium'
         }
       },
-      '.text-container@style' : function (arg) {
-        // Set text and background color.
-        return 'color:#' + arg.context.text_color + ';background-color:#' + arg.context.color;
-      },
-      '.divider@style' : function (arg) {
-        // Set divider color.
-        return 'border-color:#' + arg.context.text_color;
-      },
       '.slide-heading' : 'title',
       '.slide-subheading' : 'subheading',
       '.slide-text' : 'text',
@@ -191,6 +183,9 @@ var IK = (function() {
     // outer element, which can't be accessed in pure.
     slide.attr('id', 'slide-' + this.get('sid'));
     slide.addClass(this.get('layout'));
+
+    // Adding color scheme class
+    $('#slide-container').addClass(this.get('color'));
 
     // Either insert the slide or animate from one to the other.
     if (settings.animateChange === true) {
