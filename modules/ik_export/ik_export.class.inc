@@ -103,7 +103,8 @@ class IKMRSSExport {
     $item->appendChild($element);   
     $element = $this->xml->createElement('link', url('node/' . $sid , array('absolute' => TRUE)));
     $item->appendChild($element);
-    $element = $this->xml->createElement('description', $slide->text);
+    $subheading = ($slide->subheading) ? "<h3>" . $slide->subheading . "</h3>" : ''; 
+    $element = $this->xml->createElement('description', $subheading . $slide->text);
     $item->appendChild($element);
     
     // Create GUID
