@@ -630,3 +630,45 @@ h6 {
   background-repeat: no-repeat;
   width: 300px;
   height: 300px; }
+
+/*
+* Layout 8
+* Text to the left, small image
+*
+* ---------------------------
+* |         |               |
+* |    T    |   ---------   |
+* |    E    |   |       |   |
+* |    X    |   | IMAGE |   |
+* |    T    |   |       |   |
+* |         |   ---------   |
+* |         |               |
+* ---------------------------
+*
+*/
+/*
+* TODO: For this to work frontend javascript must be changed;
+* resize event must be changed and skitter settings must be dynamic.
+*/
+/* line 568, ../sass/_layouts.scss */
+.layout-8 .text-wrapper {
+  top: 0;
+  left: 0;
+  width: 35%;
+  height: 100%; }
+/* line 575, ../sass/_layouts.scss */
+.layout-8 .text-container {
+  width: 100%;
+  height: 100%; }
+/* line 580, ../sass/_layouts.scss */
+.layout-8 .image-container {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  position: relative;
+  padding: 40px;
+  padding-left: 40%; }
+  /* line 588, ../sass/_layouts.scss */
+  .layout-8 .image-container img {
+    max-width: 890px;
+    height: auto; }

@@ -17,7 +17,7 @@ function ik_mrss_feed_importer_form_media_rss_slide_import_node_form_alter(&$for
     'layout_2' => theme('image', array('path' => $path . '/layout-images/layout_2.png', 'alt' => t('Text in top'), 'title' => t('Text in top'))),
     'layout_3' => theme('image', array('path' => $path . '/layout-images/layout_3.png', 'alt' => t('Text in bottom'), 'title' => t('Text in bottom'))),
     'layout_4' => theme('image', array('path' => $path . '/layout-images/layout_4.png', 'alt' => t('Text to the right'), 'title' => t('Text to the right'))),
-    'layout_8' => theme('image', array('path' => $path . '/layout-images/layout_8.png', 'alt' => t('Text to the right with small image'), 'title' => t('Text to the right with small image'))),
+    //'layout_8' => theme('image', array('path' => $path . '/layout-images/layout_8.png', 'alt' => t('Text to the right with small image'), 'title' => t('Text to the right with small image'))),
     'layout_5' => theme('image', array('path' => $path . '/layout-images/layout_5.png', 'alt' => t('Image only'), 'title' => t('Image only'))),
     'layout_6' => theme('image', array('path' => $path . '/layout-images/layout_6.png', 'alt' => t('Text only'), 'title' => t('Text only'))),
     'layout_7' => theme('image', array('path' => $path . '/layout-images/layout_7.png', 'alt' => t('Feed import (text)'), 'title' => t('Feed import (text)')))
