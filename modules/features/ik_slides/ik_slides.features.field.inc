@@ -1099,6 +1099,7 @@ function ik_slides_field_default_fields() {
           'layout_2' => 'Tekst i top',
           'layout_3' => 'Tekst i bund',
           'layout_4' => 'Tekst til højre',
+          'layout_8' => 'Tekst til højre lille billede',
           'layout_5' => 'Kun billede',
           'layout_6' => 'Kun tekst',
           'layout_7' => 'Feed import (text)',
