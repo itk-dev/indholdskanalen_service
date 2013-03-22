@@ -354,7 +354,7 @@ h6 {
         font-size: 1.8em !important; }
       /* line 208, ../sass/_layouts.scss */
       body.slide-preview .logo-container img {
-        max-width: 200px!important; }
+        max-width: 150px!important; }
     /* line 214, ../sass/_layouts.scss */
     body .slide-heading {
       font-size: 2.25em !important; }
@@ -365,7 +365,7 @@ h6 {
 
   /* line 224, ../sass/_layouts.scss */
   .slide .logo-container img {
-    max-width: 300px; } }
+    max-width: 200px; } }
 @media (max-width: 500px) {
   /* line 231, ../sass/_layouts.scss */
   body {
@@ -390,7 +390,7 @@ h6 {
 
   /* line 258, ../sass/_layouts.scss */
   .slide .logo-container img {
-    max-width: 175px; } }
+    max-width: 150px; } }
 /*
 * Layout 1
 * Text to the left
