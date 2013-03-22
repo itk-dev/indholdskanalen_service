@@ -307,7 +307,7 @@ h6 {
     right: 40px; }
     /* line 147, ../sass/_layouts.scss */
     .slide .logo-container img {
-      max-width: 250px; }
+      max-width: 350px; }
   /* line 152, ../sass/_layouts.scss */
   .slide .rss-icon {
     z-index: 22000;
@@ -329,7 +329,7 @@ h6 {
         font-size: 2.25em !important; }
       /* line 174, ../sass/_layouts.scss */
       body.slide-preview .logo-container img {
-        max-width: 150px!important; }
+        max-width: 250px!important; }
     /* line 180, ../sass/_layouts.scss */
     body .slide-heading {
       font-size: 3em !important; }
@@ -340,7 +340,7 @@ h6 {
 
   /* line 190, ../sass/_layouts.scss */
   .slide .logo-container img {
-    max-width: 250px; } }
+    max-width: 350px; } }
 @media (max-width: 800px) {
   /* line 197, ../sass/_layouts.scss */
   body {
@@ -354,7 +354,7 @@ h6 {
         font-size: 1.8em !important; }
       /* line 208, ../sass/_layouts.scss */
       body.slide-preview .logo-container img {
-        max-width: 100px!important; }
+        max-width: 200px!important; }
     /* line 214, ../sass/_layouts.scss */
     body .slide-heading {
       font-size: 2.25em !important; }
@@ -365,7 +365,7 @@ h6 {
 
   /* line 224, ../sass/_layouts.scss */
   .slide .logo-container img {
-    max-width: 200px; } }
+    max-width: 300px; } }
 @media (max-width: 500px) {
   /* line 231, ../sass/_layouts.scss */
   body {
@@ -379,7 +379,7 @@ h6 {
         font-size: 1.5em !important; }
       /* line 242, ../sass/_layouts.scss */
       body.slide-preview .logo-container img {
-        max-width: 75px!important; }
+        max-width: 100px!important; }
     /* line 248, ../sass/_layouts.scss */
     body .slide-heading {
       font-size: 1.8em !important; }
@@ -390,7 +390,7 @@ h6 {
 
   /* line 258, ../sass/_layouts.scss */
   .slide .logo-container img {
-    max-width: 150px; } }
+    max-width: 175px; } }
 /*
 * Layout 1
 * Text to the left

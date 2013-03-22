@@ -64,7 +64,7 @@ function ik_channels_image_default_styles() {
         'module' => 'image',
         'name' => 'image_scale',
         'data' => array(
-          'width' => '250',
+          'width' => '350',
           'height' => '',
           'upscale' => 0,
         ),

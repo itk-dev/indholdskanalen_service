@@ -506,7 +506,7 @@ function ik_slides_field_default_fields() {
     'field_instance' => array(
       'bundle' => 'slide',
       'deleted' => '0',
-      'description' => 'Tilføj et logo som indsættes på sliden. Logoet skaleres automatisk til 150 pixel i bredden. Det anbefales at uploade et logo med transparent baggrund.',
+      'description' => 'Tilføj et logo som indsættes på sliden. Logoet skaleres automatisk til 350 pixel i bredden, hvis det er større. Det anbefales at uploade et logo med transparent baggrund.',
       'display' => array(
         'default' => array(
           'label' => 'above',
@@ -553,8 +553,6 @@ function ik_slides_field_default_fields() {
           ),
           'browser_plugins' => array(
             'library_plus' => 'library_plus',
-            'media_default--media_browser_1' => 0,
-            'media_default--media_browser_my_files' => 'media_default--media_browser_my_files',
             'media_internet' => 0,
             'upload' => 'upload',
           ),
@@ -629,11 +627,11 @@ function ik_slides_field_default_fields() {
             'public' => 'public',
           ),
           'allowed_types' => array(
-            'audio' => 0,
-            'default' => 0,
-            0 => 0,
             'image' => 'image',
             'video' => 'video',
+            0 => 0,
+            'audio' => 0,
+            'default' => 0,
           ),
           'browser_plugins' => array(
             'library' => 0,
@@ -1171,7 +1169,7 @@ function ik_slides_field_default_fields() {
   t('Tekst');
   t('Tilføj billeder til slide. Billeder skaleres og beskæres automatisk til 1920x1080 pixel (Full HD, 16:9 format). Ønsker du fuld kontrol over hvordan dit billede ser ud anbefales det at uploade billedet i størrelsen 1920x1080 på forhånd.');
   t('Tilføj et eller flere tags som beskriver denne slide.');
-  t('Tilføj et logo som indsættes på sliden. Logoet skaleres automatisk til 150 pixel i bredden. Det anbefales at uploade et logo med transparent baggrund.');
+  t('Tilføj et logo som indsættes på sliden. Logoet skaleres automatisk til 350 pixel i bredden, hvis det er større. Det anbefales at uploade et logo med transparent baggrund.');
   t('Vælg en hovedkategori for denne slide.');
   t('Vælg et farve tema for denne slide.');
   t('Vælg et layout som denne slide skal benytte.');
