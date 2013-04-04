@@ -185,6 +185,7 @@ var IK = (function() {
     slide.addClass(this.get('layout'));
 
     // Adding color scheme class
+    $('#slide-container').removeClass();
     $('#slide-container').addClass(this.get('color'));
 
     // Either insert the slide or animate from one to the other.
