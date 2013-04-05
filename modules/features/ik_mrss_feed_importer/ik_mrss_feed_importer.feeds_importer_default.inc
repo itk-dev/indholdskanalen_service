@@ -33,7 +33,7 @@ function ik_mrss_feed_importer_feeds_importer_default() {
       'plugin_key' => 'SlideProcessor',
       'config' => array(
         'content_type' => 'slide',
-        'expire' => '259200',
+        'expire' => '86400',
         'author' => 0,
         'authorize' => 1,
         'mappings' => array(
