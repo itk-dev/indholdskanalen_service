@@ -1,6 +1,6 @@
 // Disable/Enable cursor if user is inactive/active.
 (function($){
-  var timeout = 5000;
+  /*var timeout = 5000;
   $( document ).idleTimer( timeout, {
     startImmediately: false, // starts a timeout as soon as the timer is set up; otherwise it waits for the first event.
     idle:    false,         // indicates if the user is idle
@@ -14,7 +14,7 @@
   
   $( document ).on( "active.idleTimer", function(){
     $("body").css("cursor","default");
-  });
+  });*/
 
   // Resize slide image when browser window is resized.
   var resizer = function () {
