@@ -35,7 +35,7 @@
     <div class="rss-icon"></div>
   </div>
   <!-- end template -->
-
+  <figure id="progress"></figure>
   <div id="slide-container">
   </div>
   <script type="text/javascript">

@@ -111,57 +111,70 @@ body {
   body.slide-preview {
     font-size: 0.66667em; }
 
+/* line 39, ../sass/_base.scss */
+#progress {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: inline-block;
+  width: 0px;
+  height: 1%;
+  background-color: #8c8c8c;
+  /*#EF2876;*/
+  opacity: 0.6;
+  z-index: 50000; }
+
 /*
 * Default typography
 */
-/* line 43, ../sass/_base.scss */
+/* line 55, ../sass/_base.scss */
 p {
   margin-bottom: 10px;
   margin-bottom: 0.625rem; }
 
-/* line 48, ../sass/_base.scss */
+/* line 60, ../sass/_base.scss */
 strong,
 b {
   font-family: "AllerBold", "Aller", "Helvetica Neue", Helvetica, Arial, sans-serif; }
-  /* line 52, ../sass/_base.scss */
+  /* line 64, ../sass/_base.scss */
   strong em,
   strong i,
   b em,
   b i {
     font-family: "AllerBoldItalic", "Aller", "Helvetica Neue", Helvetica, Arial, sans-serif; }
 
-/* line 58, ../sass/_base.scss */
+/* line 70, ../sass/_base.scss */
 em,
 i {
   font-family: "AllerItalic", "Aller", "Helvetica Neue", Helvetica, Arial, sans-serif; }
-  /* line 62, ../sass/_base.scss */
+  /* line 74, ../sass/_base.scss */
   em strong,
   em b,
   i strong,
   i b {
     font-family: "AllerBoldItalic", "Aller", "Helvetica Neue", Helvetica, Arial, sans-serif; }
 
-/* line 67, ../sass/_base.scss */
+/* line 79, ../sass/_base.scss */
 h1 {
   font-size: 4.5em; }
 
-/* line 71, ../sass/_base.scss */
+/* line 83, ../sass/_base.scss */
 h2 {
   font-size: 1.625em; }
 
-/* line 75, ../sass/_base.scss */
+/* line 87, ../sass/_base.scss */
 h3 {
   font-size: 1.65em; }
 
-/* line 79, ../sass/_base.scss */
+/* line 91, ../sass/_base.scss */
 h4 {
   font-size: 1.8em; }
 
-/* line 83, ../sass/_base.scss */
+/* line 95, ../sass/_base.scss */
 h5 {
   font-size: 1.95em; }
 
-/* line 87, ../sass/_base.scss */
+/* line 99, ../sass/_base.scss */
 h6 {
   font-size: 2.1em; }
 

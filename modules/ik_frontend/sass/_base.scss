@@ -36,6 +36,18 @@ body {
   }
 }
 
+#progress {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: inline-block;
+  width: 0px;
+  height: 1%;
+  background-color: #8c8c8c; /*#EF2876;*/
+  opacity: 0.6;
+  z-index: 50000;
+}
+
 /*
 * Default typography
 */
