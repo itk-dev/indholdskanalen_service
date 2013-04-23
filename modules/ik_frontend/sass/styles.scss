@@ -8,8 +8,8 @@ body, html, figure {
   padding: 0;
 }
 
-a {
-  border: none;
+a img, :link img, :visited img {
+  border: 0;
 }
 
 @import "_variables.scss";

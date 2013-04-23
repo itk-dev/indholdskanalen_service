@@ -7,8 +7,8 @@ body, html, figure {
   padding: 0; }
 
 /* line 11, ../sass/styles.scss */
-a {
-  border: none; }
+a img, :link img, :visited img {
+  border: 0; }
 
 /*
 * Variables for use in stylesheets
