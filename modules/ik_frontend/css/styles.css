@@ -2,7 +2,7 @@
 * Main stylesheet
 */
 /* line 6, ../sass/styles.scss */
-body, html {
+body, html, figure {
   margin: 0;
   padding: 0; }
 
