@@ -3,6 +3,15 @@
 */
 
 //@import "compass/reset";
+body, html {
+  margin: 0;
+  padding: 0;
+}
+
+a {
+  border: none;
+}
+
 @import "_variables.scss";
 @import "_mixins.scss";
 @import "_base.scss";

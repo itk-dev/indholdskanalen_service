@@ -1,6 +1,15 @@
 /*
 * Main stylesheet
 */
+/* line 6, ../sass/styles.scss */
+body, html {
+  margin: 0;
+  padding: 0; }
+
+/* line 11, ../sass/styles.scss */
+a {
+  border: none; }
+
 /*
 * Variables for use in stylesheets
 */
