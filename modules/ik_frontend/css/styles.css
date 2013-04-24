@@ -178,18 +178,16 @@ h5 {
 h6 {
   font-size: 2.1em; }
 
-/* line 103, ../sass/_base.scss */
-ul, ol {
+/* line 104, ../sass/_base.scss */
+.slide-text ul, .slide-text ol {
   margin-left: 40px;
   padding-top: 20px;
   padding-bottom: 20px; }
-
-/* line 109, ../sass/_base.scss */
-ul li {
+/* line 110, ../sass/_base.scss */
+.slide-text ul li {
   list-style: disc outside none; }
-
-/* line 113, ../sass/_base.scss */
-ol li {
+/* line 114, ../sass/_base.scss */
+.slide-text ol li {
   list-style: decimal outside none; }
 
 /*
