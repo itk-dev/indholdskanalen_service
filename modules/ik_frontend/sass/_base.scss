@@ -99,3 +99,17 @@ h5 {
 h6 {
   font-size: $textbox-font-size * 1.4;
 }
+
+ul, ol {
+  margin-left: $default-spacing * 2;
+  padding-top: $default-spacing;
+  padding-bottom: $default-spacing;
+}
+
+ul li {
+  list-style: disc outside none;
+}
+
+ol li {
+  list-style: decimal outside none;
+}
