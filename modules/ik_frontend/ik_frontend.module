@@ -142,13 +142,17 @@ function ik_frontend_find_channel_nid($token) {
  *
  */
 function ik_frontend_get_slides($token, $entity) {
+  $slides = array();
+
   // Use frontend cache, if available.
   if ($cache = cache_get('channel_' . $token, 'cache_ik_frontend')) {
     if ($cache->expire > REQUEST_TIME) {
       $slides = $cache->data;
     }
   }
-  else {
+
+  // Either the cache was cold or expired, so we need to generate new slids.
+  if (empty($slides)) {
     $field = field_info_field('field_channel_preview');
     $field_names = isset($field['settings']['ik_search']['types']) ? $field['settings']['ik_search']['types'] : array();
     $values = array();
