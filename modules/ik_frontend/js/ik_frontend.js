@@ -71,14 +71,23 @@ var IK = (function() {
    * Fetch slide from the backend.
    */
   Slide.prototype.fetchSlide = function () {
-    log('Trying to fetch slide: ' + this.sid);
+    var self = this;
+    log('Trying to fetch slide: ' + self.sid);
     $.ajax({
       type: 'POST',
-      url: '/channels/' + this.token + '/slide/' + this.sid,
+      url: '/channels/' + self.token + '/slide/' + self.sid,
       context: this,
       dataType: 'JSON',
       success: function (data) {
+        // Mark the slide as fetched.
+        data.fetched = true;
         this.processSlide(data);
+      },
+      error: function () {
+        log('Slide ' + self.sid + ' fetch failed.');
+
+        // Mark the slide as not fetched, which is used in the update function.
+        this.propreties.fetched = false;
       }
     });
   };
@@ -286,17 +295,37 @@ var IK = (function() {
           log('All slides for the channel (' + self.token + ') fechted');
 
           // Copy the updated slides into slides.
-          self.slides = self.updatedSlides.slice(0);
+          if (self.updatedSlides !== 0) {
+            self.slides = self.updatedSlides.slice(0);
 
-          // Start the slideshow
-          self.start();
+            // Start the slideshow.
+            self.start();
+          }
+          else {
+            alert('Could not fetch all slides. Please try agian.');
+          }
         }
         else {
-          // This most be a channel update
+          // This most be a channel update.
           log('All slides updated for the channel: ' + self.token);
 
-          // Copy the updated slides into slides.
-          self.slides = self.updatedSlides.slice(0);
+          // Now that the channel should be update and slides fetched. We check
+          // if the slides where in fact fected and only throw the current slide
+          // out if any new ones where fetched. The Ajax calles may have failed
+          // if the server was off-line.
+          if (self.updatedSlides !== 0) {
+            var slides = [];
+            $(self.updatedSlides).each(function() {
+              if (this.get('fetched')) {
+                slides.push(this);
+              }
+            });
+
+            // Only update slides if any was fetched.
+            if (slides.length !== 0) {
+              self.slides = slides.slice(0);
+            }
+          }
 
           // Goto the next slide.
           self.nextSlide();
