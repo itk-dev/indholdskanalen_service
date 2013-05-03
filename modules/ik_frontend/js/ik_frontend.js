@@ -71,14 +71,23 @@ var IK = (function() {
    * Fetch slide from the backend.
    */
   Slide.prototype.fetchSlide = function () {
-    log('Trying to fetch slide: ' + this.sid);
+    var self = this;
+    log('Trying to fetch slide: ' + self.sid);
     $.ajax({
       type: 'POST',
-      url: '/channels/' + this.token + '/slide/' + this.sid,
+      url: '/channels/' + self.token + '/slide/' + self.sid,
       context: this,
       dataType: 'JSON',
       success: function (data) {
+        // Mark the slide as fetched.
+        data.fetched = true;
         this.processSlide(data);
+      },
+      error: function () {
+        log('Slide ' + self.sid + ' fetch failed.');
+
+        // Mark the slide as not fetched, which is used in the update function.
+        this.propreties.fetched = false;
       }
     });
   };
@@ -215,6 +224,7 @@ var IK = (function() {
     // Object properties.
     this.token = undefined;
     this.slides = [];
+    this.updatedSlides = [];
     this.currentSlide = 0;
     this.timeout = undefined;
     this.fetched = false;
@@ -233,6 +243,7 @@ var IK = (function() {
      * Gets information about the channel from the backend.
      */
     this.fetchChannel = function () {
+      var self = this;
       log('Trying to fetch channel with token: ' + this.token);
       $.ajax({
         type: 'POST',
@@ -241,6 +252,21 @@ var IK = (function() {
         dataType: 'JSON',
         success: function (data) {
           this.processChannel(data);
+        },
+        error: function () {
+          // The server did not return a new channel.
+          log('Could not fetch channel from the server with token: ' + this.token);
+
+          // Check if we have any old slides and if we do run the slide show.
+          if (self.slides.length !== 0) {
+            // Goto the next slide.
+            self.nextSlide();
+          }
+          else {
+            // This would only happen on the first channel load and not on
+            // updates.
+            alert('There was an error in fetching the channel. Please try agian.');
+          }
         }
       });
     };
@@ -253,25 +279,53 @@ var IK = (function() {
 
       // Load all slides in the channel.
       var self = this;
+      self.updatedSlides = [];
       $.each(data, function(i, item) {
         var slide = new Slide(self.token, item.nid, true);
-        self.slides.push(slide);
+        self.updatedSlides.push(slide);
       });
 
       // Capture event when all ajax request have completed.
       $('body').ajaxStop(function() {
-
         if (!this.fetched) {
           // Channel and slide have been fetched for a new channel. We set the
           // fected variable, so the slide show will not be restarted on channel
           // updates.
           this.fetched = true;
           log('All slides for the channel (' + self.token + ') fechted');
-          self.start();
+
+          // Copy the updated slides into slides.
+          if (self.updatedSlides !== 0) {
+            self.slides = self.updatedSlides.slice(0);
+
+            // Start the slideshow.
+            self.start();
+          }
+          else {
+            alert('Could not fetch all slides. Please try agian.');
+          }
         }
         else {
-          // This most be a channel update
+          // This most be a channel update.
           log('All slides updated for the channel: ' + self.token);
+
+          // Now that the channel should be update and slides fetched. We check
+          // if the slides where in fact fected and only throw the current slide
+          // out if any new ones where fetched. The Ajax calles may have failed
+          // if the server was off-line.
+          if (self.updatedSlides !== 0) {
+            var slides = [];
+            $(self.updatedSlides).each(function() {
+              if (this.get('fetched')) {
+                slides.push(this);
+              }
+            });
+
+            // Only update slides if any was fetched.
+            if (slides.length !== 0) {
+              self.slides = slides.slice(0);
+            }
+          }
 
           // Goto the next slide.
           self.nextSlide();
@@ -302,7 +356,6 @@ var IK = (function() {
           log('Restarting the channel to first slide');
           // Try to update the channel by pulling the server (this could be
           // implemented using a websocket and send push messages).
-          self.slides = [];
           self.fetchChannel();
         }
         else {
@@ -376,15 +429,15 @@ var IK = (function() {
   function showSlide(content) {
     // Get an empty slide object.
     var slide = new Slide('', '', false);
-    
+
     // Set slide content.
     slide.processSlide(content);
-    
+
     settings.animateChange = true;
 
     // Render current slide and display it.
     slide.render();
-    
+
     // Re-render the slide to reset the display.
     this.timeout = setTimeout(function() {
       slide.render();
