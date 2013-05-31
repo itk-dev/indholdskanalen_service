@@ -32,3 +32,6 @@ $conf['memcache_bins'] = array(
 
 // Logging
 $conf['syslog_identity'] = 'indholdskanalen';
+
+// Bots: prevent all pages from bots, e.g. Google - see https://itk.fogbugz.com/default.asp?W64
+header('X-Robots-Tag: noindex, nofollow');
