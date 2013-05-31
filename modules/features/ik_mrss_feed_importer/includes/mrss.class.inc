@@ -227,7 +227,9 @@ class MediaRSSParser extends FeedsParser {
       case 'parent:images:media':
         if ($source->feed_nid && $node) {
           $value = field_get_items('node', $node, 'field_ik_slide_media');
-          return file_load($value[0]['fid'])->uri;
+          if (isset($value[0]['fid'])) {
+            return file_load($value[0]['fid'])->uri;
+          }
         }
         break;
 
