@@ -54,7 +54,7 @@ class MediaRSSParser extends FeedsParser {
           $data['media_url'] = (string)$media->attributes()->url;
           $data['media_image'] = $this->downloadImage($data['media_url'], basename($data['media_url']));
         }
-        else {
+        else if (isset($item->enclosure)) {
           // Try enclosure filed
           $title = (string)$item->title;
           $data['media_title'] = empty($title) ? $alt_title : $title;
@@ -70,6 +70,10 @@ class MediaRSSParser extends FeedsParser {
             $file = $data['guid'] . '.' . $ext;
           }
           $data['media_image'] = $this->downloadImage($data['media_url'], $file);
+        }
+        else {
+          // Used to control skip item in presave.
+          $data['text_only'] = TRUE;
         }
       }
       else {

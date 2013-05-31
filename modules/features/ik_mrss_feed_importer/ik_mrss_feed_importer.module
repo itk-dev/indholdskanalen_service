@@ -128,6 +128,7 @@ function ik_mrss_feed_importer_color_set_target($source, $entity, $target, $valu
  *  configuration form.
  */
 function ik_mrss_feed_importer_og_set_target($source, $entity, $target, $value, $mapping) {
+  $entity->language = isset($entity->language) ? $entity->language : 'und';
   $entity->{$target}[$entity->language][0]['target_id'] = $value;
 }
 
