@@ -54,7 +54,7 @@ class MediaRSSParser extends FeedsParser {
           $data['media_url'] = (string)$media->attributes()->url;
           $data['media_image'] = $this->downloadImage($data['media_url'], basename($data['media_url']));
         }
-        else {
+        else if (isset($item->enclosure)) {
           // Try enclosure filed
           $title = (string)$item->title;
           $data['media_title'] = empty($title) ? $alt_title : $title;
@@ -70,6 +70,10 @@ class MediaRSSParser extends FeedsParser {
             $file = $data['guid'] . '.' . $ext;
           }
           $data['media_image'] = $this->downloadImage($data['media_url'], $file);
+        }
+        else {
+          // Used to control skip item in presave.
+          $data['text_only'] = TRUE;
         }
       }
       else {
@@ -227,7 +231,9 @@ class MediaRSSParser extends FeedsParser {
       case 'parent:images:media':
         if ($source->feed_nid && $node) {
           $value = field_get_items('node', $node, 'field_ik_slide_media');
-          return file_load($value[0]['fid'])->uri;
+          if (isset($value[0]['fid'])) {
+            return file_load($value[0]['fid'])->uri;
+          }
         }
         break;
 
