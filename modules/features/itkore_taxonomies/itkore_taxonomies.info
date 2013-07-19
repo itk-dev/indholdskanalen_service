@@ -1,0 +1,12 @@
+name = Itkore Taxonomies
+description = Taxonomies for ITKore
+core = 7.x
+package = Core
+php = 5.2.4
+version = 7.x-1.0-beta1
+project = itkore_taxonomies
+dependencies[] = features
+dependencies[] = taxonomy
+features[features_api][] = api:1
+features[taxonomy][] = subject
+features[taxonomy][] = tags
