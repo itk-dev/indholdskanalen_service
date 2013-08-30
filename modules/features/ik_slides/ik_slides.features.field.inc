@@ -13,9 +13,9 @@ function ik_slides_field_default_fields() {
   // Exported field: 'node-slide-field_ik_og_department_ref'.
   $fields['node-slide-field_ik_og_department_ref'] = array(
     'field_config' => array(
-      'active' => '1',
-      'cardinality' => '1',
-      'deleted' => '0',
+      'active' => 1,
+      'cardinality' => 1,
+      'deleted' => 0,
       'entity_types' => array(),
       'field_name' => 'field_ik_og_department_ref',
       'foreign keys' => array(
@@ -31,7 +31,7 @@ function ik_slides_field_default_fields() {
           0 => 'target_id',
         ),
       ),
-      'locked' => '0',
+      'locked' => 0,
       'module' => 'entityreference',
       'settings' => array(
         'handler' => 'og',
@@ -54,20 +54,20 @@ function ik_slides_field_default_fields() {
         ),
         'target_type' => 'node',
       ),
-      'translatable' => '0',
+      'translatable' => 0,
       'type' => 'entityreference',
     ),
     'field_instance' => array(
       'bundle' => 'slide',
       'default_value' => NULL,
-      'deleted' => '0',
+      'deleted' => 0,
       'description' => 'Vælg hvilken afdeling denne slide skal tilhøre (Du kan kun tilknytte til den/de afdeling(er) som du er en del af).',
       'display' => array(
         'default' => array(
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '12',
+          'weight' => 12,
         ),
         'teaser' => array(
           'label' => 'above',
@@ -101,7 +101,7 @@ function ik_slides_field_default_fields() {
           'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
         ),
         'type' => 'og_complex',
-        'weight' => '6',
+        'weight' => 6,
       ),
     ),
   );
@@ -109,9 +109,9 @@ function ik_slides_field_default_fields() {
   // Exported field: 'node-slide-field_ik_slide_category'.
   $fields['node-slide-field_ik_slide_category'] = array(
     'field_config' => array(
-      'active' => '1',
-      'cardinality' => '1',
-      'deleted' => '0',
+      'active' => 1,
+      'cardinality' => 1,
+      'deleted' => 0,
       'entity_types' => array(),
       'field_name' => 'field_ik_slide_category',
       'foreign keys' => array(
@@ -127,30 +127,30 @@ function ik_slides_field_default_fields() {
           0 => 'tid',
         ),
       ),
-      'locked' => '0',
+      'locked' => 0,
       'module' => 'taxonomy',
       'settings' => array(
         'allowed_values' => array(
           0 => array(
             'vocabulary' => 'subject',
-            'parent' => '0',
+            'parent' => 0,
           ),
         ),
       ),
-      'translatable' => '0',
+      'translatable' => 0,
       'type' => 'taxonomy_term_reference',
     ),
     'field_instance' => array(
       'bundle' => 'slide',
       'default_value' => NULL,
-      'deleted' => '0',
+      'deleted' => 0,
       'description' => 'Vælg en hovedkategori for denne slide.',
       'display' => array(
         'default' => array(
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '8',
+          'weight' => 8,
         ),
         'teaser' => array(
           'label' => 'above',
@@ -173,7 +173,7 @@ function ik_slides_field_default_fields() {
           'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
         ),
         'type' => 'options_select',
-        'weight' => '7',
+        'weight' => 7,
       ),
     ),
   );
@@ -181,9 +181,9 @@ function ik_slides_field_default_fields() {
   // Exported field: 'node-slide-field_ik_slide_color_theme'.
   $fields['node-slide-field_ik_slide_color_theme'] = array(
     'field_config' => array(
-      'active' => '1',
-      'cardinality' => '1',
-      'deleted' => '0',
+      'active' => 1,
+      'cardinality' => 1,
+      'deleted' => 0,
       'entity_types' => array(),
       'field_name' => 'field_ik_slide_color_theme',
       'foreign keys' => array(),
@@ -192,7 +192,7 @@ function ik_slides_field_default_fields() {
           0 => 'value',
         ),
       ),
-      'locked' => '0',
+      'locked' => 0,
       'module' => 'list',
       'settings' => array(
         'allowed_values' => array(
@@ -204,24 +204,24 @@ function ik_slides_field_default_fields() {
         ),
         'allowed_values_function' => '',
       ),
-      'translatable' => '0',
+      'translatable' => 0,
       'type' => 'list_integer',
     ),
     'field_instance' => array(
       'bundle' => 'slide',
       'default_value' => array(
         0 => array(
-          'value' => '1',
+          'value' => 1,
         ),
       ),
-      'deleted' => '0',
+      'deleted' => 0,
       'description' => 'Vælg et farve tema for denne slide.',
       'display' => array(
         'default' => array(
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '16',
+          'weight' => 16,
         ),
         'teaser' => array(
           'label' => 'above',
@@ -244,7 +244,7 @@ function ik_slides_field_default_fields() {
           'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
         ),
         'type' => 'options_select',
-        'weight' => '15',
+        'weight' => 15,
       ),
     ),
   );
@@ -252,9 +252,9 @@ function ik_slides_field_default_fields() {
   // Exported field: 'node-slide-field_ik_slide_exposure'.
   $fields['node-slide-field_ik_slide_exposure'] = array(
     'field_config' => array(
-      'active' => '1',
-      'cardinality' => '1',
-      'deleted' => '0',
+      'active' => 1,
+      'cardinality' => 1,
+      'deleted' => 0,
       'entity_types' => array(),
       'field_name' => 'field_ik_slide_exposure',
       'foreign keys' => array(),
@@ -263,7 +263,7 @@ function ik_slides_field_default_fields() {
           0 => 'value',
         ),
       ),
-      'locked' => '0',
+      'locked' => 0,
       'module' => 'list',
       'settings' => array(
         'allowed_values' => array(
@@ -284,24 +284,24 @@ function ik_slides_field_default_fields() {
         ),
         'allowed_values_function' => '',
       ),
-      'translatable' => '0',
+      'translatable' => 0,
       'type' => 'list_integer',
     ),
     'field_instance' => array(
       'bundle' => 'slide',
       'default_value' => array(
         0 => array(
-          'value' => '30',
+          'value' => 15,
         ),
       ),
-      'deleted' => '0',
+      'deleted' => 0,
       'description' => 'Vælg hvor længe denne slide skal eksponseres.',
       'display' => array(
         'default' => array(
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '10',
+          'weight' => 10,
         ),
         'teaser' => array(
           'label' => 'above',
@@ -324,7 +324,7 @@ function ik_slides_field_default_fields() {
           'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
         ),
         'type' => 'options_select',
-        'weight' => '14',
+        'weight' => 14,
       ),
     ),
   );
@@ -332,9 +332,9 @@ function ik_slides_field_default_fields() {
   // Exported field: 'node-slide-field_ik_slide_import_node'.
   $fields['node-slide-field_ik_slide_import_node'] = array(
     'field_config' => array(
-      'active' => '1',
-      'cardinality' => '1',
-      'deleted' => '0',
+      'active' => 1,
+      'cardinality' => 1,
+      'deleted' => 0,
       'entity_types' => array(),
       'field_name' => 'field_ik_slide_import_node',
       'foreign keys' => array(
@@ -350,7 +350,7 @@ function ik_slides_field_default_fields() {
           0 => 'target_id',
         ),
       ),
-      'locked' => '0',
+      'locked' => 0,
       'module' => 'entityreference',
       'settings' => array(
         'handler' => 'base',
@@ -369,20 +369,20 @@ function ik_slides_field_default_fields() {
         ),
         'target_type' => 'node',
       ),
-      'translatable' => '0',
+      'translatable' => 0,
       'type' => 'entityreference',
     ),
     'field_instance' => array(
       'bundle' => 'slide',
       'default_value' => NULL,
-      'deleted' => '0',
+      'deleted' => 0,
       'description' => '',
       'display' => array(
         'default' => array(
           'label' => 'hidden',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '15',
+          'weight' => 15,
         ),
         'teaser' => array(
           'label' => 'above',
@@ -404,10 +404,10 @@ function ik_slides_field_default_fields() {
         'settings' => array(
           'match_operator' => 'STARTS_WITH',
           'path' => '',
-          'size' => '60',
+          'size' => 60,
         ),
         'type' => 'entityreference_autocomplete_tags',
-        'weight' => '11',
+        'weight' => 11,
       ),
     ),
   );
@@ -415,9 +415,9 @@ function ik_slides_field_default_fields() {
   // Exported field: 'node-slide-field_ik_slide_imported'.
   $fields['node-slide-field_ik_slide_imported'] = array(
     'field_config' => array(
-      'active' => '1',
-      'cardinality' => '2',
-      'deleted' => '0',
+      'active' => 1,
+      'cardinality' => 2,
+      'deleted' => 0,
       'entity_types' => array(),
       'field_name' => 'field_ik_slide_imported',
       'foreign keys' => array(),
@@ -426,7 +426,7 @@ function ik_slides_field_default_fields() {
           0 => 'value',
         ),
       ),
-      'locked' => '0',
+      'locked' => 0,
       'module' => 'list',
       'settings' => array(
         'allowed_values' => array(
@@ -434,20 +434,20 @@ function ik_slides_field_default_fields() {
         ),
         'allowed_values_function' => '',
       ),
-      'translatable' => '0',
+      'translatable' => 0,
       'type' => 'list_text',
     ),
     'field_instance' => array(
       'bundle' => 'slide',
       'default_value' => NULL,
-      'deleted' => '0',
+      'deleted' => 0,
       'description' => '',
       'display' => array(
         'default' => array(
           'label' => 'hidden',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '14',
+          'weight' => 14,
         ),
         'teaser' => array(
           'label' => 'above',
@@ -468,7 +468,7 @@ function ik_slides_field_default_fields() {
         'module' => 'options',
         'settings' => array(),
         'type' => 'options_buttons',
-        'weight' => '10',
+        'weight' => 10,
       ),
     ),
   );
@@ -476,9 +476,9 @@ function ik_slides_field_default_fields() {
   // Exported field: 'node-slide-field_ik_slide_logo'.
   $fields['node-slide-field_ik_slide_logo'] = array(
     'field_config' => array(
-      'active' => '1',
-      'cardinality' => '1',
-      'deleted' => '0',
+      'active' => 1,
+      'cardinality' => 1,
+      'deleted' => 0,
       'entity_types' => array(),
       'field_name' => 'field_ik_slide_logo',
       'foreign keys' => array(
@@ -494,25 +494,25 @@ function ik_slides_field_default_fields() {
           0 => 'fid',
         ),
       ),
-      'locked' => '0',
+      'locked' => 0,
       'module' => 'image',
       'settings' => array(
         'default_image' => 0,
         'uri_scheme' => 'public',
       ),
-      'translatable' => '0',
+      'translatable' => 0,
       'type' => 'image',
     ),
     'field_instance' => array(
       'bundle' => 'slide',
-      'deleted' => '0',
+      'deleted' => 0,
       'description' => 'Tilføj et logo som indsættes på sliden. Logoet skaleres automatisk til 350 pixel i bredden, hvis det er større. Det anbefales at uploade et logo med transparent baggrund.',
       'display' => array(
         'default' => array(
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '5',
+          'weight' => 5,
         ),
         'teaser' => array(
           'label' => 'above',
@@ -545,8 +545,8 @@ function ik_slides_field_default_fields() {
             'public' => 'public',
           ),
           'allowed_types' => array(
-            0 => 0,
             'audio' => 0,
+            0 => 0,
             'document' => 0,
             'image' => 'image',
             'video' => 0,
@@ -560,7 +560,7 @@ function ik_slides_field_default_fields() {
           'progress_indicator' => 'throbber',
         ),
         'type' => 'media_generic',
-        'weight' => '18',
+        'weight' => 18,
       ),
     ),
   );
@@ -568,9 +568,9 @@ function ik_slides_field_default_fields() {
   // Exported field: 'node-slide-field_ik_slide_media'.
   $fields['node-slide-field_ik_slide_media'] = array(
     'field_config' => array(
-      'active' => '1',
-      'cardinality' => '-1',
-      'deleted' => '0',
+      'active' => 1,
+      'cardinality' => -1,
+      'deleted' => 0,
       'entity_types' => array(),
       'field_name' => 'field_ik_slide_media',
       'foreign keys' => array(
@@ -586,22 +586,22 @@ function ik_slides_field_default_fields() {
           0 => 'fid',
         ),
       ),
-      'locked' => '0',
+      'locked' => 0,
       'module' => 'mediafield',
       'settings' => array(),
-      'translatable' => '0',
+      'translatable' => 0,
       'type' => 'media',
     ),
     'field_instance' => array(
       'bundle' => 'slide',
-      'deleted' => '0',
+      'deleted' => 0,
       'description' => 'Tilføj billeder til slide. Billeder skaleres og beskæres automatisk til 1920x1080 pixel (Full HD, 16:9 format). Ønsker du fuld kontrol over hvordan dit billede ser ud anbefales det at uploade billedet i størrelsen 1920x1080 på forhånd.',
       'display' => array(
         'default' => array(
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '6',
+          'weight' => 6,
         ),
         'teaser' => array(
           'label' => 'above',
@@ -645,7 +645,7 @@ function ik_slides_field_default_fields() {
           'progress_indicator' => 'throbber',
         ),
         'type' => 'media_generic',
-        'weight' => '4',
+        'weight' => 4,
       ),
     ),
   );
@@ -653,26 +653,26 @@ function ik_slides_field_default_fields() {
   // Exported field: 'node-slide-field_ik_slide_preview'.
   $fields['node-slide-field_ik_slide_preview'] = array(
     'field_config' => array(
-      'active' => '1',
-      'cardinality' => '1',
-      'deleted' => '0',
+      'active' => 1,
+      'cardinality' => 1,
+      'deleted' => 0,
       'entity_types' => array(),
       'field_name' => 'field_ik_slide_preview',
       'foreign keys' => array(),
       'indexes' => array(),
-      'locked' => '0',
+      'locked' => 0,
       'module' => 'ik_slide_preview',
       'settings' => array(
         'default_image' => 0,
         'uri_scheme' => 'public',
       ),
-      'translatable' => '0',
+      'translatable' => 0,
       'type' => 'ik_slide_preview',
     ),
     'field_instance' => array(
       'bundle' => 'slide',
       'default_value' => NULL,
-      'deleted' => '0',
+      'deleted' => 0,
       'description' => '',
       'display' => array(
         'default' => array(
@@ -682,7 +682,7 @@ function ik_slides_field_default_fields() {
             'image_style' => 'slide_preview_medium',
           ),
           'type' => 'ik_slide_preview_formatter',
-          'weight' => '17',
+          'weight' => 17,
         ),
         'teaser' => array(
           'label' => 'above',
@@ -706,7 +706,7 @@ function ik_slides_field_default_fields() {
           'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
         ),
         'type' => 'ik_slide_preview_image',
-        'weight' => '11',
+        'weight' => 11,
       ),
     ),
   );
@@ -714,9 +714,9 @@ function ik_slides_field_default_fields() {
   // Exported field: 'node-slide-field_ik_slide_relevance'.
   $fields['node-slide-field_ik_slide_relevance'] = array(
     'field_config' => array(
-      'active' => '1',
-      'cardinality' => '1',
-      'deleted' => '0',
+      'active' => 1,
+      'cardinality' => 1,
+      'deleted' => 0,
       'entity_types' => array(),
       'field_name' => 'field_ik_slide_relevance',
       'foreign keys' => array(),
@@ -725,7 +725,7 @@ function ik_slides_field_default_fields() {
           0 => 'value',
         ),
       ),
-      'locked' => '0',
+      'locked' => 0,
       'module' => 'list',
       'settings' => array(
         'allowed_values' => array(
@@ -734,7 +734,7 @@ function ik_slides_field_default_fields() {
         ),
         'allowed_values_function' => '',
       ),
-      'translatable' => '0',
+      'translatable' => 0,
       'type' => 'list_boolean',
     ),
     'field_instance' => array(
@@ -744,7 +744,7 @@ function ik_slides_field_default_fields() {
           'value' => 0,
         ),
       ),
-      'deleted' => '0',
+      'deleted' => 0,
       'description' => '',
       'display' => array(
         'default' => array(
@@ -776,7 +776,7 @@ function ik_slides_field_default_fields() {
           'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
         ),
         'type' => 'options_onoff',
-        'weight' => '2',
+        'weight' => 2,
       ),
     ),
   );
@@ -784,9 +784,9 @@ function ik_slides_field_default_fields() {
   // Exported field: 'node-slide-field_ik_slide_subheading'.
   $fields['node-slide-field_ik_slide_subheading'] = array(
     'field_config' => array(
-      'active' => '1',
-      'cardinality' => '1',
-      'deleted' => '0',
+      'active' => 1,
+      'cardinality' => 1,
+      'deleted' => 0,
       'entity_types' => array(),
       'field_name' => 'field_ik_slide_subheading',
       'foreign keys' => array(
@@ -802,25 +802,25 @@ function ik_slides_field_default_fields() {
           0 => 'format',
         ),
       ),
-      'locked' => '0',
+      'locked' => 0,
       'module' => 'text',
       'settings' => array(
-        'max_length' => '255',
+        'max_length' => 255,
       ),
-      'translatable' => '0',
+      'translatable' => 0,
       'type' => 'text',
     ),
     'field_instance' => array(
       'bundle' => 'slide',
       'default_value' => NULL,
-      'deleted' => '0',
+      'deleted' => 0,
       'description' => '',
       'display' => array(
         'default' => array(
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '2',
+          'weight' => 2,
         ),
         'teaser' => array(
           'label' => 'above',
@@ -838,7 +838,7 @@ function ik_slides_field_default_fields() {
           'enable' => 0,
           'insert_plugin' => '',
         ),
-        'text_processing' => '0',
+        'text_processing' => 0,
         'user_register_form' => FALSE,
       ),
       'widget' => array(
@@ -847,10 +847,10 @@ function ik_slides_field_default_fields() {
         'settings' => array(
           'maxlength_js' => 0,
           'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
-          'size' => '60',
+          'size' => 60,
         ),
         'type' => 'text_textfield',
-        'weight' => '4',
+        'weight' => 4,
       ),
     ),
   );
@@ -858,9 +858,9 @@ function ik_slides_field_default_fields() {
   // Exported field: 'node-slide-field_ik_slide_tags'.
   $fields['node-slide-field_ik_slide_tags'] = array(
     'field_config' => array(
-      'active' => '1',
-      'cardinality' => '-1',
-      'deleted' => '0',
+      'active' => 1,
+      'cardinality' => -1,
+      'deleted' => 0,
       'entity_types' => array(),
       'field_name' => 'field_ik_slide_tags',
       'foreign keys' => array(
@@ -876,30 +876,30 @@ function ik_slides_field_default_fields() {
           0 => 'tid',
         ),
       ),
-      'locked' => '0',
+      'locked' => 0,
       'module' => 'taxonomy',
       'settings' => array(
         'allowed_values' => array(
           0 => array(
             'vocabulary' => 'tags',
-            'parent' => '0',
+            'parent' => 0,
           ),
         ),
       ),
-      'translatable' => '0',
+      'translatable' => 0,
       'type' => 'taxonomy_term_reference',
     ),
     'field_instance' => array(
       'bundle' => 'slide',
       'default_value' => NULL,
-      'deleted' => '0',
+      'deleted' => 0,
       'description' => 'Tilføj et eller flere tags som beskriver denne slide.',
       'display' => array(
         'default' => array(
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '9',
+          'weight' => 9,
         ),
         'teaser' => array(
           'label' => 'above',
@@ -921,10 +921,10 @@ function ik_slides_field_default_fields() {
         'settings' => array(
           'autocomplete_deluxe_path' => 'autocomplete_deluxe/taxonomy',
           'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
-          'size' => '60',
+          'size' => 60,
         ),
         'type' => 'autocomplete_deluxe_taxonomy',
-        'weight' => '8',
+        'weight' => 8,
       ),
     ),
   );
@@ -932,9 +932,9 @@ function ik_slides_field_default_fields() {
   // Exported field: 'node-slide-field_ik_slide_text'.
   $fields['node-slide-field_ik_slide_text'] = array(
     'field_config' => array(
-      'active' => '1',
-      'cardinality' => '1',
-      'deleted' => '0',
+      'active' => 1,
+      'cardinality' => 1,
+      'deleted' => 0,
       'entity_types' => array(),
       'field_name' => 'field_ik_slide_text',
       'foreign keys' => array(
@@ -950,23 +950,23 @@ function ik_slides_field_default_fields() {
           0 => 'format',
         ),
       ),
-      'locked' => '0',
+      'locked' => 0,
       'module' => 'text',
       'settings' => array(),
-      'translatable' => '0',
+      'translatable' => 0,
       'type' => 'text_long',
     ),
     'field_instance' => array(
       'bundle' => 'slide',
       'default_value' => NULL,
-      'deleted' => '0',
+      'deleted' => 0,
       'description' => '',
       'display' => array(
         'default' => array(
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '7',
+          'weight' => 7,
         ),
         'teaser' => array(
           'label' => 'above',
@@ -984,21 +984,21 @@ function ik_slides_field_default_fields() {
           'enable' => 0,
           'insert_plugin' => '',
         ),
-        'text_processing' => '1',
+        'text_processing' => 1,
         'user_register_form' => FALSE,
       ),
       'widget' => array(
         'active' => 1,
         'module' => 'text',
         'settings' => array(
-          'maxlength_js' => '500',
+          'maxlength_js' => 500,
           'maxlength_js_enforce' => 0,
           'maxlength_js_label' => 'Indhold begrænses til @limit karaktere, antal tegn tilbage: <strong>@remaining</strong>',
           'maxlength_js_truncate_html' => 1,
-          'rows' => '8',
+          'rows' => 8,
         ),
         'type' => 'text_textarea',
-        'weight' => '5',
+        'weight' => 5,
       ),
     ),
   );
@@ -1006,9 +1006,9 @@ function ik_slides_field_default_fields() {
   // Exported field: 'node-slide-field_ik_slide_transition_effect'.
   $fields['node-slide-field_ik_slide_transition_effect'] = array(
     'field_config' => array(
-      'active' => '1',
-      'cardinality' => '1',
-      'deleted' => '0',
+      'active' => 1,
+      'cardinality' => 1,
+      'deleted' => 0,
       'entity_types' => array(),
       'field_name' => 'field_ik_slide_transition_effect',
       'foreign keys' => array(),
@@ -1017,7 +1017,7 @@ function ik_slides_field_default_fields() {
           0 => 'value',
         ),
       ),
-      'locked' => '0',
+      'locked' => 0,
       'module' => 'list',
       'settings' => array(
         'allowed_values' => array(
@@ -1032,7 +1032,7 @@ function ik_slides_field_default_fields() {
         ),
         'allowed_values_function' => '',
       ),
-      'translatable' => '0',
+      'translatable' => 0,
       'type' => 'list_text',
     ),
     'field_instance' => array(
@@ -1042,14 +1042,14 @@ function ik_slides_field_default_fields() {
           'value' => 'fade',
         ),
       ),
-      'deleted' => '0',
+      'deleted' => 0,
       'description' => 'Vælg hvilken effekt som skal benyttes i overgang imellem billeder.',
       'display' => array(
         'default' => array(
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '13',
+          'weight' => 13,
         ),
         'teaser' => array(
           'label' => 'above',
@@ -1072,7 +1072,7 @@ function ik_slides_field_default_fields() {
           'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
         ),
         'type' => 'options_select',
-        'weight' => '3',
+        'weight' => 3,
       ),
     ),
   );
@@ -1080,9 +1080,9 @@ function ik_slides_field_default_fields() {
   // Exported field: 'node-slide-field_layout'.
   $fields['node-slide-field_layout'] = array(
     'field_config' => array(
-      'active' => '1',
-      'cardinality' => '1',
-      'deleted' => '0',
+      'active' => 1,
+      'cardinality' => 1,
+      'deleted' => 0,
       'entity_types' => array(),
       'field_name' => 'field_layout',
       'foreign keys' => array(),
@@ -1091,7 +1091,7 @@ function ik_slides_field_default_fields() {
           0 => 'value',
         ),
       ),
-      'locked' => '0',
+      'locked' => 0,
       'module' => 'list',
       'settings' => array(
         'allowed_values' => array(
@@ -1105,7 +1105,7 @@ function ik_slides_field_default_fields() {
         ),
         'allowed_values_function' => '',
       ),
-      'translatable' => '0',
+      'translatable' => 0,
       'type' => 'list_text',
     ),
     'field_instance' => array(
@@ -1115,14 +1115,14 @@ function ik_slides_field_default_fields() {
           'value' => 'layout_1',
         ),
       ),
-      'deleted' => '0',
+      'deleted' => 0,
       'description' => 'Vælg et layout som denne slide skal benytte.',
       'display' => array(
         'default' => array(
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '11',
+          'weight' => 11,
         ),
         'teaser' => array(
           'label' => 'above',
@@ -1145,7 +1145,7 @@ function ik_slides_field_default_fields() {
           'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
         ),
         'type' => 'options_buttons',
-        'weight' => '12',
+        'weight' => 12,
       ),
     ),
   );
