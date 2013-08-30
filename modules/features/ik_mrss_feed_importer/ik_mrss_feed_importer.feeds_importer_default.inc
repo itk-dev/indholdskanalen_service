@@ -120,6 +120,7 @@ function ik_mrss_feed_importer_feeds_importer_default() {
         ),
         'update_existing' => '1',
         'input_format' => 'editor_html',
+        'bundle' => 'slide',
         'skip_hash_check' => 0,
       ),
     ),
