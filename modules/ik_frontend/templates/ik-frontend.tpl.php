@@ -36,6 +36,7 @@
   </div>
   <!-- end template -->
   <figure id="progress"></figure>
+  <figure id="slide-count"></figure>
   <div id="slide-container">
   </div>
   <script type="text/javascript">

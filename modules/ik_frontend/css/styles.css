@@ -124,69 +124,80 @@ body {
   opacity: 0.6;
   z-index: 50000; }
 
+/* line 51, ../sass/_base.scss */
+#slide-count {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  z-index: 49999;
+  background-color: #8c8c8c;
+  color: #fff;
+  opacity: 0.6;
+  padding: 4px; }
+
 /*
 * Default typography
 */
-/* line 55, ../sass/_base.scss */
+/* line 66, ../sass/_base.scss */
 p {
   margin-bottom: 10px;
   margin-bottom: 0.625rem; }
 
-/* line 60, ../sass/_base.scss */
+/* line 71, ../sass/_base.scss */
 strong,
 b {
   font-family: "AllerBold", "Aller", "Helvetica Neue", Helvetica, Arial, sans-serif; }
-  /* line 64, ../sass/_base.scss */
+  /* line 75, ../sass/_base.scss */
   strong em,
   strong i,
   b em,
   b i {
     font-family: "AllerBoldItalic", "Aller", "Helvetica Neue", Helvetica, Arial, sans-serif; }
 
-/* line 70, ../sass/_base.scss */
+/* line 81, ../sass/_base.scss */
 em,
 i {
   font-family: "AllerItalic", "Aller", "Helvetica Neue", Helvetica, Arial, sans-serif; }
-  /* line 74, ../sass/_base.scss */
+  /* line 85, ../sass/_base.scss */
   em strong,
   em b,
   i strong,
   i b {
     font-family: "AllerBoldItalic", "Aller", "Helvetica Neue", Helvetica, Arial, sans-serif; }
 
-/* line 79, ../sass/_base.scss */
+/* line 90, ../sass/_base.scss */
 h1 {
   font-size: 4.5em; }
 
-/* line 83, ../sass/_base.scss */
+/* line 94, ../sass/_base.scss */
 h2 {
   font-size: 1.625em; }
 
-/* line 87, ../sass/_base.scss */
+/* line 98, ../sass/_base.scss */
 h3 {
   font-size: 1.65em; }
 
-/* line 91, ../sass/_base.scss */
+/* line 102, ../sass/_base.scss */
 h4 {
   font-size: 1.8em; }
 
-/* line 95, ../sass/_base.scss */
+/* line 106, ../sass/_base.scss */
 h5 {
   font-size: 1.95em; }
 
-/* line 99, ../sass/_base.scss */
+/* line 110, ../sass/_base.scss */
 h6 {
   font-size: 2.1em; }
 
-/* line 104, ../sass/_base.scss */
+/* line 115, ../sass/_base.scss */
 .slide-text ul, .slide-text ol {
   margin-left: 40px;
   padding-top: 20px;
   padding-bottom: 20px; }
-/* line 110, ../sass/_base.scss */
+/* line 121, ../sass/_base.scss */
 .slide-text ul li {
   list-style: disc outside none; }
-/* line 114, ../sass/_base.scss */
+/* line 125, ../sass/_base.scss */
 .slide-text ol li {
   list-style: decimal outside none; }
 
@@ -196,7 +207,7 @@ h6 {
 */
 /* line 7, ../sass/_layouts.scss */
 .box_skitter {
-  background-color: transparent!important; }
+  background-color: transparent !important; }
 
 /* line 11, ../sass/_layouts.scss */
 .white-green {
@@ -345,7 +356,7 @@ h6 {
   /* line 163, ../sass/_layouts.scss */
   body {
     font-size: 0.66667em;
-    color: #f517d5!important; }
+    color: #f517d5 !important; }
     /* line 167, ../sass/_layouts.scss */
     body.slide-preview {
       font-size: 0.5em; }
@@ -354,7 +365,7 @@ h6 {
         font-size: 2.25em !important; }
       /* line 174, ../sass/_layouts.scss */
       body.slide-preview .logo-container img {
-        max-width: 250px!important; }
+        max-width: 250px !important; }
     /* line 180, ../sass/_layouts.scss */
     body .slide-heading {
       font-size: 3em !important; }
@@ -370,7 +381,7 @@ h6 {
   /* line 197, ../sass/_layouts.scss */
   body {
     font-size: 0.5em;
-    color: #ff6600!important; }
+    color: #ff6600 !important; }
     /* line 201, ../sass/_layouts.scss */
     body.slide-preview {
       font-size: 0.4em; }
@@ -379,7 +390,7 @@ h6 {
         font-size: 1.8em !important; }
       /* line 208, ../sass/_layouts.scss */
       body.slide-preview .logo-container img {
-        max-width: 150px!important; }
+        max-width: 150px !important; }
     /* line 214, ../sass/_layouts.scss */
     body .slide-heading {
       font-size: 2.25em !important; }
@@ -395,7 +406,7 @@ h6 {
   /* line 231, ../sass/_layouts.scss */
   body {
     font-size: 0.4em;
-    color: #5df51b!important; }
+    color: #5df51b !important; }
     /* line 235, ../sass/_layouts.scss */
     body.slide-preview {
       font-size: 0.33333em; }
@@ -404,7 +415,7 @@ h6 {
         font-size: 1.5em !important; }
       /* line 242, ../sass/_layouts.scss */
       body.slide-preview .logo-container img {
-        max-width: 100px!important; }
+        max-width: 100px !important; }
     /* line 248, ../sass/_layouts.scss */
     body .slide-heading {
       font-size: 1.8em !important; }
@@ -514,7 +525,7 @@ h6 {
 /* line 378, ../sass/_layouts.scss */
 .layout-3 .logo-container {
   bottom: auto;
-  top: 20px; }
+  top: 35px; }
 
 /*
 * Layout 4
