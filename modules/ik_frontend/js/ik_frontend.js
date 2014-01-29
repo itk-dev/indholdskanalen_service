@@ -188,6 +188,11 @@ var IK = (function() {
     // Apply the template to the current slide data.
     var slide = $(this.template(this.propreties));
 
+    if (channel) {
+      var currentSlideCount = channel.currentSlide+1;
+      var channelSlideAmount = channel.slides.length;  
+    }
+
     // Apply layout class and set id. It is not done in pure as this is on the
     // outer element, which can't be accessed in pure.
     slide.attr('id', 'slide-' + this.get('sid'));
@@ -213,8 +218,14 @@ var IK = (function() {
     $('#progress').css('width','0px');
     $('#progress').animate({width: '100%'}, this.get('exposure'), 'easeInSine');
 
+    // Update slide count
+    if (channel) {
+      $('#slide-count').text( currentSlideCount + ' af ' + channelSlideAmount);
+    }
+
     // Send log message.
     log('Slide render: ' + this.get('title') + ' (exposure: ' + this.get('exposure') + ')');
+    log('Slide amount: ' + channelSlideAmount + ' Current slide: ' + currentSlideCount);
   };
 
   /****************
