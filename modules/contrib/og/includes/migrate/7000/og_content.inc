@@ -6,8 +6,6 @@
  * value.
  */
 
-if (db_table_exists('d6_og')) {
-
 class OgMigrateContent extends Migration {
 
   public function __construct() {
@@ -26,7 +24,6 @@ class OgMigrateContent extends Migration {
 
     $query
       ->fields('oga')
-      ->condition('n.type', $bundle)
       ->orderBy('n.nid');
 
     $this->query = $query;
@@ -58,6 +55,4 @@ class OgMigrateContent extends Migration {
     $this->addFieldMapping('entity_type', NULL)->defaultValue('node');
     $this->addFieldMapping('etid', 'nid');
   }
-}
-
 }

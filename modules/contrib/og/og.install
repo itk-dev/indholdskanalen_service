@@ -45,6 +45,10 @@ function og_uninstall() {
     ->condition('name', 'og_group_manager_default_rids_%', 'LIKE')
     ->execute();
 
+  db_delete('variable')
+    ->condition('name', 'og_is_group_default_access__%__%', 'LIKE')
+    ->execute();
+
   $vars = array(
     'og_context',
     'og_group_manager_full_access',
@@ -52,6 +56,7 @@ function og_uninstall() {
     'og_update_batch_size',
     'og_upgrade_7001',
     'og_node_access_strict',
+    'og_features_ignore_og_fields',
   );
   foreach ($vars as $var) {
     variable_del($var);
@@ -63,15 +68,20 @@ function og_uninstall() {
     'og_description',
     'og_membership_request',
   );
-  foreach (field_info_instances() as $instance) {
-    if (in_array($instance['field_name'], $og_fields)) {
-      field_delete_instance($instance);
-    }
-    else {
-      $field = field_info_field($instance['field_name']);
-      if ($field['type'] == 'entityreference' && $field['settings']['handler'] == 'og') {
-        // Last instance will take care also of deleting the field itself.
-        field_delete_instance($instance);
+
+  foreach (field_info_instances() as $bundles) {
+    foreach ($bundles as $instances) {
+      foreach ($instances as $instance) {
+        if (in_array($instance['field_name'], $og_fields)) {
+          field_delete_instance($instance);
+        }
+        else {
+          $field = field_info_field($instance['field_name']);
+          if ($field['type'] == 'entityreference' && ($field['settings']['handler'] == 'og' || strpos($field['settings']['handler'], 'og_') === 0)) {
+            // Last instance will take care also of deleting the field itself.
+            field_delete_instance($instance);
+          }
+        }
       }
     }
   }
@@ -348,6 +358,18 @@ function og_schema() {
       ),
     ),
   );
+
+  // Cache bins for Entity-cache module.
+  $cache_schema = drupal_get_schema_unprocessed('system', 'cache');
+  $types = array(
+    'og_membership_type',
+    'og_membership',
+  );
+
+  foreach ($types as $type) {
+    $schema["cache_entity_$type"] = $cache_schema;
+    $schema["cache_entity_$type"]['description'] = "Cache table used to store $type entity records.";
+  }
 
   return $schema;
 }
@@ -739,6 +761,61 @@ function og_schema_7001_info() {
 }
 
 /**
+ * Return the schema for upgrade 7200.
+ *
+ * Currently we hold only the {og_users_role} table.
+ */
+function og_schema_7200_info() {
+  $schema['og_users_roles'] = array(
+    'description' => 'Maps users to roles.',
+    'fields' => array(
+      'uid' => array(
+        'type' => 'int',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+        'default' => 0,
+        'description' => 'Primary Key: {users}.uid for user.',
+      ),
+      'rid' => array(
+        'type' => 'int',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+        'default' => 0,
+        'description' => 'Primary Key: {og_role}.rid for role.',
+      ),
+      'gid'               => array(
+        'description'     => "The group's unique ID.",
+        'type'            => 'int',
+        'size'            => 'normal',
+        'not null'        => TRUE,
+      ),
+      'group_type' => array(
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => TRUE,
+        'default' => '',
+        'description' => "The group's entity type.",
+      ),
+    ),
+    'primary key' => array('uid', 'rid', 'gid'),
+    'indexes' => array(
+      'rid' => array('rid'),
+    ),
+    'foreign keys' => array(
+      'user' => array(
+        'table' => 'users',
+        'columns' => array('uid' => 'uid'),
+      ),
+      'og_role' => array(
+        'table' => 'og_role',
+        'columns' => array('rid' => 'rid'),
+      ),
+    ),
+  );
+  return $schema;
+}
+
+/**
  * Implements hook_field_schema().
  */
 function og_field_schema($field) {
@@ -806,13 +883,10 @@ function og_update_7000(&$sandbox) {
       db_create_table($table, $schema[$table]);
     }
 
-    // We can't call og_needs_migrate() directly, so just set the variable.
-    variable_set('og_needs_migrate', TRUE);
-
     // Temporary variable to indicate we need to add OG related fields.
     variable_set('og_7000_add_field', TRUE);
     variable_set('og_ui_7000_add_field', TRUE);
-    return t('Renamed Organic groups 6 tables. Enable "Migrate-UI" module to continue the migration of data.');
+    return t('Renamed Organic groups 6 tables. Enable "Migrate-UI" module to continue the migration of data. Once migration is done you may disable "Migrate" module');
   }
   return t('No change needed in Organic groups schema.');
 }
@@ -832,8 +906,6 @@ function og_update_7001(&$sandbox) {
   if (!db_table_exists('og_membership_type')) {
     db_create_table('og_membership_type', $schema['og_membership_type']);
   }
-  // We can't call og_needs_migrate() directly, so just set the variable.
-  variable_set('og_needs_migrate', TRUE);
 }
 
 /**
@@ -875,19 +947,13 @@ function og_update_7101() {
 function og_update_7200() {
   // Delete the old group-audience field. The OG membership is not
   // affected by this.
-  $instances = array();
   foreach (field_info_instances() as $entity_type => $bundles) {
     foreach ($bundles as $bundle => $field_names) {
       if (!empty($field_names['group_audience'])) {
-        $instances[$entity_type][$bundle] = $bundle;
         field_delete_instance($field_names['group_audience']);
       }
     }
   }
-
-  // Create a temporary variable that will be used to later re-add the new
-  // group-audience field.
-  variable_set('og_migrate_7200_field_instances', $instances);
 
   if (!module_enable(array('entityreference'))) {
     throw new DrupalUpdateException('This version of OG requires Entity reference, but it could not be enabled.');
@@ -916,7 +982,15 @@ function og_update_7200() {
   );
 
   db_add_field('og_role', 'group_type', $column);
-  db_add_field('og_users_roles', 'group_type', $column);
+
+
+  // Rename {og_users_roles} to allow easier migration.
+  // Re-create a clean {og_users_roles}.
+  db_rename_table('og_users_roles', 'temp_og_users_roles');
+
+  $schema = og_schema_7200_info();
+  db_create_table('og_users_roles', $schema['og_users_roles']);
+
 
   $column = array(
     'type' => 'varchar',
@@ -936,15 +1010,20 @@ function og_update_7200() {
   );
   db_add_field('og_membership', 'field_name', $column);
 
+  // Delete OG-migrate's table.
+  db_drop_table('og_migrate');
+
   // Variable cleanup.
   variable_del('og_skip_access');
-
-  // We can't call og_needs_migrate() directly, so just set the variable.
-  variable_set('og_needs_migrate', TRUE);
 
   // Clear entity cache.
   // See http://drupal.org/node/996236
   entity_info_cache_clear();
+
+  // Temporary variable to indicate we need to migrate OGUR data.
+  variable_set('og_7200_ogur_roles', TRUE);
+
+  return t('Enable "Migrate-UI" module to continue the migration of data. Once migration is done you may disable "Migrate" module');
 }
 
 /**
@@ -1079,4 +1158,24 @@ function og_update_7203() {
   }
 
   return $output;
+}
+
+/**
+ * Create cache bins for Entity-cache module.
+ */
+function og_update_7204() {
+  $cache_schema = drupal_get_schema_unprocessed('system', 'cache');
+  $types = array(
+    'og_membership_type',
+    'og_membership',
+  );
+
+  foreach ($types as $type) {
+    $schema["cache_entity_$type"] = $cache_schema;
+    $schema["cache_entity_$type"]['description'] = "Cache table used to store $type entity records.";
+  }
+
+  foreach ($schema as $name => $table) {
+    db_create_table($name, $table);
+  }
 }

@@ -29,9 +29,11 @@ files[] = includes/views/handlers/og_handler_field_group_audience_state.inc
 files[] = includes/views/handlers/og_handler_field_prerender_list.inc
 files[] = includes/views/handlers/og_handler_field_user_roles.inc
 files[] = includes/views/handlers/og_handler_field_group_permissions.inc
+files[] = includes/views/handlers/og_handler_field_og_membership_link_edit.inc
 
 ; Views filters
 files[] = includes/views/handlers/og_handler_filter_group_audience_state.inc
+files[] = includes/views/handlers/og_handler_filter_user_roles.inc
 
 ; Views relationships
 files[] = includes/views/handlers/og_handler_relationship.inc
@@ -45,20 +47,21 @@ files[] = includes/migrate/7000/og_content.inc
 files[] = includes/migrate/7000/og_group.inc
 files[] = includes/migrate/7000/og_user.inc
 
+; Migrate OGUR data from 6.x to 7.x-2.x
+files[] = includes/migrate/7000/og_ogur_roles.migrate.inc
+files[] = includes/migrate/7000/og_ogur.migrate.inc
+
 ; Migrate from 7.x-1.x to 7.x-2.x
 files[] = includes/migrate/og.migrate.inc
-files[] = includes/migrate/7200/og_group_audience.migrate.inc
 files[] = includes/migrate/7200/og_og_membership.migrate.inc
-files[] = includes/migrate/7200/og_ogur_permissions.migrate.inc
-files[] = includes/migrate/7200/og_ogur.migrate.inc
 files[] = includes/migrate/7200/og_roles.migrate.inc
 files[] = includes/migrate/7200/og_user_roles.migrate.inc
 
 
 
-; Information added by drupal.org packaging script on 2012-09-18
-version = "7.x-2.0-beta2"
+; Information added by  packaging script on 2013-11-20
+version = "7.x-2.4"
 core = "7.x"
 project = "og"
-datestamp = "1347987374"
+datestamp = "1384971519"
 

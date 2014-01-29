@@ -31,7 +31,7 @@ function og_field_widget_form(&$form, &$form_state, $field, $instance, $langcode
     return;
   }
 
-  if ($field['settings']['handler'] != 'og') {
+  if ($field['settings']['handler'] != 'og' && strpos($field['settings']['handler'], 'og_') !== 0) {
     $params = array('%label' => $instance['label']);
     form_error($form, t('Field %label is a group-audience but its Entity selection mode is not defined as "Organic groups" in the field settings page.', $params));
     return;
@@ -42,9 +42,9 @@ function og_field_widget_form(&$form, &$form_state, $field, $instance, $langcode
   list($id,, $bundle) = entity_extract_ids($entity_type, $entity);
   $field_name = $field['field_name'];
 
-  $identifier = $field_name . ':' . $entity_type . ':' . $id;
+  $identifier = $field_name . ':' . $entity_type . ':' . $bundle . ':' . $id;
   if (isset($cache[$identifier])) {
-    return;
+    return array();
   }
   $cache[$identifier] = TRUE;
 
@@ -63,17 +63,19 @@ function og_field_widget_form(&$form, &$form_state, $field, $instance, $langcode
     $field_modes[] = 'admin';
   }
 
-  // Get the "Other group" group IDs.
-  $target_type = $field['settings']['target_type'];
-  $entity_gids = og_get_entity_groups($entity_type, $entity);
-  $entity_gids = !empty($entity_gids[$target_type]) ? $entity_gids[$target_type] : array();
+  // Build an array of entity IDs. Field's $items are loaded
+  // in OgBehaviorHandler::load().
+  $entity_gids = array();
+  foreach ($items as $item) {
+    $entity_gids[] = $item['target_id'];
+  }
 
+  $target_type = $field['settings']['target_type'];
   $user_gids = og_get_entity_groups();
   $user_gids = !empty($user_gids[$target_type]) ? $user_gids[$target_type] : array();
 
-  $other_groups_ids = array();
-  $full_diff = array_diff(array_merge($entity_gids, $user_gids), array_intersect($entity_gids, $user_gids));
-  $other_groups_ids = array_values($full_diff);
+  // Get the "Other group" group IDs.
+  $other_groups_ids = array_diff($entity_gids, $user_gids);
 
   foreach ($field_modes as $field_mode) {
     $mocked_instance = og_get_mocked_instance($instance, $field_mode);
@@ -81,7 +83,24 @@ function og_field_widget_form(&$form, &$form_state, $field, $instance, $langcode
 
     if ($has_admin) {
       $mocked_instance['required'] = FALSE;
-      $mocked_instance['label'] = $field_mode == 'default' ? t('Default') : t('Administrator');
+      if ($field_mode == 'default') {
+        $mocked_instance['label'] = t('Your groups');
+        if ($entity_type == 'user') {
+          $mocked_instance['description'] = t('Associate this user with groups you belong to.');
+        }
+        else {
+          $mocked_instance['description'] = t('Associate this content with groups you belong to.');
+        }
+      }
+      else {
+        $mocked_instance['label'] = t('Other groups');
+        if ($entity_type == 'user') {
+          $mocked_instance['description'] = t('As groups administrator, associate this user with groups you do <em>not</em> belong to.');
+        }
+        else {
+          $mocked_instance['description'] = t('As groups administrator, associate this content with groups you do <em>not</em> belong to.');
+        }
+      }
 
       if ($id) {
         // The field might be required, and it will throw an exception
@@ -106,13 +125,28 @@ function og_field_widget_form(&$form, &$form_state, $field, $instance, $langcode
         }
       }
     }
-    else {
-      // Non-admin user.
-      $mocked_instance_other_groups = $mocked_instance;
-      $mocked_instance_other_groups['field_mode'] = 'admin';
-      if ($other_groups_ids && $valid_ids = entityreference_get_selection_handler($field, $mocked_instance_other_groups, $entity_type, $dummy_entity)->validateReferencableEntities($other_groups_ids)) {
-        foreach ($valid_ids as $id) {
-          $element['#other_groups_ids'][] = array('target_id' => $id);
+    elseif ($other_groups_ids) {
+      foreach ($other_groups_ids as $id) {
+        $element['#other_groups_ids'][] = array(
+          'target_id' => $id,
+          'field_mode' => 'admin',
+        );
+      }
+
+      if (!empty($dummy_entity->{$field_name}[$langcode])) {
+        // Non-admin user.
+        $ids = array();
+        foreach ($dummy_entity->{$field_name}[$langcode] as $delta => $value) {
+          $id = $value['target_id'];
+          if (!in_array($id, $other_groups_ids)) {
+            $ids[] = $id;
+          }
+        }
+
+        // Rekey the field items.
+        $dummy_entity->{$field_name}[$langcode] = array();
+        foreach ($ids as $id) {
+          $dummy_entity->{$field_name}[$langcode][] = array('target_id' => $id);
         }
       }
     }
@@ -122,12 +156,11 @@ function og_field_widget_form(&$form, &$form_state, $field, $instance, $langcode
       // Form is "fresh" (i.e. not call from field_add_more_submit()), so
       // re-set the items-count, to show the correct amount for the mocked
       // instance.
-      $dummy_form_state['field'][$field_name][LANGUAGE_NONE]['items_count'] = !empty($dummy_entity->{$field_name}[LANGUAGE_NONE]) ? count($dummy_entity->{$field_name}[LANGUAGE_NONE]) : 0;
+      $dummy_form_state['field'][$field_name][$langcode]['items_count'] = !empty($dummy_entity->{$field_name}[$langcode]) ? count($dummy_entity->{$field_name}[$langcode]) : 0;
     }
 
     $new_element = ctools_field_invoke_field($mocked_instance, 'form', $entity_type, $dummy_entity, $form, $dummy_form_state, array('default' => TRUE));
     $element[$field_mode] = $new_element[$field_name][LANGUAGE_NONE];
-
     if (in_array($mocked_instance['widget']['type'], array('entityreference_autocomplete', 'entityreference_autocomplete_tags'))) {
       // Change the "Add more" button name so it adds only the needed
       // element.
@@ -135,36 +168,81 @@ function og_field_widget_form(&$form, &$form_state, $field, $instance, $langcode
         $element[$field_mode]['add_more']['#name'] .= '__' . $field_mode;
       }
 
-      foreach (array_keys($element[$field_mode]) as $delta) {
-        if (!is_numeric($delta)) {
-          continue;
+      if ($mocked_instance['widget']['type'] == 'entityreference_autocomplete') {
+        foreach (array_keys($element[$field_mode]) as $delta) {
+          if (!is_numeric($delta)) {
+            continue;
+          }
+
+          $sub_element = &$element[$field_mode][$delta]['target_id'];
+          _og_field_widget_replace_autocomplete_path($sub_element, $field_mode);
+
         }
-
-        $sub_element = &$element[$field_mode][$delta]['target_id'];
-
-        // Rebuild the autocomplete path.
-        $path = explode('/', $sub_element['#autocomplete_path']);
-        $sub_element['#autocomplete_path'] = 'og/autocomplete';
-
-        // Add autocomplete type
-        $sub_element['#autocomplete_path'] .= "/$path[2]/$path[3]/$path[4]/$path[5]";
-
-        // Add field mode.
-        $sub_element['#autocomplete_path'] .= "/$field_mode";
-
-        // Add the entity ID.
-        $sub_element['#autocomplete_path'] .= "/$path[6]";
-        if (!empty($path[7])) {
-          // Add the text.
-          $sub_element['#autocomplete_path'] .= "/$path[7]";
-        }
+      }
+      else {
+        // Tags widget, there's no delta, we can pass the element itself.
+        _og_field_widget_replace_autocomplete_path($element[$field_mode], $field_mode);
       }
     }
   }
 
   $form['#after_build']['og'] = 'og_complex_widget_after_build';
+  $form['#validate'][] = 'og_validate_widgets';
 
   return $element;
+}
+
+/**
+ * Replace Entity-reference's autocomplete path with our own.
+ *
+ * @param $element
+ *   The form element, passed by reference.
+ * @param $field_mode
+ *   The field mode.
+ *
+ */
+function _og_field_widget_replace_autocomplete_path(&$element, $field_mode) {
+  // Rebuild the autocomplete path.
+  $path = explode('/', $element['#autocomplete_path']);
+  $element['#autocomplete_path'] = 'og/autocomplete';
+
+  // Add autocomplete type
+  $element['#autocomplete_path'] .= "/$path[2]/$path[3]/$path[4]/$path[5]";
+
+  // Add field mode.
+  $element['#autocomplete_path'] .= "/$field_mode";
+
+  // Add the entity ID.
+  $element['#autocomplete_path'] .= "/$path[6]";
+  if (!empty($path[7])) {
+    // Add the text.
+    $element['#autocomplete_path'] .= "/$path[7]";
+  }
+}
+
+
+/**
+ * Register group audience field related form errors.
+ *
+ * @param $field_name
+ *   The group audience field
+ * @param $errors
+ *   Array with errors.
+ *
+ * @return
+ *   Return the cached values.
+ *
+ * @see og_validate_widgets()
+ * @see OgBehaviorHandler::validate()
+ */
+function og_field_widget_register_errors($field_name = NULL, $errors = NULL) {
+  $cache = &drupal_static(__FUNCTION__, array());
+
+  if (!empty($field_name)) {
+    $cache[$field_name] = $errors;
+  }
+
+  return $cache;
 }
 
 /**
@@ -200,24 +278,59 @@ function og_get_mocked_instance($instance, $field_mode) {
  */
 function og_complex_widget_element_validate($element, &$form_state, $form) {
   $subform = drupal_array_get_nested_value($form_state['values'], $element['#array_parents']);
-  $ids = $element['#other_groups_ids'];
-  foreach (array('default', 'admin') as $type) {
-    if (empty($subform[$type])) {
+  $ids = array();
+  foreach (array('default', 'admin') as $field_mode) {
+    if (empty($subform[$field_mode])) {
       continue;
     }
 
-    foreach ($subform[$type] as $delta => $value) {
+    foreach ($subform[$field_mode] as $value) {
       if (!empty($value['target_id']) && is_numeric($value['target_id'])) {
-        $ids[] = array('target_id' => $value['target_id']);
+        $ids[] = array(
+          'target_id' => $value['target_id'],
+          // Add the field mode so we can later validate it in
+          // OgBehaviorHandler::validate()
+          'field_mode' => $field_mode,
+        );
       }
     }
   }
+
+  $ids = array_merge($ids, $element['#other_groups_ids']);
 
   // Set the form values by directly using drupal_array_set_nested_values(),
   // which allows us to control the element parents. In this case we cut off the
   // last element that contains the delta 0, as $ids is already keyed with
   // deltas.
   drupal_array_set_nested_value($form_state['values'], array_slice($element['#parents'], 0, -1), $ids, TRUE);
+
+  // If the element is required, ensure that at least one group has been chosen.
+  if ($element['#required']) {
+    $subform = drupal_array_get_nested_value($form_state['values'], $element['#array_parents']);
+    if (empty($subform)) {
+      form_error($element, t('!name field is required.', array('!name' => $element['#title'])));
+    }
+  }
+}
+
+/**
+ * Validate handler; Assert group audience fields reference valid groups.
+ *
+ * @see field_default_form_errors().
+ */
+function og_validate_widgets($form, &$form_state) {
+  if (!$errors = og_field_widget_register_errors()) {
+    return;
+  }
+
+  foreach ($errors as $field_name => $field_modes) {
+    foreach ($field_modes as $field_mode => $error_items) {
+      foreach ($error_items as $error_item) {
+        $element = $form[$field_name][LANGUAGE_NONE][0][$field_mode];
+        form_error($element, $error_item['message']);
+      }
+    }
+  }
 }
 
 /**
@@ -269,52 +382,11 @@ function og_entityreference_autocomplete_callback($type, $field_name, $entity_ty
   $field = field_info_field($field_name);
   $instance = field_info_instance($entity_type, $field_name, $bundle_name);
   $instance = og_get_mocked_instance($instance, $field_mode);
-  $matches = array();
 
   if (!$field || !$instance || $field['type'] != 'entityreference' || !field_access('edit', $field, $entity_type)) {
     return MENU_ACCESS_DENIED;
   }
 
-  $entity = NULL;
-  if ($entity_id !== 'NULL') {
-    $entity = entity_load_single($entity_type, $entity_id);
-    if (!$entity || !entity_access('view', $entity_type, $entity)) {
-      return MENU_ACCESS_DENIED;
-    }
-  }
-  $handler = entityreference_get_selection_handler($field, $instance, $entity_type, $entity);
-
-  if ($type == 'tags') {
-    // The user enters a comma-separated list of tags. We only autocomplete the last tag.
-    $tags_typed = drupal_explode_tags($string);
-    $tag_last = drupal_strtolower(array_pop($tags_typed));
-    if (!empty($tag_last)) {
-      $prefix = count($tags_typed) ? implode(', ', $tags_typed) . ', ' : '';
-    }
-  }
-  else {
-    // The user enters a single tag.
-    $prefix = '';
-    $tag_last = $string;
-  }
-
-  if (!empty($tag_last)) {
-    // Get an array of matching entities.
-    $entity_labels = $handler->getReferencableEntities($tag_last, $instance['widget']['settings']['match_operator'], 10);
-
-    // Loop through the products and convert them into autocomplete output.
-    foreach ($entity_labels as $entity_id => $label) {
-      $key = "$label ($entity_id)";
-      // Strip things like starting/trailing white spaces, line breaks and tags.
-      $key = preg_replace('/\s\s+/', ' ', str_replace("\n", '', trim(decode_entities(strip_tags($key)))));
-      // Names containing commas or quotes must be wrapped in quotes.
-      if (strpos($key, ',') !== FALSE || strpos($key, '"') !== FALSE) {
-        $key = '"' . str_replace('"', '""', $key) . '"';
-      }
-      $matches[$prefix . $key] = '<div class="reference-autocomplete">' . $label . '</div>';
-    }
-  }
-
-  drupal_json_output($matches);
+  return entityreference_autocomplete_callback_get_matches($type, $field, $instance, $entity_type, $entity_id, $string);
 }
 
