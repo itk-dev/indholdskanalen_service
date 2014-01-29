@@ -18,6 +18,11 @@ class OgMembership extends Entity {
   public function save() {
     $entity_type = $this->entity_type;
     $etid = $this->etid;
+
+    if ($entity_type == 'user' && !$etid) {
+      throw new OgException('OG membership can not be created for anonymous user.');
+    }
+
     $wrapper = entity_metadata_wrapper($entity_type, $etid);
     $bundle = $wrapper->getBundle();
 
@@ -27,7 +32,6 @@ class OgMembership extends Entity {
     list(,,$group_bundle) = entity_extract_ids($group_type, $group);
 
     $field_name = $this->field_name;
-    $state = !empty($this->state) ? $this->state : OG_STATE_ACTIVE;
 
     // Placeholder for exceptions, in case we need to throw one.
     $params = array(
@@ -74,6 +78,11 @@ class OgMembership extends Entity {
     og_membership_invalidate_cache();
     // Clear the group content entity field cache.
     cache_clear_all('field:'. $entity_type . ':' . $etid, 'cache_field');
+
+    // Supporting the entity cache module.
+    if (module_exists('entitycache')) {
+      cache_clear_all($etid, 'cache_entity_' . $entity_type);
+    }
   }
 
   public function delete() {
@@ -82,6 +91,11 @@ class OgMembership extends Entity {
     og_membership_invalidate_cache();
     // Clear the group content entity field cache.
     cache_clear_all('field:'. $this->entity_type . ':' . $this->etid, 'cache_field');
+
+    // Supporting the entity cache module.
+    if (module_exists('entitycache')) {
+      cache_clear_all($this->etid, 'cache_entity_' . $this->entity_type);
+    }
   }
 
   /**
