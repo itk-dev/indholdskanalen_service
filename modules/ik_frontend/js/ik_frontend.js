@@ -9,7 +9,7 @@ var IKFrontend = IKFrontend || {'settings': {}};
 var IK = (function() {
   "use strict";
 
-  // Vataibles available inside the IK scope.
+  // Variables available inside the IK scope.
   var settings = {
     debug : false,
     animateChange : true,
@@ -40,9 +40,9 @@ var IK = (function() {
 
     // Build directive for PURE.
     this.directive = {
-      '.image-container li' : {
+      '.image-container img' : {
         'medium<-media' : {
-          'img@src' : 'medium'
+          '@src' : 'medium'
         }
       },
       '.slide-heading' : 'title',
@@ -114,27 +114,22 @@ var IK = (function() {
   };
 
   /**
-  * Applies skitter to the current slide and should be called after a slide have
-  * been shown.
+  * Applies image cycle to the current slide and should be called after a slide
+  * have been shown.
   */
-  Slide.prototype.startSkitter = function () {
+  Slide.prototype.startCycle = function () {
     var self = this;
 
-    // Skitter image slideshow
-    $('#slide-container .image-container').skitter({
-      animation: self.get('transition'),
-      orgImgAspect: settings.orgImgAspect,
-      fullscreen: settings.fullscreen,
-      numbers: false,
-      navigation: false,
-      label: false,
-      stop_over: false,
-      interval: ((self.get('exposure') / self.get('mediacount')) - 600),
-      structure: '<div class="container_skitter">'
-                  + '<div class="image">'
-                    + '<a href=""><img class="image_main" /></a>'
-                  + '</div>'
-                + '</div>'
+    var fade = 1500;
+    var fadetime = fade * (self.get('mediacount') - 1);
+    var interval = (self.get('exposure') - fadetime) / self.get('mediacount');
+
+    $('.image-container').cycle({
+      fx : 'fade',
+      speed : fade,
+      timeout : interval,
+      log : false,
+      loop : 1
     });
   };
 
@@ -147,27 +142,25 @@ var IK = (function() {
     if (from.length === 0) {
       // Simply insert the slide and return.
       $('#slide-container').html(to);
-      this.startSkitter();
+      this.startCycle();
       return;
     }
 
-    // If fullscreen mode for skitter is true we must make sure that images in UL get same height or width setting as skitter use.
-    // This is to make sure the image is correct size when fading between slides.
+    // If full screen mode for cycle is true we must make sure that images in
+    // UL get same height or width setting as cycle use. This is to make sure
+    // the image is correct size when fading between slides.
     if (settings.fullscreen === true) {
       var aspectRatio = settings.orgImgAspect[0] / settings.orgImgAspect[1];
       var windowWidth = $(window).width();
       var windowHeight = $(window).height();
       if ( (windowWidth / windowHeight) < aspectRatio ) {
         // Height.
-        $('.box_skitter ul', to).find('img').height(windowHeight);
+        $('.image-container', to).find('img').height(windowHeight);
       } else {
         // Width.
-        $('.box_skitter ul', to).find('img').width(windowWidth);
+        $('.image-container', to).find('img').width(windowWidth);
       }
     }
-
-    // Ensure that images is show while skitter loads.
-    $('.box_skitter ul', to).show();
 
     // Insert the new slide behind the current one and fade the current out.
     from.css('z-index', 2);
@@ -176,7 +169,7 @@ var IK = (function() {
     from.fadeOut(1500, function () {
       // Remove the old slide.
       from.remove();
-      self.startSkitter();
+      self.startCycle();
     });
   };
 
@@ -187,11 +180,6 @@ var IK = (function() {
   Slide.prototype.render = function() {
     // Apply the template to the current slide data.
     var slide = $(this.template(this.propreties));
-
-    if (channel) {
-      var currentSlideCount = channel.currentSlide+1;
-      var channelSlideAmount = channel.slides.length;  
-    }
 
     // Apply layout class and set id. It is not done in pure as this is on the
     // outer element, which can't be accessed in pure.
@@ -210,22 +198,26 @@ var IK = (function() {
     else {
       // Simple insert the slide.
       $('#slide-container').html(slide);
-      this.startSkitter();
+      this.startCycle();
     }
 
-    // animate the progress bar
+    // Animate the progress bar
     $('#progress').stop(true,true);
     $('#progress').css('width','0px');
-    $('#progress').animate({width: '100%'}, this.get('exposure'), 'easeInSine');
+    $('#progress').animate({width: '100%'}, this.get('exposure'));
 
     // Update slide count
     if (channel) {
+      var currentSlideCount = channel.currentSlide + 1;
+      var channelSlideAmount = channel.slides.length;
       $('#slide-count').text( currentSlideCount + ' af ' + channelSlideAmount);
+
+      // Send log message.
+      log('Slide amount: ' + channelSlideAmount + ' Current slide: ' + currentSlideCount);
     }
 
     // Send log message.
     log('Slide render: ' + this.get('title') + ' (exposure: ' + this.get('exposure') + ')');
-    log('Slide amount: ' + channelSlideAmount + ' Current slide: ' + currentSlideCount);
   };
 
   /****************
@@ -300,8 +292,8 @@ var IK = (function() {
       $('body').ajaxStop(function() {
         if (!this.fetched) {
           // Channel and slide have been fetched for a new channel. We set the
-          // fected variable, so the slide show will not be restarted on channel
-          // updates.
+          // fetched variable, so the slide show will not be restarted on
+          // channel updates.
           this.fetched = true;
           log('All slides for the channel (' + self.token + ') fechted');
 
@@ -309,7 +301,7 @@ var IK = (function() {
           if (self.updatedSlides !== 0) {
             self.slides = self.updatedSlides.slice(0);
 
-            // Start the slideshow.
+            // Start the slide show.
             self.start();
           }
           else {
@@ -321,8 +313,8 @@ var IK = (function() {
           log('All slides updated for the channel: ' + self.token);
 
           // Now that the channel should be update and slides fetched. We check
-          // if the slides where in fact fected and only throw the current slide
-          // out if any new ones where fetched. The Ajax calles may have failed
+          // if the slides where in fact fetched and only throw the current slide
+          // out if any new ones where fetched. The Ajax calls may have failed
           // if the server was off-line.
           if (self.updatedSlides !== 0) {
             var slides = [];
@@ -338,7 +330,7 @@ var IK = (function() {
             }
           }
 
-          // Goto the next slide.
+          // Go to the next slide.
           self.nextSlide();
         }
 
@@ -366,11 +358,11 @@ var IK = (function() {
           self.currentSlide = 0;
           log('Restarting the channel to first slide');
           // Try to update the channel by pulling the server (this could be
-          // implemented using a websocket and send push messages).
+          // implemented using a web-socket and send push messages).
           self.fetchChannel();
         }
         else {
-          // Goto the next slide. The channel update above will call the next
+          // Go to the next slide. The channel update above will call the next
           // slide when they have been loaded.
           self.nextSlide();
         }
@@ -386,7 +378,7 @@ var IK = (function() {
     };
 
     /**
-     * Stops the slide show be clearing the tiemout the changes the slides.
+     * Stops the slide show be clearing the tiem-out the changes the slides.
      */
     this.stop = function () {
       log('Stopping the show');
@@ -396,7 +388,7 @@ var IK = (function() {
     /**
      * Free all memory used (Remove channel, slides and timeout).
      *
-     * @todo Loop over the slides an call destory on each slide.
+     * @todo Loop over the slides an call destroy on each slide.
      */
     this.destory = function() {
       this.stop();
@@ -414,7 +406,7 @@ var IK = (function() {
    */
 
   /**
-   * Starts the slide show by loading channel and slides from the backned based
+   * Starts the slide show by loading channel and slides from the backend based
    * on the token given as argument.
    */
   function start(token) {

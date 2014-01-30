@@ -1,19 +1,19 @@
 (function($){
-  // Resize slide image when browser window is resized.
+  // Resize slide image when browser window is re-sized.
   var resizer = function () {
     var width = $(window).width();
     var height = $(window).height();
     var aspectRatio = 1980 / 1080;
-    $('.box_skitter').width(width).height(height);
-    $('.container_skitter').width(width).height(height);
+    $('.image-container').width(width).height(height);
+    var image = $('.image_main');
     if ( (width / height) < aspectRatio ) {
       //Height
-      $('.image_main').css('width', '');
-      $('.image_main').height(height);
+      image.css('width', '');
+      image.height(height);
     } else {
       //Width
-      $('.image_main').width(width);
-      $('.image_main').css('height', '');
+      image.width(width);
+      image.css('height', '');
     }
 
   };

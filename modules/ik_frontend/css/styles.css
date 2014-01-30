@@ -1,7 +1,7 @@
 /*
 * Main stylesheet
 */
-/* line 17, ../../../../../../../../../../Applications/CodeKit.app/Contents/Resources/engines/compass/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+/* line 17, ../../../../../../../../../../../../Applications/CodeKit.app/Contents/Resources/engines/compass/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
@@ -22,38 +22,38 @@ time, mark, audio, video {
   font-size: 100%;
   vertical-align: baseline; }
 
-/* line 22, ../../../../../../../../../../Applications/CodeKit.app/Contents/Resources/engines/compass/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+/* line 22, ../../../../../../../../../../../../Applications/CodeKit.app/Contents/Resources/engines/compass/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
 html {
   line-height: 1; }
 
-/* line 24, ../../../../../../../../../../Applications/CodeKit.app/Contents/Resources/engines/compass/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+/* line 24, ../../../../../../../../../../../../Applications/CodeKit.app/Contents/Resources/engines/compass/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
 ol, ul {
   list-style: none; }
 
-/* line 26, ../../../../../../../../../../Applications/CodeKit.app/Contents/Resources/engines/compass/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+/* line 26, ../../../../../../../../../../../../Applications/CodeKit.app/Contents/Resources/engines/compass/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
 table {
   border-collapse: collapse;
   border-spacing: 0; }
 
-/* line 28, ../../../../../../../../../../Applications/CodeKit.app/Contents/Resources/engines/compass/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+/* line 28, ../../../../../../../../../../../../Applications/CodeKit.app/Contents/Resources/engines/compass/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
 caption, th, td {
   text-align: left;
   font-weight: normal;
   vertical-align: middle; }
 
-/* line 30, ../../../../../../../../../../Applications/CodeKit.app/Contents/Resources/engines/compass/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+/* line 30, ../../../../../../../../../../../../Applications/CodeKit.app/Contents/Resources/engines/compass/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
 q, blockquote {
   quotes: none; }
-  /* line 103, ../../../../../../../../../../Applications/CodeKit.app/Contents/Resources/engines/compass/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+  /* line 103, ../../../../../../../../../../../../Applications/CodeKit.app/Contents/Resources/engines/compass/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
   q:before, q:after, blockquote:before, blockquote:after {
     content: "";
     content: none; }
 
-/* line 32, ../../../../../../../../../../Applications/CodeKit.app/Contents/Resources/engines/compass/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+/* line 32, ../../../../../../../../../../../../Applications/CodeKit.app/Contents/Resources/engines/compass/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
 a img {
   border: none; }
 
-/* line 116, ../../../../../../../../../../Applications/CodeKit.app/Contents/Resources/engines/compass/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+/* line 116, ../../../../../../../../../../../../Applications/CodeKit.app/Contents/Resources/engines/compass/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
 article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section, summary {
   display: block; }
 
@@ -205,46 +205,42 @@ h6 {
 * Color Themes
 * Class added to slide container
 */
-/* line 7, ../sass/_layouts.scss */
-.box_skitter {
-  background-color: transparent !important; }
-
-/* line 11, ../sass/_layouts.scss */
+/* line 6, ../sass/_layouts.scss */
 .white-green {
   background-color: #002d12; }
-  /* line 14, ../sass/_layouts.scss */
+  /* line 9, ../sass/_layouts.scss */
   .white-green .text-container {
     color: #fff;
     background-color: #006027; }
 
-/* line 20, ../sass/_layouts.scss */
+/* line 15, ../sass/_layouts.scss */
 .white-blue {
   background-color: #001a21; }
-  /* line 23, ../sass/_layouts.scss */
+  /* line 18, ../sass/_layouts.scss */
   .white-blue .text-container {
     color: #fff;
     background-color: #004154; }
 
-/* line 29, ../sass/_layouts.scss */
+/* line 24, ../sass/_layouts.scss */
 .white-bordeaux {
   background-color: #580a01; }
-  /* line 32, ../sass/_layouts.scss */
+  /* line 27, ../sass/_layouts.scss */
   .white-bordeaux .text-container {
     color: #fff;
     background-color: #8a1002; }
 
-/* line 38, ../sass/_layouts.scss */
+/* line 33, ../sass/_layouts.scss */
 .white-grey {
   background-color: #575859; }
-  /* line 41, ../sass/_layouts.scss */
+  /* line 36, ../sass/_layouts.scss */
   .white-grey .text-container {
     color: #fff;
     background-color: #707173; }
 
-/* line 47, ../sass/_layouts.scss */
+/* line 42, ../sass/_layouts.scss */
 .black-orange {
   background-color: #c48400; }
-  /* line 50, ../sass/_layouts.scss */
+  /* line 45, ../sass/_layouts.scss */
   .black-orange .text-container {
     color: #000;
     background-color: #f7a600; }
@@ -252,19 +248,19 @@ h6 {
 /*
 * Layouts default styling
 */
-/* line 59, ../sass/_layouts.scss */
+/* line 54, ../sass/_layouts.scss */
 #pure-template {
   display: none; }
 
-/* line 62, ../sass/_layouts.scss */
+/* line 57, ../sass/_layouts.scss */
 #slide-container {
   width: 100%;
   height: 100%; }
-  /* line 66, ../sass/_layouts.scss */
+  /* line 62, ../sass/_layouts.scss */
   #slide-container #pure-template {
     display: block; }
 
-/* line 71, ../sass/_layouts.scss */
+/* line 67, ../sass/_layouts.scss */
 .slide {
   position: absolute;
   top: 0;
@@ -273,13 +269,16 @@ h6 {
   height: 100%;
   margin: 0;
   padding: 0; }
-  /* line 80, ../sass/_layouts.scss */
+  /* line 76, ../sass/_layouts.scss */
   .slide .image-container {
     position: absolute;
     top: 0;
     left: 0;
     height: 100%;
     width: 100%; }
+    /* line 83, ../sass/_layouts.scss */
+    .slide .image-container img {
+      display: none; }
     /* line 87, ../sass/_layouts.scss */
     .slide .image-container a {
       pointer-events: none;
@@ -682,21 +681,17 @@ h6 {
 * ---------------------------
 *
 */
-/*
-* TODO: For this to work frontend javascript must be changed;
-* resize event must be changed and skitter settings must be dynamic.
-*/
-/* line 568, ../sass/_layouts.scss */
+/* line 563, ../sass/_layouts.scss */
 .layout-8 .text-wrapper {
   top: 0;
   left: 0;
   width: 35%;
   height: 100%; }
-/* line 575, ../sass/_layouts.scss */
+/* line 570, ../sass/_layouts.scss */
 .layout-8 .text-container {
   width: 100%;
   height: 100%; }
-/* line 580, ../sass/_layouts.scss */
+/* line 575, ../sass/_layouts.scss */
 .layout-8 .image-container {
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
@@ -704,7 +699,8 @@ h6 {
   position: relative;
   padding: 40px;
   padding-left: 40%; }
-  /* line 588, ../sass/_layouts.scss */
+  /* line 583, ../sass/_layouts.scss */
   .layout-8 .image-container img {
     max-width: 890px;
-    height: auto; }
+    height: auto;
+    display: none; }

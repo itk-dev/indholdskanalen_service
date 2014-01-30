@@ -6,7 +6,6 @@
 
 /**
  * Implements hook_menu().
- *
  */
 function ik_frontend_menu() {
   $items = array();
@@ -40,7 +39,6 @@ function ik_frontend_menu() {
 
 /**
  * Implements hook_theme().
- *
  */
 function ik_frontend_theme() {
   return array(
@@ -66,7 +64,6 @@ function ik_frontend_flush_caches() {
 
 /**
  * Implements hook_ctools_plugin_directory().
- *
  */
 function ik_frontend_ctools_plugin_directory($module, $plugin) {
   if ($module == 'ctools' && !empty($plugin)) {
@@ -109,7 +106,7 @@ function ik_frontend_node_update($node) {
     cache_clear_all('channel_' . $token, 'cache_ik_frontend');
   }
   if ($node->type == 'slide') {
-    // Remove node from slids cache.
+    // Remove node from slides cache.
 //    cache_clear_all('slide_' . $node->nid, 'cache_ik_frontend');
   }
 }
@@ -118,9 +115,10 @@ function ik_frontend_node_update($node) {
  * Get channel nid based on channel token mapping.
  *
  * @param string $token
- *  Token representing a given channel.
+ *   Token representing a given channel.
+ *
  * @return int
- *  Channel node id.
+ *   Channel node id.
  */
 function ik_frontend_find_channel_nid($token) {
   $nid = db_select('ik_channel_mapping', 'ikcm')
@@ -135,11 +133,13 @@ function ik_frontend_find_channel_nid($token) {
  * Helper function that fetches basic information about a channels slides based
  * on the channels filter selections.
  *
- * @param type $entity
- *  Channel node entity.
- * @return array $slides
- *  Array of slides with nid and title for each.
+ * @param string $token
+ *   Token sting to identify the channel.
+ * @param Object $entity
+ *   Channel entity to used to filter the slides.
  *
+ * @return array
+ *   Array of slides with nid and title for each.
  */
 function ik_frontend_get_slides($token, $entity) {
   $slides = array();
@@ -151,7 +151,7 @@ function ik_frontend_get_slides($token, $entity) {
     }
   }
 
-  // Either the cache was cold or expired, so we need to generate new slids.
+  // Either the cache was cold or expired, so we need to generate new slides.
   if (empty($slides)) {
     $field = field_info_field('field_channel_preview');
     $field_names = isset($field['settings']['ik_search']['types']) ? $field['settings']['ik_search']['types'] : array();
@@ -181,14 +181,14 @@ function ik_frontend_get_slides($token, $entity) {
  * the frontend JS.
  *
  * @param string $token
- *  Channel token.
+ *   Channel token.
  */
 function ik_frontend_run($token) {
   // Return skeleton for slide show (complet HTML page <header><content><footer>
   // etc.).
   echo theme('ik_frontend', array(
     'settings' => array(
-      'token' => $token
+      'token' => $token,
     ),
     'start' => TRUE,
   ));
@@ -199,34 +199,37 @@ function ik_frontend_run($token) {
  * ids) for the channel.
  *
  * @param string $token
- *  Channel token.
+ *   Channel token.
  */
 function ik_frontend_update($token) {
   // Find filter values, by loading channel node (cache the result).
   $nid = ik_frontend_find_channel_nid($token);
   $entity = node_load($nid);
 
-  // Get values that shold be used to find slids.
+  // Get values that should be used to find slides.
   $slides = ik_frontend_get_slides($token, $entity);
 
   // JSON encode.
-  echo drupal_json_output($slides);
+  drupal_json_output($slides);
 }
 
 /**
  * Builds a slide as a JSON object based on slide id and channel token.
  *
  * @param int $sid
- *  Slide id (node id).
+ *   Slide id (node id).
  * @param bool $json
- *  Should the function JSON encode the result (defaults to TRUE).
+ *   Should the function JSON encode the result (defaults to TRUE).
  * @param bool $reset
- *  Reset cache if TRUE. Default FALSE.
+ *   Reset cache if TRUE. Default FALSE.
+ *
+ * @return StdClass
+ *   Slide class.
  */
 function ik_frontend_fetch_slide($sid, $json = TRUE, $reset = FALSE) {
   // Use frontend cache, if available.
   if (!$reset && $cache = cache_get('slide_' . $sid, 'cache_ik_frontend')) {
-      $slide = $cache->data;
+    $slide = $cache->data;
   }
   else {
     // Load slide node content entity_load().
@@ -237,8 +240,9 @@ function ik_frontend_fetch_slide($sid, $json = TRUE, $reset = FALSE) {
     $slide->sid = $sid;
     $slide->title = check_plain($entity->title);
 
-    // Color theme for textbox
-    $slide->color = ik_frontend_select_color_theme('1'); // Default color option is #1
+    // Color theme for text-box.
+    // Default color option is #1
+    $slide->color = ik_frontend_select_color_theme('1');
     if ($data = field_get_items('node', $entity, 'field_ik_slide_color_theme')) {
       $slide->color = ik_frontend_select_color_theme($data[0]['value']);
     }
@@ -302,27 +306,36 @@ function ik_frontend_fetch_slide($sid, $json = TRUE, $reset = FALSE) {
  * Returns an array with color codes for the selected color theme.
  *
  * @param int $value
- *  Value from color theme field.
+ *   Value from color theme field.
+ *
+ * @return string
+ *   Color option.
  */
 function ik_frontend_select_color_theme($value) {
   switch ($value) {
     case 1:
       $color_theme = 'white-green';
       break;
+
     case 2:
       $color_theme = 'white-blue';
       break;
+
     case 3:
       $color_theme = 'white-bordeaux';
       break;
+
     case 4:
       $color_theme = 'white-grey';
       break;
+
     case 5:
       $color_theme = 'black-orange';
       break;
+
     default:
       $color_theme = 'white-green';
   }
+
   return $color_theme;
 }

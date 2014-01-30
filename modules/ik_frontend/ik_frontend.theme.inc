@@ -13,8 +13,8 @@ function template_preprocess_ik_frontend(&$vars) {
   $vars['css'] = '';
   $csses = array(
     '/css/styles.css',
-    '/js/skitterslideshow/css/skitter.styles.css',
   );
+
   $path = drupal_get_path('module', 'ik_frontend');
   foreach ($csses as $css) {
     $vars['css'] .= ' <link href="/' . $path . $css . '" type="text/css" media="all" rel="stylesheet" />';
@@ -35,13 +35,12 @@ function template_preprocess_ik_frontend(&$vars) {
   $vars['scripts'] = '';
   $scripts = array(
     'jquery-1.8.3.min.js',
+    'jquery.cycle2.min.js',
     'pure_min.js',
     'ik_frontend.min.js',
     'ik_frontend_events.min.js',
-    'skitterslideshow/js/jquery.easing.1.3.js',
-    'skitterslideshow/js/jquery.animate-colors-min.js',
-    'skitterslideshow/js/jquery.skitter.min.js',
   );
+
   $path = drupal_get_path('module', 'ik_frontend') . '/js/';
   foreach ($scripts as $script) {
     $vars['scripts'] .= '<script type="text/javascript" src="/' . $path . $script . '"></script>';

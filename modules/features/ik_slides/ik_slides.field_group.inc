@@ -25,8 +25,8 @@ function ik_slides_field_group_info() {
     'children' => array(
       0 => 'field_ik_slide_subheading',
       1 => 'field_ik_slide_text',
-      2 => 'title',
-      3 => 'field_ik_slide_relevance',
+      2 => 'field_ik_slide_relevance',
+      3 => 'title',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(

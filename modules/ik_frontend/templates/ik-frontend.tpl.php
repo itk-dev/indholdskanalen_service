@@ -10,14 +10,8 @@
 <body>
   <!-- template -->
   <div id="pure-template" class="slide">
-    <div class="image-container box_skitter">
-      <ul>
-        <li>
-          <a href="javascript:void(0)">
-            <img src="" />
-          </a>
-        </li>
-      </ul>
+    <div class="image-container">
+      <img src="" />
     </div>
     <div class="text-wrapper">
       <div class="text-container">
