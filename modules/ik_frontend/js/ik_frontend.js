@@ -9,7 +9,7 @@ var IKFrontend = IKFrontend || {'settings': {}};
 var IK = (function() {
   "use strict";
 
-  // Vataibles available inside the IK scope.
+  // Variables available inside the IK scope.
   var settings = {
     debug : false,
     animateChange : true,
@@ -120,7 +120,7 @@ var IK = (function() {
   Slide.prototype.startSkitter = function () {
     var self = this;
 
-    // Skitter image slideshow
+    // Skitter image slide show.
     $('#slide-container .image-container').skitter({
       animation: self.get('transition'),
       orgImgAspect: settings.orgImgAspect,
@@ -300,8 +300,8 @@ var IK = (function() {
       $('body').ajaxStop(function() {
         if (!this.fetched) {
           // Channel and slide have been fetched for a new channel. We set the
-          // fected variable, so the slide show will not be restarted on channel
-          // updates.
+          // fetched variable, so the slide show will not be restarted on
+          // channel updates.
           this.fetched = true;
           log('All slides for the channel (' + self.token + ') fechted');
 
@@ -309,7 +309,7 @@ var IK = (function() {
           if (self.updatedSlides !== 0) {
             self.slides = self.updatedSlides.slice(0);
 
-            // Start the slideshow.
+            // Start the slide show.
             self.start();
           }
           else {
@@ -321,8 +321,8 @@ var IK = (function() {
           log('All slides updated for the channel: ' + self.token);
 
           // Now that the channel should be update and slides fetched. We check
-          // if the slides where in fact fected and only throw the current slide
-          // out if any new ones where fetched. The Ajax calles may have failed
+          // if the slides where in fact fetched and only throw the current slide
+          // out if any new ones where fetched. The Ajax calls may have failed
           // if the server was off-line.
           if (self.updatedSlides !== 0) {
             var slides = [];
@@ -338,7 +338,7 @@ var IK = (function() {
             }
           }
 
-          // Goto the next slide.
+          // Go to the next slide.
           self.nextSlide();
         }
 
@@ -366,11 +366,11 @@ var IK = (function() {
           self.currentSlide = 0;
           log('Restarting the channel to first slide');
           // Try to update the channel by pulling the server (this could be
-          // implemented using a websocket and send push messages).
+          // implemented using a web-socket and send push messages).
           self.fetchChannel();
         }
         else {
-          // Goto the next slide. The channel update above will call the next
+          // Go to the next slide. The channel update above will call the next
           // slide when they have been loaded.
           self.nextSlide();
         }
@@ -386,7 +386,7 @@ var IK = (function() {
     };
 
     /**
-     * Stops the slide show be clearing the tiemout the changes the slides.
+     * Stops the slide show be clearing the tiem-out the changes the slides.
      */
     this.stop = function () {
       log('Stopping the show');
@@ -396,7 +396,7 @@ var IK = (function() {
     /**
      * Free all memory used (Remove channel, slides and timeout).
      *
-     * @todo Loop over the slides an call destory on each slide.
+     * @todo Loop over the slides an call destroy on each slide.
      */
     this.destory = function() {
       this.stop();
@@ -414,7 +414,7 @@ var IK = (function() {
    */
 
   /**
-   * Starts the slide show by loading channel and slides from the backned based
+   * Starts the slide show by loading channel and slides from the backend based
    * on the token given as argument.
    */
   function start(token) {
