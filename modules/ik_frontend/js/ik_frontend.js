@@ -40,9 +40,9 @@ var IK = (function() {
 
     // Build directive for PURE.
     this.directive = {
-      '.image-container li' : {
+      '.image-container img' : {
         'medium<-media' : {
-          'img@src' : 'medium'
+          '@src' : 'medium'
         }
       },
       '.slide-heading' : 'title',
@@ -114,27 +114,22 @@ var IK = (function() {
   };
 
   /**
-  * Applies skitter to the current slide and should be called after a slide have
-  * been shown.
+  * Applies image cycle to the current slide and should be called after a slide
+  * have been shown.
   */
-  Slide.prototype.startSkitter = function () {
+  Slide.prototype.startCycle = function () {
     var self = this;
 
-    // Skitter image slide show.
-    $('#slide-container .image-container').skitter({
-      animation: self.get('transition'),
-      orgImgAspect: settings.orgImgAspect,
-      fullscreen: settings.fullscreen,
-      numbers: false,
-      navigation: false,
-      label: false,
-      stop_over: false,
-      interval: ((self.get('exposure') / self.get('mediacount')) - 600),
-      structure: '<div class="container_skitter">'
-                  + '<div class="image">'
-                    + '<a href=""><img class="image_main" /></a>'
-                  + '</div>'
-                + '</div>'
+    var fade = 1500;
+    var fadetime = fade * (self.get('mediacount') - 1);
+    var interval = (self.get('exposure') - fadetime) / self.get('mediacount');
+
+    $('.image-container').cycle({
+      fx : 'fade',
+      speed : fade,
+      timeout : interval,
+      log : false,
+      loop : 1
     });
   };
 
@@ -147,27 +142,25 @@ var IK = (function() {
     if (from.length === 0) {
       // Simply insert the slide and return.
       $('#slide-container').html(to);
-      this.startSkitter();
+      this.startCycle();
       return;
     }
 
-    // If fullscreen mode for skitter is true we must make sure that images in UL get same height or width setting as skitter use.
-    // This is to make sure the image is correct size when fading between slides.
+    // If full screen mode for cycle is true we must make sure that images in
+    // UL get same height or width setting as cycle use. This is to make sure
+    // the image is correct size when fading between slides.
     if (settings.fullscreen === true) {
       var aspectRatio = settings.orgImgAspect[0] / settings.orgImgAspect[1];
       var windowWidth = $(window).width();
       var windowHeight = $(window).height();
       if ( (windowWidth / windowHeight) < aspectRatio ) {
         // Height.
-        $('.box_skitter ul', to).find('img').height(windowHeight);
+        $('.image-container', to).find('img').height(windowHeight);
       } else {
         // Width.
-        $('.box_skitter ul', to).find('img').width(windowWidth);
+        $('.image-container', to).find('img').width(windowWidth);
       }
     }
-
-    // Ensure that images is show while skitter loads.
-    $('.box_skitter ul', to).show();
 
     // Insert the new slide behind the current one and fade the current out.
     from.css('z-index', 2);
@@ -176,7 +169,7 @@ var IK = (function() {
     from.fadeOut(1500, function () {
       // Remove the old slide.
       from.remove();
-      self.startSkitter();
+      self.startCycle();
     });
   };
 
@@ -205,13 +198,13 @@ var IK = (function() {
     else {
       // Simple insert the slide.
       $('#slide-container').html(slide);
-      this.startSkitter();
+      this.startCycle();
     }
 
     // Animate the progress bar
     $('#progress').stop(true,true);
     $('#progress').css('width','0px');
-    $('#progress').animate({width: '100%'}, this.get('exposure'), 'easeInSine');
+    $('#progress').animate({width: '100%'}, this.get('exposure'));
 
     // Update slide count
     if (channel) {

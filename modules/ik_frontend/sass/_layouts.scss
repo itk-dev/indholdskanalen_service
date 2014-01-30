@@ -3,11 +3,6 @@
 * Class added to slide container
 */
 
-// reset skitter bg color
-.box_skitter {
-  background-color: transparent!important;
-}
-
 .white-green {
   background-color: darken(#006027, 10%);
 
@@ -63,6 +58,7 @@
   width: 100%;
   height: 100%;
 
+
   #pure-template {
     display: block;
   }
@@ -83,6 +79,10 @@
     left: 0;
     height: 100%;
     width: 100%;
+
+    img {
+      display: none;
+    }
     
     a {
       pointer-events: none;
@@ -558,11 +558,6 @@
 *
 */
 
-/*
-* TODO: For this to work frontend javascript must be changed;
-* resize event must be changed and skitter settings must be dynamic.
-*/
-
 .layout-8 {
   
   .text-wrapper {
@@ -588,6 +583,8 @@
     img {
       max-width: 890px;
       height: auto;
+
+      display: none;
     }
   }
 }
