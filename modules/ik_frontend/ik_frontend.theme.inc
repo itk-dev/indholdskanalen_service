@@ -37,8 +37,8 @@ function template_preprocess_ik_frontend(&$vars) {
     'jquery-1.8.3.min.js',
     'jquery.cycle2.min.js',
     'pure_min.js',
-    'ik_frontend.min.js',
-    'ik_frontend_events.min.js',
+    'ik_frontend.min.js?version=31012014',
+    'ik_frontend_events.min.js?version=31012014',
   );
 
   $path = drupal_get_path('module', 'ik_frontend') . '/js/';
