@@ -120,6 +120,7 @@ var IK = (function() {
   Slide.prototype.startCycle = function () {
     var self = this;
 
+    // Only start the image cycle if there are more than one image.
     if (self.get('mediacount') > 1) {
       var fade = 1500;
       var fadetime = fade * (self.get('mediacount') - 1);
@@ -132,6 +133,10 @@ var IK = (function() {
         log : false,
         loop : 1
       });
+    }
+    else {
+      // Only one image, so just display it.
+      $('.image-container img').show();
     }
   };
 
