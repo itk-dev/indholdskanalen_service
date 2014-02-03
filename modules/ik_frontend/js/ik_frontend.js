@@ -120,17 +120,19 @@ var IK = (function() {
   Slide.prototype.startCycle = function () {
     var self = this;
 
-    var fade = 1500;
-    var fadetime = fade * (self.get('mediacount') - 1);
-    var interval = (self.get('exposure') - fadetime) / self.get('mediacount');
+    if (self.get('mediacount') > 1) {
+      var fade = 1500;
+      var fadetime = fade * (self.get('mediacount') - 1);
+      var interval = (self.get('exposure') - fadetime) / self.get('mediacount');
 
-    $('.image-container').cycle({
-      fx : 'fade',
-      speed : fade,
-      timeout : interval,
-      log : false,
-      loop : 1
-    });
+      $('.image-container').cycle({
+        fx : 'fade',
+        speed : fade,
+        timeout : interval,
+        log : false,
+        loop : 1
+      });
+    }
   };
 
   /**
