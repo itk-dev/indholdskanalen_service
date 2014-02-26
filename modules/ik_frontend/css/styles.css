@@ -1,7 +1,7 @@
 /*
 * Main stylesheet
 */
-/* line 17, ../../../../../../../../../../../../Applications/CodeKit.app/Contents/Resources/engines/compass/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+/* line 17, ../../../../../../../../../Applications/CodeKit.app/Contents/Resources/engines/compass/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
@@ -22,38 +22,38 @@ time, mark, audio, video {
   font-size: 100%;
   vertical-align: baseline; }
 
-/* line 22, ../../../../../../../../../../../../Applications/CodeKit.app/Contents/Resources/engines/compass/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+/* line 22, ../../../../../../../../../Applications/CodeKit.app/Contents/Resources/engines/compass/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
 html {
   line-height: 1; }
 
-/* line 24, ../../../../../../../../../../../../Applications/CodeKit.app/Contents/Resources/engines/compass/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+/* line 24, ../../../../../../../../../Applications/CodeKit.app/Contents/Resources/engines/compass/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
 ol, ul {
   list-style: none; }
 
-/* line 26, ../../../../../../../../../../../../Applications/CodeKit.app/Contents/Resources/engines/compass/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+/* line 26, ../../../../../../../../../Applications/CodeKit.app/Contents/Resources/engines/compass/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
 table {
   border-collapse: collapse;
   border-spacing: 0; }
 
-/* line 28, ../../../../../../../../../../../../Applications/CodeKit.app/Contents/Resources/engines/compass/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+/* line 28, ../../../../../../../../../Applications/CodeKit.app/Contents/Resources/engines/compass/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
 caption, th, td {
   text-align: left;
   font-weight: normal;
   vertical-align: middle; }
 
-/* line 30, ../../../../../../../../../../../../Applications/CodeKit.app/Contents/Resources/engines/compass/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+/* line 30, ../../../../../../../../../Applications/CodeKit.app/Contents/Resources/engines/compass/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
 q, blockquote {
   quotes: none; }
-  /* line 103, ../../../../../../../../../../../../Applications/CodeKit.app/Contents/Resources/engines/compass/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+  /* line 103, ../../../../../../../../../Applications/CodeKit.app/Contents/Resources/engines/compass/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
   q:before, q:after, blockquote:before, blockquote:after {
     content: "";
     content: none; }
 
-/* line 32, ../../../../../../../../../../../../Applications/CodeKit.app/Contents/Resources/engines/compass/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+/* line 32, ../../../../../../../../../Applications/CodeKit.app/Contents/Resources/engines/compass/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
 a img {
   border: none; }
 
-/* line 116, ../../../../../../../../../../../../Applications/CodeKit.app/Contents/Resources/engines/compass/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+/* line 116, ../../../../../../../../../Applications/CodeKit.app/Contents/Resources/engines/compass/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
 article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section, summary {
   display: block; }
 
@@ -110,8 +110,11 @@ body {
   /* line 34, ../sass/_base.scss */
   body.slide-preview {
     font-size: 0.66667em; }
+  /* line 37, ../sass/_base.scss */
+  body.bigger {
+    font-size: 1.2em; }
 
-/* line 39, ../sass/_base.scss */
+/* line 42, ../sass/_base.scss */
 #progress {
   position: absolute;
   top: 0;
@@ -124,7 +127,7 @@ body {
   opacity: 0.6;
   z-index: 50000; }
 
-/* line 51, ../sass/_base.scss */
+/* line 54, ../sass/_base.scss */
 #slide-count {
   position: absolute;
   top: 5px;
@@ -138,66 +141,66 @@ body {
 /*
 * Default typography
 */
-/* line 66, ../sass/_base.scss */
+/* line 69, ../sass/_base.scss */
 p {
   margin-bottom: 10px;
   margin-bottom: 0.625rem; }
 
-/* line 71, ../sass/_base.scss */
+/* line 74, ../sass/_base.scss */
 strong,
 b {
   font-family: "AllerBold", "Aller", "Helvetica Neue", Helvetica, Arial, sans-serif; }
-  /* line 75, ../sass/_base.scss */
+  /* line 78, ../sass/_base.scss */
   strong em,
   strong i,
   b em,
   b i {
     font-family: "AllerBoldItalic", "Aller", "Helvetica Neue", Helvetica, Arial, sans-serif; }
 
-/* line 81, ../sass/_base.scss */
+/* line 84, ../sass/_base.scss */
 em,
 i {
   font-family: "AllerItalic", "Aller", "Helvetica Neue", Helvetica, Arial, sans-serif; }
-  /* line 85, ../sass/_base.scss */
+  /* line 88, ../sass/_base.scss */
   em strong,
   em b,
   i strong,
   i b {
     font-family: "AllerBoldItalic", "Aller", "Helvetica Neue", Helvetica, Arial, sans-serif; }
 
-/* line 90, ../sass/_base.scss */
+/* line 93, ../sass/_base.scss */
 h1 {
   font-size: 4.5em; }
 
-/* line 94, ../sass/_base.scss */
+/* line 97, ../sass/_base.scss */
 h2 {
   font-size: 1.625em; }
 
-/* line 98, ../sass/_base.scss */
+/* line 101, ../sass/_base.scss */
 h3 {
   font-size: 1.65em; }
 
-/* line 102, ../sass/_base.scss */
+/* line 105, ../sass/_base.scss */
 h4 {
   font-size: 1.8em; }
 
-/* line 106, ../sass/_base.scss */
+/* line 109, ../sass/_base.scss */
 h5 {
   font-size: 1.95em; }
 
-/* line 110, ../sass/_base.scss */
+/* line 113, ../sass/_base.scss */
 h6 {
   font-size: 2.1em; }
 
-/* line 115, ../sass/_base.scss */
+/* line 118, ../sass/_base.scss */
 .slide-text ul, .slide-text ol {
   margin-left: 40px;
   padding-top: 20px;
   padding-bottom: 20px; }
-/* line 121, ../sass/_base.scss */
+/* line 124, ../sass/_base.scss */
 .slide-text ul li {
   list-style: disc outside none; }
-/* line 125, ../sass/_base.scss */
+/* line 128, ../sass/_base.scss */
 .slide-text ol li {
   list-style: decimal outside none; }
 
