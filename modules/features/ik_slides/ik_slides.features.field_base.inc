@@ -158,6 +158,32 @@ function ik_slides_field_default_field_bases() {
     'type' => 'list_integer',
   );
 
+  // Exported field_base: 'field_ik_slide_font_size'
+  $field_bases['field_ik_slide_font_size'] = array(
+    'active' => 1,
+    'cardinality' => 1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_ik_slide_font_size',
+    'foreign keys' => array(),
+    'indexes' => array(
+      'value' => array(
+        0 => 'value',
+      ),
+    ),
+    'locked' => 0,
+    'module' => 'list',
+    'settings' => array(
+      'allowed_values' => array(
+        0 => 'normal',
+        1 => 'stor',
+      ),
+      'allowed_values_function' => '',
+    ),
+    'translatable' => 0,
+    'type' => 'list_integer',
+  );
+
   // Exported field_base: 'field_ik_slide_import_node'
   $field_bases['field_ik_slide_import_node'] = array(
     'active' => 1,

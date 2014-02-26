@@ -110,6 +110,7 @@ function ik_slides_field_group_info() {
     'children' => array(
       0 => 'field_ik_slide_logo',
       1 => 'field_ik_slide_color_theme',
+      2 => 'field_ik_slide_font_size',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
