@@ -205,6 +205,8 @@ var IK = (function() {
       this.startCycle();
     }
 
+    $('.slide-text').addClass(this.get('fontsize'));
+
     // Animate the progress bar
     $('#progress').stop(true,true);
     $('#progress').css('width','0px');

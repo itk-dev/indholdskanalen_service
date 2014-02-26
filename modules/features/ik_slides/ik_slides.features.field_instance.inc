@@ -208,7 +208,7 @@ function ik_slides_field_default_field_instances() {
     ),
     'entity_type' => 'node',
     'field_name' => 'field_ik_slide_font_size',
-    'label' => 'Skriftstørrelse',
+    'label' => 'Skriftstørrelse på brødtekst',
     'required' => 0,
     'settings' => array(
       'user_register_form' => FALSE,
@@ -737,7 +737,7 @@ function ik_slides_field_default_field_instances() {
   t('Medier');
   t('Overgangseffekt');
   t('Preview');
-  t('Skriftstørrelse');
+  t('Skriftstørrelse på brødtekst');
   t('Tags');
   t('Tekst');
   t('Tilføj billeder til slide. Billeder skaleres og beskæres automatisk til 1920x1080 pixel (Full HD, 16:9 format). Ønsker du fuld kontrol over hvordan dit billede ser ud anbefales det at uploade billedet i størrelsen 1920x1080 på forhånd.');

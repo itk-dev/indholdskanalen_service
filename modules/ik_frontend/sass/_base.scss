@@ -34,10 +34,8 @@ body {
   &.slide-preview {
     font-size: $theme-font-size / 1.5;
   }
-  &.bigger {
-    font-size: $theme-font-size * 1.2;
-  }
 }
+
 
 #progress {
   position: absolute;
