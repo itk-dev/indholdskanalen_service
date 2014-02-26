@@ -192,6 +192,7 @@ var IK = (function() {
     // outer element, which can't be accessed in pure.
     slide.attr('id', 'slide-' + this.get('sid'));
     slide.addClass(this.get('layout'));
+    slide.addClass(this.get('color'));
 
     // Either insert the slide or animate from one to the other.
     if (settings.animateChange === true) {
@@ -203,9 +204,6 @@ var IK = (function() {
       $('#slide-container').html(slide);
       this.startCycle();
     }
-
-    // Add the color class to the given slide.
-    $('#slide-' + this.get('sid')).addClass(this.get('color'));
 
     // Animate the progress bar
     $('#progress').stop(true,true);
