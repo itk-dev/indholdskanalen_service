@@ -135,6 +135,10 @@
       padding: $textbox-padding;
       font-size: $textbox-font-size;
       line-height: $textbox-font-size * 1.1;
+
+      &.bigger {
+        font-size: $textbox-font-size * 1.4;
+      }
     }
   }
 

@@ -21,11 +21,12 @@ function ik_channel_filter_get_slides($raw_values) {
   $tables_and = array();
   $tables_or = array();
 
-  // Loop over fields and get configuration
+  // Loop over fields and get configuration.
   foreach ($raw_values as $fieldname => $values) {
     // Get values and covert them into sql frendly string. Another
-    // solution would be to use the query build...
-    $values = explode('|', check_plain($values));
+    // solution would be to use the query build. HACK ALERT.
+    $values = explode('|', $values);
+    $values = array_map('addslashes', $values);
     $values_str = "'" . implode("', '", $values) . "'";
 
     // Get information about the fields configuration.
@@ -48,8 +49,8 @@ function ik_channel_filter_get_slides($raw_values) {
       case 'og':
         // We are searching on two levels and this is fixed in some what a
         // hacked way. But it works for now :-|
-        //  * department -> slide and
-        //  * orgranistaion -> department -> slide
+        // * department -> slide and.
+        // * organisation -> department -> slide.
         $og_type = array_filter($field_info['settings']['ik_search']['og']);
         if (!isset($og_type['organisation'])) {
           // One level OG search.
@@ -57,7 +58,7 @@ function ik_channel_filter_get_slides($raw_values) {
                     INNER JOIN (
                       SELECT etid FROM og_membership WHERE gid IN (
                         SELECT n.nid
-                        FROM node n
+                        FROM {node} n
                         WHERE type = '" . array_shift($og_type) . "'
                         AND n.title IN (" . $values_str . ")
                       )
@@ -90,14 +91,14 @@ function ik_channel_filter_get_slides($raw_values) {
 
         // This have to be done foreach vocabulary and join to gether.
         $query = "SELECT DISTINCT n.nid, n.title
-                  FROM node n
+                  FROM {node} n
                   INNER JOIN (
                   SELECT entity_id AS nid
                     FROM field_data_" . $term_field . "
                     WHERE " . $term_field . "_tid IN (
                       SELECT ttd.tid
-                      FROM taxonomy_term_data ttd
-                      INNER JOIN taxonomy_vocabulary tv ON tv.vid = ttd.vid
+                      FROM {taxonomy_term_data} ttd
+                      INNER JOIN {taxonomy_vocabulary} tv ON tv.vid = ttd.vid
                       WHERE machine_name = '" . $vocabulary . "'
                       AND ttd.name IN (" . $values_str . ")
                     )
@@ -109,7 +110,7 @@ function ik_channel_filter_get_slides($raw_values) {
         break;
     }
 
-    // Excute query into temporary table and store it base on its
+    // Execute query into temporary table and store it base on its
     // operation in relation to other fields.
     if ($operation) {
       $tables_or[] = db_query_temporary($query);
@@ -165,7 +166,7 @@ function _ik_channel_preview_update() {
   if (isset($_POST['ik_preview_values'])) {
     foreach ($_POST['ik_preview_values'] as $fieldname => $values) {
       if (!empty($values)) {
-        $raw_values[check_plain($fieldname)] = check_plain($values);
+        $raw_values[check_plain($fieldname)] = $values;
       }
     }
   }

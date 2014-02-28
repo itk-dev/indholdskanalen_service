@@ -160,7 +160,7 @@ function ik_frontend_get_slides($token, $entity) {
       $field = $entity->$fieldname;
       if (!empty($field)) {
         foreach ($field as $lang => $data) {
-          $values[$fieldname] = check_plain($data[0]['data']);
+          $values[$fieldname] = $data[0]['data'];
         }
       }
     }
@@ -247,6 +247,11 @@ function ik_frontend_fetch_slide($sid, $json = TRUE, $reset = FALSE) {
       $slide->color = ik_frontend_select_color_theme($data[0]['value']);
     }
 
+    $slide->fontsize = ik_frontend_select_font_size(0);
+    if ($data = field_get_items('node', $entity, 'field_ik_slide_font_size')) {
+      $slide->fontsize = ik_frontend_select_font_size($data[0]['value']);
+    }
+
     $slide->logo = '';
     if ($data = field_get_items('node', $entity, 'field_ik_slide_logo')) {
       $slide->logo = image_style_url('slide_logoes', $data[0]['uri']);
@@ -300,6 +305,32 @@ function ik_frontend_fetch_slide($sid, $json = TRUE, $reset = FALSE) {
   else {
     return $slide;
   }
+}
+
+/**
+ * Returns the name of the font size selected.
+ *
+ * @param $value
+ *  Value from the font size field.
+ *
+ * @return string
+ *  Selected font size.
+ */
+function ik_frontend_select_font_size($value) {
+  switch($value) {
+    case 0:
+      $font_size = 'normal';
+      break;
+
+    case 1:
+      $font_size = 'bigger';
+      break;
+
+    default:
+      $font_size = 'normal';
+  }
+
+  return $font_size;
 }
 
 /**

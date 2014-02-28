@@ -181,6 +181,49 @@ function ik_slides_field_default_field_instances() {
     ),
   );
 
+  // Exported field_instance: 'node-slide-field_ik_slide_font_size'
+  $field_instances['node-slide-field_ik_slide_font_size'] = array(
+    'bundle' => 'slide',
+    'default_value' => array(
+      0 => array(
+        'value' => 0,
+      ),
+    ),
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'list',
+        'settings' => array(),
+        'type' => 'list_default',
+        'weight' => 19,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_ik_slide_font_size',
+    'label' => 'Skriftstørrelse på brødtekst',
+    'required' => 0,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'options',
+      'settings' => array(
+        'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
+      ),
+      'type' => 'options_select',
+      'weight' => 16,
+    ),
+  );
+
   // Exported field_instance: 'node-slide-field_ik_slide_import_node'
   $field_instances['node-slide-field_ik_slide_import_node'] = array(
     'bundle' => 'slide',
@@ -315,7 +358,7 @@ function ik_slides_field_default_field_instances() {
         'progress_indicator' => 'throbber',
       ),
       'type' => 'media_generic',
-      'weight' => 18,
+      'weight' => 17,
     ),
   );
 
@@ -694,6 +737,7 @@ function ik_slides_field_default_field_instances() {
   t('Medier');
   t('Overgangseffekt');
   t('Preview');
+  t('Skriftstørrelse på brødtekst');
   t('Tags');
   t('Tekst');
   t('Tilføj billeder til slide. Billeder skaleres og beskæres automatisk til 1920x1080 pixel (Full HD, 16:9 format). Ønsker du fuld kontrol over hvordan dit billede ser ud anbefales det at uploade billedet i størrelsen 1920x1080 på forhånd.');

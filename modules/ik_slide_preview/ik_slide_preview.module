@@ -498,6 +498,11 @@ function ik_slide_preview_build_slide($entity) {
     $slide->color = ik_frontend_select_color_theme($data[0]['value']);
   }
 
+  $slide->fontsize = ik_frontend_select_font_size(0);
+  if ($data = field_get_items('node', $entity, 'field_ik_slide_font_size')) {
+    $slide->fontsize = ik_frontend_select_font_size($data[0]['value']);
+  }
+
   $slide->logo = '';
   if ($data = field_get_items('node', $entity, 'field_ik_slide_logo')) {
     $file = file_load($data[0]['fid']);
