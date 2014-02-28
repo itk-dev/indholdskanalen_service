@@ -319,12 +319,12 @@ function ik_channel_filter_field_widget_form(&$form, &$form_state, $field, $inst
       if (isset($element['#entity']->nid)) {
         $field_names = isset($field['settings']['ik_search']['types']) ? $field['settings']['ik_search']['types'] : array();
 
-        // Get values that shold be used to find slids.
+        // Get values that should be used to find slides.
         $values = array();
         foreach ($field_names as $fieldname) {
           $data = $element['#entity']->$fieldname;
           if (!empty($data[$langcode][$delta]['data'])) {
-            $values[$fieldname] = check_plain($data[$langcode][$delta]['data']);
+            $values[$fieldname] = $data[$langcode][$delta]['data'];
           }
         }
 
@@ -639,6 +639,7 @@ function ik_channel_filter_field_formatter_view($entity_type, $entity, $field, $
  * @param type $field
  * @param type $entity
  * @param type $langcode
+ *
  * @return array
  *  The slides founds title and nid's.
  */
@@ -646,12 +647,12 @@ function ik_channel_filter_formatter_helper($field, $entity, $langcode) {
   // Get filter fields used.
   $field_names = isset($field['settings']['ik_search']['types']) ? $field['settings']['ik_search']['types'] : array();
 
-  // Get values that shold be used to find slids.
+  // Get values that should be used to find slides.
   $values = array();
   foreach ($field_names as $fieldname) {
     $data = $entity->$fieldname;
     if (!empty($data[$langcode][0]['data'])) {
-      $values[$fieldname] = check_plain($data[$langcode][0]['data']);
+      $values[$fieldname] = $data[$langcode][0]['data'];
     }
   }
 
@@ -668,7 +669,7 @@ function ik_channel_filter_token_info() {
     'types' => array(
       'ik_channel' => array(
         'name' => t('IK Channels'),
-        'description' => t('Tokens used to generate ID\'s for channels')
+        'description' => t('Tokens used to generate ID\'s for channels'),
       ),
     ),
     'tokens' => array(
@@ -697,7 +698,7 @@ function ik_channel_filter_tokens($type, $tokens, array $data = array(), array $
           if (isset($data['node'])) {
             $replacements[$original] = ik_channel_filter_token($data['node']->nid);
           }
-        break;
+          break;
       }
     }
   }

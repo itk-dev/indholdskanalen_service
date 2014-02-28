@@ -160,7 +160,7 @@ function ik_frontend_get_slides($token, $entity) {
       $field = $entity->$fieldname;
       if (!empty($field)) {
         foreach ($field as $lang => $data) {
-          $values[$fieldname] = check_plain($data[0]['data']);
+          $values[$fieldname] = $data[0]['data'];
         }
       }
     }
