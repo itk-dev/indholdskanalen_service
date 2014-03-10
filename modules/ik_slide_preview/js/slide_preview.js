@@ -1,9 +1,10 @@
 (function($){
   $(document).ready(function() {
     $('.preview-live-slide').click(function(e) {
-      $('#slide-preview').remove();
+      $("#slide-preview").remove();
 
       e.preventDefault();
+
       var src = $(this).attr('href');
       
       // Build iframe.

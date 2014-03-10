@@ -186,7 +186,7 @@ function ik_slides_field_default_field_instances() {
     'bundle' => 'slide',
     'default_value' => array(
       0 => array(
-        'value' => 0,
+        'value' => 1,
       ),
     ),
     'deleted' => 0,
