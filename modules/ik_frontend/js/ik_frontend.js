@@ -41,7 +41,7 @@ var IK = (function() {
     // Build directive for PURE.
     this.directive = {
       '.image-container img' : {
-        'medium<-media' : {
+        'medium<-media.image' : {
           '@src' : 'medium'
         }
       },
@@ -268,7 +268,7 @@ var IK = (function() {
 
           // Check if we have any old slides and if we do run the slide show.
           if (self.slides.length !== 0) {
-            // Goto the next slide.
+            // Go to the next slide.
             self.nextSlide();
           }
           else {
@@ -347,7 +347,7 @@ var IK = (function() {
     };
 
     /**
-     * Goto the next slide.
+     * Go to the next slide.
      */
     this.nextSlide = function () {
       var self = this;
@@ -384,7 +384,7 @@ var IK = (function() {
     };
 
     /**
-     * Stops the slide show be clearing the tiem-out the changes the slides.
+     * Stops the slide show be clearing the time-out the changes the slides.
      */
     this.stop = function () {
       log('Stopping the show');

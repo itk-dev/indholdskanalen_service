@@ -262,11 +262,19 @@ function ik_frontend_fetch_slide($sid, $json = TRUE, $reset = FALSE) {
       $slide->transition = $data[0]['value'];
     }
 
-    $slide->media = array();
+    $slide->media = array(
+      'image' => array(),
+      'video' => array(),
+    );
     if ($data = field_get_items('node', $entity, 'field_ik_slide_media')) {
       foreach ($data as $media) {
         $file = file_load($media['fid']);
-        $slide->media[$media['fid']] = image_style_url('slide_images', $file->uri);
+        $mime = substr($file->filemime, 0, strpos($file->filemime, '/'));
+        $url = $file->uri;
+        if ($mime == 'image') {
+          $url = image_style_url('slide_images', $file->uri);
+        }
+        $slide->media[$mime][$media['fid']] = $url;
       }
     }
 
@@ -310,14 +318,14 @@ function ik_frontend_fetch_slide($sid, $json = TRUE, $reset = FALSE) {
 /**
  * Returns the name of the font size selected.
  *
- * @param $value
- *  Value from the font size field.
+ * @param int $value
+ *   Value from the font size field.
  *
  * @return string
- *  Selected font size.
+ *   Selected font size.
  */
 function ik_frontend_select_font_size($value) {
-  switch($value) {
+  switch ($value) {
     case 0:
       $font_size = 'normal';
       break;

@@ -1,7 +1,7 @@
 <?php
 /**
  * @file
- * Addes support for previewing slides in the node edit form befor saving a
+ * Adds support for previewing slides in the node edit form before saving a
  * slide. It also implements a new field that shows an preview of the slide when
  * displaying the node.
  */
@@ -28,7 +28,6 @@ function ik_slide_preview_menu() {
 
 /**
  * Implements hook_ctools_plugin_directory().
- *
  */
 function ik_slide_preview_ctools_plugin_directory($module, $plugin) {
   if ($module == 'ctools' && !empty($plugin)) {
@@ -37,10 +36,10 @@ function ik_slide_preview_ctools_plugin_directory($module, $plugin) {
 }
 
 /**
- * Simple callback the renders a sigle slide.
+ * Simple callback the renders a single slide.
  *
  * @param int $sid
- *  The node id of the slide to render.
+ *   The node id of the slide to render.
  */
 function ik_slide_preview_page($sid) {
   $slide = ik_frontend_fetch_slide($sid, FALSE, TRUE);
@@ -50,8 +49,7 @@ function ik_slide_preview_page($sid) {
     newrelic_disable_autorum();
   }
 
-  // Return skeleton for slide show (complet HTML page <header><content><footer>
-  // etc.).
+  // Return skeleton for slide show (complete HTML page).
   echo theme('ik_frontend', array(
     'settings' => array(
       'content' => $slide,
@@ -80,14 +78,13 @@ function ik_slide_preview_field_info() {
         'file_directory' => '',
       ),
       'default_widget' => 'ik_slide_preview_widget',
-      'default_formatter' => 'ik_slide_preview_formatter'
+      'default_formatter' => 'ik_slide_preview_formatter',
     ),
   );
 }
 
 /**
  * Implements hook_field_validate().
- *
  */
 function ik_slide_preview_field_validate($entity_type, $entity, $field, $instance, $langcode, $items, &$errors) {
 
@@ -95,7 +92,6 @@ function ik_slide_preview_field_validate($entity_type, $entity, $field, $instanc
 
 /**
  * Implements hook_field_is_empty().
- *
  */
 function ik_slide_preview_field_is_empty($item, $field) {
   return empty($item['image']);
@@ -104,7 +100,6 @@ function ik_slide_preview_field_is_empty($item, $field) {
 
 /**
  * Implements hook_field_widget_info().
- *
  */
 function ik_slide_preview_field_widget_info() {
   return array(
@@ -118,7 +113,6 @@ function ik_slide_preview_field_widget_info() {
 
 /**
  * Implements hook_field_settings_form().
- *
  */
 function ik_slide_preview_field_settings_form($field, $instance, $has_data) {
   $form = array();
@@ -185,7 +179,6 @@ function ik_slide_preview_field_widget_form(&$form, &$form_state, $field, $insta
 
 /**
  * Implements hook_field_widget_error().
- *
  */
 function ik_slide_preview_field_widget_error($element, $error, $form, &$form_state) {
   // The field does not hold any information, so no need to check for errors.
@@ -194,7 +187,6 @@ function ik_slide_preview_field_widget_error($element, $error, $form, &$form_sta
 
 /**
  * Implements hook_field_formatter_info().
- *
  */
 function ik_slide_preview_field_formatter_info() {
   return array(
@@ -259,12 +251,12 @@ function ik_slide_preview_field_formatter_settings_summary($field, $instance, $v
  * node edit and in views.
  */
 function ik_slide_preview_field_formatter_view($entity_type, $entity, $field, $instance, $langcode, $items, $display) {
-  // Build urls and destionation.
+  // Build urls and destination.
   $dest = $field['settings']['uri_scheme'] . '://' . $instance['settings']['file_directory'];
 
   $element = array();
   foreach ($items as $delta => $item) {
-    // Build return element
+    // Build return element.
     $element[$delta] = array(
       '#theme' => 'image_formatter',
       '#item' => array(
@@ -283,7 +275,7 @@ function ik_slide_preview_field_formatter_view($entity_type, $entity, $field, $i
 /**
  * Implements hook_field_update().
  *
- * Removes old screenshots an image styles and prepares the new image path.
+ * Removes old screen shots an image styles and prepares the new image path.
  */
 function ik_slide_preview_field_update($entity_type, $entity, $field, $instance, $langcode, &$items) {
   foreach ($items as $delta => $item) {
@@ -308,7 +300,7 @@ function ik_slide_preview_field_update($entity_type, $entity, $field, $instance,
 /**
  * Implements hook_field_insert().
  *
- * Prepares the screenshot image file.
+ * Prepares the screen shot image file.
  */
 function ik_slide_preview_field_insert($entity_type, $entity, $field, $instance, $langcode, &$items) {
   // Fill in new file name to trigger generation in prepare view.
@@ -329,13 +321,14 @@ function ik_slide_preview_field_insert($entity_type, $entity, $field, $instance,
  */
 function ik_slide_preview_field_prepare_view($entity_type, $entities, $field, $instances, $langcode, &$items) {
   foreach ($entities as $id => &$entity) {
-    // Find destination for the screenshot and generate it if th does not exists.
+    // Find destination for the screen shot and generate it if th does not
+    // exists.
     $dest = $field['settings']['uri_scheme'] . '://' . $instances[$id]['settings']['file_directory'];
     $url = url('slide/' . $entity->nid . '/preview', array('absolute' => TRUE));
     foreach ($items[$id] as $delta => $item) {
       $file = drupal_realpath($item['image']);
       if (!file_exists($file)) {
-        // Capture new screenshot.
+        // Capture new screen shot.
         if (!phantomjs_capture_screen($url, $dest, basename($file))) {
           drupal_set_message(t('PhantomJS chould not create screenshot of the slide'), 'error');
         }
@@ -381,8 +374,6 @@ function ik_slide_preview_form_slide_node_form_alter(&$form, &$form_state, $form
  * @staticvar boolean $build_node
  * @staticvar null $publish_on
  * @staticvar null $unpublish_on
- * @param type $form
- * @param type $form_state
  */
 function ik_slide_preview_build_preview($form, &$form_state) {
   static $build_node = TRUE;
@@ -395,7 +386,7 @@ function ik_slide_preview_build_preview($form, &$form_state) {
     // Build json array.
     $slide = ik_slide_preview_build_slide($node);
 
-    // Theme content
+    // Theme content.
     $content = theme('ik_frontend', array(
       'settings' => array(
         'content' => $slide,
@@ -416,7 +407,7 @@ function ik_slide_preview_build_preview($form, &$form_state) {
         (function($){
           $(document).ready(function() {
             // Iframe content.
-            var content = '".$content."';
+            var content = '" . $content . "';
 
             // Build iframe.
             var frame = document.createElement('iframe');
@@ -466,12 +457,12 @@ function ik_slide_preview_build_preview($form, &$form_state) {
     $form_state['values']['unpublish_on'] = $unpublish_on;
   }
 
-  // Rebuild form
+  // Rebuild form.
   $form_state['rebuild'] = TRUE;
 
   // Load jquery UI dialog.
   drupal_add_library('system', 'ui.dialog');
-  
+
   // Disable newrelic JS injection.
   if (extension_loaded('newrelic')) {
     newrelic_disable_autorum();
