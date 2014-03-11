@@ -274,7 +274,7 @@ function ik_frontend_fetch_slide($sid, $json = TRUE, $reset = FALSE) {
         if ($mime == 'image') {
           $url = image_style_url('slide_images', $file->uri);
         }
-        $slide->media[$mime][$media['fid']] = $url;
+        $slide->media[$mime][] = $url;
       }
     }
 
