@@ -22,7 +22,7 @@ function ik_default_settings_filter_default_formats() {
         'weight' => -49,
         'status' => 1,
         'settings' => array(
-          'allowed_html' => '<a> <span> <em> <strong> <cite> <blockquote> <code> <ul> <ol> <li> <dl> <dt> <dd> <br> <p> <i> <u> <b> <table> <td> <tr> <th> <h2> <h3> <h4> <h5> <h6>',
+          'allowed_html' => '<a> <span> <em> <strong> <cite> <blockquote> <code> <ul> <ol> <li> <dl> <dt> <dd> <br> <p> <i> <u> <b> <table> <td> <tr> <th> <h2> <h3> <h4> <h5> <h6> <hr>',
           'filter_html_help' => 1,
           'filter_html_nofollow' => 0,
         ),
