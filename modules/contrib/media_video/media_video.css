@@ -1,0 +1,11 @@
+/* Hide the Media Preview Image */
+/* @TODO do this in code */
+.video-widget .media-widget .preview {
+  display: none;
+}
+
+/* Hide the remove button because video already provides one */
+/* @TODO do this in code */
+.video-widget .media-widget .remove {
+  display: none;
+}

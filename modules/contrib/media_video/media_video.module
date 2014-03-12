@@ -1,0 +1,126 @@
+<?php
+/**
+ * @file
+ * media_video.module
+ * Provide Media Browser Widget integration with Video Module.
+ */
+
+/**
+ * Implements hook_field_widget_info().
+ */
+function media_video_field_widget_info() {
+  // Copy some hybrid of the media and video definitions.
+  return array(
+    'media_video' => array(
+      'label' => t('Media file selector'),
+      'field types' => array('video'),
+      'settings' => array(
+        'progress_indicator' => 'throbber',
+        'allowed_types' => array('video'),
+        'browser_plugins' => array(),
+        'allowed_schemes' => array('public', 'private'),
+      ),
+      'behaviors' => array(
+        'multiple values' => FIELD_BEHAVIOR_CUSTOM,
+        'default value' => FIELD_BEHAVIOR_NONE,
+      ),
+    ),
+  );
+}
+
+/**
+ * Implements hook_field_widget_settings_form().
+ */
+function media_video_field_widget_settings_form($field, $instance) {
+  // Define our form.
+  $form = array();
+
+  // Add the video form stuff.
+  $form += video_field_widget_settings_form($field, $instance);
+
+  // Add the media form stuff.
+  $form += media_field_widget_settings_form($field, $instance);
+
+  // @TODO Add our own settings.
+  // (ie: customize the media to #title = t('custom text').
+  // Disable the upload plugin.
+  // Video module builds it's own and we rely on custom JS to make it work.
+  unset($form['browser_plugins']['#options']['upload']);
+
+  // Take that.
+  return $form;
+}
+
+/**
+ * Implements hook_field_widget_form().
+ */
+function media_video_field_widget_form(&$form, &$form_state, $field, $instance, $langcode, $items, $delta, $element) {
+
+  // Add our JS.
+  drupal_add_js(drupal_get_path('module', 'media_video') . '/media_video.js');
+
+  // Add our CSS.
+  // We're hiding stuff because media expects it to be there.
+  // @TODO find a better way.
+  drupal_add_css(drupal_get_path('module', 'media_video') . '/media_video.css');
+
+  // Get the Video Upload element.
+  $elements = video_field_widget_form($form, $form_state, $field, $instance, $langcode, $items, $delta, $element);
+
+  // Attach a media element to the $elements we got from the video module.
+  foreach (element_children($elements) as $delta) {
+
+    // Get the Media Element.
+    $media = media_field_widget_form($form, $form_state, $field, $instance, $langcode, $items, $delta, $element);
+
+    // Cleanup media element a little bit.
+    // @TODO Make this a setting in the "Settings form".
+    $media['#title'] = '';
+
+    // Attach the media element as a subform of the video element.
+    $elements[$delta]['media'] = $media;
+
+    // We need to change some things if there's already a file uploaded.
+    if (!empty($elements[$delta]['#default_value']['fid'])) {
+
+      // Add our after build function to re-enable upload button.
+      $elements[$delta]['#pre_render'][] = 'media_video_pre_render';
+
+      // Add our after build function to re-enable upload button.
+      $elements[$delta]['#after_build'][] = 'media_video_after_build';
+
+      // The bar doesn't make sense while the field is AJAX reloading.
+      $elements[$delta]['#progress_indicator'] = 'throbber';
+
+    }
+
+  }
+
+  // Give the kids what they want.
+  return $elements;
+}
+
+/**
+ * Function to implement #pre_render to re-enable the upload_file button.
+ **/
+function media_video_pre_render($element) {
+
+  // Remove the "file" field.
+  $element['upload']['#access'] = FALSE;
+
+  // Hide the upload button.
+  $element['upload_button']['#attributes'] = array('style' => 'display:none;');
+
+  return $element;
+}
+
+/**
+ * Function to implement #after_build to avoid illegal choice error.
+ **/
+function media_video_after_build($element) {
+
+  // Add our "media" placeholder so the AJAX will validate.
+  $element['thumbnail']['#options'][0] = 'media';
+
+  return $element;
+}
