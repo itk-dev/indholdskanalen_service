@@ -38,6 +38,20 @@ function ik_admin_form_alter(&$form, &$form_state, $form_id) {
 }
 
 /**
+ * Implements hook_init().
+ *
+ * This is not optimal, but we have no idea when the code is needed.
+ */
+function ik_admin_init() {
+  // We set at high weight to ensure that this overrides the JS from the media
+  // module.
+  drupal_add_js(drupal_get_path('module', 'ik_admin') . '/js/ik_admin.js', array(
+    'scope' => 'footer',
+    'weight' => '20',
+  ));
+}
+
+/**
  * Implements hook_pathauto_alias_alter().
  */
 function ik_admin_pathauto_alias_alter(&$alias, array &$context) {

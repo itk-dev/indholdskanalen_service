@@ -5,8 +5,9 @@
  */
 
 /**
- * Default implementation of preprocess ik_frontend theme function. It ensures
- * that the right css and script are available in the template file.
+ * Default implementation of preprocess ik_frontend theme function.
+ *
+ * It ensures that the right css and script are available in the template file.
  */
 function template_preprocess_ik_frontend(&$vars) {
   // Add style sheets.
@@ -37,7 +38,7 @@ function template_preprocess_ik_frontend(&$vars) {
     'jquery-1.8.3.min.js',
     'jquery.cycle2.min.js',
     'pure_min.js',
-    'ik_frontend.min.js?version=2802201401',
+    'ik_frontend.js?version=2802201401',
     'ik_frontend_events.min.js?version=2802201401',
   );
 

@@ -1,0 +1,6 @@
+name = Media Video
+description = Adds media browser capability to video upload form
+package = Media
+core = 7.x
+dependencies[] = video (>=2)
+dependencies[] = media (>=2)
