@@ -78,7 +78,25 @@ var IK = (function() {
     // Build directive for PURE based on type.
     console.log(data);
     if (data.media.video.length) {
-      this.directive = {};
+      this.directive = {
+        '.video-container source' : {
+          'medium<-media.video' : {
+            '@src' : 'medium.url',
+            '@type' : 'medium.type'
+          }
+        },
+        '.slide-heading' : 'title',
+        '.slide-subheading' : 'subheading',
+        '.slide-text' : 'text',
+        '.logo-container img@src' : 'logo',
+        '.logo-container@style' : function (arg) {
+          if (arg.context.logo) {
+            return 'display:block;';
+          } else {
+            return 'display:none;';
+          }
+        }
+      };
 
       // Compile template with the directive.
       this.template = $('#pure-template-video').compile(this.directive);
