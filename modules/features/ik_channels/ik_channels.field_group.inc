@@ -32,7 +32,7 @@ function ik_channels_field_group_info() {
       'label' => 'Basic information',
       'instance_settings' => array(
         'required_fields' => 1,
-        'classes' => '',
+        'classes' => ' group-channel-basic field-group-fieldset',
         'description' => '',
       ),
       'formatter' => 'open',
@@ -64,7 +64,7 @@ function ik_channels_field_group_info() {
       'formatter' => 'collapsible',
       'instance_settings' => array(
         'description' => '',
-        'classes' => '',
+        'classes' => ' group-channel-filter field-group-fieldset',
         'required_fields' => 1,
       ),
     ),
