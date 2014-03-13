@@ -125,7 +125,6 @@ var IK = (function() {
       this.template = $('#pure-template-image').compile(this.directive);
     }
 
-
     this.propreties = data;
   };
 
