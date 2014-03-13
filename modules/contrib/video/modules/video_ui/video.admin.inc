@@ -11,13 +11,17 @@ function video_transcoder_admin_settings() {
   $transcoder = new Transcoder();
   $options = $transcoder->getAllTranscoders();
 
+  foreach ($options['help'] as $message) {
+    drupal_set_message($message, 'warning');
+  }
+
   $form = array();
   $form['video_convertor'] = array(
     '#type' => 'radios',
     '#title' => t('Video transcoder'),
     '#default_value' => variable_get('video_convertor', 'TranscoderAbstractionFactoryFfmpeg'),
     '#options' => $options['radios'],
-    '#description' => '<p>' . t('Select a video transcoder will help you convert videos and generate thumbnails.') . '</p>' . theme('item_list', array('items' => $options['help'])),
+    '#description' => '<p>' . t('Select a video transcoder will help you convert videos and generate thumbnails.') . '</p>',
   );
   $form = $form + $options['admin_settings'];
 
@@ -223,10 +227,10 @@ function video_general_admin_settings() {
   return system_settings_form($form);
 }
 
-function video_general_admin_settings_validate($form, $form_state) {
+function video_general_admin_settings_validate($form, &$form_state) {
   $v =& $form_state['values'];
   if (!empty($v['video_dimensions'])) {
-    $v['video_dimensions'] = str_replace("\r", '', $v['video_dimensions']);
+    $v['video_dimensions'] = trim(str_replace("\r", '', $v['video_dimensions']));
     if (!video_utility::validateDimensionList($v['video_dimensions'])) {
       form_error($form['video_dimensions'], t('The list of dimensions contains errors: only enter new lines and dimensions in the form widthxheight.'));
     }
@@ -246,7 +250,7 @@ function video_players_admin_settings() {
     '#description' => t('Here you can map specific players to each video extension type.') . ' ' . t('This player will be selected when you choose the !formatter formatter for a Video field.', array('!formatter' => t('Video player'))),
   );
   // lets get all our supported extensions and players.
-  $extensions = video_utility::getVideoExtensions();
+  $extensions = video_utility::getVideoExtensionPlayers();
   $players = video_utility::getVideoPlayers();
   $flv_players = video_video_flv_players();
   $html5_players = video_video_html5_players();
@@ -351,7 +355,7 @@ function video_players_admin_settings_submit($form, &$form_state) {
   db_query('DELETE FROM {variable} WHERE name LIKE \'video_extension_%\'');
 
   // Remove flv player or html5 player when that player hasn't been selected
-  $extensions = video_utility::getVideoExtensions();
+  $extensions = video_utility::getVideoExtensionPlayers();
   foreach (array_keys($extensions) as $ext) {
     $selected = $form_state['values']['video_extension_' . $ext];
     if ($selected != 'video_play_flv') {

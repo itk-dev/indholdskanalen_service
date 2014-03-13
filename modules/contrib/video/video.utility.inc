@@ -214,6 +214,7 @@ class video_utility {
 
   public static function getDimensions() {
     $dims = explode("\n", str_replace("\r", '', variable_get('video_dimensions', self::getDefaultDimensions())));
+    $dims = array_filter($dims);
     return array_combine($dims, $dims);
   }
 
@@ -227,9 +228,22 @@ class video_utility {
   }
 
   /**
+   * Return the list of known video/audio extensions.
+   */
+  public static function getMediaExtensions() {
+    $supported_extensions = array_keys(self::getVideoExtensionPlayers());
+
+    // Add other extensions that don't get a separate player but are recognized as playable anyway.
+    return array_merge($supported_extensions, array(
+      'oga', 'wma', 'flac', 'wav',
+      'ts', 'mxf',
+    ));
+  }
+
+  /**
    * Return our list of video extensions and their associated player.
    */
-  public static function getVideoExtensions() {
+  public static function getVideoExtensionPlayers() {
     return array(
       'divx' => 'video_play_divx',
       'mkv' => 'video_play_divx',
@@ -299,5 +313,22 @@ class video_utility {
       default:
         return file_get_mimetype($uri);
     }
+  }
+
+  /**
+   * Returns the nearest even integer given an int or float.
+   *
+   * When equal, it will choose the highest nearest even integer.
+   */
+  public static function roundToEvenNumber($number) {
+    $remainder = fmod($number, 2);
+    if ($remainder == 0) {
+      return (int)($number);
+    }
+    elseif ($remainder < 1) {
+      return (int)($number - $remainder);
+    }
+
+    return (int)($number - $remainder + 2);
   }
 }

@@ -262,11 +262,11 @@ class TranscoderAbstractionFactoryZencoder extends TranscoderAbstractionFactory 
     registry_rebuild();
 
     if (!module_exists('zencoderapi')) {
-      $errormsg = t('You must install and enable the Zencoder API module to use Zencoder to transcode videos.');
+      $errormsg = t('You must <a href="@url">enable the Zencoder API module</a> to use Zencoder to transcode videos.', array('@url' => url('admin/modules/', array('fragment' => 'edit-modules-media-zencoderapi-enable'))));
       return FALSE;
     }
     elseif (!class_exists('Services_Zencoder')) {
-      $errormsg = t('The Zencoder API module has not been setup properly.');
+      $errormsg = t('The Zencoder API module has not been setup properly. Make sure that <a href="@url" target="_blank">the Zencoder API library</a> (from Github) is installed in sites/all/libraries/zencoder', array('@url' => 'https://github.com/zencoder/zencoder-php/archive/master.zip'));
       return FALSE;
     }
 
@@ -576,6 +576,7 @@ class TranscoderAbstractionFactoryZencoder extends TranscoderAbstractionFactory 
 
     // Find all error situations
     if ($output->state === 'cancelled') {
+      watchdog('transcoder', 'Video with fid @fid and job id @jobid is marked as failed because a cancellation notification was received from Zencoder.', array('@fid' => $fid, '@jobid' => $jobid), WATCHDOG_WARNING);
       video_jobs::setFailed($video);
       echo 'Cancelled';
       return;
@@ -592,12 +593,14 @@ class TranscoderAbstractionFactoryZencoder extends TranscoderAbstractionFactory 
         }
       }
 
-      video_jobs::setFailed($video);
       watchdog('transcoder', 'Zencoder reports errors in postback for fid @fid, job id @jobid: !errordetail', array('@fid' => $fid, '@jobid' => $jobid, '!errordetail' => $errordetail), WATCHDOG_ERROR);
+      video_jobs::setFailed($video);
       echo 'Failure';
+      return;
     }
 
     if ($notification->job->state !== 'finished') {
+      echo 'Not finished';
       return;
     }
 
@@ -611,10 +614,14 @@ class TranscoderAbstractionFactoryZencoder extends TranscoderAbstractionFactory 
     // Sometimes the long duration of the copy() call causes Zencoder
     // to timeout and retry the notification postback later.
     // So we only copy the file when it doesn't exist or has a different file size.
+    // file_save() invokes filesize(), which may return a cached value.
+    // Clear the stat cache to get a fresh value.
+    clearstatcache();
     if (!file_exists($outputfile->uri) || filesize($outputfile->uri) != $output->file_size_in_bytes) {
       if (!$this->moveFile($output->url, $outputfile->uri)) {
-        video_jobs::setFailed($video);
         watchdog('transcoder', 'While processing Zencoder postback, failed to copy @source-uri to @target-uri.', array('@source-uri' => $output->url, '@target-uri' => $outputfile->uri), WATCHDOG_ERROR);
+        video_jobs::setFailed($video);
+        echo 'Error while moving';
         return;
       }
     }
@@ -631,6 +638,7 @@ class TranscoderAbstractionFactoryZencoder extends TranscoderAbstractionFactory 
 
     // If there are no thumbnails, quit now.
     if (empty($output->thumbnails)) {
+      echo 'No thumbnails';
       return;
     }
 
@@ -638,6 +646,7 @@ class TranscoderAbstractionFactoryZencoder extends TranscoderAbstractionFactory 
     // Pre-2.1.0, each thumbnail list was an array, now it is an object
     $thumbnails = is_array($output->thumbnails[0]) ? $output->thumbnails[0]['images'] : $output->thumbnails[0]->images;
     if (empty($thumbnails)) {
+      echo 'No thumbnails 2';
       return;
     }
 
@@ -645,6 +654,7 @@ class TranscoderAbstractionFactoryZencoder extends TranscoderAbstractionFactory 
     $entity = video_utility::loadEntity($video->entity_type, $video->entity_id);
     if (empty($entity)) {
       watchdog('transcoder', 'The entity to which the transcoded video belongs can\'t be found anymore. Entity type: @entity-type, entity id: @entity-id.', array('@entity-type' => $video->entity_type, '@entity-id' => $video->entity_id), WATCHDOG_ERROR);
+      echo 'No entity';
       return;
     }
 
@@ -658,11 +668,13 @@ class TranscoderAbstractionFactoryZencoder extends TranscoderAbstractionFactory 
     if (empty($entity->{$fieldname}[$langcode][$delta])) {
       // The field can't be found anymore. This may be a problem.
       watchdog('transcoder', 'The field to which video @filename was uploaded doesn\'t seem to exist anymore. Entity type: @entity-type, entity id: @entity-id, field name: @fieldname, field language: @langcode, delta: @delta.', array('@filename' => $video->filename, '@entity-type' => $video->entity_type, '@entity-id' => $video->entity_id, '@fieldname' => $fieldname, '@langcode' => $langcode, '@delta' => $delta), WATCHDOG_WARNING);
+      echo 'No field';
       return;
     }
     if ($entity->{$fieldname}[$langcode][$delta]['fid'] != $video->fid) {
       // The field does not contain the file we uploaded.
       watchdog('transcoder', 'The field to which video @filename was uploaded doesn\'t seem to contain this video anymore. Entity type: @entity-type, entity id: @entity-id, field name: @fieldname, field language: @langcode, delta: @delta.', array('@filename' => $video->filename, '@entity-type' => $video->entity_type, '@entity-id' => $video->entity_id, '@fieldname' => $fieldname, '@langcode' => $langcode, '@delta' => $delta), WATCHDOG_WARNING);
+      echo 'No field in entity';
       return;
     }
 
@@ -732,6 +744,7 @@ class TranscoderAbstractionFactoryZencoder extends TranscoderAbstractionFactory 
     // Skip setting the thumbnail if there are no thumbnails or when the current value is already valid
     $currentthumb = isset($entity->{$fieldname}[$langcode][$delta]['thumbnail']) ? intval($entity->{$fieldname}[$langcode][$delta]['thumbnail']) : 0;
     if (empty($thumbs) || isset($thumbs[$currentthumb])) {
+      echo 'OK: Thumbnail already set';
       return;
     }
 
@@ -752,6 +765,8 @@ class TranscoderAbstractionFactoryZencoder extends TranscoderAbstractionFactory 
         }
         break;
     }
+
+    echo 'OK';
   }
 
   private function moveFile($srcurl, $dsturi) {
@@ -767,7 +782,9 @@ class TranscoderAbstractionFactoryZencoder extends TranscoderAbstractionFactory 
       }
       // Move the file if the target is also s3:// or rcf://
       if (file_uri_scheme($dsturi) == $this->outputdestination) {
-        return rename($srcuri, $dsturi);
+        $result = rename($srcuri, $dsturi);
+        clearstatcache();
+        return $result;
       }
 
       // The src file needs to be removed after copying.
@@ -792,6 +809,9 @@ class TranscoderAbstractionFactoryZencoder extends TranscoderAbstractionFactory 
     if ($result && $unlinksrc) {
       unlink($srcuri);
     }
+
+    // Clear the stat cache after the copy.
+    clearstatcache();
 
     return $result;
   }

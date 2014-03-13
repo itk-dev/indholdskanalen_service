@@ -85,7 +85,7 @@ function theme_video_formatter_player(array $variables) {
   // FLV theme function is used.
   // In all other cases the player configured for the last or only video type
   // is used.
-  $defaults = video_utility::getVideoExtensions();
+  $defaults = video_utility::getVideoExtensionPlayers();
   foreach ($item['playablefiles'] as $playablefile) {
     $extension = video_utility::getExtension($playablefile->uri);
     $theme_function = variable_get('video_extension_' . $extension, $defaults[$extension]);
@@ -138,6 +138,9 @@ function theme_video_formatter_thumbnail($variables) {
     $options = $variables['path']['options'];
     // When displaying an image inside a link, the html option must be TRUE.
     $options['html'] = TRUE;
+    if (!empty($variables['colorbox'])) {
+      $options['attributes'] = array('class' => array('colorbox-load'));
+    }
     $output = l($output, $path, $options);
   }
 

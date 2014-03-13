@@ -261,11 +261,19 @@ function video_field_load($entity_type, $entities, $field, $instances, $langcode
       if (empty($item) || empty($item['fid'])) {
         continue;
       }
+
       // Check whether transcoding is enabled for this file
       if (isset($queues[$item['fid']])) {
+        $items[$id][$delta]['fid'] = intval($item['fid']);
+        $items[$id][$delta]['timestamp'] = intval($item['timestamp']);
+        $items[$id][$delta]['filesize'] = intval($item['filesize']);
+        $items[$id][$delta]['uid'] = intval($item['uid']);
+        $items[$id][$delta]['thumbnail'] = intval($item['thumbnail']);
+        $items[$id][$delta]['status'] = intval($item['status']);
         $items[$id][$delta]['autoconversion'] = TRUE;
         $items[$id][$delta]['conversioncompleted'] = $queues[$item['fid']]->status == VIDEO_RENDERING_COMPLETE;
-        $items[$id][$delta]['conversionstatus'] = $queues[$item['fid']]->status;
+        $items[$id][$delta]['conversionstatus'] = intval($queues[$item['fid']]->status);
+        $items[$id][$delta]['duration'] = intval($queues[$item['fid']]->duration);
 
         // Load converted files
         $items[$id][$delta]['playablefiles'] = array();
@@ -285,6 +293,7 @@ function video_field_load($entity_type, $entities, $field, $instances, $langcode
       else {
         $items[$id][$delta]['playablefiles'] = array((object)$items[$id][$delta]);
         $items[$id][$delta]['autoconversion'] = FALSE;
+        $items[$id][$delta]['duration'] = NULL;
       }
 
       // Load thumbnail
@@ -293,6 +302,7 @@ function video_field_load($entity_type, $entities, $field, $instances, $langcode
         $items[$id][$delta]['thumbnailfile'] = NULL;
       }
       else {
+        $items[$id][$delta]['thumbnail'] = intval($item['thumbnail']);
         $items[$id][$delta]['thumbnailfile'] = $files[$item['thumbnail']];
       }
     }
@@ -588,7 +598,7 @@ function video_field_widget_form(&$form, &$form_state, $field, $instance, $langc
 
   foreach (element_children($elements) as $delta) {
     // If not using custom extension validation, ensure this is an video.
-    $supported_extensions = array_keys(video_utility::getVideoExtensions());
+    $supported_extensions = video_utility::getMediaExtensions();
     $extensions = isset($elements[$delta]['#upload_validators']['file_validate_extensions'][0]) ? $elements[$delta]['#upload_validators']['file_validate_extensions'][0] : implode(' ', $supported_extensions);
     $extensions = array_intersect(explode(' ', $extensions), $supported_extensions);
     $elements[$delta]['#upload_validators']['file_validate_extensions'][0] = implode(' ', $extensions);
@@ -625,24 +635,18 @@ function video_field_widget_form(&$form, &$form_state, $field, $instance, $langc
  * video_field_widget_process().
  */
 function video_field_widget_value($element, $input = FALSE, $form_state) {
+  // file_field_widget_value() also takes care of adding $input to $value.
   $value = file_field_widget_value($element, $input, $form_state);
 
   // Extra default values.
-  $alldimensions = video_utility::getDimensions();
   $value += array(
     'bypass_autoconversion' => variable_get('video_bypass_conversion', FALSE),
     'convert_video_on_save' => variable_get('video_convert_on_save', FALSE),
     'use_default_video_thumb' => variable_get('video_use_default_thumb', FALSE),
-    'dimensions' => key($alldimensions),
     'conversionstatus' => NULL,
+    'fid' => 0,
     'thumbnail' => 0,
   );
-
-  // Load the default dimensions.
-  $instance = field_widget_instance($element, $form_state);
-  if (in_array($instance['settings']['default_dimensions'], $alldimensions)) {
-    $value['dimensions'] = $instance['settings']['default_dimensions'];
-  }
 
   if ($value['fid'] > 0) {
     $transcoder = new Transcoder();
@@ -650,7 +654,11 @@ function video_field_widget_value($element, $input = FALSE, $form_state) {
       $video = video_jobs::load($value['fid']);
 
       if ($video) {
-        $value['dimensions'] = $video->dimensions;
+      	// The dimensions may have been set from input, so check first to not
+      	// overwrite a change by the user.
+      	if (empty($value['dimensions'])) {
+          $value['dimensions'] = $video->dimensions;
+      	}
         $value['conversionstatus'] = $video->video_status;
         // When there is a job, unselect "Bypass auto conversion" because it
         // would remove the converted files.
@@ -658,12 +666,15 @@ function video_field_widget_value($element, $input = FALSE, $form_state) {
       }
       else {
         // No job (yet), find the video dimensions to use as default.
-        $video_ratio = _video_aspect_ratio($value);
+        if (empty($value['dimensions'])) {
+          $video_ratio = _video_aspect_ratio($value);
 
-        if (!empty($video_ratio['width']) && !empty($video_ratio['height'])) {
-          $filedimensions = $video_ratio['width'] . 'x' . $video_ratio['height'];
-          if (in_array($filedimensions, $alldimensions)) {
-            $value['dimensions'] = $filedimensions;
+          if (!empty($video_ratio['width']) && !empty($video_ratio['height'])) {
+            $filedimensions = $video_ratio['width'] . 'x' . $video_ratio['height'];
+            $alldimensions = video_utility::getDimensions();
+            if (in_array($filedimensions, $alldimensions)) {
+              $value['dimensions'] = $filedimensions;
+            }
           }
         }
 
@@ -685,6 +696,18 @@ function video_field_widget_value($element, $input = FALSE, $form_state) {
       if ($field['settings']['default_video_thumbnail']['fid'] == $value['thumbnail']) {
         $value['use_default_video_thumb'] = 1;
       }
+    }
+  }
+
+  // Load the default dimensions when there is no file or input.
+  if (empty($value['dimensions'])) {
+  	$alldimensions = video_utility::getDimensions();
+    $instance = field_widget_instance($element, $form_state);
+    if (in_array($instance['settings']['default_dimensions'], $alldimensions)) {
+      $value['dimensions'] = $instance['settings']['default_dimensions'];
+    }
+    else {
+      $value['dimensions'] = key($alldimensions);
     }
   }
 
@@ -938,6 +961,7 @@ function video_field_formatter_info() {
       'settings' => array(
         'image_style' => '',
         'image_link' => '',
+        'widthxheight' => '640x360',
       ),
     ),
   );
@@ -971,6 +995,21 @@ function video_field_formatter_settings_form($field, $instance, $view_mode, $for
           'file' => t('File'),
         ),
       );
+      if (module_exists('colorbox')) {
+        $element['image_link']['#options']['colorbox'] = t('Colorbox');
+        $element['widthxheight'] = array(
+          '#title' => t('Video Player Dimensions'),
+          '#type' => 'select',
+          '#default_value' => $settings['widthxheight'],
+          '#description' => t('Select the desired dimensions of the video player. You can add your own dimensions at !settings.', array('!settings' => l(t('video module settings'), 'admin/config/media/video'))),
+          '#options' => video_utility::getDimensions(),
+          '#states' => array(
+            'visible' => array(
+              'input[name="options[settings][image_link]"]' => array('value' => 'colorbox'),
+            ),
+          ),
+        );
+      }
       break;
 
     case 'video_formatter_player':
@@ -1021,7 +1060,9 @@ function video_field_formatter_settings_summary($field, $instance, $view_mode) {
       $link_types = array(
         'content' => t('Linked to content'),
         'file' => t('Linked to video file'),
+        'colorbox' => t('Linked to Colorbox overlay')
       );
+
       // Display this setting only if image is linked.
       if (isset($link_types[$settings['image_link']])) {
         $summary[] = $link_types[$settings['image_link']];
@@ -1054,14 +1095,25 @@ function video_field_formatter_view($entity_type, $entity, $field, $instance, $l
           $uri = entity_uri($entity_type, $entity);
         }
         elseif ($settings['image_link'] == 'file') {
-          $link_file = TRUE;
-        }
-        if (isset($link_file)) {
           $uri = array(
             'path' => file_create_url($item['uri']),
             'options' => array(),
           );
         }
+        elseif ($settings['image_link'] == 'colorbox') {
+          list($entity_id, $rev, $bundle) = entity_extract_ids($entity_type, $entity);
+
+          // Convert to a URL friendly version, and remove "field_" prefix for brevity.
+          $field_path = preg_replace(array('/^field_/', '/_/'), array('', '-'), $field['field_name']);
+          $field_path = "{$entity_type}/{$entity_id}/{$field_path}";
+
+          $dimensions = explode('x', $settings['widthxheight']);
+          $uri = array(
+            'path' => 'video/embed/'. $field_path . '/' . str_replace('x', '/',$settings['widthxheight']),
+            'options' => array('query' => array('width' => $dimensions[0], 'height' => $dimensions[1] + 10, 'iframe' => 'true'))
+          );
+       }
+
         $element[$delta] = array(
           '#theme' => 'video_formatter_thumbnail',
           '#item' => $item,
@@ -1070,7 +1122,8 @@ function video_field_formatter_view($entity_type, $entity, $field, $instance, $l
           '#entity' => $entity,
           '#entity_type' => $entity_type,
           '#field' => $field,
-          '#instance' => $instance
+          '#instance' => $instance,
+          '#colorbox' => $settings['image_link'] == 'colorbox',
         );
         break;
 
