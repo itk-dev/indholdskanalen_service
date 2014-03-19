@@ -107,7 +107,8 @@ function ik_frontend_node_update($node) {
   }
   if ($node->type == 'slide') {
     // Remove node from slides cache.
-    // cache_clear_all('slide_' . $node->nid, 'cache_ik_frontend');
+    cache_clear_all('slide_' . $node->nid, 'cache_ik_frontend');
+    cache_clear_all('channel_', 'cache_ik_frontend', TRUE);
   }
 }
 
