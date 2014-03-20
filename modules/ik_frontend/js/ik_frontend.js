@@ -235,6 +235,7 @@ var IK = (function() {
 
     // Set font-size.
     $('.slide-text').addClass(this.get('fontsize'));
+    $('.slide-subheading').addClass(this.get('fontsize'));
 
     // Animate the progress bar.
     var progress = $('#progress');
