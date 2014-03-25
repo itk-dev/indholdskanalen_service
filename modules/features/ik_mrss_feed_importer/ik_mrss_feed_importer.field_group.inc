@@ -31,7 +31,7 @@ function ik_mrss_feed_importer_field_group_info() {
       'formatter' => 'collapsible',
       'instance_settings' => array(
         'description' => '',
-        'classes' => '',
+        'classes' => ' group-ik-mrss-categories field-group-fieldset',
         'required_fields' => 1,
       ),
     ),
@@ -58,7 +58,7 @@ function ik_mrss_feed_importer_field_group_info() {
       'formatter' => 'collapsible',
       'instance_settings' => array(
         'description' => '',
-        'classes' => '',
+        'classes' => ' group-ik-mrss-department field-group-fieldset',
         'required_fields' => 1,
       ),
     ),
@@ -86,7 +86,7 @@ function ik_mrss_feed_importer_field_group_info() {
       'formatter' => 'collapsible',
       'instance_settings' => array(
         'description' => '',
-        'classes' => '',
+        'classes' => ' group-ik-mrss-design field-group-fieldset',
         'required_fields' => 1,
       ),
     ),
@@ -114,7 +114,7 @@ function ik_mrss_feed_importer_field_group_info() {
       'formatter' => 'collapsible',
       'instance_settings' => array(
         'description' => '',
-        'classes' => '',
+        'classes' => ' group-ik-mrss-feed-group field-group-fieldset',
         'required_fields' => 1,
       ),
     ),
@@ -141,7 +141,7 @@ function ik_mrss_feed_importer_field_group_info() {
       'formatter' => 'collapsible',
       'instance_settings' => array(
         'description' => '',
-        'classes' => '',
+        'classes' => ' group-ik-mrss-images field-group-fieldset',
         'required_fields' => 1,
       ),
     ),
@@ -168,7 +168,7 @@ function ik_mrss_feed_importer_field_group_info() {
       'label' => 'Layout',
       'instance_settings' => array(
         'required_fields' => 1,
-        'classes' => '',
+        'classes' => ' group-ik-mrss-layout field-group-fieldset',
         'description' => '',
       ),
       'formatter' => 'collapsed',
@@ -197,7 +197,7 @@ function ik_mrss_feed_importer_field_group_info() {
       'formatter' => 'collapsible',
       'instance_settings' => array(
         'description' => '',
-        'classes' => '',
+        'classes' => ' group-ik-mrss-template field-group-fieldset',
         'required_fields' => 1,
       ),
     ),

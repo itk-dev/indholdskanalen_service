@@ -7,20 +7,16 @@
 /**
  * Implements hook_ctools_plugin_api().
  */
-function ik_slides_ctools_plugin_api() {
-  list($module, $api) = func_get_args();
+function ik_slides_ctools_plugin_api($module = NULL, $api = NULL) {
   if ($module == "field_group" && $api == "field_group") {
     return array("version" => "1");
   }
-  list($module, $api) = func_get_args();
   if ($module == "file_entity" && $api == "file_default_displays") {
     return array("version" => "1");
   }
-  list($module, $api) = func_get_args();
   if ($module == "page_manager" && $api == "pages_default") {
     return array("version" => "1");
   }
-  list($module, $api) = func_get_args();
   if ($module == "strongarm" && $api == "strongarm") {
     return array("version" => "1");
   }
@@ -53,6 +49,7 @@ function ik_slides_image_default_styles() {
         'weight' => 1,
       ),
     ),
+    'label' => 'slide_preview_large',
   );
 
   // Exported image style: slide_preview_medium.
@@ -76,6 +73,7 @@ function ik_slides_image_default_styles() {
         'weight' => 1,
       ),
     ),
+    'label' => 'slide_preview_medium',
   );
 
   // Exported image style: slide_preview_small.
@@ -99,6 +97,7 @@ function ik_slides_image_default_styles() {
         'weight' => 1,
       ),
     ),
+    'label' => 'slide_preview_small',
   );
 
   return $styles;

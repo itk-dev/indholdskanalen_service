@@ -1,9 +1,8 @@
 (function($){
   $(document).ready(function() {
     $('.preview-live-slide').click(function(e) {
-      $('#slide-preview').remove();
-
       e.preventDefault();
+
       var src = $(this).attr('href');
       
       // Build iframe.
@@ -17,7 +16,10 @@
         width: $(window).width() - 100,
         height: $(window).height() - 100,
         resizable: false,
-        draggable: false
+        draggable: false,
+        close: function() {
+          $("#slide-preview").remove();
+        }
       });
 
       // Append iframe to the dialog.

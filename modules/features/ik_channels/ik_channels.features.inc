@@ -7,16 +7,13 @@
 /**
  * Implements hook_ctools_plugin_api().
  */
-function ik_channels_ctools_plugin_api() {
-  list($module, $api) = func_get_args();
+function ik_channels_ctools_plugin_api($module = NULL, $api = NULL) {
   if ($module == "field_group" && $api == "field_group") {
     return array("version" => "1");
   }
-  list($module, $api) = func_get_args();
   if ($module == "page_manager" && $api == "pages_default") {
     return array("version" => "1");
   }
-  list($module, $api) = func_get_args();
   if ($module == "strongarm" && $api == "strongarm") {
     return array("version" => "1");
   }
@@ -42,12 +39,13 @@ function ik_channels_image_default_styles() {
         'module' => 'image',
         'name' => 'image_scale_and_crop',
         'data' => array(
-          'width' => '1920',
-          'height' => '1080',
+          'width' => 1920,
+          'height' => 1080,
         ),
-        'weight' => '1',
+        'weight' => 1,
       ),
     ),
+    'label' => 'slide_images',
   );
 
   // Exported image style: slide_logoes.
@@ -64,13 +62,14 @@ function ik_channels_image_default_styles() {
         'module' => 'image',
         'name' => 'image_scale',
         'data' => array(
-          'width' => '350',
+          'width' => 350,
           'height' => '',
           'upscale' => 0,
         ),
-        'weight' => '1',
+        'weight' => 1,
       ),
     ),
+    'label' => 'slide_logoes',
   );
 
   return $styles;

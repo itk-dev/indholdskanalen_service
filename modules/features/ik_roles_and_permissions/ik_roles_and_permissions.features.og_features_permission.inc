@@ -46,16 +46,16 @@ function ik_roles_and_permissions_og_features_default_permissions() {
   // Exported og permission: 'node:department:create media_rss_slide_import content'
   $permissions['node:department:create media_rss_slide_import content'] = array(
     'roles' => array(
-      'Redaktør' => 'Redaktør',
       'Bidragyder' => 'Bidragyder',
+      'Redaktør' => 'Redaktør',
     ),
   );
 
   // Exported og permission: 'node:department:create slide content'
   $permissions['node:department:create slide content'] = array(
     'roles' => array(
-      'Redaktør' => 'Redaktør',
       'Bidragyder' => 'Bidragyder',
+      'Redaktør' => 'Redaktør',
     ),
   );
 
@@ -178,8 +178,8 @@ function ik_roles_and_permissions_og_features_default_permissions() {
   // Exported og permission: 'node:department:update group'
   $permissions['node:department:update group'] = array(
     'roles' => array(
-      'Redaktør' => 'Redaktør',
       'Gruppe administrator' => 'Gruppe administrator',
+      'Redaktør' => 'Redaktør',
     ),
   );
 
@@ -198,8 +198,8 @@ function ik_roles_and_permissions_og_features_default_permissions() {
   // Exported og permission: 'node:department:update own media_rss_slide_import content'
   $permissions['node:department:update own media_rss_slide_import content'] = array(
     'roles' => array(
-      'Redaktør' => 'Redaktør',
       'Bidragyder' => 'Bidragyder',
+      'Redaktør' => 'Redaktør',
     ),
   );
 
