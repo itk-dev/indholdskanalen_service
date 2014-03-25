@@ -127,6 +127,10 @@
       width: 100%;
       font-family: $font-family-subheading;
       font-size: $subheading-font-size;
+
+      &.bigger {
+        font-size: $subheading-font-size * 1.4;
+      }
     }
 
     .slide-text {

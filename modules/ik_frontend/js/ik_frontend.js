@@ -78,7 +78,25 @@ var IK = (function() {
     // Build directive for PURE based on type.
     console.log(data);
     if (data.media.video.length) {
-      this.directive = {};
+      this.directive = {
+        '.video-container source' : {
+          'medium<-media.video' : {
+            '@src' : 'medium.url',
+            '@type' : 'medium.type'
+          }
+        },
+        '.slide-heading' : 'title',
+        '.slide-subheading' : 'subheading',
+        '.slide-text' : 'text',
+        '.logo-container img@src' : 'logo',
+        '.logo-container@style' : function (arg) {
+          if (arg.context.logo) {
+            return 'display:block;';
+          } else {
+            return 'display:none;';
+          }
+        }
+      };
 
       // Compile template with the directive.
       this.template = $('#pure-template-video').compile(this.directive);
@@ -106,7 +124,6 @@ var IK = (function() {
       // Compile template with the directive.
       this.template = $('#pure-template-image').compile(this.directive);
     }
-
 
     this.propreties = data;
   };
@@ -218,6 +235,7 @@ var IK = (function() {
 
     // Set font-size.
     $('.slide-text').addClass(this.get('fontsize'));
+    $('.slide-subheading').addClass(this.get('fontsize'));
 
     // Animate the progress bar.
     var progress = $('#progress');

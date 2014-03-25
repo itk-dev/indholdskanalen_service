@@ -400,15 +400,15 @@ function ik_slides_field_default_field_instances() {
         'allowed_types' => array(
           0 => 0,
           'audio' => 0,
-          'default' => 0,
+          'document' => 0,
           'image' => 'image',
           'video' => 'video',
         ),
         'browser_plugins' => array(
-          'library' => 0,
-          'library_plus' => 'library_plus',
+          'media_browser_plus--media_browser_my_files' => 'media_browser_plus--media_browser_my_files',
+          'media_browser_plus--media_browser_thumbnails' => 'media_browser_plus--media_browser_thumbnails',
           'media_default--media_browser_1' => 0,
-          'media_default--media_browser_my_files' => 'media_default--media_browser_my_files',
+          'media_default--media_browser_my_files' => 0,
           'media_internet' => 0,
           'upload' => 'upload',
         ),
@@ -556,7 +556,7 @@ function ik_slides_field_default_field_instances() {
     'bundle' => 'slide',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => 'Tilføj et eller flere tags som beskriver denne slide.',
+    'description' => 'Tilføj et eller flere tags som beskriver denne slide. Adskil tags med komma.',
     'display' => array(
       'default' => array(
         'label' => 'above',
@@ -579,14 +579,14 @@ function ik_slides_field_default_field_instances() {
       'user_register_form' => FALSE,
     ),
     'widget' => array(
-      'active' => 1,
-      'module' => 'autocomplete_deluxe',
+      'active' => 0,
+      'module' => 'taxonomy',
       'settings' => array(
-        'autocomplete_deluxe_path' => 'autocomplete_deluxe/taxonomy',
+        'autocomplete_path' => 'taxonomy/autocomplete',
         'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
         'size' => 60,
       ),
-      'type' => 'autocomplete_deluxe_taxonomy',
+      'type' => 'taxonomy_autocomplete',
       'weight' => 8,
     ),
   );
@@ -638,22 +638,21 @@ function ik_slides_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-slide-field_ik_slide_transition_effect'
-  $field_instances['node-slide-field_ik_slide_transition_effect'] = array(
+  // Exported field_instance: 'node-slide-field_ik_video'
+  $field_instances['node-slide-field_ik_video'] = array(
     'bundle' => 'slide',
-    'default_value' => array(
-      0 => array(
-        'value' => 'fade',
-      ),
-    ),
     'deleted' => 0,
-    'description' => 'Vælg hvilken effekt som skal benyttes i overgang imellem billeder.',
+    'description' => '',
     'display' => array(
       'default' => array(
         'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 13,
+        'module' => 'video',
+        'settings' => array(
+          'poster_image_style' => '',
+          'widthxheight' => '640x360',
+        ),
+        'type' => 'video_formatter_player',
+        'weight' => 20,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -663,20 +662,43 @@ function ik_slides_field_default_field_instances() {
       ),
     ),
     'entity_type' => 'node',
-    'field_name' => 'field_ik_slide_transition_effect',
-    'label' => 'Overgangseffekt',
+    'field_name' => 'field_ik_video',
+    'label' => 'Video',
     'required' => 0,
     'settings' => array(
+      'default_dimensions' => '1920x1080',
+      'file_directory' => 'videos/original',
+      'file_extensions' => 'mp4 ogg avi mov wmv flv ogv webm',
+      'max_filesize' => '',
       'user_register_form' => FALSE,
     ),
     'widget' => array(
       'active' => 1,
-      'module' => 'options',
+      'module' => 'video',
       'settings' => array(
+        'allowed_schemes' => array(
+          'private' => 'private',
+          'public' => 'public',
+        ),
+        'allowed_types' => array(
+          0 => 0,
+          'audio' => 0,
+          'document' => 0,
+          'image' => 0,
+          'video' => 'video',
+        ),
+        'browser_plugins' => array(
+          'media_browser_plus--media_browser_my_files' => 'media_browser_plus--media_browser_my_files',
+          'media_browser_plus--media_browser_thumbnails' => 'media_browser_plus--media_browser_thumbnails',
+          'media_default--media_browser_1' => 0,
+          'media_default--media_browser_my_files' => 0,
+          'media_internet' => 0,
+        ),
         'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
+        'progress_indicator' => 'throbber',
       ),
-      'type' => 'options_select',
-      'weight' => 3,
+      'type' => 'video_upload',
+      'weight' => 5,
     ),
   );
 
@@ -735,19 +757,18 @@ function ik_slides_field_default_field_instances() {
   t('Logo');
   t('Manchet');
   t('Medier');
-  t('Overgangseffekt');
   t('Preview');
   t('Skriftstørrelse på brødtekst');
   t('Tags');
   t('Tekst');
   t('Tilføj billeder til slide. Billeder skaleres og beskæres automatisk til 1920x1080 pixel (Full HD, 16:9 format). Ønsker du fuld kontrol over hvordan dit billede ser ud anbefales det at uploade billedet i størrelsen 1920x1080 på forhånd.');
-  t('Tilføj et eller flere tags som beskriver denne slide.');
+  t('Tilføj et eller flere tags som beskriver denne slide. Adskil tags med komma.');
   t('Tilføj et logo som indsættes på sliden. Logoet skaleres automatisk til 350 pixel i bredden, hvis det er større. Det anbefales at uploade et logo med transparent baggrund.');
+  t('Video');
   t('Vælg en hovedkategori for denne slide.');
   t('Vælg et farve tema for denne slide.');
   t('Vælg et layout som denne slide skal benytte.');
   t('Vælg hvilken afdeling denne slide skal tilhøre (Du kan kun tilknytte til den/de afdeling(er) som du er en del af).');
-  t('Vælg hvilken effekt som skal benyttes i overgang imellem billeder.');
   t('Vælg hvor længe denne slide skal eksponseres.');
 
   return $field_instances;
