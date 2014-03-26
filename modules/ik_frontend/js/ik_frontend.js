@@ -76,7 +76,6 @@ var IK = (function() {
     log('Slide ' + this.sid + ' fetched.');
 
     // Build directive for PURE based on type.
-    console.log(data);
     if (data.media.video.length) {
       this.directive = {
         '.video-container source' : {
