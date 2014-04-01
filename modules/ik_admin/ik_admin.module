@@ -23,18 +23,17 @@ function ik_admin_form_alter(&$form, &$form_state, $form_id) {
       $form['field_ik_slide_imported']['#access'] = FALSE;
     }
   }
+}
 
-  // Manipulate the media upload form.
-  if ($form['form_id']['#value'] == 'file_entity_add_upload') {
+/**
+ * Implements hook_from_FORM_ID_alter().
+ */
+function ik_admin_form_file_entity_add_upload_alter(&$form, &$form_state) {
+  // Hide root folder.
+  unset($form['field_folder']['und']['#options'][83]);
 
-    // Hide root folder.
-    unset($form['field_folder']['#options'][83]);
-
-    // Set the media plus browser folders to logoer.
-    if (stristr($form['upload']['#upload_location'], 'slide_logo_files')) {
-      $form['field_folder']['#default_value'] = 30;
-    }
-  }
+  // Set slides as default.
+  $form['field_folder']['und']['#default_value'] = 31;
 }
 
 /**

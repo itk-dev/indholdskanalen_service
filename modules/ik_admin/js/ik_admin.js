@@ -6,7 +6,7 @@
  *
  * Returns the commonly used options for the dialog.
  */
-if (Drupal.media !== undefined) {
+if (Drupal.media !== undefined && Drupal.media.popups !== undefined) {
   Drupal.media.popups.getDialogOptions = function () {
     return {
       buttons: {},
