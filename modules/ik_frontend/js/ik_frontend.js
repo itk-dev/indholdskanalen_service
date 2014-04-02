@@ -233,6 +233,9 @@ var IK = (function() {
     }
 
     // Set font-size.
+    $('.slide-text').removeClass('normal bigger');
+    $('.slide-subheading').removeClass('normal bigger');
+
     $('.slide-text').addClass(this.get('fontsize'));
     $('.slide-subheading').addClass(this.get('fontsize'));
 
