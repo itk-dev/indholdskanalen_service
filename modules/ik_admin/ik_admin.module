@@ -26,7 +26,7 @@ function ik_admin_form_alter(&$form, &$form_state, $form_id) {
 }
 
 /**
- * Implements hook_from_FORM_ID_alter().
+ * Implements hook_form_FORM_ID_alter().
  */
 function ik_admin_form_file_entity_add_upload_alter(&$form, &$form_state) {
   // Hide root folder.

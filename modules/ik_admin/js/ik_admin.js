@@ -24,7 +24,7 @@ if (Drupal.media !== undefined && Drupal.media.popups !== undefined) {
       },
       zIndex: 10000,
       close: function (event, ui) {
-        $(event.target).remove();
+        event.target.remove();
       }
     };
   };
