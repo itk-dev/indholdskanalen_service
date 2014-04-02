@@ -38,7 +38,7 @@ function template_preprocess_ik_frontend(&$vars) {
     'jquery-1.8.3.min.js',
     'jquery.cycle2.min.js',
     'pure_min.js',
-    'ik_frontend.min.js?version=2603201401',
+    'ik_frontend.min.js?version=0204201401',
     'ik_frontend_events.min.js?version=1403201401',
   );
 
