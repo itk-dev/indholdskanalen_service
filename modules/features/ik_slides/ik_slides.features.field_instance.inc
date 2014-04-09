@@ -630,7 +630,7 @@ function ik_slides_field_default_field_instances() {
       'active' => 1,
       'module' => 'text',
       'settings' => array(
-        'maxlength_js' => 500,
+        'maxlength_js' => '',
         'maxlength_js_enforce' => 0,
         'maxlength_js_label' => 'Indhold begrænses til @limit karaktere, antal tegn tilbage: <strong>@remaining</strong>',
         'maxlength_js_truncate_html' => 1,
