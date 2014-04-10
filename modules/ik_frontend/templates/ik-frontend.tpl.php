@@ -32,7 +32,7 @@
 
   <div id="pure-template-video" class="slide">
     <div class="video-container">
-      <video autoplay="1" width="100%" height="100%">
+      <video class="video-player" autoplay="1" width="1920" height="1080">
         <source src="" type="" />
       </video>
     </div>
