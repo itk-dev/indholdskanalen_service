@@ -56,6 +56,12 @@
 /*
 * Layouts default styling
 */
+
+.video-player {
+  height:100% !important;
+  width:100% !important;
+}
+
 #pure-template-image,
 #pure-template-video {
   display: none;
