@@ -27,13 +27,6 @@ function ik_default_settings_filter_default_formats() {
           'filter_html_nofollow' => 0,
         ),
       ),
-      'filter_url' => array(
-        'weight' => -48,
-        'status' => 1,
-        'settings' => array(
-          'filter_url_length' => 72,
-        ),
-      ),
       'filter_htmlcorrector' => array(
         'weight' => -45,
         'status' => 1,
